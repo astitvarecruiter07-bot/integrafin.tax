@@ -1,226 +1,376 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHeader from "@/components/PageHeader";
+import Image from "next/image";
+import { 
+  Building2, User, Scale, PlusCircle, Rocket, TrendingUp, ShieldCheck, Gauge, Shield, 
+  FileEdit, PiggyBank, CalendarDays, CheckCircle, Calculator, CreditCard, Globe, Eye, History, ArrowRight, Check, ArrowUpRight
+} from "lucide-react";
+import { faqSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
-    title: "Our Services",
-    description:
-        "Explore IntegraFin's comprehensive tax, accounting, and business advisory services including business tax, individual tax, tax resolution, payroll, bookkeeping, and more.",
-    openGraph: {
-        title: "Our Services | IntegraFin",
-        description: "Comprehensive tax and accounting services for businesses and individuals.",
-        url: "https://integrafin.tax/services",
-    },
+  title: 'CPA Services Katy TX | Tax & Accounting | IntegraFin',
+  description: 'Explore IntegraFin\'s full CPA services in Katy TX — business tax, individual filing, IRS resolution, payroll, bookkeeping, and business advisory. Free consultation.',
+  alternates: { canonical: 'https://integrafin.tax/services' },
+  openGraph: {
+    title: 'CPA Services Katy TX | Tax & Accounting | IntegraFin',
+    url: 'https://integrafin.tax/services',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
+  },
 };
 
-const mainServices = [
-    {
-        id: "business-tax",
-        title: "Business Tax & Accounting",
-        desc: "Comprehensive accounting and bookkeeping solutions, including software implementation, payroll, financial statements, and tax compliance for businesses of all sizes.",
-        icon: (
-            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-        ),
-    },
-    {
-        id: "individual-tax",
-        title: "Individual Tax Services",
-        desc: "Expert tax preparation and planning to maximize deductions and ensure compliance with IRS regulations for individuals and families.",
-        icon: (
-            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-        ),
-    },
-    {
-        id: "tax-resolution",
-        title: "Tax Resolution Services",
-        desc: "Assistance with back taxes, IRS audits, penalty abatements, and tax negotiations to resolve outstanding tax issues efficiently.",
-        icon: (
-            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-        ),
-    },
-    {
-        id: "additional",
-        title: "Additional Services",
-        desc: "Support for ITIN, SSN, FEIN applications, international compliance (FBAR & FATCA), business certifications, and secure document management.",
-        icon: (
-            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-            </svg>
-        ),
-    },
-    {
-        id: "consultation",
-        title: "New Business & Consultation",
-        desc: "Starting a new business is exciting yet challenging. We provide strategic decision-making support, entity formation, and financial planning for startups.",
-        icon: (
-            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-        ),
-    },
-    {
-        id: "industries",
-        title: "Industries Served",
-        desc: "We cater to real estate, construction, manufacturing, healthcare, financial services, legal, retail, and technology industries with tailored solutions.",
-        icon: (
-            <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        ),
-    },
+const navItems = [
+    { id: "business-tax", label: "Business Tax & Accounting", icon: <Building2 className="w-5 h-5" /> },
+    { id: "individual-tax", label: "Individual Tax", icon: <User className="w-5 h-5" /> },
+    { id: "tax-resolution", label: "Tax Resolution", icon: <Scale className="w-5 h-5" /> },
+    { id: "additional-services", label: "Additional Services", icon: <PlusCircle className="w-5 h-5" /> },
+    { id: "new-business", label: "New Business Formation", icon: <Rocket className="w-5 h-5" /> },
 ];
 
-const steps = [
+const businessSubServices = [
+    "Accounting Software", "Full-Service Accounting", "QuickBooks Support", 
+    "Monthly Bookkeeping", "Business Consulting", "Entity Selection", "M&A Advisory"
+];
+
+const businessAccordions = [
     {
-        icon: (
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-        ),
-        title: "Consultation Section",
-        desc: "Schedule a free consultation to discuss your tax and accounting needs with our expert team.",
-        active: false,
+        title: "Accounting Software Setup & Integration",
+        desc: "Streamlining your operations with the right digital infrastructure. We specialize in QuickBooks, Xero, and Sage integrations tailored to your specific industry workflow."
     },
     {
-        icon: (
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
-        ),
-        title: "Choose Your Package",
-        desc: "Select the service package that fits your needs — from individual filing to full business accounting.",
-        active: true,
+        title: "Full-Service Monthly Accounting",
+        desc: "High-level oversight for small-to-mid-sized enterprises. We manage reconciliations, financial statements, and performance metrics so you can focus on growth."
     },
     {
-        icon: (
-            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        ),
-        title: "Get Your Service",
-        desc: "Our expert CPAs handle everything, ensuring compliance and maximizing your returns.",
-        active: false,
+        title: "M&A Advisory & Strategy",
+        desc: "Strategic guidance for mergers and acquisitions. We perform due diligence, structure deals for tax efficiency, and support business valuation processes."
+    }
+];
+
+const personalServices = [
+    {
+        title: "Expert Preparation",
+        desc: "Precision filing for W-2, 1099, and complex investment portfolios.",
+        icon: <FileEdit className="w-7 h-7" />
     },
+    {
+        title: "Maximum Refund",
+        desc: "Identifying every possible deduction and credit legally allowed.",
+        icon: <PiggyBank className="w-7 h-7" />
+    },
+    {
+        title: "Year-Round Planning",
+        desc: "Strategic guidance through quarterly life changes, not just April.",
+        icon: <CalendarDays className="w-7 h-7" />
+    },
+    {
+        title: "Compliance Check",
+        desc: "Advanced review to minimize red flags and audit risk.",
+        icon: <CheckCircle className="w-7 h-7" />
+    }
+];
+
+const resolutionServices = [
+    {
+        title: "Back Taxes",
+        desc: "Structured relief strategies for prior-year liabilities and unpaid balances."
+    },
+    {
+        title: "Audit Representation",
+        desc: "Expert defense during official IRS or State inquiries to protect your interests."
+    },
+    {
+        title: "Offer in Compromise",
+        desc: "Negotiating settlements for less than what you owe based on your situation."
+    }
+];
+
+const additionalServices = [
+    { title: "ITIN Application & Renewal", icon: <CreditCard className="w-6 h-6" /> },
+    { title: "International (FBAR/FATCA)", icon: <Globe className="w-6 h-6" /> },
+    { title: "FinCEN BOI Reporting", icon: <Eye className="w-6 h-6" /> },
+    { title: "Tax Filing Extension", icon: <History className="w-6 h-6" /> }
 ];
 
 export default function ServicesPage() {
     return (
-        <>
-            <PageHeader
-                title="Our Services"
-                breadcrumb="Services"
-                description="IntegraFin offers a full range of accounting and tax services tailored to businesses and individuals."
-            />
-
-            {/* ========== SERVICES GRID ========== */}
-            <section className="section-padding">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <div className="text-center mb-12">
-                        <p className="text-sm font-semibold text-text-secondary mb-2">
-                            We Have An Amazing <span className="bg-accent-dark text-white px-2 py-0.5 rounded text-xs">Service</span>
-                        </p>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-                            Real Accounting Services For You
-                        </h2>
-                        <p className="text-text-secondary max-w-xl mx-auto">
-                            Comprehensive financial solutions designed to keep your business compliant and thriving.
-                        </p>
+        <main className="text-left bg-white">
+            {/* ========== HERO SECTION ========== */}
+            <section className="relative hero-gradient py-24 lg:py-32 overflow-hidden min-h-[500px] flex items-center">
+                <div className="absolute inset-0 opacity-10 pointer-events-none">
+                    <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+                </div>
+                <div className="max-w-7xl mx-auto px-8 relative z-10">
+                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#00C2CB]/10 border border-[#00C2CB]/30 mb-8">
+                        <span className="text-[#00C2CB] text-xs font-bold tracking-[0.2em] uppercase">Elite Financial Architecture</span>
                     </div>
-
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {mainServices.map((service) => (
-                            <div key={service.id} id={service.id} className="bg-white border border-gray-100 rounded-xl p-6 card-hover shadow-sm">
-                                <div className="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center text-primary mb-5">
-                                    {service.icon}
-                                </div>
-                                <h3 className="text-lg font-bold text-foreground mb-3">{service.title}</h3>
-                                <p className="text-text-secondary text-sm leading-relaxed mb-4">{service.desc}</p>
-                                <Link href="/contact" className="text-primary text-sm font-semibold inline-flex items-center hover:underline">
-                                    Learn More
-                                    <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
-                                </Link>
-                            </div>
-                        ))}
+                    <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight max-w-4xl mb-6 leading-[1.1]">
+                        Comprehensive <span className="text-[#00C2CB]">Tax & Accounting</span> Services
+                    </h1>
+                    <p className="text-xl text-[#d7e3fc] max-w-2xl leading-relaxed mb-10">
+                        From individual tax filing to full business accounting — expert CPAs and CAs ready to help you at every step.
+                    </p>
+                    <div className="flex flex-wrap gap-4">
+                        <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest shadow-lg shadow-[#00C2CB]/20 hover:scale-105 transition-transform">
+                            Schedule Consultation
+                        </Link>
+                        <a href="tel:+18326471819" className="border border-white/30 text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-white/5 transition-colors flex items-center gap-2">
+                             Call +1-832-647-1819
+                        </a>
                     </div>
                 </div>
             </section>
 
-            {/* ========== HOW IT WORKS ========== */}
-            <section className="section-padding bg-section-bg relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0">
-                    <svg viewBox="0 0 1440 80" fill="none" className="w-full">
-                        <path d="M0 40C360 80 720 0 1080 40C1260 60 1380 50 1440 40V0H0V40Z" fill="#F5F7FA" opacity="0.5" />
-                    </svg>
+            {/* ========== STICKY NAV ========== */}
+            <nav className="sticky top-[72px] z-40 bg-white border-b border-slate-100 shadow-sm backdrop-blur-md bg-white/90">
+                <div className="max-w-7xl mx-auto flex overflow-x-auto no-scrollbar whitespace-nowrap px-8">
+                    {navItems.map((item, index) => (
+                        <a 
+                            key={item.id} 
+                            href={`#${item.id}`} 
+                            className={`px-6 py-5 text-sm font-bold flex items-center gap-2 transition-colors border-b-2 hover:text-[#0047AB] ${
+                                index === 0 ? "border-[#00C2CB] text-[#00C2CB]" : "border-transparent text-[#45474c]"
+                            }`}
+                        >
+                            {item.icon}
+                            {item.label}
+                        </a>
+                    ))}
                 </div>
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-                    <p className="text-sm font-semibold text-text-secondary mb-2">
-                        How It <span className="bg-accent-dark text-white px-2 py-0.5 rounded text-xs">Works?</span>
-                    </p>
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">
-                        Check Out The Easy Way<br />To Get Our Services
-                    </h2>
-                    <p className="text-text-secondary max-w-xl mx-auto mb-12">
-                        Getting started with IntegraFin is simple. Follow these three easy steps.
-                    </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-                        {steps.map((step, i) => (
-                            <div key={i} className={`rounded-2xl p-7 card-hover ${step.active ? "bg-accent-dark text-white shadow-xl" : "bg-white shadow-md border border-gray-100"}`}>
-                                <div className={`w-14 h-14 rounded-xl mx-auto mb-5 flex items-center justify-center ${step.active ? "bg-white/20 text-white" : "bg-accent-light text-primary"}`}>
-                                    {step.icon}
+            </nav>
+
+            {/* ========== SECTION: BUSINESS TAX & ACCOUNTING ========== */}
+            <section id="business-tax" className="max-w-7xl mx-auto px-8 py-24 flex flex-col lg:flex-row gap-16 scroll-mt-24 border-b border-slate-100">
+                {/* Sidebar */}
+                <aside className="lg:w-[30%] space-y-1">
+                    <h3 className="text-xs font-black uppercase tracking-widest text-[#00C2CB] mb-6">Sub-Services</h3>
+                    <div className="flex flex-col gap-1">
+                        {businessSubServices.map((service, index) => (
+                            <button 
+                                key={index} 
+                                className={`text-left px-4 py-3 rounded-lg text-sm font-semibold transition-colors ${
+                                    index === 0 
+                                        ? "bg-[#0047AB] text-white font-bold" 
+                                        : "hover:bg-slate-50 text-[#45474c]"
+                                }`}
+                            >
+                                {service}
+                            </button>
+                        ))}
+                    </div>
+                </aside>
+                {/* Content */}
+                <div className="lg:w-[70%] text-left">
+                    <header className="mb-12">
+                        <h2 className="text-4xl font-black text-[#0047AB] tracking-tight mb-4">What Business Tax & Accounting Services Do We Offer?</h2>
+                        <p className="text-lg text-[#45474c] leading-relaxed font-medium">Scale your business with professional-grade accounting. Our team provides high-level oversight for small-to-mid-sized enterprises.</p>
+                    </header>
+                    <div className="space-y-4 mb-12">
+                        {businessAccordions.map((item, index) => (
+                            <div key={index} className="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm hover:shadow-lg transition-all group">
+                                <div className="flex justify-between items-center cursor-pointer">
+                                    <h3 className="text-xl font-black text-[#0047AB] group-hover:text-[#00C2CB] transition-colors">{item.title}</h3>
+                                    <span className="text-[#00C2CB]">
+                                        <PlusCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                    </span>
                                 </div>
-                                <h3 className="font-bold text-lg mb-3">{step.title}</h3>
-                                <p className={`text-sm leading-relaxed ${step.active ? "text-white/80" : "text-text-secondary"}`}>{step.desc}</p>
+                                <p className="mt-4 text-[#45474c] font-medium leading-relaxed">{item.desc}</p>
                             </div>
                         ))}
                     </div>
+                    <div className="bg-[#003580] rounded-2xl p-10 mb-12">
+                        <h3 className="text-[#00C2CB] text-xs font-black uppercase tracking-widest mb-8 text-center">Key Strategic Benefits</h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            {[
+                                { icon: <TrendingUp className="w-8 h-8 text-[#00C2CB]" />, label: "Max Profit" },
+                                { icon: <ShieldCheck className="w-8 h-8 text-[#00C2CB]" />, label: "Audit Ready" },
+                                { icon: <Gauge className="w-8 h-8 text-[#00C2CB]" />, label: "Real-time Data" },
+                                { icon: <Shield className="w-8 h-8 text-[#00C2CB]" />, label: "Legal Shield" },
+                            ].map((benefit, i) => (
+                                <div key={i} className="flex flex-col items-center text-center p-6 rounded-xl bg-white/5 border border-white/5">
+                                    <div className="mb-3">{benefit.icon}</div>
+                                    <span className="text-white text-xs font-bold uppercase tracking-wider">{benefit.label}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <Link href="/contact" className="w-full bg-[#00C2CB] text-[#003580] py-5 rounded-xl font-black text-lg uppercase tracking-widest shadow-lg shadow-[#00C2CB]/20 hover:bg-[#33ced5] transition-all flex justify-center items-center gap-3">
+                        Book a Business Consultation <ArrowRight className="w-5 h-5" />
+                    </Link>
                 </div>
             </section>
 
-            {/* ========== TESTIMONIALS ========== */}
-            <section className="section-padding">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
-                        <div>
-                            <p className="text-sm font-semibold text-text-secondary mb-2">
-                                Client <span className="bg-accent-dark text-white px-2 py-0.5 rounded text-xs">Testimonial</span>
-                            </p>
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-5 leading-tight">
-                                What They Say<br />About Us?
-                            </h2>
-                            <p className="text-text-secondary leading-relaxed mb-6">
-                                Our clients trust us for reliable, professional, and personalized financial services.
-                            </p>
-                            <Link href="/contact" className="inline-flex items-center px-7 py-3 bg-accent-dark text-white font-semibold rounded-full hover:bg-primary transition-colors">
-                                See More
+            {/* ========== SECTION: INDIVIDUAL TAX SERVICES ========== */}
+            <section id="individual-tax" className="bg-slate-50 py-24 scroll-mt-24 border-b border-slate-100">
+                <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-10 gap-16 items-center">
+                    <div className="lg:col-span-6 text-left">
+                        <div className="mb-12">
+                            <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Personalized Strategy</span>
+                            <h2 className="text-4xl font-black text-[#0047AB] tracking-tight mt-2">What Are Our Individual Tax Services?</h2>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {personalServices.map((service, index) => (
+                                <div key={index} className="bg-white p-10 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all group">
+                                    <div className="w-14 h-14 bg-[#00C2CB]/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#00C2CB] group-hover:text-white text-[#00C2CB] transition-all">
+                                        {service.icon}
+                                    </div>
+                                    <h3 className="text-xl font-black mb-3 text-[#0047AB] group-hover:text-[#00C2CB] transition-colors">{service.title}</h3>
+                                    <p className="text-sm text-[#45474c] font-medium leading-relaxed">{service.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="lg:col-span-4">
+                        <div className="bg-[#003580] p-12 rounded-2xl border border-white/10 shadow-2xl relative overflow-hidden text-left">
+                            <div className="absolute top-0 right-0 p-4 opacity-10">
+                                <Calculator className="w-[120px] h-[120px] text-white" />
+                            </div>
+                            <h3 className="text-3xl font-black text-white mb-6">Free Tax Estimate</h3>
+                            <p className="text-[#d7e3fc] mb-8 leading-relaxed">Curious about your 2024 liability? Our experts provide assessments based on your current earnings.</p>
+                            <ul className="space-y-4 mb-10">
+                                <li className="flex items-center gap-3 text-white text-sm font-medium"><Check className="text-[#00C2CB] w-5 h-5" /> No-obligation consultation</li>
+                                <li className="flex items-center gap-3 text-white text-sm font-medium"><Check className="text-[#00C2CB] w-5 h-5" /> 15-minute rapid review</li>
+                                <li className="flex items-center gap-3 text-white text-sm font-medium"><Check className="text-[#00C2CB] w-5 h-5" /> Clear path to filing</li>
+                            </ul>
+                            <Link href="/contact" className="w-full bg-[#00C2CB] text-[#003580] py-4 rounded-lg font-bold uppercase tracking-widest hover:bg-[#33ced5] transition-all text-center block">
+                                Get My Estimate Now
                             </Link>
                         </div>
-                        <div className="bg-accent-light rounded-2xl p-8 relative">
-                            <p className="text-foreground leading-relaxed mb-5 italic text-lg">
-                                &quot;The team at IntegraFin helped me navigate complex tax regulations with ease. Their knowledge and professionalism gave me peace of mind during tax season.&quot;
-                            </p>
-                            <div className="flex items-center gap-3">
-                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                                    <span className="text-primary font-bold">S</span>
+                    </div>
+                </div>
+            </section>
+
+            {/* ========== SECTION: TAX RESOLUTION SERVICES ========== */}
+            <section id="tax-resolution" className="py-24 max-w-7xl mx-auto px-8 scroll-mt-24 border-b border-slate-100 text-left">
+                <div className="text-center mb-16">
+                    <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Resolution Experts</span>
+                    <h2 className="text-4xl font-black text-[#0047AB] tracking-tight mt-2">How Do We Handle Tax Resolution with the IRS?</h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    {resolutionServices.map((service, index) => (
+                        <div key={index} className="bg-white p-10 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-all group">
+                            <h3 className="text-xl font-black text-[#0047AB] mb-3 group-hover:text-[#00C2CB] transition-colors">{service.title}</h3>
+                            <p className="text-sm text-[#45474c] font-medium leading-relaxed">{service.desc}</p>
+                            <Link href="/contact" className="inline-flex items-center gap-2 text-[#00C2CB] font-bold text-xs uppercase tracking-widest mt-6 group-hover:underline">
+                                Learn More <ArrowUpRight className="w-4 h-4" />
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+                <div className="bg-[#003580] p-6 rounded-full flex flex-wrap justify-center gap-6">
+                    {[
+                        { icon: <Shield className="w-4 h-4 text-[#00C2CB]" />, label: "IRS Approved" },
+                        { icon: <Scale className="w-4 h-4 text-[#00C2CB]" />, label: "Legal Defense" },
+                        { icon: <User className="w-4 h-4 text-[#00C2CB]" />, label: "Enrolled Agent" },
+                    ].map((badge, i) => (
+                        <span key={i} className="px-6 py-2 bg-white/10 rounded-full text-white text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                            {badge.icon} {badge.label}
+                        </span>
+                    ))}
+                </div>
+            </section>
+
+            {/* ========== SECTION: ADDITIONAL SERVICES ========== */}
+            <section id="additional-services" className="bg-slate-50 py-24 scroll-mt-24 border-b border-slate-100 text-left">
+                <div className="max-w-4xl mx-auto px-8">
+                    <div className="text-center mb-16">
+                        <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Specialized Support</span>
+                        <h2 className="text-4xl font-black text-[#0047AB] tracking-tight mt-2">Additional Services</h2>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {additionalServices.map((service, index) => (
+                            <div key={index} className="bg-white p-6 rounded-2xl flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="text-[#00C2CB]">
+                                    {service.icon}
                                 </div>
-                                <div>
-                                    <p className="font-bold text-foreground">Sarah M</p>
-                                    <p className="text-text-secondary text-sm">Independent Consultant</p>
-                                </div>
+                                <div className="font-bold text-[#0047AB]">{service.title}</div>
                             </div>
-                            <div className="absolute bottom-6 right-8 text-accent/50">
-                                <svg className="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151C7.563 6.068 6 8.789 6 11h4v10H0z" />
-                                </svg>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ========== SECTION: NEW BUSINESS FORMATION ========== */}
+            <section id="new-business" className="py-24 max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-10 gap-20 items-center scroll-mt-24 border-b border-slate-100 text-left">
+                <div className="lg:col-span-5">
+                    <div className="mb-12">
+                        <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Startup Foundation</span>
+                        <h2 className="text-4xl font-black text-[#0047AB] tracking-tight mt-2">New Business Formation</h2>
+                    </div>
+                    <div className="space-y-8">
+                        <div className="flex gap-6 items-start">
+                            <span className="flex-shrink-0 w-12 h-12 bg-[#00C2CB]/10 text-[#00C2CB] rounded-2xl flex items-center justify-center font-black">1</span>
+                            <div>
+                                <h3 className="font-black text-xl text-[#0047AB]">Entity Selection</h3>
+                                <p className="text-[#45474c] font-medium leading-relaxed">LLC, S-Corp, or C-Corp? We choose the path of least liability and optimal tax structure.</p>
                             </div>
                         </div>
+                        <div className="flex gap-6 items-start">
+                            <span className="flex-shrink-0 w-12 h-12 bg-[#00C2CB]/10 text-[#00C2CB] rounded-2xl flex items-center justify-center font-black">2</span>
+                            <div>
+                                <h3 className="font-black text-xl text-[#0047AB]">State Registration</h3>
+                                <p className="text-[#45474c] font-medium leading-relaxed">Seamless filing with Secretary of State and local regulators to get you operational fast.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="lg:col-span-5">
+                    <div className="bg-[#003580] p-12 rounded-2xl text-center shadow-2xl">
+                        <h3 className="text-3xl font-black text-white mb-6">Ready to Start Your Business?</h3>
+                        <p className="text-[#d7e3fc] mb-10 text-lg leading-relaxed">Don't risk your vision on DIY templates. Get the professional foundation your enterprise deserves.</p>
+                        <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-12 py-5 rounded-lg font-black text-sm uppercase tracking-widest shadow-lg shadow-[#00C2CB]/20 hover:bg-[#33ced5] transition-all inline-block">
+                            Launch My Venture
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* ========== FAQ SECTION ========== */}
+            <section id="faq" className="py-24 max-w-4xl mx-auto px-8 scroll-mt-24 border-b border-slate-100 text-left">
+                <div className="text-center mb-16">
+                    <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Questions</span>
+                    <h2 className="text-4xl font-black text-[#0047AB] tracking-tight mt-2">Frequently Asked Questions</h2>
+                </div>
+                <div className="space-y-4">
+                    {faqSchema.mainEntity.map((item: any, index: number) => (
+                        <div key={index} className="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm hover:shadow-lg transition-all group">
+                            <div className="flex justify-between items-center cursor-pointer">
+                                <h3 className="text-xl font-black text-[#0047AB] group-hover:text-[#00C2CB] transition-colors">{item.name}</h3>
+                                <PlusCircle className="w-5 h-5 text-[#00C2CB] group-hover:scale-110 transition-transform flex-shrink-0" />
+                            </div>
+                            <p className="mt-4 text-[#45474c] font-medium leading-relaxed text-sm">{item.acceptedAnswer.text}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* ========== CALLBACK FORM ========== */}
+            <section id="consultation" className="py-24 px-8 bg-slate-50 text-left">
+                <div className="max-w-6xl mx-auto flex flex-col md:flex-row shadow-2xl rounded-3xl overflow-hidden bg-white">
+                    <div className="md:w-1/2 relative min-h-[400px]">
+                        <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqIPXCUDvGTyS7-6C5y5tdzXQP-YV9Klp6GqmaoCIBcO02CXd0UVW1-lybvnnVC4YcJWR8xaKNB3yRqpHgJEiti9g1_rl5kr6lvTiI41qPag5qD9RBYY6pF4Yo5PEV_P3U8nR4e2mJvVqBZM7k2GeRO7cOIizlk3fmgeGmTwjqbVEs57z-NE8qZuBjI4ebOuqKWWJmKgB_Tj24_bPk4Xp_ZiV0x-rt1hh_uErnPUSCtBPPpM-gszKEyk02v0F1UjUvcImFL0L5Fl8" alt="IntegraFin Tax Consultant reviewing strategy" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                        <div className="absolute inset-0 bg-[#0047AB]/20"></div>
+                    </div>
+                    <div className="md:w-1/2 p-12 lg:p-16">
+                        <h3 className="text-[#0047AB] text-3xl font-black mb-8">Request a Free Callback</h3>
+                        <form className="space-y-4">
+                            <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Full Name" type="text" />
+                            <div className="grid grid-cols-2 gap-4">
+                                <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Email" type="email" />
+                                <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Phone" type="tel" />
+                            </div>
+                            <select className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#45474c] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all">
+                                <option>Service Interested In</option>
+                                <option>Business Tax & Accounting</option>
+                                <option>Individual Tax Preparation</option>
+                                <option>Tax Resolution Services</option>
+                                <option>New Business Formation</option>
+                            </select>
+                            <textarea className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Message" rows={4}></textarea>
+                            <button className="w-full bg-[#00C2CB] text-[#003580] py-5 rounded-lg font-black uppercase tracking-[0.2em] shadow-lg shadow-[#00C2CB]/20 hover:bg-[#33ced5] transition-all">Request Callback</button>
+                            <div className="pt-4 text-center">
+                                <p className="text-xs text-[#45474c]">Prefer to call? <a href="tel:+18326471819" className="text-[#0047AB] font-bold hover:underline">+1-832-647-1819</a> • Available 24/7</p>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </section>
@@ -232,22 +382,28 @@ export default function ServicesPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "ItemList",
-                        itemListElement: mainServices.map((s, i) => ({
-                            "@type": "ListItem",
-                            position: i + 1,
+                        itemListElement: [
+                            { "@type": "ListItem", position: 1, item: { "@type": "Service", name: "Business Tax & Accounting" } },
+                            { "@type": "ListItem", position: 2, item: { "@type": "Service", name: "Individual Tax Services" } },
+                            { "@type": "ListItem", position: 3, item: { "@type": "Service", name: "Tax Resolution Services" } },
+                            { "@type": "ListItem", position: 4, item: { "@type": "Service", name: "Additional Services" } },
+                            { "@type": "ListItem", position: 5, item: { "@type": "Service", name: "New Business Formation" } },
+                        ].map((s, i) => ({
+                            ...s,
                             item: {
-                                "@type": "Service",
-                                name: s.title,
-                                description: s.desc,
-                                provider: {
-                                    "@type": "Organization",
-                                    name: "IntegraFin LLC",
-                                },
-                            },
-                        })),
+                                ...s.item,
+                                description: "Expert accounting and tax services.",
+                                provider: { "@type": "Organization", name: "IntegraFin LLC" }
+                            }
+                        }))
                     }),
                 }}
             />
-        </>
+            {/* FAQ Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+        </main>
     );
 }

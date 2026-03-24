@@ -4,11 +4,11 @@
 :root {
   --background: #FFFFFF;
   --foreground: #2D3748;
-  --primary: #1F72B8;
-  --primary-dark: #0D4F8A;
-  --accent: #D6E4F0;
-  --accent-light: #EBF2FA;
-  --accent-dark: #0D4F8A;
+  --primary: #0047AB;
+  --primary-dark: #003580;
+  --accent: #00C2CB;
+  --accent-light: rgba(0, 194, 203, 0.1);
+  --accent-dark: #003580;
   --lavender: #F5F7FA;
   --text-secondary: #6B7280;
   --section-bg: #F5F7FA;
@@ -272,4 +272,19 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Custom classes from homepage redesign */
+.tonal-transition {
+    background: linear-gradient(to bottom, #0047AB, #003580);
+}
+.hero-gradient {
+    background: radial-gradient(circle at 70% 30%, #0056D2 0%, #0047AB 100%);
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }

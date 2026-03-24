@@ -6,6 +6,8 @@ export interface BlogPost {
     date: string;
     readTime: string;
     content: string[];
+    featured?: boolean;
+    image?: string;
 }
 
 export const mockBlogPosts: BlogPost[] = [
@@ -16,6 +18,8 @@ export const mockBlogPosts: BlogPost[] = [
         category: "Tax Planning",
         date: "March 5, 2025",
         readTime: "5 min read",
+        featured: true,
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA8Md6bSSgBKnKdeDyL-h_WkWJ5eC0UfttAc_80iV9P7I3rT2ArwSKEpvR8myFz60mgyNlDAOSu4L40ueYHup75txJcx5yhrT94gUmlqFCOQhad-G6T_UAdEeMtk1LN7ONYzyARrRLIT89FiRzXrMI8iJEw9wYL3-EajXbk-wQ2WK0p71ssyhnN-GkvxtL88CZy4y8m7m5_UztlUiiLDQwT0GFNcQryk9TMmCZYqxyBsWIjzGrQyINFWD_l99A4Izsj-hddDWoaiok",
         content: [
             "As we approach the 2025 tax season, effective tax planning is more critical than ever. With evolving tax regulations and new opportunities for deductions, businesses and individuals need to stay ahead of the curve to minimize their tax liability.",
             "At IntegraFin, our team of experienced CPAs has identified the most impactful tax planning strategies for this year. From maximizing retirement contributions to leveraging business expense deductions, there are numerous ways to reduce your tax burden legally and effectively.",
@@ -31,6 +35,7 @@ export const mockBlogPosts: BlogPost[] = [
         category: "Accounting",
         date: "February 28, 2025",
         readTime: "7 min read",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDDyGNiKe9wflqcT0LZ-OFBTicT58QQW7EbAuzd2op0CeGQ1Skrp1VqQtvOqrXzuzu8t54dEKfnsgZINJBia5AXvI5o8Pv72Sa-VES61aB-mvcoIIQYd9sCvfjBbq84w-r3c_pruJB-FVIR4OvuTcBy3W68s7Q6s4oMidIP9jSg3bAtspIZziyL18VoitHBuNKQaEUF1SQsqYra0VRUkiKKT3Aq7gzzzH5DZ2_nxyy2U_gtkH0C69OXnyUzcEfozRKfheogJmIotcw",
         content: [
             "Small business owners wear many hats, but accounting doesn't have to be complicated. With the right systems and practices in place, you can maintain accurate financial records, stay compliant, and make informed business decisions.",
             "The foundation of good accounting starts with separating personal and business finances. Open a dedicated business bank account and credit card. This not only simplifies bookkeeping but also provides a clear audit trail for tax purposes.",
@@ -47,6 +52,7 @@ export const mockBlogPosts: BlogPost[] = [
         category: "Compliance",
         date: "February 20, 2025",
         readTime: "8 min read",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBaa82d3lkrw0gZgnIAm2-LuxSVKrFBGlAvFlrguqpLbv-uWhKuq0_ZbB1fQLbH4sWYNX6g6EBBi9bVof7vEyn_tYIIL4POW7gjqnieaxCC-5JKA98JaF0sYASuj5dBhcPchykza0n6Ab0mZY0-kKJhLY96h048Il3ryUPBpKoRQB41RW5-o16x9774XLsJNipBjbX4UVE_IcesQeV5m4m8L2JerAXJJ58YfZJ31mgJoxF5NVNBBgvgGuFpYa5so-qYlIpyve4h7ME",
         content: [
             "IRS compliance is a critical aspect of running any business. Failure to comply with tax regulations can result in penalties, interest charges, and even legal consequences. This guide covers everything you need to know to stay on the right side of the IRS.",
             "Start by understanding your filing requirements. Depending on your business structure, you may need to file quarterly estimated taxes, annual returns, employment tax returns, and information returns (1099s, W-2s). Missing any of these deadlines can trigger automatic penalties.",
@@ -63,6 +69,7 @@ export const mockBlogPosts: BlogPost[] = [
         category: "Tax Resolution",
         date: "February 15, 2025",
         readTime: "6 min read",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDbqM1VMKN2fKgRX9qoGlOSGScm1d0WmcJ7A7-Ib220GZWHkCEj-HeWYZ-WVwT4rFGhSwFFF4CPZGqAoM6iS4pCVuN_Z5dIEMyC5Mxu3Rzk1yrtS6H-VFmb16gtxb8-ns-aWwDZQPCkM7xYZvLqcH2x5C5kkdnQ_Y81Hh9tEL7Kr1-x15TifvP_y5KYVQ_F_QnQ06THrZNoLdMAcDOaoz09o11_q1PhOfvhjIhugjCTW8YvKIjahiaySWeeeNhe5oP-vSNh2Tlb1XI",
         content: [
             "Dealing with back taxes or IRS issues can be stressful and overwhelming. However, there are legitimate options available to resolve your tax problems. Understanding these options is the first step toward regaining financial stability.",
             "Installment Agreements allow taxpayers to pay their tax debt in monthly payments over time. The IRS offers several types, including streamlined agreements for debts under $50,000 and partial payment agreements where you may not need to pay the full amount.",
@@ -79,6 +86,7 @@ export const mockBlogPosts: BlogPost[] = [
         category: "Payroll",
         date: "February 10, 2025",
         readTime: "6 min read",
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800",
         content: [
             "Payroll management is one of the most important administrative functions of any business. Accurately processing payroll not only keeps your employees satisfied but also ensures compliance with complex tax laws and employment regulations.",
             "Start with proper worker classification. Misclassifying employees as independent contractors is one of the most common and costly payroll mistakes. The IRS looks at behavioral control, financial control, and the type of relationship to determine classification.",
@@ -95,6 +103,7 @@ export const mockBlogPosts: BlogPost[] = [
         category: "Business Advisory",
         date: "February 5, 2025",
         readTime: "7 min read",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800",
         content: [
             "Starting a new business is exciting, but without proper financial planning, even the most innovative ideas can fail. Financial planning is not just about tracking money — it's about making strategic decisions that position your startup for long-term success.",
             "Begin with a solid business plan that includes detailed financial projections. Your plan should include a startup budget, projected income statements for the first three years, cash flow forecasts, and a break-even analysis. These projections help you understand your funding needs and set realistic growth targets.",

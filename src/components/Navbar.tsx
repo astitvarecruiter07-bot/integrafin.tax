@@ -40,16 +40,16 @@ export default function Navbar() {
                 }`}
         >
             <nav
-                className={`max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between rounded-full transition-all duration-300 ${scrolled
-                    ? "bg-white/95 backdrop-blur-md shadow-lg py-2.5 sm:py-3"
-                    : "bg-white/90 backdrop-blur-sm shadow-md py-3 sm:py-4"
+                className={`max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between transition-all duration-300 ${scrolled
+                    ? "bg-white/95 backdrop-blur-md shadow-lg py-2.5 sm:py-3 rounded-full"
+                    : "bg-[#0047AB] text-white shadow-2xl shadow-[#0047AB]/20 py-4 w-full max-w-none px-8 rounded-none border-t border-[#00C2CB]"
                     }`}
             >
                 {/* Logo */}
                 <Link href="/" className="flex-shrink-0 relative z-10">
                     <Image
                         src="/logo.png"
-                        alt="IntegraFin - Expert Tax & Accounting Services"
+                        alt="IntegraFin CPA Firm Katy TX - Tax and Accounting Services"
                         width={160}
                         height={40}
                         className="h-7 sm:h-9 w-auto"
@@ -63,9 +63,11 @@ export default function Navbar() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${pathname === link.href
-                                ? "text-primary"
-                                : "text-foreground/80"
+                            className={`text-sm font-medium transition-colors duration-200 ${pathname === link.href
+                                ? "text-[#00C2CB]"
+                                : !scrolled
+                                    ? "text-white/90 hover:text-[#00C2CB]"
+                                    : "text-foreground/80 hover:text-primary"
                                 }`}
                         >
                             {link.label}
@@ -76,7 +78,10 @@ export default function Navbar() {
                 {/* CTA Button */}
                 <Link
                     href="/contact"
-                    className="hidden md:inline-flex items-center px-6 py-2.5 bg-accent-dark text-white text-sm font-semibold rounded-full hover:bg-primary transition-colors duration-200"
+                    className={`hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-full transition-colors duration-200 ${!scrolled
+                        ? "bg-[#00C2CB] text-[#003580] hover:bg-[#33ced5]"
+                        : "bg-accent-dark text-white hover:bg-primary"
+                        }`}
                 >
                     Contact Us
                 </Link>

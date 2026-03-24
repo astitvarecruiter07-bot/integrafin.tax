@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { localBusinessSchema } from "@/lib/seo/schema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -11,123 +13,35 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://integrafin.tax'),
   title: {
-    default: "IntegraFin | Expert Tax, Accounting & Business Advisory Services",
-    template: "%s | IntegraFin",
+    default: 'Tax Accountant Katy TX | IntegraFin CPA Services',
+    template: '%s | IntegraFin',
   },
-  description:
-    "Professional tax, accounting, and business advisory services in Katy, TX. Expert CPAs & financial advisors for individuals and businesses. Maximize deductions, ensure compliance.",
-  keywords: [
-    "tax services",
-    "accounting services",
-    "business advisory",
-    "CPA",
-    "tax filing",
-    "bookkeeping",
-    "payroll",
-    "Katy TX",
-    "IntegraFin",
-    "tax planning",
-    "IRS compliance",
-    "tax resolution",
-  ],
-  authors: [{ name: "IntegraFin LLC" }],
-  creator: "IntegraFin",
-  publisher: "IntegraFin LLC",
-  metadataBase: new URL("https://integrafin.tax"),
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://integrafin.tax",
-    siteName: "IntegraFin",
-    title: "IntegraFin | Expert Tax, Accounting & Business Advisory Services",
-    description:
-      "Professional tax, accounting, and business advisory services by IntegraFin. Trusted CPAs in Katy, TX.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "IntegraFin - Tax & Accounting Services",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "IntegraFin | Expert Tax, Accounting & Business Advisory Services",
-    description:
-      "Professional tax, accounting, and business advisory services by IntegraFin.",
-    images: ["/og-image.png"],
-  },
+  description: 'IntegraFin is a CPA firm in Katy, TX offering tax preparation, bookkeeping, payroll, and IRS resolution. Schedule your free consultation today. Call (832) 647-1819.',
+  keywords: ['Tax Accountant Katy TX', 'CPA Services Katy Texas', 'IRS Tax Resolution Katy TX', 'Business Accounting Katy TX', 'Bookkeeping Katy TX', 'Tax Preparation Houston TX'],
+  authors: [{ name: 'IntegraFin Tax & Accounting' }],
+  creator: 'IntegraFin',
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+    googleBot: { index: true, follow: true },
   },
-  alternates: {
-    canonical: "https://integrafin.tax",
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://integrafin.tax/',
+    siteName: 'IntegraFin',
+    title: 'Tax Accountant Katy TX | IntegraFin CPA Services',
+    description: 'IntegraFin CPA firm in Katy TX — tax preparation, bookkeeping, IRS help, and payroll. Free consultation available.',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'IntegraFin CPA Firm Katy TX' }],
   },
-};
-
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "IntegraFin LLC",
-  url: "https://integrafin.tax",
-  logo: "https://integrafin.tax/logo.png",
-  description:
-    "Professional tax, accounting, and business advisory services. Expert CPAs & financial advisors for individuals and businesses.",
-  telephone: "+1-832-647-1819",
-  email: "contact@integrafin.tax",
-  address: [
-    {
-      "@type": "PostalAddress",
-      streetAddress: "2039 N Mason Rd, Suite 604",
-      addressLocality: "Katy",
-      addressRegion: "TX",
-      postalCode: "77449",
-      addressCountry: "US",
-    },
-    {
-      "@type": "PostalAddress",
-      streetAddress:
-        "Block No. 214, 1st Floor, Brij Bhumi Complex, CA Road, Near Telephone Exchange Square, Lakadganj",
-      addressLocality: "Nagpur",
-      addressRegion: "Maharashtra",
-      postalCode: "440008",
-      addressCountry: "IN",
-    },
-  ],
-  sameAs: [
-    "https://www.facebook.com/integrafintax",
-    "https://www.instagram.com/integrafinllc/",
-    "https://www.linkedin.com/company/integrafin/",
-    "https://x.com/Integrafintax/",
-  ],
-  areaServed: {
-    "@type": "Country",
-    name: "United States",
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tax Accountant Katy TX | IntegraFin CPA Services',
+    description: 'IntegraFin CPA firm in Katy TX — tax, bookkeeping, IRS help. Free consultation.',
+    images: ['/og-image.jpg'],
   },
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Tax and Accounting Services",
-    itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tax Preparation" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Accounting Services" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Bookkeeping" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Payroll Services" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Advisory" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tax Planning" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Tax Resolution" } }
-    ]
-  },
-  priceRange: "$$",
 };
 
 export default function RootLayout({
@@ -140,15 +54,14 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationJsonLd),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );

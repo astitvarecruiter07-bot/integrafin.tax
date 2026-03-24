@@ -14,9 +14,9 @@ const serviceLinks = [
     { href: "/services#business-tax", label: "Business Tax & Accounting" },
     { href: "/services#individual-tax", label: "Individual Tax Services" },
     { href: "/services#tax-resolution", label: "Tax Resolution" },
-    { href: "/services#additional", label: "Additional Services" },
+    { href: "/services#additional-services", label: "Additional Services" },
     { href: "/services#consultation", label: "Consultation" },
-    { href: "/services#industries", label: "Industries Served" },
+    { href: "/#industries", label: "Industries Served" },
 ];
 
 const socialLinks = [
@@ -57,7 +57,7 @@ export default function Footer() {
                         <Link href="/" className="inline-block mb-4">
                             <Image
                                 src="/logo.png"
-                                alt="IntegraFin"
+                                alt="IntegraFin CPA Firm Katy TX - Tax and Accounting Services"
                                 width={150}
                                 height={38}
                                 className="h-9 w-auto brightness-0 invert"
@@ -139,17 +139,14 @@ export default function Footer() {
                             </button>
                         </form>
                         <div className="space-y-3 text-sm text-gray-400">
-                            <p>
-                                <a href="mailto:contact@integrafin.tax" className="hover:text-white transition-colors">
-                                    contact@integrafin.tax
-                                </a>
+                            <p className="text-white font-semibold flex flex-col gap-1">
+                                <span>IntegraFin Tax & Accounting</span>
+                                <span className="font-normal">2039 N Mason Rd, Suite 604</span>
+                                <span className="font-normal">Katy, TX 77449</span>
                             </p>
-                            <p>
-                                <a href="tel:+18326471819" className="hover:text-white transition-colors">
-                                    +1-832-647-1819
-                                </a>
-                            </p>
-                            <p>Katy, TX 77449, USA</p>
+                            <p>Phone: <a href="tel:+18326471819" className="hover:text-white transition-colors">(832) 647-1819</a></p>
+                            <p>Email: <a href="mailto:contact@integrafin.tax" className="hover:text-white transition-colors">contact@integrafin.tax</a></p>
+                            <p>Hours: Mon–Fri, 9AM–6PM</p>
                         </div>
                     </div>
                 </div>
@@ -162,11 +159,7 @@ export default function Footer() {
                         © {new Date().getFullYear()} IntegraFin. All rights reserved.
                     </p>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
-                        {user?.role === 'admin' && (
-                            <Link href="/admin/blog-editor" className="hover:text-white transition-colors">
-                                Blog Editor
-                            </Link>
-                        )}
+
                         <Link href="/privacy" className="hover:text-white transition-colors">
                             Privacy Policy
                         </Link>
