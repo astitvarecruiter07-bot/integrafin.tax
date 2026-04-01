@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { localBusinessSchema } from "@/lib/seo/schema";
+import { localBusinessSchema, organizationSchema } from "@/lib/seo/schema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,11 +15,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://integrafin.tax'),
   title: {
-    default: 'Tax Accountant Katy TX | IntegraFin CPA Services',
+    default: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
     template: '%s | IntegraFin',
   },
-  description: 'IntegraFin is a CPA firm in Katy, TX offering tax preparation, bookkeeping, payroll, and IRS resolution. Schedule your free consultation today. Call (832) 647-1819.',
-  keywords: ['Tax Accountant Katy TX', 'CPA Services Katy Texas', 'IRS Tax Resolution Katy TX', 'Business Accounting Katy TX', 'Bookkeeping Katy TX', 'Tax Preparation Houston TX'],
+  description: 'IntegraFin provides tax expert services in Katy, TX offering tax preparation, bookkeeping, payroll, and IRS resolution. Schedule your free consultation today. Call (832) 647-1819.',
+  keywords: ['Tax Accountant Katy TX', 'Tax Expert Services Katy Texas', 'IRS Tax Resolution Katy TX', 'Business Accounting Katy TX', 'Bookkeeping Katy TX', 'Tax Preparation Houston TX'],
   authors: [{ name: 'IntegraFin Tax & Accounting' }],
   creator: 'IntegraFin',
   robots: {
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://integrafin.tax/',
     siteName: 'IntegraFin',
-    title: 'Tax Accountant Katy TX | IntegraFin CPA Services',
-    description: 'IntegraFin CPA firm in Katy TX — tax preparation, bookkeeping, IRS help, and payroll. Free consultation available.',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'IntegraFin CPA Firm Katy TX' }],
+    title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
+    description: 'IntegraFin tax experts in Katy TX — tax preparation, bookkeeping, IRS help, and payroll. Free consultation available.',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'IntegraFin Tax Expert Katy TX' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tax Accountant Katy TX | IntegraFin CPA Services',
-    description: 'IntegraFin CPA firm in Katy TX — tax, bookkeeping, IRS help. Free consultation.',
+    title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
+    description: 'IntegraFin tax experts in Katy TX — tax, bookkeeping, IRS help. Free consultation.',
     images: ['/og-image.jpg'],
   },
 };
@@ -55,6 +55,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>

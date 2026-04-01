@@ -42,17 +42,17 @@ export default function Navbar() {
             <nav
                 className={`max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between transition-all duration-300 ${scrolled
                     ? "bg-white/95 backdrop-blur-md shadow-lg py-2.5 sm:py-3 rounded-full"
-                    : "bg-[#0047AB] text-white shadow-2xl shadow-[#0047AB]/20 py-4 w-full max-w-none px-8 rounded-none border-t border-[#00C2CB]"
+                    : "bg-[#0047AB] text-white shadow-2xl shadow-[#0047AB]/20 py-2 sm:py-4 w-full max-w-none px-4 sm:px-8 rounded-none border-t border-[#00C2CB]"
                     }`}
             >
                 {/* Logo */}
                 <Link href="/" className="flex-shrink-0 relative z-10">
                     <Image
                         src="/logo.png"
-                        alt="IntegraFin CPA Firm Katy TX - Tax and Accounting Services"
-                        width={160}
-                        height={40}
-                        className="h-7 sm:h-9 w-auto"
+                        alt="IntegraFin Tax Expert Katy TX - Tax and Accounting Services"
+                        width={120}
+                        height={32}
+                        className={`h-5 sm:h-6 w-auto max-w-[100px] sm:max-w-[140px] transition-all duration-300 ${!scrolled ? 'mix-blend-screen' : ''}`}
                         priority
                     />
                 </Link>
@@ -64,10 +64,10 @@ export default function Navbar() {
                             key={link.href}
                             href={link.href}
                             className={`text-sm font-medium transition-colors duration-200 ${pathname === link.href
-                                ? "text-[#00C2CB]"
-                                : !scrolled
-                                    ? "text-white/90 hover:text-[#00C2CB]"
-                                    : "text-foreground/80 hover:text-primary"
+                                    ? "text-[#00C2CB]"
+                                    : !scrolled
+                                        ? "text-white/90 hover:text-[#00C2CB]"
+                                        : "text-foreground/80 hover:text-primary"
                                 }`}
                         >
                             {link.label}
@@ -89,7 +89,7 @@ export default function Navbar() {
                 {/* Mobile Toggle */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden relative z-10 p-2 text-foreground"
+                    className={`md:hidden relative z-10 p-2 ${!scrolled ? 'text-white' : 'text-foreground'}`}
                     aria-label="Toggle navigation menu"
                 >
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

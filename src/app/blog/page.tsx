@@ -4,7 +4,7 @@ import BlogContent from "./BlogContent";
 
 export const metadata = {
   title: 'Tax Tips & Accounting Insights | IntegraFin Blog',
-  description: 'Stay updated with tax tips, IRS news, and accounting strategies from IntegraFin\'s CPA team in Katy TX. Expert financial insights for businesses and individuals.',
+  description: 'Stay updated with tax tips, IRS news, and accounting strategies from IntegraFin\'s tax expert team in Katy TX. Expert financial insights for businesses and individuals.',
   alternates: { canonical: 'https://integrafin.tax/blog' },
   openGraph: {
     title: 'Tax Tips & Accounting Insights | IntegraFin Blog',

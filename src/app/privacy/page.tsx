@@ -3,8 +3,8 @@ import Link from "next/link";
 import { ShieldCheck, Lock, Eye, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | IntegraFin CPA Services',
-  description: 'Read the Privacy Policy for IntegraFin CPA Services. Learn how we collect, use, and protect your personal and financial information.',
+  title: 'Privacy Policy | IntegraFin Tax Expert Services',
+  description: 'Read the Privacy Policy for IntegraFin Tax Expert Services. Learn how we collect, use, and protect your personal and financial information.',
   alternates: { canonical: 'https://integrafin.tax/privacy' },
 };
 

@@ -9,12 +9,12 @@ import IndustriesSection from "@/components/IndustriesSection";
 
 
 export const metadata = {
-  title: 'Tax Accountant Katy TX | IntegraFin CPA Services',
-  description: 'IntegraFin is a CPA firm in Katy, TX offering tax preparation, bookkeeping, payroll, and IRS resolution. Schedule your free consultation today. Call (832) 647-1819.',
+  title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
+  description: 'IntegraFin provides tax expert services in Katy, TX offering tax preparation, bookkeeping, payroll, and IRS resolution. Schedule your free consultation today. Call (832) 647-1819.',
   alternates: { canonical: 'https://integrafin.tax/' },
   openGraph: {
-    title: 'Tax Accountant Katy TX | IntegraFin CPA Services',
-    description: 'IntegraFin CPA firm in Katy TX. Tax preparation, bookkeeping, IRS help, payroll. Free consultation.',
+    title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
+    description: 'IntegraFin tax experts in Katy TX. Tax preparation, bookkeeping, IRS help, payroll. Free consultation.',
     url: 'https://integrafin.tax/',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
   },
@@ -29,7 +29,7 @@ const whyChoose = [
   {
     icon: <DollarSign className="text-4xl" />,
     title: "Worry-Free Tax & Accounting",
-    desc: "Our expert CPAs handle the complexities of your financial filings so you can focus on scaling your vision without compliance stress."
+    desc: "Our tax experts handle the complexities of your financial filings so you can focus on scaling your vision without compliance stress."
   },
   {
     icon: <Wallet className="text-4xl" />,
@@ -111,28 +111,28 @@ export default function Home() {
   return (
     <>
       {/* ========== HERO SECTION (Assumes Navbar is handled separately or loads on top) ========== */}
-      <header className="pt-24 lg:pt-32 pb-20 hero-gradient min-h-[921px] flex items-center overflow-hidden text-left">
-        <div className="max-w-7xl mx-auto px-8 grid lg:grid-cols-[60%_40%] gap-16 items-center">
+      <header className="pt-24 lg:pt-32 pb-12 sm:pb-20 hero-gradient min-h-[600px] sm:min-h-[700px] lg:min-h-[921px] flex items-center overflow-hidden text-left">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[60%_40%] gap-8 lg:gap-16 items-center">
           <div className="space-y-8">
             <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#00C2CB]/10 border border-[#00C2CB]/30">
               <span className="text-[#00C2CB] text-xs font-bold tracking-[0.2em] uppercase">Elite Financial Architecture</span>
             </div>
-            <h1 className="text-white text-5xl md:text-7xl font-black tracking-tight leading-[1.1]">
+            <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1]">
               Tax Accountant <br />
-              <span className="text-[#00C2CB]">&</span> CPA Services.
+              <span className="text-[#00C2CB]">&</span> Bookkeeping Services.
             </h1>
-            <p className="text-[#d7e3fc] text-lg max-w-xl leading-relaxed">
-              Are you looking for a trusted CPA? IntegraFin architecturally designs tax outcomes to preserve capital, accelerate growth, and eliminate IRS stress with 100% accurate preparation.
+            <p className="text-[#d7e3fc] text-base sm:text-lg max-w-xl leading-relaxed">
+              Are you looking for trusted bookkeeping? IntegraFin architecturally designs tax outcomes to preserve capital, accelerate growth, and eliminate IRS stress with 100% accurate preparation.
             </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest shadow-lg shadow-[#00C2CB]/20 hover:scale-105 transition-transform">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
+              <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-widest shadow-lg shadow-[#00C2CB]/20 hover:scale-105 transition-transform text-center">
                 Schedule Consultation
               </Link>
-              <Link href="/case-study" className="border border-white/30 text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-widest hover:bg-white/5 transition-colors">
+              <Link href="/case-study" className="border border-white/30 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-widest hover:bg-white/5 transition-colors text-center">
                 View Case Studies
               </Link>
             </div>
-            <div className="flex items-center gap-8 pt-12 border-t border-white/10">
+            <div className="flex items-center gap-4 sm:gap-8 pt-8 sm:pt-12 border-t border-white/10">
               <div className="flex -space-x-3">
                 {testimonials.slice(0, 3).map((t, i) => (
                   <div key={i} className="relative w-12 h-12 rounded-full border-2 border-[#0047AB] overflow-hidden">
@@ -141,8 +141,8 @@ export default function Home() {
                 ))}
               </div>
               <div>
-                <div className="text-white font-bold text-lg leading-tight">Trusted by 500+ Corporations</div>
-                <div className="text-[#d7e3fc] text-sm">Averaging 24% tax liability reduction</div>
+                <div className="text-white font-bold text-sm sm:text-lg leading-tight">Trusted by 500+ Corporations</div>
+                <div className="text-[#d7e3fc] text-xs sm:text-sm">Averaging 24% tax liability reduction</div>
               </div>
             </div>
           </div>
@@ -194,10 +194,10 @@ export default function Home() {
       </section>
 
       {/* ========== TAX CALCULATOR ========== */}
-      <section className="py-24 px-8 bg-[#003580] relative overflow-hidden text-left">
+      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-[#003580] relative overflow-hidden text-left">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl">
-          <div className="bg-white p-12 lg:p-16">
-            <h2 className="text-[#0047AB] text-3xl font-black mb-4">Estimate Your <span className="text-[#00C2CB]">Tax Efficiency</span></h2>
+          <div className="bg-white p-6 sm:p-12 lg:p-16">
+            <h2 className="text-[#0047AB] text-2xl sm:text-3xl font-black mb-4">Estimate Your <span className="text-[#00C2CB]">Tax Efficiency</span></h2>
             <p className="text-[#45474c] mb-10 leading-relaxed">Input your annual revenue to see potential savings through our Integra-Optima™ framework.</p>
             <form className="space-y-6">
               <div>
@@ -215,10 +215,10 @@ export default function Home() {
               <button className="w-full bg-[#00C2CB] text-[#003580] py-4 rounded-lg font-bold uppercase tracking-widest hover:bg-[#33ced5] transition-colors mt-4">Calculate Potential Savings</button>
             </form>
           </div>
-          <div className="bg-[#003580] p-12 lg:p-16 flex flex-col justify-center border-l border-white/5">
+          <div className="bg-[#003580] p-6 sm:p-12 lg:p-16 flex flex-col justify-center border-l border-white/5">
             <div className="space-y-8">
               <div className="text-[#d7e3fc] text-xs font-bold uppercase tracking-[0.3em]">Projected Advantage</div>
-              <div className="text-[#00C2CB] text-6xl font-black leading-none">$142,500.00*</div>
+              <div className="text-[#00C2CB] text-4xl sm:text-6xl font-black leading-none">$142,500.00*</div>
               <p className="text-white/60 text-sm italic max-w-sm leading-relaxed">
                 *This estimate is based on average performance metrics for firms in your bracket. Actual results vary by industry and current structure.
               </p>
@@ -234,15 +234,15 @@ export default function Home() {
       </section>
 
       {/* ========== WHY CHOOSE INTEGRAFIN ========== */}
-      <section className="py-24 px-8 bg-white text-left">
+      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-white text-left">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-2">
             <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">The Integra Advantage</span>
-            <h2 className="text-[#0047AB] text-4xl md:text-5xl font-black tracking-tight">Why Choose IntegraFin for Your CPA Services in Katy?</h2>
+            <h2 className="text-[#0047AB] text-2xl sm:text-4xl md:text-5xl font-black tracking-tight">Why Are We The Best Tax Accountant Near You in Katy?</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-10">
             {whyChoose.map((item, i) => (
-              <div key={i} className="p-12 bg-white border border-slate-100 rounded-3xl hover:shadow-2xl hover:shadow-[#00C2CB]/10 transition-all duration-500 group relative overflow-hidden">
+              <div key={i} className="p-6 sm:p-12 bg-white border border-slate-100 rounded-3xl hover:shadow-2xl hover:shadow-[#00C2CB]/10 transition-all duration-500 group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#00C2CB]/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
                 <div className="mb-10 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#00C2CB]/10 text-[#00C2CB] group-hover:bg-[#00C2CB] group-hover:text-[#003580] transition-colors duration-300">
                   {item.icon}
@@ -256,15 +256,15 @@ export default function Home() {
       </section>
 
       {/* ========== CORE SERVICES GRID ========== */}
-      <section className="py-24 px-8 bg-[#0047AB] text-left">
+      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-[#0047AB] text-left">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 space-y-2">
             <span className="text-[#D4A017] text-xs font-black uppercase tracking-widest">Our Expertise</span>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white">What Tax & Accounting Services Do We Offer?</h2>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">What Corporate & Small Business Tax Expert Services Do We Offer?</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, i) => (
-              <div key={i} className="p-10 border border-white/10 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#D4A017]/40 transition-all duration-500 group bg-white/10">
+              <div key={i} className="p-6 sm:p-10 border border-white/10 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#D4A017]/40 transition-all duration-500 group bg-white/10">
                 <div className="w-14 h-14 bg-[#D4A017]/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-[#D4A017] transition-colors duration-300">
                   {service.icon}
                 </div>
@@ -283,11 +283,11 @@ export default function Home() {
       <IndustriesSection />
 
       {/* ========== STATS BAR ========== */}
-      <section className="bg-[#001D3D] py-20 px-8">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center text-center">
+      <section className="bg-[#001D3D] py-10 sm:py-20 px-4 sm:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-4 text-center">
           {stats.map((stat, i) => (
-            <div key={i} className="flex-1 px-8 border-r border-white/10 last:border-0">
-              <div className="text-[#00C2CB] text-4xl font-black mb-2">{stat.val}</div>
+            <div key={i} className="px-2 sm:px-8 sm:border-r sm:border-white/10 sm:last:border-0">
+              <div className="text-[#00C2CB] text-2xl sm:text-4xl font-black mb-1 sm:mb-2">{stat.val}</div>
               <div className="text-white/70 text-[10px] uppercase font-bold tracking-widest">{stat.label}</div>
             </div>
           ))}
@@ -295,12 +295,12 @@ export default function Home() {
       </section>
 
       {/* ========== TESTIMONIALS ========== */}
-      <section className="py-24 px-8 bg-slate-50 overflow-hidden text-left">
+      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-slate-50 overflow-hidden text-left">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-[#0047AB] text-3xl font-black mb-16">What Our Clients Say</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="text-center text-[#0047AB] text-2xl sm:text-3xl font-black mb-8 sm:mb-16">What Our Clients Say</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {testimonials.map((t, i) => (
-              <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col h-full">
+              <div key={i} className="bg-white p-5 sm:p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col h-full">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="relative w-10 h-10 rounded-full overflow-hidden">
                     <Image src={t.avatar} alt={`IntegraFin Client Testimonial ${i + 1}`} fill className="object-cover" sizes="40px" />
@@ -318,16 +318,16 @@ export default function Home() {
       </section>
 
       {/* ========== FAQ SECTION ========== */}
-      <section id="faq" className="py-24 max-w-4xl mx-auto px-8 scroll-mt-24 border-b border-slate-100 text-left">
+      <section id="faq" className="py-12 sm:py-24 max-w-4xl mx-auto px-4 sm:px-8 scroll-mt-24 border-b border-slate-100 text-left">
         <div className="text-center mb-16">
           <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Questions</span>
-          <h2 className="text-4xl font-black text-[#0047AB] tracking-tight mt-2">Frequently Asked Questions</h2>
+          <h2 className="text-2xl sm:text-4xl font-black text-[#0047AB] tracking-tight mt-2">Frequently Asked Questions</h2>
         </div>
         <div className="space-y-4">
           {homepageFaqSchema.mainEntity.map((item: any, index: number) => (
-            <div key={index} className="bg-white rounded-2xl border border-slate-100 p-8 shadow-sm hover:shadow-lg transition-all group">
+            <div key={index} className="bg-white rounded-2xl border border-slate-100 p-5 sm:p-8 shadow-sm hover:shadow-lg transition-all group">
               <div className="flex justify-between items-center cursor-pointer">
-                <h3 className="text-xl font-black text-[#0047AB] group-hover:text-[#00C2CB] transition-colors">{item.name}</h3>
+                <h3 className="text-base sm:text-xl font-black text-[#0047AB] group-hover:text-[#00C2CB] transition-colors">{item.name}</h3>
                 <PlusCircle className="w-5 h-5 text-[#00C2CB] group-hover:scale-110 transition-transform flex-shrink-0" />
               </div>
               <p className="mt-4 text-[#45474c] font-medium leading-relaxed text-sm">{item.acceptedAnswer.text}</p>
@@ -337,17 +337,17 @@ export default function Home() {
       </section>
 
       {/* ========== CALLBACK FORM ========== */}
-      <section className="py-24 px-8 bg-slate-50 text-left">
+      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-slate-50 text-left">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row shadow-2xl rounded-3xl overflow-hidden bg-white">
           <div className="md:w-1/2 relative min-h-[400px]">
             <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj7D8F2w62f6YBbZfV3dquD--NM-8n7d43UuvqVRfs3DjC4-J8ttC0eCoX00Oq8icqheCQ8_zi3WB0C22bMs3v-qk3IS2K2eP_2_RI_iKIp-0rnb7cYGPF1t25kmxlLNTDXaGac6QzyWbv6PtIkTOX7xsBqOdG2a4a2pa9h8rOmsla3I7k5UqM4n5dR99yJNLWGi62sbYq2oJwgZcmTMIUsKZqUPQfcAQxLNSYOi96fxYy2SRFKjIBvSue9uYl6gVu9sGBgev3IQw" alt="IntegraFin Tax Consultant reviewing strategy" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
             <div className="absolute inset-0 bg-[#0047AB]/20"></div>
           </div>
-          <div className="md:w-1/2 p-12 lg:p-16">
-            <h3 className="text-[#0047AB] text-3xl font-black mb-8">Request a Free Callback</h3>
+          <div className="md:w-1/2 p-6 sm:p-12 lg:p-16">
+            <h3 className="text-[#0047AB] text-2xl sm:text-3xl font-black mb-6 sm:mb-8">Request a Free Callback</h3>
             <form className="space-y-4">
               <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Full Name" type="text" />
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Email" type="email" />
                 <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Phone" type="tel" />
               </div>

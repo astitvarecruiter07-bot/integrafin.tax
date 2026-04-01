@@ -288,3 +288,47 @@ body {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+/* ===== MOBILE OPTIMIZATIONS ===== */
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Ensure media elements don't overflow */
+img, svg, video, canvas, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Minimum tap targets for accessibility (44px per WCAG) */
+@media (max-width: 768px) {
+  a, button, [role="button"], input, select, textarea {
+    min-height: 44px;
+  }
+  
+  /* Better font rendering on mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Prevent zoom on input focus on iOS */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  
+  /* Smoother touch scrolling */
+  .overflow-x-auto,
+  .no-scrollbar {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Word wrap safety net for long text */
+h1, h2, h3, h4, h5, h6, p, span, a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}

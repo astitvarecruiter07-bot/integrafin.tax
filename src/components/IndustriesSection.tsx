@@ -126,17 +126,17 @@ export default function IndustriesSection() {
     : industries.filter(item => item.category === activeCategory);
 
   return (
-    <section className="py-24 bg-slate-50 text-left" id="industries">
-      <div className="max-w-7xl mx-auto px-8">
+    <section className="py-12 sm:py-24 bg-slate-50 text-left" id="industries">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="text-center mb-12 space-y-2">
           <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Global Expertise</span>
-          <h2 className="text-[#0047AB] text-4xl md:text-5xl font-black tracking-tight">Industries We Serve</h2>
+          <h2 className="text-[#0047AB] text-2xl sm:text-4xl md:text-5xl font-black tracking-tight">Industries We Serve</h2>
         </div>
 
         {/* Sticky Filter Bar */}
-        <div className="sticky top-20 z-40 bg-white/80 backdrop-blur-md shadow-sm border-y border-slate-100 mb-12 rounded-xl overflow-hidden">
+        <div className="sticky top-20 z-40 bg-white/80 backdrop-blur-md shadow-sm border-y border-slate-100 mb-8 sm:mb-12 rounded-xl overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center">
-            <div className="flex items-center space-x-6 overflow-x-auto no-scrollbar whitespace-nowrap text-[10px] font-bold uppercase tracking-widest w-full">
+            <div className="flex items-center space-x-3 sm:space-x-6 overflow-x-auto no-scrollbar whitespace-nowrap text-[9px] sm:text-[10px] font-bold uppercase tracking-widest w-full">
               {categories.map((cat, i) => (
                 <button 
                   key={cat} 
@@ -155,13 +155,13 @@ export default function IndustriesSection() {
         </div>
 
         {/* Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           {filteredIndustries.map((item, i) => (
             item.featured ? (
               // Featured Card style
               <div 
                 key={item.title} 
-                className="group bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 border border-slate-100 transition-all duration-500 relative overflow-hidden flex flex-col h-full"
+                className="group bg-white p-6 sm:p-10 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 border border-slate-100 transition-all duration-500 relative overflow-hidden flex flex-col h-full"
               >
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#00C2CB]/10 to-transparent rounded-bl-[100px] transition-all group-hover:scale-125"></div>
                 <div className="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[#0047AB]/5 text-[#0047AB] group-hover:bg-[#0047AB] group-hover:text-white transition-colors duration-300">

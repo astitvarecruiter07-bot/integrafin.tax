@@ -53,20 +53,20 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                 }
             `}</style>
             {/* SECTION 1: BLOG HERO BANNER */}
-            <section className="relative pt-40 pb-24 bg-[#0047AB] overflow-hidden">
+            <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-[#0047AB] overflow-hidden">
                 <div className="absolute inset-0 bg-secondary/5 grid-texture pointer-events-none opacity-10"></div>
                 <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full"></div>
-                <div className="relative max-w-7xl mx-auto px-6 text-center">
-                    <h1 className="font-headline text-5xl md:text-7xl text-white mb-6 leading-tight">
+                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
+                    <h1 className="font-headline text-3xl sm:text-5xl md:text-7xl text-white mb-4 sm:mb-6 leading-tight">
                         Tax Insights & <br />
                         <span className="bg-gradient-to-r from-[#00C2CB] to-[#97f0ff] bg-clip-text text-transparent">
                             Financial Intelligence
                         </span>
                     </h1>
-                    <p className="max-w-2xl mx-auto text-on-primary-container text-lg mb-12 font-light">
+                    <p className="max-w-2xl mx-auto text-on-primary-container text-base sm:text-lg mb-8 sm:mb-12 font-light">
                         Stay informed with the latest tax tips, financial strategies, and legislative updates curated by our senior architects of wealth.
                     </p>
-                    <div className="max-w-xl mx-auto mb-16 relative">
+                    <div className="max-w-xl mx-auto mb-10 sm:mb-16 relative">
                         <input
                             type="text"
                             placeholder="Search insights..."
@@ -78,12 +78,12 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                             <Search className="w-6 h-6" />
                         </button>
                     </div>
-                    <div className="flex flex-wrap justify-center gap-4">
+                    <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
-                                className={`px-6 py-2 rounded-full border ${selectedCategory === cat ? 'border-secondary text-secondary bg-secondary/10' : 'border-white/10 text-slate-300 hover:border-secondary/50 hover:text-white'} transition-all font-label text-[10px] font-black uppercase tracking-[0.2em]`}
+                                className={`px-4 sm:px-6 py-2 rounded-full border ${selectedCategory === cat ? 'border-secondary text-secondary bg-secondary/10' : 'border-white/10 text-slate-300 hover:border-secondary/50 hover:text-white'} transition-all font-label text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em]`}
                             >
                                 {cat}
                             </button>
@@ -94,10 +94,10 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
             {/* SECTION 2: FEATURED POST */}
             {featuredPost && (
-                <section className="bg-[#003580] py-20">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="flex flex-col lg:flex-row items-center gap-12 group overflow-hidden bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-8">
-                            <div className="lg:w-1/2 w-full overflow-hidden rounded-xl relative h-[400px]">
+                <section className="bg-[#003580] py-12 sm:py-20">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                        <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 group overflow-hidden bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-5 sm:p-8">
+                            <div className="lg:w-1/2 w-full overflow-hidden rounded-xl relative h-[250px] sm:h-[400px]">
                                 {featuredPost.image ? (
                                     <Image
                                         src={featuredPost.image}
@@ -115,10 +115,10 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                 <span className="inline-block px-3 py-1 bg-secondary/20 text-secondary rounded font-label text-[10px] font-black uppercase tracking-widest mb-6">
                                     Featured Insight
                                 </span>
-                                <h2 className="font-headline text-4xl text-white mb-6 leading-tight">
+                                <h2 className="font-headline text-2xl sm:text-4xl text-white mb-4 sm:mb-6 leading-tight">
                                     {featuredPost.title}
                                 </h2>
-                                <p className="text-on-primary-container text-lg mb-8 leading-relaxed">
+                                <p className="text-on-primary-container text-sm sm:text-lg mb-6 sm:mb-8 leading-relaxed">
                                     {featuredPost.excerpt}
                                 </p>
                                 <div className="flex items-center gap-4 mb-8">
@@ -149,9 +149,9 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
             )}
 
             {/* SECTION 3: BLOG GRID */}
-            <section className="bg-surface-container-low py-24">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <section className="bg-surface-container-low py-12 sm:py-24">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-10">
                         {gridPosts.map((post) => (
                             <div
                                 key={post.slug}
@@ -171,7 +171,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                         </div>
                                     )}
                                 </div>
-                                <div className="p-8 flex-grow flex flex-col">
+                                <div className="p-5 sm:p-8 flex-grow flex flex-col">
                                     <div className="flex justify-between items-center mb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
                                         <span>{post.category}</span>
                                         <span>{post.date}</span>
@@ -198,7 +198,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
                         {/* Newsletter Card In Grid */}
                         {gridPosts.length > 0 && (
-                            <div className="bg-[#003580] rounded-2xl p-10 flex flex-col justify-center items-center text-center relative overflow-hidden">
+                            <div className="bg-[#003580] rounded-2xl p-6 sm:p-10 flex flex-col justify-center items-center text-center relative overflow-hidden">
                                 <div className="absolute inset-0 bg-secondary/5 radial-gradient"></div>
                                 <Mail className="w-12 h-12 text-secondary mb-6" />
                                 <h3 className="font-headline text-3xl text-white mb-4">Want More Insights?</h3>
@@ -213,11 +213,11 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
             </section>
 
             {/* SECTION 4: NEWSLETTER BANNER */}
-            <section className="py-24 bg-[#0047AB] relative overflow-hidden">
+            <section className="py-12 sm:py-24 bg-[#0047AB] relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-secondary/10 blur-[150px] rounded-full"></div>
-                <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-                    <h2 className="font-headline text-5xl text-white mb-6">Never Miss a Tax Update</h2>
-                    <p className="text-slate-300 text-lg mb-12 max-w-xl mx-auto">Get meticulous financial engineering insights delivered directly to your executive inbox.</p>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+                    <h2 className="font-headline text-3xl sm:text-5xl text-white mb-4 sm:mb-6">Never Miss a Tax Update</h2>
+                    <p className="text-slate-300 text-sm sm:text-lg mb-8 sm:mb-12 max-w-xl mx-auto">Get meticulous financial engineering insights delivered directly to your executive inbox.</p>
                     <form className="max-w-2xl mx-auto flex flex-col md:flex-row gap-4">
                         <input
                             type="email"
@@ -233,8 +233,8 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
             </section>
 
             {/* SECTION 5: TOPICS & SIDEBAR */}
-            <section className="py-24 bg-surface">
-                <div className="max-w-7xl mx-auto px-6">
+            <section className="py-12 sm:py-24 bg-surface">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="flex flex-col lg:flex-row gap-16">
                         {/* Main Topics Area */}
                         <div className="lg:w-2/3">
@@ -252,7 +252,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                         {/* Sidebar */}
                         <aside className="lg:w-1/3 space-y-12">
                             {/* CTA Card 1 */}
-                            <div className="bg-[#003580] p-10 rounded-2xl relative overflow-hidden group">
+                            <div className="bg-[#003580] p-6 sm:p-10 rounded-2xl relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/20 -translate-y-1/2 translate-x-1/2 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                                 <h4 className="text-white font-headline text-2xl mb-4">Need Tax Help?</h4>
                                 <p className="text-slate-300 text-sm mb-8">Schedule a 15-minute diagnostic session with our lead architects.</p>
@@ -262,7 +262,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                             </div>
 
                             {/* CTA Card 2 */}
-                            <div className="bg-slate-50 p-10 rounded-2xl border-t-4 border-secondary">
+                            <div className="bg-slate-50 p-6 sm:p-10 rounded-2xl border-t-4 border-secondary">
                                 <h4 className="text-[#0047AB] font-headline text-2xl mb-4">Tax Estimator</h4>
                                 <p className="text-slate-600 text-sm mb-8">Utilize our proprietary engine to calculate your projected 2025 liability.</p>
                                 <button className="w-full py-3.5 bg-secondary text-[#003580] text-[10px] font-black uppercase tracking-widest rounded flex items-center justify-center gap-2 hover:bg-[#33ced5] transition-colors">

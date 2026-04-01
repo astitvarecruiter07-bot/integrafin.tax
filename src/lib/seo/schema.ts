@@ -39,9 +39,71 @@ export const localBusinessSchema = {
   "priceRange": "$$",
   "areaServed": ["Katy TX", "Houston TX", "Sugar Land TX", "Cypress TX", "Richmond TX"],
   "sameAs": [
-    "https://www.facebook.com/integrafin",
-    "https://www.linkedin.com/company/integrafin",
+    "https://www.facebook.com/integrafintax/",
+    "https://www.instagram.com/integrafinllc/",
+    "https://www.linkedin.com/company/integrafin/?viewAsMember=true",
+    "https://x.com/Integrafintax",
     "https://www.yelp.com/biz/integrafin"
+  ]
+};
+
+export const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "IntegraFin",
+  "alternateName": "IntegraFin Tax & Accounting",
+  "url": "https://integrafin.tax",
+  "logo": "https://integrafin.tax/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-832-647-1819",
+    "contactType": "customer service",
+    "areaServed": "US",
+    "availableLanguage": "English"
+  },
+  "sameAs": [
+    "https://www.facebook.com/integrafintax/",
+    "https://www.instagram.com/integrafinllc/",
+    "https://www.linkedin.com/company/integrafin/?viewAsMember=true",
+    "https://x.com/Integrafintax",
+    "https://www.yelp.com/biz/integrafin"
+  ]
+};
+
+export const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "IntegraFin Tax Expert Team",
+  "jobTitle": "Tax Expert",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "IntegraFin Tax & Accounting"
+  },
+  "alumniOf": "Texas Board of Public Accountancy",
+  "url": "https://integrafin.tax/about"
+};
+
+export const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Form a New Business in Texas",
+  "description": "A step-by-step guide to entity selection and registration for new businesses in Texas, managed by tax experts.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Entity Selection",
+      "text": "Choose the optimal business structure (LLC, S-Corp, or C-Corp) to minimize liability and maximize tax efficiency."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "State Registration",
+      "text": "File the necessary formation documents with the Texas Secretary of State and local regulators to gain legal recognition."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "EIN and Tax Setup",
+      "text": "Obtain an Employer Identification Number (EIN) from the IRS and set up payroll, bookkeeping, and state tax accounts."
+    }
   ]
 };
 
@@ -51,10 +113,10 @@ export const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How much does a CPA cost in Katy TX?",
+      "name": "How much does a tax expert cost in Katy TX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "CPA fees in Katy TX typically range from $150 to $400 for individual tax returns and $500 to $2,000+ for business returns depending on complexity. IntegraFin offers competitive, transparent pricing. Contact us at (832) 647-1819 for a free quote."
+        "text": "The cost of a tax expert in Katy, TX typically ranges from $150 to $400 for individual tax returns, and $500 to $2,000+ for business returns based on complexity. IntegraFin offers flat-rate, transparent pricing. Call (832) 647-1819 for a free quote."
       }
     },
     {
@@ -62,7 +124,7 @@ export const faqSchema = {
       "name": "What documents do I need for tax filing?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You will need your W-2 or 1099 forms, last year's tax return, Social Security numbers for all family members, receipts for business or personal deductions, bank statements, and any investment income documents such as 1099-DIV or 1099-B."
+        "text": "You need your W-2 or 1099 forms, last year's tax return, Social Security numbers for dependents, receipts for deductions, bank statements, and investment income documents like 1099-DIV or 1099-B to properly file your taxes."
       }
     },
     {
@@ -70,7 +132,7 @@ export const faqSchema = {
       "name": "Does IntegraFin help with IRS audits in Katy TX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. IntegraFin provides full IRS audit representation for individuals and businesses in Katy, TX, and the greater Houston area. Our licensed CPAs communicate directly with audit officers on your behalf to defend your filings correctly. We review discrepancies, prepare defense documentation, and negotiate settlements to minimize overall liability successfully."
+        "text": "Yes, IntegraFin provides full IRS audit representation in Katy, TX. Our licensed tax experts communicate directly with audit officers on your behalf to review discrepancies, prepare defense documentation, and negotiate settlements to minimize your overall tax liability."
       }
     },
     {
@@ -78,7 +140,7 @@ export const faqSchema = {
       "name": "Do you offer bookkeeping services for small businesses in Katy TX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. IntegraFin offers full-service monthly bookkeeping for small businesses in Katy, TX, including bank integrations, reconciliations, detailed financial statement modeling, and QuickBooks or Xero support setup. Our professional oversight ensures your accounts remain audit-ready year-round while revealing critical cost-saving potentials and capital flow efficiency gains back to your operations."
+        "text": "Yes, IntegraFin offers full-service monthly bookkeeping for small businesses in Katy, TX. This includes bank integrations, detailed financial statements, and QuickBooks support to keep your business audit-ready and help identify cost-saving opportunities."
       }
     },
     {
@@ -86,7 +148,7 @@ export const faqSchema = {
       "name": "Can IntegraFin help me resolve back taxes with the IRS?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Absolutely. Our tax resolution specialists in Katy help you negotiate with the IRS for back taxes. We design structured installment agreements, file penalty abatement requests, and explore Offer in Compromise settlements based on your situation. Call (832) 647-1819 today for direct protection against liens, levies, and continuous back tax stress."
+        "text": "Yes, our tax resolution specialists in Katy help you negotiate back taxes with the IRS. We can design structured installment agreements, file penalty abatement requests, or explore Offer in Compromise settlements to protect against liens and levies."
       }
     }
   ]
@@ -98,10 +160,10 @@ export const homepageFaqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Why choose IntegraFin for CPA services in Katy TX?",
+      "name": "Why choose IntegraFin for tax expert services in Katy TX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "IntegraFin provides high-level accounting oversight, transparent modeling, and strategic tax planning tailored for growth-focused SMEs and high-net-worth individuals in Katy. We guarantee 100% accurate file handling, maximum legally allowed refunds, and dedicated IRS representation, ensuring your business scaling remains compliant with full audit-ready security year-round."
+        "text": "IntegraFin offers high-level accounting, strategic tax planning, and full IRS representation for businesses and individuals in Katy, TX. We guarantee accurate tax preparation, maximum legally allowed refunds, and ongoing compliance to help you safely scale your wealth."
       }
     },
     {
@@ -109,7 +171,7 @@ export const homepageFaqSchema = {
       "name": "How can I schedule a free consultation with your accountants?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can schedule a free online review or offline consultation by filling out our contact form or calling (832) 647-1819 immediately. Our staff is available 24/7 to secure your session. During this rapid consultation, we analyze your current bracket and project your potential tax savings instantly without any obligation to file."
+        "text": "You can schedule a free consultation by filling out our online form or calling (832) 647-1819. Available 24/7, our team will analyze your financial situation and instantly project potential tax savings without any obligation to file."
       }
     },
     {
@@ -117,15 +179,15 @@ export const homepageFaqSchema = {
       "name": "What types of businesses do you specialize in?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We specialize in technology startups, real estate asset managers, healthcare practice centers, and manufacturing plants with high-throughput domestic volume requiring R&D credits. Our CPAs tailor corporate structure guidance, full-service monthly bookkeeping, and risk-adjusted tax reduction strategies specifically formulated for these complex sectors to accelerate capital growth and efficiency."
+        "text": "We specialize in providing accounting and tax services for technology startups, real estate asset managers, healthcare practice centers, and manufacturing plants. We offer corporate entity structuring, monthly bookkeeping, and R&D tax credits to accelerate capital growth."
       }
     },
     {
       "@type": "Question",
-      "name": "What cities in Texas do your CPA services serve?",
+      "name": "What cities in Texas do your tax expert services serve?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "While based in Katy, we serve corporations and families in Houston, Sugar Land, Cypress, Richmond, and the greater Fort Bend surrounding counties. Our online tax filing platform enables seamless secure strategy deployment anywhere in Texas, offering global asset advisory for clients requiring remote compliance with institutional precision and 24/7 client center access."
+        "text": "Based in Katy, our tax expert services serve all surrounding areas like Houston, Sugar Land, Cypress, and Richmond. Our secure online tax portal also allows us to effectively manage tax compliance and advisory for clients located anywhere in Texas."
       }
     }
   ]

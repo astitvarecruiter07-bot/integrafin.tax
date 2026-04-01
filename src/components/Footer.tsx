@@ -20,10 +20,10 @@ const serviceLinks = [
 ];
 
 const socialLinks = [
-    { href: "https://www.facebook.com/integrafintax", icon: "facebook", label: "Facebook" },
+    { href: "https://www.facebook.com/integrafintax/", icon: "facebook", label: "Facebook" },
     { href: "https://www.instagram.com/integrafinllc/", icon: "instagram", label: "Instagram" },
-    { href: "https://www.linkedin.com/company/integrafin/", icon: "linkedin", label: "LinkedIn" },
-    { href: "https://x.com/Integrafintax/", icon: "x", label: "X (Twitter)" },
+    { href: "https://www.linkedin.com/company/integrafin/?viewAsMember=true", icon: "linkedin", label: "LinkedIn" },
+    { href: "https://x.com/Integrafintax", icon: "x", label: "X (Twitter)" },
 ];
 
 function SocialIcon({ icon }: { icon: string }) {
@@ -57,7 +57,7 @@ export default function Footer() {
                         <Link href="/" className="inline-block mb-4">
                             <Image
                                 src="/logo.png"
-                                alt="IntegraFin CPA Firm Katy TX - Tax and Accounting Services"
+                                alt="IntegraFin Tax Expert Katy TX - Tax and Accounting Services"
                                 width={150}
                                 height={38}
                                 className="h-9 w-auto brightness-0 invert"
@@ -65,7 +65,7 @@ export default function Footer() {
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
                             IntegraFin is a trusted provider of comprehensive tax, accounting,
-                            and business advisory services. With a team of experienced CPAs,
+                            and business advisory services. With a team of experienced tax experts,
                             CAs, and financial experts.
                         </p>
                         <div className="flex items-center gap-3">

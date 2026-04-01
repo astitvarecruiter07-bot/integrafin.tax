@@ -3,7 +3,7 @@ import { Mail, MessageSquare, MapPin, Phone, ShieldCheck, ArrowRight } from "luc
 
 export const metadata = {
   title: 'Contact IntegraFin | Tax Accountant Katy TX',
-  description: 'Contact IntegraFin in Katy TX at (832) 647-1819. Located at 2039 N Mason Rd Suite 604. Book a free tax consultation with our CPA team today. Open Mon–Fri 9AM–6PM.',
+  description: 'Contact IntegraFin in Katy TX at (832) 647-1819. Located at 2039 N Mason Rd Suite 604. Book a free tax consultation with our tax expert team today. Open Mon–Fri 9AM–6PM.',
   alternates: { canonical: 'https://integrafin.tax/contact' },
   openGraph: {
     title: 'Contact IntegraFin | Tax Accountant Katy TX',
@@ -15,70 +15,70 @@ export default function ContactPage() {
     return (
         <>
             {/* Hero Section */}
-            <header className="relative bg-[#0A1628] overflow-hidden py-24 md:py-32">
+            <header className="relative bg-[#0A1628] overflow-hidden py-16 sm:py-24 md:py-32">
                 <div 
                     className="absolute inset-0 opacity-20 bg-cover bg-center" 
                     style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIhhzL_6DrqJErXL51mOsoGwc-5kpm0Yntn1CFMGPkhbw-RFnUfzJZcqHkMpROhE4e5n7QnTL-RljoQaVK1pugbWaGvVleExURhnBwUpTZx2e3qVhE8TJdLMHfdV1DfxKTY-_FaikaNbQ4KUY1OxnEw5LYhlDgGHIhHS2-JAHHJ2P1g14KcpAARNv7dO96w5Xd0qJ3YsBUplKtXDq_d_qZZR4ZLLcAFFZ5XLARsndVNDVwKvq6KvAC0F1XamxLcx3id5kXzp2Nh1Y')" }}
                 />
                 <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at top right, rgba(0, 194, 203, 0.15), transparent 400px)' }} />
-                <div className="relative max-w-7xl mx-auto px-8 text-center md:text-left">
+                <div className="relative max-w-7xl mx-auto px-5 sm:px-8 text-center md:text-left">
                     <div className="inline-block px-3 py-1 bg-[#00C2CB]/10 border border-[#00C2CB]/30 text-[#00C2CB] text-[10px] font-black uppercase tracking-[0.3em] mb-6">
                         Institutional Authority
                     </div>
-                    <h1 className="text-white text-4xl md:text-6xl font-black tracking-tighter mb-6 leading-tight max-w-4xl">
+                    <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-black tracking-tighter mb-4 sm:mb-6 leading-tight max-w-4xl">
                         Get in Touch with Our Tax & <span className="text-[#00C2CB]">Accounting Experts</span>
                     </h1>
-                    <p className="text-white/70 text-lg md:text-xl font-light max-w-2xl mb-10 leading-relaxed">
+                    <p className="text-white/70 text-sm sm:text-lg md:text-xl font-light max-w-2xl mb-6 sm:mb-10 leading-relaxed">
                         Whether you need US tax filing, business bookkeeping, or cross-border tax resolution, our certified professionals are ready to help.
                     </p>
-                    <button className="bg-[#00C2CB] text-[#0A1628] px-10 py-5 rounded-lg font-black text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#00cedb] transition-all">
+                    <button className="bg-[#00C2CB] text-[#0A1628] px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#00cedb] transition-all">
                         Schedule a Consultation
                     </button>
                 </div>
             </header>
 
             {/* Main Section */}
-            <main className="max-w-7xl mx-auto px-8 -mt-12 md:-mt-20 pb-24 relative z-10">
+            <main className="max-w-7xl mx-auto px-4 sm:px-8 -mt-8 sm:-mt-12 md:-mt-20 pb-16 sm:pb-24 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     {/* Left Column: Form */}
-                    <div className="lg:col-span-7 bg-white shadow-2xl p-8 md:p-12 rounded-xl relative overflow-hidden">
+                    <div className="lg:col-span-7 bg-white shadow-2xl p-5 sm:p-8 md:p-12 rounded-xl relative overflow-hidden">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[#00C2CB]/5 rounded-bl-full"></div>
                         <h2 className="text-3xl font-extrabold text-[#003580] tracking-tight mb-2">How Can We Help You?</h2>
                         <p className="text-gray-600 text-sm mb-10 font-light">Fill out the form below, and a tax advisor will reach out to you within 24 hours.</p>
                         <form className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-1">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Full Name</label>
+                                    <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Full Name</label>
                                     <input className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="John Doe" type="text" />
                                 </div>
                                 <div className="space-y-1">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Email Address</label>
+                                    <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Email Address</label>
                                     <input className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="john@example.com" type="email" />
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-1">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Phone</label>
+                                    <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Phone</label>
                                     <input className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="+1 (000) 000-0000" type="tel" />
                                 </div>
                                 <div className="space-y-1">
-                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Company Name (Optional)</label>
+                                    <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Company Name (Optional)</label>
                                     <input className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="Your Firm LLC" type="text" />
                                 </div>
                             </div>
                             <div className="space-y-1">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Enquiry Type</label>
+                                <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Enquiry Type</label>
                                 <select className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg appearance-none">
                                     <option>Individual Taxes</option>
                                     <option>Business Bookkeeping and Taxes</option>
                                     <option>New Business Formation</option>
-                                    <option>CPA Bookkeeping Outsourcing</option>
+                                    <option>Tax Expert Bookkeeping Outsourcing</option>
                                     <option>Partnership LLC / Single Member LLC Inquiries</option>
                                     <option>Other Enquiry</option>
                                 </select>
                             </div>
                             <div className="space-y-1">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Message</label>
+                                <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Message</label>
                                 <textarea className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="How can our experts assist you today?" rows={4}></textarea>
                             </div>
                             <button className="w-full md:w-auto bg-[#00C2CB] text-[#003580] px-12 py-4 rounded-lg font-black text-xs uppercase tracking-[0.2em] hover:brightness-105 transition-all shadow-lg flex items-center justify-center gap-2" type="submit">
@@ -91,7 +91,7 @@ export default function ContactPage() {
                     {/* Right Column: Info */}
                     <div className="lg:col-span-5 space-y-8">
                         {/* Contact Direct Card */}
-                        <div className="bg-[#003580] p-10 rounded-xl text-white shadow-xl relative overflow-hidden">
+                        <div className="bg-[#003580] p-6 sm:p-10 rounded-xl text-white shadow-xl relative overflow-hidden">
                             <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full"></div>
                             <h3 className="text-2xl font-extrabold tracking-tight mb-8">Reach Us Directly</h3>
                             <div className="space-y-6">

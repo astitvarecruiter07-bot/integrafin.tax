@@ -41,7 +41,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     return (
         <>
             <article className="pt-32 pb-20">
-                <div className="max-w-3xl mx-auto px-6">
+                <div className="max-w-3xl mx-auto px-4 sm:px-6">
                     {/* Breadcrumb */}
                     <div className="flex items-center gap-2 text-sm text-text-secondary mb-6">
                         <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -62,12 +62,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </div>
 
                     {/* Title */}
-                    <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-8 leading-tight">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 sm:mb-8 leading-tight">
                         {post.title}
                     </h1>
 
                     {/* Featured Image Placeholder */}
-                    <div className="w-full h-64 md:h-80 rounded-2xl bg-gradient-to-br from-accent-light to-lavender mb-10 flex items-center justify-center">
+                    <div className="w-full h-48 sm:h-64 md:h-80 rounded-2xl bg-gradient-to-br from-accent-light to-lavender mb-8 sm:mb-10 flex items-center justify-center">
                         <svg className="w-16 h-16 text-primary/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                         </svg>
@@ -83,12 +83,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </div>
 
                     {/* CTA */}
-                    <div className="mt-12 p-8 bg-accent-light rounded-2xl text-center">
+                    <div className="mt-10 sm:mt-12 p-5 sm:p-8 bg-accent-light rounded-2xl text-center">
                         <h3 className="text-xl font-bold text-foreground mb-3">
                             Need Expert Financial Advice?
                         </h3>
                         <p className="text-text-secondary mb-5">
-                            IntegraFin&apos;s team of CPAs and financial experts is here to help.
+                            IntegraFin&apos;s team of tax and financial experts is here to help.
                         </p>
                         <Link
                             href="/contact"

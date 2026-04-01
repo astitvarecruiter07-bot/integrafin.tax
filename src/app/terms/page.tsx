@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Scale, FileText, ShieldAlert, BadgeCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Terms & Conditions | IntegraFin CPA Services',
-  description: 'Read the Terms & Conditions for IntegraFin CPA Services. Learn about our service terms, user responsibilities, and legal agreements.',
+  title: 'Terms & Conditions | IntegraFin Tax Expert Services',
+  description: 'Read the Terms & Conditions for IntegraFin Tax Expert Services. Learn about our service terms, user responsibilities, and legal agreements.',
   alternates: { canonical: 'https://integrafin.tax/terms' },
 };
 
