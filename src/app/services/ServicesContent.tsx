@@ -181,13 +181,13 @@ export default function ServicesContent() {
   return (
     <main className="bg-slate-50 min-h-screen text-left">
       {/* ========== HERO SECTION ========== */}
-      <section className="bg-[#003580] pt-28 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden">
+      <section className="bg-primary-dark pt-28 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         </div>
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
             <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 sm:mb-6">
-                Comprehensive <span className="text-[#00C2CB]">Tax Expert</span> Services
+                Comprehensive <span className="text-secondary">Tax Expert</span> Services
             </h1>
             <p className="text-sm sm:text-lg md:text-xl text-[#d7e3fc] max-w-2xl mx-auto leading-relaxed">
                 From individual tax filing to full business accounting—our integrated solutions are built specifically for your modern financial life.
@@ -211,11 +211,11 @@ export default function ServicesContent() {
                                 onClick={() => handleTabChange(tab.id)}
                                 className={`flex-1 flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl text-[13px] sm:text-sm font-bold transition-all duration-300 ${
                                     isActive 
-                                    ? "bg-[#0047AB] text-white shadow-md transform scale-[1.01]" 
-                                    : "text-slate-500 hover:bg-slate-50 hover:text-[#0047AB]"
+                                    ? "bg-primary text-white shadow-md transform scale-[1.01]" 
+                                    : "text-slate-500 hover:bg-slate-50 hover:text-primary"
                                 }`}
                             >
-                                <span className={isActive ? "text-[#00C2CB]" : "text-slate-400 group-hover:text-[#0047AB]"}>
+                                <span className={isActive ? "text-secondary" : "text-slate-400 group-hover:text-primary"}>
                                   {tab.icon}
                                 </span>
                                 {tab.label}
@@ -231,20 +231,20 @@ export default function ServicesContent() {
             
             {/* Left Col: Details */}
             <div className="p-5 sm:p-10 lg:p-14 lg:w-2/3 flex flex-col pt-8 sm:pt-12 key={activeTab}">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#00C2CB]/10 border border-[#00C2CB]/20 mb-6 w-fit">
-                    <span className="text-[#00C2CB] text-[10px] sm:text-xs font-bold tracking-widest uppercase">{activeContent.label}</span>
+                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 mb-6 w-fit">
+                    <span className="text-secondary text-[10px] sm:text-xs font-bold tracking-widest uppercase">{activeContent.label}</span>
                 </div>
                 
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-[#0047AB] tracking-tight mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-primary tracking-tight mb-4 sm:mb-6">
                     {activeContent.title}
                 </h2>
-                <div className="text-sm sm:text-base md:text-lg text-[#45474c] leading-relaxed mb-6 sm:mb-10 space-y-4">
+                <div className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed mb-6 sm:mb-10 space-y-4">
                     {activeContent.description.split('. ').map((sentence, idx) => (
                       <span key={idx}>{sentence}{(idx !== activeContent.description.split('. ').length - 1) && '. '}</span>
                     ))}
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-[#003580] mb-6 border-b border-slate-100 pb-2">Includes:</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-primary-dark mb-6 border-b border-slate-100 pb-2">Includes:</h3>
                 
                 {/* Specific exact services laid out as functionally interactive accordions */}
                 <div className="grid grid-cols-1 gap-3 sm:gap-4 mb-12">
@@ -255,21 +255,21 @@ export default function ServicesContent() {
                               key={idx} 
                               onClick={() => toggleAccordion(idx)}
                               className={`border rounded-lg bg-white overflow-hidden transition-all duration-300 cursor-pointer ${
-                                isOpen ? 'border-[#00C2CB] shadow-md ring-1 ring-[#00C2CB]/20' : 'border-slate-200 hover:border-[#0047AB]/50 hover:shadow-sm'
+                                isOpen ? 'border-secondary shadow-md ring-1 ring-secondary/20' : 'border-slate-200 hover:border-primary/50 hover:shadow-sm'
                               }`}
                           >
                               {/* Accordion Header */}
                               <div className="flex items-center justify-between p-3 sm:p-4 group">
-                                  <span className={`text-[13px] sm:text-sm font-bold transition-colors pr-4 ${isOpen ? 'text-[#00C2CB]' : 'text-[#0047AB] group-hover:text-[#00C2CB]'}`}>
+                                  <span className={`text-[13px] sm:text-sm font-bold transition-colors pr-4 ${isOpen ? 'text-secondary' : 'text-primary group-hover:text-secondary'}`}>
                                       {service.title}
                                   </span>
                                   <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded shrink-0 flex items-center justify-center transition-colors ${
-                                      isOpen ? 'bg-[#00C2CB]/10' : 'bg-slate-50 group-hover:bg-[#00C2CB]/10'
+                                      isOpen ? 'bg-secondary/10' : 'bg-slate-50 group-hover:bg-secondary/10'
                                   }`}>
                                       {isOpen ? (
-                                        <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-[#00C2CB]" />
+                                        <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
                                       ) : (
-                                        <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-[#0047AB] group-hover:text-[#00C2CB]" />
+                                        <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-primary group-hover:text-secondary" />
                                       )}
                                   </div>
                               </div>
@@ -285,14 +285,13 @@ export default function ServicesContent() {
                     })}
                 </div>
 
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 w-full sm:w-max bg-[#00C2CB] text-[#003580] px-6 sm:px-10 py-3.5 sm:py-4 mt-auto rounded-xl font-bold uppercase tracking-widest hover:bg-[#33ced5] transition-colors text-sm">
+                <Link href="/contact" className="inline-flex items-center justify-center gap-2 w-full sm:w-max bg-secondary text-primary-dark px-6 sm:px-10 py-3.5 sm:py-4 mt-auto rounded-xl font-bold uppercase tracking-widest hover:bg-[#33ced5] transition-colors text-sm">
                     Schedule a Consultation <ArrowRight className="w-5 h-5" />
                 </Link>
             </div>
-
             {/* Right Col: Benefits Panel */}
-            <div className="bg-[#003580] p-6 sm:p-10 lg:p-14 lg:w-1/3 relative overflow-hidden flex flex-col justify-center">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[#00C2CB] rounded-full mix-blend-multiply opacity-20 filter blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+            <div className="bg-primary-dark p-6 sm:p-10 lg:p-14 lg:w-1/3 relative overflow-hidden flex flex-col justify-center">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-secondary rounded-full mix-blend-multiply opacity-20 filter blur-3xl translate-x-1/2 -translate-y-1/2"></div>
                 
                 <h3 className="text-xl sm:text-2xl font-black text-white mb-6 sm:mb-8 relative z-10">Why Choose Us?</h3>
                 
@@ -300,7 +299,7 @@ export default function ServicesContent() {
                     {activeContent.benefits.map((benefit, idx) => (
                         <div key={idx} className="flex gap-3 sm:gap-4 items-center">
                             <div className="bg-white/10 rounded-full p-1.5 flex-shrink-0">
-                                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#00C2CB]" />
+                                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
                             </div>
                             <span className="text-white/90 text-[14px] sm:text-base font-bold leading-relaxed">{benefit}</span>
                         </div>
@@ -309,7 +308,7 @@ export default function ServicesContent() {
 
                 <div className="mt-10 sm:mt-14 pt-8 border-t border-white/10 relative z-10">
                     <p className="text-xs sm:text-sm text-[#d7e3fc] mb-3 font-bold uppercase tracking-widest">Need Immediate Help?</p>
-                    <a href="tel:+18326471819" className="text-white text-xl sm:text-2xl md:text-3xl font-black hover:text-[#00C2CB] transition-colors flex items-center gap-2">
+                    <a href="tel:+18326471819" className="text-white text-xl sm:text-2xl md:text-3xl font-black hover:text-secondary transition-colors flex items-center gap-2">
                         +1-832-647-1819
                     </a>
                 </div>

@@ -78,22 +78,22 @@ export default function CaseStudyClient() {
     <div className="bg-[#f7f9fc]">
       {/* SECTION 1: HERO BANNER */}
       <section className="relative min-h-[420px] sm:min-h-[520px] pt-28 sm:pt-32 pb-14 sm:pb-20 flex items-center justify-center hero-gradient overflow-hidden">
-        <div className="absolute -inset-10 bg-[#00C2CB]/5 blur-[100px] rounded-full"></div>
+        <div className="absolute -inset-10 bg-secondary/5 blur-[100px] rounded-full"></div>
         
         <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center">
           <nav className="flex justify-center items-center space-x-2 text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-6">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <ChevronRight className="w-3 h-3" />
-            <span className="text-[#00C2CB]">Case Studies</span>
+            <span className="text-secondary">Case Studies</span>
           </nav>
 
-          <div className="inline-flex items-center bg-[#00C2CB]/10 border border-[#00C2CB]/20 px-4 py-1.5 rounded-full mb-8">
-            <Sparkles className="w-4 h-4 text-[#00C2CB] mr-2" />
-            <span className="text-[#00C2CB] text-[10px] font-black uppercase tracking-[0.2em]">CLIENT SUCCESS STORIES</span>
+          <div className="inline-flex items-center bg-secondary/10 border border-secondary/20 px-4 py-1.5 rounded-full mb-8">
+            <Sparkles className="w-4 h-4 text-secondary mr-2" />
+            <span className="text-secondary text-[10px] font-black uppercase tracking-[0.2em]">CLIENT SUCCESS STORIES</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white leading-tight tracking-tighter mb-4 sm:mb-6 max-w-4xl mx-auto">
-            <span className="bg-gradient-to-r from-[#00C2CB] to-blue-400 bg-clip-text text-transparent">Real Results</span> for Real Businesses
+            <span className="bg-gradient-to-r from-secondary to-blue-400 bg-clip-text text-transparent">Real Results</span> for Real Businesses
           </h1>
 
           <p className="text-slate-400 text-base sm:text-lg md:text-xl font-light max-w-2xl mx-auto mb-8 sm:mb-12">
@@ -103,7 +103,7 @@ export default function CaseStudyClient() {
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center gap-3 sm:gap-4 mb-10 sm:mb-16">
             {stats.map((stat, index) => (
               <div key={index} className="bg-white/5 backdrop-blur-md border border-white/10 px-4 sm:px-6 py-3 sm:py-4 rounded-xl flex flex-col items-center">
-                <span className="text-[#00C2CB] text-2xl font-black tracking-tighter">{stat.value}</span>
+                <span className="text-secondary text-2xl font-black tracking-tighter">{stat.value}</span>
                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">{stat.label}</span>
               </div>
             ))}
@@ -116,8 +116,8 @@ export default function CaseStudyClient() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 ${
                   selectedCategory === cat
-                    ? 'bg-[#00C2CB] text-[#003580] shadow-lg shadow-[#00C2CB]/20'
-                    : 'border border-white/20 text-white hover:border-[#00C2CB]'
+                    ? 'bg-secondary text-primary-dark shadow-lg shadow-secondary/20'
+                    : 'border border-white/20 text-white hover:border-secondary'
                 }`}
               >
                 {cat}
@@ -140,10 +140,10 @@ export default function CaseStudyClient() {
                 fill
               />
               <div className="absolute inset-0 p-6 sm:p-12 flex flex-col justify-between">
-                <span className="self-start px-4 py-1.5 bg-[#003580]/80 backdrop-blur-md text-[#00C2CB] text-[10px] font-black uppercase tracking-[0.2em] border border-[#00C2CB]/30">
+                <span className="self-start px-4 py-1.5 bg-primary-dark/80 backdrop-blur-md text-secondary text-[10px] font-black uppercase tracking-[0.2em] border border-secondary/30">
                   Manufacturing Industry
                 </span>
-                <div className="bg-[#00C2CB]/90 p-5 sm:p-8 w-32 h-32 sm:w-48 sm:h-48 rounded-full flex flex-col items-center justify-center text-[#003580] shadow-2xl">
+                <div className="bg-secondary/90 p-5 sm:p-8 w-32 h-32 sm:w-48 sm:h-48 rounded-full flex flex-col items-center justify-center text-primary-dark shadow-2xl">
                   <span className="text-2xl sm:text-4xl font-black tracking-tighter leading-none">30%</span>
                   <span className="text-[10px] font-black uppercase tracking-widest text-center leading-tight mt-2">Reduction in Liability</span>
                 </div>
@@ -152,8 +152,8 @@ export default function CaseStudyClient() {
 
             <div className="lg:col-span-7 p-6 sm:p-12 lg:p-20 flex flex-col justify-center">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="h-px w-8 bg-[#00C2CB]"></div>
-                <span className="text-[#00C2CB] text-[11px] font-black uppercase tracking-[0.3em]">Featured Strategy</span>
+                <div className="h-px w-8 bg-secondary"></div>
+                <span className="text-secondary text-[11px] font-black uppercase tracking-[0.3em]">Featured Strategy</span>
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-white leading-tight tracking-tight mb-6 sm:mb-8">
                 Comprehensive Tax Strategy for Mid-Size Manufacturing Firm
@@ -172,7 +172,7 @@ export default function CaseStudyClient() {
                   <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest">IRS Compliant</span>
                 </div>
               </div>
-              <Link href="/contact" className="self-start group flex items-center bg-[#00C2CB] text-[#003580] px-10 py-4 rounded-lg font-black uppercase tracking-widest text-xs transition-all hover:scale-105 shadow-lg shadow-[#00C2CB]/20">
+              <Link href="/contact" className="self-start group flex items-center bg-secondary text-primary-dark px-10 py-4 rounded-lg font-black uppercase tracking-widest text-xs transition-all hover:scale-105 shadow-lg shadow-secondary/20">
                 View Full Case Study
                 <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-2" />
               </Link>
@@ -186,8 +186,8 @@ export default function CaseStudyClient() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 space-y-4">
             <div>
-              <span className="text-[#00C2CB] text-[11px] font-black uppercase tracking-[0.4em] mb-4 block">Proven Performance</span>
-              <h2 className="text-2xl sm:text-4xl font-black text-[#0047AB] tracking-tight">Projects We Have Done</h2>
+              <span className="text-secondary text-[11px] font-black uppercase tracking-[0.4em] mb-4 block">Proven Performance</span>
+              <h2 className="text-2xl sm:text-4xl font-black text-primary tracking-tight">Projects We Have Done</h2>
             </div>
             <div className="text-slate-500 text-sm max-w-xs font-light">
               A clinical review of recent institutional deployments across the financial spectrum.
@@ -206,15 +206,15 @@ export default function CaseStudyClient() {
                     {study.category}
                   </span>
                 </div>
-                <h3 className="text-xl font-black text-[#0047AB] tracking-tight leading-snug mb-6 flex-grow">
+                <h3 className="text-xl font-black text-primary tracking-tight leading-snug mb-6 flex-grow">
                   {study.title}
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
                   {study.desc}
                 </p>
-                <Link href="/contact" className="flex items-center text-[#0047AB] font-black uppercase tracking-[0.2em] text-[10px] group/link hover:text-[#00C2CB] transition-colors">
+                <Link href="/contact" className="flex items-center text-primary font-black uppercase tracking-[0.2em] text-[10px] group/link hover:text-secondary transition-colors">
                   View Case
-                  <ChevronRight className="w-4 h-4 ml-2 text-[#00C2CB] transition-transform group-hover/link:translate-x-1" />
+                  <ChevronRight className="w-4 h-4 ml-2 text-secondary transition-transform group-hover/link:translate-x-1" />
                 </Link>
               </div>
             ))}

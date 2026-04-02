@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getAllBlogPosts } from "@/data/blogData";
+import { mockBlogPosts } from "@/data/blogData";
+import { getAllBlogPosts } from "@/app/actions/blog";
 import BlogContent from "./BlogContent";
 
 export const metadata = {
@@ -12,12 +13,22 @@ export const metadata = {
   },
 };
 
-export default function BlogPage() {
-    const blogPosts = getAllBlogPosts();
+export default async function BlogPage() {
+    const dbPosts = await getAllBlogPosts();
+    
+    // Merge dbPosts with mockBlogPosts, preferring dbPosts if slugs overlap
+    const allPosts = [...dbPosts];
+    
+    // Add mock posts that don't exist in DB
+    mockBlogPosts.forEach(mockPost => {
+        if (!allPosts.find(p => p.slug === mockPost.slug)) {
+            allPosts.push(mockPost);
+        }
+    });
 
     return (
         <>
-            <BlogContent initialPosts={blogPosts} />
+            <BlogContent initialPosts={allPosts} />
 
             {/* Blog Schema */}
             <script
@@ -34,7 +45,7 @@ export default function BlogPage() {
                             name: "IntegraFin LLC",
                             logo: { "@type": "ImageObject", url: "https://integrafin.tax/logo.png" },
                         },
-                        blogPost: blogPosts.map((post) => ({
+                        blogPost: allPosts.map((post) => ({
                             "@type": "BlogPosting",
                             headline: post.title,
                             description: post.excerpt,

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { getAllBlogPosts, getBlogPostBySlug } from "@/data/blogData";
+import { mockBlogPosts, getBlogPostBySlug as getMockBlogPostBySlug } from "@/data/blogData";
+import { getBlogPostBySlug as getDbBlogPostBySlug, getAllBlogPosts } from "@/app/actions/blog";
 
 export async function generateStaticParams() {
     return getAllBlogPosts().map((post) => ({ slug: post.slug }));
@@ -9,15 +10,19 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const post = getBlogPostBySlug(slug);
+    const post = (await getDbBlogPostBySlug(slug)) || getMockBlogPostBySlug(slug);
     if (!post) return { title: "Blog Post Not Found" };
+
+    const description = post.contentHtml 
+        ? post.excerpt 
+        : (post.content?.[0]?.substring(0, 160) || post.excerpt);
 
     return {
         title: post.title,
-        description: post.content[0].substring(0, 160),
+        description: description,
         openGraph: {
             title: `${post.title} | IntegraFin Blog`,
-            description: post.content[0].substring(0, 160),
+            description: description,
             url: `https://integrafin.tax/blog/${slug}`,
             type: "article",
             publishedTime: post.date,
@@ -27,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const post = getBlogPostBySlug(slug);
+    const post = (await getDbBlogPostBySlug(slug)) || getMockBlogPostBySlug(slug);
 
     if (!post) {
         return (
@@ -75,11 +80,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                     {/* Content */}
                     <div className="prose prose-lg max-w-none">
-                        {post.content.map((paragraph, i) => (
-                            <p key={i} className="text-foreground/80 leading-relaxed mb-6 text-base">
-                                {paragraph}
-                            </p>
-                        ))}
+                        {post.contentHtml ? (
+                            <div 
+                                className="text-foreground/80 leading-relaxed mb-6 text-base blog-content-html"
+                                dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+                            />
+                        ) : (
+                            post.content?.map((paragraph: string, i: number) => (
+                                <p key={i} className="text-foreground/80 leading-relaxed mb-6 text-base">
+                                    {paragraph}
+                                </p>
+                            ))
+                        )}
                     </div>
 
                     {/* CTA */}
@@ -125,7 +137,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             name: "IntegraFin LLC",
                             logo: { "@type": "ImageObject", url: "https://integrafin.tax/logo.png" },
                         },
-                        description: post.content[0].substring(0, 160),
+                        description: post.excerpt || (post.content?.[0]?.substring(0, 160)),
                         mainEntityOfPage: `https://integrafin.tax/blog/${slug}`,
                     }),
                 }}

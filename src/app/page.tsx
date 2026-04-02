@@ -6,6 +6,8 @@ import {
 } from "lucide-react";
 import { homepageFaqSchema } from "@/lib/seo/schema";
 import IndustriesSection from "@/components/IndustriesSection";
+import TaxCalculator from "@/components/TaxCalculator";
+import HomeCallbackForm from "@/components/HomeCallbackForm";
 
 
 export const metadata = {
@@ -146,35 +148,17 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="relative hidden lg:block">
-            <div className="absolute -inset-10 bg-[#00C2CB]/10 blur-[100px] rounded-full"></div>
-            <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-2xl">
-              <div className="flex justify-between items-end mb-8">
-                <div>
-                  <div className="text-[#d7e3fc] text-xs font-bold uppercase tracking-widest">Q4 Projection</div>
-                  <div className="text-white text-3xl font-black mt-1">$4.2M Saved</div>
-                </div>
-                <TrendingUp className="text-[#00C2CB] text-4xl" />
-              </div>
-              <div className="space-y-4">
-                <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full bg-[#00C2CB] w-4/5"></div>
-                </div>
-                <div className="flex justify-between text-xs text-[#d7e3fc] font-medium uppercase">
-                  <span>Efficiency</span>
-                  <span>98.2%</span>
-                </div>
-              </div>
-              <div className="mt-12 grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-white/5 border border-white/5">
-                  <div className="text-[#00C2CB] text-xl font-bold">12k</div>
-                  <div className="text-white/60 text-[10px] uppercase font-bold mt-1">Audit Checks</div>
-                </div>
-                <div className="p-4 rounded-xl bg-white/5 border border-white/5">
-                  <div className="text-[#00C2CB] text-xl font-bold">0%</div>
-                  <div className="text-white/60 text-[10px] uppercase font-bold mt-1">Error Rate</div>
-                </div>
-              </div>
+          <div className="relative hidden lg:block animate-float-3d">
+            <div className="absolute -inset-10 bg-[#00C2CB]/20 blur-[100px] rounded-full opacity-50"></div>
+            <div className="relative z-10">
+              <Image 
+                src="/images/hero-float.png" 
+                alt="IntegraFin Elite Financial Architecture 3D Illustration" 
+                width={700} 
+                height={500} 
+                className="w-full h-auto rounded-2xl drop-shadow-[0_35px_35px_rgba(0,194,203,0.3)]"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -195,42 +179,7 @@ export default function Home() {
 
       {/* ========== TAX CALCULATOR ========== */}
       <section className="py-12 sm:py-24 px-4 sm:px-8 bg-[#003580] relative overflow-hidden text-left">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-2xl">
-          <div className="bg-white p-6 sm:p-12 lg:p-16">
-            <h2 className="text-[#0047AB] text-2xl sm:text-3xl font-black mb-4">Estimate Your <span className="text-[#00C2CB]">Tax Efficiency</span></h2>
-            <p className="text-[#45474c] mb-10 leading-relaxed">Input your annual revenue to see potential savings through our Integra-Optima™ framework.</p>
-            <form className="space-y-6">
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest text-[#45474c] mb-2">Annual Gross Revenue</label>
-                <input className="w-full bg-[#f2f4f7] border-none rounded-lg p-4 focus:ring-1 focus:ring-[#00C2CB] transition-all" placeholder="$5,000,000" type="text" />
-              </div>
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest text-[#45474c] mb-2">Current Tax Jurisdiction</label>
-                <select className="w-full bg-[#f2f4f7] border-none rounded-lg p-4 focus:ring-1 focus:ring-[#00C2CB] transition-all">
-                  <option>North America</option>
-                  <option>European Union</option>
-                  <option>APAC</option>
-                </select>
-              </div>
-              <button className="w-full bg-[#00C2CB] text-[#003580] py-4 rounded-lg font-bold uppercase tracking-widest hover:bg-[#33ced5] transition-colors mt-4">Calculate Potential Savings</button>
-            </form>
-          </div>
-          <div className="bg-[#003580] p-6 sm:p-12 lg:p-16 flex flex-col justify-center border-l border-white/5">
-            <div className="space-y-8">
-              <div className="text-[#d7e3fc] text-xs font-bold uppercase tracking-[0.3em]">Projected Advantage</div>
-              <div className="text-[#00C2CB] text-4xl sm:text-6xl font-black leading-none">$142,500.00*</div>
-              <p className="text-white/60 text-sm italic max-w-sm leading-relaxed">
-                *This estimate is based on average performance metrics for firms in your bracket. Actual results vary by industry and current structure.
-              </p>
-              <div className="pt-8 flex items-center gap-4 group cursor-pointer">
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#00C2CB]/20 transition-colors">
-                  <FileDown className="text-[#00C2CB]" />
-                </div>
-                <span className="text-white font-semibold group-hover:text-[#00C2CB] transition-colors">Download Detailed Savings Report</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <TaxCalculator />
       </section>
 
       {/* ========== WHY CHOOSE INTEGRAFIN ========== */}
@@ -345,24 +294,7 @@ export default function Home() {
           </div>
           <div className="md:w-1/2 p-6 sm:p-12 lg:p-16">
             <h3 className="text-[#0047AB] text-2xl sm:text-3xl font-black mb-6 sm:mb-8">Request a Free Callback</h3>
-            <form className="space-y-4">
-              <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Full Name" type="text" />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Email" type="email" />
-                <input className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Phone" type="tel" />
-              </div>
-              <select className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#45474c] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all">
-                <option>Enquiry Type</option>
-                <option>Corporate Tax</option>
-                <option>Individual Filing</option>
-                <option>Audit Representation</option>
-              </select>
-              <textarea className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" placeholder="Message" rows={4}></textarea>
-              <button className="w-full bg-[#00C2CB] text-[#003580] py-5 rounded-lg font-black uppercase tracking-[0.2em] shadow-lg shadow-[#00C2CB]/20 hover:bg-[#33ced5] transition-all">Request Callback</button>
-              <div className="pt-4 text-center">
-                <p className="text-xs text-[#45474c]">Prefer to call? <span className="text-[#0047AB] font-bold">1-800-INTEGRA</span> • Available 24/7</p>
-              </div>
-            </form>
+            <HomeCallbackForm />
           </div>
         </div>
       </section>

@@ -53,7 +53,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                 }
             `}</style>
             {/* SECTION 1: BLOG HERO BANNER */}
-            <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-[#0047AB] overflow-hidden">
+            <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-primary overflow-hidden">
                 <div className="absolute inset-0 bg-secondary/5 grid-texture pointer-events-none opacity-10"></div>
                 <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 blur-[120px] rounded-full"></div>
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
@@ -94,7 +94,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
             {/* SECTION 2: FEATURED POST */}
             {featuredPost && (
-                <section className="bg-[#003580] py-12 sm:py-20">
+                <section className="bg-primary-dark py-12 sm:py-20">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6">
                         <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-12 group overflow-hidden bg-white/5 rounded-2xl shadow-2xl border border-white/10 p-5 sm:p-8">
                             <div className="lg:w-1/2 w-full overflow-hidden rounded-xl relative h-[250px] sm:h-[400px]">
@@ -106,7 +106,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
                                 ) : (
-                                    <div className="w-full h-full bg-gradient-to-br from-secondary/20 to-[#0047AB] flex items-center justify-center">
+                                    <div className="w-full h-full bg-gradient-to-br from-secondary/20 to-primary flex items-center justify-center">
                                         <CornerDownRight className="w-12 h-12 text-secondary/30" />
                                     </div>
                                 )}
@@ -137,7 +137,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                 </div>
                                 <Link
                                     href={`/blog/${featuredPost.slug}`}
-                                    className="inline-flex items-center gap-2 bg-secondary text-[#003580] px-8 py-3.5 rounded-lg font-label font-black tracking-widest uppercase text-xs hover:bg-[#33ced5] transition-colors"
+                                    className="inline-flex items-center gap-2 bg-secondary text-primary-dark px-8 py-3.5 rounded-lg font-label font-black tracking-widest uppercase text-xs hover:bg-[#33ced5] transition-colors"
                                 >
                                     Read Full Strategy
                                     <ArrowRight className="w-4 h-4" />
@@ -166,7 +166,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                             className="object-cover"
                                         />
                                     ) : (
-                                        <div className="w-full h-full bg-gradient-to-br from-secondary/10 to-[#0047AB]/10 flex items-center justify-center">
+                                        <div className="w-full h-full bg-gradient-to-br from-secondary/10 to-primary/10 flex items-center justify-center">
                                             <CornerDownRight className="w-12 h-12 text-secondary/30" />
                                         </div>
                                     )}
@@ -176,7 +176,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                         <span>{post.category}</span>
                                         <span>{post.date}</span>
                                     </div>
-                                    <h3 className="font-headline text-2xl text-[#0047AB] mb-4 hover:text-secondary transition-colors">
+                                    <h3 className="font-headline text-2xl text-primary mb-4 hover:text-secondary transition-colors">
                                         {post.title}
                                     </h3>
                                     <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">
@@ -186,7 +186,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                         <span className="text-slate-400 text-xs">{post.readTime}</span>
                                         <Link
                                             href={`/blog/${post.slug}`}
-                                            className="text-secondary font-black text-xs uppercase tracking-widest hover:text-[#0047AB] transition-colors inline-flex items-center gap-1"
+                                            className="text-secondary font-black text-xs uppercase tracking-widest hover:text-primary transition-colors inline-flex items-center gap-1"
                                         >
                                             Read More
                                             <ArrowRight className="w-3 h-3" />
@@ -198,7 +198,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
                         {/* Newsletter Card In Grid */}
                         {gridPosts.length > 0 && (
-                            <div className="bg-[#003580] rounded-2xl p-6 sm:p-10 flex flex-col justify-center items-center text-center relative overflow-hidden">
+                            <div className="bg-primary-dark rounded-2xl p-6 sm:p-10 flex flex-col justify-center items-center text-center relative overflow-hidden">
                                 <div className="absolute inset-0 bg-secondary/5 radial-gradient"></div>
                                 <Mail className="w-12 h-12 text-secondary mb-6" />
                                 <h3 className="font-headline text-3xl text-white mb-4">Want More Insights?</h3>
@@ -213,7 +213,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
             </section>
 
             {/* SECTION 4: NEWSLETTER BANNER */}
-            <section className="py-12 sm:py-24 bg-[#0047AB] relative overflow-hidden">
+            <section className="py-12 sm:py-24 bg-primary relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-secondary/10 blur-[150px] rounded-full"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
                     <h2 className="font-headline text-3xl sm:text-5xl text-white mb-4 sm:mb-6">Never Miss a Tax Update</h2>
@@ -242,7 +242,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {categories.filter(c => c !== "All").map((cat) => (
                                     <div key={cat} className="p-8 bg-white border-l-4 border-secondary shadow-sm hover:shadow-md transition-shadow cursor-pointer" onClick={() => setSelectedCategory(cat)}>
-                                        <h4 className="font-headline text-xl text-[#0047AB] mb-2">{cat}</h4>
+                                        <h4 className="font-headline text-xl text-primary mb-2">{cat}</h4>
                                         <p className="text-slate-500 text-sm">Expert insights and updates related to {cat.toLowerCase()}.</p>
                                     </div>
                                 ))}
@@ -252,7 +252,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                         {/* Sidebar */}
                         <aside className="lg:w-1/3 space-y-12">
                             {/* CTA Card 1 */}
-                            <div className="bg-[#003580] p-6 sm:p-10 rounded-2xl relative overflow-hidden group">
+                            <div className="bg-primary-dark p-6 sm:p-10 rounded-2xl relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-secondary/20 -translate-y-1/2 translate-x-1/2 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                                 <h4 className="text-white font-headline text-2xl mb-4">Need Tax Help?</h4>
                                 <p className="text-slate-300 text-sm mb-8">Schedule a 15-minute diagnostic session with our lead architects.</p>
@@ -263,7 +263,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
                             {/* CTA Card 2 */}
                             <div className="bg-slate-50 p-6 sm:p-10 rounded-2xl border-t-4 border-secondary">
-                                <h4 className="text-[#0047AB] font-headline text-2xl mb-4">Tax Estimator</h4>
+                                <h4 className="text-primary font-headline text-2xl mb-4">Tax Estimator</h4>
                                 <p className="text-slate-600 text-sm mb-8">Utilize our proprietary engine to calculate your projected 2025 liability.</p>
                                 <button className="w-full py-3.5 bg-secondary text-[#003580] text-[10px] font-black uppercase tracking-widest rounded flex items-center justify-center gap-2 hover:bg-[#33ced5] transition-colors">
                                     <Calculator className="w-4 h-4" />
@@ -273,7 +273,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
                             {/* Quick Links */}
                             <div>
-                                <h4 className="font-label text-xs font-black text-[#0047AB] uppercase tracking-[0.3em] mb-6 border-b border-slate-200 pb-2">Resource Library</h4>
+                                <h4 className="font-label text-xs font-black text-primary uppercase tracking-[0.3em] mb-6 border-b border-slate-200 pb-2">Resource Library</h4>
                                 <ul className="space-y-4">
                                     {["Whitepapers", "Compliance Checklists", "Case Studies", "Webinar Archives"].map((link) => (
                                         <li key={link}>

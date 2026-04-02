@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Mail, MessageSquare, MapPin, Phone, ShieldCheck, ArrowRight } from "lucide-react";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
   title: 'Contact IntegraFin | Tax Accountant Katy TX',
@@ -45,47 +46,7 @@ export default function ContactPage() {
                         <div className="absolute top-0 right-0 w-32 h-32 bg-[#00C2CB]/5 rounded-bl-full"></div>
                         <h2 className="text-3xl font-extrabold text-[#003580] tracking-tight mb-2">How Can We Help You?</h2>
                         <p className="text-gray-600 text-sm mb-10 font-light">Fill out the form below, and a tax advisor will reach out to you within 24 hours.</p>
-                        <form className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-1">
-                                    <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Full Name</label>
-                                    <input className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="John Doe" type="text" />
-                                </div>
-                                <div className="space-y-1">
-                                    <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Email Address</label>
-                                    <input className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="john@example.com" type="email" />
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-1">
-                                    <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Phone</label>
-                                    <input className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="+1 (000) 000-0000" type="tel" />
-                                </div>
-                                <div className="space-y-1">
-                                    <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Company Name (Optional)</label>
-                                    <input className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="Your Firm LLC" type="text" />
-                                </div>
-                            </div>
-                            <div className="space-y-1">
-                                <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Enquiry Type</label>
-                                <select className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg appearance-none">
-                                    <option>Individual Taxes</option>
-                                    <option>Business Bookkeeping and Taxes</option>
-                                    <option>New Business Formation</option>
-                                    <option>Tax Expert Bookkeeping Outsourcing</option>
-                                    <option>Partnership LLC / Single Member LLC Inquiries</option>
-                                    <option>Other Enquiry</option>
-                                </select>
-                            </div>
-                            <div className="space-y-1">
-                                <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Message</label>
-                                <textarea className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" placeholder="How can our experts assist you today?" rows={4}></textarea>
-                            </div>
-                            <button className="w-full md:w-auto bg-[#00C2CB] text-[#003580] px-12 py-4 rounded-lg font-black text-xs uppercase tracking-[0.2em] hover:brightness-105 transition-all shadow-lg flex items-center justify-center gap-2" type="submit">
-                                Request Call Back
-                                <ArrowRight className="w-4 h-4" />
-                            </button>
-                        </form>
+                        <ContactForm />
                     </div>
 
                     {/* Right Column: Info */}

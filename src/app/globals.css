@@ -25,6 +25,19 @@
   --color-lavender: var(--lavender);
   --color-text-secondary: var(--text-secondary);
   --color-section-bg: var(--section-bg);
+  
+  /* Additional design tokens for compatibility */
+  --color-secondary: var(--accent);
+  --color-surface: var(--background);
+  --color-on-surface: var(--foreground);
+  --color-on-primary-container: #D7E3FC;
+  --color-surface-container-low: #F9FAFB;
+  --color-primary-gold: #D4A017;
+  
+  /* Font Aliases */
+  --font-headline: var(--font-inter);
+  --font-body: var(--font-inter);
+  --font-label: var(--font-inter);
   --font-sans: var(--font-inter);
 }
 
@@ -125,16 +138,20 @@ body {
   }
 }
 
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
   }
-
-  50% {
-    transform: translateY(-10px);
+  25% {
+    transform: translateY(-15px) rotate(1deg) scale(1.02);
   }
+  75% {
+    transform: translateY(10px) rotate(-1deg) scale(0.98);
+  }
+}
+
+.animate-float-3d {
+  animation: float-3d 8s ease-in-out infinite;
 }
 
 @keyframes pulse-soft {

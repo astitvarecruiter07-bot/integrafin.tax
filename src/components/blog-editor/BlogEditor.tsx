@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Bold, Italic, Link as LinkIcon, Image as ImageIcon, Heading2, Heading3, Code, List, ListOrdered, Quote } from 'lucide-react';
 import { sanitizeHtml, generateBlogJsonLd, BlogPayload } from '@/utils/seo';
 import type { BlogPost } from '@/data/blogData';
+import { saveBlogPost } from '@/app/actions/blog';
+import { useRouter } from 'next/navigation';
 
 interface BlogEditorProps {
     initialData?: BlogPost | null;
@@ -16,12 +18,19 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
     const [slug, setSlug] = useState(initialData?.slug || '');
     const [slugOverride, setSlugOverride] = useState(!!initialData);
     const [htmlContent, setHtmlContent] = useState('');
+    const [isSaving, setIsSaving] = useState(false);
     const editorRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     // Initialize editor content once
     useEffect(() => {
         if (editorRef.current && initialData && !editorRef.current.innerHTML) {
-            const initialHtml = initialData.content.map(p => `<p>${p}</p>`).join('');
+            let initialHtml = '';
+            if (initialData.contentHtml) {
+                initialHtml = initialData.contentHtml;
+            } else if (initialData.content) {
+                initialHtml = initialData.content.map(p => `<p>${p}</p>`).join('');
+            }
             editorRef.current.innerHTML = initialHtml;
             setHtmlContent(initialHtml);
         }
@@ -125,23 +134,33 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
     };
 
     // Save and Generate Output
-    const handleSave = () => {
-        const sanitizedContent = sanitizeHtml(htmlContent);
-        const payload: BlogPayload = {
-            title: title || 'Untitled',
-            description: metaDescription,
-            slug: slug,
-            publishDate: new Date().toISOString(),
-            author: { name: 'Admin User' }, // Replace with real auth user
-            contentHtml: sanitizedContent
-        };
+    const handleSave = async () => {
+        setIsSaving(true);
+        try {
+            const sanitizedContent = sanitizeHtml(htmlContent);
+            const payload = {
+                title: title || 'Untitled',
+                excerpt: metaDescription,
+                slug: slug,
+                contentHtml: sanitizedContent,
+                author: { name: 'Admin User' }
+            };
 
-        const jsonLd = generateBlogJsonLd(payload);
+            const result = await saveBlogPost(payload);
 
-        console.log("FINAL SECURE PAYLOAD:", JSON.stringify(payload, null, 2));
-        console.log("JSON-LD MARKUP:", JSON.stringify(jsonLd, null, 2));
-
-        alert("Blog Post saved successfully! Check console for detailed payload and JSON-LD schema.");
+            if (result.success) {
+                alert("Blog Post saved successfully to the database!");
+                router.push('/blog');
+                router.refresh();
+            } else {
+                alert("Failed to save blog post: " + result.error);
+            }
+        } catch (error) {
+            console.error("Save error:", error);
+            alert("An error occurred while saving the blog post.");
+        } finally {
+            setIsSaving(false);
+        }
     };
 
     return (
@@ -276,9 +295,10 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
                     <div className="mt-8">
                         <button
                             onClick={handleSave}
-                            className="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
+                            disabled={isSaving}
+                            className={`w-full text-white font-bold py-4 rounded-xl transition-colors shadow-sm ${isSaving ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
                         >
-                            Save & Publish
+                            {isSaving ? 'Saving...' : 'Save & Publish'}
                         </button>
                     </div>
                 </div>

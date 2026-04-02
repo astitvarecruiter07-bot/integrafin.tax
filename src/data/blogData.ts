@@ -5,7 +5,8 @@ export interface BlogPost {
     category: string;
     date: string;
     readTime: string;
-    content: string[];
+    content?: string[];
+    contentHtml?: string;
     featured?: boolean;
     image?: string;
 }

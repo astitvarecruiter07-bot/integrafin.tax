@@ -18,7 +18,7 @@ export default function AboutPage() {
     return (
         <main className="pt-20">
             {/* Hero Section */}
-            <section className="relative min-h-[400px] sm:min-h-[600px] flex items-center overflow-hidden bg-[#003580]">
+            <section className="relative min-h-[400px] sm:min-h-[600px] flex items-center overflow-hidden bg-primary-dark">
                 <div className="absolute inset-0 opacity-20">
                     <Image 
                         className="w-full h-full object-cover" 
@@ -28,10 +28,10 @@ export default function AboutPage() {
                         priority
                     />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#003580] via-[#003580]/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/80 to-transparent"></div>
                 <div className="relative max-w-7xl mx-auto px-5 sm:px-8 w-full py-12 sm:py-0">
                     <div className="max-w-3xl space-y-8">
-                        <span className="inline-block bg-[#00C2CB]/20 text-[#97f0ff] border border-[#00C2CB]/30 px-4 py-1 text-[10px] font-black tracking-[0.3em] uppercase rounded-full">
+                        <span className="inline-block bg-secondary/20 text-[#97f0ff] border border-secondary/30 px-4 py-1 text-[10px] font-black tracking-[0.3em] uppercase rounded-full">
                             Trusted Tax & Accounting Professionals
                         </span>
                         <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] transition-all">
@@ -41,7 +41,7 @@ export default function AboutPage() {
                             IntegraFin is a trusted leader in tax and accounting services, committed to delivering accuracy and compliance for businesses.
                         </p>
                         <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
-                            <Link href="/contact" className="bg-[#00C2CB] text-[#001f24] px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm shadow-xl shadow-[#00C2CB]/20 hover:scale-105 transition-transform text-center">
+                            <Link href="/contact" className="bg-secondary text-[#001f24] px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm shadow-xl shadow-secondary/20 hover:scale-105 transition-transform text-center">
                                 Contact Us
                             </Link>
                             <Link href="/services" className="border border-white/30 text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-white/5 transition-colors text-center">
@@ -53,11 +53,11 @@ export default function AboutPage() {
             </section>
 
             {/* About Company Content */}
-            <section className="py-12 sm:py-24 bg-[#f7f9fc]">
+            <section className="py-12 sm:py-24 bg-section-bg">
                 <div className="max-w-7xl mx-auto px-5 sm:px-8">
                     <div className="grid lg:grid-cols-12 gap-16 items-center">
                         <div className="lg:col-span-7 space-y-8">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#003580] tracking-tighter">Committed to Accuracy and Compliance</h2>
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-primary-dark tracking-tighter">Committed to Accuracy and Compliance</h2>
                             <div className="space-y-6 text-base sm:text-lg text-[#45474c] font-light leading-relaxed">
                                 <p>
                                     At IntegraFin, we are dedicated to providing comprehensive tax, accounting, and business advisory services tailored to meet the unique needs of individuals and businesses. With a team of highly skilled tax experts and financial professionals, we bring years of expertise in tax compliance, bookkeeping, payroll, and financial planning.
@@ -68,7 +68,7 @@ export default function AboutPage() {
                             </div>
                         </div>
                         <div className="lg:col-span-5 relative">
-                            <div className="aspect-square bg-[#003580] rounded-2xl overflow-hidden shadow-2xl">
+                            <div className="aspect-square bg-primary-dark rounded-2xl overflow-hidden shadow-2xl">
                                 <Image 
                                     className="w-full h-full object-cover grayscale contrast-125 opacity-80" 
                                     alt="professional consultants reviewing documents in an office" 
@@ -77,7 +77,7 @@ export default function AboutPage() {
                                     height={600}
                                 />
                             </div>
-                            <div className="absolute -bottom-6 -left-6 bg-[#00C2CB] p-4 sm:p-8 rounded-xl shadow-2xl hidden sm:block">
+                            <div className="absolute -bottom-6 -left-6 bg-secondary p-4 sm:p-8 rounded-xl shadow-2xl hidden sm:block">
                                 <Target className="text-white w-10 h-10" />
                             </div>
                         </div>
@@ -86,13 +86,13 @@ export default function AboutPage() {
             </section>
 
             {/* Mission & Approach */}
-            <section className="py-12 sm:py-24 bg-[#f2f4f7]">
+            <section className="py-12 sm:py-24 bg-lavender">
                 <div className="max-w-7xl mx-auto px-5 sm:px-8">
                     <div className="grid md:grid-cols-2 gap-8">
                         {/* Mission */}
                         <div className="group relative bg-white p-6 sm:p-12 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                            <div className="absolute top-0 right-0 w-32 h-32 bg-[#00C2CB]/5 rounded-full -mr-16 -mt-16 transition-all group-hover:scale-150 group-hover:bg-[#00C2CB]/10"></div>
-                            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#003580] mb-4 sm:mb-6 tracking-tighter">Our Mission</h3>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full -mr-16 -mt-16 transition-all group-hover:scale-150 group-hover:bg-secondary/10"></div>
+                            <h3 className="text-2xl sm:text-3xl font-extrabold text-primary-dark mb-4 sm:mb-6 tracking-tighter">Our Mission</h3>
                             <p className="text-[#45474c] text-base sm:text-lg font-light leading-relaxed">
                                 Our mission is to simplify tax and accounting complexities, enabling businesses and individuals to maximize deductions, optimize financial strategies, and stay compliant with evolving tax regulations. We aim to be a trusted partner in your financial success, offering seamless support with precision, integrity, and reliability.
                             </p>
