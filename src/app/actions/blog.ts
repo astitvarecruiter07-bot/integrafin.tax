@@ -33,9 +33,9 @@ export async function saveBlogPost(payload: {
     revalidatePath(`/blog/${slug}`);
 
     return { success: true, data: JSON.parse(JSON.stringify(blogPost)) };
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error saving blog post:', error);
-    return { success: false, error: error.message || 'Failed to save blog post' };
+    return { success: false, error: error instanceof Error ? error.message : 'Failed to save blog post' };
   }
 }
 

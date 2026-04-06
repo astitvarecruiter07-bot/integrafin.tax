@@ -258,7 +258,7 @@ export default function Home() {
                     {[...Array(5)].map((_, j) => <Star key={j} className="w-3 h-3 fill-current" />)}
                   </div>
                 </div>
-                <p className="text-[#191c1e] text-sm italic mb-6 leading-relaxed flex-grow">"{t.quote}"</p>
+                <p className="text-[#191c1e] text-sm italic mb-6 leading-relaxed flex-grow">&quot;{t.quote}&quot;</p>
                 <div className="font-bold text-xs uppercase tracking-widest text-[#0047AB] mt-auto">{t.role}</div>
               </div>
             ))}

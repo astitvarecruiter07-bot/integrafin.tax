@@ -17,8 +17,8 @@ async function checkConnection() {
     }
     
     process.exit(0);
-  } catch (error: any) {
-    console.error('Connection Error ❌:', error.message);
+  } catch (error) {
+    console.error('Connection Error ❌:', error instanceof Error ? error.message : String(error));
     process.exit(1);
   }
 }

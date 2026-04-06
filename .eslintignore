@@ -1,0 +1,6 @@
+node_modules
+.next
+out
+check_db.ts
+check_db_v2.js
+lint_output.txt

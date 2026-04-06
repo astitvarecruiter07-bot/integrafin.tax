@@ -37,7 +37,7 @@ export async function submitLead(data: LeadInput) {
       message: 'Thank you! Your request has been submitted successfully. A tax expert will contact you shortly.',
       leadId: newLead._id.toString(),
     };
-  } catch (error: any) {
+  } catch (error) {
     console.error('Lead submission error:', error);
     
     if (error instanceof z.ZodError) {
@@ -59,7 +59,7 @@ export async function getLeads() {
     await dbConnect();
     const leads = await ContactLead.find({}).sort({ createdAt: -1 }).lean();
     return JSON.parse(JSON.stringify(leads));
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error fetching leads:', error);
     return [];
   }

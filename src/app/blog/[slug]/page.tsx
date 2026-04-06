@@ -5,7 +5,8 @@ import { mockBlogPosts, getBlogPostBySlug as getMockBlogPostBySlug } from "@/dat
 import { getBlogPostBySlug as getDbBlogPostBySlug, getAllBlogPosts } from "@/app/actions/blog";
 
 export async function generateStaticParams() {
-    return getAllBlogPosts().map((post) => ({ slug: post.slug }));
+    const posts = await getAllBlogPosts();
+    return posts.map((post: any) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
