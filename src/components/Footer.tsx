@@ -56,7 +56,7 @@ export default function Footer() {
                     <div>
                         <Link href="/" className="inline-block mb-4">
                             <Image
-                                src="/logo.png"
+                                src="/images/logo1.png"
                                 alt="IntegraFin Tax Expert Katy TX - Tax and Accounting Services"
                                 width={150}
                                 height={38}

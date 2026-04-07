@@ -4,11 +4,11 @@
 :root {
   --background: #FFFFFF;
   --foreground: #2D3748;
-  --primary: #0047AB;
-  --primary-dark: #003580;
+  --primary: #0067b3;
+  --primary-dark: #005696;
   --accent: #00C2CB;
   --accent-light: rgba(0, 194, 203, 0.1);
-  --accent-dark: #003580;
+  --accent-dark: #0047AB;
   --lavender: #F5F7FA;
   --text-secondary: #6B7280;
   --section-bg: #F5F7FA;

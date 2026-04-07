@@ -53,7 +53,7 @@ export const organizationSchema = {
   "name": "IntegraFin",
   "alternateName": "IntegraFin Tax & Accounting",
   "url": "https://integrafin.tax",
-  "logo": "https://integrafin.tax/logo.png",
+  "logo": "https://integrafin.tax/logo.svg",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+1-832-647-1819",

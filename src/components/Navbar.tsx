@@ -36,23 +36,23 @@ export default function Navbar() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "py-2" : "py-4"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "py-0.5" : "py-1"
                 }`}
         >
             <nav
-                className={`max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between transition-all duration-300 ${scrolled
-                    ? "bg-white/95 backdrop-blur-md shadow-lg py-2.5 sm:py-3 rounded-full"
-                    : "bg-[#0047AB] text-white shadow-2xl shadow-[#0047AB]/20 py-2 sm:py-4 w-full max-w-none px-4 sm:px-8 rounded-none border-t border-[#00C2CB]"
+                className={`max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between transition-all duration-300 rounded-full border border-slate-200/50 shadow-lg ${scrolled
+                    ? "bg-white/95 backdrop-blur-md py-1 sm:py-1.5"
+                    : "bg-white py-1.5 sm:py-2 mt-2"
                     }`}
             >
                 {/* Logo */}
                 <Link href="/" className="flex-shrink-0 relative z-10">
                     <Image
-                        src="/logo.png"
+                        src="/images/logo1.png"
                         alt="IntegraFin Tax Expert Katy TX - Tax and Accounting Services"
                         width={120}
                         height={32}
-                        className={`h-5 sm:h-6 w-auto max-w-[100px] sm:max-w-[140px] transition-all duration-300 ${!scrolled ? 'mix-blend-screen' : ''}`}
+                        className={`h-6 sm:h-8 w-auto max-w-[120px] sm:max-w-[160px] transition-all duration-300`}
                         priority
                     />
                 </Link>
@@ -63,11 +63,11 @@ export default function Navbar() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={`text-sm font-medium transition-colors duration-200 ${pathname === link.href
-                                    ? "text-[#00C2CB]"
-                                    : !scrolled
-                                        ? "text-white/90 hover:text-[#00C2CB]"
-                                        : "text-foreground/80 hover:text-primary"
+                            className={`text-sm font-semibold transition-colors duration-200 ${pathname === link.href
+                                ? "text-[#0047AB]"
+                                : !scrolled
+                                    ? "text-slate-600 hover:text-[#0047AB]"
+                                    : "text-slate-700 hover:text-primary"
                                 }`}
                         >
                             {link.label}
@@ -78,8 +78,8 @@ export default function Navbar() {
                 {/* CTA Button */}
                 <Link
                     href="/contact"
-                    className={`hidden md:inline-flex items-center px-6 py-2.5 text-sm font-semibold rounded-full transition-colors duration-200 ${!scrolled
-                        ? "bg-[#00C2CB] text-[#003580] hover:bg-[#33ced5]"
+                    className={`hidden md:inline-flex items-center px-5 py-1.5 text-sm font-semibold rounded-full transition-colors duration-200 ${!scrolled
+                        ? "bg-[#0047AB] text-white hover:bg-[#003580]"
                         : "bg-accent-dark text-white hover:bg-primary"
                         }`}
                 >
@@ -89,7 +89,7 @@ export default function Navbar() {
                 {/* Mobile Toggle */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`md:hidden relative z-10 p-2 ${!scrolled ? 'text-white' : 'text-foreground'}`}
+                    className={`md:hidden relative z-10 p-2 ${!scrolled ? 'text-slate-800' : 'text-slate-800'}`}
                     aria-label="Toggle navigation menu"
                 >
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

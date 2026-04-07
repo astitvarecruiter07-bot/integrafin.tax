@@ -43,7 +43,7 @@ export default async function BlogPage() {
                         publisher: {
                             "@type": "Organization",
                             name: "IntegraFin LLC",
-                            logo: { "@type": "ImageObject", url: "https://integrafin.tax/logo.png" },
+                            logo: { "@type": "ImageObject", url: "https://integrafin.tax/logo.svg" },
                         },
                         blogPost: allPosts.map((post) => ({
                             "@type": "BlogPosting",
