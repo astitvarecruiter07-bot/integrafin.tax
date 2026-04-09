@@ -88,7 +88,7 @@ export default function Navbar() {
 
                 {/* Mobile Toggle */}
                 <button
-                    onClick={() => setIsOpen(!isOpen)}
+                    onClick={() => setIsOpen(!isOpen)} 
                     className={`md:hidden relative z-10 p-2 ${!scrolled ? 'text-slate-800' : 'text-slate-800'}`}
                     aria-label="Toggle navigation menu"
                 >

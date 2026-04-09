@@ -116,51 +116,62 @@ export default function Home() {
       <header className="pt-24 lg:pt-32 pb-12 sm:pb-20 hero-gradient min-h-[600px] sm:min-h-[700px] lg:min-h-[921px] flex items-center overflow-hidden text-left">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[60%_40%] gap-8 lg:gap-16 items-center">
           <div className="space-y-8">
-            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#00C2CB]/10 border border-[#00C2CB]/30">
-              <span className="text-[#00C2CB] text-xs font-bold tracking-[0.2em] uppercase">Elite Financial Architecture</span>
-            </div>
-            <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1]">
-              Tax Accountant <br />
-              <span className="text-[#00C2CB]">&</span> Bookkeeping Services.
+            <h1 className="text-[#003580] text-3xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1]">
+              Tax Filing and <br />
+              <span className="text-[#0067b3]">Bookkeeping</span> Services
             </h1>
-            <p className="text-[#d7e3fc] text-base sm:text-lg max-w-xl leading-relaxed">
-              Are you looking for trusted bookkeeping? IntegraFin architecturally designs tax outcomes to preserve capital, accelerate growth, and eliminate IRS stress with 100% accurate preparation.
+            <p className="text-[#45474c] text-base sm:text-lg max-w-xl leading-relaxed">
+              Taxes and accounting can feel overwhelming—but that&apos;s where we come in. We support both individuals and businesses with reliable, stress-free financial services, ensuring everything is handled accurately and on time.
             </p>
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-[#0067b3] mt-0.5 flex-shrink-0" />
+                <span className="text-[#45474c] text-sm sm:text-base font-medium">Individual and business tax filing handled with care</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-[#0067b3] mt-0.5 flex-shrink-0" />
+                <span className="text-[#45474c] text-sm sm:text-base font-medium">Clean, accurate bookkeeping you can trust</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-[#0067b3] mt-0.5 flex-shrink-0" />
+                <span className="text-[#45474c] text-sm sm:text-base font-medium">Smart tax planning to help you save more</span>
+              </li>
+            </ul>
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
-              <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-widest shadow-lg shadow-[#00C2CB]/20 hover:scale-105 transition-transform text-center">
+              <Link href="/contact" className="bg-[#0047AB] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-widest shadow-lg shadow-[#0047AB]/20 hover:scale-105 transition-transform text-center">
                 Schedule Consultation
               </Link>
-              <Link href="/case-study" className="border border-white/30 text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-widest hover:bg-white/5 transition-colors text-center">
+              <Link href="/case-study" className="border border-[#0047AB]/40 text-[#0047AB] px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-widest hover:bg-[#0047AB]/5 transition-colors text-center">
                 View Case Studies
               </Link>
             </div>
-            <div className="flex items-center gap-4 sm:gap-8 pt-8 sm:pt-12 border-t border-white/10">
+            <div className="flex items-center gap-4 sm:gap-8 pt-8 sm:pt-12 border-t border-[#0047AB]/10">
               <div className="flex -space-x-3">
                 {testimonials.slice(0, 3).map((t, i) => (
-                  <div key={i} className="relative w-12 h-12 rounded-full border-2 border-[#0047AB] overflow-hidden">
+                  <div key={i} className="relative w-12 h-12 rounded-full border-2 border-[#0047AB]/30 overflow-hidden">
                     <Image src={t.avatar} alt={`IntegraFin Client ${i + 1}`} fill className="object-cover" sizes="48px" />
                   </div>
                 ))}
               </div>
               <div>
-                <div className="text-white font-bold text-sm sm:text-lg leading-tight">Trusted by 500+ Corporations</div>
-                <div className="text-[#d7e3fc] text-xs sm:text-sm">Averaging 24% tax liability reduction</div>
+                <div className="text-[#003580] font-bold text-sm sm:text-lg leading-tight">Trusted by 500+ Corporations</div>
+                <div className="text-[#45474c] text-xs sm:text-sm">Averaging 24% tax liability reduction</div>
               </div>
             </div>
           </div>
-          <div className="relative hidden lg:block animate-float-3d">
-            <div className="absolute -inset-10 bg-[#00C2CB]/20 blur-[100px] rounded-full opacity-50"></div>
-            <div className="relative z-10">
-              <Image 
-                src="/images/hero-float.png" 
-                alt="IntegraFin Elite Financial Architecture 3D Illustration" 
-                width={700} 
-                height={500} 
-                className="w-full h-auto rounded-2xl drop-shadow-[0_35px_35px_rgba(0,194,203,0.3)]"
-                priority
-              />
+            <div className="relative hidden lg:block">
+              <div className="absolute -inset-10 bg-[#0067b3]/10 blur-[100px] rounded-full opacity-50"></div>
+              <div className="relative z-10">
+                <Image
+                  src="/A_professional,_wide-angle_202604082301.png"
+                  alt="Professional tax filing and bookkeeping illustration"
+                  width={700}
+                  height={500}
+                  className="w-full h-auto rounded-2xl"
+                  priority
+                />
+              </div>
             </div>
-          </div>
         </div>
       </header>
 

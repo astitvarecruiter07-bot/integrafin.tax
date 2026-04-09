@@ -231,12 +231,9 @@ export default function ServicesContent() {
             
             {/* Left Col: Details */}
             <div className="p-5 sm:p-10 lg:p-14 lg:w-2/3 flex flex-col pt-8 sm:pt-12 key={activeTab}">
-                <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 mb-6 w-fit">
-                    <span className="text-secondary text-[10px] sm:text-xs font-bold tracking-widest uppercase">{activeContent.label}</span>
-                </div>
                 
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-primary tracking-tight mb-4 sm:mb-6">
-                    {activeContent.title}
+                    {activeContent.label}
                 </h2>
                 <div className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed mb-6 sm:mb-10 space-y-4">
                     {activeContent.description.split('. ').map((sentence, idx) => (
