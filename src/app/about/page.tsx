@@ -41,7 +41,7 @@ export default function AboutPage() {
                             IntegraFin is a trusted leader in tax and accounting services, committed to delivering accuracy and compliance for businesses.
                         </p>
                         <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
-                            <Link href="/contact" className="bg-secondary text-[#001f24] px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm shadow-xl shadow-secondary/20 hover:scale-105 transition-transform text-center">
+                            <Link href="/contact" className="bg-secondary text-[#003580] px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm shadow-xl shadow-secondary/20 hover:scale-105 transition-transform text-center">
                                 Contact Us
                             </Link>
                             <Link href="/services" className="border border-white/30 text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-white/5 transition-colors text-center">
@@ -125,8 +125,8 @@ export default function AboutPage() {
                             { title: "Comprehensive Services", desc: "From business entity formation to payroll, bookkeeping, and IRS representation, we handle it all.", icon: Landmark }
                         ].map((item, index) => (
                             <div key={index} className="p-8 border border-gray-100 rounded-xl hover:shadow-xl transition-shadow duration-300">
-                                <item.icon className="text-[#00C2CB] mb-6 w-8 h-8" />
-                                <h4 className="text-xl font-bold text-[#0047AB] mb-3">{item.title}</h4>
+                                <item.icon className="text-[#0092df] mb-6 w-8 h-8" />
+                                <h4 className="text-xl font-bold text-[#003580] mb-3">{item.title}</h4>
                                 <p className="text-[#45474c] font-light leading-relaxed">{item.desc}</p>
                             </div>
                         ))}
@@ -140,7 +140,7 @@ export default function AboutPage() {
                     <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter">Ready to Let Us Handle Your Finances?</h2>
                     <p className="text-base sm:text-xl text-[#d7e3fc] font-light max-w-2xl mx-auto">Get in touch today to discover how we can benefit your individual or business tax situation.</p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Link href="/contact" className="bg-[#00C2CB] text-[#001f24] px-12 py-5 rounded font-black tracking-widest uppercase shadow-xl hover:scale-105 transition-all">
+                        <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-12 py-5 rounded font-black tracking-widest uppercase shadow-xl hover:scale-105 transition-all">
                             Book a Consultation
                         </Link>
                     </div>

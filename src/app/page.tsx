@@ -1,319 +1,292 @@
 import Image from "next/image";
 import Link from "next/link";
-import { 
-  TrendingUp, Wallet, BarChart2, Briefcase, 
-  User, Scale, Globe, Lightbulb, Building, Share2, Mail, ArrowRight, FileDown, Check, Phone, Star, ShieldCheck, Award, DollarSign, PlusCircle
-} from "lucide-react";
-import { homepageFaqSchema } from "@/lib/seo/schema";
-import IndustriesSection from "@/components/IndustriesSection";
-import TaxCalculator from "@/components/TaxCalculator";
+import { Check, CheckCircle2, ChevronRight } from "lucide-react";
 import HomeCallbackForm from "@/components/HomeCallbackForm";
-
+import HeroCarousel from "@/components/HeroCarousel";
 
 export const metadata = {
   title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
   description: 'IntegraFin provides tax expert services in Katy, TX offering tax preparation, bookkeeping, payroll, and IRS resolution. Schedule your free consultation today. Call (832) 647-1819.',
   alternates: { canonical: 'https://integrafin.tax/' },
-  openGraph: {
-    title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
-    description: 'IntegraFin tax experts in Katy TX. Tax preparation, bookkeeping, IRS help, payroll. Free consultation.',
-    url: 'https://integrafin.tax/',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630 }],
-  },
 };
-
-const expertises = [
-  "Corporate Tax", "R&D Tax Credits", "International Compliance", 
-  "M&A Advisory", "Wealth Management", "Strategic Audit"
-];
-
-const whyChoose = [
-  {
-    icon: <DollarSign className="text-4xl" />,
-    title: "Worry-Free Tax & Accounting",
-    desc: "Our tax experts handle the complexities of your financial filings so you can focus on scaling your vision without compliance stress."
-  },
-  {
-    icon: <Wallet className="text-4xl" />,
-    title: "Maximize Your Refund",
-    desc: "Leveraging deep structural knowledge to identify every available credit and deduction to keep more capital in your pockets."
-  },
-  {
-    icon: <BarChart2 className="text-4xl" />,
-    title: "Free Filing Estimates",
-    desc: "Transparent financial modeling that provides clear projections of your tax liabilities and potential savings before you commit."
-  }
-];
-
-const services = [
-  {
-    icon: <Briefcase className="text-3xl text-[#D4A017]" />,
-    title: "Business Tax & Accounting",
-    desc: "Comprehensive compliance and strategic planning for enterprises of all sizes, ensuring structural integrity."
-  },
-  {
-    icon: <User className="text-3xl text-[#D4A017]" />,
-    title: "Individual Tax Services",
-    desc: "High-net-worth individual filing and personal wealth optimization strategies tailored to your life goals."
-  },
-  {
-    icon: <Scale className="text-3xl text-[#D4A017]" />,
-    title: "Tax Resolution Services",
-    desc: "Expert negotiation and defense for complex audit and compliance disputes with regulatory authorities."
-  },
-  {
-    icon: <Globe className="text-3xl text-[#D4A017]" />,
-    title: "ITIN, FBAR, FATCA",
-    desc: "Specialized international compliance for foreign nationals and global assets requiring precision filings."
-  },
-  {
-    icon: <Lightbulb className="text-3xl text-[#D4A017]" />,
-    title: "New Business & Consultation",
-    desc: "Entity structuring and financial foundation setup for emerging startups to ensure early capital efficiency."
-  },
-  {
-    icon: <Building className="text-3xl text-[#D4A017]" />,
-    title: "Industries Served",
-    desc: "Niche expertise across tech, real estate, healthcare, and manufacturing sectors globally."
-  }
-];
-
-const stats = [
-  { val: "1050+", label: "Projects" },
-  { val: "217K+", label: "Happy Clients" },
-  { val: "100", label: "Advisors" },
-  { val: "21", label: "Years Experience" },
-  { val: "24/7", label: "Support" }
-];
-
-const testimonials = [
-  {
-    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDeL8eEhJGLAAhaBXP7DqWIL7Ja0MICPKkI7mtBd2kiYATZ--IhZVS3OaL6qgbXG_2wZSxMqB1d7hFXCxuSdqag0xHvEIWDO_rZ3GaQ28S9SMuFj4yEp-C_mHclJvKaSQMWAXeRhnRswV7siuAp1GUPhL9gLNBHk4RLh_y-CtFa0nGImB3-iE6Q3EmhemdZdMQspB-uEwQzg0QhCnh0DCttgVhnlx7_xV-4rmZ29UhOuSIsEHknGdpysQZrdBOqwmjMMXCzCG92vv4",
-    quote: "IntegraFin redefined our international tax structure. They didn't just save us money; they simplified our global operations.",
-    role: "CEO, Apex Logistics"
-  },
-  {
-    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBxCeyFuzC_Tbo6qpvF3gxtYkIvDP9oa_P29pWAGPvWfmiszd7M0jhLA4fYCCRIodHbvSwWvbxkqrYYNiizkE-VILjCSQ9_MssHu1JxXo4c5DjZTQXinRXyjdmcjt0l5W984GwRBKxamMc1JBU7yLmfAzUkE2zJp2Vt-jruiouhKEeko0dZobcZiHaHgFNoaKHHCflny9Ooj74w1HBCyHEl5NKkpN-dNEm2P0Y5com6jzTLAFEuOqxMCdK5xfZ6R3RORY6PXbrRzEY",
-    quote: "Their meticulous approach to R&D credits uncovered hundreds of thousands in untapped potential for our tech firm.",
-    role: "CTO, Veridical AI"
-  },
-  {
-    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuBrg4yKEzFCDB9NH-BBX7c_YyM3fZL6JBc0Get9fp7-47NkBuAaN5_2HZ9IlH8ze94z0Q6emMXCTKNdLtVGulp-kSu0RrScyc7L72Hu2T1PyLt8jvGJKT9G3-qn2_Huu9rf-XkptEfv85pmeUimK5NConQbB_odJezZhrrDF47AhRtufGDYyXaxQ4Qo0TJA_w7M4XOc8oRYIp0JXPg7XfFj_zMf4_V4p3rAio4nGrWy1F-TxO8kAuZQBi6LpnpVF07S908WauA13Qk",
-    quote: "The audit defense was impeccable. Professional, calm, and 100% successful. Truly elite representation.",
-    role: "Director, Heritage Holdings"
-  },
-  {
-    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuDj7D8F2w62f6YBbZfV3dquD--NM-8n7d43UuvqVRfs3DjC4-J8ttC0eCoX00Oq8icqheCQ8_zi3WB0C22bMs3v-qk3IS2K2eP_2_RI_iKIp-0rnb7cYGPF1t25kmxlLNTDXaGac6QzyWbv6PtIkTOX7xsBqOdG2a4a2pa9h8rOmsla3I7k5UqM4n5dR99yJNLWGi62sbYq2oJwgZcmTMIUsKZqUPQfcAQxLNSYOi96fxYy2SRFKjIBvSue9uYl6gVu9sGBgev3IQw",
-    quote: "I've never worked with an accounting firm that felt like architects. They build financial fortresses.",
-    role: "Founder, Nova Real Estate"
-  }
-];
 
 export default function Home() {
   return (
-    <>
-      {/* ========== HERO SECTION (Assumes Navbar is handled separately or loads on top) ========== */}
-      <header className="pt-24 lg:pt-32 pb-12 sm:pb-20 hero-gradient min-h-[600px] sm:min-h-[700px] lg:min-h-[921px] flex items-center overflow-hidden text-left">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[60%_40%] gap-8 lg:gap-16 items-center">
-          <div className="space-y-8">
-            <h1 className="text-[#003580] text-3xl sm:text-5xl md:text-7xl font-black tracking-tight leading-[1.1]">
-              Tax Filing and <br />
-              <span className="text-[#0067b3]">Bookkeeping</span> Services
-            </h1>
-            <p className="text-[#45474c] text-base sm:text-lg max-w-xl leading-relaxed">
-              Taxes and accounting can feel overwhelming—but that&apos;s where we come in. We support both individuals and businesses with reliable, stress-free financial services, ensuring everything is handled accurately and on time.
-            </p>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-[#0067b3] mt-0.5 flex-shrink-0" />
-                <span className="text-[#45474c] text-sm sm:text-base font-medium">Individual and business tax filing handled with care</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-[#0067b3] mt-0.5 flex-shrink-0" />
-                <span className="text-[#45474c] text-sm sm:text-base font-medium">Clean, accurate bookkeeping you can trust</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-[#0067b3] mt-0.5 flex-shrink-0" />
-                <span className="text-[#45474c] text-sm sm:text-base font-medium">Smart tax planning to help you save more</span>
-              </li>
-            </ul>
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
-              <Link href="/contact" className="bg-[#0047AB] text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-widest shadow-lg shadow-[#0047AB]/20 hover:scale-105 transition-transform text-center">
-                Schedule Consultation
-              </Link>
-              <Link href="/case-study" className="border border-[#0047AB]/40 text-[#0047AB] px-6 sm:px-8 py-3.5 sm:py-4 rounded-lg font-bold text-xs sm:text-sm uppercase tracking-widest hover:bg-[#0047AB]/5 transition-colors text-center">
-                View Case Studies
-              </Link>
-            </div>
-            <div className="flex items-center gap-4 sm:gap-8 pt-8 sm:pt-12 border-t border-[#0047AB]/10">
-              <div className="flex -space-x-3">
-                {testimonials.slice(0, 3).map((t, i) => (
-                  <div key={i} className="relative w-12 h-12 rounded-full border-2 border-[#0047AB]/30 overflow-hidden">
-                    <Image src={t.avatar} alt={`IntegraFin Client ${i + 1}`} fill className="object-cover" sizes="48px" />
-                  </div>
-                ))}
-              </div>
-              <div>
-                <div className="text-[#003580] font-bold text-sm sm:text-lg leading-tight">Trusted by 500+ Corporations</div>
-                <div className="text-[#45474c] text-xs sm:text-sm">Averaging 24% tax liability reduction</div>
-              </div>
-            </div>
-          </div>
-            <div className="relative hidden lg:block">
-              <div className="absolute -inset-10 bg-[#0067b3]/10 blur-[100px] rounded-full opacity-50"></div>
-              <div className="relative z-10">
-                <Image
-                  src="/A_professional,_wide-angle_202604082301.png"
-                  alt="Professional tax filing and bookkeeping illustration"
-                  width={700}
-                  height={500}
-                  className="w-full h-auto rounded-2xl"
-                  priority
-                />
-              </div>
-            </div>
-        </div>
-      </header>
+    <div className="bg-slate-50 selection:bg-[#0092df] selection:text-white relative">
+      {/* Navbar space is handled by layout.tsx */}
+      
+      {/* Hero Section */}
+      <HeroCarousel />
 
-      {/* ========== SERVICES STRIP ========== */}
-      <section className="bg-[#f2f4f7] py-8 overflow-hidden">
-        <div className="flex items-center space-x-12 px-8 animate-none whitespace-nowrap overflow-x-auto no-scrollbar">
-          <span className="text-[#45474c]/50 font-bold uppercase tracking-widest text-xs flex-shrink-0">Sector Expertise:</span>
-          {expertises.map((exp, i) => (
-            <button key={i} className="group relative px-2 py-2 flex-shrink-0">
-              <span className="text-[#191c1e] font-semibold text-sm">{exp}</span>
-              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00C2CB] group-hover:w-full transition-all duration-300"></div>
-            </button>
-          ))}
-        </div>
-      </section>
-
-      {/* ========== TAX CALCULATOR ========== */}
-      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-[#003580] relative overflow-hidden text-left">
-        <TaxCalculator />
-      </section>
-
-      {/* ========== WHY CHOOSE INTEGRAFIN ========== */}
-      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-white text-left">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-2">
-            <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">The Integra Advantage</span>
-            <h2 className="text-[#0047AB] text-2xl sm:text-4xl md:text-5xl font-black tracking-tight">Why Are We The Best Tax Accountant Near You in Katy?</h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 sm:gap-10">
-            {whyChoose.map((item, i) => (
-              <div key={i} className="p-6 sm:p-12 bg-white border border-slate-100 rounded-3xl hover:shadow-2xl hover:shadow-[#00C2CB]/10 transition-all duration-500 group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#00C2CB]/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700"></div>
-                <div className="mb-10 inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#00C2CB]/10 text-[#00C2CB] group-hover:bg-[#00C2CB] group-hover:text-[#003580] transition-colors duration-300">
-                  {item.icon}
-                </div>
-                <h3 className="text-2xl font-black mb-4 text-[#0047AB]">{item.title}</h3>
-                <p className="text-[#45474c] leading-relaxed text-base font-medium">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== CORE SERVICES GRID ========== */}
-      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-[#0047AB] text-left">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-2">
-            <span className="text-[#D4A017] text-xs font-black uppercase tracking-widest">Our Expertise</span>
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-white">What Corporate & Small Business Tax Expert Services Do We Offer?</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, i) => (
-              <div key={i} className="p-6 sm:p-10 border border-white/10 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 hover:border-[#D4A017]/40 transition-all duration-500 group bg-white/10">
-                <div className="w-14 h-14 bg-[#D4A017]/10 rounded-xl flex items-center justify-center mb-8 group-hover:bg-[#D4A017] transition-colors duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-black mb-4 text-white">{service.title}</h3>
-                <p className="leading-relaxed text-sm mb-6 text-white/90">{service.desc}</p>
-                <Link href="/services" className="text-[#D4A017] font-bold text-xs uppercase tracking-widest flex items-center gap-2 group/link">
-                  Learn More <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== INDUSTRIES SERVED SECTION ========== */}
-      <IndustriesSection />
-
-      {/* ========== STATS BAR ========== */}
-      <section className="bg-[#001D3D] py-10 sm:py-20 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-4 text-center">
-          {stats.map((stat, i) => (
-            <div key={i} className="px-2 sm:px-8 sm:border-r sm:border-white/10 sm:last:border-0">
-              <div className="text-[#00C2CB] text-2xl sm:text-4xl font-black mb-1 sm:mb-2">{stat.val}</div>
-              <div className="text-white/70 text-[10px] uppercase font-bold tracking-widest">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ========== TESTIMONIALS ========== */}
-      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-slate-50 overflow-hidden text-left">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-[#0047AB] text-2xl sm:text-3xl font-black mb-8 sm:mb-16">What Our Clients Say</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-white p-5 sm:p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col h-full">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                    <Image src={t.avatar} alt={`IntegraFin Client Testimonial ${i + 1}`} fill className="object-cover" sizes="40px" />
-                  </div>
-                  <div className="flex gap-0.5 text-[#00C2CB]">
-                    {[...Array(5)].map((_, j) => <Star key={j} className="w-3 h-3 fill-current" />)}
-                  </div>
-                </div>
-                <p className="text-[#191c1e] text-sm italic mb-6 leading-relaxed flex-grow">&quot;{t.quote}&quot;</p>
-                <div className="font-bold text-xs uppercase tracking-widest text-[#0047AB] mt-auto">{t.role}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== FAQ SECTION ========== */}
-      <section id="faq" className="py-12 sm:py-24 max-w-4xl mx-auto px-4 sm:px-8 scroll-mt-24 border-b border-slate-100 text-left">
+      {/* Core Services We Offer */}
+      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto -mt-16 z-30 relative">
         <div className="text-center mb-16">
-          <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Questions</span>
-          <h2 className="text-2xl sm:text-4xl font-black text-[#0047AB] tracking-tight mt-2">Frequently Asked Questions</h2>
+           <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-2 block">Our Expertise</span>
+           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] tracking-tight">Core Services We Offer</h2>
         </div>
-        <div className="space-y-4">
-          {homepageFaqSchema.mainEntity.map((item: any, index: number) => (
-            <div key={index} className="bg-white rounded-2xl border border-slate-100 p-5 sm:p-8 shadow-sm hover:shadow-lg transition-all group">
-              <div className="flex justify-between items-center cursor-pointer">
-                <h3 className="text-base sm:text-xl font-black text-[#0047AB] group-hover:text-[#00C2CB] transition-colors">{item.name}</h3>
-                <PlusCircle className="w-5 h-5 text-[#00C2CB] group-hover:scale-110 transition-transform flex-shrink-0" />
-              </div>
-              <p className="mt-4 text-[#45474c] font-medium leading-relaxed text-sm">{item.acceptedAnswer.text}</p>
-            </div>
-          ))}
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Card 1 */}
+          <div className="group bg-white p-10 rounded-3xl shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-[#0092df]/10 border border-slate-100 hover:border-[#0092df]/20 transition-all duration-500 flex flex-col text-left hover:-translate-y-2 relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/5 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700"></div>
+             <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
+               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><path d="m3 12.5 3 3 6-6"/></svg>
+             </div>
+             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Worry-Free Tax and Accounting Services</h3>
+             <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
+               Managing taxes and accounting can be stressful, but we make it easy. Our experts handle everything from bookkeeping to tax preparation, ensuring accuracy and compliance. Focus on growing your business while we take care of your financials.
+             </p>
+             <ul className="space-y-4 relative z-10">
+               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
+                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
+                 </div>
+                 <span>Expert tax preparation and accounting services</span>
+               </li>
+               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
+                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
+                 </div>
+                 <span>Accurate and compliant bookkeeping</span>
+               </li>
+               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
+                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
+                 </div>
+                 <span>Personalized tax saving strategies</span>
+               </li>
+             </ul>
+          </div>
+          
+          {/* Card 2 */}
+          <div className="group bg-white p-10 rounded-3xl shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-[#0092df]/10 border border-slate-100 hover:border-[#0092df]/20 transition-all duration-500 flex flex-col text-left hover:-translate-y-2 relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/5 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700"></div>
+             <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
+               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/><path d="m15 14-3 3-3-3"/></svg>
+             </div>
+             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Get the Highest Refund</h3>
+             <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
+               Maximize your tax refund with our expert filing services. We analyze every deduction and credit available to ensure you get the best possible return. Our team stays updated with the latest tax laws to help you save more.
+             </p>
+             <ul className="space-y-4 relative z-10">
+               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
+                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
+                 </div>
+                 <span>Hassle-free online and in-person filing</span>
+               </li>
+               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
+                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
+                 </div>
+                 <span>Secure document handling and filing</span>
+               </li>
+               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
+                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
+                 </div>
+                 <span>Year-round support for tax planning</span>
+               </li>
+             </ul>
+          </div>
+          
+          {/* Card 3 */}
+          <div className="group bg-white p-10 rounded-3xl shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-[#0092df]/10 border border-slate-100 hover:border-[#0092df]/20 transition-all duration-500 flex flex-col text-left hover:-translate-y-2 relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/5 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700"></div>
+             <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
+               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"/><path d="m9 14 2 2 4-4"/></svg>
+             </div>
+             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Free Tax Filing Estimates</h3>
+             <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
+               Know what to expect before you file. We provide free, no-obligation tax filing estimates so you can plan ahead. Get clarity on your potential refund or tax liability without any hidden fees.
+             </p>
+             <ul className="space-y-4 relative z-10">
+               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
+                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
+                 </div>
+                 <span>Maximized deductions and credits for higher refunds</span>
+               </li>
+               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
+                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
+                 </div>
+                 <span>Free initial tax estimates with no obligation</span>
+               </li>
+             </ul>
+          </div>
         </div>
       </section>
 
-      {/* ========== CALLBACK FORM ========== */}
-      <section className="py-12 sm:py-24 px-4 sm:px-8 bg-slate-50 text-left">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row shadow-2xl rounded-3xl overflow-hidden bg-white">
-          <div className="md:w-1/2 relative min-h-[400px]">
-            <Image src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj7D8F2w62f6YBbZfV3dquD--NM-8n7d43UuvqVRfs3DjC4-J8ttC0eCoX00Oq8icqheCQ8_zi3WB0C22bMs3v-qk3IS2K2eP_2_RI_iKIp-0rnb7cYGPF1t25kmxlLNTDXaGac6QzyWbv6PtIkTOX7xsBqOdG2a4a2pa9h8rOmsla3I7k5UqM4n5dR99yJNLWGi62sbYq2oJwgZcmTMIUsKZqUPQfcAQxLNSYOi96fxYy2SRFKjIBvSue9uYl6gVu9sGBgev3IQw" alt="IntegraFin Tax Consultant reviewing strategy" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-            <div className="absolute inset-0 bg-[#0047AB]/20"></div>
-          </div>
-          <div className="md:w-1/2 p-6 sm:p-12 lg:p-16">
-            <h3 className="text-[#0047AB] text-2xl sm:text-3xl font-black mb-6 sm:mb-8">Request a Free Callback</h3>
-            <HomeCallbackForm />
-          </div>
+      {/* About Us - Integrafin */}
+      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        <div className="md:w-1/2 relative">
+           <div className="absolute inset-0 bg-gradient-to-r from-[#0092df]/20 to-transparent rounded-[2rem] transform -rotate-3 scale-105 blur-sm -z-10 transition-transform duration-700 hover:rotate-0"></div>
+           <div className="relative h-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
+             <Image src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80" alt="About Integrafin" fill className="object-cover transition-transform duration-700 hover:scale-105" />
+           </div>
+        </div>
+        <div className="md:w-1/2 flex flex-col items-start text-left">
+           <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4">Discover Who We Are</span>
+           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">About Us - Integrafin</h2>
+           <div className="w-24 h-1.5 bg-gradient-to-r from-[#0092df] to-[#00C2CB] rounded-full mb-8"></div>
+           <p className="text-slate-600 mb-10 leading-loose text-base md:text-lg font-medium">
+             IntegraFin is a trusted provider of comprehensive tax, accounting, and business advisory services. With a team of experienced Certified Public Accountants (CPAs), Chartered Accountants (CAs), and financial experts, we are committed to delivering high-quality, reliable, and secure financial solutions tailored to businesses and individuals.
+           </p>
+           <button className="bg-[#003580] hover:bg-[#002050] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#003580]/20 hover:-translate-y-1 group flex items-center gap-3">
+             Know More
+             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+           </button>
         </div>
       </section>
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageFaqSchema) }}
-      />
-    </>
+
+      {/* Why Trust Us? */}
+      <section className="py-24 px-6 lg:px-8 border-t border-slate-200/60 bg-white">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+               <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Our Guarantees</span>
+               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">Why Trust Us?</h2>
+               <p className="text-slate-600 mb-16 max-w-4xl mx-auto leading-relaxed text-lg font-medium">
+                 We bring years of combined experience with a commitment to trust, security, and privacy. Our expert team ensures seamless e-filing, reliable guidance, and compliance, making tax and accounting simple, quick, and stress-free.
+               </p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+               {[
+                 "Years of Combined Experience", "Trust", "Security", "Privacy",
+                 "Assisted Filing", "Guidance / Advisory", "Simple / Quick", "Reliability, Quality, Integrity",
+                 "Deep Knowledge", "Efiling", "Quality", "Compliance"
+               ].map((item, idx) => (
+                 <div key={idx} className="group flex items-center gap-4 bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:border-[#0092df]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default">
+                   <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 group-hover:bg-[#0092df] transition-colors duration-300">
+                     <CheckCircle2 className="w-5 h-5 text-[#0092df] group-hover:text-white transition-colors duration-300" />
+                   </div>
+                   <span className="text-sm font-bold text-[#003580]">{item}</span>
+                 </div>
+               ))}
+            </div>
+         </div>
+      </section>
+
+      {/* Our Main Services */}
+      <section className="py-24 px-6 lg:px-8 bg-slate-50 border-t border-slate-200/60">
+        <div className="max-w-7xl mx-auto">
+           <div className="text-center mb-20 flex flex-col items-center">
+             <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4">What We Do Best</span>
+             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">Our Main Services</h2>
+             <div className="w-24 h-1.5 bg-[#0092df] rounded-full mb-6"></div>
+             <p className="text-slate-600 text-lg font-medium max-w-2xl">IntegraFin offers a full range of accounting and tax services designed to streamline your financial operations.</p>
+           </div>
+           
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Business - Tax & Accounting Services",
+                  desc: "Comprehensive accounting and bookkeeping solutions, including software implementation, payroll, financial statements, and tax compliance for businesses of all sizes.",
+                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><rect x="8" y="10" width="8" height="8" rx="1"/></svg>
+                },
+                {
+                  title: "Individual Tax Services",
+                  desc: "Expert tax preparation and planning to maximize deductions and ensure compliance with IRS regulations.",
+                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 11v8"/></svg>
+                },
+                {
+                  title: "Tax Resolution Services",
+                  desc: "Assistance with back taxes, IRS audits, penalty abatements, and tax negotiations to resolve outstanding tax issues.",
+                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="m12 14 4-4"/><path d="M3.3 7H6h15l-1.5 13H4.5L3.3 7Z"/><path d="m16 10-4 4"/></svg>
+                },
+                {
+                  title: "Additional Services",
+                  desc: "Support for ITIN, SSN, PEIN applications; international compliance (FBAR & FATCA); business certifications, and secure document management.",
+                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z"/><path d="M4.5 8.5V4a2 2 0 0 1 2-2h9l5 5v13a2 2 0 0 1-2 2h-2"/></svg>
+                },
+                {
+                  title: "New Business & Consultation",
+                  desc: "Starting a new business is an exciting yet challenging process that requires careful planning and strategic decision-making.",
+                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+                },
+                {
+                  title: "Industries Served",
+                  desc: "We cater to various industries, including real estate, construction, manufacturing, healthcare, financial services, legal, retail, and technology, providing tailored tax and accounting solutions.",
+                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h3.14"/><path d="M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>
+                }
+              ].map((srv, idx) => (
+                <div key={idx} className="group bg-white border border-slate-100 rounded-[2rem] p-8 text-center flex flex-col items-center hover:shadow-[0_20px_50px_-12px_rgba(0,146,223,0.15)] hover:border-[#0092df]/30 transition-all duration-500 hover:-translate-y-2">
+                   <div className="w-20 h-20 bg-slate-50 group-hover:bg-[#0092df]/10 rounded-full flex items-center justify-center mb-8 transition-colors duration-500 shadow-sm border border-slate-100 group-hover:border-[#0092df]/20">
+                     {srv.icon}
+                   </div>
+                   <h3 className="text-xl font-black text-[#003580] mb-5 tracking-tight">{srv.title}</h3>
+                   <p className="text-slate-600 text-sm mb-8 flex-grow leading-relaxed font-medium">{srv.desc}</p>
+                   <Link href="#" className="mt-auto inline-flex items-center justify-center gap-2 text-[#0092df] py-3 px-6 rounded-xl font-bold text-sm bg-slate-50 hover:bg-[#0092df] hover:text-white transition-colors w-full">
+                     Read More <ChevronRight className="w-4 h-4" />
+                   </Link>
+                </div>
+              ))}
+           </div>
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      <section className="relative py-32 bg-slate-900 border-b-8 border-[#0092df] text-center flex items-center justify-center min-h-[500px]">
+         <div className="absolute inset-0 bg-gradient-to-br from-[#003580]/90 to-slate-900/90 z-10" />
+         <Image 
+           src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80" 
+           alt="Testimonial Background" 
+           fill 
+           className="object-cover object-bottom absolute inset-0 z-0 opacity-40 mix-blend-overlay"
+         />
+         <div className="relative z-20 max-w-5xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#0092df]/60 mb-8"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h-1c0 0 0 0 0 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/></svg>
+
+            <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-12 max-w-4xl leading-snug tracking-tight text-shadow-sm">
+              &quot;IntegraFin has been instrumental in helping our business stay compliant and financially healthy.&quot;
+            </p>
+            
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/20 flex items-center justify-center overflow-hidden">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div className="text-left">
+                <p className="text-white font-black tracking-widest text-sm uppercase mb-1">JOHN D</p>
+                <p className="text-[#0092df] font-bold text-xs">Small Business Owner</p>
+              </div>
+            </div>
+            
+            <div className="flex gap-3 justify-center mt-16">
+               <div className="w-8 h-1.5 rounded-full bg-[#0092df] cursor-pointer"></div>
+               <div className="w-3 h-1.5 rounded-full bg-white/20 hover:bg-white/40 cursor-pointer transition-colors"></div>
+               <div className="w-3 h-1.5 rounded-full bg-white/20 hover:bg-white/40 cursor-pointer transition-colors"></div>
+            </div>
+         </div>
+      </section>
+
+      {/* Request a Call Back */}
+      <section className="py-24 px-6 lg:px-8 bg-white relative">
+        <div className="absolute top-0 left-0 w-full h-[300px] bg-slate-50 border-b border-slate-200/50"></div>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row shadow-2xl shadow-slate-300/60 rounded-[2rem] overflow-hidden bg-white relative z-10 border border-slate-100">
+           <div className="lg:w-1/2 p-10 md:p-14 lg:p-16 flex flex-col justify-center bg-white">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-8 h-1 bg-[#0092df] rounded-full inline-block"></span>
+                <span className="text-[#0092df] text-sm font-black uppercase tracking-[0.1em]">Get In Touch</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-[#003580] mb-4 tracking-tight">Request a Call Back</h2>
+              <p className="text-slate-600 mb-10 leading-relaxed font-medium">Find an advisor. Our staff can help work out what is right for you.</p>
+              
+              <div className="bg-slate-50/50 p-6 rounded-2xl border border-slate-100">
+                 <HomeCallbackForm />
+              </div>
+           </div>
+           <div className="lg:w-1/2 relative min-h-[400px] lg:min-h-auto inset-y-0">
+              <div className="absolute inset-0 bg-[#003580]/10 z-10 mix-blend-overlay"></div>
+              <Image 
+                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80" 
+                alt="Request Call Back" 
+                fill 
+                className="object-cover object-center" 
+              />
+           </div>
+        </div>
+      </section>
+    </div>
   );
 }

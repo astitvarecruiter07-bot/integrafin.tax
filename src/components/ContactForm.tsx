@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
@@ -67,7 +67,7 @@ export default function ContactForm() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-1">
-          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Full Name</label>
+          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Full Name</label>
           <input 
             name="name"
             required
@@ -77,7 +77,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="space-y-1">
-          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Email Address</label>
+          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Email Address</label>
           <input 
             name="email"
             required
@@ -90,7 +90,7 @@ export default function ContactForm() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-1">
-          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Phone</label>
+          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Phone</label>
           <input 
             name="phone"
             required
@@ -100,7 +100,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="space-y-1">
-          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Company Name (Optional)</label>
+          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Company Name (Optional)</label>
           <input 
             name="company"
             className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" 
@@ -111,7 +111,7 @@ export default function ContactForm() {
       </div>
       
       <div className="space-y-1">
-        <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Enquiry Type</label>
+        <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Enquiry Type</label>
         <select 
           name="service"
           required
@@ -128,7 +128,7 @@ export default function ContactForm() {
       </div>
       
       <div className="space-y-1">
-        <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#0047AB]">Message</label>
+        <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Message</label>
         <textarea 
           name="message"
           required

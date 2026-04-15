@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 const navLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
+    { href: "/industries", label: "Industries" },
     { href: "/services", label: "Services" },
     { href: "/tax-calculator", label: "Tax Calculator" },
     { href: "/blog", label: "Blog" },
@@ -64,9 +65,9 @@ export default function Navbar() {
                             key={link.href}
                             href={link.href}
                             className={`text-sm font-semibold transition-colors duration-200 ${pathname === link.href
-                                ? "text-[#0047AB]"
+                                ? "text-[#003580]"
                                 : !scrolled
-                                    ? "text-slate-600 hover:text-[#0047AB]"
+                                    ? "text-slate-600 hover:text-[#003580]"
                                     : "text-slate-700 hover:text-primary"
                                 }`}
                         >
@@ -79,8 +80,8 @@ export default function Navbar() {
                 <Link
                     href="/contact"
                     className={`hidden md:inline-flex items-center px-5 py-1.5 text-sm font-semibold rounded-full transition-colors duration-200 ${!scrolled
-                        ? "bg-[#0047AB] text-white hover:bg-[#003580]"
-                        : "bg-accent-dark text-white hover:bg-primary"
+                        ? "bg-[#003580] text-white hover:bg-[#002050]"
+                        : "bg-primary-dark text-white hover:bg-primary"
                         }`}
                 >
                     Contact Us

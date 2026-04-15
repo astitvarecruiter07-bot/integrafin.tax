@@ -16,7 +16,7 @@ const serviceLinks = [
     { href: "/services#tax-resolution", label: "Tax Resolution" },
     { href: "/services#additional-services", label: "Additional Services" },
     { href: "/services#consultation", label: "Consultation" },
-    { href: "/#industries", label: "Industries Served" },
+    { href: "/industries", label: "Industries Served" },
 ];
 
 const socialLinks = [

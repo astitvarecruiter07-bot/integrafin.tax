@@ -4,14 +4,29 @@
 :root {
   --background: #FFFFFF;
   --foreground: #2D3748;
+  /* Primary brand blue - used for hero backgrounds, CTAs */
   --primary: #0067b3;
-  --primary-dark: #005696;
+  --primary-dark: #003580;
+  /* Bright accent blue for highlights, badges, hover states */
+  --brand-blue: #0067b3;
+  --brand-blue-bright: #0092df;
+  --brand-blue-dark: #002050;
+  /* Teal accent */
   --accent: #00C2CB;
   --accent-light: rgba(0, 194, 203, 0.1);
   --accent-dark: #0047AB;
+  /* Neutral tones */
   --lavender: #F5F7FA;
   --text-secondary: #6B7280;
   --section-bg: #F5F7FA;
+  /* New utility tokens for consistency */
+  --hero-bg: #003580;
+  --hero-bg-overlay: rgba(0, 53, 128, 0.9);
+  --card-navy: #003580;
+  --highlight: #0092df;
+  --highlight-light: rgba(0, 146, 223, 0.1);
+  --cta-bg: #003580;
+  --text-muted: #D7E3FC;
 }
 
 @theme inline {
@@ -26,6 +41,17 @@
   --color-text-secondary: var(--text-secondary);
   --color-section-bg: var(--section-bg);
   
+  /* Brand blue tokens */
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-bright: var(--brand-blue-bright);
+  --color-brand-blue-dark: var(--brand-blue-dark);
+  --color-highlight: var(--highlight);
+  --color-highlight-light: var(--highlight-light);
+  --color-hero-bg: var(--hero-bg);
+  --color-card-navy: var(--card-navy);
+  --color-cta-bg: var(--cta-bg);
+  --color-text-muted: var(--text-muted);
+
   /* Additional design tokens for compatibility */
   --color-secondary: var(--accent);
   --color-surface: var(--background);

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MessageSquare, MapPin, Phone, ShieldCheck, ArrowRight } from "lucide-react";
+import { Mail, MessageSquare, MapPin, Phone, ShieldCheck } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
@@ -16,23 +16,25 @@ export default function ContactPage() {
     return (
         <>
             {/* Hero Section */}
-            <header className="relative bg-[#0A1628] overflow-hidden py-16 sm:py-24 md:py-32">
+            <header className="relative bg-[#003580] overflow-hidden py-16 sm:py-24 md:py-32">
                 <div 
                     className="absolute inset-0 opacity-20 bg-cover bg-center" 
                     style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIhhzL_6DrqJErXL51mOsoGwc-5kpm0Yntn1CFMGPkhbw-RFnUfzJZcqHkMpROhE4e5n7QnTL-RljoQaVK1pugbWaGvVleExURhnBwUpTZx2e3qVhE8TJdLMHfdV1DfxKTY-_FaikaNbQ4KUY1OxnEw5LYhlDgGHIhHS2-JAHHJ2P1g14KcpAARNv7dO96w5Xd0qJ3YsBUplKtXDq_d_qZZR4ZLLcAFFZ5XLARsndVNDVwKvq6KvAC0F1XamxLcx3id5kXzp2Nh1Y')" }}
                 />
+                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0092df 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }} />
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[#0092df]/10 blur-[120px] rounded-full pointer-events-none" />
                 <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at top right, rgba(0, 194, 203, 0.15), transparent 400px)' }} />
                 <div className="relative max-w-7xl mx-auto px-5 sm:px-8 text-center md:text-left">
                     <div className="inline-block px-3 py-1 bg-[#00C2CB]/10 border border-[#00C2CB]/30 text-[#00C2CB] text-[10px] font-black uppercase tracking-[0.3em] mb-6">
                         Institutional Authority
                     </div>
                     <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-black tracking-tighter mb-4 sm:mb-6 leading-tight max-w-4xl">
-                        Get in Touch with Our Tax & <span className="text-[#00C2CB]">Accounting Experts</span>
+                        Get in Touch with Our Tax &amp; <span className="text-[#00C2CB]">Accounting Experts</span>
                     </h1>
-                    <p className="text-white/70 text-sm sm:text-lg md:text-xl font-light max-w-2xl mb-6 sm:mb-10 leading-relaxed">
+                    <p className="text-[#D7E3FC] text-sm sm:text-lg md:text-xl font-light max-w-2xl mb-6 sm:mb-10 leading-relaxed">
                         Whether you need US tax filing, business bookkeeping, or cross-border tax resolution, our certified professionals are ready to help.
                     </p>
-                    <button className="bg-[#00C2CB] text-[#0A1628] px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#00cedb] transition-all">
+                    <button className="bg-[#00C2CB] text-[#003580] px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#00cedb] transition-all">
                         Schedule a Consultation
                     </button>
                 </div>
@@ -80,17 +82,17 @@ export default function ContactPage() {
                         {/* Locations Grid */}
                         <div className="grid grid-cols-1 gap-6">
                             {/* USA Location */}
-                            <div className="bg-gray-50 p-8 rounded-xl border-l-4 border-[#0047AB]">
+                            <div className="bg-gray-50 p-8 rounded-xl border-l-4 border-[#003580]">
                                 <div className="flex justify-between items-start mb-4">
                                     <h4 className="font-black text-[#003580] tracking-tight uppercase text-sm">USA Head Office</h4>
-                                    <MapPin className="text-[#0047AB]/40 w-5 h-5" />
+                                    <MapPin className="text-[#003580]/40 w-5 h-5" />
                                 </div>
                                 <p className="text-gray-600 font-light text-sm leading-relaxed mb-4">
                                     IntegraFin LLC<br />
                                     2039 N Mason Rd, Suite 604<br />
                                     Katy, TX 77449
                                 </p>
-                                <div className="flex items-center gap-2 text-[#0047AB] font-bold text-sm">
+                                <div className="flex items-center gap-2 text-[#003580] font-bold text-sm">
                                     <Phone className="w-4 h-4" />
                                     <a href="tel:+18326471819" className="hover:text-[#00C2CB] transition-colors">+1-832-647-1819</a>
                                 </div>
@@ -115,12 +117,12 @@ export default function ContactPage() {
                         {/* Trust Section */}
                         <div className="bg-white p-8 rounded-xl shadow-lg flex items-center gap-6 border border-gray-100">
                             <div className="w-16 h-16 bg-gray-50 flex items-center justify-center rounded-full shrink-0">
-                                <ShieldCheck className="text-[#0047AB] w-8 h-8" />
+                                <ShieldCheck className="text-[#003580] w-8 h-8" />
                             </div>
                             <div>
-                                <h4 className="font-extrabold text-[#003580] tracking-tight text-lg mb-1">Quick & Secure Payments</h4>
+                                <h4 className="font-extrabold text-[#003580] tracking-tight text-lg mb-1">Quick &amp; Secure Payments</h4>
                                 <p className="text-xs text-gray-600 leading-relaxed">
-                                    We accept <span className="font-bold text-[#0047AB]">Zelle</span> for immediate, secure processing. Every transaction is handled with institutional-grade security for IntegraFin clients.
+                                    We accept <span className="font-bold text-[#003580]">Zelle</span> for immediate, secure processing. Every transaction is handled with institutional-grade security for IntegraFin clients.
                                 </p>
                             </div>
                         </div>
