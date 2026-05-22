@@ -239,6 +239,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* State Service Hubs */}
+      <section className="py-20 px-6 lg:px-8 bg-white border-t border-slate-200/60">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">State Coverage</span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">Tax And Accounting Services By State</h2>
+            <p className="text-slate-600 mt-4 max-w-3xl mx-auto">
+              Explore our dedicated pages for Texas, New York, and Pennsylvania tax and accounting support.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Link href="/texas-tax-accounting-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-xl font-black text-[#003580] mb-2">Texas Services</h3>
+              <p className="text-slate-600 text-sm">Business tax, bookkeeping, payroll, and IRS support for Texas clients.</p>
+            </Link>
+            <Link href="/new-york-tax-accounting-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-xl font-black text-[#003580] mb-2">New York Services</h3>
+              <p className="text-slate-600 text-sm">Tax planning and accounting support for New York businesses and individuals.</p>
+            </Link>
+            <Link href="/pennsylvania-tax-accounting-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-xl font-black text-[#003580] mb-2">Pennsylvania Services</h3>
+              <p className="text-slate-600 text-sm">End-to-end tax and accounting services for Pennsylvania clients.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonial */}
       <section className="relative py-32 bg-slate-900 border-b-8 border-[#0092df] text-center flex items-center justify-center min-h-[500px]">
          <div className="absolute inset-0 bg-gradient-to-br from-[#003580]/90 to-slate-900/90 z-10" />

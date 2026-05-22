@@ -3,6 +3,22 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactCompiler: true,
   compress: true,
+  async redirects() {
+    return [
+      // Force a single canonical host for SEO consistency.
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.integrafin.tax',
+          },
+        ],
+        destination: 'https://integrafin.tax/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     const isDev = process.env.NODE_ENV !== 'production';
     const csp = [

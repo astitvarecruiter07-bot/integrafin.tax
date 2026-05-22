@@ -339,6 +339,28 @@ export default function ServicesContent() {
         </div>
 
       </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-10 sm:pb-14">
+        <div className="bg-white border border-slate-100 rounded-2xl p-5 sm:p-8 shadow-sm">
+          <h2 className="text-xl sm:text-2xl font-black text-primary mb-3">
+            Services By State
+          </h2>
+          <p className="text-slate-600 mb-5">
+            Looking for state-focused tax and accounting support? Explore our dedicated pages:
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/texas-tax-accounting-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Texas Tax and Accounting Services
+            </Link>
+            <Link href="/new-york-tax-accounting-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              New York Tax and Accounting Services
+            </Link>
+            <Link href="/pennsylvania-tax-accounting-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Pennsylvania Tax and Accounting Services
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
