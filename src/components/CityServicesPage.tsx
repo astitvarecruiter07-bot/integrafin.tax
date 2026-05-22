@@ -10,45 +10,49 @@ type ResourceLink = {
   label: string;
 };
 
-type StateServicesPageProps = {
+type CityServicesPageProps = {
+  cityName: string;
   stateName: string;
   stateCode: string;
+  pageUrl: string;
+  statePageUrl: string;
   primaryKeyword: string;
   secondaryKeywords: string[];
   heroDescription: string;
   directAnswer: string;
   serviceFocus: string[];
   whoWeHelp: string[];
-  compliancePoints: string[];
+  localScenarios: string[];
   whyChoose: string[];
-  nearbyCities: string[];
   faqItems: FaqItem[];
   resourceLinks: ResourceLink[];
-  pageUrl: string;
+  nearbyAreas: string[];
   lastReviewed: string;
 };
 
-export default function StateServicesPage({
+export default function CityServicesPage({
+  cityName,
   stateName,
   stateCode,
+  pageUrl,
+  statePageUrl,
   primaryKeyword,
   secondaryKeywords,
   heroDescription,
   directAnswer,
   serviceFocus,
   whoWeHelp,
-  compliancePoints,
+  localScenarios,
   whyChoose,
-  nearbyCities,
   faqItems,
   resourceLinks,
-  pageUrl,
+  nearbyAreas,
   lastReviewed,
-}: StateServicesPageProps) {
+}: CityServicesPageProps) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    name: `${stateName} Tax and Accounting Services FAQ`,
+    name: `${cityName}, ${stateCode} Tax and Accounting FAQ`,
     url: pageUrl,
     lastReviewed,
     mainEntity: faqItems.map((faq) => ({
@@ -64,7 +68,7 @@ export default function StateServicesPage({
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: `${stateName} Tax and Accounting Services`,
+    name: `Tax and Accounting Services in ${cityName}, ${stateCode}`,
     serviceType: "Tax and Accounting Services",
     provider: {
       "@type": "Organization",
@@ -72,8 +76,8 @@ export default function StateServicesPage({
       url: "https://integrafin.tax",
     },
     areaServed: {
-      "@type": "State",
-      name: stateName,
+      "@type": "City",
+      name: cityName,
     },
     description: heroDescription,
     url: pageUrl,
@@ -98,7 +102,13 @@ export default function StateServicesPage({
       {
         "@type": "ListItem",
         position: 3,
-        name: `${stateName} Tax and Accounting Services`,
+        name: `${stateName} Services`,
+        item: statePageUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: `${cityName} Tax and Accounting Services`,
         item: pageUrl,
       },
     ],
@@ -122,10 +132,10 @@ export default function StateServicesPage({
       <section className="bg-primary-dark pt-28 sm:pt-32 pb-14 sm:pb-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-secondary text-xs font-black tracking-[0.2em] uppercase mb-3">
-            {stateCode} Tax And Accounting
+            {cityName}, {stateCode}
           </p>
           <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-            {stateName} Tax and Accounting Services for Small Businesses and Individuals
+            Tax Accountant in {cityName}, {stateName} for Small Businesses and Individuals
           </h1>
           <p className="text-[#d7e3fc] mt-5 max-w-3xl mx-auto text-base md:text-lg">
             {heroDescription}
@@ -137,8 +147,8 @@ export default function StateServicesPage({
             <Link href="/contact" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
               Book A Consultation
             </Link>
-            <Link href="/services" className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
-              View All Services
+            <Link href={statePageUrl} className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
+              View {stateName} Service Hub
             </Link>
           </div>
         </div>
@@ -147,19 +157,15 @@ export default function StateServicesPage({
       <section className="max-w-6xl mx-auto px-6 py-12 sm:py-16">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
-            Quick Answer: What We Do In {stateName}
+            Quick Answer: Tax and Accounting Help in {cityName}
           </h2>
-          <p className="text-slate-700 leading-relaxed">
-            {directAnswer}
-          </p>
-          <p className="text-slate-500 text-sm mt-4">
-            Last reviewed: {lastReviewed}
-          </p>
+          <p className="text-slate-700 leading-relaxed">{directAnswer}</p>
+          <p className="text-slate-500 text-sm mt-4">Last reviewed: {lastReviewed}</p>
         </article>
 
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
-            Tax Topics We Cover In {stateName}
+            Keywords and Tax Topics We Cover
           </h2>
           <div className="flex flex-wrap gap-2">
             {secondaryKeywords.map((keyword) => (
@@ -173,7 +179,7 @@ export default function StateServicesPage({
         <div className="grid md:grid-cols-2 gap-8">
           <article className="bg-white rounded-2xl p-7 shadow-sm border border-slate-100">
             <h2 className="text-2xl font-black text-primary mb-4">
-              Tax and Accounting Services In {stateName}
+              Tax and Accounting Services in {cityName}
             </h2>
             <ul className="space-y-3 text-slate-700">
               {serviceFocus.map((service) => (
@@ -183,7 +189,7 @@ export default function StateServicesPage({
           </article>
           <article className="bg-white rounded-2xl p-7 shadow-sm border border-slate-100">
             <h2 className="text-2xl font-black text-primary mb-4">
-              Who We Help In {stateName}
+              Who We Help in {cityName}
             </h2>
             <ul className="space-y-3 text-slate-700">
               {whoWeHelp.map((audience) => (
@@ -197,44 +203,35 @@ export default function StateServicesPage({
       <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
-            State Tax Compliance Support In {stateName}
+            Common Tax and Accounting Scenarios in {cityName}
           </h2>
-          <p className="text-slate-700 mb-5">
-            Our team helps you stay compliant with federal and {stateName} requirements with a practical filing workflow.
-          </p>
           <ul className="space-y-3 text-slate-700">
-            {compliancePoints.map((point) => (
-              <li key={point}>{point}</li>
+            {localScenarios.map((scenario) => (
+              <li key={scenario}>{scenario}</li>
             ))}
           </ul>
         </article>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-14">
-        <div className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
+      <section className="max-w-6xl mx-auto px-6 pb-10">
+        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
-            Service Areas In {stateName}
+            Nearby Areas We Support
           </h2>
-          <p className="text-slate-700 mb-5">
-            We support clients across {stateName}, including:
-          </p>
           <div className="flex flex-wrap gap-2">
-            {nearbyCities.map((city) => (
-              <span
-                key={city}
-                className="bg-slate-100 text-slate-800 text-sm font-semibold px-3 py-2 rounded-lg"
-              >
-                {city}
+            {nearbyAreas.map((area) => (
+              <span key={area} className="bg-slate-100 text-slate-800 text-sm font-semibold px-3 py-2 rounded-lg">
+                {area}
               </span>
             ))}
           </div>
-        </div>
+        </article>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
-            Why Businesses Choose IntegraFin In {stateName}
+            Why Businesses in {cityName} Choose IntegraFin
           </h2>
           <ul className="space-y-3 text-slate-700">
             {whyChoose.map((reason) => (
@@ -247,11 +244,8 @@ export default function StateServicesPage({
       <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
-            Recommended Tax Resources
+            Helpful Resources
           </h2>
-          <p className="text-slate-700 mb-5">
-            Explore these practical resources to improve your tax planning and accounting systems:
-          </p>
           <div className="grid sm:grid-cols-2 gap-3">
             {resourceLinks.map((resource) => (
               <Link
@@ -267,7 +261,7 @@ export default function StateServicesPage({
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-16">
-        <div className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
+        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-6">
             Frequently Asked Questions
           </h2>
@@ -292,7 +286,7 @@ export default function StateServicesPage({
               </Link>
             </div>
           </div>
-        </div>
+        </article>
       </section>
     </main>
   );
