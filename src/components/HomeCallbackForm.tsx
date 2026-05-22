@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { Loader2, CheckCircle2 } from 'lucide-react';
@@ -29,7 +29,7 @@ export default function HomeCallbackForm() {
       } else {
         setMessage({ type: 'error', text: result.message || 'Something went wrong.' });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'An unexpected error occurred. Please try again.' });
     } finally {
       setIsPending(false);
@@ -124,8 +124,9 @@ export default function HomeCallbackForm() {
       </button>
       
       <div className="pt-4 text-center">
-        <p className="text-xs text-[#45474c]">Prefer to call? <span className="text-[#0047AB] font-bold">(832) 647-1819</span> • Available 24/7</p>
+        <p className="text-xs text-[#45474c]">Prefer to call? <span className="text-[#0047AB] font-bold">(832) 647-1819</span> - Available 24/7</p>
       </div>
     </form>
   );
 }
+

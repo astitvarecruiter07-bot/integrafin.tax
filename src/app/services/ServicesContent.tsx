@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Building2, User, Scale, PlusCircle, Rocket,
-  ArrowRight, CheckCircle2, ChevronDown, ChevronUp,
-  ChevronRight
+  ArrowRight, CheckCircle2, ChevronDown, ChevronUp
 } from "lucide-react";
 
 // --- Tab Content Data ---
@@ -152,14 +151,41 @@ const tabsData = [
 export default function ServicesContent() {
   const [activeTab, setActiveTab] = useState(tabsData[0].id);
   const [openAccordionIdx, setOpenAccordionIdx] = useState<number | null>(null);
-  const [isScrolledRight, setIsScrolledRight] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
   const activeContent = tabsData.find(t => t.id === activeTab) || tabsData[0];
+
+  useEffect(() => {
+    const hashToTab: Record<string, string> = {
+      "#business": "business",
+      "#business-tax": "business",
+      "#individual": "individual",
+      "#individual-tax": "individual",
+      "#resolution": "resolution",
+      "#tax-resolution": "resolution",
+      "#additional": "additional",
+      "#additional-services": "additional",
+      "#startup": "startup",
+      "#consultation": "startup",
+    };
+
+    const applyHashTab = () => {
+      const tabId = hashToTab[window.location.hash.toLowerCase()];
+      if (tabId) {
+        setActiveTab(tabId);
+        setOpenAccordionIdx(null);
+      }
+    };
+
+    applyHashTab();
+    window.addEventListener("hashchange", applyHashTab);
+    return () => window.removeEventListener("hashchange", applyHashTab);
+  }, []);
 
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
     setOpenAccordionIdx(null); // Reset open accordions when changing categories
+    if (window.location.hash !== `#${tabId}`) {
+      window.history.replaceState(null, "", `#${tabId}`);
+    }
   };
 
   const toggleAccordion = (idx: number) => {

@@ -1,14 +1,29 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllBlogPosts } from '@/data/blogData';
+import { getAllBlogPosts } from '@/app/actions/blog';
+import { isAdminAuthenticated } from '@/lib/adminAuth';
+import { redirect } from 'next/navigation';
+
+type AdminBlogListItem = {
+    title: string;
+    slug: string;
+    category?: string;
+    date?: string;
+};
 
 export const metadata: Metadata = {
     title: 'Admin - Blogs | IntegraFin',
     description: 'Manage your blog posts.',
+    robots: { index: false, follow: false },
 };
 
-export default function AdminBlogsPage() {
-    const posts = getAllBlogPosts();
+export default async function AdminBlogsPage() {
+    const authed = await isAdminAuthenticated();
+    if (!authed) {
+        redirect('/');
+    }
+
+    const posts = (await getAllBlogPosts()) as AdminBlogListItem[];
 
     return (
         <main className="min-h-screen bg-gray-50 py-12">
@@ -46,11 +61,11 @@ export default function AdminBlogsPage() {
                                         </td>
                                         <td className="px-6 py-4">
                                             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
-                                                {post.category}
+                                                {post.category ?? 'General'}
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 text-sm text-gray-600">
-                                            {post.date}
+                                            {post.date ?? '-'}
                                         </td>
                                         <td className="px-6 py-4 text-right">
                                             <Link

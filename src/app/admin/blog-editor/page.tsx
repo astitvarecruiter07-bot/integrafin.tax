@@ -1,6 +1,8 @@
 import BlogEditor from "@/components/blog-editor/BlogEditor";
 import { Metadata } from "next";
-import { getBlogPostBySlug } from "@/data/blogData";
+import { getBlogPostBySlug } from "@/app/actions/blog";
+import { isAdminAuthenticated } from "@/lib/adminAuth";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
     title: "Admin - Blog Editor | IntegraFin",
@@ -8,13 +10,15 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogEditorPage({ searchParams }: { searchParams: Promise<{ slug?: string }> }) {
-    // In a real application, server-side auth would guard this page.
-    // e.g. if (!session || session.user.role !== 'admin') redirect('/login');
+    const authed = await isAdminAuthenticated();
+    if (!authed) {
+        redirect('/');
+    }
 
     const { slug } = await searchParams;
     let initialData = null;
     if (slug) {
-        initialData = getBlogPostBySlug(slug);
+        initialData = await getBlogPostBySlug(slug);
     }
 
     return (

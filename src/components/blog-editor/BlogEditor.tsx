@@ -1,14 +1,22 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Bold, Italic, Link as LinkIcon, Image as ImageIcon, Heading2, Heading3, Code, List, ListOrdered, Quote } from 'lucide-react';
-import { sanitizeHtml, generateBlogJsonLd, BlogPayload } from '@/utils/seo';
-import type { BlogPost } from '@/data/blogData';
+import { Bold, Italic, Link as LinkIcon, Image as ImageIcon, Heading2, Heading3, List, ListOrdered, Quote } from 'lucide-react';
+import { sanitizeHtml } from '@/utils/seo';
 import { saveBlogPost } from '@/app/actions/blog';
 import { useRouter } from 'next/navigation';
 
+interface BlogEditorInitialData {
+    title?: string;
+    slug?: string;
+    excerpt?: string;
+    content?: string[];
+    contentHtml?: string;
+    image?: string;
+}
+
 interface BlogEditorProps {
-    initialData?: BlogPost | null;
+    initialData?: BlogEditorInitialData | null;
 }
 
 export default function BlogEditor({ initialData }: BlogEditorProps) {
@@ -59,6 +67,45 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
             setSlug(generatedSlug);
         }
     }, [title, slugOverride]);
+
+    const plainTextContent = htmlContent.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    const wordCount = plainTextContent ? plainTextContent.split(' ').length : 0;
+    const hasFeaturedImage = !!initialData?.image;
+    const hasExternalLinksWithoutNofollow = /<a[^>]+href="https?:\/\/[^"]+"(?![^>]*rel="[^"]*nofollow[^"]*")/i.test(htmlContent);
+
+    const seoChecks = [
+        {
+            label: 'Title length (30-60 chars)',
+            pass: metaTitle.length >= 30 && metaTitle.length <= 60,
+            detail: `${metaTitle.length} characters`,
+        },
+        {
+            label: 'Meta description (120-160 chars)',
+            pass: metaDescription.length >= 120 && metaDescription.length <= 160,
+            detail: `${metaDescription.length} characters`,
+        },
+        {
+            label: 'SEO-friendly slug',
+            pass: /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) && slug.length >= 3,
+            detail: slug ? `/blog/${slug}` : 'Missing slug',
+        },
+        {
+            label: 'Content length (300+ words)',
+            pass: wordCount >= 300,
+            detail: `${wordCount} words`,
+        },
+        {
+            label: 'Featured image set',
+            pass: hasFeaturedImage,
+            detail: hasFeaturedImage ? 'Image available' : 'Add image support in editor payload',
+        },
+        {
+            label: 'External links use nofollow',
+            pass: !hasExternalLinksWithoutNofollow,
+            detail: hasExternalLinksWithoutNofollow ? 'At least one external link is missing nofollow' : 'Good',
+        },
+    ];
+    const passedChecks = seoChecks.filter((c) => c.pass).length;
 
     const handleEditorInput = () => {
         if (editorRef.current) {
@@ -279,7 +326,7 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
                             <div className="flex items-center gap-2">
                                 <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-xs font-bold text-blue-800">IF</div>
                                 <div className="text-xs text-gray-800">
-                                    <span className="hover:underline cursor-pointer">integrafin.tax</span> › blog › {slug || 'your-slug-here'}
+                                    <span className="hover:underline cursor-pointer">integrafin.tax</span> &rsaquo; blog &rsaquo; {slug || 'your-slug-here'}
                                 </div>
                             </div>
                             <h3 className="text-[#1a0dab] text-xl cursor-pointer hover:underline truncate">
@@ -289,6 +336,27 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
                                 {metaDescription || 'Your meta description will appear here. Write something compelling to increase click-through rates from search engine results.'}
                             </p>
                         </div>
+                    </div>
+
+                    {/* SEO Publish Checklist */}
+                    <div className="mt-6 bg-gray-50 p-4 rounded-xl border border-gray-200">
+                        <div className="flex items-center justify-between mb-3">
+                            <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Publish Checklist</h4>
+                            <span className="text-xs font-semibold text-gray-600">{passedChecks}/{seoChecks.length} passed</span>
+                        </div>
+                        <ul className="space-y-2">
+                            {seoChecks.map((check) => (
+                                <li key={check.label} className="flex items-start gap-2">
+                                    <span className={`mt-0.5 text-xs font-bold ${check.pass ? 'text-green-600' : 'text-amber-600'}`}>
+                                        {check.pass ? 'PASS' : 'WARN'}
+                                    </span>
+                                    <div>
+                                        <p className="text-sm text-gray-800">{check.label}</p>
+                                        <p className="text-xs text-gray-500">{check.detail}</p>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
                     {/* Submit Button */}
@@ -319,11 +387,11 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
                         <div className="flex flex-col gap-3 mb-6">
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input type="checkbox" checked={linkNoFollow} onChange={e => setLinkNoFollow(e.target.checked)} className="w-4 h-4 text-blue-600" />
-                                <span className="text-sm text-gray-700">Add rel="nofollow" (Good for external links)</span>
+                                <span className="text-sm text-gray-700">Add rel=&quot;nofollow&quot; (Good for external links)</span>
                             </label>
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input type="checkbox" checked={linkNewTab} onChange={e => setLinkNewTab(e.target.checked)} className="w-4 h-4 text-blue-600" />
-                                <span className="text-sm text-gray-700">Open in target="_blank" (New Tab)</span>
+                                <span className="text-sm text-gray-700">Open in target=&quot;_blank&quot; (New Tab)</span>
                             </label>
                         </div>
                         <div className="flex justify-end gap-3">

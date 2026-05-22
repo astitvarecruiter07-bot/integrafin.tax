@@ -11,11 +11,11 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
-    { href: "/services#business-tax", label: "Business Tax & Accounting" },
-    { href: "/services#individual-tax", label: "Individual Tax Services" },
+    { href: "/services#business", label: "Business Tax & Accounting" },
+    { href: "/services#individual", label: "Individual Tax Services" },
     { href: "/services#tax-resolution", label: "Tax Resolution" },
-    { href: "/services#additional-services", label: "Additional Services" },
-    { href: "/services#consultation", label: "Consultation" },
+    { href: "/services#additional", label: "Additional Services" },
+    { href: "/services#startup", label: "Consultation" },
     { href: "/industries", label: "Industries Served" },
 ];
 
@@ -45,9 +45,6 @@ function SocialIcon({ icon }: { icon: string }) {
 }
 
 export default function Footer() {
-    // Mock user for Auth Guard (replace with real auth hook like useSession)
-    const user = { role: 'admin' };
-
     return (
         <footer className="bg-[#1B2A4A] text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">

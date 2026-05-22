@@ -30,7 +30,7 @@ export default function ContactForm() {
       } else {
         setMessage({ type: 'error', text: result.message || 'Something went wrong.' });
       }
-    } catch (error) {
+    } catch {
       setMessage({ type: 'error', text: 'An unexpected error occurred. Please try again.' });
     } finally {
       setIsPending(false);

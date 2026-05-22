@@ -24,7 +24,8 @@ export function sanitizeHtml(html: string): string {
             'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'b', 'i', 'strong', 'em', 'strike',
             'a', 'ul', 'ol', 'li', 'blockquote', 'img', 'figure', 'figcaption', 'span', 'div'
         ],
-        ALLOWED_ATTR: ['href', 'title', 'target', 'rel', 'src', 'alt', 'class', 'style']
+        ALLOWED_ATTR: ['href', 'title', 'target', 'rel', 'src', 'alt', 'class'],
+        ALLOWED_URI_REGEXP: /^(?:(?:https?|mailto|tel):|\/|#)/i
     });
 }
 

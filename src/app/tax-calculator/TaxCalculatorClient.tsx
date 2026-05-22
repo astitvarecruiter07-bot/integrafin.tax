@@ -325,8 +325,6 @@ function FederalIncomeTab() {
         });
     };
 
-    const maxBracket = result?.breakdown.reduce((a, b) => (b.amount > a ? b.amount : a), 0) || 1;
-
     return (
         <div className="space-y-16">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">

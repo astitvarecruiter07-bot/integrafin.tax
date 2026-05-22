@@ -3,6 +3,9 @@
 import { z } from 'zod';
 import dbConnect from '@/lib/mongodb';
 import ContactLead from '@/models/ContactLead';
+import { requireAdminAuth } from '@/lib/adminAuth';
+import { headers } from 'next/headers';
+import { checkRateLimit } from '@/lib/rateLimit';
 
 const LeadSchema = z.object({
   name: z.string().min(2, 'Name is too short').max(100),
@@ -18,13 +21,33 @@ const LeadSchema = z.object({
 
 export type LeadInput = z.infer<typeof LeadSchema>;
 
+const LEAD_LIMIT = 5;
+const LEAD_WINDOW_MS = 10 * 60 * 1000;
+
+async function getLeadRateLimitKey() {
+  const headerStore = await headers();
+  const forwardedFor = headerStore.get('x-forwarded-for');
+  const realIp = headerStore.get('x-real-ip');
+  const firstForwarded = forwardedFor?.split(',')[0]?.trim();
+  return firstForwarded || realIp || 'unknown';
+}
+
 export async function submitLead(data: LeadInput) {
   try {
+    const rateLimitKey = await getLeadRateLimitKey();
+    const rateResult = checkRateLimit(`submitLead:${rateLimitKey}`, LEAD_LIMIT, LEAD_WINDOW_MS);
+    if (!rateResult.allowed) {
+      return {
+        success: false,
+        message: 'Too many requests. Please wait a few minutes before submitting again.',
+      };
+    }
+
     const validatedData = LeadSchema.parse(data);
     
     await dbConnect();
     
-    console.log('📝 Saving Lead to DB:', validatedData);
+    console.log('Saving lead to DB:', validatedData);
     
     const newLead = await ContactLead.create({
       ...validatedData,
@@ -56,6 +79,7 @@ export async function submitLead(data: LeadInput) {
 
 export async function getLeads() {
   try {
+    await requireAdminAuth();
     await dbConnect();
     const leads = await ContactLead.find({}).sort({ createdAt: -1 }).lean();
     return JSON.parse(JSON.stringify(leads));

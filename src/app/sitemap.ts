@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
-import { getAllBlogPosts } from '@/data/blogData';
+import { mockBlogPosts } from '@/data/blogData';
+import { getAllBlogPosts as getDbBlogPosts } from '@/app/actions/blog';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://integrafin.tax';
 
   const routes = [
@@ -23,10 +24,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  const blogPosts = getAllBlogPosts();
+  const dbPosts = await getDbBlogPosts();
+  const blogPosts = [...dbPosts];
+  mockBlogPosts.forEach((mockPost) => {
+    if (!blogPosts.find((p) => p.slug === mockPost.slug)) {
+      blogPosts.push(mockPost);
+    }
+  });
+
   const blogEntries = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.6,
   }));

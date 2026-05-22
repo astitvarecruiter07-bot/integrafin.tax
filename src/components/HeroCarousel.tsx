@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
@@ -40,15 +40,7 @@ export default function HeroCarousel() {
   const [dragOffset, setDragOffset] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!isAutoPlayEnabled) return;
-    const timer = setInterval(() => {
-      handleNext();
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [currentSlide, isAutoPlayEnabled]);
-
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (isTransitioning) return;
     setIsTransitioning(true);
     setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -56,7 +48,7 @@ export default function HeroCarousel() {
       setIsTransitioning(false);
       setDragOffset(0);
     }, 700);
-  };
+  }, [isTransitioning]);
 
   const handlePrev = () => {
     if (isTransitioning) return;
@@ -67,6 +59,14 @@ export default function HeroCarousel() {
       setDragOffset(0);
     }, 700);
   };
+
+  useEffect(() => {
+    if (!isAutoPlayEnabled) return;
+    const timer = setInterval(() => {
+      handleNext();
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [currentSlide, isAutoPlayEnabled, handleNext]);
 
   const goToSlide = (index: number) => {
     if (index === currentSlide || isTransitioning) return;
@@ -141,8 +141,11 @@ export default function HeroCarousel() {
                  src={slide.image}
                  alt="Hero Background"
                  fill
+                 sizes="100vw"
                  className="object-cover object-right absolute inset-0 opacity-60"
                  priority={index === 0}
+                 loading={index === 0 ? "eager" : "lazy"}
+                 quality={index === 0 ? 80 : 70}
                />
             </div>
 
@@ -161,15 +164,17 @@ export default function HeroCarousel() {
                    {slide.description}
                  </p>
                  <div className="flex flex-col sm:flex-row gap-4">
-                   <Link href={slide.buttonLink}>
-                     <button className="bg-[#0092df] hover:bg-[#007bbf] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#0092df]/20 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#0092df]/40 flex items-center justify-center gap-2">
-                       {slide.buttonLabel} <ChevronRight className="w-5 h-5 text-white/80" />
-                     </button>
+                   <Link
+                     href={slide.buttonLink}
+                     className="bg-[#0092df] hover:bg-[#007bbf] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#0092df]/20 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#0092df]/40 flex items-center justify-center gap-2"
+                   >
+                     {slide.buttonLabel} <ChevronRight className="w-5 h-5 text-white/80" />
                    </Link>
-                   <Link href="/about">
-                     <button className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 flex items-center justify-center gap-2">
-                       Learn More
-                     </button>
+                   <Link
+                     href="/about"
+                     className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 flex items-center justify-center gap-2"
+                   >
+                     Learn More
                    </Link>
                  </div>
                </div>

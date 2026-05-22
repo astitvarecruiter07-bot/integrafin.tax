@@ -12,13 +12,10 @@ export default function TestDbPage() {
     setStatus('Connecting...');
     try {
       const result = await testDbConnection();
-      if (result.success) {
-        setStatus(`✅ ${result.message}`);
-      } else {
-        setStatus(`❌ ${result.message}`);
-      }
-    } catch (error: any) {
-      setStatus(`❌ Unexpected error: ${error.message}`);
+      setStatus(result.success ? `Success: ${result.message}` : `Error: ${result.message}`);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Unknown error';
+      setStatus(`Unexpected error: ${message}`);
     } finally {
       setLoading(false);
     }
@@ -27,8 +24,8 @@ export default function TestDbPage() {
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <h1>MongoDB Atlas Connection Test</h1>
-      <button 
-        onClick={handleTest} 
+      <button
+        onClick={handleTest}
         disabled={loading}
         style={{
           padding: '10px 20px',
@@ -36,7 +33,7 @@ export default function TestDbPage() {
           color: 'white',
           border: 'none',
           borderRadius: '5px',
-          cursor: 'pointer'
+          cursor: 'pointer',
         }}
       >
         {loading ? 'Testing...' : 'Run Test Connection'}
@@ -46,9 +43,6 @@ export default function TestDbPage() {
           {status}
         </div>
       )}
-      <p style={{ marginTop: '1rem', fontSize: '0.9rem', color: '#666' }}>
-        Note: If this succeeds, your MongoDB Atlas is correctly linked to your Next.js project.
-      </p>
     </div>
   );
 }

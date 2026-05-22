@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { FileDown, Loader2, ArrowRight } from 'lucide-react';
-import { submitLead } from '@/app/actions/leads';
 import Link from 'next/link';
 
 const FILING_STATUSES = [
@@ -90,22 +89,6 @@ export default function TaxCalculator() {
     setTaxLiability(Math.floor(totalTax));
     setSavings(potentialSavings);
     
-    // Save as a lead (passive collection)
-    try {
-      await submitLead({
-        name: 'Tax & Savings Estimate',
-        email: 'passive@visitor.com',
-        phone: '000-000-0000',
-        service: 'Home Tax Calculator',
-        message: `Visitor calculated tax for ${revenue} (${filingStatus}). Estimated Tax: $${totalTax.toLocaleString()}. Potential Savings: $${potentialSavings.toLocaleString()}.`,
-        source: 'home-page-calculator',
-        revenue,
-        jurisdiction: filingStatus,
-      });
-    } catch (err) {
-      // Silent error
-    }
-
     setTimeout(() => setIsCalculating(false), 800);
   };
 

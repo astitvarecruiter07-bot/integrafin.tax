@@ -3,6 +3,8 @@
 import dbConnect from '@/lib/mongodb';
 import BlogPost from '@/models/BlogPost';
 import { revalidatePath } from 'next/cache';
+import { sanitizeHtml } from '@/utils/seo';
+import { requireAdminAuth } from '@/lib/adminAuth';
 
 export async function saveBlogPost(payload: {
   title: string;
@@ -15,15 +17,20 @@ export async function saveBlogPost(payload: {
   author?: { name: string; image?: string };
 }) {
   try {
+    await requireAdminAuth();
     await dbConnect();
 
     const { slug } = payload;
+    const sanitizedPayload = {
+      ...payload,
+      contentHtml: sanitizeHtml(payload.contentHtml),
+    };
 
     // Update if exists, otherwise create
     const blogPost = await BlogPost.findOneAndUpdate(
       { slug },
       { 
-        ...payload,
+        ...sanitizedPayload,
         updatedAt: new Date()
       },
       { new: true, upsert: true }

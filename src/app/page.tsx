@@ -123,7 +123,14 @@ export default function Home() {
         <div className="md:w-1/2 relative">
            <div className="absolute inset-0 bg-gradient-to-r from-[#0092df]/20 to-transparent rounded-[2rem] transform -rotate-3 scale-105 blur-sm -z-10 transition-transform duration-700 hover:rotate-0"></div>
            <div className="relative h-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
-             <Image src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80" alt="About Integrafin" fill className="object-cover transition-transform duration-700 hover:scale-105" />
+             <Image
+               src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80"
+               alt="About Integrafin"
+               fill
+               sizes="(max-width: 768px) 100vw, 50vw"
+               quality={72}
+               className="object-cover transition-transform duration-700 hover:scale-105"
+             />
            </div>
         </div>
         <div className="md:w-1/2 flex flex-col items-start text-left">
@@ -133,10 +140,10 @@ export default function Home() {
            <p className="text-slate-600 mb-10 leading-loose text-base md:text-lg font-medium">
              IntegraFin is a trusted provider of comprehensive tax, accounting, and business advisory services. With a team of experienced Certified Public Accountants (CPAs), Chartered Accountants (CAs), and financial experts, we are committed to delivering high-quality, reliable, and secure financial solutions tailored to businesses and individuals.
            </p>
-           <button className="bg-[#003580] hover:bg-[#002050] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#003580]/20 hover:-translate-y-1 group flex items-center gap-3">
+          <Link href="/about" className="bg-[#003580] hover:bg-[#002050] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#003580]/20 hover:-translate-y-1 group flex items-center gap-3">
              Know More
              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-           </button>
+          </Link>
         </div>
       </section>
 
@@ -183,31 +190,37 @@ export default function Home() {
                 {
                   title: "Business - Tax & Accounting Services",
                   desc: "Comprehensive accounting and bookkeeping solutions, including software implementation, payroll, financial statements, and tax compliance for businesses of all sizes.",
+                  href: "/services#business",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><rect x="8" y="10" width="8" height="8" rx="1"/></svg>
                 },
                 {
                   title: "Individual Tax Services",
                   desc: "Expert tax preparation and planning to maximize deductions and ensure compliance with IRS regulations.",
+                  href: "/services#individual",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 11v8"/></svg>
                 },
                 {
                   title: "Tax Resolution Services",
                   desc: "Assistance with back taxes, IRS audits, penalty abatements, and tax negotiations to resolve outstanding tax issues.",
+                  href: "/services#resolution",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="m12 14 4-4"/><path d="M3.3 7H6h15l-1.5 13H4.5L3.3 7Z"/><path d="m16 10-4 4"/></svg>
                 },
                 {
                   title: "Additional Services",
                   desc: "Support for ITIN, SSN, PEIN applications; international compliance (FBAR & FATCA); business certifications, and secure document management.",
+                  href: "/services#additional",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z"/><path d="M4.5 8.5V4a2 2 0 0 1 2-2h9l5 5v13a2 2 0 0 1-2 2h-2"/></svg>
                 },
                 {
                   title: "New Business & Consultation",
                   desc: "Starting a new business is an exciting yet challenging process that requires careful planning and strategic decision-making.",
+                  href: "/services#startup",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
                 },
                 {
                   title: "Industries Served",
                   desc: "We cater to various industries, including real estate, construction, manufacturing, healthcare, financial services, legal, retail, and technology, providing tailored tax and accounting solutions.",
+                  href: "/industries",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h3.14"/><path d="M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>
                 }
               ].map((srv, idx) => (
@@ -217,7 +230,7 @@ export default function Home() {
                    </div>
                    <h3 className="text-xl font-black text-[#003580] mb-5 tracking-tight">{srv.title}</h3>
                    <p className="text-slate-600 text-sm mb-8 flex-grow leading-relaxed font-medium">{srv.desc}</p>
-                   <Link href="#" className="mt-auto inline-flex items-center justify-center gap-2 text-[#0092df] py-3 px-6 rounded-xl font-bold text-sm bg-slate-50 hover:bg-[#0092df] hover:text-white transition-colors w-full">
+                   <Link href={srv.href} className="mt-auto inline-flex items-center justify-center gap-2 text-[#0092df] py-3 px-6 rounded-xl font-bold text-sm bg-slate-50 hover:bg-[#0092df] hover:text-white transition-colors w-full">
                      Read More <ChevronRight className="w-4 h-4" />
                    </Link>
                 </div>
@@ -229,10 +242,12 @@ export default function Home() {
       {/* Testimonial */}
       <section className="relative py-32 bg-slate-900 border-b-8 border-[#0092df] text-center flex items-center justify-center min-h-[500px]">
          <div className="absolute inset-0 bg-gradient-to-br from-[#003580]/90 to-slate-900/90 z-10" />
-         <Image 
-           src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80" 
-           alt="Testimonial Background" 
-           fill 
+         <Image
+           src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80"
+           alt="Testimonial Background"
+           fill
+           sizes="100vw"
+           quality={60}
            className="object-cover object-bottom absolute inset-0 z-0 opacity-40 mix-blend-overlay"
          />
          <div className="relative z-20 max-w-5xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
@@ -278,11 +293,13 @@ export default function Home() {
            </div>
            <div className="lg:w-1/2 relative min-h-[400px] lg:min-h-auto inset-y-0">
               <div className="absolute inset-0 bg-[#003580]/10 z-10 mix-blend-overlay"></div>
-              <Image 
-                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80" 
-                alt="Request Call Back" 
-                fill 
-                className="object-cover object-center" 
+              <Image
+                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80"
+                alt="Request Call Back"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={68}
+                className="object-cover object-center"
               />
            </div>
         </div>

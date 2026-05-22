@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface PageHeaderProps {
     title: string;
     breadcrumb: string;
@@ -35,7 +37,7 @@ export default function PageHeader({ title, breadcrumb, description }: PageHeade
                     {title}
                 </h1>
                 <div className="inline-flex items-center gap-2 px-5 py-2 bg-accent-dark text-white rounded-full text-sm font-medium mb-4">
-                    <a href="/" className="hover:underline">Home</a>
+                    <Link href="/" className="hover:underline">Home</Link>
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>

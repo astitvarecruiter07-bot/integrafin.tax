@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { mockBlogPosts } from "@/data/blogData";
 import { getAllBlogPosts } from "@/app/actions/blog";
 import BlogContent from "./BlogContent";
@@ -7,9 +6,18 @@ export const metadata = {
   title: 'Tax Tips & Accounting Insights | IntegraFin Blog',
   description: 'Stay updated with tax tips, IRS news, and accounting strategies from IntegraFin\'s tax expert team in Katy TX. Expert financial insights for businesses and individuals.',
   alternates: { canonical: 'https://integrafin.tax/blog' },
+  robots: { index: true, follow: true },
   openGraph: {
     title: 'Tax Tips & Accounting Insights | IntegraFin Blog',
+    description: 'Stay updated with tax tips, IRS news, and accounting strategies from IntegraFin\'s tax expert team in Katy TX.',
     url: 'https://integrafin.tax/blog',
+    images: [{ url: '/og-image.jpg', alt: 'IntegraFin Blog Tax Insights' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tax Tips & Accounting Insights | IntegraFin Blog',
+    description: 'Stay updated with tax tips, IRS news, and accounting strategies from IntegraFin\'s tax expert team in Katy TX.',
+    images: ['/og-image.jpg'],
   },
 };
 

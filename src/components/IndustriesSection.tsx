@@ -137,7 +137,7 @@ export default function IndustriesSection() {
         <div className="sticky top-20 z-40 bg-white/80 backdrop-blur-md shadow-sm border-y border-slate-100 mb-8 sm:mb-12 rounded-xl overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 h-16 flex items-center">
             <div className="flex items-center space-x-3 sm:space-x-6 overflow-x-auto no-scrollbar whitespace-nowrap text-[9px] sm:text-[10px] font-bold uppercase tracking-widest w-full">
-              {categories.map((cat, i) => (
+              {categories.map((cat) => (
                 <button 
                   key={cat} 
                   onClick={() => setActiveCategory(cat)}
@@ -156,7 +156,7 @@ export default function IndustriesSection() {
 
         {/* Grid Container */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
-          {filteredIndustries.map((item, i) => (
+          {filteredIndustries.map((item) => (
             item.featured ? (
               // Featured Card style
               <div 

@@ -1,13 +1,22 @@
 import { getLeads } from '@/app/actions/leads';
 import { Calendar, Mail, Phone, Building, Info } from 'lucide-react';
+import type { IContactLead } from '@/models/ContactLead';
+import { isAdminAuthenticated } from '@/lib/adminAuth';
+import { redirect } from 'next/navigation';
 
 export const metadata = {
   title: 'Leads Management | IntegraFin Admin',
   robots: { index: false, follow: false },
 };
+export const dynamic = 'force-dynamic';
 
 export default async function AdminLeadsPage() {
-  const leads = await getLeads();
+  const authed = await isAdminAuthenticated();
+  if (!authed) {
+    redirect('/');
+  }
+
+  const leads = (await getLeads()) as (IContactLead & { _id: string })[];
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-8">
@@ -43,7 +52,7 @@ export default async function AdminLeadsPage() {
                     </td>
                   </tr>
                 ) : (
-                  leads.map((lead: any) => (
+                  leads.map((lead) => (
                     <tr key={lead._id} className="hover:bg-gray-50/50 transition-colors">
                       <td className="px-6 py-6">
                         <div className="font-bold text-[#003580]">{lead.name}</div>

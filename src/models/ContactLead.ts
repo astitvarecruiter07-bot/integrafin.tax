@@ -72,8 +72,6 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
   }
 );
 
-if (mongoose.models.ContactLead) {
-  delete (mongoose.models as any).ContactLead;
-}
+const existingModel = mongoose.models.ContactLead as mongoose.Model<IContactLead> | undefined;
 
-export default mongoose.model<IContactLead>('ContactLead', ContactLeadSchema);
+export default existingModel || mongoose.model<IContactLead>('ContactLead', ContactLeadSchema);

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Mail, MessageSquare, MapPin, Phone, ShieldCheck } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
