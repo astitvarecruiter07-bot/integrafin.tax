@@ -6,6 +6,22 @@ import { revalidatePath } from 'next/cache';
 import { sanitizeHtml } from '@/utils/seo';
 import { requireAdminAuth } from '@/lib/adminAuth';
 
+export type DbBlogPost = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  date: string;
+  readTime: string;
+  content?: string[];
+  contentHtml?: string;
+  featured?: boolean;
+  image?: string;
+  author?: { name: string; image?: string };
+  createdAt?: string;
+  updatedAt?: string;
+};
+
 export async function saveBlogPost(payload: {
   title: string;
   slug: string;
@@ -46,22 +62,22 @@ export async function saveBlogPost(payload: {
   }
 }
 
-export async function getAllBlogPosts() {
+export async function getAllBlogPosts(): Promise<DbBlogPost[]> {
   try {
     await dbConnect();
     const posts = await BlogPost.find({}).sort({ createdAt: -1 });
-    return JSON.parse(JSON.stringify(posts));
+    return JSON.parse(JSON.stringify(posts)) as DbBlogPost[];
   } catch (error) {
     console.error('Error fetching blog posts:', error);
     return [];
   }
 }
 
-export async function getBlogPostBySlug(slug: string) {
+export async function getBlogPostBySlug(slug: string): Promise<DbBlogPost | null> {
   try {
     await dbConnect();
     const post = await BlogPost.findOne({ slug });
-    return post ? JSON.parse(JSON.stringify(post)) : null;
+    return post ? (JSON.parse(JSON.stringify(post)) as DbBlogPost) : null;
   } catch (error) {
     console.error('Error fetching blog post by slug:', error);
     return null;

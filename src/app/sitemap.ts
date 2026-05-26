@@ -45,12 +45,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   });
 
-  const blogEntries = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.updatedAt ? new Date(post.updatedAt) : new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.6,
-  }));
+  const blogEntries = blogPosts.map((post) => {
+    const updatedAt =
+      'updatedAt' in post && typeof post.updatedAt === 'string'
+        ? post.updatedAt
+        : undefined;
+
+    return {
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: updatedAt ? new Date(updatedAt) : new Date(post.date || Date.now()),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    };
+  });
 
   return [...staticEntries, ...blogEntries];
 }
