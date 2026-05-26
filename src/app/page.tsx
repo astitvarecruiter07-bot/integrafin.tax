@@ -266,6 +266,36 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 px-6 lg:px-8 bg-slate-50 border-t border-slate-200/60">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">Tax Knowledge</span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">Popular Tax Guides</h2>
+            <p className="text-slate-600 mt-4 max-w-3xl mx-auto">
+              Start with these practical resources on IRS compliance, payroll, tax planning, and startup finance.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link href="/blog/irs-compliance-guide" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-lg font-black text-[#003580] mb-2">IRS Compliance Guide</h3>
+              <p className="text-slate-600 text-sm">How businesses can stay compliant and avoid filing penalties.</p>
+            </Link>
+            <Link href="/blog/payroll-best-practices" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-lg font-black text-[#003580] mb-2">Payroll Best Practices</h3>
+              <p className="text-slate-600 text-sm">Key payroll workflows for tax accuracy and reporting discipline.</p>
+            </Link>
+            <Link href="/blog/tax-resolution-options" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-lg font-black text-[#003580] mb-2">Tax Resolution Options</h3>
+              <p className="text-slate-600 text-sm">What to do when you owe back taxes or receive IRS notices.</p>
+            </Link>
+            <Link href="/blog/financial-planning-for-startups" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-lg font-black text-[#003580] mb-2">Startup Financial Planning</h3>
+              <p className="text-slate-600 text-sm">Build a stronger financial foundation from day one.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonial */}
       <section className="relative py-32 bg-slate-900 border-b-8 border-[#0092df] text-center flex items-center justify-center min-h-[500px]">
          <div className="absolute inset-0 bg-gradient-to-br from-[#003580]/90 to-slate-900/90 z-10" />

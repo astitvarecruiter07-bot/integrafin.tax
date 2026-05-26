@@ -64,6 +64,10 @@ export default function NewYorkTaxAccountingServicesPage() {
         "Practical recommendations designed for owner-operated businesses",
       ]}
       nearbyCities={["New York City", "Buffalo", "Rochester", "Albany", "Yonkers", "Syracuse"]}
+      cityPageLinks={[
+        { href: "/new-york/nyc-tax-accountant", label: "NYC Tax Accountant Services" },
+        { href: "/new-york/buffalo-tax-accountant", label: "Buffalo Tax Accountant Services" },
+      ]}
       faqItems={[
         {
           question: "Do you work with New York City and upstate clients?",

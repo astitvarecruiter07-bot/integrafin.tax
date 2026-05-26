@@ -10,6 +10,11 @@ type ResourceLink = {
   label: string;
 };
 
+type CityPageLink = {
+  href: string;
+  label: string;
+};
+
 type StateServicesPageProps = {
   stateName: string;
   stateCode: string;
@@ -24,6 +29,7 @@ type StateServicesPageProps = {
   nearbyCities: string[];
   faqItems: FaqItem[];
   resourceLinks: ResourceLink[];
+  cityPageLinks?: CityPageLink[];
   pageUrl: string;
   lastReviewed: string;
 };
@@ -42,6 +48,7 @@ export default function StateServicesPage({
   nearbyCities,
   faqItems,
   resourceLinks,
+  cityPageLinks = [],
   pageUrl,
   lastReviewed,
 }: StateServicesPageProps) {
@@ -230,6 +237,30 @@ export default function StateServicesPage({
           </div>
         </div>
       </section>
+
+      {cityPageLinks.length > 0 && (
+        <section className="max-w-6xl mx-auto px-6 pb-10">
+          <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
+            <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
+              City Tax Accountant Pages In {stateName}
+            </h2>
+            <p className="text-slate-700 mb-5">
+              Explore our city-specific service pages:
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3">
+              {cityPageLinks.map((cityLink) => (
+                <Link
+                  key={cityLink.href}
+                  href={cityLink.href}
+                  className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary"
+                >
+                  {cityLink.label}
+                </Link>
+              ))}
+            </div>
+          </article>
+        </section>
+      )}
 
       <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">

@@ -1,0 +1,94 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "HTML Sitemap | IntegraFin",
+  description:
+    "Browse all important IntegraFin pages including services, locations, blog posts, and legal pages.",
+  alternates: { canonical: "https://integrafin.tax/site-map" },
+  robots: { index: true, follow: true },
+};
+
+const sections = [
+  {
+    title: "Core Pages",
+    links: [
+      { href: "/", label: "Home" },
+      { href: "/services", label: "Services" },
+      { href: "/contact", label: "Contact" },
+      { href: "/blog", label: "Blog" },
+      { href: "/case-study", label: "Case Study" },
+      { href: "/tax-calculator", label: "Tax Calculator" },
+    ],
+  },
+  {
+    title: "State Service Hubs",
+    links: [
+      { href: "/texas-tax-accounting-services", label: "Texas Tax and Accounting Services" },
+      { href: "/new-york-tax-accounting-services", label: "New York Tax and Accounting Services" },
+      { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania Tax and Accounting Services" },
+    ],
+  },
+  {
+    title: "City Service Pages",
+    links: [
+      { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant" },
+      { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant" },
+      { href: "/new-york/nyc-tax-accountant", label: "NYC Tax Accountant" },
+      { href: "/new-york/buffalo-tax-accountant", label: "Buffalo Tax Accountant" },
+      { href: "/pennsylvania/philadelphia-tax-accountant", label: "Philadelphia Tax Accountant" },
+      { href: "/pennsylvania/pittsburgh-tax-accountant", label: "Pittsburgh Tax Accountant" },
+    ],
+  },
+  {
+    title: "Featured Blog Posts",
+    links: [
+      { href: "/blog/financial-planning-for-startups", label: "Financial Planning for Startups" },
+      { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance" },
+      { href: "/blog/payroll-best-practices", label: "Payroll Best Practices" },
+      { href: "/blog/tax-resolution-options", label: "Tax Resolution Options" },
+    ],
+  },
+  {
+    title: "Policies",
+    links: [
+      { href: "/privacy", label: "Privacy Policy" },
+      { href: "/terms", label: "Terms and Conditions" },
+    ],
+  },
+];
+
+export default function HtmlSitemapPage() {
+  return (
+    <main className="bg-slate-50 min-h-screen pt-28 pb-16">
+      <section className="max-w-5xl mx-auto px-6">
+        <h1 className="text-3xl sm:text-4xl font-black text-[#003580] tracking-tight mb-4">
+          HTML Sitemap
+        </h1>
+        <p className="text-slate-600 mb-8">
+          Use this page to quickly navigate important services, location pages, and tax resources.
+        </p>
+
+        <div className="space-y-6">
+          {sections.map((section) => (
+            <article key={section.title} className="bg-white border border-slate-200 rounded-2xl p-6">
+              <h2 className="text-xl font-bold text-[#003580] mb-4">{section.title}</h2>
+              <ul className="grid sm:grid-cols-2 gap-3">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-[#0057b8] hover:text-[#003580] hover:underline font-medium"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}

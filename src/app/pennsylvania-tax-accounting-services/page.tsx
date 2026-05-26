@@ -64,6 +64,10 @@ export default function PennsylvaniaTaxAccountingServicesPage() {
         "Actionable recommendations tailored to small business operations",
       ]}
       nearbyCities={["Philadelphia", "Pittsburgh", "Allentown", "Harrisburg", "Erie", "Reading"]}
+      cityPageLinks={[
+        { href: "/pennsylvania/philadelphia-tax-accountant", label: "Philadelphia Tax Accountant Services" },
+        { href: "/pennsylvania/pittsburgh-tax-accountant", label: "Pittsburgh Tax Accountant Services" },
+      ]}
       faqItems={[
         {
           question: "Can you support businesses in Philadelphia and Pittsburgh?",

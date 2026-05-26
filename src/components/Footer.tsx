@@ -8,6 +8,7 @@ const quickLinks = [
     { href: "/blog", label: "Blog" },
     { href: "/case-study", label: "Case Study" },
     { href: "/contact", label: "Contact" },
+    { href: "/site-map", label: "HTML Sitemap" },
 ];
 
 const serviceLinks = [
@@ -17,6 +18,9 @@ const serviceLinks = [
     { href: "/services#additional", label: "Additional Services" },
     { href: "/services#startup", label: "Consultation" },
     { href: "/industries", label: "Industries Served" },
+    { href: "/texas-tax-accounting-services", label: "Texas Services" },
+    { href: "/new-york-tax-accounting-services", label: "New York Services" },
+    { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania Services" },
 ];
 
 const socialLinks = [

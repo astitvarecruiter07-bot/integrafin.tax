@@ -64,6 +64,10 @@ export default function TexasTaxAccountingServicesPage() {
         "Planning-focused approach that supports long-term compliance",
       ]}
       nearbyCities={["Houston", "Dallas", "Austin", "San Antonio", "Katy", "Fort Worth"]}
+      cityPageLinks={[
+        { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
+        { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
+      ]}
       faqItems={[
         {
           question: "Do you provide remote tax and bookkeeping support across Texas?",

@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { mockBlogPosts } from '@/data/blogData';
 import { getAllBlogPosts as getDbBlogPosts } from '@/app/actions/blog';
 
+export const revalidate = 86400;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://integrafin.tax';
 
@@ -24,6 +26,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tax-calculator',
     '/privacy',
     '/terms',
+    '/site-map',
   ];
 
   const staticEntries = routes.map((route) => ({
@@ -33,11 +36,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
+  const blogPosts = [...mockBlogPosts];
+
   const dbPosts = await getDbBlogPosts();
-  const blogPosts = [...dbPosts];
-  mockBlogPosts.forEach((mockPost) => {
-    if (!blogPosts.find((p) => p.slug === mockPost.slug)) {
-      blogPosts.push(mockPost);
+  dbPosts.forEach((dbPost) => {
+    if (!blogPosts.find((p) => p.slug === dbPost.slug)) {
+      blogPosts.push(dbPost);
     }
   });
 
