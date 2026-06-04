@@ -40,6 +40,19 @@ function decodeBase64Url(input: string) {
   return new TextDecoder().decode(base64UrlToBytes(input));
 }
 
+function constantTimeEqual(a: string, b: string) {
+  const maxLen = Math.max(a.length, b.length);
+  let diff = a.length ^ b.length;
+
+  for (let i = 0; i < maxLen; i += 1) {
+    const aCode = i < a.length ? a.charCodeAt(i) : 0;
+    const bCode = i < b.length ? b.charCodeAt(i) : 0;
+    diff |= aCode ^ bCode;
+  }
+
+  return diff === 0;
+}
+
 async function signPayload(payloadB64: string, secret: string) {
   const key = await crypto.subtle.importKey(
     'raw',
@@ -87,7 +100,7 @@ export async function verifyAdminSessionToken(token: string | undefined) {
   if (!payloadB64 || !providedSig) return false;
 
   const expectedSig = await signPayload(payloadB64, secret);
-  if (providedSig !== expectedSig) return false;
+  if (!constantTimeEqual(providedSig, expectedSig)) return false;
 
   try {
     const payload = JSON.parse(decodeBase64Url(payloadB64)) as { exp?: number };

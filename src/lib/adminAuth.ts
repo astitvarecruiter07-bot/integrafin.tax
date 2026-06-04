@@ -1,4 +1,5 @@
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
+import { verifyAdminBasicCredentials } from '@/lib/adminCredentials';
 import { verifyAdminSessionToken } from '@/lib/adminSession';
 
 const ADMIN_AUTH_COOKIE = 'admin_auth';
@@ -13,7 +14,12 @@ export async function isAdminAuthenticated() {
 
   const cookieStore = await cookies();
   const cookieValue = cookieStore.get(ADMIN_AUTH_COOKIE)?.value;
-  return verifyAdminSessionToken(cookieValue);
+  if (await verifyAdminSessionToken(cookieValue)) {
+    return true;
+  }
+
+  const headerStore = await headers();
+  return Boolean(verifyAdminBasicCredentials(headerStore.get('authorization')));
 }
 
 export async function requireAdminAuth() {

@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic';
 export default async function AdminLeadsPage() {
   const authed = await isAdminAuthenticated();
   if (!authed) {
-    redirect('/');
+    redirect('/admin/login?next=/admin/leads');
   }
 
   const leads = (await getLeads()) as (IContactLead & { _id: string })[];

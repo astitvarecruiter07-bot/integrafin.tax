@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default async function AdminBlogsPage() {
     const authed = await isAdminAuthenticated();
     if (!authed) {
-        redirect('/');
+        redirect('/admin/login?next=/admin/blogs');
     }
 
     const posts = (await getAllBlogPosts()) as AdminBlogListItem[];

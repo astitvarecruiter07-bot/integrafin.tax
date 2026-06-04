@@ -10,12 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogEditorPage({ searchParams }: { searchParams: Promise<{ slug?: string }> }) {
+    const { slug } = await searchParams;
     const authed = await isAdminAuthenticated();
     if (!authed) {
-        redirect('/');
+        const nextPath = slug ? `/admin/blog-editor?slug=${encodeURIComponent(slug)}` : '/admin/blog-editor';
+        redirect(`/admin/login?next=${encodeURIComponent(nextPath)}`);
     }
 
-    const { slug } = await searchParams;
     let initialData = null;
     if (slug) {
         initialData = await getBlogPostBySlug(slug);
