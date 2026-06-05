@@ -10,6 +10,7 @@ interface BlogEditorInitialData {
     title?: string;
     slug?: string;
     excerpt?: string;
+    category?: string;
     content?: string[];
     contentHtml?: string;
     image?: string;
@@ -23,8 +24,10 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
     const [title, setTitle] = useState(initialData?.title || '');
     const [metaTitle, setMetaTitle] = useState(initialData?.title || '');
     const [metaDescription, setMetaDescription] = useState(initialData?.excerpt || '');
+    const [category, setCategory] = useState(initialData?.category || 'General');
     const [slug, setSlug] = useState(initialData?.slug || '');
     const [slugOverride, setSlugOverride] = useState(!!initialData);
+    const [featuredImage, setFeaturedImage] = useState(initialData?.image || '');
     const [htmlContent, setHtmlContent] = useState('');
     const [isSaving, setIsSaving] = useState(false);
     const editorRef = useRef<HTMLDivElement>(null);
@@ -70,7 +73,7 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
 
     const plainTextContent = htmlContent.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
     const wordCount = plainTextContent ? plainTextContent.split(' ').length : 0;
-    const hasFeaturedImage = !!initialData?.image;
+    const hasFeaturedImage = !!featuredImage.trim();
     const hasExternalLinksWithoutNofollow = /<a[^>]+href="https?:\/\/[^"]+"(?![^>]*rel="[^"]*nofollow[^"]*")/i.test(htmlContent);
 
     const seoChecks = [
@@ -188,8 +191,10 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
             const payload = {
                 title: title || 'Untitled',
                 excerpt: metaDescription,
+                category,
                 slug: slug,
                 contentHtml: sanitizedContent,
+                image: featuredImage.trim() || undefined,
                 author: { name: 'Admin User' }
             };
 
@@ -317,6 +322,51 @@ export default function BlogEditor({ initialData }: BlogEditorProps) {
                                 className="w-full p-3 border border-gray-200 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
                             />
                         </div>
+                    </div>
+
+                    {/* Category */}
+                    <div className="mb-5">
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Category</label>
+                        <select
+                            value={category}
+                            onChange={(e) => setCategory(e.target.value)}
+                            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 bg-white"
+                        >
+                            <option value="General">General</option>
+                            <option value="Tax Planning">Tax Planning</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Compliance">Compliance</option>
+                            <option value="Tax Resolution">Tax Resolution</option>
+                            <option value="Payroll">Payroll</option>
+                            <option value="Business Advisory">Business Advisory</option>
+                        </select>
+                    </div>
+
+                    {/* Featured Image */}
+                    <div className="mb-6">
+                        <div className="flex justify-between items-center mb-2">
+                            <label className="text-sm font-semibold text-gray-700">Featured Image URL</label>
+                            <span className={`text-xs ${featuredImage.trim() ? 'text-green-600' : 'text-amber-600'}`}>
+                                {featuredImage.trim() ? 'Set' : 'Missing'}
+                            </span>
+                        </div>
+                        <input
+                            type="text"
+                            value={featuredImage}
+                            onChange={(e) => setFeaturedImage(e.target.value)}
+                            placeholder="/blog/article-featured-image.png or https://..."
+                            className="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
+                        />
+                        {featuredImage.trim() && (
+                            <div className="mt-3 overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src={featuredImage}
+                                    alt="Featured image preview"
+                                    className="h-32 w-full object-cover"
+                                />
+                            </div>
+                        )}
                     </div>
 
                     {/* Live SERP Preview */}
