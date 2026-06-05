@@ -370,6 +370,123 @@ body {
     scrollbar-width: none;
 }
 
+/* Blog article typography for DB-authored HTML content */
+.blog-content-html {
+  color: #334155;
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+
+.blog-content-html > *:first-child {
+  margin-top: 0;
+}
+
+.blog-content-html p {
+  margin: 0 0 1.25rem;
+}
+
+.blog-content-html h2,
+.blog-content-html h3 {
+  color: var(--primary-dark);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.25;
+}
+
+.blog-content-html h2 {
+  margin: 2.75rem 0 1rem;
+  padding-top: 0.25rem;
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  border-top: 1px solid #e2e8f0;
+}
+
+.blog-content-html h2:first-child {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.blog-content-html h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+}
+
+.blog-content-html ul,
+.blog-content-html ol {
+  margin: 1rem 0 1.75rem;
+  padding: 1.25rem 1.25rem 1.25rem 2.75rem;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid var(--highlight);
+  border-radius: 0.875rem;
+  background: #f8fafc;
+}
+
+.blog-content-html ul {
+  list-style: disc;
+}
+
+.blog-content-html ol {
+  list-style: decimal;
+}
+
+.blog-content-html li {
+  padding-left: 0.2rem;
+  margin: 0.55rem 0;
+}
+
+.blog-content-html li::marker {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.blog-content-html strong,
+.blog-content-html b {
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.blog-content-html a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.blog-content-html a:hover {
+  color: var(--primary-dark);
+}
+
+.blog-content-html blockquote {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--primary);
+  border-radius: 0.75rem;
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-weight: 650;
+}
+
+.blog-content-html img {
+  margin: 2rem 0;
+  border-radius: 1rem;
+}
+
+@media (max-width: 640px) {
+  .blog-content-html {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .blog-content-html h2 {
+    margin-top: 2.25rem;
+  }
+
+  .blog-content-html ul,
+  .blog-content-html ol {
+    padding: 1rem 1rem 1rem 2rem;
+  }
+}
+
 /* ===== MOBILE OPTIMIZATIONS ===== */
 
 /* Prevent horizontal overflow on mobile */
