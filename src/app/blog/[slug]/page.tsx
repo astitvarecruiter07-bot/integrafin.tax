@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { getBlogPostBySlug as getMockBlogPostBySlug } from "@/data/blogData";
+import { getBlogPostBySlug as getMockBlogPostBySlug, mockBlogPosts } from "@/data/blogData";
 import { getBlogPostBySlug as getDbBlogPostBySlug, getAllBlogPosts } from "@/app/actions/blog";
 
 export async function generateStaticParams() {
-  const posts = await getAllBlogPosts();
-  return posts.map((post: { slug: string }) => ({ slug: post.slug }));
+  const dbPosts = await getAllBlogPosts();
+  const slugs = new Set([
+    ...mockBlogPosts.map((post) => post.slug),
+    ...dbPosts.map((post) => post.slug),
+  ]);
+
+  return Array.from(slugs).map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -21,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const ogImage = post.image || '/og-image.jpg';
 
   return {
-    title: post.title,
+    title: `${post.title} | IntegraFin Blog`,
     description,
     alternates: {
       canonical: canonicalUrl,
@@ -144,7 +149,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             publisher: {
               '@type': 'Organization',
               name: 'IntegraFin LLC',
-              logo: { '@type': 'ImageObject', url: 'https://integrafin.tax/logo.png' },
+              logo: { '@type': 'ImageObject', url: 'https://integrafin.tax/images/logo1.png' },
             },
             description: post.excerpt || (post.content?.[0]?.substring(0, 160)),
             mainEntityOfPage: `https://integrafin.tax/blog/${slug}`,
