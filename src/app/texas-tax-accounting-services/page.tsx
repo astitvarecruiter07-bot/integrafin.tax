@@ -56,10 +56,11 @@ export default function TexasTaxAccountingServicesPage() {
         "Responsive communication and organized document workflows",
         "Planning-focused approach that supports long-term compliance",
       ]}
-      nearbyCities={["Houston", "Dallas", "Austin", "San Antonio", "Katy", "Fort Worth"]}
+      nearbyCities={["Houston", "Dallas", "Fulshear", "Katy", "Sugar Land", "Richmond", "Fort Worth"]}
       cityPageLinks={[
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
+        { href: "/texas/fulshear-tax-accountant", label: "Fulshear Tax Accountant Services" },
       ]}
       faqItems={[
         {
@@ -91,6 +92,7 @@ export default function TexasTaxAccountingServicesPage() {
       resourceLinks={[
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
+        { href: "/texas/fulshear-tax-accountant", label: "Fulshear Tax Accountant Services" },
         { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance for Businesses" },
         { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
         { href: "/blog/tax-resolution-options", label: "Understanding Your Tax Resolution Options" },
