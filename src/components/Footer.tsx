@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 const quickLinks = [
     { href: "/", label: "Home" },
@@ -125,20 +126,9 @@ export default function Footer() {
                         <p className="text-gray-400 text-sm mb-4">
                             Subscribe to our newsletter for tax tips and financial insights.
                         </p>
-                        <form className="flex flex-col sm:flex-row gap-2 mb-6">
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                aria-label="Email for newsletter"
-                                className="flex-1 px-4 py-2.5 bg-white/10 rounded-full text-sm text-white placeholder:text-gray-500 border border-white/10 focus:border-primary focus:outline-none transition-colors"
-                            />
-                            <button
-                                type="submit"
-                                className="px-5 py-2.5 bg-accent text-accent-dark font-semibold text-sm rounded-full hover:bg-primary hover:text-white transition-colors duration-200"
-                            >
-                                Subscribe
-                            </button>
-                        </form>
+                        <div className="mb-6">
+                            <NewsletterSignup source="footer-newsletter" />
+                        </div>
                         <div className="space-y-3 text-sm text-gray-400">
                             <p className="text-white font-semibold flex flex-col gap-1">
                                 <span>IntegraFin Tax & Accounting</span>
@@ -147,7 +137,7 @@ export default function Footer() {
                             </p>
                             <p>Phone: <a href="tel:+18326471819" className="hover:text-white transition-colors">(832) 647-1819</a></p>
                             <p>Email: <a href="mailto:contact@integrafin.tax" className="hover:text-white transition-colors">contact@integrafin.tax</a></p>
-                            <p>Hours: Mon–Fri, 9AM–6PM</p>
+                            <p>Hours: Mon-Fri, 9AM-6PM</p>
                         </div>
                     </div>
                 </div>
@@ -157,7 +147,7 @@ export default function Footer() {
             <div className="border-t border-white/10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
                     <p className="text-gray-500 text-sm">
-                        © {new Date().getFullYear()} IntegraFin. All rights reserved.
+                        Copyright {new Date().getFullYear()} IntegraFin. All rights reserved.
                     </p>
                     <div className="flex items-center gap-4 text-sm text-gray-500">
 

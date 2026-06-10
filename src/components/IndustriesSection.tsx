@@ -129,7 +129,7 @@ export default function IndustriesSection() {
     <section className="py-12 sm:py-24 bg-slate-50 text-left" id="industries">
       <div className="max-w-7xl mx-auto px-4 sm:px-8">
         <div className="text-center mb-12 space-y-2">
-          <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Global Expertise</span>
+          <span className="text-[#00C2CB] text-xs font-black uppercase tracking-widest">Industry Support</span>
           <h2 className="text-[#003580] text-2xl sm:text-4xl md:text-5xl font-black tracking-tight">Industries We Serve</h2>
         </div>
 
@@ -169,8 +169,8 @@ export default function IndustriesSection() {
                 </div>
                 <h3 className="text-xl font-bold mb-3 text-[#003580]">{item.title}</h3>
                 <p className="text-slate-600 font-normal text-sm leading-relaxed mb-6 flex-grow">{item.desc}</p>
-                <Link href="#" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-[#00C2CB] group-hover:gap-4 gap-2 transition-all mt-auto group/link">
-                  View Blueprint <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                <Link href="/industries" className="inline-flex items-center text-[10px] font-black uppercase tracking-widest text-[#00C2CB] group-hover:gap-4 gap-2 transition-all mt-auto group/link">
+                  View Industries <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
             ) : (

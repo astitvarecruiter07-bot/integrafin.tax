@@ -19,6 +19,7 @@ const sections = [
       { href: "/blog", label: "Blog" },
       { href: "/case-study", label: "Case Study" },
       { href: "/tax-calculator", label: "Tax Calculator" },
+      { href: "/industries", label: "Industries Served" },
     ],
   },
   {
@@ -44,6 +45,8 @@ const sections = [
     title: "Featured Blog Posts",
     links: [
       { href: "/blog/financial-planning-for-startups", label: "Financial Planning for Startups" },
+      { href: "/blog/tax-planning-strategies-2025", label: "Top Tax Planning Strategies for 2025" },
+      { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
       { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance" },
       { href: "/blog/payroll-best-practices", label: "Payroll Best Practices" },
       { href: "/blog/tax-resolution-options", label: "Tax Resolution Options" },

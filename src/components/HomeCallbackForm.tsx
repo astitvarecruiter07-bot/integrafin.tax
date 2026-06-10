@@ -124,7 +124,7 @@ export default function HomeCallbackForm() {
       </button>
       
       <div className="pt-4 text-center">
-        <p className="text-xs text-[#45474c]">Prefer to call? <span className="text-[#0047AB] font-bold">(832) 647-1819</span> - Available 24/7</p>
+        <p className="text-xs text-[#45474c]">Prefer to call? <span className="text-[#0047AB] font-bold">(832) 647-1819</span> - Mon-Fri, 9AM-6PM</p>
       </div>
     </form>
   );

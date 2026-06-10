@@ -5,13 +5,6 @@ export const metadata: Metadata = {
   title: "Tax Accountant Pennsylvania Services for Businesses | IntegraFin",
   description:
     "Need a tax accountant in Pennsylvania? IntegraFin supports bookkeeping, payroll, tax filing, tax planning, and IRS resolution for businesses and individuals.",
-  keywords: [
-    "tax accountant pennsylvania",
-    "pennsylvania tax services",
-    "bookkeeping services pennsylvania",
-    "small business tax accountant pa",
-    "tax resolution pennsylvania",
-  ],
   alternates: { canonical: "https://integrafin.tax/pennsylvania-tax-accounting-services" },
   openGraph: {
     title: "Tax Accountant Pennsylvania Services for Businesses | IntegraFin",
@@ -101,7 +94,7 @@ export default function PennsylvaniaTaxAccountingServicesPage() {
         { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
         { href: "/blog/tax-resolution-options", label: "Understanding Your Tax Resolution Options" },
         { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance for Businesses" },
-        { href: "/services#resolution", label: "Tax Resolution Services" },
+        { href: "/services#tax-resolution", label: "Tax Resolution Services" },
       ]}
       pageUrl="https://integrafin.tax/pennsylvania-tax-accounting-services"
       lastReviewed="May 23, 2026"

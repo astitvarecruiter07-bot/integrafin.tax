@@ -16,10 +16,10 @@ import {
 } from 'lucide-react';
 
 const stats = [
-  { label: 'Projects', value: '1,050+' },
-  { label: 'Happy Clients', value: '217K+' },
-  { label: 'Years Experience', value: '21' },
-  { label: 'Funding Secured', value: '$2M+' },
+  { label: 'State Hubs', value: '3' },
+  { label: 'City Pages', value: '6' },
+  { label: 'Core Services', value: '5' },
+  { label: 'Contact Options', value: '3' },
 ];
 
 const categories = [

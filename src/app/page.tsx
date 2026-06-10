@@ -202,7 +202,7 @@ export default function Home() {
                 {
                   title: "Tax Resolution Services",
                   desc: "Assistance with back taxes, IRS audits, penalty abatements, and tax negotiations to resolve outstanding tax issues.",
-                  href: "/services#resolution",
+                  href: "/services#tax-resolution",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="m12 14 4-4"/><path d="M3.3 7H6h15l-1.5 13H4.5L3.3 7Z"/><path d="m16 10-4 4"/></svg>
                 },
                 {
@@ -319,7 +319,7 @@ export default function Home() {
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
               <div className="text-left">
-                <p className="text-white font-black tracking-widest text-sm uppercase mb-1">JOHN D</p>
+                <p className="text-white font-black tracking-widest text-sm uppercase mb-1">IntegraFin Client</p>
                 <p className="text-[#0092df] font-bold text-xs">Small Business Owner</p>
               </div>
             </div>

@@ -5,13 +5,6 @@ export const metadata: Metadata = {
   title: "Philadelphia Tax Accountant for Small Business Growth | IntegraFin",
   description:
     "Need a tax accountant in Philadelphia, PA? IntegraFin provides tax filing, bookkeeping, payroll support, and IRS tax resolution guidance.",
-  keywords: [
-    "tax accountant philadelphia",
-    "philadelphia tax preparation services",
-    "bookkeeping services philadelphia",
-    "small business accountant philadelphia",
-    "irs tax help philadelphia",
-  ],
   alternates: { canonical: "https://integrafin.tax/pennsylvania/philadelphia-tax-accountant" },
   openGraph: {
     title: "Philadelphia Tax Accountant for Small Business Growth | IntegraFin",

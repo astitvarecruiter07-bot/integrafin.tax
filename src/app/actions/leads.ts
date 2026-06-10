@@ -19,7 +19,13 @@ const LeadSchema = z.object({
   jurisdiction: z.string().optional(),
 });
 
+const NewsletterSchema = z.object({
+  email: z.string().email('Invalid email address'),
+  source: z.string().default('newsletter'),
+});
+
 export type LeadInput = z.infer<typeof LeadSchema>;
+export type NewsletterInput = z.infer<typeof NewsletterSchema>;
 
 const LEAD_LIMIT = 5;
 const LEAD_WINDOW_MS = 10 * 60 * 1000;
@@ -73,6 +79,55 @@ export async function submitLead(data: LeadInput) {
     return {
       success: false,
       message: 'Processing failed. Please try again or call us directly at (832) 647-1819.',
+    };
+  }
+}
+
+export async function submitNewsletterSignup(data: NewsletterInput) {
+  try {
+    const rateLimitKey = await getLeadRateLimitKey();
+    const rateResult = checkRateLimit(`newsletter:${rateLimitKey}`, LEAD_LIMIT, LEAD_WINDOW_MS);
+    if (!rateResult.allowed) {
+      return {
+        success: false,
+        message: 'Too many requests. Please wait a few minutes before submitting again.',
+      };
+    }
+
+    const validatedData = NewsletterSchema.parse(data);
+
+    await dbConnect();
+
+    const emailPrefix = validatedData.email.split('@')[0] || 'Newsletter Subscriber';
+
+    await ContactLead.create({
+      name: emailPrefix,
+      email: validatedData.email,
+      phone: 'Not provided',
+      service: 'Newsletter Signup',
+      message: 'Requested IntegraFin tax and accounting updates.',
+      source: validatedData.source,
+      status: 'new',
+      createdAt: new Date(),
+    });
+
+    return {
+      success: true,
+      message: 'You are subscribed. We will send useful tax updates, not noise.',
+    };
+  } catch (error) {
+    console.error('Newsletter signup error:', error);
+
+    if (error instanceof z.ZodError) {
+      return {
+        success: false,
+        message: error.issues[0].message,
+      };
+    }
+
+    return {
+      success: false,
+      message: 'Signup failed. Please try again or email contact@integrafin.tax.',
     };
   }
 }

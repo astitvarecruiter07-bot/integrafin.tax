@@ -11,50 +11,50 @@ const FILING_STATUSES = [
   { value: "head_of_household", label: "Head of Household" },
 ];
 
-const TAX_BRACKETS_2024: Record<string, { rate: number; min: number; max: number }[]> = {
+const TAX_BRACKETS_2026: Record<string, { rate: number; min: number; max: number }[]> = {
   single: [
-    { rate: 0.10, min: 0, max: 11600 },
-    { rate: 0.12, min: 11600, max: 47150 },
-    { rate: 0.22, min: 47150, max: 100525 },
-    { rate: 0.24, min: 100525, max: 191950 },
-    { rate: 0.32, min: 191950, max: 243725 },
-    { rate: 0.35, min: 243725, max: 609350 },
-    { rate: 0.37, min: 609350, max: Infinity },
+    { rate: 0.10, min: 0, max: 12400 },
+    { rate: 0.12, min: 12400, max: 50400 },
+    { rate: 0.22, min: 50400, max: 105700 },
+    { rate: 0.24, min: 105700, max: 201775 },
+    { rate: 0.32, min: 201775, max: 256225 },
+    { rate: 0.35, min: 256225, max: 640600 },
+    { rate: 0.37, min: 640600, max: Infinity },
   ],
   married_joint: [
-    { rate: 0.10, min: 0, max: 23200 },
-    { rate: 0.12, min: 23200, max: 94300 },
-    { rate: 0.22, min: 94300, max: 201050 },
-    { rate: 0.24, min: 201050, max: 383900 },
-    { rate: 0.32, min: 383900, max: 487450 },
-    { rate: 0.35, min: 487450, max: 731200 },
-    { rate: 0.37, min: 731200, max: Infinity },
+    { rate: 0.10, min: 0, max: 24800 },
+    { rate: 0.12, min: 24800, max: 100800 },
+    { rate: 0.22, min: 100800, max: 211400 },
+    { rate: 0.24, min: 211400, max: 403550 },
+    { rate: 0.32, min: 403550, max: 512450 },
+    { rate: 0.35, min: 512450, max: 768700 },
+    { rate: 0.37, min: 768700, max: Infinity },
   ],
   married_separate: [
-    { rate: 0.10, min: 0, max: 11600 },
-    { rate: 0.12, min: 11600, max: 47150 },
-    { rate: 0.22, min: 47150, max: 100525 },
-    { rate: 0.24, min: 100525, max: 191950 },
-    { rate: 0.32, min: 191950, max: 243725 },
-    { rate: 0.35, min: 243725, max: 365600 },
-    { rate: 0.37, min: 365600, max: Infinity },
+    { rate: 0.10, min: 0, max: 12400 },
+    { rate: 0.12, min: 12400, max: 50400 },
+    { rate: 0.22, min: 50400, max: 105700 },
+    { rate: 0.24, min: 105700, max: 201775 },
+    { rate: 0.32, min: 201775, max: 256225 },
+    { rate: 0.35, min: 256225, max: 384350 },
+    { rate: 0.37, min: 384350, max: Infinity },
   ],
   head_of_household: [
-    { rate: 0.10, min: 0, max: 16550 },
-    { rate: 0.12, min: 16550, max: 63100 },
-    { rate: 0.22, min: 63100, max: 100500 },
-    { rate: 0.24, min: 100500, max: 191950 },
-    { rate: 0.32, min: 191950, max: 243700 },
-    { rate: 0.35, min: 243700, max: 609350 },
-    { rate: 0.37, min: 609350, max: Infinity },
+    { rate: 0.10, min: 0, max: 17700 },
+    { rate: 0.12, min: 17700, max: 67450 },
+    { rate: 0.22, min: 67450, max: 105700 },
+    { rate: 0.24, min: 105700, max: 201750 },
+    { rate: 0.32, min: 201750, max: 256200 },
+    { rate: 0.35, min: 256200, max: 640600 },
+    { rate: 0.37, min: 640600, max: Infinity },
   ],
 };
 
 const STANDARD_DEDUCTION: Record<string, number> = {
-  single: 14600,
-  married_joint: 29200,
-  married_separate: 14600,
-  head_of_household: 21900,
+  single: 16100,
+  married_joint: 32200,
+  married_separate: 16100,
+  head_of_household: 24150,
 };
 
 export default function TaxCalculator() {
@@ -71,9 +71,9 @@ export default function TaxCalculator() {
     const revNum = parseInt(revenue.replace(/[^0-9]/g, '')) || 0;
     
     // Tax Calculation Logic
-    const deduction = STANDARD_DEDUCTION[filingStatus] || 14600;
+    const deduction = STANDARD_DEDUCTION[filingStatus] || 16100;
     const taxableIncome = Math.max(0, revNum - deduction);
-    const brackets = TAX_BRACKETS_2024[filingStatus] || TAX_BRACKETS_2024.single;
+    const brackets = TAX_BRACKETS_2026[filingStatus] || TAX_BRACKETS_2026.single;
 
     let totalTax = 0;
     for (const bracket of brackets) {
@@ -163,7 +163,7 @@ export default function TaxCalculator() {
               {isCalculating ? '----' : `$${savings.toLocaleString()}.00*`}
             </div>
             <p className="text-white/50 text-xs italic max-w-sm leading-relaxed">
-              *Based on 2024 IRS tax brackets and Integra-Optima™ optimization benchmarks. Actual results depend on personal deductions and credits.
+              *Based on 2026 IRS tax brackets and Integra-Optima™ optimization benchmarks. Actual results depend on personal deductions and credits.
             </p>
           </div>
 

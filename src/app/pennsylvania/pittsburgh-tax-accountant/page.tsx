@@ -5,13 +5,6 @@ export const metadata: Metadata = {
   title: "Pittsburgh Tax Accountant for Small Business Tax Support | IntegraFin",
   description:
     "Need a tax accountant in Pittsburgh, PA? IntegraFin supports business tax filing, bookkeeping, payroll workflows, and IRS notice response.",
-  keywords: [
-    "tax accountant pittsburgh",
-    "pittsburgh tax preparation services",
-    "bookkeeping services pittsburgh",
-    "small business accountant pittsburgh",
-    "irs tax help pittsburgh",
-  ],
   alternates: { canonical: "https://integrafin.tax/pennsylvania/pittsburgh-tax-accountant" },
   openGraph: {
     title: "Pittsburgh Tax Accountant for Small Business Tax Support | IntegraFin",

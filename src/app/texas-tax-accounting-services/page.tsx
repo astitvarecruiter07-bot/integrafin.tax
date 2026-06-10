@@ -5,13 +5,6 @@ export const metadata: Metadata = {
   title: "Tax Accountant Texas Services for Businesses | IntegraFin",
   description:
     "Need a tax accountant in Texas? IntegraFin supports bookkeeping, payroll, tax preparation, tax planning, and IRS resolution for businesses and individuals.",
-  keywords: [
-    "tax accountant texas",
-    "texas tax preparation services",
-    "bookkeeping services texas",
-    "small business accountant texas",
-    "irs tax resolution texas",
-  ],
   alternates: { canonical: "https://integrafin.tax/texas-tax-accounting-services" },
   openGraph: {
     title: "Tax Accountant Texas Services for Businesses | IntegraFin",

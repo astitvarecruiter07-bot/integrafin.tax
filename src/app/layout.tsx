@@ -22,12 +22,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://integrafin.tax'),
-  title: {
-    default: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
-    template: '%s | IntegraFin',
-  },
+  title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
   description: 'IntegraFin provides tax expert services in Katy, TX offering tax preparation, bookkeeping, payroll, and IRS resolution. Schedule your free consultation today. Call (832) 647-1819.',
-  keywords: ['Tax Accountant Katy TX', 'Tax Expert Services Katy Texas', 'IRS Tax Resolution Katy TX', 'Business Accounting Katy TX', 'Bookkeeping Katy TX', 'Tax Preparation Houston TX'],
   authors: [{ name: 'IntegraFin Tax & Accounting' }],
   creator: 'IntegraFin',
   robots: {
@@ -41,13 +37,13 @@ export const metadata: Metadata = {
     url: 'https://integrafin.tax/',
     siteName: 'IntegraFin',
     title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
-    description: 'IntegraFin tax experts in Katy TX — tax preparation, bookkeeping, IRS help, and payroll. Free consultation available.',
+    description: 'IntegraFin tax experts in Katy TX - tax preparation, bookkeeping, IRS help, and payroll. Free consultation available.',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'IntegraFin Tax Expert Katy TX' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
-    description: 'IntegraFin tax experts in Katy TX — tax, bookkeeping, IRS help. Free consultation.',
+    description: 'IntegraFin tax experts in Katy TX - tax, bookkeeping, IRS help. Free consultation.',
     images: ['/og-image.jpg'],
   },
 };

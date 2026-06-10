@@ -3,7 +3,7 @@ import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
   title: 'Contact IntegraFin | Tax Accountant Katy TX',
-  description: 'Contact IntegraFin in Katy TX at (832) 647-1819. Located at 2039 N Mason Rd Suite 604. Book a free tax consultation with our tax expert team today. Open Mon–Fri 9AM–6PM.',
+  description: 'Contact IntegraFin in Katy TX at (832) 647-1819. Located at 2039 N Mason Rd Suite 604. Book a free tax consultation with our tax expert team today. Open Mon-Fri 9AM-6PM.',
   alternates: { canonical: 'https://integrafin.tax/contact' },
   openGraph: {
     title: 'Contact IntegraFin | Tax Accountant Katy TX',
@@ -25,7 +25,7 @@ export default function ContactPage() {
                 <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at top right, rgba(0, 194, 203, 0.15), transparent 400px)' }} />
                 <div className="relative max-w-7xl mx-auto px-5 sm:px-8 text-center md:text-left">
                     <div className="inline-block px-3 py-1 bg-[#00C2CB]/10 border border-[#00C2CB]/30 text-[#00C2CB] text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-                        Institutional Authority
+                        Tax And Accounting Support
                     </div>
                     <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-black tracking-tighter mb-4 sm:mb-6 leading-tight max-w-4xl">
                         Get in Touch with Our Tax &amp; <span className="text-[#00C2CB]">Accounting Experts</span>
@@ -33,9 +33,9 @@ export default function ContactPage() {
                     <p className="text-[#D7E3FC] text-sm sm:text-lg md:text-xl font-light max-w-2xl mb-6 sm:mb-10 leading-relaxed">
                         Whether you need US tax filing, business bookkeeping, or cross-border tax resolution, our certified professionals are ready to help.
                     </p>
-                    <button className="bg-[#00C2CB] text-[#003580] px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#00cedb] transition-all">
+                    <a href="#contact-form" className="inline-flex bg-[#00C2CB] text-[#003580] px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#00cedb] transition-all">
                         Schedule a Consultation
-                    </button>
+                    </a>
                 </div>
             </header>
 
@@ -121,7 +121,7 @@ export default function ContactPage() {
                             <div>
                                 <h4 className="font-extrabold text-[#003580] tracking-tight text-lg mb-1">Quick &amp; Secure Payments</h4>
                                 <p className="text-xs text-gray-600 leading-relaxed">
-                                    We accept <span className="font-bold text-[#003580]">Zelle</span> for immediate, secure processing. Every transaction is handled with institutional-grade security for IntegraFin clients.
+                                    We accept <span className="font-bold text-[#003580]">Zelle</span> for convenient payment processing. Every transaction is handled with secure procedures for IntegraFin clients.
                                 </p>
                             </div>
                         </div>

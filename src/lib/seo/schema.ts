@@ -171,7 +171,7 @@ export const homepageFaqSchema = {
       "name": "How can I schedule a free consultation with your accountants?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You can schedule a free consultation by filling out our online form or calling (832) 647-1819. Available 24/7, our team will analyze your financial situation and instantly project potential tax savings without any obligation to file."
+        "text": "You can schedule a free consultation by filling out our online form or calling (832) 647-1819 during business hours. Our team will review your financial situation and outline practical next steps without any obligation to file."
       }
     },
     {

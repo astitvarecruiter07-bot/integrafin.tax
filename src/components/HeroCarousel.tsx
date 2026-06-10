@@ -163,7 +163,7 @@ export default function HeroCarousel() {
                  <p className="text-base md:text-lg lg:text-xl mb-12 font-medium max-w-2xl text-slate-200 leading-relaxed min-h-[4.5rem] md:min-h-[5.5rem] lg:min-h-[7rem]">
                    {slide.description}
                  </p>
-                 <div className="flex flex-col sm:flex-row gap-4">
+                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pb-12 sm:pb-0">
                    <Link
                      href={slide.buttonLink}
                      className="bg-[#0092df] hover:bg-[#007bbf] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#0092df]/20 hover:-translate-y-1 hover:shadow-2xl hover:shadow-[#0092df]/40 flex items-center justify-center gap-2"
@@ -184,7 +184,7 @@ export default function HeroCarousel() {
       </div>
 
       {/* Carousel Indicators (Slider Bar) */}
-      <div className="absolute bottom-16 lg:bottom-24 left-0 right-0 z-30 flex gap-3 justify-center max-w-7xl mx-auto px-6 lg:px-8 lg:justify-start">
+      <div className="absolute bottom-8 sm:bottom-16 lg:bottom-24 left-0 right-0 z-30 flex gap-3 justify-center max-w-7xl mx-auto px-6 lg:px-8 lg:justify-start">
         {slides.map((_, index) => (
           <button
             key={index}

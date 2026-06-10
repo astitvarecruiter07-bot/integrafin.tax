@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Advanced Tax Calculator | Free Federal Tax Estimator 2024",
+    title: "Advanced Tax Calculator | Free Federal Tax Estimator 2026",
     description:
-        "Free advanced tax calculator for 2024. Calculate federal income tax, self-employment tax, capital gains tax, and compare filing scenarios. Accurate US tax bracket calculations.",
-    keywords: [
-        "tax calculator",
-        "federal tax calculator",
-        "income tax calculator 2024",
-        "self-employment tax calculator",
-        "capital gains tax calculator",
-        "tax bracket calculator",
-        "tax comparison tool",
-        "free tax calculator",
-        "IntegraFin",
-    ],
+        "Free advanced tax calculator for 2026. Calculate federal income tax, self-employment tax, capital gains tax, and compare filing scenarios using current IRS tax tables.",
     openGraph: {
         title: "Advanced Tax Calculator | IntegraFin",
         description:
@@ -30,10 +19,10 @@ export const metadata: Metadata = {
 const calculatorSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "IntegraFin Tax Calculator 2024",
+    name: "IntegraFin Tax Calculator 2026",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Any",
-    description: "A comprehensive free tool to calculate federal income tax, self-employment tax, and capital gains for the 2024 tax year.",
+    description: "A comprehensive free tool to calculate federal income tax, self-employment tax, and capital gains for the 2026 tax year.",
     offers: {
         "@type": "Offer",
         price: "0",

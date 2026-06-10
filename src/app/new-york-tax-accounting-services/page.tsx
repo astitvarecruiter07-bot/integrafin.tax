@@ -5,13 +5,6 @@ export const metadata: Metadata = {
   title: "Tax Accountant New York Services for Businesses | IntegraFin",
   description:
     "Need a tax accountant in New York? IntegraFin supports bookkeeping, payroll, tax filing, tax planning, and IRS resolution for businesses and individuals.",
-  keywords: [
-    "tax accountant new york",
-    "new york tax preparation",
-    "bookkeeping services new york",
-    "small business accountant ny",
-    "irs help new york",
-  ],
   alternates: { canonical: "https://integrafin.tax/new-york-tax-accounting-services" },
   openGraph: {
     title: "Tax Accountant New York Services for Businesses | IntegraFin",

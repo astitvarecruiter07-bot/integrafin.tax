@@ -5,13 +5,6 @@ export const metadata: Metadata = {
   title: "Houston Tax Accountant for Small Businesses | IntegraFin",
   description:
     "Looking for a tax accountant in Houston, TX? Get business tax filing, bookkeeping, payroll support, and IRS tax resolution from IntegraFin.",
-  keywords: [
-    "tax accountant houston",
-    "houston tax preparation services",
-    "bookkeeping services houston tx",
-    "small business accountant houston",
-    "irs tax help houston",
-  ],
   alternates: { canonical: "https://integrafin.tax/texas/houston-tax-accountant" },
   openGraph: {
     title: "Houston Tax Accountant for Small Businesses | IntegraFin",

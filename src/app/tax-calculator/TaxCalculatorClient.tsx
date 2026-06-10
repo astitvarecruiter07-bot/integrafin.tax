@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/* ───────────────────────── 2024 TAX DATA ───────────────────────── */
+/* ───────────────────────── 2026 TAX DATA ───────────────────────── */
 
 const FILING_STATUSES = [
     { value: "single", label: "Single" },
@@ -13,69 +13,69 @@ const FILING_STATUSES = [
 
 const TAX_BRACKETS: Record<string, { rate: number; min: number; max: number }[]> = {
     single: [
-        { rate: 0.10, min: 0, max: 11600 },
-        { rate: 0.12, min: 11600, max: 47150 },
-        { rate: 0.22, min: 47150, max: 100525 },
-        { rate: 0.24, min: 100525, max: 191950 },
-        { rate: 0.32, min: 191950, max: 243725 },
-        { rate: 0.35, min: 243725, max: 609350 },
-        { rate: 0.37, min: 609350, max: Infinity },
+        { rate: 0.10, min: 0, max: 12400 },
+        { rate: 0.12, min: 12400, max: 50400 },
+        { rate: 0.22, min: 50400, max: 105700 },
+        { rate: 0.24, min: 105700, max: 201775 },
+        { rate: 0.32, min: 201775, max: 256225 },
+        { rate: 0.35, min: 256225, max: 640600 },
+        { rate: 0.37, min: 640600, max: Infinity },
     ],
     married_joint: [
-        { rate: 0.10, min: 0, max: 23200 },
-        { rate: 0.12, min: 23200, max: 94300 },
-        { rate: 0.22, min: 94300, max: 201050 },
-        { rate: 0.24, min: 201050, max: 383900 },
-        { rate: 0.32, min: 383900, max: 487450 },
-        { rate: 0.35, min: 487450, max: 731200 },
-        { rate: 0.37, min: 731200, max: Infinity },
+        { rate: 0.10, min: 0, max: 24800 },
+        { rate: 0.12, min: 24800, max: 100800 },
+        { rate: 0.22, min: 100800, max: 211400 },
+        { rate: 0.24, min: 211400, max: 403550 },
+        { rate: 0.32, min: 403550, max: 512450 },
+        { rate: 0.35, min: 512450, max: 768700 },
+        { rate: 0.37, min: 768700, max: Infinity },
     ],
     married_separate: [
-        { rate: 0.10, min: 0, max: 11600 },
-        { rate: 0.12, min: 11600, max: 47150 },
-        { rate: 0.22, min: 47150, max: 100525 },
-        { rate: 0.24, min: 100525, max: 191950 },
-        { rate: 0.32, min: 191950, max: 243725 },
-        { rate: 0.35, min: 243725, max: 365600 },
-        { rate: 0.37, min: 365600, max: Infinity },
+        { rate: 0.10, min: 0, max: 12400 },
+        { rate: 0.12, min: 12400, max: 50400 },
+        { rate: 0.22, min: 50400, max: 105700 },
+        { rate: 0.24, min: 105700, max: 201775 },
+        { rate: 0.32, min: 201775, max: 256225 },
+        { rate: 0.35, min: 256225, max: 384350 },
+        { rate: 0.37, min: 384350, max: Infinity },
     ],
     head_of_household: [
-        { rate: 0.10, min: 0, max: 16550 },
-        { rate: 0.12, min: 16550, max: 63100 },
-        { rate: 0.22, min: 63100, max: 100500 },
-        { rate: 0.24, min: 100500, max: 191950 },
-        { rate: 0.32, min: 191950, max: 243700 },
-        { rate: 0.35, min: 243700, max: 609350 },
-        { rate: 0.37, min: 609350, max: Infinity },
+        { rate: 0.10, min: 0, max: 17700 },
+        { rate: 0.12, min: 17700, max: 67450 },
+        { rate: 0.22, min: 67450, max: 105700 },
+        { rate: 0.24, min: 105700, max: 201750 },
+        { rate: 0.32, min: 201750, max: 256200 },
+        { rate: 0.35, min: 256200, max: 640600 },
+        { rate: 0.37, min: 640600, max: Infinity },
     ],
 };
 
 const STANDARD_DEDUCTION: Record<string, number> = {
-    single: 14600,
-    married_joint: 29200,
-    married_separate: 14600,
-    head_of_household: 21900,
+    single: 16100,
+    married_joint: 32200,
+    married_separate: 16100,
+    head_of_household: 24150,
 };
 
 const LONG_TERM_CG_BRACKETS: Record<string, { rate: number; max: number }[]> = {
     single: [
-        { rate: 0, max: 47025 },
-        { rate: 0.15, max: 518900 },
+        { rate: 0, max: 49450 },
+        { rate: 0.15, max: 545500 },
         { rate: 0.20, max: Infinity },
     ],
     married_joint: [
-        { rate: 0, max: 94050 },
-        { rate: 0.15, max: 583750 },
+        { rate: 0, max: 98900 },
+        { rate: 0.15, max: 613700 },
         { rate: 0.20, max: Infinity },
     ],
     married_separate: [
-        { rate: 0, max: 47025 },
-        { rate: 0.15, max: 291850 },
+        { rate: 0, max: 49450 },
+        { rate: 0.15, max: 306850 },
         { rate: 0.20, max: Infinity },
     ],
     head_of_household: [
-        { rate: 0, max: 63000 },
-        { rate: 0.15, max: 551350 },
+        { rate: 0, max: 66200 },
+        { rate: 0.15, max: 579600 },
         { rate: 0.20, max: Infinity },
     ],
 };
@@ -299,7 +299,7 @@ function FederalIncomeTab() {
         if (gross <= 0) return;
         const deduction =
             deductionType === "standard"
-                ? STANDARD_DEDUCTION[status] || 14600
+                ? STANDARD_DEDUCTION[status] || 16100
                 : parseNum(itemizedDeduction);
         const taxableIncome = Math.max(0, gross - deduction);
         const { total, breakdown } = calcIncomeTax(taxableIncome, status);
@@ -415,7 +415,7 @@ function FederalIncomeTab() {
                                 <div>
                                     <p className="font-bold text-sm">Standard Deduction</p>
                                     <p className="text-xs text-gray-500">
-                                        {fmt(STANDARD_DEDUCTION[status] || 14600)} for {FILING_STATUSES.find(f => f.value === status)?.label} filers in 2024
+                                        {fmt(STANDARD_DEDUCTION[status] || 16100)} for {FILING_STATUSES.find(f => f.value === status)?.label} filers in 2026
                                     </p>
                                 </div>
                             </div>
@@ -540,7 +540,7 @@ function FederalIncomeTab() {
             {/* Tax Bracket Visualizer */}
             {result && (
                 <div className="bg-white p-8 sm:p-12 rounded-3xl shadow-xl mt-12 border border-gray-100">
-                    <h2 className="text-2xl font-extrabold text-[#0047AB] tracking-tight mb-12">2024 Tax Brackets Visualizer</h2>
+                    <h2 className="text-2xl font-extrabold text-[#0047AB] tracking-tight mb-12">2026 Tax Brackets Visualizer</h2>
                     <div className="space-y-10">
                         <div className="relative h-24 flex items-end gap-2">
                             {TAX_BRACKETS[status].map((b, idx) => {
@@ -598,14 +598,14 @@ function SelfEmploymentTab() {
         if (net <= 0) return;
 
         const seBase = net * 0.9235;
-        const ssCap = 168600; // 2024 SS cap
+        const ssCap = 184500; // 2026 SS cap
         const ssTax = Math.min(seBase, ssCap) * 0.124;
         const medicareTax = seBase * 0.029;
         const additionalMedicare = seBase > 200000 ? (seBase - 200000) * 0.009 : 0;
         const seTax = ssTax + medicareTax + additionalMedicare;
         const seDeduction = seTax / 2;
 
-        const deduction = STANDARD_DEDUCTION[status] || 14600;
+        const deduction = STANDARD_DEDUCTION[status] || 16100;
         const taxableIncome = Math.max(0, net - deduction - seDeduction);
         const { total: incomeTax } = calcIncomeTax(taxableIncome, status);
 
@@ -694,13 +694,13 @@ function SelfEmploymentTab() {
 
                         {/* Quarterly due dates */}
                         <div className="glass-card rounded-2xl p-6">
-                            <h4 className="font-bold text-foreground mb-4">2024 Quarterly Due Dates</h4>
+                            <h4 className="font-bold text-foreground mb-4">2026 Estimated Tax Due Dates</h4>
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                                 {[
-                                    { q: "Q1", date: "Apr 15", period: "Jan–Mar" },
-                                    { q: "Q2", date: "Jun 16", period: "Apr–May" },
-                                    { q: "Q3", date: "Sep 15", period: "Jun–Aug" },
-                                    { q: "Q4", date: "Jan 15", period: "Sep–Dec" },
+                                    { q: "Q1", date: "Apr 15, 2026", period: "Jan-Mar" },
+                                    { q: "Q2", date: "Jun 15, 2026", period: "Apr-May" },
+                                    { q: "Q3", date: "Sep 15, 2026", period: "Jun-Aug" },
+                                    { q: "Q4", date: "Jan 15, 2027", period: "Sep-Dec" },
                                 ].map((qtr) => (
                                     <div key={qtr.q} className="bg-accent-light rounded-xl p-3 text-center">
                                         <p className="text-xs text-text-secondary">{qtr.q}</p>
@@ -739,7 +739,7 @@ function CapitalGainsTab() {
         const ltGains = parseNum(longTermGains);
         if (ordinary + stGains + ltGains <= 0) return;
 
-        const deduction = STANDARD_DEDUCTION[status] || 14600;
+        const deduction = STANDARD_DEDUCTION[status] || 16100;
         const ordinaryTaxable = Math.max(0, ordinary - deduction);
 
         // Short-term gains are taxed as ordinary income
@@ -867,8 +867,8 @@ function ComparisonTab() {
         const grossB = parseNum(incomeB);
         if (grossA <= 0 && grossB <= 0) return;
 
-        const dedA = parseNum(deductionA) || STANDARD_DEDUCTION[statusA] || 14600;
-        const dedB = parseNum(deductionB) || STANDARD_DEDUCTION[statusB] || 14600;
+        const dedA = parseNum(deductionA) || STANDARD_DEDUCTION[statusA] || 16100;
+        const dedB = parseNum(deductionB) || STANDARD_DEDUCTION[statusB] || 16100;
         const taxableA = Math.max(0, grossA - dedA);
         const taxableB = Math.max(0, grossB - dedB);
         const { total: taxA } = calcIncomeTax(taxableA, statusA);
@@ -896,7 +896,7 @@ function ComparisonTab() {
                     </h4>
                     <SelectInput label="Filing Status" value={statusA} onChange={setStatusA} options={FILING_STATUSES} id="cmp-status-a" />
                     <MoneyInput label="Gross Annual Income" value={incomeA} onChange={setIncomeA} id="cmp-income-a" placeholder="100,000" />
-                    <MoneyInput label="Deductions (leave blank for standard)" value={deductionA} onChange={setDeductionA} id="cmp-ded-a" placeholder={`${new Intl.NumberFormat("en-US").format(STANDARD_DEDUCTION[statusA] || 14600)}`} />
+                    <MoneyInput label="Deductions (leave blank for standard)" value={deductionA} onChange={setDeductionA} id="cmp-ded-a" placeholder={`${new Intl.NumberFormat("en-US").format(STANDARD_DEDUCTION[statusA] || 16100)}`} />
                 </div>
 
                 {/* Scenario B */}
@@ -908,7 +908,7 @@ function ComparisonTab() {
                     </h4>
                     <SelectInput label="Filing Status" value={statusB} onChange={setStatusB} options={FILING_STATUSES} id="cmp-status-b" />
                     <MoneyInput label="Gross Annual Income" value={incomeB} onChange={setIncomeB} id="cmp-income-b" placeholder="100,000" />
-                    <MoneyInput label="Deductions (leave blank for standard)" value={deductionB} onChange={setDeductionB} id="cmp-ded-b" placeholder={`${new Intl.NumberFormat("en-US").format(STANDARD_DEDUCTION[statusB] || 14600)}`} />
+                    <MoneyInput label="Deductions (leave blank for standard)" value={deductionB} onChange={setDeductionB} id="cmp-ded-b" placeholder={`${new Intl.NumberFormat("en-US").format(STANDARD_DEDUCTION[statusB] || 16100)}`} />
                 </div>
             </div>
 
@@ -991,7 +991,7 @@ export default function TaxCalculatorClient() {
                         
                         <div className="inline-flex items-center space-x-2 bg-[#00C2CB]/20 border border-[#00C2CB]/30 px-4 py-1.5 rounded-full mb-6">
                             <span className="w-2 h-2 rounded-full bg-[#00C2CB] animate-pulse"></span>
-                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00C2CB]">Free 2024 Tax Estimator</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00C2CB]">Free 2026 Tax Estimator</span>
                         </div>
 
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tighter text-white mb-6">
@@ -1000,8 +1000,7 @@ export default function TaxCalculatorClient() {
                         </h1>
                         
                         <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
-                            Professional-grade federal tax estimation built for institutional precision. 
-                            Get clear insights into your 2024 liability across multiple tax profiles.
+                            Estimate your federal tax picture and see how filing status, deductions, credits, and other income can change the result.
                         </p>
 
                         <div className="flex flex-wrap items-center gap-6">
@@ -1058,7 +1057,7 @@ export default function TaxCalculatorClient() {
             <section className="py-10 bg-white border-t border-gray-100">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <p className="text-xs text-text-secondary leading-relaxed">
-                        <strong>Disclaimer:</strong> This calculator provides estimates based on 2024 federal tax brackets and standard deductions.
+                        <strong>Disclaimer:</strong> This calculator provides estimates based on 2026 federal tax brackets and standard deductions.
                         It does not account for state taxes, AMT, NIIT, phase-outs, or specific tax credits beyond those listed.
                         Results are for informational purposes only. For personalized tax advice,{" "}
                         <Link href="/contact" className="text-primary hover:underline font-medium">
@@ -1078,7 +1077,7 @@ export default function TaxCalculatorClient() {
                             </svg>
                         </div>
                         <h3 className="text-xl font-extrabold text-[#0047AB]">How We Calculate</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">Our engine uses the most recent 2024 IRS tax tables and standard deduction rates. We apply a sequential logic of income aggregation followed by deduction subtraction to reach your taxable base.</p>
+                        <p className="text-sm text-gray-600 leading-relaxed">Our engine uses 2026 IRS tax tables and standard deduction rates. We apply a sequential logic of income aggregation followed by deduction subtraction to reach your taxable base.</p>
                     </div>
                     <div className="space-y-4">
                         <div className="w-12 h-12 rounded-xl bg-[#0047AB]/5 flex items-center justify-center">
@@ -1096,7 +1095,7 @@ export default function TaxCalculatorClient() {
                             </svg>
                         </div>
                         <h3 className="text-xl font-extrabold text-[#00C2CB]">Pro Tip</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed font-medium">Maximize your refund by contributing to tax-advantaged accounts like IRAs or HSAs before the April deadline to retroactively lower your 2024 taxable income.</p>
+                        <p className="text-sm text-gray-600 leading-relaxed font-medium">Plan ahead by reviewing tax-advantaged contributions, withholding, and estimated payments before key 2026 deadlines.</p>
                     </div>
                 </div>
             </section>
@@ -1110,7 +1109,7 @@ export default function TaxCalculatorClient() {
                     
                     <div className="relative z-10 md:col-span-7 max-w-xl">
                         <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-6">Want the Exact Number?</h2>
-                        <p className="text-gray-400 text-lg font-light mb-8">Calculators are great for estimates, but tax codes are complex. Book a diagnostic with an IntegraFin senior architect.</p>
+                        <p className="text-gray-400 text-lg font-light mb-8">Calculators are helpful for planning, but tax details can change the final number. Book a review with an IntegraFin tax professional.</p>
                         <div className="space-y-4">
                             <div className="flex items-center space-x-4">
                                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
@@ -1118,7 +1117,7 @@ export default function TaxCalculatorClient() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                     </svg>
                                 </div>
-                                <span className="text-white font-medium">+1-832-647-1819</span>
+                                <a href="tel:+18326471819" className="text-white font-medium hover:text-[#00C2CB] transition-colors">+1-832-647-1819</a>
                             </div>
                             <div className="flex items-center space-x-4">
                                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
@@ -1126,25 +1125,21 @@ export default function TaxCalculatorClient() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </div>
-                                <span className="text-white font-medium">contact@integrafin.tax</span>
+                                <a href="mailto:contact@integrafin.tax" className="text-white font-medium hover:text-[#00C2CB] transition-colors">contact@integrafin.tax</a>
                             </div>
                         </div>
                     </div>
 
                     <div className="relative z-10 md:col-span-5 w-full bg-white p-8 rounded-2xl shadow-2xl">
-                        <form className="space-y-6">
-                            <div className="space-y-1">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Full Name</label>
-                                <input className="w-full bg-gray-50 border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-[#00C2CB] transition-all" placeholder="John Doe" type="text" />
-                            </div>
-                            <div className="space-y-1">
-                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">Work Email</label>
-                                <input className="w-full bg-gray-50 border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-[#00C2CB] transition-all" placeholder="john@company.com" type="email" />
-                            </div>
-                            <button className="w-full bg-[#0047AB] text-white font-black py-4 rounded-xl shadow-lg shadow-[#0047AB]/20 uppercase tracking-[0.2em] transition-all hover:bg-[#003580] cursor-pointer">
+                        <div className="space-y-5">
+                            <h3 className="text-2xl font-black text-[#003580] tracking-tight">Ready For A Reviewed Estimate?</h3>
+                            <p className="text-sm text-gray-600 leading-relaxed">
+                                Send your details through the secure contact form and our team will follow up with the next steps.
+                            </p>
+                            <Link href="/contact" className="w-full inline-flex justify-center bg-[#0047AB] text-white font-black py-4 rounded-xl shadow-lg shadow-[#0047AB]/20 uppercase tracking-[0.2em] transition-all hover:bg-[#003580]">
                                 Request Consultation
-                            </button>
-                        </form>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>

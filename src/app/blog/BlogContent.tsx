@@ -3,11 +3,12 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { type BlogPost } from "@/data/blogData";
+import { type BlogSeoPost } from "@/lib/seo/blog";
 import { Search, ArrowRight, Mail, Calculator, CornerDownRight } from "lucide-react";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 interface BlogContentProps {
-    initialPosts: BlogPost[];
+    initialPosts: BlogSeoPost[];
 }
 
 const categories = [
@@ -20,6 +21,15 @@ const categories = [
     "Business Advisory",
 ];
 
+const resourceLinks = [
+    { href: "/services", label: "Tax and Accounting Services" },
+    { href: "/texas-tax-accounting-services", label: "Texas Tax Services" },
+    { href: "/new-york-tax-accounting-services", label: "New York Tax Services" },
+    { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania Tax Services" },
+    { href: "/blog/irs-compliance-guide", label: "IRS Compliance Guide" },
+    { href: "/tax-calculator", label: "Tax Estimator" },
+];
+
 export default function BlogContent({ initialPosts }: BlogContentProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All");
@@ -28,7 +38,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
         return initialPosts.filter(post => {
             const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
             const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+                (post.excerpt || "").toLowerCase().includes(searchQuery.toLowerCase());
             return matchesCategory && matchesSearch;
         });
     }, [initialPosts, searchQuery, selectedCategory]);
@@ -50,17 +60,28 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                 <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0092df 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }}></div>
                 <div className="absolute top-0 right-0 w-96 h-96 bg-[#0092df]/10 blur-[120px] rounded-full pointer-events-none"></div>
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
-                    <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Our Insights Hub</span>
+                    <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Tax and accounting resources</span>
                     <h1 className="text-3xl sm:text-5xl md:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight tracking-tight">
-                        Tax Insights &{" "}
+                        Tax and Accounting{" "}
                         <br />
                         <span className="bg-gradient-to-r from-[#0092df] to-[#00C2CB] bg-clip-text text-transparent">
-                            Financial Intelligence
+                            Blog for U.S. Businesses
                         </span>
                     </h1>
                     <p className="max-w-2xl mx-auto text-slate-300 text-base sm:text-lg mb-8 sm:mb-12 font-medium leading-relaxed">
-                        Stay informed with the latest tax tips, financial strategies, and legislative updates curated by our senior architects of wealth.
+                        Practical guidance on tax planning, IRS compliance, payroll, bookkeeping, and small business accounting from the IntegraFin tax team.
                     </p>
+                    <div className="max-w-4xl mx-auto mb-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+                        {[
+                            "Reviewed for U.S. tax and accounting context",
+                            "Written for business owners and individual filers",
+                            "Linked to services, calculators, and state resources",
+                        ].map((item) => (
+                            <div key={item} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-slate-200">
+                                {item}
+                            </div>
+                        ))}
+                    </div>
                     <div className="max-w-xl mx-auto mb-10 sm:mb-16 relative">
                         <input
                             type="text"
@@ -69,7 +90,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full bg-white/10 border-2 border-[#0092df]/40 rounded-full py-4 px-8 text-white focus:ring-2 focus:ring-[#0092df] focus:border-[#0092df] transition-all placeholder:text-white/50"
                         />
-                        <button className="absolute right-4 top-1/2 -translate-y-1/2 text-[#0092df] hover:scale-110 transition-transform">
+                        <button type="button" aria-label="Search insights" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#0092df] hover:scale-110 transition-transform">
                             <Search className="w-6 h-6" />
                         </button>
                     </div>
@@ -101,6 +122,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                         src={featuredPost.image}
                                         alt={featuredPost.title}
                                         fill
+                                        sizes="(min-width: 1024px) 50vw, 100vw"
                                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                                     />
                                 ) : (
@@ -123,21 +145,22 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                     <div className="w-12 h-12 rounded-full bg-[#003580]/10 border border-[#0092df]/30 overflow-hidden relative">
                                         <Image
                                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb2fbflM3WQEL4GC36HymGmmpKnz0eLSSuOhfZT7BJukCRfj2HGwjZ2B2ETouhXdCFmEZ98XG--me0LLqyFdI5OWs-aHcpj-Zbda3K23VA6C_Ghp64dchUJNgidKs9NaUBKPMTFd9g94YMc5fsvXprfRLxC7z09tTaViju_7TIDftv8VdWBq18qs-r0yW8UpUm55bwQkkDtMqYaElSZ8x0zBQL8lH8XYRBAqtlmYzR7EzO48ty_PZSRNx82Mhi3ZznMulprgIQLC4"
-                                            alt="Author"
+                                            alt="IntegraFin tax and accounting team"
                                             fill
+                                            sizes="48px"
                                             className="object-cover"
                                         />
                                     </div>
                                     <div>
-                                        <p className="text-[#003580] font-black text-sm">Marcus Sterling</p>
-                                        <p className="text-slate-400 text-xs uppercase tracking-wider">Managing Partner</p>
+                                        <p className="text-[#003580] font-black text-sm">IntegraFin Tax Team</p>
+                                        <p className="text-slate-400 text-xs uppercase tracking-wider">Tax & Accounting Team</p>
                                     </div>
                                 </div>
                                 <Link
                                     href={`/blog/${featuredPost.slug}`}
                                     className="inline-flex items-center gap-2 bg-[#003580] hover:bg-[#002050] text-white px-8 py-3.5 rounded-xl font-black tracking-widest uppercase text-xs transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5"
                                 >
-                                    Read Full Strategy
+                                    Read Full Guide
                                     <ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>
@@ -165,6 +188,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                             src={post.image}
                                             alt={post.title}
                                             fill
+                                            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                                             className="object-cover"
                                         />
                                     ) : (
@@ -175,8 +199,8 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                 </div>
                                 <div className="p-5 sm:p-8 flex-grow flex flex-col">
                                     <div className="flex justify-between items-center mb-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
-                                        <span>{post.category}</span>
-                                        <span>{post.date}</span>
+                                        <span>{post.category || "Tax Insight"}</span>
+                                        <span>{post.date || "Updated"}</span>
                                     </div>
                                     <h3 className="text-xl font-black text-[#003580] mb-4 hover:text-[#0092df] transition-colors leading-snug tracking-tight">
                                         {post.title}
@@ -185,7 +209,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                         {post.excerpt}
                                     </p>
                                     <div className="flex items-center justify-between pt-6 border-t border-slate-100 mt-auto">
-                                        <span className="text-slate-400 text-xs font-medium">{post.readTime}</span>
+                                        <span className="text-slate-400 text-xs font-medium">{post.readTime || "5 min read"}</span>
                                         <Link
                                             href={`/blog/${post.slug}`}
                                             className="text-[#0092df] font-black text-xs uppercase tracking-widest hover:text-[#003580] transition-colors inline-flex items-center gap-1"
@@ -204,10 +228,10 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/20 -translate-y-1/2 translate-x-1/2 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                                 <Mail className="w-12 h-12 text-[#0092df] mb-6 relative z-10" />
                                 <h3 className="text-3xl font-black text-white mb-4 tracking-tight relative z-10">Want More Insights?</h3>
-                                <p className="text-slate-300 mb-8 font-medium text-sm leading-relaxed relative z-10">Join 5,000+ executives receiving our weekly financial architecture digest.</p>
-                                <button className="w-full py-4 bg-[#0092df] hover:bg-[#007bc0] text-white font-black uppercase tracking-widest text-xs rounded-xl transition-colors relative z-10">
+                                <p className="text-slate-300 mb-8 font-medium text-sm leading-relaxed relative z-10">Get practical tax and accounting updates in your inbox.</p>
+                                <Link href="#newsletter-signup" className="w-full py-4 bg-[#0092df] hover:bg-[#007bc0] text-white font-black uppercase tracking-widest text-xs rounded-xl transition-colors relative z-10">
                                     Subscribe Now
-                                </button>
+                                </Link>
                             </div>
                         )}
                     </div>
@@ -215,23 +239,21 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
             </section>
 
             {/* SECTION 4: NEWSLETTER BANNER */}
-            <section className="py-12 sm:py-24 bg-white border-t border-slate-100 relative overflow-hidden">
+            <section id="newsletter-signup" className="py-12 sm:py-24 bg-white border-t border-slate-100 relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#0092df]/5 blur-[150px] rounded-full pointer-events-none"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
                     <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Stay Updated</span>
                     <h2 className="text-3xl sm:text-5xl font-black text-[#003580] mb-4 sm:mb-6 tracking-tight">Never Miss a Tax Update</h2>
-                    <p className="text-slate-600 text-sm sm:text-lg mb-8 sm:mb-12 max-w-xl mx-auto font-medium leading-relaxed">Get meticulous financial engineering insights delivered directly to your executive inbox.</p>
-                    <form className="max-w-2xl mx-auto flex flex-col md:flex-row gap-4">
-                        <input
-                            type="email"
-                            placeholder="executive@yourfirm.com"
-                            className="flex-grow bg-slate-50 border border-slate-200 rounded-xl px-6 py-4 text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0092df] focus:border-[#0092df] transition-all placeholder:text-slate-400"
+                    <p className="text-slate-600 text-sm sm:text-lg mb-8 sm:mb-12 max-w-xl mx-auto font-medium leading-relaxed">Get useful tax reminders, compliance tips, and planning ideas delivered directly to your inbox.</p>
+                    <div className="max-w-2xl mx-auto">
+                        <NewsletterSignup
+                            source="blog-newsletter"
+                            placeholder="you@example.com"
+                            buttonLabel="Subscribe Securely"
+                            variant="light"
                         />
-                        <button type="submit" className="bg-[#003580] hover:bg-[#002050] text-white px-10 py-4 rounded-xl font-black tracking-widest uppercase text-xs transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5 whitespace-nowrap">
-                            Subscribe Securely
-                        </button>
-                    </form>
-                    <p className="mt-6 text-slate-400 text-[10px] uppercase tracking-widest">Privacy compliant. Zero spam. Pure intelligence.</p>
+                    </div>
+                    <p className="mt-6 text-slate-400 text-[10px] uppercase tracking-widest">Privacy compliant. Zero spam.</p>
                 </div>
             </section>
 
@@ -266,32 +288,32 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                             <div className="bg-[#003580] p-6 sm:p-10 rounded-3xl relative overflow-hidden group shadow-xl shadow-[#003580]/20">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-[#0092df]/20 -translate-y-1/2 translate-x-1/2 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                                 <h4 className="text-white font-black text-2xl mb-4 tracking-tight relative z-10">Need Tax Help?</h4>
-                                <p className="text-slate-300 text-sm mb-8 leading-relaxed font-medium relative z-10">Schedule a 15-minute diagnostic session with our lead architects.</p>
-                                <button className="w-full py-3.5 border-2 border-[#0092df] text-[#0092df] text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-[#0092df] hover:text-white transition-all relative z-10">
+                                <p className="text-slate-300 text-sm mb-8 leading-relaxed font-medium relative z-10">Schedule a consultation with our tax and accounting team.</p>
+                                <Link href="/contact" className="block text-center w-full py-3.5 border-2 border-[#0092df] text-[#0092df] text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-[#0092df] hover:text-white transition-all relative z-10">
                                     Book Consultation
-                                </button>
+                                </Link>
                             </div>
 
                             {/* CTA Card 2 */}
                             <div className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-[#0092df]/10 hover:border-[#0092df]/20 transition-all duration-300">
                                 <h4 className="text-[#003580] font-black text-2xl mb-4 tracking-tight">Tax Estimator</h4>
-                                <p className="text-slate-600 text-sm mb-8 leading-relaxed font-medium">Utilize our proprietary engine to calculate your projected 2025 liability.</p>
-                                <button className="w-full py-3.5 bg-[#003580] hover:bg-[#002050] text-white text-[10px] font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5">
+                                <p className="text-slate-600 text-sm mb-8 leading-relaxed font-medium">Use the tax estimator to get a quick planning number before speaking with our team.</p>
+                                <Link href="/tax-calculator" className="w-full py-3.5 bg-[#003580] hover:bg-[#002050] text-white text-[10px] font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5">
                                     <Calculator className="w-4 h-4" />
                                     Open Estimator
-                                </button>
+                                </Link>
                             </div>
 
                             {/* Quick Links */}
                             <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50">
                                 <h4 className="text-[#003580] font-black text-xs uppercase tracking-[0.3em] mb-6 pb-4 border-b border-slate-100">Resource Library</h4>
                                 <ul className="space-y-4">
-                                    {["Whitepapers", "Compliance Checklists", "Case Studies", "Webinar Archives"].map((link) => (
-                                        <li key={link}>
-                                            <a href="#" className="text-slate-500 hover:text-[#0092df] transition-colors flex items-center justify-between group">
-                                                <span className="text-sm font-medium">{link}</span>
+                                    {resourceLinks.map((link) => (
+                                        <li key={link.href}>
+                                            <Link href={link.href} className="text-slate-500 hover:text-[#0092df] transition-colors flex items-center justify-between group">
+                                                <span className="text-sm font-medium">{link.label}</span>
                                                 <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#0092df]" />
-                                            </a>
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>
