@@ -20,6 +20,11 @@ export type DbBlogPost = {
   author?: { name: string; image?: string };
   createdAt?: string;
   updatedAt?: string;
+  keywords?: string[];
+  faq?: {
+    question: string;
+    answer: string;
+  }[];
 };
 
 export async function saveBlogPost(payload: {

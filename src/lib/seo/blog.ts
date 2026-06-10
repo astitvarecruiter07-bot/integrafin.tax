@@ -18,6 +18,11 @@ export type BlogSeoPost = {
   };
   createdAt?: string | Date;
   updatedAt?: string | Date;
+  keywords?: string[];
+  faq?: {
+    question: string;
+    answer: string;
+  }[];
 };
 
 export function toAbsoluteUrl(path = DEFAULT_BLOG_IMAGE) {
@@ -95,6 +100,7 @@ export function formatBlogPostTitle(title: string) {
 
 export function buildBlogPostKeywords(post: BlogSeoPost) {
   const keywords = [
+    ...(post.keywords || []),
     post.category,
     "tax planning",
     "tax preparation",

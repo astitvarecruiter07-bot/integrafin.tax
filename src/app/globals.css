@@ -471,6 +471,75 @@ body {
   border-radius: 1rem;
 }
 
+.blog-content-html .tax-answer-card,
+.blog-content-html .tax-note,
+.blog-content-html .tax-cta-panel {
+  margin: 0 0 1.75rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+}
+
+.blog-content-html .tax-answer-card {
+  border: 1px solid #bfdbfe;
+  border-left: 5px solid var(--primary);
+  background: #eff6ff;
+  color: #1e3a8a;
+}
+
+.blog-content-html .tax-note {
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+}
+
+.blog-content-html .tax-cta-panel {
+  border: 1px solid #bae6fd;
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+}
+
+.blog-content-html .tax-cta-panel h3 {
+  margin-top: 0;
+}
+
+.blog-content-html .table-scroll {
+  margin: 1.5rem 0 2rem;
+  overflow-x: auto;
+  border: 1px solid #dbe3ef;
+  border-radius: 1rem;
+  background: #ffffff;
+}
+
+.blog-content-html table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.blog-content-html th,
+.blog-content-html td {
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.blog-content-html th {
+  background: #f1f5f9;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.blog-content-html tr:last-child td {
+  border-bottom: 0;
+}
+
+.blog-content-html .source-list {
+  border-left-color: #64748b;
+  background: #ffffff;
+}
+
 @media (max-width: 640px) {
   .blog-content-html {
     font-size: 1rem;
