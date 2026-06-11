@@ -10,6 +10,12 @@ type ResourceLink = {
   label: string;
 };
 
+type LocalSupportSection = {
+  heading: string;
+  description: string;
+  points: string[];
+};
+
 type CityServicesPageProps = {
   cityName: string;
   stateName: string;
@@ -23,6 +29,7 @@ type CityServicesPageProps = {
   serviceFocus: string[];
   whoWeHelp: string[];
   localScenarios: string[];
+  localSupport?: LocalSupportSection;
   whyChoose: string[];
   faqItems: FaqItem[];
   resourceLinks: ResourceLink[];
@@ -36,13 +43,12 @@ export default function CityServicesPage({
   stateCode,
   pageUrl,
   statePageUrl,
-  primaryKeyword,
-  secondaryKeywords,
   heroDescription,
   directAnswer,
   serviceFocus,
   whoWeHelp,
   localScenarios,
+  localSupport,
   whyChoose,
   faqItems,
   resourceLinks,
@@ -140,9 +146,6 @@ export default function CityServicesPage({
           <p className="text-[#d7e3fc] mt-5 max-w-3xl mx-auto text-base md:text-lg">
             {heroDescription}
           </p>
-          <p className="text-[#d7e3fc] mt-3 max-w-3xl mx-auto text-sm md:text-base">
-            Primary focus: <span className="font-semibold">{primaryKeyword}</span>
-          </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/contact" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
               Book A Consultation
@@ -161,19 +164,6 @@ export default function CityServicesPage({
           </h2>
           <p className="text-slate-700 leading-relaxed">{directAnswer}</p>
           <p className="text-slate-500 text-sm mt-4">Last reviewed: {lastReviewed}</p>
-        </article>
-
-        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
-            Keywords and Tax Topics We Cover
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {secondaryKeywords.map((keyword) => (
-              <span key={keyword} className="bg-slate-100 text-slate-800 text-sm font-semibold px-3 py-2 rounded-lg">
-                {keyword}
-              </span>
-            ))}
-          </div>
         </article>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -213,11 +203,33 @@ export default function CityServicesPage({
         </article>
       </section>
 
+      {localSupport ? (
+        <section className="max-w-6xl mx-auto px-6 pb-10">
+          <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
+            <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
+              {localSupport.heading}
+            </h2>
+            <p className="text-slate-700 mb-5 leading-relaxed">
+              {localSupport.description}
+            </p>
+            <ul className="space-y-3 text-slate-700">
+              {localSupport.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+      ) : null}
+
       <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             Nearby Areas We Support
           </h2>
+          <p className="text-slate-700 mb-5 leading-relaxed">
+            We support {cityName} clients and nearby communities through the same secure tax,
+            bookkeeping, payroll, and IRS notice workflow.
+          </p>
           <div className="flex flex-wrap gap-2">
             {nearbyAreas.map((area) => (
               <span key={area} className="bg-slate-100 text-slate-800 text-sm font-semibold px-3 py-2 rounded-lg">

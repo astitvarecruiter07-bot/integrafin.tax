@@ -31,8 +31,8 @@ export default function FulshearTaxAccountantPage() {
         "business tax preparation Fulshear TX",
         "bookkeeping cleanup Fulshear TX",
       ]}
-      heroDescription="IntegraFin helps Fulshear businesses and individuals keep tax filings, bookkeeping, payroll records, and IRS response work organized through a practical year-round process."
-      directAnswer="If you need a tax accountant in Fulshear, TX, IntegraFin can help you organize books, prepare for tax filing, manage payroll-related workflows, and respond to IRS notices. We support Fulshear clients remotely and from our nearby Katy service base, with a focus on clean records and fewer tax-season surprises."
+      heroDescription="IntegraFin supports Fulshear businesses and individuals from our nearby Katy base with organized tax filing, bookkeeping, payroll workflow, and IRS notice response support."
+      directAnswer="If you need a tax accountant in Fulshear, TX, IntegraFin helps you organize books, prepare filings, manage payroll-related records, and respond to IRS notices. We work with Fulshear clients remotely and through nearby Katy-area coverage, with clear document requests and a year-round process."
       serviceFocus={[
         "Business tax preparation support for LLCs, S-Corps, partnerships, and sole proprietors",
         "Monthly bookkeeping, account reconciliation, and bookkeeping cleanup",
@@ -54,6 +54,17 @@ export default function FulshearTaxAccountantPage() {
         "A company adds employees or contractors and wants cleaner payroll reporting workflows",
         "A service business needs support reviewing Texas franchise tax and sales tax obligations",
       ]}
+      localSupport={{
+        heading: "How Our Fulshear Tax Support Works",
+        description:
+          "We do not claim a separate Fulshear office. Instead, Fulshear clients receive nearby Katy-based support with a secure remote workflow that keeps records, deadlines, and next steps organized.",
+        points: [
+          "Start with a consultation to review your entity type, filing history, bookkeeping status, payroll setup, and any IRS or Texas notices",
+          "Share tax returns, bank activity, payroll summaries, sales tax records, and entity documents through a secure document process",
+          "Receive a clear priority list for cleanup, filing preparation, tax planning, or notice response",
+          "Use recurring bookkeeping and tax check-ins when your business needs year-round support instead of a once-a-year filing rush",
+        ],
+      }}
       whyChoose={[
         "Nearby Katy-based tax and accounting support for Fulshear and Fort Bend County clients",
         "One coordinated process across bookkeeping, business tax, payroll workflow, and IRS help",
@@ -62,9 +73,9 @@ export default function FulshearTaxAccountantPage() {
       ]}
       faqItems={[
         {
-          question: "What is the best keyword for this Fulshear page?",
+          question: "Can a nearby Katy tax accountant support my Fulshear business?",
           answer:
-            "The page targets tax accountant Fulshear TX as the primary keyword, with bookkeeping services Fulshear TX, small business accountant Fulshear TX, tax preparation Fulshear TX, and IRS tax help Fulshear TX as supporting keywords.",
+            "Yes. IntegraFin is based in nearby Katy and supports Fulshear businesses through secure remote workflows, organized document requests, and local Fort Bend County service coverage.",
         },
         {
           question: "Do you have to be physically located in Fulshear to help my business?",

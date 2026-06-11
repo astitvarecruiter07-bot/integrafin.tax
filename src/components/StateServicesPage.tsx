@@ -37,8 +37,6 @@ type StateServicesPageProps = {
 export default function StateServicesPage({
   stateName,
   stateCode,
-  primaryKeyword,
-  secondaryKeywords,
   heroDescription,
   directAnswer,
   serviceFocus,
@@ -137,9 +135,6 @@ export default function StateServicesPage({
           <p className="text-[#d7e3fc] mt-5 max-w-3xl mx-auto text-base md:text-lg">
             {heroDescription}
           </p>
-          <p className="text-[#d7e3fc] mt-3 max-w-3xl mx-auto text-sm md:text-base">
-            Primary focus: <span className="font-semibold">{primaryKeyword}</span>
-          </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/contact" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
               Book A Consultation
@@ -162,19 +157,6 @@ export default function StateServicesPage({
           <p className="text-slate-500 text-sm mt-4">
             Last reviewed: {lastReviewed}
           </p>
-        </article>
-
-        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
-            Tax Topics We Cover In {stateName}
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {secondaryKeywords.map((keyword) => (
-              <span key={keyword} className="bg-slate-100 text-slate-800 text-sm font-semibold px-3 py-2 rounded-lg">
-                {keyword}
-              </span>
-            ))}
-          </div>
         </article>
 
         <div className="grid md:grid-cols-2 gap-8">
