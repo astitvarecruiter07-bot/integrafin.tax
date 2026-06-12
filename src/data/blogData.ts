@@ -19,6 +19,224 @@ export interface BlogPost {
 
 export const mockBlogPosts: BlogPost[] = [
     {
+        slug: "federal-scholarship-tax-credit-2027-guide",
+        title: "Federal Scholarship Tax Credit: 2027 Guide",
+        excerpt: "Learn how the Federal Scholarship Tax Credit may work in 2027, which states opted in, and what to verify before making a qualified SGO contribution.",
+        category: "Tax Planning",
+        date: "June 13, 2026",
+        updatedAt: "2026-06-13",
+        readTime: "9 min read",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200",
+        keywords: [
+            "Federal Scholarship Tax Credit",
+            "FSTC tax credit",
+            "2027 education tax credit",
+            "Scholarship Granting Organization tax credit",
+            "Section 25F tax credit",
+            "IRS scholarship tax credit participating states",
+            "up to $1,700 tax credit",
+            "nonrefundable tax credit",
+            "qualified SGO contribution",
+        ],
+        faq: [
+            {
+                question: "What is the Federal Scholarship Tax Credit?",
+                answer: "The Federal Scholarship Tax Credit is a new federal tax credit scheduled to begin on January 1, 2027. It may allow eligible individual taxpayers to claim a credit for certain cash contributions to qualified Scholarship Granting Organizations in participating states.",
+            },
+            {
+                question: "How much is the Federal Scholarship Tax Credit?",
+                answer: "The IRS says eligible taxpayers may be able to claim a federal tax credit for certain cash contributions of up to $1,700. The final benefit depends on eligibility, the qualifying contribution, state participation, SGO qualification, and the taxpayer's federal tax situation.",
+            },
+            {
+                question: "Is the Federal Scholarship Tax Credit refundable?",
+                answer: "No. The IRS describes the credit as nonrefundable. It may reduce federal tax owed, but it does not create a refund by itself if the credit is larger than the taxpayer's federal tax liability. Excess credit generally may be carried forward for up to five years.",
+            },
+            {
+                question: "Can I claim the Federal Scholarship Tax Credit in 2026?",
+                answer: "Based on current IRS language, the credit begins January 1, 2027. Taxpayers should not assume 2026 donations qualify for the FSTC unless future official guidance says otherwise.",
+            },
+            {
+                question: "Does donating to any school qualify?",
+                answer: "No. The IRS describes the credit as applying to certain cash contributions to Scholarship Granting Organizations. The SGO must meet requirements, including being on a list of qualifying SGOs provided to the IRS.",
+            },
+        ],
+        contentHtml: `
+            <div class="tax-answer-card">
+                <p><strong>Short answer:</strong> The Federal Scholarship Tax Credit, also called the FSTC, is a new federal tax credit scheduled to begin on January 1, 2027. Individual taxpayers may be able to claim a credit of up to $1,700 for certain cash contributions to approved Scholarship Granting Organizations, but only if the contribution fits the IRS rules and the SGO is connected to a participating state.</p>
+            </div>
+
+            <p>The important point is simple: this is not an automatic tax break. State participation, approved organization lists, taxpayer eligibility, federal tax liability, and future IRS guidance all matter before a donation should be treated as qualifying for the credit.</p>
+
+            <h2>Key Takeaways</h2>
+            <ul>
+                <li>The Federal Scholarship Tax Credit is scheduled to begin on January 1, 2027.</li>
+                <li>The IRS says individual taxpayers may be able to claim a federal tax credit for certain cash contributions of up to $1,700 to Scholarship Granting Organizations.</li>
+                <li>A state or the District of Columbia must choose to participate before taxpayers can claim the credit for donations to an SGO in that state.</li>
+                <li>As of the IRS announcement on June 8, 2026, 27 states had elected to participate for 2027.</li>
+                <li>The credit is nonrefundable, which means it may reduce federal tax owed but does not create a refund by itself if the credit is larger than the taxpayer's tax bill.</li>
+                <li>Taxpayers should verify the official IRS list, the approved SGO list, and their personal tax situation before donating for tax-credit purposes.</li>
+            </ul>
+
+            <h2>What Is the Federal Scholarship Tax Credit?</h2>
+            <p>The Federal Scholarship Tax Credit is a new education-related federal tax credit under Internal Revenue Code Section 25F. The credit is connected to donations made to Scholarship Granting Organizations, commonly called SGOs.</p>
+
+            <p>An SGO is a charity that awards scholarships to help students pay for certain elementary and secondary education expenses. In plain language, the program is designed around qualifying donations that support school scholarships, not direct tuition payments made by a parent to a school.</p>
+
+            <p>That distinction matters. A taxpayer should not assume that paying a child's school bill, donating to any education nonprofit, or giving to any private school automatically qualifies for the FSTC. The IRS says the organization must meet requirements, including being on a qualifying SGO list provided to the IRS.</p>
+
+            <h2>When Does the Federal Scholarship Tax Credit Start?</h2>
+            <p>Based on current IRS guidance reviewed on June 13, 2026, the FSTC begins on January 1, 2027.</p>
+
+            <p>That timing is important for tax planning. If a taxpayer makes an education-related donation before the program begins, they should not assume it will qualify for the new federal credit. The safer approach is to wait for updated IRS guidance, confirm state participation, and verify the approved SGO list before making a contribution for the purpose of claiming the FSTC.</p>
+
+            <p>Tax rules can change, and new programs often receive additional guidance after the first IRS announcement. For this reason, taxpayers should treat 2026 as a planning year and 2027 as the first potential credit year, subject to final guidance and eligibility requirements.</p>
+
+            <h2>How Much Is the Federal Scholarship Tax Credit?</h2>
+            <p>The IRS says eligible individual taxpayers may be able to claim a federal tax credit for certain cash contributions of up to $1,700 to SGOs.</p>
+
+            <p>The phrase "up to $1,700" is important. It does not mean every taxpayer will automatically receive $1,700. A taxpayer's final benefit may depend on several factors, including:</p>
+
+            <ul>
+                <li>Whether the taxpayer is an individual taxpayer eligible to claim the credit</li>
+                <li>Whether the state participates in the program</li>
+                <li>Whether the SGO is approved and listed properly</li>
+                <li>Whether the contribution is a qualifying cash contribution</li>
+                <li>Whether the taxpayer has enough federal tax liability to use the credit</li>
+                <li>Whether future Treasury or IRS guidance adds additional requirements</li>
+            </ul>
+
+            <p>This is why taxpayers should avoid making a donation based only on a social media post or headline. The credit may be valuable, but the details matter.</p>
+
+            <h2>Why Nonrefundable Matters</h2>
+            <p>The IRS describes the FSTC as a nonrefundable credit.</p>
+
+            <p>A nonrefundable credit can reduce a taxpayer's federal tax bill, but it generally does not create a refund if the credit is larger than the tax owed. For example, if a taxpayer qualifies for a $1,700 nonrefundable credit but has only $1,000 of federal tax liability before the credit, the credit may reduce that tax to zero, but it does not automatically turn the remaining $700 into a refund.</p>
+
+            <p>The IRS also states that excess credit generally may be carried forward for up to five years. That carryforward rule may help some taxpayers, but it also makes recordkeeping more important.</p>
+
+            <div class="tax-note">
+                <p><strong>Planning note:</strong> Before donating for the tax credit, taxpayers should understand whether they can actually use the credit on their return and whether any unused amount would need carryforward tracking.</p>
+            </div>
+
+            <h2>Which States Are Participating in the FSTC for 2027?</h2>
+            <p>According to IRS News Release IR-2026-76, issued June 8, 2026, 27 states had elected to participate in the FSTC for 2027. The IRS FSTC page listed the participating states below as of May 15, 2026.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Participating states listed by the IRS</th>
+                            <th>Participating states listed by the IRS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Alabama<br />Alaska<br />Arkansas<br />Colorado<br />Florida<br />Georgia<br />Idaho<br />Indiana<br />Iowa<br />Louisiana<br />Mississippi<br />Missouri<br />Montana<br />Nebraska</td>
+                            <td>Nevada<br />New Hampshire<br />North Dakota<br />Ohio<br />Oklahoma<br />South Carolina<br />South Dakota<br />Tennessee<br />Texas<br />Utah<br />Virginia<br />West Virginia<br />Wyoming</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>This list should be checked again before any taxpayer acts on it. The IRS says it will maintain and update the official participating-state list as states complete the required process.</p>
+
+            <h2>What If Your State Is Not on the IRS List?</h2>
+            <p>If your state is not currently listed, that does not automatically mean the program can never apply to you. It means you should not assume a donation in that state qualifies for the FSTC based on the current list.</p>
+
+            <p>State participation is voluntary. A state or the District of Columbia must elect to participate and provide the required list of qualified SGOs. Some states may update their status later, and some state websites may not immediately reflect the most current federal participation information.</p>
+
+            <p>For taxpayers, the safest source is the official IRS FSTC page, followed by state tax agency guidance and the listed SGO information when available.</p>
+
+            <h2>What Taxpayers Should Check Before Donating</h2>
+            <h3>1. Confirm Your State Is Participating</h3>
+            <p>Start with the IRS list of states that elected to participate. If the state is not on the official list, do not assume a donation will qualify for the federal credit.</p>
+
+            <h3>2. Verify the SGO Is Approved</h3>
+            <p>A donation must be made to a qualifying Scholarship Granting Organization. The IRS says participating states must provide lists of qualifying SGOs. A taxpayer should verify the organization before donating, not after.</p>
+
+            <h3>3. Confirm the Donation Type</h3>
+            <p>The IRS language refers to certain cash contributions. Taxpayers should be careful with noncash gifts, tuition payments, school fees, or informal payments because those may not meet the FSTC requirements.</p>
+
+            <h3>4. Review Federal Tax Liability</h3>
+            <p>Because the credit is nonrefundable, the taxpayer should understand whether they have enough federal tax liability to use the credit. A credit that cannot be used immediately may require carryforward tracking.</p>
+
+            <h3>5. Keep Documentation</h3>
+            <p>Taxpayers should keep donation receipts, SGO confirmation, state participation proof, IRS guidance snapshots if relevant, and any tax professional notes. Good documentation matters especially when a program is new.</p>
+
+            <h3>6. Watch for Additional IRS Guidance</h3>
+            <p>The IRS has indicated that Treasury and the IRS intend to issue proposed regulations providing additional guidance. That means more details may arrive before the 2027 filing season.</p>
+
+            <h2>Common Mistakes to Avoid</h2>
+            <ul>
+                <li><strong>Assuming every education donation qualifies:</strong> Not every education-related donation is an FSTC contribution. The program is tied to qualifying SGOs and participating states.</li>
+                <li><strong>Treating "up to $1,700" as guaranteed:</strong> "Up to" means the maximum possible credit under the rule, not a guaranteed refund or guaranteed savings amount for every taxpayer.</li>
+                <li><strong>Donating before checking the IRS list:</strong> Taxpayers should verify state participation and SGO approval before making a donation for tax-credit purposes.</li>
+                <li><strong>Ignoring the nonrefundable rule:</strong> If a taxpayer does not owe enough federal tax, the immediate value of the credit may be limited. The carryforward possibility should be reviewed with a tax professional.</li>
+                <li><strong>Relying only on a state website:</strong> The IRS news release notes that some state websites may not yet reflect current participation status. Taxpayers should use IRS.gov as a primary source for the federal credit.</li>
+            </ul>
+
+            <h2>Who Should Pay Attention to This Credit?</h2>
+            <p>The FSTC may be worth watching for individual taxpayers who regularly make charitable contributions, taxpayers in participating states, donors who want to support elementary or secondary education scholarships, and taxpayers who already work with a tax professional on annual giving strategy.</p>
+
+            <p>The credit may be less useful for taxpayers who do not have enough federal tax liability to use a nonrefundable credit, are not connected to a participating state, or are not contributing to an approved SGO. A tax professional can help evaluate the actual benefit before the taxpayer contributes.</p>
+
+            <h2>How IntegraFin Can Help</h2>
+            <p>New tax credits often sound simple in headlines, but the real question is whether the credit fits your situation. IntegraFin helps individuals and business owners review tax updates, plan ahead, organize documentation, and avoid relying on incomplete tax advice.</p>
+
+            <p>For the Federal Scholarship Tax Credit, the right planning conversation may include:</p>
+
+            <ul>
+                <li>Whether your state is participating</li>
+                <li>Whether the organization is a qualifying SGO</li>
+                <li>Whether the credit can reduce your federal tax bill</li>
+                <li>How the credit may interact with your broader tax picture</li>
+                <li>What records to keep for tax filing</li>
+                <li>Whether you should wait for additional IRS guidance before acting</li>
+            </ul>
+
+            <p>For broader help, review our <a href="/services">tax and accounting services</a>, <a href="/tax-calculator">tax estimator</a>, or location-specific pages for <a href="/texas-tax-accounting-services">Texas tax services</a>, <a href="/new-york-tax-accounting-services">New York tax services</a>, and <a href="/pennsylvania-tax-accounting-services">Pennsylvania tax services</a>.</p>
+
+            <div class="tax-cta-panel">
+                <h3>Planning an education-related contribution for 2027?</h3>
+                <p>IntegraFin can help you review state participation, SGO qualification, tax liability, carryforward issues, and documentation before you donate for tax-credit purposes.</p>
+                <p><a href="/contact">Schedule a tax planning review</a>.</p>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <h3>What is the Federal Scholarship Tax Credit?</h3>
+            <p>The Federal Scholarship Tax Credit is a new federal tax credit scheduled to begin on January 1, 2027. It may allow eligible individual taxpayers to claim a credit for certain cash contributions to qualified Scholarship Granting Organizations in participating states.</p>
+
+            <h3>How much is the Federal Scholarship Tax Credit?</h3>
+            <p>The IRS says eligible taxpayers may be able to claim a federal tax credit for certain cash contributions of up to $1,700. The final benefit depends on eligibility, the qualifying contribution, the participating state, the approved SGO, and the taxpayer's federal tax situation.</p>
+
+            <h3>Is the Federal Scholarship Tax Credit refundable?</h3>
+            <p>No. The IRS describes the credit as nonrefundable. That means it may reduce federal tax owed, but it does not create a refund by itself if the credit is larger than the taxpayer's federal tax liability. Excess credit generally may be carried forward for up to five years.</p>
+
+            <h3>Can I claim the credit in 2026?</h3>
+            <p>Based on current IRS language, the credit begins January 1, 2027. Taxpayers should not assume 2026 donations qualify for the FSTC unless future official guidance says otherwise.</p>
+
+            <h3>Do all states participate in the Federal Scholarship Tax Credit?</h3>
+            <p>No. State participation is voluntary. The IRS announced on June 8, 2026 that 27 states had elected to participate for 2027, and the IRS says it will maintain the official updated list.</p>
+
+            <h3>Does donating to any school qualify?</h3>
+            <p>No. The IRS describes the credit as applying to certain cash contributions to Scholarship Granting Organizations. The SGO must meet requirements, including being on a list of qualifying SGOs provided to the IRS.</p>
+
+            <h3>Should I speak with a tax professional before donating?</h3>
+            <p>Yes, especially if your goal is to claim the tax credit. A professional can help check state participation, SGO qualification, tax liability, carryforward issues, documentation, and how the credit may fit your broader tax plan.</p>
+
+            <h2>Sources Reviewed</h2>
+            <ul class="source-list">
+                <li><a href="https://www.irs.gov/government-entities/federal-state-local-governments/federal-scholarship-tax-credit-fstc" target="_blank" rel="noopener noreferrer">IRS: Federal Scholarship Tax Credit (FSTC)</a></li>
+                <li><a href="https://www.irs.gov/newsroom/more-than-half-the-us-states-signed-up-to-participate-in-the-federal-scholarship-tax-credit-program-enacted-under-the-one-big-beautiful-bill" target="_blank" rel="noopener noreferrer">IRS News Release IR-2026-76, June 8, 2026</a></li>
+                <li><a href="https://www.irs.gov/newsroom/one-big-beautiful-bill-provisions" target="_blank" rel="noopener noreferrer">IRS: One, Big, Beautiful Bill provisions</a></li>
+            </ul>
+
+            <p><strong>Last reviewed:</strong> June 13, 2026.</p>
+            <p><strong>Educational note:</strong> This article is for general educational purposes only and is not tax, legal, financial, or accounting advice. Rules can change and your situation may require individual review. Consult a qualified professional before making decisions.</p>
+        `,
+    },
+    {
         slug: "reduce-self-employment-tax-business-owners",
         title: "Can Business Owners Reduce Self-Employment Tax Legally?",
         excerpt: "Learn when business owners can reduce self-employment tax legally with S corp elections, reasonable salary planning, clean bookkeeping, and IRS-safe steps.",
