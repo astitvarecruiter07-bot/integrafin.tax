@@ -286,6 +286,12 @@ export default function Home() {
                   Explore statewide tax, accounting, bookkeeping, payroll, and IRS support pages connected to the Katy and Fort Bend local service cluster.
                 </p>
               </Link>
+              <Link href="/texas/irs-notice-help-katy-tx" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-xl font-black text-[#003580] mb-2">IRS Notice Help in Katy</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Review IRS letters, organize tax records, and plan response or payment-option next steps with nearby Katy support.
+                </p>
+              </Link>
             </div>
           </div>
         </div>

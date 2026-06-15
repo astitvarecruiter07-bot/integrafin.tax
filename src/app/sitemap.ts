@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/texas/houston-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/texas/dallas-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/texas/fulshear-tax-accountant', lastModified: '2026-06-15', priority: 0.8 },
+    { path: '/texas/irs-notice-help-katy-tx', lastModified: '2026-06-15', priority: 0.8 },
     { path: '/new-york-tax-accounting-services', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/new-york/nyc-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/new-york/buffalo-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },

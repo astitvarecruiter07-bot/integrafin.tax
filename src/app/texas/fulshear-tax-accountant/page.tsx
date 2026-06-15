@@ -108,6 +108,7 @@ export default function FulshearTaxAccountantPage() {
       ]}
       resourceLinks={[
         { href: "/", label: "Katy Tax Accountant and Bookkeeping Services" },
+        { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help in Katy TX" },
         { href: "/texas-tax-accounting-services", label: "Texas Tax and Accounting Services Hub" },
         { href: "/contact", label: "Book A Tax Consultation" },
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },

@@ -16,6 +16,7 @@ const serviceLinks = [
     { href: "/services#business", label: "Business Tax & Accounting" },
     { href: "/services#individual", label: "Individual Tax Services" },
     { href: "/services#tax-resolution", label: "Tax Resolution" },
+    { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },
     { href: "/services#additional", label: "Additional Services" },
     { href: "/services#startup", label: "Consultation" },
     { href: "/industries", label: "Industries Served" },

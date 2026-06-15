@@ -43,6 +43,12 @@ const sections = [
     ],
   },
   {
+    title: "Local Tax Problem Pages",
+    links: [
+      { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },
+    ],
+  },
+  {
     title: "Featured Blog Posts",
     links: [
       { href: "/blog/financial-planning-for-startups", label: "Financial Planning for Startups" },
