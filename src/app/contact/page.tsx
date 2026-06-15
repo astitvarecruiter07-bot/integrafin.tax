@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Mail, MessageSquare, MapPin, Phone, ShieldCheck } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
@@ -76,6 +77,16 @@ export default function ContactPage() {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                            <h4 className="font-extrabold text-[#003580] tracking-tight text-lg mb-2">Received an IRS Notice?</h4>
+                            <p className="text-sm text-gray-600 leading-relaxed mb-5">
+                                If your letter mentions a balance due, CP2000, Letter 12C, identity verification, or missing information, start with our Katy IRS notice help page.
+                            </p>
+                            <Link href="/texas/irs-notice-help-katy-tx" className="inline-flex bg-[#003580] text-white px-5 py-3 rounded-lg font-bold text-sm hover:bg-[#002050] transition-colors">
+                                View IRS Notice Help
+                            </Link>
                         </div>
 
                         {/* Locations Grid */}

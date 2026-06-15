@@ -25,6 +25,33 @@ const noticeTypes = [
   "Business tax, payroll, or filing-status notices",
 ];
 
+const noticeDetails = [
+  {
+    title: "CP14 balance due notice",
+    description:
+      "A CP14 generally says the IRS shows a balance due. Read the amount, due date, tax year, and payment instructions before deciding whether to pay, verify payments, or review payment-plan options.",
+    source: "https://www.irs.gov/individuals/understanding-your-cp14-notice",
+  },
+  {
+    title: "CP2000 income mismatch notice",
+    description:
+      "A CP2000 is a proposed change, not a final bill. It usually means third-party information, such as W-2, 1099, or payment records, does not match what was reported on the tax return.",
+    source: "https://www.irs.gov/individuals/understanding-your-cp2000-series-notice",
+  },
+  {
+    title: "Letter 12C missing information",
+    description:
+      "Letter 12C asks for more information before the IRS can finish processing a return. Common requests include missing forms, corrected schedules, income verification, withholding details, or identification information.",
+    source: "https://www.irs.gov/individuals/understanding-your-letter-12c",
+  },
+  {
+    title: "Identity verification letters",
+    description:
+      "Identity verification notices may mean the IRS needs to confirm whether you filed the return. Follow the exact instructions on the IRS letter before sharing information or responding.",
+    source: "https://www.irs.gov/identity-theft-fraud-scams/verify-your-return",
+  },
+];
+
 const firstSteps = [
   "Read the full IRS letter and find the CP or LTR notice number.",
   "Check the tax year, deadline, proposed change, and response instructions.",
@@ -48,10 +75,33 @@ const localClients = [
   "Fulshear, Richmond, Rosenberg, Sugar Land, and Fort Bend County clients who use nearby Katy-based support",
 ];
 
+const documentChecklist = [
+  "IRS notice or letter, including every page and envelope if available",
+  "Tax return for the year shown on the notice",
+  "IRS online account balance, transcript, or payment history if available",
+  "Proof of payments, estimated tax payments, or extension payments",
+  "W-2, 1099, K-1, brokerage, bank, or business income documents",
+  "Bookkeeping reports, bank statements, and reconciliation details for business notices",
+  "Payroll summaries, payroll tax filings, and state payroll records if the notice involves payroll",
+  "Prior IRS letters, response confirmations, fax receipts, or mailed-document tracking",
+];
+
 const irsResources = [
   {
     href: "https://www.irs.gov/individuals/understanding-your-irs-notice-or-letter",
     label: "IRS: Understanding your IRS notice or letter",
+  },
+  {
+    href: "https://www.irs.gov/individuals/understanding-your-cp14-notice",
+    label: "IRS: Understanding your CP14 notice",
+  },
+  {
+    href: "https://www.irs.gov/individuals/understanding-your-cp2000-series-notice",
+    label: "IRS: Understanding your CP2000 notice",
+  },
+  {
+    href: "https://www.irs.gov/individuals/understanding-your-letter-12c",
+    label: "IRS: Understanding your Letter 12C",
   },
   {
     href: "https://www.irs.gov/newsroom/what-taxpayers-should-do-if-they-get-a-letter-or-notice-from-the-irs",
@@ -68,6 +118,10 @@ const irsResources = [
   {
     href: "https://www.irs.gov/payments/payment-plans-installment-agreements",
     label: "IRS: Payment plans and installment agreements",
+  },
+  {
+    href: "https://www.irs.gov/identity-theft-fraud-scams/verify-your-return",
+    label: "IRS: Verify your return",
   },
 ];
 
@@ -101,6 +155,11 @@ const faqItems = [
     question: "What documents should I bring for IRS notice help?",
     answer:
       "Bring the IRS notice, the tax return for that year, payment records, IRS transcript or online account information if available, bookkeeping records, payroll reports, and any prior IRS correspondence.",
+  },
+  {
+    question: "Can IntegraFin help me understand a CP14, CP2000, or Letter 12C?",
+    answer:
+      "Yes. We help review the notice type, compare it with your records, and organize the next-step documents. A CP14 may involve a balance due, a CP2000 may involve proposed income or payment changes, and Letter 12C usually asks for more information before processing can continue.",
   },
 ];
 
@@ -207,8 +266,11 @@ export default function IrsNoticeHelpKatyPage() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/contact" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
-              Get IRS Notice Help
+              Book IRS Notice Consultation
             </Link>
+            <a href="tel:+18326471819" className="bg-white/10 text-white border border-white/20 px-7 py-3 rounded-xl font-bold">
+              Call (832) 647-1819
+            </a>
             <Link href="/services#tax-resolution" className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
               View Tax Resolution Services
             </Link>
@@ -259,6 +321,30 @@ export default function IrsNoticeHelpKatyPage() {
       <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
+            IRS Notice Types Katy Clients Ask About
+          </h2>
+          <div className="grid md:grid-cols-2 gap-5">
+            {noticeDetails.map((notice) => (
+              <div key={notice.title} className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 className="font-bold text-primary-dark mb-2">{notice.title}</h3>
+                <p className="text-slate-700 text-sm leading-relaxed mb-3">{notice.description}</p>
+                <a
+                  href={notice.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-bold text-primary hover:text-secondary"
+                >
+                  Read the IRS notice page
+                </a>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 pb-10">
+        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
+          <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             How IntegraFin Helps Katy Clients With IRS Letters
           </h2>
           <ul className="space-y-3 text-slate-700">
@@ -270,6 +356,34 @@ export default function IrsNoticeHelpKatyPage() {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-10">
+        <article className="bg-primary-dark rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 text-white">
+          <h2 className="text-2xl sm:text-3xl font-black mb-5">
+            IRS Notice Help From Our Katy Office
+          </h2>
+          <p className="text-[#d7e3fc] leading-relaxed mb-5">
+            IntegraFin Tax & Accounting is based at 2039 N Mason Rd, Suite 604, Katy,
+            TX 77449. We support Katy, Fulshear, Richmond, Rosenberg, Sugar Land, and
+            nearby Fort Bend County clients through secure document workflows and clear
+            response planning.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4 text-sm">
+            <div className="bg-white/10 rounded-xl p-4">
+              <p className="font-bold text-secondary mb-1">Office</p>
+              <p>2039 N Mason Rd, Suite 604<br />Katy, TX 77449</p>
+            </div>
+            <div className="bg-white/10 rounded-xl p-4">
+              <p className="font-bold text-secondary mb-1">Phone</p>
+              <a href="tel:+18326471819" className="hover:text-secondary">(832) 647-1819</a>
+            </div>
+            <div className="bg-white/10 rounded-xl p-4">
+              <p className="font-bold text-secondary mb-1">Service Area</p>
+              <p>Katy, Fulshear, Richmond, Rosenberg, Sugar Land, Fort Bend County</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             Who We Help In Katy And Fort Bend County
@@ -277,6 +391,25 @@ export default function IrsNoticeHelpKatyPage() {
           <ul className="space-y-3 text-slate-700">
             {localClients.map((item) => (
               <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 pb-10">
+        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
+          <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
+            IRS Notice Document Checklist
+          </h2>
+          <p className="text-slate-700 mb-5 leading-relaxed">
+            Bring or upload as many of these records as you have. Missing documents do not
+            always stop the first review, but they help us understand the notice faster.
+          </p>
+          <ul className="grid md:grid-cols-2 gap-3 text-slate-700">
+            {documentChecklist.map((item) => (
+              <li key={item} className="rounded-xl bg-slate-50 border border-slate-200 p-4">
+                {item}
+              </li>
             ))}
           </ul>
         </article>
@@ -350,8 +483,11 @@ export default function IrsNoticeHelpKatyPage() {
           </div>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
             <Link href="/contact" className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
-              Request A Call Back
+              Book IRS Notice Consultation
             </Link>
+            <a href="tel:+18326471819" className="inline-block bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold text-center">
+              Call (832) 647-1819
+            </a>
             <Link href="/services" className="inline-block bg-white border border-slate-300 text-primary px-7 py-3 rounded-xl font-bold text-center">
               View All Services
             </Link>

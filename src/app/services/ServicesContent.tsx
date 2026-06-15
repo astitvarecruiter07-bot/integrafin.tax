@@ -79,6 +79,7 @@ const tabsData = [
     description: "Our Tax Resolution Services help individuals and businesses resolve tax issues with the IRS and state tax authorities efficiently. Whether you owe back taxes, face penalties, or have unfiled returns, our experts work to find the best solution for your situation. We assist with IRS audit representation, offer in compromise, penalty abatement, and installment agreements, helping you reduce tax liabilities and avoid legal complications. Our team negotiates with the IRS on your behalf, ensuring fair resolutions while protecting your financial interests. With our expertise, you can achieve tax compliance and financial peace of mind.",
     services: [
       { title: "Back Taxes Owed", desc: "We help you resolve unpaid taxes by negotiating payment plans, reducing penalties, and ensuring compliance with IRS regulations." },
+      { title: "IRS Notice Review in Katy", desc: "Received a CP14, CP2000, Letter 12C, or identity verification letter? Visit our dedicated IRS Notice Help Katy TX page for local notice review and document organization." },
       { title: "IRS Audit Representation", desc: "Our experts represent you before the IRS, handling audits professionally to minimize liabilities and protect your rights." },
       { title: "Offer in Compromise", desc: "Settle your tax debt for less than the full amount owed through IRS-approved negotiation strategies." },
       { title: "Payroll Taxes Owed", desc: "Avoid penalties by resolving overdue payroll tax issues with structured repayment plans and compliance assistance." },
@@ -358,6 +359,21 @@ export default function ServicesContent() {
               Pennsylvania Tax and Accounting Services
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-10 sm:pb-14">
+        <div className="bg-primary-dark border border-primary-dark rounded-2xl p-5 sm:p-8 shadow-sm text-white">
+          <h2 className="text-xl sm:text-2xl font-black mb-3">
+            Need Help With An IRS Notice In Katy?
+          </h2>
+          <p className="text-[#d7e3fc] mb-5">
+            If you received a CP14, CP2000, Letter 12C, identity verification letter, or another
+            IRS notice, review our local Katy IRS notice help page before you respond.
+          </p>
+          <Link href="/texas/irs-notice-help-katy-tx" className="inline-flex items-center justify-center gap-2 bg-secondary text-primary-dark px-6 py-3 rounded-xl font-bold">
+            IRS Notice Help Katy TX <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
     </main>

@@ -21,6 +21,7 @@ import {
 
 const relatedResourceLinks = [
   { href: "/services", label: "Tax and accounting services" },
+  { href: "/texas/irs-notice-help-katy-tx", label: "IRS notice help in Katy TX" },
   { href: "/texas-tax-accounting-services", label: "Texas tax and accounting services" },
   { href: "/new-york-tax-accounting-services", label: "New York tax and accounting services" },
   { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania tax and accounting services" },
