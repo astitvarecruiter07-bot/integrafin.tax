@@ -43,6 +43,8 @@ export default function CityServicesPage({
   stateCode,
   pageUrl,
   statePageUrl,
+  primaryKeyword,
+  secondaryKeywords,
   heroDescription,
   directAnswer,
   serviceFocus,
@@ -76,15 +78,22 @@ export default function CityServicesPage({
     "@type": "Service",
     name: `Tax and Accounting Services in ${cityName}, ${stateCode}`,
     serviceType: "Tax and Accounting Services",
+    keywords: [primaryKeyword, ...secondaryKeywords].join(", "),
     provider: {
       "@type": "Organization",
       name: "IntegraFin",
       url: "https://integrafin.tax",
     },
-    areaServed: {
-      "@type": "City",
-      name: cityName,
-    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: cityName,
+      },
+      ...nearbyAreas.map((area) => ({
+        "@type": "Place",
+        name: area,
+      })),
+    ],
     description: heroDescription,
     url: pageUrl,
   };

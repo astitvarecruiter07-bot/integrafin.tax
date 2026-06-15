@@ -8,14 +8,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://integrafin.tax';
 
   const routes = [
-    { path: '', lastModified: '2026-06-05', priority: 1.0 },
+    { path: '', lastModified: '2026-06-15', priority: 1.0 },
     { path: '/about', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/services', lastModified: '2026-06-10', priority: 0.8 },
     { path: '/industries', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/texas-tax-accounting-services', lastModified: '2026-06-11', priority: 0.8 },
     { path: '/texas/houston-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/texas/dallas-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
-    { path: '/texas/fulshear-tax-accountant', lastModified: '2026-06-11', priority: 0.8 },
+    { path: '/texas/fulshear-tax-accountant', lastModified: '2026-06-15', priority: 0.8 },
     { path: '/new-york-tax-accounting-services', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/new-york/nyc-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/new-york/buffalo-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },

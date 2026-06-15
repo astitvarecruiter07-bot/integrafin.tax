@@ -7,28 +7,31 @@ import { ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    badge: "ACCURATE & EFFICIENT",
-    title: "Seamless Tax Filing & Maximized Returns",
-    description: "Ensure compliance and get the highest refund possible with our expert tax filing and preparation services. Quick, easy, and stress-free tax solutions.",
-    buttonLabel: "File Your Taxes",
+    badge: "KATY TAX & BOOKKEEPING",
+    title: "Tax Accountant in Katy, TX for Businesses and Families",
+    description: "IntegraFin provides tax preparation, bookkeeping, payroll workflow support, and IRS notice help for Katy and Fort Bend County clients.",
+    buttonLabel: "Book Katy Tax Consultation",
     buttonLink: "/contact",
-    image: "/A_professional,_wide-angle_202604082301.png"
+    image: "/A_professional,_wide-angle_202604082301.png",
+    imageAlt: "IntegraFin tax accountant support for Katy TX businesses"
   },
   {
-    badge: "SUCCESSFUL & PROFESSIONAL",
-    title: "Expert Tax & Accounting Services in Katy, TX",
-    description: "IntegraFin provides trusted tax and business advisory services. We simplify your finances with expert accounting and tax filing solutions tailored to your needs.",
-    buttonLabel: "Get Professional Help",
+    badge: "BUSINESS TAX SUPPORT",
+    title: "Business Tax Preparation and Bookkeeping in Fort Bend County",
+    description: "Get organized monthly bookkeeping, business tax preparation, payroll records support, and year-round planning from a nearby Katy tax team.",
+    buttonLabel: "Get Business Tax Help",
     buttonLink: "/contact",
-    image: "/hero-professional.png"
+    image: "/hero-professional.png",
+    imageAlt: "Business tax preparation and bookkeeping services near Katy Texas"
   },
   {
-    badge: "STRATEGIC & OPTIMIZED",
-    title: "Smart Tax Planning for Maximum Savings",
-    description: "Optimize your taxes with expert planning and advisory services. Minimize liabilities and maximize deductions for a financially secure future.",
-    buttonLabel: "Get Tax Advice",
+    badge: "IRS NOTICE HELP",
+    title: "IRS Notice and Tax Planning Help Near Katy",
+    description: "If you received an IRS letter, have behind books, or need better tax planning, IntegraFin helps you organize the next step clearly.",
+    buttonLabel: "Get IRS Notice Help",
     buttonLink: "/contact",
-    image: "/A_professional,_wide-angle_202604082301.png"
+    image: "/A_professional,_wide-angle_202604082301.png",
+    imageAlt: "IRS notice and tax planning help near Katy TX"
   }
 ];
 
@@ -132,14 +135,17 @@ export default function HeroCarousel() {
           transform: `translateX(calc(-${currentSlide * 100}% + ${dragOffset}px))`,
         }}
       >
-        {slides.map((slide, index) => (
+        {slides.map((slide, index) => {
+          const HeadingTag = index === 0 ? "h1" : "h2";
+
+          return (
           <div key={index} className="w-full shrink-0 relative min-h-[650px] md:min-h-[750px] flex items-center">
             {/* Background Image */}
             <div className="absolute inset-0">
                <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/40 z-10" />
                <Image
                  src={slide.image}
-                 alt="Hero Background"
+                 alt={slide.imageAlt}
                  fill
                  sizes="100vw"
                  className="object-cover object-right absolute inset-0 opacity-60"
@@ -157,9 +163,9 @@ export default function HeroCarousel() {
                  <div className="inline-block px-5 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm mb-8 text-sm md:text-base font-bold tracking-widest text-[#00AEEF] shadow-lg">
                    {slide.badge}
                  </div>
-                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-[1.15] tracking-tight max-w-4xl text-white min-h-[5.5rem] md:min-h-[7.5rem] lg:min-h-[11rem]">
+                 <HeadingTag className="text-4xl md:text-5xl lg:text-7xl font-black mb-8 leading-[1.15] tracking-tight max-w-4xl text-white min-h-[5.5rem] md:min-h-[7.5rem] lg:min-h-[11rem]">
                    {slide.title}
-                 </h1>
+                 </HeadingTag>
                  <p className="text-base md:text-lg lg:text-xl mb-12 font-medium max-w-2xl text-slate-200 leading-relaxed min-h-[4.5rem] md:min-h-[5.5rem] lg:min-h-[7rem]">
                    {slide.description}
                  </p>
@@ -180,7 +186,8 @@ export default function HeroCarousel() {
                </div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Carousel Indicators (Slider Bar) */}

@@ -5,8 +5,8 @@ import HomeCallbackForm from "@/components/HomeCallbackForm";
 import HeroCarousel from "@/components/HeroCarousel";
 
 export const metadata = {
-  title: 'Tax Accountant Katy TX | IntegraFin Tax Expert Services',
-  description: 'IntegraFin provides tax expert services in Katy, TX offering tax preparation, bookkeeping, payroll, and IRS resolution. Schedule your free consultation today. Call (832) 647-1819.',
+  title: 'Tax Accountant Katy TX | Tax Preparation & Bookkeeping | IntegraFin',
+  description: 'Need a tax accountant in Katy, TX? IntegraFin provides tax preparation, bookkeeping, payroll workflow support, and IRS notice help for Katy and Fort Bend County clients.',
   alternates: { canonical: 'https://integrafin.tax/' },
 };
 
@@ -22,7 +22,10 @@ export default function Home() {
       <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto -mt-16 z-30 relative">
         <div className="text-center mb-16">
            <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-2 block">Our Expertise</span>
-           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] tracking-tight">Core Services We Offer</h2>
+           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] tracking-tight">Tax Accountant Katy TX Services</h2>
+           <p className="text-slate-600 mt-4 max-w-3xl mx-auto text-base md:text-lg">
+             IntegraFin helps Katy and Fort Bend County clients with organized tax preparation, bookkeeping, business tax support, payroll records, and IRS notice response.
+           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -32,28 +35,28 @@ export default function Home() {
              <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><path d="m3 12.5 3 3 6-6"/></svg>
              </div>
-             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Worry-Free Tax and Accounting Services</h3>
+             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Small Business Tax and Accounting in Katy</h3>
              <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
-               Managing taxes and accounting can be stressful, but we make it easy. Our experts handle everything from bookkeeping to tax preparation, ensuring accuracy and compliance. Focus on growing your business while we take care of your financials.
+               Keep business records, filings, and deadlines organized with nearby Katy tax and accounting support. We help business owners prepare for filing season, maintain clean books, and understand the next tax step.
              </p>
              <ul className="space-y-4 relative z-10">
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Expert tax preparation and accounting services</span>
+                 <span>Business tax preparation and filing support</span>
                </li>
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Accurate and compliant bookkeeping</span>
+                 <span>Monthly bookkeeping and account reconciliation</span>
                </li>
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Personalized tax saving strategies</span>
+                 <span>Year-round planning for Katy and Fort Bend businesses</span>
                </li>
              </ul>
           </div>
@@ -64,28 +67,28 @@ export default function Home() {
              <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/><path d="m15 14-3 3-3-3"/></svg>
              </div>
-             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Get the Highest Refund</h3>
+             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Individual Tax Preparation in Katy</h3>
              <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
-               Maximize your tax refund with our expert filing services. We analyze every deduction and credit available to ensure you get the best possible return. Our team stays updated with the latest tax laws to help you save more.
+               Get clear tax preparation help for individual returns, self-employed income, 1099 work, family filing questions, and document organization before deadlines.
              </p>
              <ul className="space-y-4 relative z-10">
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Hassle-free online and in-person filing</span>
+                 <span>Secure online and local Katy-area filing support</span>
                </li>
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Secure document handling and filing</span>
+                 <span>Organized document requests and review process</span>
                </li>
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Year-round support for tax planning</span>
+                 <span>Tax planning conversations before filing season</span>
                </li>
              </ul>
           </div>
@@ -96,22 +99,22 @@ export default function Home() {
              <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"/><path d="m9 14 2 2 4-4"/></svg>
              </div>
-             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Free Tax Filing Estimates</h3>
+             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Bookkeeping and IRS Notice Help</h3>
              <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
-               Know what to expect before you file. We provide free, no-obligation tax filing estimates so you can plan ahead. Get clarity on your potential refund or tax liability without any hidden fees.
+               Behind books, IRS letters, and unclear records can slow down filing. IntegraFin helps Katy clients organize the information needed for cleanup, notice response, and planning.
              </p>
              <ul className="space-y-4 relative z-10">
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Maximized deductions and credits for higher refunds</span>
+                 <span>Bookkeeping cleanup before tax preparation</span>
                </li>
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Free initial tax estimates with no obligation</span>
+                 <span>IRS notice review and next-step planning</span>
                </li>
              </ul>
           </div>
@@ -236,6 +239,55 @@ export default function Home() {
                 </div>
               ))}
            </div>
+        </div>
+      </section>
+
+      {/* Katy and Fort Bend Local SEO Coverage */}
+      <section className="py-20 px-6 lg:px-8 bg-white border-t border-slate-200/60">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+            <div>
+              <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">Local Tax Support</span>
+              <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight mb-5">
+                Tax Accountant in Katy, TX Serving Fort Bend County
+              </h2>
+              <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
+                IntegraFin helps Katy-area business owners, self-employed professionals, families, and growing teams stay organized with tax preparation, bookkeeping services, payroll records support, and IRS notice help.
+              </p>
+              <p className="text-slate-600 leading-relaxed">
+                Our nearby service coverage includes Katy, Fulshear, Richmond, Rosenberg, Sugar Land, Cinco Ranch, Brookshire, and surrounding Fort Bend County communities.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+                <Link href="/contact" className="bg-[#003580] hover:bg-[#002050] text-white px-7 py-3 rounded-xl font-bold transition-colors text-center">
+                  Schedule A Katy Tax Consultation
+                </Link>
+                <Link href="/texas/fulshear-tax-accountant" className="bg-slate-50 border border-slate-200 text-[#003580] px-7 py-3 rounded-xl font-bold transition-colors text-center hover:border-[#0092df]/40">
+                  View Fulshear Tax Accountant Page
+                </Link>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              <Link href="/services#business" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-xl font-black text-[#003580] mb-2">Business Tax and Bookkeeping</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Monthly bookkeeping, account reconciliation, business tax preparation, payroll records, and year-round planning for local business owners.
+                </p>
+              </Link>
+              <Link href="/services#individual" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-xl font-black text-[#003580] mb-2">Individual Tax Preparation</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Tax filing support for individuals, families, self-employed workers, 1099 income, and taxpayers who need clearer document organization.
+                </p>
+              </Link>
+              <Link href="/texas-tax-accounting-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-xl font-black text-[#003580] mb-2">Texas Tax and Accounting Hub</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  Explore statewide tax, accounting, bookkeeping, payroll, and IRS support pages connected to the Katy and Fort Bend local service cluster.
+                </p>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
