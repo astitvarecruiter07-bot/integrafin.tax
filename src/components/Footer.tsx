@@ -14,6 +14,7 @@ const quickLinks = [
 
 const serviceLinks = [
     { href: "/services#business", label: "Business Tax & Accounting" },
+    { href: "/texas/katy-bookkeeping-services", label: "Katy Bookkeeping Services" },
     { href: "/services#individual", label: "Individual Tax Services" },
     { href: "/services#tax-resolution", label: "Tax Resolution" },
     { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },

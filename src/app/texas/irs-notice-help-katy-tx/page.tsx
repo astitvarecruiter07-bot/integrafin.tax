@@ -458,6 +458,9 @@ export default function IrsNoticeHelpKatyPage() {
             <Link href="/texas/fulshear-tax-accountant" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Fulshear Tax Accountant Services
             </Link>
+            <Link href="/texas/katy-bookkeeping-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Katy Bookkeeping Services
+            </Link>
             <Link href="/blog/tax-resolution-options" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Tax Resolution Options
             </Link>

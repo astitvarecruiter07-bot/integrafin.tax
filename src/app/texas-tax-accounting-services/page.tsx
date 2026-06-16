@@ -90,6 +90,7 @@ export default function TexasTaxAccountingServicesPage() {
         },
       ]}
       resourceLinks={[
+        { href: "/texas/katy-bookkeeping-services", label: "Bookkeeping Services in Katy TX" },
         { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help in Katy TX" },
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },

@@ -363,6 +363,21 @@ export default function ServicesContent() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-10 sm:pb-14">
+        <div className="bg-white border border-slate-100 rounded-2xl p-5 sm:p-8 shadow-sm">
+          <h2 className="text-xl sm:text-2xl font-black text-primary mb-3">
+            Need Bookkeeping Services In Katy?
+          </h2>
+          <p className="text-slate-600 mb-5">
+            If your business books are behind or you need a cleaner monthly process, review our
+            local Katy bookkeeping page for cleanup, reconciliation, and tax-ready records.
+          </p>
+          <Link href="/texas/katy-bookkeeping-services" className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold">
+            Bookkeeping Services Katy TX <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-10 sm:pb-14">
         <div className="bg-primary-dark border border-primary-dark rounded-2xl p-5 sm:p-8 shadow-sm text-white">
           <h2 className="text-xl sm:text-2xl font-black mb-3">
             Need Help With An IRS Notice In Katy?

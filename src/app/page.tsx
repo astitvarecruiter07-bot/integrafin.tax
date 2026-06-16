@@ -261,6 +261,9 @@ export default function Home() {
                 <Link href="/contact" className="bg-[#003580] hover:bg-[#002050] text-white px-7 py-3 rounded-xl font-bold transition-colors text-center">
                   Schedule A Katy Tax Consultation
                 </Link>
+                <Link href="/texas/katy-bookkeeping-services" className="bg-secondary text-[#003580] px-7 py-3 rounded-xl font-bold transition-colors text-center">
+                  View Katy Bookkeeping Page
+                </Link>
                 <Link href="/texas/fulshear-tax-accountant" className="bg-slate-50 border border-slate-200 text-[#003580] px-7 py-3 rounded-xl font-bold transition-colors text-center hover:border-[#0092df]/40">
                   View Fulshear Tax Accountant Page
                 </Link>
@@ -268,10 +271,10 @@ export default function Home() {
             </div>
 
             <div className="grid gap-4">
-              <Link href="/services#business" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-xl font-black text-[#003580] mb-2">Business Tax and Bookkeeping</h3>
+              <Link href="/texas/katy-bookkeeping-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-xl font-black text-[#003580] mb-2">Katy Bookkeeping Services</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
-                  Monthly bookkeeping, account reconciliation, business tax preparation, payroll records, and year-round planning for local business owners.
+                  Monthly bookkeeping, cleanup, account reconciliation, payroll records, and tax-ready reports for local business owners.
                 </p>
               </Link>
               <Link href="/services#individual" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
