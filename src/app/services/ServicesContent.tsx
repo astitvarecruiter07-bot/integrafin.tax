@@ -148,6 +148,14 @@ const tabsData = [
   }
 ];
 
+const tabHashById: Record<string, string> = {
+  business: "business",
+  individual: "individual",
+  resolution: "tax-resolution",
+  additional: "additional",
+  startup: "startup",
+};
+
 export default function ServicesContent() {
   const [activeTab, setActiveTab] = useState(tabsData[0].id);
   const [openAccordionIdx, setOpenAccordionIdx] = useState<number | null>(null);
@@ -183,8 +191,9 @@ export default function ServicesContent() {
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
     setOpenAccordionIdx(null); // Reset open accordions when changing categories
-    if (window.location.hash !== `#${tabId}`) {
-      window.history.replaceState(null, "", `#${tabId}`);
+    const nextHash = `#${tabHashById[tabId] ?? tabId}`;
+    if (window.location.hash !== nextHash) {
+      window.history.replaceState(null, "", nextHash);
     }
   };
 
@@ -236,6 +245,7 @@ export default function ServicesContent() {
                 return (
                   <button
                     key={tab.id}
+                    id={tabHashById[tab.id]}
                     onClick={() => handleTabChange(tab.id)}
                     className={`flex-1 flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 py-3.5 sm:py-4 rounded-xl text-[13px] sm:text-sm font-bold transition-all duration-300 ${isActive
                       ? "bg-primary text-white shadow-md transform scale-[1.01]"
