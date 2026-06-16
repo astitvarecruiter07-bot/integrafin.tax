@@ -343,6 +343,21 @@ export default function ServicesContent() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-10 sm:pb-14">
         <div className="bg-white border border-slate-100 rounded-2xl p-5 sm:p-8 shadow-sm">
           <h2 className="text-xl sm:text-2xl font-black text-primary mb-3">
+            Estimate Federal Tax Before You File
+          </h2>
+          <p className="text-slate-600 mb-5">
+            Use our 2025 tax refund estimator and 2026 federal tax calculator to compare
+            filing status, deductions, self-employment tax, and capital gains before a reviewed estimate.
+          </p>
+          <Link href="/tax-calculator" className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold">
+            Open Federal Tax Calculator <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-10 sm:pb-14">
+        <div className="bg-white border border-slate-100 rounded-2xl p-5 sm:p-8 shadow-sm">
+          <h2 className="text-xl sm:text-2xl font-black text-primary mb-3">
             Services By State
           </h2>
           <p className="text-slate-600 mb-5">

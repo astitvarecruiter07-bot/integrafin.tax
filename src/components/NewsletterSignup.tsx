@@ -48,6 +48,7 @@ export default function NewsletterSignup({
     <div className="space-y-2">
       <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubmit}>
         <input
+          suppressHydrationWarning
           type="email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
@@ -61,6 +62,7 @@ export default function NewsletterSignup({
           }
         />
         <button
+          suppressHydrationWarning
           type="submit"
           disabled={isPending}
           className={

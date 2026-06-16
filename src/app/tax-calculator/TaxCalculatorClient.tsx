@@ -2,85 +2,342 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/* ───────────────────────── 2026 TAX DATA ───────────────────────── */
+/* ------------------------- 2025/2026 TAX DATA ------------------------- */
+
+type FilingStatus = "single" | "married_joint" | "married_separate" | "head_of_household";
+type TaxYear = "2025" | "2026";
+type TaxBracket = { rate: number; min: number; max: number };
+type CgBracket = { rate: number; max: number };
+
+type TaxYearData = {
+    label: string;
+    description: string;
+    sourceNote: string;
+    filingYear: string;
+    standardDeduction: Record<FilingStatus, number>;
+    brackets: Record<FilingStatus, TaxBracket[]>;
+    longTermCgBrackets: Record<FilingStatus, CgBracket[]>;
+    ssWageBase: number;
+    childTaxCredit: number;
+    childTaxCreditPhaseout: Record<FilingStatus, number>;
+    additionalMedicareThreshold: Record<FilingStatus, number>;
+    estimatedTaxDueDates: { q: string; date: string; period: string }[];
+};
 
 const FILING_STATUSES = [
     { value: "single", label: "Single" },
     { value: "married_joint", label: "Married Filing Jointly" },
     { value: "married_separate", label: "Married Filing Separately" },
     { value: "head_of_household", label: "Head of Household" },
+] satisfies { value: FilingStatus; label: string }[];
+
+const TAX_YEAR_OPTIONS = [
+    { value: "2026", label: "2026 planning" },
+    { value: "2025", label: "2025 filing" },
+] satisfies { value: TaxYear; label: string }[];
+
+const CALCULATOR_SOURCE_LINKS = [
+    {
+        href: "https://www.irs.gov/filing/federal-income-tax-rates-and-brackets",
+        label: "IRS federal income tax rates and brackets",
+    },
+    {
+        href: "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill",
+        label: "IRS 2026 inflation adjustments",
+    },
+    {
+        href: "https://www.irs.gov/irb/2025-45_IRB",
+        label: "IRS Rev. Proc. 2025-32 OBBBA adjusted items",
+    },
+    {
+        href: "https://www.irs.gov/credits-deductions/individuals/child-tax-credit",
+        label: "IRS Child Tax Credit",
+    },
+    {
+        href: "https://www.ssa.gov/oact/cola/cbb.html",
+        label: "SSA Social Security contribution and benefit base",
+    },
+    {
+        href: "https://www.irs.gov/taxtopics/tc409",
+        label: "IRS Topic 409: Capital Gains and Losses",
+    },
+    {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes",
+        label: "IRS self-employment tax guidance",
+    },
+    {
+        href: "https://www.irs.gov/taxtopics/tc751",
+        label: "IRS Topic 751: Social Security and Medicare withholding rates",
+    },
 ];
 
-const TAX_BRACKETS: Record<string, { rate: number; min: number; max: number }[]> = {
-    single: [
-        { rate: 0.10, min: 0, max: 12400 },
-        { rate: 0.12, min: 12400, max: 50400 },
-        { rate: 0.22, min: 50400, max: 105700 },
-        { rate: 0.24, min: 105700, max: 201775 },
-        { rate: 0.32, min: 201775, max: 256225 },
-        { rate: 0.35, min: 256225, max: 640600 },
-        { rate: 0.37, min: 640600, max: Infinity },
-    ],
-    married_joint: [
-        { rate: 0.10, min: 0, max: 24800 },
-        { rate: 0.12, min: 24800, max: 100800 },
-        { rate: 0.22, min: 100800, max: 211400 },
-        { rate: 0.24, min: 211400, max: 403550 },
-        { rate: 0.32, min: 403550, max: 512450 },
-        { rate: 0.35, min: 512450, max: 768700 },
-        { rate: 0.37, min: 768700, max: Infinity },
-    ],
-    married_separate: [
-        { rate: 0.10, min: 0, max: 12400 },
-        { rate: 0.12, min: 12400, max: 50400 },
-        { rate: 0.22, min: 50400, max: 105700 },
-        { rate: 0.24, min: 105700, max: 201775 },
-        { rate: 0.32, min: 201775, max: 256225 },
-        { rate: 0.35, min: 256225, max: 384350 },
-        { rate: 0.37, min: 384350, max: Infinity },
-    ],
-    head_of_household: [
-        { rate: 0.10, min: 0, max: 17700 },
-        { rate: 0.12, min: 17700, max: 67450 },
-        { rate: 0.22, min: 67450, max: 105700 },
-        { rate: 0.24, min: 105700, max: 201750 },
-        { rate: 0.32, min: 201750, max: 256200 },
-        { rate: 0.35, min: 256200, max: 640600 },
-        { rate: 0.37, min: 640600, max: Infinity },
-    ],
-};
-
-const STANDARD_DEDUCTION: Record<string, number> = {
-    single: 16100,
-    married_joint: 32200,
-    married_separate: 16100,
-    head_of_household: 24150,
-};
-
-const LONG_TERM_CG_BRACKETS: Record<string, { rate: number; max: number }[]> = {
-    single: [
-        { rate: 0, max: 49450 },
-        { rate: 0.15, max: 545500 },
-        { rate: 0.20, max: Infinity },
-    ],
-    married_joint: [
-        { rate: 0, max: 98900 },
-        { rate: 0.15, max: 613700 },
-        { rate: 0.20, max: Infinity },
-    ],
-    married_separate: [
-        { rate: 0, max: 49450 },
-        { rate: 0.15, max: 306850 },
-        { rate: 0.20, max: Infinity },
-    ],
-    head_of_household: [
-        { rate: 0, max: 66200 },
-        { rate: 0.15, max: 579600 },
-        { rate: 0.20, max: Infinity },
-    ],
+const TAX_DATA: Record<TaxYear, TaxYearData> = {
+    "2025": {
+        label: "2025",
+        description: "2025 filing estimates for returns generally filed in 2026",
+        sourceNote: "2025 IRS tables with OBBBA standard deduction updates",
+        filingYear: "returns generally filed in 2026",
+        standardDeduction: {
+            single: 15750,
+            married_joint: 31500,
+            married_separate: 15750,
+            head_of_household: 23625,
+        },
+        brackets: {
+            single: [
+                { rate: 0.10, min: 0, max: 11925 },
+                { rate: 0.12, min: 11925, max: 48475 },
+                { rate: 0.22, min: 48475, max: 103350 },
+                { rate: 0.24, min: 103350, max: 197300 },
+                { rate: 0.32, min: 197300, max: 250525 },
+                { rate: 0.35, min: 250525, max: 626350 },
+                { rate: 0.37, min: 626350, max: Infinity },
+            ],
+            married_joint: [
+                { rate: 0.10, min: 0, max: 23850 },
+                { rate: 0.12, min: 23850, max: 96950 },
+                { rate: 0.22, min: 96950, max: 206700 },
+                { rate: 0.24, min: 206700, max: 394600 },
+                { rate: 0.32, min: 394600, max: 501050 },
+                { rate: 0.35, min: 501050, max: 751600 },
+                { rate: 0.37, min: 751600, max: Infinity },
+            ],
+            married_separate: [
+                { rate: 0.10, min: 0, max: 11925 },
+                { rate: 0.12, min: 11925, max: 48475 },
+                { rate: 0.22, min: 48475, max: 103350 },
+                { rate: 0.24, min: 103350, max: 197300 },
+                { rate: 0.32, min: 197300, max: 250525 },
+                { rate: 0.35, min: 250525, max: 375800 },
+                { rate: 0.37, min: 375800, max: Infinity },
+            ],
+            head_of_household: [
+                { rate: 0.10, min: 0, max: 17000 },
+                { rate: 0.12, min: 17000, max: 64850 },
+                { rate: 0.22, min: 64850, max: 103350 },
+                { rate: 0.24, min: 103350, max: 197300 },
+                { rate: 0.32, min: 197300, max: 250500 },
+                { rate: 0.35, min: 250500, max: 626350 },
+                { rate: 0.37, min: 626350, max: Infinity },
+            ],
+        },
+        longTermCgBrackets: {
+            single: [
+                { rate: 0, max: 48350 },
+                { rate: 0.15, max: 533400 },
+                { rate: 0.20, max: Infinity },
+            ],
+            married_joint: [
+                { rate: 0, max: 96700 },
+                { rate: 0.15, max: 600050 },
+                { rate: 0.20, max: Infinity },
+            ],
+            married_separate: [
+                { rate: 0, max: 48350 },
+                { rate: 0.15, max: 300000 },
+                { rate: 0.20, max: Infinity },
+            ],
+            head_of_household: [
+                { rate: 0, max: 64750 },
+                { rate: 0.15, max: 566700 },
+                { rate: 0.20, max: Infinity },
+            ],
+        },
+        ssWageBase: 176100,
+        childTaxCredit: 2200,
+        childTaxCreditPhaseout: {
+            single: 200000,
+            married_joint: 400000,
+            married_separate: 200000,
+            head_of_household: 200000,
+        },
+        additionalMedicareThreshold: {
+            single: 200000,
+            married_joint: 250000,
+            married_separate: 125000,
+            head_of_household: 200000,
+        },
+        estimatedTaxDueDates: [
+            { q: "Q1", date: "Apr 15, 2025", period: "Jan-Mar" },
+            { q: "Q2", date: "Jun 16, 2025", period: "Apr-May" },
+            { q: "Q3", date: "Sep 15, 2025", period: "Jun-Aug" },
+            { q: "Q4", date: "Jan 15, 2026", period: "Sep-Dec" },
+        ],
+    },
+    "2026": {
+        label: "2026",
+        description: "2026 planning estimates for income earned in 2026",
+        sourceNote: "2026 IRS inflation-adjusted tables",
+        filingYear: "returns generally filed in 2027",
+        standardDeduction: {
+            single: 16100,
+            married_joint: 32200,
+            married_separate: 16100,
+            head_of_household: 24150,
+        },
+        brackets: {
+            single: [
+                { rate: 0.10, min: 0, max: 12400 },
+                { rate: 0.12, min: 12400, max: 50400 },
+                { rate: 0.22, min: 50400, max: 105700 },
+                { rate: 0.24, min: 105700, max: 201775 },
+                { rate: 0.32, min: 201775, max: 256225 },
+                { rate: 0.35, min: 256225, max: 640600 },
+                { rate: 0.37, min: 640600, max: Infinity },
+            ],
+            married_joint: [
+                { rate: 0.10, min: 0, max: 24800 },
+                { rate: 0.12, min: 24800, max: 100800 },
+                { rate: 0.22, min: 100800, max: 211400 },
+                { rate: 0.24, min: 211400, max: 403550 },
+                { rate: 0.32, min: 403550, max: 512450 },
+                { rate: 0.35, min: 512450, max: 768700 },
+                { rate: 0.37, min: 768700, max: Infinity },
+            ],
+            married_separate: [
+                { rate: 0.10, min: 0, max: 12400 },
+                { rate: 0.12, min: 12400, max: 50400 },
+                { rate: 0.22, min: 50400, max: 105700 },
+                { rate: 0.24, min: 105700, max: 201775 },
+                { rate: 0.32, min: 201775, max: 256225 },
+                { rate: 0.35, min: 256225, max: 384350 },
+                { rate: 0.37, min: 384350, max: Infinity },
+            ],
+            head_of_household: [
+                { rate: 0.10, min: 0, max: 17700 },
+                { rate: 0.12, min: 17700, max: 67450 },
+                { rate: 0.22, min: 67450, max: 105700 },
+                { rate: 0.24, min: 105700, max: 201750 },
+                { rate: 0.32, min: 201750, max: 256200 },
+                { rate: 0.35, min: 256200, max: 640600 },
+                { rate: 0.37, min: 640600, max: Infinity },
+            ],
+        },
+        longTermCgBrackets: {
+            single: [
+                { rate: 0, max: 49450 },
+                { rate: 0.15, max: 545500 },
+                { rate: 0.20, max: Infinity },
+            ],
+            married_joint: [
+                { rate: 0, max: 98900 },
+                { rate: 0.15, max: 613700 },
+                { rate: 0.20, max: Infinity },
+            ],
+            married_separate: [
+                { rate: 0, max: 49450 },
+                { rate: 0.15, max: 306850 },
+                { rate: 0.20, max: Infinity },
+            ],
+            head_of_household: [
+                { rate: 0, max: 66200 },
+                { rate: 0.15, max: 579600 },
+                { rate: 0.20, max: Infinity },
+            ],
+        },
+        ssWageBase: 184500,
+        childTaxCredit: 2200,
+        childTaxCreditPhaseout: {
+            single: 200000,
+            married_joint: 400000,
+            married_separate: 200000,
+            head_of_household: 200000,
+        },
+        additionalMedicareThreshold: {
+            single: 200000,
+            married_joint: 250000,
+            married_separate: 125000,
+            head_of_household: 200000,
+        },
+        estimatedTaxDueDates: [
+            { q: "Q1", date: "Apr 15, 2026", period: "Jan-Mar" },
+            { q: "Q2", date: "Jun 15, 2026", period: "Apr-May" },
+            { q: "Q3", date: "Sep 15, 2026", period: "Jun-Aug" },
+            { q: "Q4", date: "Jan 15, 2027", period: "Sep-Dec" },
+        ],
+    },
 };
 
 /* ───────────────────────── HELPERS ───────────────────────── */
+
+const STANDARD_DEDUCTION_ROWS = FILING_STATUSES.map((status) => ({
+    ...status,
+    deduction2025: TAX_DATA["2025"].standardDeduction[status.value],
+    deduction2026: TAX_DATA["2026"].standardDeduction[status.value],
+}));
+
+const CALCULATOR_LIMITATIONS = [
+    "State and local income taxes are not included.",
+    "AMT, NIIT, QBI, EITC, refundable-credit limits, education credits, and most phaseouts are not calculated.",
+    "Age 65 or older, blind taxpayer, retirement-plan deductions, HSA deductions, student loan interest, and detailed itemized-deduction limits are not yet modeled.",
+    "Self-employment estimates use the selected-year Social Security wage base and Medicare rates, but final Schedule SE results can differ.",
+    "Capital gains estimates exclude NIIT, collectibles, Section 1202 stock, unrecaptured Section 1250 gains, wash sales, and carryover-loss details.",
+    "The result is not a filed return, IRS software, or a guarantee of refund or tax due.",
+];
+
+const TAX_CALCULATOR_FAQS = [
+    {
+        question: "How accurate is this tax calculator?",
+        answer:
+            "It provides a planning estimate using selected-year federal brackets, standard deductions, Child Tax Credit amounts, Social Security wage bases, and capital-gain thresholds. Final tax can change after full Form 1040 details, phaseouts, state taxes, penalties, and refundable-credit rules are reviewed.",
+    },
+    {
+        question: "Does this calculator estimate my 2025 tax refund?",
+        answer:
+            "Yes. Choose 2025 filing, enter income, withholding, deductions, credits, and qualifying children, and the calculator estimates a federal refund or balance due.",
+    },
+    {
+        question: "Can I use this for 2026 tax planning?",
+        answer:
+            "Yes. Choose 2026 planning to estimate federal income tax, self-employment tax, long-term capital gains, and quarterly planning amounts using 2026 IRS and SSA figures.",
+    },
+    {
+        question: "Does this include self-employment tax?",
+        answer:
+            "Yes. The self-employment tab estimates Social Security and Medicare tax on 92.35% of net self-employment earnings and coordinates with optional W-2 wages.",
+    },
+    {
+        question: "Does this include state income tax?",
+        answer:
+            "No. This calculator currently focuses on federal estimates. State income tax, local tax, franchise tax, and sales tax are outside the calculator scope.",
+    },
+    {
+        question: "Does this include capital gains tax?",
+        answer:
+            "Yes. The capital gains tab estimates short-term gains as ordinary income and long-term gains using selected-year 0%, 15%, and 20% thresholds. It does not include NIIT or special capital-gain rates.",
+    },
+    {
+        question: "What tax brackets does this calculator use?",
+        answer:
+            "It uses IRS-published 2025 federal income tax brackets and 2026 inflation-adjusted federal tax brackets, plus selected-year standard deduction and long-term capital-gain thresholds.",
+    },
+    {
+        question: "Why is my refund different from my tax liability?",
+        answer:
+            "Tax liability is the estimated tax after deductions and credits. Refund or balance due compares that liability with withholding and estimated payments already paid.",
+    },
+    {
+        question: "Should I use standard or itemized deductions?",
+        answer:
+            "Use the larger deduction only after reviewing your actual deductible expenses. The calculator lets you compare the standard deduction with an itemized deduction estimate.",
+    },
+    {
+        question: "When are 2026 estimated tax payments due?",
+        answer:
+            "For 2026 planning, the calculator displays estimated payment dates of April 15, 2026, June 15, 2026, September 15, 2026, and January 15, 2027.",
+    },
+];
+
+const RELATED_TAX_RESOURCES = [
+    { href: "/tax-calculator-guide", label: "2025 and 2026 federal tax calculator guide" },
+    { href: "/services#individual", label: "Individual tax preparation services" },
+    { href: "/services#business", label: "Small business tax and accounting services" },
+    { href: "/texas-tax-accounting-services", label: "Texas tax and accounting services" },
+    { href: "/texas/katy-bookkeeping-services", label: "Katy bookkeeping services" },
+    { href: "/texas/irs-notice-help-katy-tx", label: "IRS notice help in Katy TX" },
+    { href: "/blog/tax-planning-strategies-2025", label: "Tax planning strategies" },
+    { href: "/blog/small-business-accounting-tips", label: "Small business accounting tips" },
+];
 
 function fmt(val: number) {
     return new Intl.NumberFormat("en-US", {
@@ -101,8 +358,8 @@ function formatInput(raw: string) {
     return new Intl.NumberFormat("en-US").format(parseInt(digits));
 }
 
-function calcIncomeTax(taxableIncome: number, filingStatus: string) {
-    const brackets = TAX_BRACKETS[filingStatus] || TAX_BRACKETS.single;
+function calcIncomeTax(taxableIncome: number, filingStatus: FilingStatus, taxYear: TaxYear) {
+    const brackets = TAX_DATA[taxYear].brackets[filingStatus];
     let total = 0;
     const breakdown: { rate: number; amount: number; rangeLabel: string }[] = [];
     for (const b of brackets) {
@@ -113,10 +370,266 @@ function calcIncomeTax(taxableIncome: number, filingStatus: string) {
         breakdown.push({
             rate: b.rate * 100,
             amount: tax,
-            rangeLabel: `${fmt(b.min)} – ${b.max === Infinity ? "∞" : fmt(b.max)}`,
+            rangeLabel: `${fmt(b.min)} - ${b.max === Infinity ? "and up" : fmt(b.max)}`,
         });
     }
     return { total, breakdown };
+}
+
+function getMarginalRate(taxableIncome: number, filingStatus: FilingStatus, taxYear: TaxYear) {
+    if (taxableIncome <= 0) return 0;
+    const brackets = TAX_DATA[taxYear].brackets[filingStatus];
+    return brackets.find((bracket) => taxableIncome > bracket.min && taxableIncome <= bracket.max)?.rate ?? 0;
+}
+
+function getStandardDeduction(taxYear: TaxYear, filingStatus: FilingStatus) {
+    return TAX_DATA[taxYear].standardDeduction[filingStatus];
+}
+
+function getChildTaxCreditEstimate(
+    taxYear: TaxYear,
+    filingStatus: FilingStatus,
+    income: number,
+    qualifyingChildren: number,
+    totalTax: number
+) {
+    if (qualifyingChildren <= 0 || totalTax <= 0) return 0;
+    const data = TAX_DATA[taxYear];
+    const phaseoutStart = data.childTaxCreditPhaseout[filingStatus];
+    const tentativeCredit = qualifyingChildren * data.childTaxCredit;
+    const phaseout = income > phaseoutStart ? Math.ceil((income - phaseoutStart) / 1000) * 50 : 0;
+    return Math.min(Math.max(0, tentativeCredit - phaseout), totalTax);
+}
+
+function formatPercent(rate: number) {
+    return `${(rate * 100).toFixed(0)}%`;
+}
+
+function formatTaxableRange(min: number, max: number) {
+    return `${fmt(min)} - ${max === Infinity ? "and up" : fmt(max)}`;
+}
+
+function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
+    const taxData = TAX_DATA[taxYear];
+
+    return (
+        <section className="py-16 bg-white border-y border-gray-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+                <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+                    <div className="lg:col-span-8">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
+                            IRS data tables
+                        </p>
+                        <h2 className="text-3xl sm:text-4xl font-black text-[#003580] tracking-normal">
+                            2025 vs 2026 federal tax calculator data
+                        </h2>
+                        <p className="text-slate-600 leading-relaxed mt-4 max-w-3xl">
+                            These selected-year figures support the standard deduction, federal bracket,
+                            self-employment, Child Tax Credit, and long-term capital gains estimates.
+                        </p>
+                    </div>
+                    <div className="lg:col-span-4 bg-slate-50 border border-slate-200 rounded-xl p-5">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                            Last reviewed
+                        </p>
+                        <p className="text-[#003580] font-bold mt-1">June 16, 2026</p>
+                        <p className="text-sm text-slate-600 mt-2">Reviewed by: IntegraFin tax team</p>
+                    </div>
+                </div>
+
+                <div className="overflow-x-auto border border-slate-200 rounded-xl">
+                    <table className="w-full text-left text-sm">
+                        <thead className="bg-slate-100 text-[#003580]">
+                            <tr>
+                                <th className="p-4 font-black">Filing status</th>
+                                <th className="p-4 font-black">2025 standard deduction</th>
+                                <th className="p-4 font-black">2026 standard deduction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {STANDARD_DEDUCTION_ROWS.map((row) => (
+                                <tr key={row.value} className="border-t border-slate-200">
+                                    <td className="p-4 font-semibold text-slate-800">{row.label}</td>
+                                    <td className="p-4 text-slate-700">{fmt(row.deduction2025)}</td>
+                                    <td className="p-4 text-slate-700">{fmt(row.deduction2026)}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-3">
+                    <article className="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                            Social Security wage base
+                        </p>
+                        <p className="text-2xl font-black text-[#003580] mt-2">{fmt(taxData.ssWageBase)}</p>
+                        <p className="text-sm text-slate-600 mt-2">Used in the {taxYear} self-employment tax estimate.</p>
+                    </article>
+                    <article className="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                            Child Tax Credit
+                        </p>
+                        <p className="text-2xl font-black text-[#003580] mt-2">{fmt(taxData.childTaxCredit)}</p>
+                        <p className="text-sm text-slate-600 mt-2">Estimated per qualifying child before phaseout and eligibility limits.</p>
+                    </article>
+                    <article className="bg-slate-50 border border-slate-200 rounded-xl p-5">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                            Calculator scope
+                        </p>
+                        <p className="text-2xl font-black text-[#003580] mt-2">Federal only</p>
+                        <p className="text-sm text-slate-600 mt-2">State, local, AMT, NIIT, and many phaseouts are excluded.</p>
+                    </article>
+                </div>
+
+                <div>
+                    <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                        {taxYear} federal income tax brackets used
+                    </h2>
+                    <p className="text-slate-600 leading-relaxed mt-3 max-w-3xl">
+                        Federal income tax is marginal. A higher bracket applies only to the next layer of taxable income, not the full income amount.
+                    </p>
+                    <div className="grid gap-5 lg:grid-cols-2 mt-8">
+                        {FILING_STATUSES.map((status) => (
+                            <article key={status.value} className="border border-slate-200 rounded-xl overflow-hidden">
+                                <h3 className="bg-[#003580] text-white px-4 py-3 font-bold">{status.label}</h3>
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left text-sm">
+                                        <thead className="bg-slate-100 text-slate-700">
+                                            <tr>
+                                                <th className="p-3 font-bold">Rate</th>
+                                                <th className="p-3 font-bold">Taxable income</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {taxData.brackets[status.value].map((bracket) => (
+                                                <tr key={`${status.value}-${bracket.rate}-${bracket.min}`} className="border-t border-slate-200">
+                                                    <td className="p-3 font-semibold text-[#003580]">{formatPercent(bracket.rate)}</td>
+                                                    <td className="p-3 text-slate-700">{formatTaxableRange(bracket.min, bracket.max)}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+
+                <div>
+                    <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                        {taxYear} long-term capital gains thresholds
+                    </h2>
+                    <p className="text-slate-600 leading-relaxed mt-3 max-w-3xl">
+                        Long-term gains are stacked on top of ordinary taxable income. Short-term gains are taxed as ordinary income.
+                    </p>
+                    <div className="overflow-x-auto border border-slate-200 rounded-xl mt-8">
+                        <table className="w-full text-left text-sm">
+                            <thead className="bg-slate-100 text-[#003580]">
+                                <tr>
+                                    <th className="p-4 font-black">Filing status</th>
+                                    <th className="p-4 font-black">0% threshold</th>
+                                    <th className="p-4 font-black">15% threshold</th>
+                                    <th className="p-4 font-black">20% applies above</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {FILING_STATUSES.map((status) => {
+                                    const [zero, fifteen] = taxData.longTermCgBrackets[status.value];
+                                    return (
+                                        <tr key={status.value} className="border-t border-slate-200">
+                                            <td className="p-4 font-semibold text-slate-800">{status.label}</td>
+                                            <td className="p-4 text-slate-700">Up to {fmt(zero.max)}</td>
+                                            <td className="p-4 text-slate-700">Up to {fmt(fifteen.max)}</td>
+                                            <td className="p-4 text-slate-700">Over {fmt(fifteen.max)}</td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function LimitationsSection() {
+    return (
+        <section className="py-16 bg-slate-50 border-b border-gray-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-8 lg:grid-cols-12">
+                <div className="lg:col-span-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
+                        Calculator limitations
+                    </p>
+                    <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                        What this federal estimate does not cover
+                    </h2>
+                    <p className="text-slate-600 text-sm leading-relaxed mt-4">
+                        The calculator is built for planning and search transparency. It is intentionally conservative about exclusions so taxpayers know when to request a reviewed estimate.
+                    </p>
+                </div>
+                <div className="lg:col-span-8 grid gap-3 md:grid-cols-2">
+                    {CALCULATOR_LIMITATIONS.map((item) => (
+                        <div key={item} className="bg-white border border-slate-200 rounded-xl p-4 text-sm text-slate-700 leading-relaxed">
+                            {item}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function CalculatorFaqSection() {
+    return (
+        <section className="py-16 bg-white border-b border-gray-100">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6">
+                <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                    Federal tax calculator FAQ
+                </h2>
+                <div className="space-y-4 mt-8">
+                    {TAX_CALCULATOR_FAQS.map((faq) => (
+                        <article key={faq.question} className="border border-slate-200 rounded-xl p-5">
+                            <h3 className="text-lg font-bold text-[#003580]">{faq.question}</h3>
+                            <p className="text-slate-600 text-sm leading-relaxed mt-2">{faq.answer}</p>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function RelatedResourcesSection() {
+    return (
+        <section className="py-16 bg-slate-50 border-b border-gray-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-8 lg:grid-cols-12">
+                <div className="lg:col-span-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
+                        Related resources
+                    </p>
+                    <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                        More help after the tax estimate
+                    </h2>
+                    <p className="text-slate-600 text-sm leading-relaxed mt-4">
+                        Use these pages for tax preparation, bookkeeping, IRS notices, and deeper planning context.
+                    </p>
+                </div>
+                <div className="lg:col-span-8 grid gap-3 sm:grid-cols-2">
+                    {RELATED_TAX_RESOURCES.map((resource) => (
+                        <Link
+                            key={resource.href}
+                            href={resource.href}
+                            className="bg-white border border-slate-200 rounded-xl p-4 text-sm font-semibold text-[#0057b8] hover:text-[#003580] hover:border-[#00C2CB] transition-colors"
+                        >
+                            {resource.label}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 }
 
 /* ───────────────────────── TABS ───────────────────────── */
@@ -230,6 +743,7 @@ function MoneyInput({
             <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary font-semibold">$</span>
                 <input
+                    suppressHydrationWarning
                     id={id}
                     type="text"
                     value={value}
@@ -261,6 +775,7 @@ function SelectInput({
                 {label}
             </label>
             <select
+                suppressHydrationWarning
                 id={id}
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
@@ -276,15 +791,19 @@ function SelectInput({
 
 /* ═══════════════════════ FEDERAL INCOME TAB ═══════════════════════ */
 
-function FederalIncomeTab() {
-    const [status, setStatus] = useState("single");
+function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
+    const taxData = TAX_DATA[taxYear];
+    const [status, setStatus] = useState<FilingStatus>("single");
     const [income, setIncome] = useState("");
+    const [otherIncome, setOtherIncome] = useState("");
     const [deductionType, setDeductionType] = useState("standard");
     const [itemizedDeduction, setItemizedDeduction] = useState("");
     const [credits, setCredits] = useState("");
-    const [dependents, setDependents] = useState("0");
+    const [qualifyingChildren, setQualifyingChildren] = useState("0");
     const [taxWithheld, setTaxWithheld] = useState("");
+    const [estimatedPayments, setEstimatedPayments] = useState("");
     const [result, setResult] = useState<{
+        grossIncome: number;
         taxableIncome: number;
         totalTax: number;
         effectiveRate: number;
@@ -292,29 +811,28 @@ function FederalIncomeTab() {
         breakdown: { rate: number; amount: number; rangeLabel: string }[];
         afterCredits: number;
         childCredit: number;
+        totalPayments: number;
     } | null>(null);
 
     const calculate = () => {
-        const gross = parseNum(income);
+        const gross = parseNum(income) + parseNum(otherIncome);
         if (gross <= 0) return;
         const deduction =
             deductionType === "standard"
-                ? STANDARD_DEDUCTION[status] || 16100
+                ? getStandardDeduction(taxYear, status)
                 : parseNum(itemizedDeduction);
         const taxableIncome = Math.max(0, gross - deduction);
-        const { total, breakdown } = calcIncomeTax(taxableIncome, status);
+        const { total, breakdown } = calcIncomeTax(taxableIncome, status, taxYear);
 
-        const numDep = parseInt(dependents) || 0;
-        const childCredit = Math.min(numDep * 2000, total);
+        const numChildren = parseInt(qualifyingChildren) || 0;
+        const childCredit = getChildTaxCreditEstimate(taxYear, status, gross, numChildren, total);
         const otherCredits = parseNum(credits);
         const afterCredits = Math.max(0, total - childCredit - otherCredits);
-
-        const brackets = TAX_BRACKETS[status] || TAX_BRACKETS.single;
-        const marginal = brackets.find(
-            (b) => taxableIncome >= b.min && taxableIncome < b.max
-        )?.rate ?? 0;
+        const totalPayments = parseNum(taxWithheld) + parseNum(estimatedPayments);
+        const marginal = getMarginalRate(taxableIncome, status, taxYear);
 
         setResult({
+            grossIncome: gross,
             taxableIncome,
             totalTax: total,
             effectiveRate: gross > 0 ? (afterCredits / gross) * 100 : 0,
@@ -322,6 +840,7 @@ function FederalIncomeTab() {
             breakdown,
             afterCredits,
             childCredit,
+            totalPayments,
         });
     };
 
@@ -341,6 +860,7 @@ function FederalIncomeTab() {
                                 {FILING_STATUSES.map((fs) => (
                                     <label key={fs.value} className="relative cursor-pointer">
                                         <input
+                                            suppressHydrationWarning
                                             checked={status === fs.value}
                                             className="peer sr-only"
                                             name="filing_status"
@@ -367,6 +887,7 @@ function FederalIncomeTab() {
                             <div className="relative group">
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-bold">$</span>
                                 <input
+                                    suppressHydrationWarning
                                     className="w-full bg-gray-50 border-none rounded-xl py-4 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all text-xl font-bold text-[#0047AB]"
                                     placeholder="0"
                                     type="text"
@@ -374,7 +895,7 @@ function FederalIncomeTab() {
                                     onChange={(e) => setIncome(formatInput(e.target.value))}
                                 />
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div className="space-y-2">
                                     <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Tax Withheld</label>
                                     <div className="relative">
@@ -389,13 +910,30 @@ function FederalIncomeTab() {
                                     </div>
                                 </div>
                                 <div className="space-y-2">
+                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Estimated Payments</label>
+                                    <div className="relative">
+                                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
+                                        <input
+                                            suppressHydrationWarning
+                                            className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
+                                            type="text"
+                                            placeholder="0"
+                                            value={estimatedPayments}
+                                            onChange={(e) => setEstimatedPayments(formatInput(e.target.value))}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="space-y-2">
                                     <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Other Income</label>
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
                                         <input
+                                            suppressHydrationWarning
                                             className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                             type="text"
                                             placeholder="0"
+                                            value={otherIncome}
+                                            onChange={(e) => setOtherIncome(formatInput(e.target.value))}
                                         />
                                     </div>
                                 </div>
@@ -407,6 +945,7 @@ function FederalIncomeTab() {
                             <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">03. Deductions & Credits</label>
                             <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
                                 <input
+                                    suppressHydrationWarning
                                     type="checkbox"
                                     checked={deductionType === "standard"}
                                     onChange={() => setDeductionType(deductionType === "standard" ? "itemized" : "standard")}
@@ -415,7 +954,7 @@ function FederalIncomeTab() {
                                 <div>
                                     <p className="font-bold text-sm">Standard Deduction</p>
                                     <p className="text-xs text-gray-500">
-                                        {fmt(STANDARD_DEDUCTION[status] || 16100)} for {FILING_STATUSES.find(f => f.value === status)?.label} filers in 2026
+                                        {fmt(getStandardDeduction(taxYear, status))} for {FILING_STATUSES.find(f => f.value === status)?.label} filers in {taxYear}
                                     </p>
                                 </div>
                             </div>
@@ -425,6 +964,7 @@ function FederalIncomeTab() {
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
                                         <input
+                                            suppressHydrationWarning
                                             className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                             type="text"
                                             value={itemizedDeduction}
@@ -439,6 +979,7 @@ function FederalIncomeTab() {
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
                                         <input
+                                            suppressHydrationWarning
                                             className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                             type="text"
                                             value={credits}
@@ -447,20 +988,25 @@ function FederalIncomeTab() {
                                     </div>
                                 </div>
                                 <div className="flex-1 space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Dependents</label>
+                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Qualifying Children</label>
                                     <input
+                                        suppressHydrationWarning
                                         type="number"
                                         min="0"
-                                        value={dependents}
-                                        onChange={(e) => setDependents(e.target.value)}
+                                        value={qualifyingChildren}
+                                        onChange={(e) => setQualifyingChildren(e.target.value)}
                                         className="w-full bg-gray-50 border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                     />
                                 </div>
                             </div>
+                            <p className="text-xs text-gray-500 leading-relaxed">
+                                Child tax credit estimates use {fmt(taxData.childTaxCredit)} per qualifying child before income phaseouts. They do not determine eligibility, refundable limits, SSN rules, or Schedule 8812 details.
+                            </p>
                         </div>
 
                         <div className="pt-6 border-t border-gray-100">
                             <button
+                                suppressHydrationWarning
                                 onClick={calculate}
                                 disabled={!income}
                                 className="w-full bg-[#00C2CB] text-[#0047AB] font-black py-5 rounded-full shadow-xl shadow-[#00C2CB]/20 uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-95 cursor-pointer disabled:opacity-50"
@@ -480,9 +1026,9 @@ function FederalIncomeTab() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                                 </svg>
                             </div>
-                            <h3 className="text-xl font-bold">Calculate Your Liability</h3>
+                            <h3 className="text-xl font-bold">Start your federal estimate</h3>
                             <p className="text-white/70 text-sm">
-                                Enter your details to view your estimated refund or balance due, visual brackets, and strategic insights.
+                                Enter your details to view an estimated refund or balance due, taxable income, marginal rate, and effective rate.
                             </p>
                         </div>
                     ) : (
@@ -490,10 +1036,10 @@ function FederalIncomeTab() {
                             <div className="bg-[#0047AB] p-8 space-y-8">
                                 <div>
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00C2CB]">
-                                        {parseNum(taxWithheld) >= result.afterCredits ? "Estimated Refund" : "Estimated Balance Due"}
+                                        {result.totalPayments >= result.afterCredits ? "Estimated Refund" : "Estimated Balance Due"}
                                     </label>
-                                    <div className="text-5xl font-black text-white tracking-tighter mt-2">
-                                        {fmt(Math.abs(parseNum(taxWithheld) - result.afterCredits))}
+                                    <div className="text-5xl font-black text-white tracking-normal mt-2">
+                                        {fmt(Math.abs(result.totalPayments - result.afterCredits))}
                                     </div>
                                 </div>
                                 <div className="space-y-4">
@@ -502,8 +1048,8 @@ function FederalIncomeTab() {
                                         <span className="text-white font-bold">{fmt(result.afterCredits)}</span>
                                     </div>
                                     <div className="flex justify-between items-center py-3 border-b border-white/10">
-                                        <span className="text-white/70 text-sm font-light">Taxes Paid to Date</span>
-                                        <span className="text-white font-bold">{fmt(parseNum(taxWithheld))}</span>
+                                        <span className="text-white/70 text-sm font-light">Withholding + Estimated Payments</span>
+                                        <span className="text-white font-bold">{fmt(result.totalPayments)}</span>
                                     </div>
                                     <div className="flex justify-between items-center py-3">
                                         <span className="text-white/70 text-sm font-light">Taxable Income</span>
@@ -522,13 +1068,16 @@ function FederalIncomeTab() {
                                 </div>
                             </div>
                             <div className="p-6 bg-[#D4A017] text-[#2b1705] flex items-start space-x-4">
-                                <span className="material-symbols-outlined text-[#2b1705]" style={{ fontVariationSettings: "'FILL' 1" }}>lightbulb</span>
+                                <svg className="w-5 h-5 shrink-0 mt-0.5 text-[#2b1705]" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3a6 6 0 00-3.6 10.8c.6.45.9 1.05.9 1.8v.4h5.4v-.4c0-.75.3-1.35.9-1.8A6 6 0 0012 3z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.5 19h5M10.5 22h3" />
+                                </svg>
                                 <div>
-                                    <p className="font-bold text-sm">Strategic Insight</p>
+                                    <p className="font-bold text-sm">Planning Note</p>
                                     <p className="text-xs opacity-90 leading-relaxed">
                                         {result.marginalRate > 12 
-                                            ? "Consider increasing your 401(k) contribution to reduce your taxable income and potentially drop into a lower tax bracket."
-                                            : "You are currently in a lower tax bracket. Consider tax-advantaged investments while rates are favorable."}
+                                            ? "Tax-advantaged contributions may reduce taxable income when eligibility and cash flow allow. Review the estimate before changing payroll or retirement elections."
+                                            : "This estimate is in a lower marginal bracket. Review withholding, credits, and planned deductions before filing or making estimated payments."}
                                     </p>
                                 </div>
                             </div>
@@ -540,10 +1089,10 @@ function FederalIncomeTab() {
             {/* Tax Bracket Visualizer */}
             {result && (
                 <div className="bg-white p-8 sm:p-12 rounded-3xl shadow-xl mt-12 border border-gray-100">
-                    <h2 className="text-2xl font-extrabold text-[#0047AB] tracking-tight mb-12">2026 Tax Brackets Visualizer</h2>
+                    <h2 className="text-2xl font-extrabold text-[#0047AB] tracking-tight mb-12">{taxYear} Tax Brackets Visualizer</h2>
                     <div className="space-y-10">
                         <div className="relative h-24 flex items-end gap-2">
-                            {TAX_BRACKETS[status].map((b, idx) => {
+                            {taxData.brackets[status].map((b, idx) => {
                                 const isCurrent = result && result.taxableIncome >= b.min && result.taxableIncome < b.max;
                                 return (
                                     <div key={idx} className="flex-1 flex flex-col justify-end space-y-2 group relative">
@@ -580,9 +1129,11 @@ function FederalIncomeTab() {
 
 /* ═══════════════════════ SELF-EMPLOYMENT TAB ═══════════════════════ */
 
-function SelfEmploymentTab() {
-    const [status, setStatus] = useState("single");
+function SelfEmploymentTab({ taxYear }: { taxYear: TaxYear }) {
+    const taxData = TAX_DATA[taxYear];
+    const [status, setStatus] = useState<FilingStatus>("single");
     const [netIncome, setNetIncome] = useState("");
+    const [w2Wages, setW2Wages] = useState("");
     const [result, setResult] = useState<{
         seTax: number;
         ssComponent: number;
@@ -591,23 +1142,27 @@ function SelfEmploymentTab() {
         totalTax: number;
         quarterlyEstimate: number;
         seDeduction: number;
+        netEarningsBase: number;
     } | null>(null);
 
     const calculate = () => {
         const net = parseNum(netIncome);
         if (net <= 0) return;
+        const wages = parseNum(w2Wages);
 
         const seBase = net * 0.9235;
-        const ssCap = 184500; // 2026 SS cap
-        const ssTax = Math.min(seBase, ssCap) * 0.124;
-        const medicareTax = seBase * 0.029;
-        const additionalMedicare = seBase > 200000 ? (seBase - 200000) * 0.009 : 0;
+        const owesSelfEmploymentTax = seBase >= 400;
+        const remainingSocialSecurityBase = Math.max(0, taxData.ssWageBase - wages);
+        const ssTax = owesSelfEmploymentTax ? Math.min(seBase, remainingSocialSecurityBase) * 0.124 : 0;
+        const medicareTax = owesSelfEmploymentTax ? seBase * 0.029 : 0;
+        const medicareThreshold = Math.max(0, taxData.additionalMedicareThreshold[status] - wages);
+        const additionalMedicare = owesSelfEmploymentTax && seBase > medicareThreshold ? (seBase - medicareThreshold) * 0.009 : 0;
         const seTax = ssTax + medicareTax + additionalMedicare;
         const seDeduction = seTax / 2;
 
-        const deduction = STANDARD_DEDUCTION[status] || 16100;
-        const taxableIncome = Math.max(0, net - deduction - seDeduction);
-        const { total: incomeTax } = calcIncomeTax(taxableIncome, status);
+        const deduction = getStandardDeduction(taxYear, status);
+        const taxableIncome = Math.max(0, net + wages - deduction - seDeduction);
+        const { total: incomeTax } = calcIncomeTax(taxableIncome, status, taxYear);
 
         setResult({
             seTax,
@@ -617,6 +1172,7 @@ function SelfEmploymentTab() {
             totalTax: seTax + incomeTax,
             quarterlyEstimate: (seTax + incomeTax) / 4,
             seDeduction,
+            netEarningsBase: seBase,
         });
     };
 
@@ -624,19 +1180,21 @@ function SelfEmploymentTab() {
         <div className="grid lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-5">
                 <div className="glass-card rounded-2xl p-6 space-y-5">
-                    <SelectInput label="Filing Status" value={status} onChange={setStatus} options={FILING_STATUSES} id="se-status" />
+                    <SelectInput label="Filing Status" value={status} onChange={(val) => setStatus(val as FilingStatus)} options={FILING_STATUSES} id="se-status" />
                     <MoneyInput label="Net Self-Employment Income" value={netIncome} onChange={setNetIncome} id="se-income" placeholder="80,000" />
+                    <MoneyInput label="W-2 Wage Income (optional)" value={w2Wages} onChange={setW2Wages} id="se-w2-wages" placeholder="0" />
                     <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
                         <div className="flex items-start gap-2">
                             <svg className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <p className="text-xs text-amber-800">
-                                Self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) on 92.35% of your net self-employment earnings.
+                                Self-employment tax generally applies when net earnings are $400 or more and is calculated on 92.35% of net self-employment earnings. Use the self-employed taxpayer&apos;s own W-2 wages to reduce the remaining Social Security wage base of {fmt(taxData.ssWageBase)} for {taxYear}; a spouse has a separate wage base.
                             </p>
                         </div>
                     </div>
                     <button
+                        suppressHydrationWarning
                         onClick={calculate}
                         disabled={!netIncome}
                         className="w-full py-3.5 bg-gradient-to-r from-primary to-accent-dark text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
@@ -692,16 +1250,17 @@ function SelfEmploymentTab() {
                             <ResultCard label="SE Deduction" value={fmt(result.seDeduction)} sub="50% of SE tax" />
                         </div>
 
+                        {result.netEarningsBase < 400 && (
+                            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-sm text-amber-800">
+                                Net earnings after the 92.35% Schedule SE adjustment are below $400, so this estimate shows $0 self-employment tax. Income tax may still apply based on your full return.
+                            </div>
+                        )}
+
                         {/* Quarterly due dates */}
                         <div className="glass-card rounded-2xl p-6">
-                            <h4 className="font-bold text-foreground mb-4">2026 Estimated Tax Due Dates</h4>
+                            <h4 className="font-bold text-foreground mb-4">{taxYear} Estimated Tax Due Dates</h4>
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                                {[
-                                    { q: "Q1", date: "Apr 15, 2026", period: "Jan-Mar" },
-                                    { q: "Q2", date: "Jun 15, 2026", period: "Apr-May" },
-                                    { q: "Q3", date: "Sep 15, 2026", period: "Jun-Aug" },
-                                    { q: "Q4", date: "Jan 15, 2027", period: "Sep-Dec" },
-                                ].map((qtr) => (
+                                {taxData.estimatedTaxDueDates.map((qtr) => (
                                     <div key={qtr.q} className="bg-accent-light rounded-xl p-3 text-center">
                                         <p className="text-xs text-text-secondary">{qtr.q}</p>
                                         <p className="font-bold text-foreground text-sm">{qtr.date}</p>
@@ -720,8 +1279,9 @@ function SelfEmploymentTab() {
 
 /* ═══════════════════════ CAPITAL GAINS TAB ═══════════════════════ */
 
-function CapitalGainsTab() {
-    const [status, setStatus] = useState("single");
+function CapitalGainsTab({ taxYear }: { taxYear: TaxYear }) {
+    const taxData = TAX_DATA[taxYear];
+    const [status, setStatus] = useState<FilingStatus>("single");
     const [ordinaryIncome, setOrdinaryIncome] = useState("");
     const [shortTermGains, setShortTermGains] = useState("");
     const [longTermGains, setLongTermGains] = useState("");
@@ -730,7 +1290,9 @@ function CapitalGainsTab() {
         longTermTax: number;
         ordinaryTax: number;
         totalTax: number;
-        longTermRate: number;
+        longTermEffectiveRate: number;
+        longTermTopRate: number;
+        taxableLongTermGains: number;
     } | null>(null);
 
     const calculate = () => {
@@ -739,28 +1301,32 @@ function CapitalGainsTab() {
         const ltGains = parseNum(longTermGains);
         if (ordinary + stGains + ltGains <= 0) return;
 
-        const deduction = STANDARD_DEDUCTION[status] || 16100;
-        const ordinaryTaxable = Math.max(0, ordinary - deduction);
+        const deduction = getStandardDeduction(taxYear, status);
+        const ordinaryLikeIncome = ordinary + stGains;
+        const totalIncome = ordinaryLikeIncome + ltGains;
+        const taxableIncome = Math.max(0, totalIncome - deduction);
+        const taxableOrdinary = Math.min(taxableIncome, Math.max(0, ordinaryLikeIncome - deduction));
+        const ordinaryOnlyTaxable = Math.min(taxableOrdinary, Math.max(0, ordinary - deduction));
+        const taxableLongTermGains = Math.max(0, taxableIncome - taxableOrdinary);
 
         // Short-term gains are taxed as ordinary income
-        const combinedOrdinary = ordinaryTaxable + stGains;
-        const { total: combinedTax } = calcIncomeTax(combinedOrdinary, status);
-        const { total: baseTax } = calcIncomeTax(ordinaryTaxable, status);
+        const { total: combinedTax } = calcIncomeTax(taxableOrdinary, status, taxYear);
+        const { total: baseTax } = calcIncomeTax(ordinaryOnlyTaxable, status, taxYear);
         const shortTermTax = combinedTax - baseTax;
 
         // Long-term gains
-        const cgBrackets = LONG_TERM_CG_BRACKETS[status] || LONG_TERM_CG_BRACKETS.single;
+        const cgBrackets = taxData.longTermCgBrackets[status];
         let ltTax = 0;
-        let remainingGains = ltGains;
-        let baseForCG = combinedOrdinary; // stack on top of ordinary + ST
-        let appliedRate = 0;
+        let remainingGains = taxableLongTermGains;
+        let baseForCG = taxableOrdinary; // long-term gains stack on top of ordinary taxable income
+        let topRate = 0;
 
         for (const bracket of cgBrackets) {
             if (remainingGains <= 0) break;
             const roomInBracket = Math.max(0, bracket.max - baseForCG);
             const gainsInBracket = Math.min(remainingGains, roomInBracket);
             ltTax += gainsInBracket * bracket.rate;
-            if (gainsInBracket > 0) appliedRate = bracket.rate;
+            if (gainsInBracket > 0) topRate = bracket.rate;
             baseForCG += gainsInBracket;
             remainingGains -= gainsInBracket;
         }
@@ -770,7 +1336,9 @@ function CapitalGainsTab() {
             longTermTax: ltTax,
             ordinaryTax: baseTax,
             totalTax: combinedTax + ltTax,
-            longTermRate: appliedRate * 100,
+            longTermEffectiveRate: taxableLongTermGains > 0 ? (ltTax / taxableLongTermGains) * 100 : 0,
+            longTermTopRate: topRate * 100,
+            taxableLongTermGains,
         });
     };
 
@@ -778,7 +1346,7 @@ function CapitalGainsTab() {
         <div className="grid lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2 space-y-5">
                 <div className="glass-card rounded-2xl p-6 space-y-5">
-                    <SelectInput label="Filing Status" value={status} onChange={setStatus} options={FILING_STATUSES} id="cg-status" />
+                    <SelectInput label="Filing Status" value={status} onChange={(val) => setStatus(val as FilingStatus)} options={FILING_STATUSES} id="cg-status" />
                     <MoneyInput label="Ordinary Income" value={ordinaryIncome} onChange={setOrdinaryIncome} id="cg-ordinary" placeholder="75,000" />
                     <MoneyInput label="Short-Term Capital Gains" value={shortTermGains} onChange={setShortTermGains} id="cg-short" placeholder="0" />
                     <MoneyInput label="Long-Term Capital Gains" value={longTermGains} onChange={setLongTermGains} id="cg-long" placeholder="20,000" />
@@ -788,11 +1356,12 @@ function CapitalGainsTab() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <p className="text-xs text-blue-800">
-                                Short-term gains (assets held &lt; 1 year) are taxed as ordinary income. Long-term gains get preferential rates of 0%, 15%, or 20%.
+                                Short-term gains (assets held one year or less) are taxed as ordinary income. Long-term gains use the {taxYear} 0%, 15%, or 20% thresholds and do not include NIIT.
                             </p>
                         </div>
                     </div>
                     <button
+                        suppressHydrationWarning
                         onClick={calculate}
                         disabled={!ordinaryIncome && !shortTermGains && !longTermGains}
                         className="w-full py-3.5 bg-gradient-to-r from-primary to-accent-dark text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
@@ -830,7 +1399,11 @@ function CapitalGainsTab() {
                                     </svg>
                                 }
                             />
-                            <ResultCard label="Long-Term CG Rate" value={`${result.longTermRate.toFixed(0)}%`} sub="Your effective LT rate" />
+                            <ResultCard
+                                label="LT CG Effective Rate"
+                                value={`${result.longTermEffectiveRate.toFixed(1)}%`}
+                                sub={result.taxableLongTermGains > 0 ? `Top applied rate: ${result.longTermTopRate.toFixed(0)}%` : "No taxable LT gains"}
+                            />
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <ResultCard label="Ordinary Income Tax" value={fmt(result.ordinaryTax)} />
@@ -846,11 +1419,11 @@ function CapitalGainsTab() {
 
 /* ═══════════════════════ COMPARISON TAB ═══════════════════════ */
 
-function ComparisonTab() {
-    const [statusA, setStatusA] = useState("single");
+function ComparisonTab({ taxYear }: { taxYear: TaxYear }) {
+    const [statusA, setStatusA] = useState<FilingStatus>("single");
     const [incomeA, setIncomeA] = useState("");
     const [deductionA, setDeductionA] = useState("");
-    const [statusB, setStatusB] = useState("married_joint");
+    const [statusB, setStatusB] = useState<FilingStatus>("married_joint");
     const [incomeB, setIncomeB] = useState("");
     const [deductionB, setDeductionB] = useState("");
     const [result, setResult] = useState<{
@@ -867,12 +1440,12 @@ function ComparisonTab() {
         const grossB = parseNum(incomeB);
         if (grossA <= 0 && grossB <= 0) return;
 
-        const dedA = parseNum(deductionA) || STANDARD_DEDUCTION[statusA] || 16100;
-        const dedB = parseNum(deductionB) || STANDARD_DEDUCTION[statusB] || 16100;
+        const dedA = parseNum(deductionA) || getStandardDeduction(taxYear, statusA);
+        const dedB = parseNum(deductionB) || getStandardDeduction(taxYear, statusB);
         const taxableA = Math.max(0, grossA - dedA);
         const taxableB = Math.max(0, grossB - dedB);
-        const { total: taxA } = calcIncomeTax(taxableA, statusA);
-        const { total: taxB } = calcIncomeTax(taxableB, statusB);
+        const { total: taxA } = calcIncomeTax(taxableA, statusA, taxYear);
+        const { total: taxB } = calcIncomeTax(taxableB, statusB, taxYear);
 
         setResult({
             taxA,
@@ -894,9 +1467,9 @@ function ComparisonTab() {
                         <span className="w-7 h-7 rounded-lg bg-primary text-white text-sm flex items-center justify-center font-bold">A</span>
                         Scenario A
                     </h4>
-                    <SelectInput label="Filing Status" value={statusA} onChange={setStatusA} options={FILING_STATUSES} id="cmp-status-a" />
+                    <SelectInput label="Filing Status" value={statusA} onChange={(val) => setStatusA(val as FilingStatus)} options={FILING_STATUSES} id="cmp-status-a" />
                     <MoneyInput label="Gross Annual Income" value={incomeA} onChange={setIncomeA} id="cmp-income-a" placeholder="100,000" />
-                    <MoneyInput label="Deductions (leave blank for standard)" value={deductionA} onChange={setDeductionA} id="cmp-ded-a" placeholder={`${new Intl.NumberFormat("en-US").format(STANDARD_DEDUCTION[statusA] || 16100)}`} />
+                    <MoneyInput label="Deductions (leave blank for standard)" value={deductionA} onChange={setDeductionA} id="cmp-ded-a" placeholder={`${new Intl.NumberFormat("en-US").format(getStandardDeduction(taxYear, statusA))}`} />
                 </div>
 
                 {/* Scenario B */}
@@ -906,13 +1479,14 @@ function ComparisonTab() {
                         <span className="w-7 h-7 rounded-lg bg-accent-dark text-white text-sm flex items-center justify-center font-bold">B</span>
                         Scenario B
                     </h4>
-                    <SelectInput label="Filing Status" value={statusB} onChange={setStatusB} options={FILING_STATUSES} id="cmp-status-b" />
+                    <SelectInput label="Filing Status" value={statusB} onChange={(val) => setStatusB(val as FilingStatus)} options={FILING_STATUSES} id="cmp-status-b" />
                     <MoneyInput label="Gross Annual Income" value={incomeB} onChange={setIncomeB} id="cmp-income-b" placeholder="100,000" />
-                    <MoneyInput label="Deductions (leave blank for standard)" value={deductionB} onChange={setDeductionB} id="cmp-ded-b" placeholder={`${new Intl.NumberFormat("en-US").format(STANDARD_DEDUCTION[statusB] || 16100)}`} />
+                    <MoneyInput label="Deductions (leave blank for standard)" value={deductionB} onChange={setDeductionB} id="cmp-ded-b" placeholder={`${new Intl.NumberFormat("en-US").format(getStandardDeduction(taxYear, statusB))}`} />
                 </div>
             </div>
 
             <button
+                suppressHydrationWarning
                 onClick={calculate}
                 disabled={!incomeA && !incomeB}
                 className="w-full py-3.5 bg-gradient-to-r from-primary to-accent-dark text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer max-w-md mx-auto block"
@@ -926,9 +1500,9 @@ function ComparisonTab() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <ResultCard label="Scenario A Tax" value={fmt(result.taxA)} sub={`Effective rate: ${result.rateA.toFixed(1)}%`} />
                         <ResultCard
-                            label="Potential Savings"
+                            label="Estimated Difference"
                             value={fmt(result.savings)}
-                            sub={result.better === "equal" ? "Same tax" : `Scenario ${result.better} saves more`}
+                            sub={result.better === "equal" ? "Same estimated tax" : `Scenario ${result.better} estimates lower`}
                             accent
                             icon={
                                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -949,10 +1523,10 @@ function ComparisonTab() {
                                 </div>
                                 <div>
                                     <p className="font-bold text-green-800">
-                                        Scenario {result.better} is better by {fmt(result.savings)}
+                                        Scenario {result.better} estimates {fmt(result.savings)} lower federal tax
                                     </p>
                                     <p className="text-sm text-green-700">
-                                        You could save {fmt(result.savings)} per year by choosing Scenario {result.better}.
+                                        Use this as a planning comparison, not a guaranteed tax savings amount.
                                     </p>
                                 </div>
                             </div>
@@ -968,15 +1542,13 @@ function ComparisonTab() {
 
 export default function TaxCalculatorClient() {
     const [activeTab, setActiveTab] = useState<TabKey>("federal");
+    const [taxYear, setTaxYear] = useState<TaxYear>("2026");
+    const taxData = TAX_DATA[taxYear];
 
     return (
-        <>
+        <main>
             {/* Hero Header */}
-            <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden" style={{ background: "linear-gradient(to bottom, #0047AB, #002D6E)" }}>
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00C2CB] blur-[150px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
-                </div>
-
+            <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden" style={{ background: "linear-gradient(to bottom, #0047AB, #002D6E)" }}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
                     <div className="max-w-3xl">
                         <Link
@@ -991,16 +1563,15 @@ export default function TaxCalculatorClient() {
                         
                         <div className="inline-flex items-center space-x-2 bg-[#00C2CB]/20 border border-[#00C2CB]/30 px-4 py-1.5 rounded-full mb-6">
                             <span className="w-2 h-2 rounded-full bg-[#00C2CB] animate-pulse"></span>
-                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00C2CB]">Free 2026 Tax Estimator</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00C2CB]">Free 2025 + 2026 Tax Estimator</span>
                         </div>
 
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tighter text-white mb-6">
-                            Calculate Your Tax <br />
-                            <span className="text-[#00C2CB]">Refund Instantly.</span>
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-normal text-white mb-6">
+                            2025 and 2026 Federal Tax Calculator & Refund Estimator
                         </h1>
                         
                         <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
-                            Estimate your federal tax picture and see how filing status, deductions, credits, and other income can change the result.
+                            Estimate your federal tax picture for 2025 filing or 2026 planning, then see how filing status, deductions, credits, and other income can change the result.
                         </p>
 
                         <div className="flex flex-wrap items-center gap-6">
@@ -1008,14 +1579,28 @@ export default function TaxCalculatorClient() {
                                 <svg className="w-5 h-5 text-[#00C2CB]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                                 </svg>
-                                <span className="text-xs font-bold uppercase tracking-widest text-white/80">IRS Compliant</span>
+                                <span className="text-xs font-bold uppercase tracking-widest text-white/80">IRS-sourced tables</span>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <svg className="w-5 h-5 text-[#00C2CB]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span className="text-xs font-bold uppercase tracking-widest text-white/80">Bank-Level Security</span>
+                                <span className="text-xs font-bold uppercase tracking-widest text-white/80">No account required</span>
                             </div>
+                        </div>
+                        <div className="mt-8 flex flex-wrap gap-3">
+                            <a
+                                href="#tax-estimator"
+                                className="inline-flex items-center justify-center rounded-xl bg-[#00C2CB] px-5 py-3 text-sm font-black uppercase tracking-wider text-[#003580] hover:bg-white transition-colors"
+                            >
+                                Start estimate
+                            </a>
+                            <Link
+                                href="/tax-calculator-guide"
+                                className="inline-flex items-center justify-center rounded-xl border border-white/25 px-5 py-3 text-sm font-black uppercase tracking-wider text-white hover:border-[#00C2CB] hover:text-[#00C2CB] transition-colors"
+                            >
+                                Read calculator guide
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -1027,6 +1612,7 @@ export default function TaxCalculatorClient() {
                     <div className="flex overflow-x-auto gap-1 py-3 scrollbar-hide">
                         {TABS.map((tab) => (
                             <button
+                                suppressHydrationWarning
                                 key={tab.key}
                                 onClick={() => setActiveTab(tab.key)}
                                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 cursor-pointer ${activeTab === tab.key
@@ -1044,12 +1630,38 @@ export default function TaxCalculatorClient() {
             </section>
 
             {/* Tab Content */}
-            <section className="section-padding bg-section-bg min-h-[600px]">
+            <section className="section-padding bg-section-bg min-h-[600px]" id="tax-estimator">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    {activeTab === "federal" && <FederalIncomeTab />}
-                    {activeTab === "selfEmployment" && <SelfEmploymentTab />}
-                    {activeTab === "capitalGains" && <CapitalGainsTab />}
-                    {activeTab === "comparison" && <ComparisonTab />}
+                    <div className="mb-8 bg-white border border-gray-100 rounded-2xl p-4 sm:p-5 shadow-sm">
+                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                            <div>
+                                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">Tax Year</p>
+                                <p className="text-sm font-semibold text-[#0047AB] mt-1">{taxData.description}</p>
+                                <p className="text-xs text-gray-500 mt-1">{taxData.sourceNote}; {taxData.filingYear}. Last reviewed June 16, 2026.</p>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 sm:w-auto w-full">
+                                {TAX_YEAR_OPTIONS.map((option) => (
+                                    <button
+                                        suppressHydrationWarning
+                                        key={option.value}
+                                        type="button"
+                                        onClick={() => setTaxYear(option.value)}
+                                        className={`px-4 py-3 rounded-xl text-xs font-black uppercase tracking-wider transition-all ${taxYear === option.value
+                                            ? "bg-[#0047AB] text-white shadow-md shadow-[#0047AB]/20"
+                                            : "bg-gray-50 text-gray-500 hover:bg-gray-100"
+                                            }`}
+                                    >
+                                        {option.label}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {activeTab === "federal" && <FederalIncomeTab key={`federal-${taxYear}`} taxYear={taxYear} />}
+                    {activeTab === "selfEmployment" && <SelfEmploymentTab key={`se-${taxYear}`} taxYear={taxYear} />}
+                    {activeTab === "capitalGains" && <CapitalGainsTab key={`cg-${taxYear}`} taxYear={taxYear} />}
+                    {activeTab === "comparison" && <ComparisonTab key={`cmp-${taxYear}`} taxYear={taxYear} />}
                 </div>
             </section>
 
@@ -1057,8 +1669,8 @@ export default function TaxCalculatorClient() {
             <section className="py-10 bg-white border-t border-gray-100">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <p className="text-xs text-text-secondary leading-relaxed">
-                        <strong>Disclaimer:</strong> This calculator provides estimates based on 2026 federal tax brackets and standard deductions.
-                        It does not account for state taxes, AMT, NIIT, phase-outs, or specific tax credits beyond those listed.
+                        <strong>Disclaimer:</strong> This calculator provides estimates based on selected-year federal brackets, standard deductions, Social Security wage bases, and long-term capital-gain thresholds.
+                        It does not account for state taxes, AMT, NIIT, QBI, most phase-outs, refundable-credit limits, local taxes, or every deduction and credit.
                         Results are for informational purposes only. For personalized tax advice,{" "}
                         <Link href="/contact" className="text-primary hover:underline font-medium">
                             consult our tax professionals
@@ -1066,6 +1678,46 @@ export default function TaxCalculatorClient() {
                     </p>
                 </div>
             </section>
+
+            {/* Source and Trust Section */}
+            <section className="py-14 bg-slate-50 border-b border-gray-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-10 lg:grid-cols-12">
+                    <div className="lg:col-span-5">
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
+                            IRS-source-backed estimate
+                        </p>
+                        <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                            Tax data used by this calculator
+                        </h2>
+                        <p className="text-sm text-slate-600 leading-relaxed mt-4">
+                            The estimator uses selected-year federal brackets, standard deduction amounts,
+                            long-term capital-gain thresholds, Child Tax Credit amounts, and Social Security
+                            wage bases from official IRS and SSA sources. For a deeper walkthrough, read the{" "}
+                            <Link href="/tax-calculator-guide" className="text-[#0057b8] font-semibold hover:underline">
+                                2025 and 2026 federal tax calculator guide
+                            </Link>.
+                        </p>
+                    </div>
+                    <div className="lg:col-span-7 grid gap-3 sm:grid-cols-2">
+                        {CALCULATOR_SOURCE_LINKS.map((source) => (
+                            <a
+                                key={source.href}
+                                href={source.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-white border border-slate-200 rounded-xl p-4 text-sm font-semibold text-[#0057b8] hover:text-[#003580] hover:border-[#00C2CB] transition-colors"
+                            >
+                                {source.label}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <DataTablesSection taxYear={taxYear} />
+            <LimitationsSection />
+            <CalculatorFaqSection />
+            <RelatedResourcesSection />
 
             {/* Info Section */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
@@ -1077,7 +1729,7 @@ export default function TaxCalculatorClient() {
                             </svg>
                         </div>
                         <h3 className="text-xl font-extrabold text-[#0047AB]">How We Calculate</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">Our engine uses 2026 IRS tax tables and standard deduction rates. We apply a sequential logic of income aggregation followed by deduction subtraction to reach your taxable base.</p>
+                        <p className="text-sm text-gray-600 leading-relaxed">Our engine uses selected-year IRS-published federal tax tables, standard deductions, and capital-gain thresholds. It aggregates income, subtracts deductions, and applies marginal brackets to estimate the taxable base.</p>
                     </div>
                     <div className="space-y-4">
                         <div className="w-12 h-12 rounded-xl bg-[#0047AB]/5 flex items-center justify-center">
@@ -1095,7 +1747,7 @@ export default function TaxCalculatorClient() {
                             </svg>
                         </div>
                         <h3 className="text-xl font-extrabold text-[#00C2CB]">Pro Tip</h3>
-                        <p className="text-sm text-gray-600 leading-relaxed font-medium">Plan ahead by reviewing tax-advantaged contributions, withholding, and estimated payments before key 2026 deadlines.</p>
+                        <p className="text-sm text-gray-600 leading-relaxed font-medium">Plan ahead by reviewing tax-advantaged contributions, withholding, and estimated payments before key filing-year deadlines.</p>
                     </div>
                 </div>
             </section>
@@ -1103,13 +1755,9 @@ export default function TaxCalculatorClient() {
             {/* CTA Section */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 mb-24">
                 <div className="bg-[#0b1320] rounded-[2rem] p-8 md:p-16 relative overflow-hidden flex flex-col md:grid md:grid-cols-12 items-center justify-between gap-12">
-                    <div className="absolute inset-0 opacity-20">
-                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00C2CB] blur-[150px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
-                    </div>
-                    
                     <div className="relative z-10 md:col-span-7 max-w-xl">
-                        <h2 className="text-3xl md:text-5xl font-black text-white tracking-tighter mb-6">Want the Exact Number?</h2>
-                        <p className="text-gray-400 text-lg font-light mb-8">Calculators are helpful for planning, but tax details can change the final number. Book a review with an IntegraFin tax professional.</p>
+                        <h2 className="text-3xl md:text-5xl font-black text-white tracking-normal mb-6">Need a reviewed estimate?</h2>
+                        <p className="text-gray-400 text-lg font-light mb-8">Calculators are helpful for planning, but complete tax documents can change the final number. Book a review with an IntegraFin tax professional.</p>
                         <div className="space-y-4">
                             <div className="flex items-center space-x-4">
                                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
@@ -1132,17 +1780,17 @@ export default function TaxCalculatorClient() {
 
                     <div className="relative z-10 md:col-span-5 w-full bg-white p-8 rounded-2xl shadow-2xl">
                         <div className="space-y-5">
-                            <h3 className="text-2xl font-black text-[#003580] tracking-tight">Ready For A Reviewed Estimate?</h3>
+                            <h3 className="text-2xl font-black text-[#003580] tracking-normal">Ready for a reviewed estimate?</h3>
                             <p className="text-sm text-gray-600 leading-relaxed">
                                 Send your details through the secure contact form and our team will follow up with the next steps.
                             </p>
                             <Link href="/contact" className="w-full inline-flex justify-center bg-[#0047AB] text-white font-black py-4 rounded-xl shadow-lg shadow-[#0047AB]/20 uppercase tracking-[0.2em] transition-all hover:bg-[#003580]">
-                                Request Consultation
+                                Book a tax review
                             </Link>
                         </div>
                     </div>
                 </div>
             </section>
-        </>
+        </main>
     );
 }

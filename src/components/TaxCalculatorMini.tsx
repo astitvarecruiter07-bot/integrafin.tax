@@ -68,9 +68,10 @@ function calculateTax(income: number, filingStatus: string) {
     }
 
     const effectiveRate = income > 0 ? (totalTax / income) * 100 : 0;
-    const marginalRate = brackets.find(
-        (b) => taxableIncome >= b.min && taxableIncome < b.max
-    )?.rate ?? 0;
+    const marginalRate =
+        taxableIncome > 0
+            ? brackets.find((b) => taxableIncome > b.min && taxableIncome <= b.max)?.rate ?? 0
+            : 0;
 
     return { totalTax, effectiveRate, marginalRate: marginalRate * 100, taxableIncome };
 }

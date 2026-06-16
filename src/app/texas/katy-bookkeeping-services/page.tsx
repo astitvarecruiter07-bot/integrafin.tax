@@ -520,6 +520,9 @@ export default function KatyBookkeepingServicesPage() {
             <Link href="/blog/payroll-best-practices" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Payroll Best Practices
             </Link>
+            <Link href="/tax-calculator" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              1099 and Federal Tax Calculator
+            </Link>
             <Link href="/contact" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Book A Bookkeeping Consultation
             </Link>

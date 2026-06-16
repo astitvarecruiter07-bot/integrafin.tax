@@ -90,6 +90,8 @@ export default function TexasTaxAccountingServicesPage() {
         },
       ]}
       resourceLinks={[
+        { href: "/tax-calculator", label: "2025 and 2026 Federal Tax Calculator" },
+        { href: "/tax-calculator-guide", label: "Federal Tax Calculator Guide" },
         { href: "/texas/katy-bookkeeping-services", label: "Bookkeeping Services in Katy TX" },
         { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help in Katy TX" },
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },

@@ -76,7 +76,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         <Navbar />
-        <main>{children}</main>
+        <div id="site-content">{children}</div>
         <Footer />
         <SpeedInsights />
         <Analytics />

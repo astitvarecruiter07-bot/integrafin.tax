@@ -53,7 +53,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
     }, [filteredPosts, featuredPost]);
 
     return (
-        <div className="bg-slate-50 font-sans text-slate-800">
+        <main className="bg-slate-50 font-sans text-slate-800">
 
             {/* SECTION 1: BLOG HERO BANNER */}
             <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-[#003580] overflow-hidden">
@@ -322,6 +322,6 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                     </div>
                 </div>
             </section>
-        </div>
+        </main>
     );
 }

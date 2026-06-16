@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 export const metadata: Metadata = {
     title: "Admin - Blog Editor | IntegraFin",
     description: "Secure, SEO-optimized blog editor for IntegraFin staff.",
+    robots: { index: false, follow: false },
 };
 
 export default async function BlogEditorPage({ searchParams }: { searchParams: Promise<{ slug?: string }> }) {

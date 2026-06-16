@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="bg-slate-50 selection:bg-[#0092df] selection:text-white relative">
+    <main className="bg-slate-50 selection:bg-[#0092df] selection:text-white relative">
       {/* Navbar space is handled by layout.tsx */}
       
       {/* Hero Section */}
@@ -422,6 +422,6 @@ export default function Home() {
            </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

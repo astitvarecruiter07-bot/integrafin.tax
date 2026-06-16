@@ -75,7 +75,7 @@ export default function CaseStudyClient() {
     : caseStudies.filter(study => study.category === selectedCategory);
 
   return (
-    <div className="bg-slate-50 font-sans text-slate-800">
+    <main className="bg-slate-50 font-sans text-slate-800">
 
       {/* SECTION 1: HERO BANNER */}
       <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-[#003580] overflow-hidden">
@@ -294,6 +294,6 @@ export default function CaseStudyClient() {
           </Link>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
