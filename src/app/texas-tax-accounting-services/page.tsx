@@ -56,11 +56,19 @@ export default function TexasTaxAccountingServicesPage() {
         "Responsive communication and organized document workflows",
         "Planning-focused approach that supports long-term compliance",
       ]}
-      nearbyCities={["Houston", "Dallas", "Fulshear", "Katy", "Sugar Land", "Richmond", "Fort Worth"]}
+      nearbyCities={["Katy", "Houston", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Fulshear", "Richmond", "Rosenberg", "Missouri City", "Dallas"]}
       cityPageLinks={[
+        { href: "/texas/katy-tax-accountant", label: "Katy Tax Accountant Services" },
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
-        { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
+        { href: "/texas/sugar-land-small-business-accountant", label: "Sugar Land Small Business Accounting" },
+        { href: "/texas/cypress-bookkeeping-services", label: "Cypress Bookkeeping Services" },
+        { href: "/texas/spring-tax-accountant", label: "Spring Tax Accountant Services" },
+        { href: "/texas/the-woodlands-tax-accountant", label: "The Woodlands Tax Accountant Services" },
         { href: "/texas/fulshear-tax-accountant", label: "Fulshear Tax Accountant Services" },
+        { href: "/texas/richmond-tax-accountant", label: "Richmond Tax Accountant Services" },
+        { href: "/texas/rosenberg-bookkeeping-services", label: "Rosenberg Bookkeeping Services" },
+        { href: "/texas/missouri-city-tax-accountant", label: "Missouri City Tax Accountant Services" },
+        { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
       ]}
       faqItems={[
         {
@@ -94,9 +102,12 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/tax-calculator-guide", label: "Federal Tax Calculator Guide" },
         { href: "/texas/katy-bookkeeping-services", label: "Bookkeeping Services in Katy TX" },
         { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help in Katy TX" },
+        { href: "/texas/katy-tax-accountant", label: "Katy Tax Accountant Services" },
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
-        { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
         { href: "/texas/fulshear-tax-accountant", label: "Fulshear Tax Accountant Services" },
+        { href: "/texas/sugar-land-small-business-accountant", label: "Sugar Land Small Business Accountant" },
+        { href: "/texas/richmond-tax-accountant", label: "Richmond Tax Accountant Services" },
+        { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
         { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance for Businesses" },
         { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
         { href: "/blog/tax-resolution-options", label: "Understanding Your Tax Resolution Options" },

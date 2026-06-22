@@ -34,9 +34,17 @@ const sections = [
   {
     title: "City Service Pages",
     links: [
+      { href: "/texas/katy-tax-accountant", label: "Katy Tax Accountant" },
       { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant" },
-      { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant" },
+      { href: "/texas/sugar-land-small-business-accountant", label: "Sugar Land Small Business Accountant" },
+      { href: "/texas/cypress-bookkeeping-services", label: "Cypress Bookkeeping Services" },
+      { href: "/texas/spring-tax-accountant", label: "Spring Tax Accountant" },
+      { href: "/texas/the-woodlands-tax-accountant", label: "The Woodlands Tax Accountant" },
       { href: "/texas/fulshear-tax-accountant", label: "Fulshear Tax Accountant" },
+      { href: "/texas/richmond-tax-accountant", label: "Richmond Tax Accountant" },
+      { href: "/texas/rosenberg-bookkeeping-services", label: "Rosenberg Bookkeeping Services" },
+      { href: "/texas/missouri-city-tax-accountant", label: "Missouri City Tax Accountant" },
+      { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant" },
       { href: "/new-york/nyc-tax-accountant", label: "NYC Tax Accountant" },
       { href: "/new-york/buffalo-tax-accountant", label: "Buffalo Tax Accountant" },
       { href: "/pennsylvania/philadelphia-tax-accountant", label: "Philadelphia Tax Accountant" },
