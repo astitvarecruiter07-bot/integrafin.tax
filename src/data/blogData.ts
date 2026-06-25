@@ -19,6 +19,220 @@ export interface BlogPost {
 
 export const mockBlogPosts: BlogPost[] = [
     {
+        slug: "arizona-tax-cut-2026",
+        title: "Arizona Tax Cut 2026: What the $1.4B Package Changes",
+        excerpt: "Arizona's projected $1.4 billion tax cut is now law. See who may benefit from changes for tips, overtime, seniors, deductions, and child credits.",
+        category: "Tax News",
+        date: "June 25, 2026",
+        updatedAt: "2026-06-25",
+        readTime: "10 min read",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200",
+        keywords: [
+            "Arizona tax cut 2026",
+            "Arizona $1.4 billion tax cut",
+            "Arizona tax cuts",
+            "Arizona no tax on tips",
+            "Arizona overtime tax deduction",
+            "Arizona senior tax deduction",
+            "Arizona standard deduction 2026",
+            "Arizona child tax credit",
+            "Arizona tax conformity",
+        ],
+        faq: [
+            {
+                question: "What is Arizona's projected $1.4 billion tax cut?",
+                answer: "It is the estimated three-year value of tax changes in Arizona's signed fiscal 2027 budget package, including state conformity with selected federal tax provisions. It is not a $1.4 billion cash payment and does not mean every taxpayer receives the same savings.",
+            },
+            {
+                question: "Is Arizona's $1.4 billion tax cut now law?",
+                answer: "Yes. Governor Katie Hobbs signed the Arizona First budget in June 2026. The governor's office describes the package as a $1.4 billion tax cut for working and middle-class families, although individual results depend on eligibility, income, filing status, and future-year rules.",
+            },
+            {
+                question: "Does Arizona's no-tax-on-tips rule mean all tip income is tax free?",
+                answer: "No. The phrase describes a deduction for eligible tip income, not a blanket exclusion of every tip from every tax. Federal payroll taxes can still apply, and taxpayers must meet the definitions, limits, and reporting requirements that apply to the deduction.",
+            },
+            {
+                question: "Is all overtime income tax free in Arizona?",
+                answer: "No. The overtime provision is a deduction tied to qualifying overtime compensation, not a rule that erases tax from an entire paycheck. Eligibility and limits matter, and Social Security and Medicare taxes are separate from income tax.",
+            },
+            {
+                question: "Do Arizona seniors automatically receive $6,000?",
+                answer: "No. The senior provision is described as a deduction, not a $6,000 payment or refundable credit. A deduction reduces taxable income, and the actual tax savings are generally only a fraction of the deduction amount.",
+            },
+            {
+                question: "How much will I save from the Arizona tax cut in 2026?",
+                answer: "There is no universal savings amount. Your result depends on which provisions apply, your qualified income, age, filing status, federal adjusted gross income, deductions, credits, and the final Arizona return instructions for the relevant tax year.",
+            },
+        ],
+        contentHtml: `
+            <div class="tax-answer-card">
+                <p><strong>Short answer:</strong> Arizona's projected $1.4 billion tax cut is now part of the state's signed fiscal 2027 budget. The figure describes estimated tax relief across the package over three years, not a $1.4 billion check and not equal savings for every resident. The headline changes involve eligible tips, qualifying overtime, a higher standard deduction, a senior deduction, and a later expansion of a child tax credit.</p>
+            </div>
+
+            <p>The Arizona tax cut 2026 story has a giant number, a political fight, and five words guaranteed to stop a scroll: <em>no tax on tips and overtime</em>. But the useful question is not who gets credit in Phoenix. It is what could actually change on an Arizona tax return.</p>
+
+            <p>Governor Katie Hobbs signed the bipartisan Arizona First budget in June 2026. Her office describes the package as delivering a <strong>$1.4 billion tax cut</strong> for working or middle-class families. Reporting on the enacted budget says that estimate covers three years and is connected to Arizona conforming its tax code to federal changes enacted in 2025.</p>
+
+            <p>That distinction matters. A statewide projection is not an estimate of your personal refund. Some households may qualify for more than one provision. Others may receive a small benefit or none at all.</p>
+
+            <h2>Arizona Tax Cut 2026: Key Takeaways</h2>
+            <p><strong>Direct answer:</strong> The package is real and signed, but the viral $1.4 billion figure is an aggregate estimate. Your savings depend on the specific deductions or credits you can claim.</p>
+
+            <ul>
+                <li>The governor signed Arizona's fiscal 2027 budget in June 2026.</li>
+                <li>The administration calls the tax portion a $1.4 billion tax cut for Arizona families.</li>
+                <li>News coverage of the final budget describes the estimate as tax cuts spread over three years.</li>
+                <li>The package connects Arizona tax rules with federal changes for tips, overtime, seniors, and deductions.</li>
+                <li>"No tax" does not mean every dollar escapes every tax; most of these provisions operate as deductions with eligibility rules and limits.</li>
+                <li>The expanded child-related credit is described as arriving in a later year, so taxpayers should not assume every change applies to the same return.</li>
+            </ul>
+
+            <h2>What Is Arizona's Projected $1.4 Billion Tax Cut?</h2>
+            <p><strong>Direct answer:</strong> It is the projected combined value of multiple tax changes in Arizona's budget package, not a single rebate program.</p>
+
+            <p>The budget aligns parts of Arizona's income tax system with federal provisions in the One Big Beautiful Bill Act, signed federally in July 2025. Arizona uses federal tax concepts as a starting point for its own return, but the state legislature still decides which federal changes Arizona will follow and for how long.</p>
+
+            <p>The enacted package was also a compromise. The final budget paired tax relief with spending decisions and a three-year moratorium on new data-center tax-credit certificates. That broader context is important because the $1.4 billion projection describes the fiscal effect on state revenue, not money placed into a special payout account.</p>
+
+            <div class="tax-note">
+                <p><strong>Reality check:</strong> A tax deduction is not the same as a tax credit, and neither is automatically the same as a refund. A deduction reduces income subject to tax. A credit generally reduces calculated tax. A refund occurs only when payments and refundable credits exceed the final tax due.</p>
+            </div>
+
+            <h2>Who Could Benefit From the Arizona Tax Cuts?</h2>
+            <p><strong>Direct answer:</strong> Workers with eligible tips or qualifying overtime, taxpayers using the standard deduction, some people age 65 or older, and qualifying families with children are the groups most directly associated with the announced changes.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Announced change</th>
+                            <th>Who may benefit</th>
+                            <th>What it does not mean</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Deduction for eligible tips</td>
+                            <td>Workers with qualifying, properly reported tip income</td>
+                            <td>Not all tips are free from all federal, state, and payroll taxes</td>
+                        </tr>
+                        <tr>
+                            <td>Deduction for qualifying overtime</td>
+                            <td>Employees with eligible overtime compensation</td>
+                            <td>Not every extra hour or the worker's full paycheck</td>
+                        </tr>
+                        <tr>
+                            <td>Higher standard deduction</td>
+                            <td>Eligible taxpayers who claim the standard deduction</td>
+                            <td>Not an additional cash payment equal to the deduction</td>
+                        </tr>
+                        <tr>
+                            <td>Senior deduction</td>
+                            <td>Eligible taxpayers age 65 or older, subject to applicable rules</td>
+                            <td>Not a $6,000 check or automatic $6,000 tax reduction</td>
+                        </tr>
+                        <tr>
+                            <td>Expanded child-related credit</td>
+                            <td>Qualifying families in the year the expansion applies</td>
+                            <td>Not necessarily available on the same timetable as every other change</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Does Arizona Have No Tax on Tips Now?</h2>
+            <p><strong>Direct answer:</strong> Arizona announced tax relief for eligible tips beginning July 1, but "no tax on tips" is shorthand for a deduction and must be read with its definitions, caps, phaseouts, and reporting rules.</p>
+
+            <p>The federal version allows eligible workers in occupations that customarily and regularly received tips before 2025 to deduct qualified tips, subject to limits and income-based phaseouts. Tips still must be reported. The federal deduction also does not erase Social Security and Medicare tax.</p>
+
+            <p>Arizona conformity can affect how that income is treated on the state return, but it does not convert unreported cash into tax-free income. Workers should continue keeping daily tip records and checking that W-2 or 1099 reporting is accurate.</p>
+
+            <h2>Is Overtime Pay Tax Free in Arizona?</h2>
+            <p><strong>Direct answer:</strong> No. The new treatment is aimed at a deduction for qualifying overtime compensation, not a blanket exemption for all overtime pay.</p>
+
+            <p>The federal provision focuses on the overtime premium required under the Fair Labor Standards Act. That can be narrower than the overtime amount shown on a pay stub. Contract premiums, bonuses, state-only overtime, and pay above the required premium may not receive identical treatment.</p>
+
+            <p>Employees should keep year-end wage statements and any employer breakdown of qualified overtime. Employers should avoid promising that overtime is completely tax free; withholding, payroll taxes, and final income-tax liability are separate calculations.</p>
+
+            <h2>How Does the Arizona Senior Deduction Work?</h2>
+            <p><strong>Direct answer:</strong> The announced senior provision is a deduction. It can reduce taxable income for an eligible taxpayer, but it is not a $6,000 payment.</p>
+
+            <p>The federal senior deduction is up to $6,000 per eligible person age 65 or older for tax years 2025 through 2028, with income limits and phaseouts. A qualifying married couple could potentially have two deductions federally if both spouses meet the rules. Arizona's return treatment should be confirmed against the final state instructions for the tax year being filed.</p>
+
+            <p>Why the wording matters: at Arizona's 2.5% individual income-tax rate, a $6,000 state deduction would not equal $6,000 of state tax savings. If fully usable, the rough state-rate effect would be up to $150 before considering Arizona's exact conformity mechanics and the taxpayer's facts. That example is educational, not a promised result.</p>
+
+            <h2>What Changes for the Standard Deduction and Child Credit?</h2>
+            <p><strong>Direct answer:</strong> The budget announcement includes a higher standard deduction and says an expanded child tax credit follows in the next year. Taxpayers should match each provision to the correct tax year.</p>
+
+            <p>A larger standard deduction can reduce taxable income for filers who do not itemize. It does not create dollar-for-dollar savings equal to the deduction. The tax benefit depends on the amount of the increase and the rate applied to the income it shelters.</p>
+
+            <p>The timing of the expanded child-related credit is especially easy to miss. The governor's June announcement separates the July 1 changes from the credit expansion described for "next year." Families should not put that projected credit into a 2026 cash-flow plan until the applicable Arizona forms, eligibility rules, and effective date are confirmed.</p>
+
+            <h2>How Much Will the Arizona Tax Cut Save You?</h2>
+            <p><strong>Direct answer:</strong> There is no honest one-size-fits-all number. The $1.4 billion estimate cannot be divided evenly by Arizona's population to calculate your refund.</p>
+
+            <p>Your result can change based on:</p>
+            <ul>
+                <li>Filing status and adjusted gross income</li>
+                <li>Age and whether both spouses qualify for a senior deduction</li>
+                <li>The amount of eligible, documented tip or overtime income</li>
+                <li>Whether you claim the standard deduction or itemize</li>
+                <li>The number and eligibility of qualifying children</li>
+                <li>Phaseouts, caps, and the tax year in which each provision applies</li>
+                <li>Whether Arizona adopts, modifies, or decouples from a federal rule in a later year</li>
+            </ul>
+
+            <p>A bartender with qualified tips, a nurse with documented qualifying overtime, a retired couple over age 65, and a family with young children may all be affected differently. That is why a return-level projection is more useful than a viral statewide average.</p>
+
+            <p>Part-year residents and remote workers may also need to allocate income between states instead of looking only at Arizona's rules. IntegraFin provides state-focused support through our <a href="/texas-tax-accounting-services">Texas tax services</a>, <a href="/new-york-tax-accounting-services">New York tax services</a>, and <a href="/pennsylvania-tax-accounting-services">Pennsylvania tax services</a>.</p>
+
+            <div class="tax-cta-panel">
+                <h3>Want a return-level estimate instead of a headline?</h3>
+                <p>IntegraFin can review your income, deductions, withholding, business records, and multi-state filing questions to identify which new provisions may apply.</p>
+                <p>Explore our <a href="/services">tax planning and preparation services</a> or <a href="/contact">schedule a tax consultation</a>.</p>
+            </div>
+
+            <h2>Five Steps Arizona Taxpayers Can Take Now</h2>
+            <p><strong>Direct answer:</strong> Preserve the records behind any new deduction, review withholding with care, and wait for tax-year-specific Arizona instructions before counting a projected refund.</p>
+
+            <ol>
+                <li><strong>Save detailed pay records.</strong> Keep pay stubs and employer statements that separate regular wages, qualifying overtime, and tips.</li>
+                <li><strong>Report all tip income.</strong> A new deduction does not remove income-reporting obligations.</li>
+                <li><strong>Do not spend a projected refund early.</strong> Eligibility limits and phaseouts can reduce or eliminate the benefit.</li>
+                <li><strong>Review withholding, but avoid guessing.</strong> Changing withholding without a full-year projection can create an unexpected balance due.</li>
+                <li><strong>Check the correct year's forms.</strong> Arizona's package contains provisions with different timing, and later legislation can change future-year conformity.</li>
+            </ol>
+
+            <h2>Frequently Asked Questions</h2>
+            <h3>What is Arizona's projected $1.4 billion tax cut?</h3>
+            <p>It is an estimate of the combined tax relief across the signed budget package over three years. It is not a direct payment program and does not guarantee equal savings to every Arizona taxpayer.</p>
+
+            <h3>When does the Arizona tax cut start?</h3>
+            <p>The governor's office says the changes involving tips, overtime, the higher standard deduction, and the senior deduction start July 1, 2026. It separately describes the expanded child tax credit as beginning next year. The filing impact should be matched to final Arizona tax forms and instructions.</p>
+
+            <h3>Will tips and overtime disappear from my W-2?</h3>
+            <p>No. These are deduction provisions, not permission to omit wages or tips from tax reporting. Employers and workers should continue normal reporting and recordkeeping.</p>
+
+            <h3>Do I need to amend an Arizona return now?</h3>
+            <p>Do not amend solely because of a headline. First identify the tax year affected, compare the enacted law with the Arizona Department of Revenue instructions, and amend only when the filed return is actually incorrect.</p>
+
+            <h3>Is the full $1.4 billion guaranteed?</h3>
+            <p>No projection is a guarantee. The actual fiscal effect depends on how many taxpayers qualify, how much eligible income they report, economic conditions, and whether future-year law changes.</p>
+
+            <h2>Sources Reviewed</h2>
+            <ul class="source-list">
+                <li><a href="https://azgovernor.gov/office-arizona-governor/news/2026/06/pool-footage-governor-katie-hobbs-signs-arizona-first-budget" target="_blank" rel="noopener noreferrer">Office of the Arizona Governor: Governor Katie Hobbs signs the Arizona First budget</a></li>
+                <li><a href="https://azgovernor.gov/office-arizona-governor/news/2026/06/governor-katie-hobbs-releases-statement-bipartisan-budget" target="_blank" rel="noopener noreferrer">Office of the Arizona Governor: Statement on the bipartisan budget agreement</a></li>
+                <li><a href="https://azmirror.com/2026/06/13/hobbs-signs-18-3b-arizona-budget-calling-trump-conforming-tax-cuts-a-historic-win/" target="_blank" rel="noopener noreferrer">Arizona Mirror: Signed budget and three-year tax-cut context</a></li>
+                <li><a href="https://www.irs.gov/newsroom/one-big-beautiful-bill-provisions-individuals-and-workers" target="_blank" rel="noopener noreferrer">IRS: Federal provisions for individuals and workers</a></li>
+            </ul>
+
+            <p><strong>Last reviewed:</strong> June 25, 2026.</p>
+            <p><strong>Educational note:</strong> This article provides general tax education, not legal or tax advice. Arizona conformity rules, forms, effective dates, and individual eligibility can change or depend on facts not covered here.</p>
+        `,
+    },
+    {
         slug: "missed-estimated-tax-payment-june-15-deadline",
         title: "Missed Estimated Tax Payment? June 15 Fix Guide",
         excerpt: "Missed the June 15 tax deadline? Learn what a late estimated tax payment may cost, how to pay now, when Form 2210 may help, and how to plan for September 15.",
