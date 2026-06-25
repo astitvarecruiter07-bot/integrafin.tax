@@ -9,6 +9,11 @@ export interface BlogPost {
     contentHtml?: string;
     featured?: boolean;
     image?: string;
+    imageAlt?: string;
+    author?: {
+        name?: string;
+        image?: string;
+    };
     updatedAt?: string;
     keywords?: string[];
     faq?: {
@@ -20,24 +25,33 @@ export interface BlogPost {
 export const mockBlogPosts: BlogPost[] = [
     {
         slug: "arizona-tax-cut-2026",
-        title: "Arizona Tax Cut 2026: What the $1.4B Package Changes",
-        excerpt: "Arizona's projected $1.4 billion tax cut is now law. See who may benefit from changes for tips, overtime, seniors, deductions, and child credits.",
+        title: "Arizona $1.4B Tax Cut 2026: Who Qualifies?",
+        excerpt: "Arizona's $1.4B tax cut is now law. See who may qualify for tip, overtime, senior, standard deduction, and child credit changes in 2026.",
         category: "Tax News",
         date: "June 25, 2026",
-        updatedAt: "2026-06-25",
-        readTime: "10 min read",
+        updatedAt: "2026-06-26",
+        readTime: "12 min read",
         featured: true,
         image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200",
+        imageAlt: "Arizona tax cut 2026 guide for tips, overtime, seniors, standard deduction, and child credit changes",
+        author: {
+            name: "IntegraFin Tax & Accounting Team",
+        },
         keywords: [
             "Arizona tax cut 2026",
             "Arizona $1.4 billion tax cut",
+            "Arizona $1.4B tax cut",
             "Arizona tax cuts",
+            "Arizona tax relief 2026",
+            "Arizona middle class tax cut",
             "Arizona no tax on tips",
             "Arizona overtime tax deduction",
             "Arizona senior tax deduction",
             "Arizona standard deduction 2026",
             "Arizona child tax credit",
-            "Arizona tax conformity",
+            "Arizona tax conformity 2026",
+            "Arizona Form 140",
+            "Middle Class Tax Cuts Package worksheet",
         ],
         faq: [
             {
@@ -64,17 +78,40 @@ export const mockBlogPosts: BlogPost[] = [
                 question: "How much will I save from the Arizona tax cut in 2026?",
                 answer: "There is no universal savings amount. Your result depends on which provisions apply, your qualified income, age, filing status, federal adjusted gross income, deductions, credits, and the final Arizona return instructions for the relevant tax year.",
             },
+            {
+                question: "Who qualifies for Arizona's tax cut?",
+                answer: "Potentially affected groups include Arizona taxpayers with qualifying tip income, qualifying overtime compensation, eligible seniors, standard-deduction filers, and qualifying families with children. Exact eligibility depends on the tax year, filing status, income limits, forms used, and Arizona Department of Revenue instructions.",
+            },
+            {
+                question: "Is Arizona's $1.4 billion tax cut a refund check?",
+                answer: "No. The $1.4 billion figure is an aggregate estimate of tax relief, not a direct payment program. A taxpayer's personal result may be a lower tax bill, a larger refund, a smaller balance due, or no benefit depending on eligibility.",
+            },
+            {
+                question: "Will Arizona issue forms or instructions for the tax cut?",
+                answer: "Yes. The Arizona Department of Revenue has published a Middle Class Tax Cuts Package worksheet for certain 2025 deductions and says taxpayers claiming these deductions generally must use Arizona Form 140 rather than Form 140A or Form 140EZ.",
+            },
         ],
         contentHtml: `
             <div class="tax-answer-card">
                 <p><strong>Short answer:</strong> Arizona's projected $1.4 billion tax cut is now part of the state's signed fiscal 2027 budget. The figure describes estimated tax relief across the package over three years, not a $1.4 billion check and not equal savings for every resident. The headline changes involve eligible tips, qualifying overtime, a higher standard deduction, a senior deduction, and a later expansion of a child tax credit.</p>
             </div>
 
-            <p>The Arizona tax cut 2026 story has a giant number, a political fight, and five words guaranteed to stop a scroll: <em>no tax on tips and overtime</em>. But the useful question is not who gets credit in Phoenix. It is what could actually change on an Arizona tax return.</p>
+            <p>The <strong>Arizona $1.4B tax cut 2026</strong> story has a giant number, a political fight, and five words guaranteed to stop a scroll: <em>no tax on tips and overtime</em>. But the useful question is not who gets credit in Phoenix. It is who may qualify, which deductions apply, and what could actually change on an Arizona tax return.</p>
 
             <p>Governor Katie Hobbs signed the bipartisan Arizona First budget in June 2026. Her office describes the package as delivering a <strong>$1.4 billion tax cut</strong> for working or middle-class families. Reporting on the enacted budget says that estimate covers three years and is connected to Arizona conforming its tax code to federal changes enacted in 2025.</p>
 
             <p>That distinction matters. A statewide projection is not an estimate of your personal refund. Some households may qualify for more than one provision. Others may receive a small benefit or none at all.</p>
+
+            <div class="tax-note">
+                <p><strong>Quick facts for Arizona taxpayers:</strong></p>
+                <ul>
+                    <li><strong>Is it a refund check?</strong> No. The $1.4B number is a projected package value, not a direct payment.</li>
+                    <li><strong>Who may qualify?</strong> Workers with eligible tips or overtime, some seniors, standard-deduction filers, and qualifying families may be affected.</li>
+                    <li><strong>What forms matter?</strong> The Arizona Department of Revenue says residents claiming certain Middle Class Tax Cuts Package deductions must file Arizona Form 140, not Form 140A or Form 140EZ.</li>
+                    <li><strong>What should you save?</strong> Keep pay stubs, tip records, W-2 details, 1099s, age documentation, and child/dependent records.</li>
+                    <li><strong>What is still important?</strong> Final state filing instructions, eligibility limits, and future-year conformity rules can change the result.</li>
+                </ul>
+            </div>
 
             <h2>Arizona Tax Cut 2026: Key Takeaways</h2>
             <p><strong>Direct answer:</strong> The package is real and signed, but the viral $1.4 billion figure is an aggregate estimate. Your savings depend on the specific deductions or credits you can claim.</p>
@@ -99,7 +136,7 @@ export const mockBlogPosts: BlogPost[] = [
                 <p><strong>Reality check:</strong> A tax deduction is not the same as a tax credit, and neither is automatically the same as a refund. A deduction reduces income subject to tax. A credit generally reduces calculated tax. A refund occurs only when payments and refundable credits exceed the final tax due.</p>
             </div>
 
-            <h2>Who Could Benefit From the Arizona Tax Cuts?</h2>
+            <h2>Who Qualifies for the Arizona Tax Cut?</h2>
             <p><strong>Direct answer:</strong> Workers with eligible tips or qualifying overtime, taxpayers using the standard deduction, some people age 65 or older, and qualifying families with children are the groups most directly associated with the announced changes.</p>
 
             <div class="table-scroll">
@@ -140,6 +177,50 @@ export const mockBlogPosts: BlogPost[] = [
                     </tbody>
                 </table>
             </div>
+
+            <h2>Arizona Tax Cut Timeline: What Happens When?</h2>
+            <p><strong>Direct answer:</strong> The budget is signed, but different parts of the Arizona tax relief package can affect different tax years, forms, and filing decisions.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Timing</th>
+                            <th>What taxpayers should know</th>
+                            <th>SEO-safe planning note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2025 tax year guidance</td>
+                            <td>ADOR's Middle Class Tax Cuts Package worksheet says qualifying federal deductions for tips, overtime, passenger vehicle loan interest, and seniors may also be taken on the 2025 Arizona individual return.</td>
+                            <td>Residents claiming those deductions should review Arizona Form 140 instructions and the MCTCP worksheet.</td>
+                        </tr>
+                        <tr>
+                            <td>June 2026 budget signing</td>
+                            <td>The governor's office announced the signed Arizona First budget and described the package as a $1.4 billion tax cut.</td>
+                            <td>The dollar figure is a statewide estimate, not a promised household refund.</td>
+                        </tr>
+                        <tr>
+                            <td>July 1, 2026 announcement date</td>
+                            <td>The governor's office says changes for tips, overtime, standard deduction, and seniors begin July 1.</td>
+                            <td>Match the provision to the correct Arizona tax year before changing withholding or estimating refunds.</td>
+                        </tr>
+                        <tr>
+                            <td>Future child credit expansion</td>
+                            <td>The governor's announcement describes the expanded child tax credit as a later-year change.</td>
+                            <td>Families should wait for final eligibility rules before counting the benefit.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Arizona Form 140 and the MCTCP Worksheet</h2>
+            <p><strong>Direct answer:</strong> The Arizona Department of Revenue has a Middle Class Tax Cuts Package worksheet for taxpayers claiming certain matching state deductions, and it says those deductions are not available on Arizona Form 140A or Form 140EZ.</p>
+
+            <p>This is one of the most important practical details in the whole story. ADOR says taxpayers who qualify for federal deductions for qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, and the enhanced senior deduction may also take those deductions on the 2025 Arizona individual income tax return. But residents who want to claim those deductions must file <strong>Arizona Form 140</strong>.</p>
+
+            <p>For part-year and nonresident filers, ADOR's worksheet language is narrower: only qualified tips and qualified overtime compensation included in Arizona gross income may be subtracted on those returns. Joint and separate filing combinations can also change how subtraction amounts are allocated.</p>
 
             <h2>Does Arizona Have No Tax on Tips Now?</h2>
             <p><strong>Direct answer:</strong> Arizona announced tax relief for eligible tips beginning July 1, but "no tax on tips" is shorthand for a deduction and must be read with its definitions, caps, phaseouts, and reporting rules.</p>
@@ -187,6 +268,43 @@ export const mockBlogPosts: BlogPost[] = [
 
             <p>Part-year residents and remote workers may also need to allocate income between states instead of looking only at Arizona's rules. IntegraFin provides state-focused support through our <a href="/texas-tax-accounting-services">Texas tax services</a>, <a href="/new-york-tax-accounting-services">New York tax services</a>, and <a href="/pennsylvania-tax-accounting-services">Pennsylvania tax services</a>.</p>
 
+            <h2>Example Scenarios: Why the Same Tax Cut Hits Differently</h2>
+            <p><strong>Direct answer:</strong> Two Arizona households can read the same tax-cut headline and end up with very different results because deductions, credits, and filing forms work differently.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Taxpayer example</th>
+                            <th>Potentially relevant provision</th>
+                            <th>Why the result can vary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Phoenix restaurant worker</td>
+                            <td>Qualified tip deduction</td>
+                            <td>Benefit depends on reported qualifying tips, income limits, occupation rules, and the Arizona form used.</td>
+                        </tr>
+                        <tr>
+                            <td>Tucson hospital employee</td>
+                            <td>Qualified overtime compensation deduction</td>
+                            <td>The qualifying amount may be narrower than total overtime shown on a paycheck.</td>
+                        </tr>
+                        <tr>
+                            <td>Retired Scottsdale couple over age 65</td>
+                            <td>Enhanced senior deduction</td>
+                            <td>A deduction reduces taxable income; it is not the same as a dollar-for-dollar credit or cash payment.</td>
+                        </tr>
+                        <tr>
+                            <td>Family with children</td>
+                            <td>Child-related credit expansion</td>
+                            <td>The effective year, eligibility rules, and refundable/nonrefundable treatment must be confirmed before estimating the benefit.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="tax-cta-panel">
                 <h3>Want a return-level estimate instead of a headline?</h3>
                 <p>IntegraFin can review your income, deductions, withholding, business records, and multi-state filing questions to identify which new provisions may apply.</p>
@@ -220,15 +338,29 @@ export const mockBlogPosts: BlogPost[] = [
             <h3>Is the full $1.4 billion guaranteed?</h3>
             <p>No projection is a guarantee. The actual fiscal effect depends on how many taxpayers qualify, how much eligible income they report, economic conditions, and whether future-year law changes.</p>
 
+            <h3>Who qualifies for Arizona's tax cut?</h3>
+            <p>Potentially affected groups include taxpayers with qualifying tips, qualifying overtime compensation, eligible seniors, standard-deduction filers, and qualifying families with children. The exact answer depends on the tax year, filing status, income limits, Arizona residency status, and forms used.</p>
+
+            <h3>Is Arizona's $1.4 billion tax cut a refund check?</h3>
+            <p>No. It is a projected aggregate tax-relief figure. Your personal outcome may be a lower tax bill, a larger refund, a smaller balance due, or no benefit depending on whether you qualify.</p>
+
+            <h3>Which Arizona form do I need for the Middle Class Tax Cuts Package deductions?</h3>
+            <p>ADOR says residents who want to claim the qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest, or enhanced senior deductions must file Arizona Form 140. The deductions are not available on Arizona Form 140A or Form 140EZ.</p>
+
+            <h2>Bottom Line on the Arizona Tax Cut 2026</h2>
+            <p>The Arizona tax cut 2026 package is real, but the ranking-worthy answer is not "everyone gets money." The better answer is: Arizona's projected $1.4 billion tax cut may help taxpayers who qualify for specific tip, overtime, senior, standard-deduction, and child-credit provisions. Before changing withholding, amending a return, or counting a refund, match your facts to the correct Arizona tax year, Form 140 instructions, MCTCP worksheet, and final Arizona Department of Revenue guidance.</p>
+
             <h2>Sources Reviewed</h2>
             <ul class="source-list">
+                <li><a href="https://azdor.gov/forms/individual/middle-class-tax-cuts-package-mctcp-worksheet" target="_blank" rel="noopener noreferrer">Arizona Department of Revenue: Middle Class Tax Cuts Package worksheet</a></li>
+                <li><a href="https://azdor.gov/news-center/ador-outlines-guidance-2025-tax-year-income-tax-forms" target="_blank" rel="noopener noreferrer">Arizona Department of Revenue: Guidance on 2025 tax year income tax forms</a></li>
                 <li><a href="https://azgovernor.gov/office-arizona-governor/news/2026/06/pool-footage-governor-katie-hobbs-signs-arizona-first-budget" target="_blank" rel="noopener noreferrer">Office of the Arizona Governor: Governor Katie Hobbs signs the Arizona First budget</a></li>
                 <li><a href="https://azgovernor.gov/office-arizona-governor/news/2026/06/governor-katie-hobbs-releases-statement-bipartisan-budget" target="_blank" rel="noopener noreferrer">Office of the Arizona Governor: Statement on the bipartisan budget agreement</a></li>
                 <li><a href="https://azmirror.com/2026/06/13/hobbs-signs-18-3b-arizona-budget-calling-trump-conforming-tax-cuts-a-historic-win/" target="_blank" rel="noopener noreferrer">Arizona Mirror: Signed budget and three-year tax-cut context</a></li>
                 <li><a href="https://www.irs.gov/newsroom/one-big-beautiful-bill-provisions-individuals-and-workers" target="_blank" rel="noopener noreferrer">IRS: Federal provisions for individuals and workers</a></li>
             </ul>
 
-            <p><strong>Last reviewed:</strong> June 25, 2026.</p>
+            <p><strong>Last reviewed:</strong> June 26, 2026 by the IntegraFin Tax & Accounting Team.</p>
             <p><strong>Educational note:</strong> This article provides general tax education, not legal or tax advice. Arizona conformity rules, forms, effective dates, and individual eligibility can change or depend on facts not covered here.</p>
         `,
     },

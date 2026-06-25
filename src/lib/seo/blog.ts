@@ -12,6 +12,7 @@ export type BlogSeoPost = {
   contentHtml?: string;
   featured?: boolean;
   image?: string;
+  imageAlt?: string;
   author?: {
     name?: string;
     image?: string;

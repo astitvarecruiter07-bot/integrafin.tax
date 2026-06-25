@@ -17,6 +17,7 @@ export type DbBlogPost = {
   contentHtml?: string;
   featured?: boolean;
   image?: string;
+  imageAlt?: string;
   author?: { name: string; image?: string };
   createdAt?: string;
   updatedAt?: string;

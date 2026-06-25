@@ -84,7 +84,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${post.title} - IntegraFin tax guide`,
+          alt: post.imageAlt || `${post.title} - IntegraFin tax guide`,
         },
       ],
     },
@@ -114,6 +114,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const authorName = getBlogPostAuthor(post);
   const canonicalUrl = getBlogPostUrl(slug);
   const imageUrl = getBlogPostImage(post);
+  const imageAlt = post.imageAlt || `${post.title} - IntegraFin tax and accounting guide`;
   const publishedIso = getBlogPostPublishedIso(post);
   const modifiedIso = getBlogPostModifiedIso(post);
   const displayPublishedDate = formatDisplayDate(publishedIso);
@@ -179,7 +180,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {post.image ? (
                   <Image
                     src={post.image}
-                    alt={`${post.title} - IntegraFin tax and accounting guide`}
+                    alt={imageAlt}
                     fill
                     priority
                     sizes="(min-width: 1024px) 420px, 100vw"
