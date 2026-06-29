@@ -11,6 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '', lastModified: '2026-06-15', priority: 1.0 },
     { path: '/about', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/services', lastModified: '2026-06-15', priority: 0.8 },
+    { path: '/llc-formation-tax-setup', lastModified: '2026-06-30', priority: 0.8 },
     { path: '/industries', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/texas-tax-accounting-services', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/katy-tax-accountant', lastModified: '2026-06-22', priority: 0.8 },

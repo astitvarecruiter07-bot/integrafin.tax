@@ -21,7 +21,7 @@ const serviceLinks = [
     { href: "/services#tax-resolution", label: "Tax Resolution" },
     { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },
     { href: "/services#additional", label: "Additional Services" },
-    { href: "/services#startup", label: "Consultation" },
+    { href: "/llc-formation-tax-setup", label: "LLC Formation Tax Setup" },
     { href: "/industries", label: "Industries Served" },
     { href: "/texas-tax-accounting-services", label: "Texas Services" },
     { href: "/new-york-tax-accounting-services", label: "New York Services" },

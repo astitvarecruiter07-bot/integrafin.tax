@@ -56,6 +56,7 @@ const sections = [
     links: [
       { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },
       { href: "/texas/katy-bookkeeping-services", label: "Bookkeeping Services Katy TX" },
+      { href: "/llc-formation-tax-setup", label: "LLC Formation Tax Setup" },
     ],
   },
   {
