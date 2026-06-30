@@ -18,18 +18,13 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/business-tax-accounting',
-        destination: '/services#business',
-        permanent: true,
-      },
-      {
         source: '/individual-tax-services',
-        destination: '/services#individual',
+        destination: '/individual-tax-preparation',
         permanent: true,
       },
       {
         source: '/tax-resolution-services',
-        destination: '/services#tax-resolution',
+        destination: '/tax-resolution',
         permanent: true,
       },
       {

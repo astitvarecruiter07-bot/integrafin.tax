@@ -14,11 +14,14 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
-    { href: "/services#business", label: "Business Tax & Accounting" },
+    { href: "/business-tax-accounting", label: "Business Tax & Accounting" },
+    { href: "/individual-tax-preparation", label: "Individual Tax Preparation" },
+    { href: "/tax-resolution", label: "Tax Resolution" },
+    { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
+    { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
+    { href: "/payroll-tax-support", label: "Payroll Tax Support" },
     { href: "/texas/katy-bookkeeping-services", label: "Katy Bookkeeping Services" },
-    { href: "/services#individual", label: "Individual Tax Services" },
     { href: "/tax-calculator", label: "2026 Federal Tax Calculator" },
-    { href: "/services#tax-resolution", label: "Tax Resolution" },
     { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },
     { href: "/services#additional", label: "Additional Services" },
     { href: "/llc-formation-tax-setup", label: "LLC Formation Tax Setup" },

@@ -156,6 +156,39 @@ const tabHashById: Record<string, string> = {
   startup: "startup",
 };
 
+const focusedServiceLinks = [
+  {
+    href: "/business-tax-accounting",
+    label: "Business Tax & Accounting",
+    description: "Tax preparation, accounting, records, payroll details, and advisory workflow for business owners.",
+  },
+  {
+    href: "/individual-tax-preparation",
+    label: "Individual Tax Preparation",
+    description: "Personal filing support for W-2, 1099, rental, investment, and multi-state tax situations.",
+  },
+  {
+    href: "/tax-resolution",
+    label: "Tax Resolution",
+    description: "IRS notices, back taxes, unfiled returns, payment-plan questions, and response planning.",
+  },
+  {
+    href: "/bookkeeping-cleanup",
+    label: "Bookkeeping Cleanup",
+    description: "Catch-up bookkeeping, reconciliations, missing records, and tax-ready reports.",
+  },
+  {
+    href: "/payroll-tax-support",
+    label: "Payroll Tax Support",
+    description: "Employer payroll tax records, deposits, filings, notices, and year-end wage details.",
+  },
+  {
+    href: "/quickbooks-bookkeeping-services",
+    label: "QuickBooks Bookkeeping Services",
+    description: "QuickBooks setup, cleanup, monthly bookkeeping, reconciliation, and reporting support.",
+  },
+];
+
 export default function ServicesContent() {
   const [activeTab, setActiveTab] = useState(tabsData[0].id);
   const [openAccordionIdx, setOpenAccordionIdx] = useState<number | null>(null);
@@ -233,6 +266,38 @@ export default function ServicesContent() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-16 -mt-6 sm:-mt-10 relative z-20">
+
+        <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-5 sm:p-8 border border-slate-100 mb-8 sm:mb-12">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-5">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-primary">
+                Focused Tax And Accounting Services
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-3xl">
+                Use the services hub for the full overview, or choose the dedicated page that matches the help you need now.
+              </p>
+            </div>
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-primary text-white px-5 py-3 rounded-xl font-bold text-sm">
+              Get Help <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {focusedServiceLinks.map((service) => (
+              <Link
+                key={service.href}
+                href={service.href}
+                className="group rounded-xl border border-slate-200 bg-slate-50 p-4 hover:border-secondary hover:bg-white hover:shadow-sm transition-all"
+              >
+                <h3 className="text-sm sm:text-base font-black text-primary-dark group-hover:text-primary">
+                  {service.label}
+                </h3>
+                <p className="text-[13px] sm:text-sm text-slate-600 leading-relaxed mt-2">
+                  {service.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
 
         {/* Toggle / Tabs Navigation */}
         <div className="relative group mb-8 sm:mb-12">
