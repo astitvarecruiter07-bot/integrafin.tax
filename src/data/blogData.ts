@@ -24,6 +24,261 @@ export interface BlogPost {
 
 export const mockBlogPosts: BlogPost[] = [
     {
+        slug: "irs-trump-account-gift-tax-update",
+        title: "IRS Eases Trump Account Gift Tax Rules",
+        excerpt: "IRS guidance on Trump Account contributions may reduce gift-tax filing worries for families. See limits, Form 709 risk, and planning steps.",
+        category: "Tax News",
+        date: "July 2, 2026",
+        updatedAt: "2026-07-02",
+        readTime: "11 min read",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200",
+        imageAlt: "Family reviewing Trump Account contribution and gift tax planning documents",
+        author: {
+            name: "IntegraFin Tax & Accounting Team",
+        },
+        keywords: [
+            "Trump Account contributions",
+            "Trump Account gift tax",
+            "IRS Trump Account guidance",
+            "Trump Accounts Form 709",
+            "Trump Account annual exclusion",
+            "Trump Account contribution limit",
+            "Trump Account for children",
+            "530A account",
+            "family tax planning",
+            "IRS gift tax annual exclusion",
+        ],
+        faq: [
+            {
+                question: "Did the IRS make Trump Account contributions easier for families?",
+                answer: "Yes, based on current reporting, the IRS has removed a major gift-tax filing concern for many families making Trump Account contributions within the annual gift-tax exclusion. Families should still follow the Trump Account contribution limits and watch for final IRS written guidance.",
+            },
+            {
+                question: "Do parents need to file Form 709 for every Trump Account contribution?",
+                answer: "The new IRS relief is reported to remove the Form 709 filing burden for many contributors whose total taxable gifts to the child stay within the annual gift-tax exclusion. Large gifts, gift splitting, future IRS instructions, and other gifts to the same child can still change the answer.",
+            },
+            {
+                question: "How much can a family contribute to a Trump Account each year?",
+                answer: "IRS guidance says other persons may contribute up to an aggregate limit of $5,000 per year, and employer contributions may be up to $2,500 per year while counting against that $5,000 limit. These limits are separate from the federal $1,000 pilot contribution for eligible newborns.",
+            },
+            {
+                question: "Who qualifies for the $1,000 federal Trump Account contribution?",
+                answer: "The federal government will make a one-time $1,000 pilot contribution for an eligible child when an election is made and the child is a U.S. citizen born from January 1, 2025 through December 31, 2028.",
+            },
+            {
+                question: "Are Trump Account contributions tax deductible?",
+                answer: "Individual family contributions generally are made with after-tax money and are not federal income-tax deductions. Employer contributions may be excluded from the employee's taxable income within the program rules, but they still count against the annual account limit.",
+            },
+            {
+                question: "Can children withdraw Trump Account funds before age 18?",
+                answer: "Generally no. IRS Notice 2025-68 says amounts generally cannot be withdrawn before January 1 of the calendar year in which the child turns 18, except for limited permitted distributions such as certain rollovers, excess contribution corrections, or death.",
+            },
+            {
+                question: "Is a Trump Account better than a 529 plan?",
+                answer: "Not automatically. Trump Accounts may help with long-term investment savings, especially for eligible children receiving the federal seed contribution, but 529 plans can still be more tax-favored for qualified education expenses. Families should compare goals, taxes, state rules, investment options, and withdrawal timing.",
+            },
+        ],
+        contentHtml: `
+            <div class="tax-answer-card">
+                <p><strong>Short answer:</strong> The IRS has reportedly made <strong>Trump Account contributions</strong> easier for many families by removing a gift-tax return filing concern for contributions that stay within the annual gift-tax exclusion. That is helpful, but it does not change the Trump Account contribution cap, make family deposits tax deductible, or make future withdrawals tax free.</p>
+            </div>
+
+            <p>The headline is simple: <strong>IRS just made Trump Account contributions easier for families.</strong> The planning details are less simple, and they matter before parents, grandparents, employers, or friends start moving money.</p>
+
+            <p>Trump Accounts, also called section 530A accounts, are new child investment accounts created by the 2025 tax law. The IRS says contributions cannot begin before <strong>July 4, 2026</strong>. Eligible children may receive a one-time <strong>$1,000 federal pilot contribution</strong>, and families may also make private contributions subject to the program rules.</p>
+
+            <p>The fresh tax-news angle is gift-tax paperwork. Before the latest IRS relief, tax advisers worried that even small family contributions could require <strong>Form 709, United States Gift (and Generation-Skipping Transfer) Tax Return</strong>, because a child generally cannot use Trump Account funds until the account's restricted growth period ends. Current reporting says the IRS has now eased that filing burden for many ordinary contributions within the annual gift-tax exclusion.</p>
+
+            <div class="tax-note">
+                <p><strong>Last reviewed:</strong> July 2, 2026. This article is for general education. Trump Account rules are new, and families should confirm final IRS forms, written guidance, account provider rules, and state tax treatment before contributing significant amounts.</p>
+            </div>
+
+            <h2>What Changed for Trump Account Contributions?</h2>
+            <p><strong>Direct answer:</strong> The IRS reportedly clarified that many Trump Account contributions do not require a gift-tax return when the donor's total taxable gifts to that child stay within the annual exclusion.</p>
+
+            <p>That matters because gift-tax reporting is different from gift-tax payment. Most families do not owe federal gift tax on modest gifts, but some gifts still require a return. IRS Form 709 instructions say the annual exclusion applies to present-interest gifts, while a gift of a future interest generally cannot be excluded under the annual exclusion.</p>
+
+            <p>Trump Accounts created a practical problem. During the restricted period, a child generally cannot withdraw the money. That raised the question: is a contribution to the child's Trump Account a future-interest gift that must be reported even when the dollar amount is small?</p>
+
+            <p>Current reporting says the IRS has provided relief for many family contributors. If the taxpayer's total taxable gifts to a child do not exceed the <strong>$19,000 annual exclusion for 2026</strong>, the contributor may avoid the Form 709 filing burden that tax professionals were worried about. For married couples using both spouses' exclusions, the general annual exclusion table shows <strong>$38,000 per donee in 2026</strong>, but gift splitting and account contribution limits still need separate review.</p>
+
+            <h2>Quick Facts for Families</h2>
+            <p><strong>Direct answer:</strong> Trump Accounts can be useful, but the $1,000 federal contribution, the $5,000 annual contribution cap, and the gift-tax annual exclusion are different rules.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rule</th>
+                            <th>What families should know</th>
+                            <th>Planning note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Launch timing</td>
+                            <td>IRS guidance says contributions cannot be made before July 4, 2026.</td>
+                            <td>Do not assume deposits made before launch will qualify.</td>
+                        </tr>
+                        <tr>
+                            <td>$1,000 pilot contribution</td>
+                            <td>Applies to an eligible U.S. citizen child born January 1, 2025 through December 31, 2028, when the required election is made.</td>
+                            <td>This federal contribution is separate from private family contributions.</td>
+                        </tr>
+                        <tr>
+                            <td>Private annual contribution cap</td>
+                            <td>Other persons may contribute up to an aggregate $5,000 per year, subject to program rules.</td>
+                            <td>The account cap is lower than the gift-tax annual exclusion.</td>
+                        </tr>
+                        <tr>
+                            <td>Employer contribution limit</td>
+                            <td>Employers may contribute up to $2,500 per year under an employer Trump Account contribution program, and it counts against the $5,000 annual cap.</td>
+                            <td>Employers should coordinate payroll, benefits, and reporting before promising a benefit.</td>
+                        </tr>
+                        <tr>
+                            <td>Gift-tax annual exclusion</td>
+                            <td>The IRS gift-tax FAQ lists the 2026 annual exclusion as $19,000 per donee, or $38,000 when two spouses each use their exclusion.</td>
+                            <td>Other gifts to the same child in the same year may affect reporting.</td>
+                        </tr>
+                        <tr>
+                            <td>Withdrawals</td>
+                            <td>Amounts generally cannot be withdrawn before January 1 of the calendar year the child turns 18, except for limited permitted distributions.</td>
+                            <td>Families should not treat the account like a short-term emergency fund.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>How Trump Accounts Work</h2>
+            <p><strong>Direct answer:</strong> A Trump Account is a new type of child IRA with special rules before the year the child turns 18.</p>
+
+            <p>IRS Notice 2025-68 describes a Trump Account as a type of traditional individual retirement account established for an eligible child. During the growth period, the account has special restrictions that do not apply to ordinary IRAs. Funds must be invested in eligible mutual funds or exchange-traded funds that track the S&amp;P 500 or another index of primarily American equities.</p>
+
+            <p>The account is designed for long-term growth. The official Trump Accounts site says the program is launching July 4, 2026, and says eligible children born from January 1, 2025 through December 31, 2028 can receive $1,000 from the U.S. Treasury. It also says contributions are optional and that families may contribute up to $5,000 per year.</p>
+
+            <p>After the restricted period, the account generally is treated like a traditional IRA. That means future distributions may be taxable under IRA rules unless a specific exception or later guidance applies. Families should avoid assuming that a Trump Account works like a 529 college savings account, because qualified education withdrawals from a 529 may receive tax-free treatment that a Trump Account does not automatically provide.</p>
+
+            <h2>Why Families Were Worried About Form 709</h2>
+            <p><strong>Direct answer:</strong> The concern was that a contribution might be treated as a future-interest gift, which can trigger gift-tax reporting even when the amount is small.</p>
+
+            <p>Under general IRS gift-tax instructions, the first $19,000 of present-interest gifts to each donee in 2026 can be excluded. But the same instructions say a gift of a future interest cannot be excluded under the annual exclusion. The instructions also say gifts of future interests must be entered on Form 709 regardless of value.</p>
+
+            <p>That distinction is technical, but it is the heart of the issue. A present-interest gift generally gives the recipient immediate rights to use, possess, or enjoy the property. A future-interest gift delays those rights until a future date. Because Trump Account funds generally cannot be distributed while the child is under the restricted period, advisers saw a possible Form 709 problem.</p>
+
+            <p>For a family trying to deposit $250, $1,000, or $5,000, requiring a gift-tax return would have made the account much harder to use. The reported IRS relief reduces that friction for many contributors who stay within the annual gift-tax exclusion and do not have other complicated gifting facts.</p>
+
+            <h2>What the IRS Relief Does Not Change</h2>
+            <p><strong>Direct answer:</strong> The relief is about gift-tax return paperwork. It does not erase the account contribution limit or change every tax rule connected to the account.</p>
+
+            <ul>
+                <li><strong>It does not raise the $5,000 account contribution cap.</strong> The gift-tax annual exclusion and the Trump Account contribution limit are separate numbers.</li>
+                <li><strong>It does not make family contributions deductible.</strong> A parent or grandparent generally uses after-tax money for personal contributions.</li>
+                <li><strong>It does not make future withdrawals tax free.</strong> After the restricted period, the account generally follows traditional IRA treatment unless a specific rule applies.</li>
+                <li><strong>It does not remove the need to track other gifts.</strong> If the same donor gives other taxable gifts to the same child in the same year, the annual exclusion analysis may change.</li>
+                <li><strong>It does not settle every state tax issue.</strong> States may issue their own guidance on conformity, deductions, income treatment, or reporting.</li>
+            </ul>
+
+            <h2>Planning Steps Before You Contribute</h2>
+            <p><strong>Direct answer:</strong> Families should claim eligible seed money, keep records, coordinate gifts, and compare the Trump Account with other child-savings tools.</p>
+
+            <ol>
+                <li><strong>Confirm eligibility first.</strong> For the $1,000 pilot contribution, confirm the child's citizenship, Social Security number, birth date, and required election process.</li>
+                <li><strong>Separate the account cap from gift-tax limits.</strong> A $19,000 gift-tax annual exclusion does not mean $19,000 can go into a Trump Account. The annual account contribution limit is lower.</li>
+                <li><strong>Coordinate family contributors.</strong> Parents, grandparents, and others should avoid accidentally exceeding the aggregate account contribution limit.</li>
+                <li><strong>Track employer contributions.</strong> Employer contributions can count against the child's annual $5,000 limit and may require payroll or benefit-plan coordination.</li>
+                <li><strong>Keep written records.</strong> Save confirmation of contributions, dates, contributors, account statements, and any employer benefit notices.</li>
+                <li><strong>Compare alternatives.</strong> A 529 plan, custodial brokerage account, custodial Roth IRA, savings account, or trust may fit better depending on the family goal.</li>
+                <li><strong>Watch for final IRS updates.</strong> This is a new program, and final forms, trustee procedures, and contribution reporting can evolve.</li>
+            </ol>
+
+            <h2>Trump Account vs 529 Plan vs Custodial Roth IRA</h2>
+            <p><strong>Direct answer:</strong> The right account depends on the child's age, the source of money, education goals, earned income, state tax rules, and how flexible the family wants the funds to be.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Account type</th>
+                            <th>Potential strength</th>
+                            <th>Potential limitation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Trump Account</td>
+                            <td>Eligible newborns may receive $1,000 in federal seed money, and the account can grow for many years.</td>
+                            <td>Investment choices and withdrawals are restricted, and future distributions generally follow IRA tax treatment.</td>
+                        </tr>
+                        <tr>
+                            <td>529 college savings plan</td>
+                            <td>Can offer tax-free withdrawals for qualified education expenses and may have state tax benefits.</td>
+                            <td>Best when education funding is the main goal; nonqualified withdrawals can create tax and penalty issues.</td>
+                        </tr>
+                        <tr>
+                            <td>Custodial Roth IRA</td>
+                            <td>Can provide powerful tax-free retirement growth when the child has earned income.</td>
+                            <td>Contributions require eligible earned income and are limited by IRA rules.</td>
+                        </tr>
+                        <tr>
+                            <td>Custodial brokerage account</td>
+                            <td>More flexible investment and use options than many restricted accounts.</td>
+                            <td>May create kiddie-tax, financial-aid, and control issues when the child reaches the age of majority.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Who Should Pay Attention Now?</h2>
+            <p><strong>Direct answer:</strong> Parents of young children, grandparents, employers, payroll teams, and families in high-tax states should review the rules before launch or contribution season.</p>
+
+            <p>Families with a child born from 2025 through 2028 should pay special attention because of the $1,000 federal pilot contribution. Grandparents and relatives should coordinate before contributing, especially if they also make birthday gifts, education payments, custodial transfers, or annual-exclusion gifts to the same child.</p>
+
+            <p>Employers should also move carefully. The IRS says an employer may contribute to a Trump Account of an employee or the employee's dependent under an employer contribution program. Those contributions may be excluded from the employee's taxable income within the program rules, but employers still need to handle plan design, eligibility, communication, payroll records, and reporting.</p>
+
+            <div class="tax-cta-panel">
+                <h3>Need help comparing child savings and tax options?</h3>
+                <p>IntegraFin can help families and business owners compare Trump Accounts, 529 plans, payroll benefits, estimated taxes, and state-specific tax planning before money moves.</p>
+                <p>Start with our <a href="/services">tax and accounting services</a>, review state support for <a href="/texas-tax-accounting-services">Texas tax planning</a>, <a href="/new-york-tax-accounting-services">New York tax planning</a>, and <a href="/pennsylvania-tax-accounting-services">Pennsylvania tax planning</a>, or <a href="/contact">schedule a consultation</a>.</p>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>Did the IRS make Trump Account contributions easier for families?</h3>
+            <p>Yes, based on current reporting, the IRS has removed a major gift-tax filing concern for many families making Trump Account contributions within the annual gift-tax exclusion. Families should still follow the Trump Account contribution limits and watch for final IRS written guidance.</p>
+
+            <h3>Do parents need to file Form 709 for every Trump Account contribution?</h3>
+            <p>The new IRS relief is reported to remove the Form 709 filing burden for many contributors whose total taxable gifts to the child stay within the annual gift-tax exclusion. Large gifts, gift splitting, future IRS instructions, and other gifts to the same child can still change the answer.</p>
+
+            <h3>How much can a family contribute to a Trump Account each year?</h3>
+            <p>IRS guidance says other persons may contribute up to an aggregate limit of $5,000 per year, and employer contributions may be up to $2,500 per year while counting against that $5,000 limit. These limits are separate from the federal $1,000 pilot contribution for eligible newborns.</p>
+
+            <h3>Who qualifies for the $1,000 federal Trump Account contribution?</h3>
+            <p>The federal government will make a one-time $1,000 pilot contribution for an eligible child when an election is made and the child is a U.S. citizen born from January 1, 2025 through December 31, 2028.</p>
+
+            <h3>Are Trump Account contributions tax deductible?</h3>
+            <p>Individual family contributions generally are made with after-tax money and are not federal income-tax deductions. Employer contributions may be excluded from the employee's taxable income within the program rules, but they still count against the annual account limit.</p>
+
+            <h3>Can children withdraw Trump Account funds before age 18?</h3>
+            <p>Generally no. IRS Notice 2025-68 says amounts generally cannot be withdrawn before January 1 of the calendar year in which the child turns 18, except for limited permitted distributions such as certain rollovers, excess contribution corrections, or death.</p>
+
+            <h3>Is a Trump Account better than a 529 plan?</h3>
+            <p>Not automatically. Trump Accounts may help with long-term investment savings, especially for eligible children receiving the federal seed contribution, but 529 plans can still be more tax-favored for qualified education expenses. Families should compare goals, taxes, state rules, investment options, and withdrawal timing.</p>
+
+            <h2>Sources Reviewed</h2>
+            <ul class="source-list">
+                <li><a href="https://www.irs.gov/newsroom/treasury-irs-issue-guidance-on-trump-accounts-established-under-the-working-families-tax-cuts-notice-announces-upcoming-regulations" target="_blank" rel="noopener noreferrer">IRS: Treasury and IRS guidance on Trump Accounts</a></li>
+                <li><a href="https://www.irs.gov/pub/irs-drop/n-25-68.pdf" target="_blank" rel="noopener noreferrer">IRS Notice 2025-68: Section 530A Trump Accounts</a></li>
+                <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/frequently-asked-questions-on-gift-taxes" target="_blank" rel="noopener noreferrer">IRS: Frequently asked questions on gift taxes</a></li>
+                <li><a href="https://www.irs.gov/pub/irs-pdf/i709.pdf" target="_blank" rel="noopener noreferrer">IRS: Instructions for Form 709</a></li>
+                <li><a href="https://www.trumpaccounts.gov/" target="_blank" rel="noopener noreferrer">TrumpAccounts.gov: Official program information</a></li>
+                <li><a href="https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-29-2026/card/irs-removes-gift-tax-filing-burden-for-many-trump-account-owners-MgmeyGwfcnRZrDpadEw5" target="_blank" rel="noopener noreferrer">Wall Street Journal: IRS removes gift-tax filing burden for many Trump Account owners</a></li>
+            </ul>
+
+            <p><strong>Educational note:</strong> This article is general information, not legal, investment, payroll, or tax advice. Trump Account tax results can depend on final IRS guidance, account provider procedures, who contributes, state law, other gifts made in the same year, and the child's long-term plans.</p>
+        `,
+    },
+    {
         slug: "arizona-tax-cut-2026",
         title: "Arizona $1.4B Tax Cut 2026: Who Qualifies?",
         excerpt: "Arizona's $1.4B tax cut is now law. See who may qualify for tip, overtime, senior, standard deduction, and child credit changes in 2026.",
@@ -31,7 +286,7 @@ export const mockBlogPosts: BlogPost[] = [
         date: "June 25, 2026",
         updatedAt: "2026-06-26",
         readTime: "12 min read",
-        featured: true,
+        featured: false,
         image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=1200",
         imageAlt: "Arizona tax cut 2026 guide for tips, overtime, seniors, standard deduction, and child credit changes",
         author: {

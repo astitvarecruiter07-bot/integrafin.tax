@@ -13,6 +13,7 @@ interface BlogContentProps {
 
 const categories = [
     "All",
+    "Tax News",
     "Tax Planning",
     "Accounting",
     "Compliance",
