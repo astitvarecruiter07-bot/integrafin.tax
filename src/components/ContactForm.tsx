@@ -67,20 +67,26 @@ export default function ContactForm() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-1">
-          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Full Name</label>
+          <label htmlFor="contact-name" className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Full Name</label>
           <input 
+            id="contact-name"
             name="name"
             required
+            minLength={2}
+            maxLength={100}
+            autoComplete="name"
             className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" 
             placeholder="John Doe" 
             type="text" 
           />
         </div>
         <div className="space-y-1">
-          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Email Address</label>
+          <label htmlFor="contact-email" className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Email Address</label>
           <input 
+            id="contact-email"
             name="email"
             required
+            autoComplete="email"
             className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" 
             placeholder="john@example.com" 
             type="email" 
@@ -90,19 +96,26 @@ export default function ContactForm() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-1">
-          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Phone</label>
+          <label htmlFor="contact-phone" className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Phone</label>
           <input 
+            id="contact-phone"
             name="phone"
             required
+            minLength={10}
+            maxLength={20}
+            autoComplete="tel"
             className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" 
             placeholder="+1 (000) 000-0000" 
             type="tel" 
           />
         </div>
         <div className="space-y-1">
-          <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Company Name (Optional)</label>
+          <label htmlFor="contact-company" className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Company Name (Optional)</label>
           <input 
+            id="contact-company"
             name="company"
+            maxLength={100}
+            autoComplete="organization"
             className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" 
             placeholder="Your Firm LLC" 
             type="text" 
@@ -111,8 +124,9 @@ export default function ContactForm() {
       </div>
       
       <div className="space-y-1">
-        <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Enquiry Type</label>
+        <label htmlFor="contact-service" className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Enquiry Type</label>
         <select 
+          id="contact-service"
           name="service"
           required
           className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg appearance-none"
@@ -128,10 +142,13 @@ export default function ContactForm() {
       </div>
       
       <div className="space-y-1">
-        <label className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Message</label>
+        <label htmlFor="contact-message" className="text-xs sm:text-[10px] font-black uppercase tracking-[0.2em] text-[#003580]">Message</label>
         <textarea 
+          id="contact-message"
           name="message"
           required
+          minLength={10}
+          maxLength={2000}
           className="w-full bg-gray-50 border-none focus:ring-1 focus:ring-[#00C2CB] p-4 text-sm rounded-lg" 
           placeholder="How can our experts assist you today?" 
           rows={4}

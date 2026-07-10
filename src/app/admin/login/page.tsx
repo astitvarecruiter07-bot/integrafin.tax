@@ -1,10 +1,14 @@
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { LockKeyhole } from 'lucide-react';
 import { ADMIN_AUTH_COOKIE, isAdminAuthenticated } from '@/lib/adminAuth';
 import { verifyAdminCredentialPair } from '@/lib/adminCredentials';
 import { createAdminSessionToken, getAdminSessionTtlSeconds } from '@/lib/adminSession';
+import { checkRateLimit } from '@/lib/rateLimit';
+
+const ADMIN_LOGIN_LIMIT = 5;
+const ADMIN_LOGIN_WINDOW_MS = 10 * 60 * 1000;
 
 export const metadata: Metadata = {
   title: 'Admin Login | IntegraFin',
@@ -22,12 +26,27 @@ function getSafeNextPath(value: FormDataEntryValue | string | null | undefined) 
   return path;
 }
 
+async function getAdminLoginRateLimitKey() {
+  const headerStore = await headers();
+  const forwardedFor = headerStore.get('x-forwarded-for');
+  const realIp = headerStore.get('x-real-ip');
+  const firstForwarded = forwardedFor?.split(',')[0]?.trim();
+  return firstForwarded || realIp || 'unknown';
+}
+
 async function loginAdmin(formData: FormData) {
   'use server';
 
   const username = String(formData.get('username') || '');
   const password = String(formData.get('password') || '');
   const nextPath = getSafeNextPath(formData.get('next'));
+
+  const rateLimitKey = await getAdminLoginRateLimitKey();
+  const rateResult = checkRateLimit(`adminLogin:${rateLimitKey}`, ADMIN_LOGIN_LIMIT, ADMIN_LOGIN_WINDOW_MS);
+  if (!rateResult.allowed) {
+    redirect(`/admin/login?error=rate&next=${encodeURIComponent(nextPath)}`);
+  }
+
   const verifiedUser = verifyAdminCredentialPair(username, password);
 
   if (!verifiedUser) {
@@ -81,6 +100,8 @@ export default async function AdminLoginPage({
             <div className="mb-5 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
               {error === 'config'
                 ? 'Admin access is not fully configured.'
+                : error === 'rate'
+                  ? 'Too many login attempts. Please wait a few minutes before trying again.'
                 : 'The username or password is incorrect.'}
             </div>
           )}

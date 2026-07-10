@@ -883,11 +883,12 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
 
                         {/* Income */}
                         <div className="space-y-5">
-                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">02. Annual Income</label>
+                            <label htmlFor="federal-income" className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">02. Annual Income</label>
                             <div className="relative group">
                                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-bold">$</span>
                                 <input
                                     suppressHydrationWarning
+                                    id="federal-income"
                                     className="w-full bg-gray-50 border-none rounded-xl py-4 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all text-xl font-bold text-[#0047AB]"
                                     placeholder="0"
                                     type="text"
@@ -897,10 +898,11 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
                             </div>
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Tax Withheld</label>
+                                    <label htmlFor="federal-withheld" className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Tax Withheld</label>
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
                                         <input
+                                            id="federal-withheld"
                                             className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                             type="text"
                                             placeholder="0"
@@ -910,11 +912,12 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Estimated Payments</label>
+                                    <label htmlFor="federal-estimated-payments" className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Estimated Payments</label>
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
                                         <input
                                             suppressHydrationWarning
+                                            id="federal-estimated-payments"
                                             className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                             type="text"
                                             placeholder="0"
@@ -924,11 +927,12 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Other Income</label>
+                                    <label htmlFor="federal-other-income" className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Other Income</label>
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
                                         <input
                                             suppressHydrationWarning
+                                            id="federal-other-income"
                                             className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                             type="text"
                                             placeholder="0"
@@ -946,25 +950,27 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
                             <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl">
                                 <input
                                     suppressHydrationWarning
+                                    id="federal-standard-deduction"
                                     type="checkbox"
                                     checked={deductionType === "standard"}
                                     onChange={() => setDeductionType(deductionType === "standard" ? "itemized" : "standard")}
                                     className="w-5 h-5 text-[#00C2CB] border-none rounded bg-gray-200 focus:ring-[#00C2CB]"
                                 />
-                                <div>
-                                    <p className="font-bold text-sm">Standard Deduction</p>
+                                <label htmlFor="federal-standard-deduction">
+                                    <span className="block font-bold text-sm">Standard Deduction</span>
                                     <p className="text-xs text-gray-500">
                                         {fmt(getStandardDeduction(taxYear, status))} for {FILING_STATUSES.find(f => f.value === status)?.label} filers in {taxYear}
                                     </p>
-                                </div>
+                                </label>
                             </div>
                             {deductionType === "itemized" && (
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Itemized Deductions</label>
+                                    <label htmlFor="federal-itemized-deductions" className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Itemized Deductions</label>
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
                                         <input
                                             suppressHydrationWarning
+                                            id="federal-itemized-deductions"
                                             className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                             type="text"
                                             value={itemizedDeduction}
@@ -975,11 +981,12 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
                             )}
                             <div className="flex items-center gap-4">
                                 <div className="flex-1 space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Other Tax Credits</label>
+                                    <label htmlFor="federal-other-credits" className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Other Tax Credits</label>
                                     <div className="relative">
                                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#0047AB] font-medium">$</span>
                                         <input
                                             suppressHydrationWarning
+                                            id="federal-other-credits"
                                             className="w-full bg-gray-50 border-none rounded-xl py-3 pl-8 pr-4 focus:ring-2 focus:ring-[#00C2CB] transition-all"
                                             type="text"
                                             value={credits}
@@ -988,9 +995,10 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
                                     </div>
                                 </div>
                                 <div className="flex-1 space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Qualifying Children</label>
+                                    <label htmlFor="federal-qualifying-children" className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Qualifying Children</label>
                                     <input
                                         suppressHydrationWarning
+                                        id="federal-qualifying-children"
                                         type="number"
                                         min="0"
                                         value={qualifyingChildren}

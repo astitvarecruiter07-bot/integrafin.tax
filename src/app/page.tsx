@@ -3,12 +3,48 @@ import Link from "next/link";
 import { Check, CheckCircle2, ChevronRight } from "lucide-react";
 import HomeCallbackForm from "@/components/HomeCallbackForm";
 import HeroCarousel from "@/components/HeroCarousel";
+import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
 
 export const metadata = {
-  title: 'Tax Accountant Katy TX | Tax Preparation & Bookkeeping | IntegraFin',
-  description: 'Need a tax accountant in Katy, TX? IntegraFin provides tax preparation, bookkeeping, payroll workflow support, and IRS notice help for Katy and Fort Bend County clients.',
+  title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
+  description: 'IntegraFin is a Katy tax and accounting firm helping businesses and families with tax preparation, bookkeeping, payroll records, IRS notice help, and secure year-round support.',
   alternates: { canonical: 'https://integrafin.tax/' },
+  openGraph: {
+    title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
+    description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and secure year-round support from IntegraFin.',
+    url: 'https://integrafin.tax/',
+    type: 'website',
+    siteName: 'IntegraFin',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
+    description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and secure year-round support from IntegraFin.',
+  },
 };
+
+const stateServiceHubs = [
+  {
+    href: "/texas-tax-accounting-services",
+    label: "Texas Services",
+    description: "Business tax, bookkeeping, payroll, and IRS support for Texas clients.",
+  },
+  {
+    href: "/new-york-tax-accounting-services",
+    label: "New York Services",
+    description: "Tax planning and accounting support for New York businesses and individuals.",
+  },
+  {
+    href: "/pennsylvania-tax-accounting-services",
+    label: "Pennsylvania Services",
+    description: "End-to-end tax and accounting services for Pennsylvania clients.",
+  },
+  ...highTaxStateServiceLinks.map((link) => ({
+    href: link.href,
+    label: link.label.replace(" Tax and Accounting Services", " Services"),
+    description: link.description,
+  })),
+];
 
 export default function Home() {
   return (
@@ -22,7 +58,7 @@ export default function Home() {
       <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto -mt-16 z-30 relative">
         <div className="text-center mb-16">
            <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-2 block">Our Expertise</span>
-           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] tracking-tight">Tax Accountant Katy TX Services</h2>
+           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] tracking-tight">Katy Tax and Accounting Firm Services</h2>
            <p className="text-slate-600 mt-4 max-w-3xl mx-auto text-base md:text-lg">
              IntegraFin helps Katy and Fort Bend County clients with organized tax preparation, bookkeeping, business tax support, payroll records, and IRS notice response.
            </p>
@@ -127,7 +163,7 @@ export default function Home() {
            <div className="absolute inset-0 bg-gradient-to-r from-[#0092df]/20 to-transparent rounded-[2rem] transform -rotate-3 scale-105 blur-sm -z-10 transition-transform duration-700 hover:rotate-0"></div>
            <div className="relative h-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
              <Image
-               src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80"
+               src="/A_professional,_wide-angle_202604082301.png"
                alt="About Integrafin"
                fill
                sizes="(max-width: 768px) 100vw, 50vw"
@@ -249,7 +285,7 @@ export default function Home() {
             <div>
               <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">Local Tax Support</span>
               <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight mb-5">
-                Tax Accountant in Katy, TX Serving Fort Bend County
+                Katy Tax and Accounting Firm Serving Fort Bend County
               </h2>
               <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
                 IntegraFin helps Katy-area business owners, self-employed professionals, families, and growing teams stay organized with tax preparation, bookkeeping services, payroll records support, and IRS notice help.
@@ -264,8 +300,8 @@ export default function Home() {
                 <Link href="/texas/katy-bookkeeping-services" className="bg-secondary text-[#003580] px-7 py-3 rounded-xl font-bold transition-colors text-center">
                   View Katy Bookkeeping Page
                 </Link>
-                <Link href="/texas/fulshear-tax-accountant" className="bg-slate-50 border border-slate-200 text-[#003580] px-7 py-3 rounded-xl font-bold transition-colors text-center hover:border-[#0092df]/40">
-                  View Fulshear Tax Accountant Page
+                <Link href="/texas/katy-tax-accountant" className="bg-slate-50 border border-slate-200 text-[#003580] px-7 py-3 rounded-xl font-bold transition-colors text-center hover:border-[#0092df]/40">
+                  View Katy Local Tax Page
                 </Link>
               </div>
             </div>
@@ -307,22 +343,20 @@ export default function Home() {
             <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">State Coverage</span>
             <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">Tax And Accounting Services By State</h2>
             <p className="text-slate-600 mt-4 max-w-3xl mx-auto">
-              Explore our dedicated pages for Texas, New York, and Pennsylvania tax and accounting support.
+              Explore dedicated pages for priority tax-service markets with high tax volume, business activity, and recurring compliance needs.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link href="/texas-tax-accounting-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-              <h3 className="text-xl font-black text-[#003580] mb-2">Texas Services</h3>
-              <p className="text-slate-600 text-sm">Business tax, bookkeeping, payroll, and IRS support for Texas clients.</p>
-            </Link>
-            <Link href="/new-york-tax-accounting-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-              <h3 className="text-xl font-black text-[#003580] mb-2">New York Services</h3>
-              <p className="text-slate-600 text-sm">Tax planning and accounting support for New York businesses and individuals.</p>
-            </Link>
-            <Link href="/pennsylvania-tax-accounting-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-              <h3 className="text-xl font-black text-[#003580] mb-2">Pennsylvania Services</h3>
-              <p className="text-slate-600 text-sm">End-to-end tax and accounting services for Pennsylvania clients.</p>
-            </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
+            {stateServiceHubs.map((hub) => (
+              <Link
+                key={hub.href}
+                href={hub.href}
+                className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all"
+              >
+                <h3 className="text-xl font-black text-[#003580] mb-2">{hub.label}</h3>
+                <p className="text-slate-600 text-sm">{hub.description}</p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -361,7 +395,7 @@ export default function Home() {
       <section className="relative py-32 bg-slate-900 border-b-8 border-[#0092df] text-center flex items-center justify-center min-h-[500px]">
          <div className="absolute inset-0 bg-gradient-to-br from-[#003580]/90 to-slate-900/90 z-10" />
          <Image
-           src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80"
+           src="/A_professional,_wide-angle_202604082301.png"
            alt="Testimonial Background"
            fill
            sizes="100vw"
@@ -412,7 +446,7 @@ export default function Home() {
            <div className="lg:w-1/2 relative min-h-[400px] lg:min-h-auto inset-y-0">
               <div className="absolute inset-0 bg-[#003580]/10 z-10 mix-blend-overlay"></div>
               <Image
-                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80"
+                src="/A_professional,_wide-angle_202604082301.png"
                 alt="Request Call Back"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

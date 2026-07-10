@@ -65,8 +65,13 @@ export default function HomeCallbackForm() {
       )}
       
       <input 
+        id="callback-name"
         name="name"
         required
+        minLength={2}
+        maxLength={100}
+        autoComplete="name"
+        aria-label="Full Name"
         className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" 
         placeholder="Full Name" 
         type="text" 
@@ -74,15 +79,23 @@ export default function HomeCallbackForm() {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <input 
+          id="callback-email"
           name="email"
           required
+          autoComplete="email"
+          aria-label="Email"
           className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" 
           placeholder="Email" 
           type="email" 
         />
         <input 
+          id="callback-phone"
           name="phone"
           required
+          minLength={10}
+          maxLength={20}
+          autoComplete="tel"
+          aria-label="Phone"
           className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" 
           placeholder="Phone" 
           type="tel" 
@@ -90,8 +103,10 @@ export default function HomeCallbackForm() {
       </div>
       
       <select 
+        id="callback-service"
         name="service"
         required
+        aria-label="Enquiry Type"
         className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#45474c] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all"
       >
         <option value="">Enquiry Type</option>
@@ -102,8 +117,12 @@ export default function HomeCallbackForm() {
       </select>
       
       <textarea 
+        id="callback-message"
         name="message"
         required
+        minLength={10}
+        maxLength={2000}
+        aria-label="Message"
         className="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-[#191c1e] focus:ring-[#00C2CB] focus:border-[#00C2CB] transition-all" 
         placeholder="Message" 
         rows={4}

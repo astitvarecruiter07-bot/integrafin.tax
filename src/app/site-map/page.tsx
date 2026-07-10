@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
+import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
 
 export const metadata: Metadata = {
   title: "HTML Sitemap | IntegraFin",
@@ -30,6 +31,10 @@ const sections = [
       { href: "/texas-tax-accounting-services", label: "Texas Tax and Accounting Services" },
       { href: "/new-york-tax-accounting-services", label: "New York Tax and Accounting Services" },
       { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania Tax and Accounting Services" },
+      ...highTaxStateServiceLinks.map((link) => ({
+        href: link.href,
+        label: link.label,
+      })),
     ],
   },
   {

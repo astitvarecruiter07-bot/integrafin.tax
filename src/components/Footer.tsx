@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import NewsletterSignup from "@/components/NewsletterSignup";
+import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
 
 const quickLinks = [
     { href: "/", label: "Home" },
@@ -29,6 +30,10 @@ const serviceLinks = [
     { href: "/texas-tax-accounting-services", label: "Texas Services" },
     { href: "/new-york-tax-accounting-services", label: "New York Services" },
     { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania Services" },
+    ...highTaxStateServiceLinks.map((link) => ({
+        href: link.href,
+        label: link.label.replace(" Tax and Accounting Services", " Services"),
+    })),
 ];
 
 const socialLinks = [

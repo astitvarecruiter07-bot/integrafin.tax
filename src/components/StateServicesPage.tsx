@@ -1,27 +1,30 @@
 import Link from "next/link";
 
-type FaqItem = {
+export type FaqItem = {
   question: string;
   answer: string;
 };
 
-type ResourceLink = {
+export type ResourceLink = {
   href: string;
   label: string;
 };
 
-type CityPageLink = {
+export type CityPageLink = {
   href: string;
   label: string;
 };
 
-type StateServicesPageProps = {
+export type StateServicesPageProps = {
   stateName: string;
   stateCode: string;
   primaryKeyword: string;
   secondaryKeywords: string[];
   heroDescription: string;
   directAnswer: string;
+  marketSignalTitle?: string;
+  marketSignalIntro?: string;
+  marketSignals?: string[];
   serviceFocus: string[];
   whoWeHelp: string[];
   compliancePoints: string[];
@@ -39,6 +42,9 @@ export default function StateServicesPage({
   stateCode,
   heroDescription,
   directAnswer,
+  marketSignalTitle,
+  marketSignalIntro,
+  marketSignals = [],
   serviceFocus,
   whoWeHelp,
   compliancePoints,
@@ -158,6 +164,22 @@ export default function StateServicesPage({
             Last reviewed: {lastReviewed}
           </p>
         </article>
+
+        {marketSignals.length > 0 && (
+          <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
+            <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
+              {marketSignalTitle || `Why ${stateName} Is A Priority Market`}
+            </h2>
+            {marketSignalIntro ? (
+              <p className="text-slate-700 leading-relaxed mb-5">{marketSignalIntro}</p>
+            ) : null}
+            <ul className="space-y-3 text-slate-700">
+              {marketSignals.map((signal) => (
+                <li key={signal}>{signal}</li>
+              ))}
+            </ul>
+          </article>
+        )}
 
         <div className="grid md:grid-cols-2 gap-8">
           <article className="bg-white rounded-2xl p-7 shadow-sm border border-slate-100">

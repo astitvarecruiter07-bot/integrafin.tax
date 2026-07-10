@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 import { getBlogPostBySlug as getMockBlogPostBySlug, mockBlogPosts } from "@/data/blogData";
 import { getBlogPostBySlug as getDbBlogPostBySlug, getAllBlogPosts } from "@/app/actions/blog";
@@ -50,7 +51,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = (await getDbBlogPostBySlug(slug)) || getMockBlogPostBySlug(slug);
-  if (!post) return { title: "Blog Post Not Found" };
+  if (!post) notFound();
 
   const description = getBlogPostDescription(post);
   const canonicalUrl = getBlogPostUrl(slug);
@@ -102,12 +103,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = (await getDbBlogPostBySlug(slug)) || getMockBlogPostBySlug(slug);
 
   if (!post) {
-    return (
-      <div className="pt-32 pb-20 text-center">
-        <h1 className="text-4xl font-bold text-foreground mb-4">Post Not Found</h1>
-        <Link href="/blog" className="text-primary hover:underline">Back to Blog</Link>
-      </div>
-    );
+    notFound();
   }
 
   const description = getBlogPostDescription(post, 220);

@@ -53,8 +53,6 @@ export async function submitLead(data: LeadInput) {
     
     await dbConnect();
     
-    console.log('Saving lead to DB:', validatedData);
-    
     const newLead = await ContactLead.create({
       ...validatedData,
       status: 'new',

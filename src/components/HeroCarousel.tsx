@@ -7,13 +7,13 @@ import { ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    badge: "KATY TAX & BOOKKEEPING",
-    title: "Tax Accountant in Katy, TX for Businesses and Families",
-    description: "IntegraFin provides tax preparation, bookkeeping, payroll workflow support, and IRS notice help for Katy and Fort Bend County clients.",
-    buttonLabel: "Book Katy Tax Consultation",
+    badge: "KATY TAX & ACCOUNTING FIRM",
+    title: "Katy Tax and Accounting Firm for Businesses and Families",
+    description: "IntegraFin provides organized tax preparation, bookkeeping, payroll records support, and IRS notice help for Katy and Fort Bend County clients.",
+    buttonLabel: "Schedule A Consultation",
     buttonLink: "/contact",
     image: "/A_professional,_wide-angle_202604082301.png",
-    imageAlt: "IntegraFin tax accountant support for Katy TX businesses"
+    imageAlt: "IntegraFin tax and accounting firm support for Katy TX businesses"
   },
   {
     badge: "BUSINESS TAX SUPPORT",

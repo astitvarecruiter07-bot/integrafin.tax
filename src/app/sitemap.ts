@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { mockBlogPosts } from '@/data/blogData';
 import { serviceLandingPageSlugs, serviceLandingPages } from '@/data/serviceLandingPages';
+import { highTaxStateServicePageList } from '@/data/highTaxStateServicePages';
 import { getAllBlogPosts as getDbBlogPosts } from '@/app/actions/blog';
 
 export const revalidate = 86400;
@@ -39,6 +40,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/pennsylvania-tax-accounting-services', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/pennsylvania/philadelphia-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/pennsylvania/pittsburgh-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
+    ...highTaxStateServicePageList.map((page) => ({
+      path: `/${page.slug}`,
+      lastModified: page.lastModified,
+      priority: 0.8,
+    })),
     { path: '/contact', lastModified: '2026-06-15', priority: 0.8 },
     { path: '/blog', lastModified: '2026-06-15', priority: 0.8 },
     { path: '/case-study', lastModified: '2026-06-05', priority: 0.8 },
