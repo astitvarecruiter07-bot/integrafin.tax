@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ShieldCheck, Target, Lightbulb, CheckCircle2, ArrowRight, Landmark } from "lucide-react";
-import { personSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: 'About IntegraFin | Trusted Tax Professionals in Katy, TX',
@@ -146,11 +145,6 @@ export default function AboutPage() {
                     </div>
                 </div>
             </section>
-            {/* Person Schema for E-E-A-T */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-            />
         </main>
     );
 }

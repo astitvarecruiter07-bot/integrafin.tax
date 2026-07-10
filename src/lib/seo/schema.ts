@@ -70,19 +70,6 @@ export const organizationSchema = {
   ]
 };
 
-export const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "IntegraFin Tax Expert Team",
-  "jobTitle": "Tax Expert",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "IntegraFin Tax & Accounting"
-  },
-  "alumniOf": "Texas Board of Public Accountancy",
-  "url": "https://integrafin.tax/about"
-};
-
 export const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -132,7 +119,7 @@ export const faqSchema = {
       "name": "Does IntegraFin help with IRS audits in Katy TX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, IntegraFin provides full IRS audit representation in Katy, TX. Our licensed tax experts communicate directly with audit officers on your behalf to review discrepancies, prepare defense documentation, and negotiate settlements to minimize your overall tax liability."
+        "text": "IntegraFin can review IRS correspondence, compare it with the relevant return and records, and explain the next documentation and response steps. The assistance available depends on the notice, the facts, and the agreed engagement scope."
       }
     },
     {

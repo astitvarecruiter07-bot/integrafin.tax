@@ -343,7 +343,7 @@ export const texasCityPages: TexasCityLandingData[] = [
     serviceAreaNote: "IntegraFin serves The Woodlands from its Katy office through secure virtual meetings and document exchange. It does not advertise a separate office in The Woodlands.",
     faq: [
       { question: "Can you coordinate business and personal tax work?", answer: "Yes, when included in scope. Coordinating the records can help identify inconsistencies, but each return and taxpayer is prepared according to its own facts." },
-      { question: "Do you advise on investments or legal structures?", answer: "We address tax and accounting implications within our scope. Investment recommendations and legal advice should come from appropriately licensed advisers and attorneys." },
+      { question: "Do you advise on investments or legal structures?", answer: "We address tax and accounting implications within our scope. Investment recommendations and legal advice should come from appropriate investment advisers and attorneys." },
       { question: "Can you help with multistate income?", answer: "We can review the states, income sources and filing history involved. Filing obligations are fact-specific, and additional state expertise may be needed for unusual matters." },
       { question: "Do you guarantee an IRS notice will be resolved in my favor?", answer: "No. We help review facts, organize documents and prepare next steps, but agency decisions and outcomes cannot be guaranteed." },
       { question: "How secure is the remote process?", answer: "We use an organized document workflow and discourage sending sensitive tax records through ordinary unsecured email. Specific access steps are provided during onboarding." },

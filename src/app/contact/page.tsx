@@ -32,7 +32,7 @@ export default function ContactPage() {
                         Get in Touch with Our Tax &amp; <span className="text-[#00C2CB]">Accounting Experts</span>
                     </h1>
                     <p className="text-[#D7E3FC] text-sm sm:text-lg md:text-xl font-light max-w-2xl mb-6 sm:mb-10 leading-relaxed">
-                        Whether you need US tax filing, business bookkeeping, or cross-border tax resolution, our certified professionals are ready to help.
+                        Whether you need US tax filing, business bookkeeping, or cross-border tax support, our tax and accounting team is ready to review your needs.
                     </p>
                     <a href="#contact-form" className="inline-flex bg-[#00C2CB] text-[#003580] px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#00cedb] transition-all">
                         Schedule a Consultation

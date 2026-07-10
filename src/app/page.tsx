@@ -177,7 +177,7 @@ export default function Home() {
            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">About Us - Integrafin</h2>
            <div className="w-24 h-1.5 bg-gradient-to-r from-[#0092df] to-[#00C2CB] rounded-full mb-8"></div>
            <p className="text-slate-600 mb-10 leading-loose text-base md:text-lg font-medium">
-             IntegraFin is a trusted provider of comprehensive tax, accounting, and business advisory services. With a team of experienced Certified Public Accountants (CPAs), Chartered Accountants (CAs), and financial experts, we are committed to delivering high-quality, reliable, and secure financial solutions tailored to businesses and individuals.
+             IntegraFin provides tax, accounting, bookkeeping, and business support through an organized team focused on accurate records, clear communication, and secure workflows for businesses and individuals.
            </p>
           <Link href="/about" className="bg-[#003580] hover:bg-[#002050] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#003580]/20 hover:-translate-y-1 group flex items-center gap-3">
              Know More

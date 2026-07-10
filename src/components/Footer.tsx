@@ -78,9 +78,9 @@ export default function Footer() {
                             />
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                            IntegraFin is a trusted provider of comprehensive tax, accounting,
-                            and business advisory services. With a team of experienced tax experts,
-                            CAs, and financial experts.
+                            IntegraFin provides tax, accounting, bookkeeping, and business support
+                            through an organized team focused on accurate records, clear communication,
+                            and secure client workflows.
                         </p>
                         <div className="flex items-center gap-3">
                             {socialLinks.map((social) => (

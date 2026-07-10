@@ -260,7 +260,7 @@ export default function CaseStudyClient() {
             {[
               "Proven Track Record", "Transparent Reporting", "IRS Compliant", "Timely Delivery",
               "Industry Expertise", "Strategic Planning", "Client-First Approach", "Reliable Outcomes",
-              "Multi-State Experience", "Tech-Enabled Ops", "CPA-Led Teams", "Regulatory Mastery"
+              "Multi-State Experience", "Tech-Enabled Ops", "Coordinated Tax Support", "Regulatory Mastery"
             ].map((item, idx) => (
               <div key={idx} className="group flex items-center gap-4 bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:border-[#0092df]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default">
                 <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 group-hover:bg-[#0092df] transition-colors duration-300">
