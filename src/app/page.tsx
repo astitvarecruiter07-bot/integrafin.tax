@@ -229,19 +229,19 @@ export default function Home() {
                 {
                   title: "Business - Tax & Accounting Services",
                   desc: "Comprehensive accounting and bookkeeping solutions, including software implementation, payroll, financial statements, and tax compliance for businesses of all sizes.",
-                  href: "/services#business",
+                  href: "/business-tax-accounting",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><rect x="8" y="10" width="8" height="8" rx="1"/></svg>
                 },
                 {
                   title: "Individual Tax Services",
                   desc: "Expert tax preparation and planning to maximize deductions and ensure compliance with IRS regulations.",
-                  href: "/services#individual",
+                  href: "/individual-tax-preparation",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 11v8"/></svg>
                 },
                 {
                   title: "Tax Resolution Services",
                   desc: "Assistance with back taxes, IRS audits, penalty abatements, and tax negotiations to resolve outstanding tax issues.",
-                  href: "/services#tax-resolution",
+                  href: "/tax-resolution",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="m12 14 4-4"/><path d="M3.3 7H6h15l-1.5 13H4.5L3.3 7Z"/><path d="m16 10-4 4"/></svg>
                 },
                 {
@@ -274,6 +274,21 @@ export default function Home() {
                    </Link>
                 </div>
               ))}
+           </div>
+
+           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+             <Link href="/bookkeeping-cleanup" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+               <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Bookkeeping Cleanup</h3>
+               <p className="mt-2 text-sm leading-relaxed text-slate-600">Catch-up bookkeeping, reconciliations, missing records, and tax-ready financial reports.</p>
+             </Link>
+             <Link href="/quickbooks-bookkeeping-services" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+               <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">QuickBooks Bookkeeping</h3>
+               <p className="mt-2 text-sm leading-relaxed text-slate-600">QuickBooks setup, cleanup, monthly reconciliation, and reporting support.</p>
+             </Link>
+             <Link href="/payroll-tax-support" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+               <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Payroll Tax Support</h3>
+               <p className="mt-2 text-sm leading-relaxed text-slate-600">Employer payroll records, tax deposits, filings, notices, and year-end wage reporting.</p>
+             </Link>
            </div>
         </div>
       </section>
@@ -313,7 +328,7 @@ export default function Home() {
                   Monthly bookkeeping, cleanup, account reconciliation, payroll records, and tax-ready reports for local business owners.
                 </p>
               </Link>
-              <Link href="/services#individual" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <Link href="/individual-tax-preparation" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
                 <h3 className="text-xl font-black text-[#003580] mb-2">Individual Tax Preparation</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">
                   Tax filing support for individuals, families, self-employed workers, 1099 income, and taxpayers who need clearer document organization.
@@ -370,7 +385,7 @@ export default function Home() {
               Start with these practical resources on IRS compliance, payroll, tax planning, and startup finance.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <Link href="/blog/irs-compliance-guide" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
               <h3 className="text-lg font-black text-[#003580] mb-2">IRS Compliance Guide</h3>
               <p className="text-slate-600 text-sm">How businesses can stay compliant and avoid filing penalties.</p>
@@ -386,6 +401,10 @@ export default function Home() {
             <Link href="/blog/financial-planning-for-startups" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
               <h3 className="text-lg font-black text-[#003580] mb-2">Startup Financial Planning</h3>
               <p className="text-slate-600 text-sm">Build a stronger financial foundation from day one.</p>
+            </Link>
+            <Link href="/tax-calculator-guide" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-lg font-black text-[#003580] mb-2">Federal Tax Calculator Guide</h3>
+              <p className="text-slate-600 text-sm">Understand the assumptions and tax inputs behind the 2025 and 2026 calculator.</p>
             </Link>
           </div>
         </div>

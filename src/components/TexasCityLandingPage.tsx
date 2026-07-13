@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { TexasCityLandingData } from "@/data/texasCityLandingData";
 import { texasCityPages } from "@/data/texasCityLandingData";
+import { focusedServiceLinks } from "@/data/serviceLandingPages";
 
 const officeAddress = "2039 N Mason Rd, Suite 604, Katy, TX 77449";
 
@@ -147,6 +148,24 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">{service.description}</p>
               </section>
             ))}
+          </div>
+          <div className="mt-8 border-t border-slate-200 pt-7">
+            <h3 className="text-xl font-black text-primary-dark">Explore Dedicated Service Pages</h3>
+            <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
+              Use these service pages for detailed information about the records, workflow, and support available to {page.city} clients.
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {focusedServiceLinks.map((service) => (
+                <Link
+                  key={service.href}
+                  href={service.href}
+                  className="rounded-xl border border-slate-200 bg-slate-50 p-4 hover:border-secondary hover:bg-white transition-colors"
+                >
+                  <h4 className="font-black text-primary-dark">{service.label}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.description}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         </article>
       </section>

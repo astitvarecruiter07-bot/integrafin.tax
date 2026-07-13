@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { focusedServiceLinks } from "@/data/serviceLandingPages";
 
 export type FaqItem = {
   question: string;
@@ -265,6 +266,29 @@ export default function StateServicesPage({
           </article>
         </section>
       )}
+
+      <section className="max-w-6xl mx-auto px-6 pb-10">
+        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
+          <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
+            Core Tax and Accounting Services in {stateName}
+          </h2>
+          <p className="text-slate-700 mb-6 leading-relaxed">
+            Review the dedicated service page for the records, filing, bookkeeping, payroll, or IRS issue you need help with.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {focusedServiceLinks.map((service) => (
+              <Link
+                key={service.href}
+                href={service.href}
+                className="rounded-xl border border-slate-200 bg-slate-50 p-4 hover:border-secondary hover:bg-white transition-colors"
+              >
+                <h3 className="font-black text-primary-dark">{service.label}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.description}</p>
+              </Link>
+            ))}
+          </div>
+        </article>
+      </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
