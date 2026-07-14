@@ -39,11 +39,9 @@ export const localBusinessSchema = {
   "priceRange": "$$",
   "areaServed": ["Katy TX", "Houston TX", "Sugar Land TX", "Cypress TX", "Richmond TX"],
   "sameAs": [
-    "https://www.facebook.com/integrafintax/",
     "https://www.instagram.com/integrafinllc/",
-    "https://www.linkedin.com/company/integrafin/?viewAsMember=true",
-    "https://x.com/Integrafintax",
-    "https://www.yelp.com/biz/integrafin"
+    "https://www.linkedin.com/company/integrafin/",
+    "https://x.com/Integrafintax"
   ]
 };
 
@@ -62,11 +60,9 @@ export const organizationSchema = {
     "availableLanguage": "English"
   },
   "sameAs": [
-    "https://www.facebook.com/integrafintax/",
     "https://www.instagram.com/integrafinllc/",
-    "https://www.linkedin.com/company/integrafin/?viewAsMember=true",
-    "https://x.com/Integrafintax",
-    "https://www.yelp.com/biz/integrafin"
+    "https://www.linkedin.com/company/integrafin/",
+    "https://x.com/Integrafintax"
   ]
 };
 

@@ -49,6 +49,7 @@ const nextConfig: NextConfig = {
       "img-src 'self' data: https:",
       "font-src 'self' data: https:",
       "style-src 'self' 'unsafe-inline' https:",
+      "frame-src 'self' https://www.google.com",
       isDev
         ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:"
         : "script-src 'self' 'unsafe-inline' https: blob:",

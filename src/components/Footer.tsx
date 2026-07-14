@@ -37,9 +37,8 @@ const serviceLinks = [
 ];
 
 const socialLinks = [
-    { href: "https://www.facebook.com/integrafintax/", icon: "facebook", label: "Facebook" },
     { href: "https://www.instagram.com/integrafinllc/", icon: "instagram", label: "Instagram" },
-    { href: "https://www.linkedin.com/company/integrafin/?viewAsMember=true", icon: "linkedin", label: "LinkedIn" },
+    { href: "https://www.linkedin.com/company/integrafin/", icon: "linkedin", label: "LinkedIn" },
     { href: "https://x.com/Integrafintax", icon: "x", label: "X (Twitter)" },
 ];
 

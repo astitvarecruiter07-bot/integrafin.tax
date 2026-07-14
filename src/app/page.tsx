@@ -410,42 +410,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="relative py-32 bg-slate-900 border-b-8 border-[#0092df] text-center flex items-center justify-center min-h-[500px]">
-         <div className="absolute inset-0 bg-gradient-to-br from-[#003580]/90 to-slate-900/90 z-10" />
-         <Image
-           src="/A_professional,_wide-angle_202604082301.png"
-           alt="Testimonial Background"
-           fill
-           sizes="100vw"
-           quality={60}
-           className="object-cover object-bottom absolute inset-0 z-0 opacity-40 mix-blend-overlay"
-         />
-         <div className="relative z-20 max-w-5xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-[#0092df]/60 mb-8"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h-1c0 0 0 0 0 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/></svg>
-
-            <p className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-12 max-w-4xl leading-snug tracking-tight text-shadow-sm">
-              &quot;IntegraFin has been instrumental in helping our business stay compliant and financially healthy.&quot;
-            </p>
-            
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/20 flex items-center justify-center overflow-hidden">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              </div>
-              <div className="text-left">
-                <p className="text-white font-black tracking-widest text-sm uppercase mb-1">IntegraFin Client</p>
-                <p className="text-[#0092df] font-bold text-xs">Small Business Owner</p>
-              </div>
-            </div>
-            
-            <div className="flex gap-3 justify-center mt-16">
-               <div className="w-8 h-1.5 rounded-full bg-[#0092df] cursor-pointer"></div>
-               <div className="w-3 h-1.5 rounded-full bg-white/20 hover:bg-white/40 cursor-pointer transition-colors"></div>
-               <div className="w-3 h-1.5 rounded-full bg-white/20 hover:bg-white/40 cursor-pointer transition-colors"></div>
-            </div>
-         </div>
-      </section>
-
       {/* Request a Call Back */}
       <section className="py-24 px-6 lg:px-8 bg-white relative">
         <div className="absolute top-0 left-0 w-full h-[300px] bg-slate-50 border-b border-slate-200/50"></div>

@@ -8,30 +8,6 @@ export default function robots(): MetadataRoute.Robots {
                 allow: "/",
                 disallow: ["/admin", "/admin/*"],
             },
-            {
-                userAgent: "GPTBot",
-                allow: "/",
-            },
-            {
-                userAgent: "ChatGPT-User",
-                allow: "/",
-            },
-            {
-                userAgent: "Google-Extended",
-                allow: "/",
-            },
-            {
-                userAgent: "Anthropic-AI",
-                allow: "/",
-            },
-            {
-                userAgent: "ClaudeBot",
-                allow: "/",
-            },
-            {
-                userAgent: "PerplexityBot",
-                allow: "/",
-            },
         ],
         sitemap: "https://integrafin.tax/sitemap.xml",
     };

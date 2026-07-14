@@ -80,5 +80,5 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/test-db'],
+  matcher: ['/admin/:path*'],
 };
