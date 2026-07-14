@@ -77,7 +77,7 @@ export default function Footer() {
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
                             IntegraFin provides tax, accounting, bookkeeping, and business support
                             through an organized team focused on accurate records, clear communication,
-                            and secure client workflows.
+                            and documented service workflows.
                         </p>
                         <div className="flex items-center gap-3">
                             {socialLinks.map((social) => (

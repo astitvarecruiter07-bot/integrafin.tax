@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MessageSquare, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { DollarSign, Mail, MessageSquare, MapPin, Phone } from "lucide-react";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
@@ -124,15 +124,15 @@ export default function ContactPage() {
                             </div>
                         </div>
 
-                        {/* Trust Section */}
+                        {/* Payment method */}
                         <div className="bg-white p-8 rounded-xl shadow-lg flex items-center gap-6 border border-gray-100">
                             <div className="w-16 h-16 bg-gray-50 flex items-center justify-center rounded-full shrink-0">
-                                <ShieldCheck className="text-[#003580] w-8 h-8" />
+                                <DollarSign className="text-[#003580] w-8 h-8" />
                             </div>
                             <div>
-                                <h4 className="font-extrabold text-[#003580] tracking-tight text-lg mb-1">Quick &amp; Secure Payments</h4>
+                                <h4 className="font-extrabold text-[#003580] tracking-tight text-lg mb-1">Zelle Payment Option</h4>
                                 <p className="text-xs text-gray-600 leading-relaxed">
-                                    We accept <span className="font-bold text-[#003580]">Zelle</span> for convenient payment processing. Every transaction is handled with secure procedures for IntegraFin clients.
+                                    Clients may pay by <span className="font-bold text-[#003580]">Zelle</span> when it is included in their payment instructions. Confirm the recipient details with IntegraFin before sending a payment.
                                 </p>
                             </div>
                         </div>

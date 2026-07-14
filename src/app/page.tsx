@@ -7,11 +7,11 @@ import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
 
 export const metadata = {
   title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
-  description: 'IntegraFin is a Katy tax and accounting firm helping businesses and families with tax preparation, bookkeeping, payroll records, IRS notice help, and secure year-round support.',
+  description: 'IntegraFin is a Katy tax and accounting firm helping businesses and families with tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support.',
   alternates: { canonical: 'https://integrafin.tax/' },
   openGraph: {
     title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
-    description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and secure year-round support from IntegraFin.',
+    description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support from IntegraFin.',
     url: 'https://integrafin.tax/',
     type: 'website',
     siteName: 'IntegraFin',
@@ -19,7 +19,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
-    description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and secure year-round support from IntegraFin.',
+    description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support from IntegraFin.',
   },
 };
 
@@ -164,7 +164,7 @@ export default function Home() {
            <div className="relative h-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
              <Image
                src="/A_professional,_wide-angle_202604082301.png"
-               alt="About Integrafin"
+               alt="Illustrative tax and accounting workspace"
                fill
                sizes="(max-width: 768px) 100vw, 50vw"
                quality={72}
@@ -177,7 +177,7 @@ export default function Home() {
            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">About Us - Integrafin</h2>
            <div className="w-24 h-1.5 bg-gradient-to-r from-[#0092df] to-[#00C2CB] rounded-full mb-8"></div>
            <p className="text-slate-600 mb-10 leading-loose text-base md:text-lg font-medium">
-             IntegraFin provides tax, accounting, bookkeeping, and business support through an organized team focused on accurate records, clear communication, and secure workflows for businesses and individuals.
+             IntegraFin is based in Katy, Texas and provides tax preparation, bookkeeping, payroll-record support, and IRS notice help. Services are selected after an initial review of the records, deadlines, and requested scope.
            </p>
           <Link href="/about" className="bg-[#003580] hover:bg-[#002050] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#003580]/20 hover:-translate-y-1 group flex items-center gap-3">
              Know More
@@ -186,29 +186,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Trust Us? */}
+      {/* Verifiable business details */}
       <section className="py-24 px-6 lg:px-8 border-t border-slate-200/60 bg-white">
          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-               <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Our Guarantees</span>
-               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">Why Trust Us?</h2>
-               <p className="text-slate-600 mb-16 max-w-4xl mx-auto leading-relaxed text-lg font-medium">
-                 We bring years of combined experience with a commitment to trust, security, and privacy. Our expert team ensures seamless e-filing, reliable guidance, and compliance, making tax and accounting simple, quick, and stress-free.
+               <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Verifiable Details</span>
+               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">What You Can Check Before You Engage</h2>
+               <p className="text-slate-600 max-w-4xl mx-auto leading-relaxed text-lg font-medium">
+                 Trust should come from facts you can inspect. These pages document where IntegraFin is based, how services are scoped, what the engagement process includes, and where outcomes depend on records, law, eligibility, or agency decisions.
                </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                {[
-                 "Years of Combined Experience", "Trust", "Security", "Privacy",
-                 "Assisted Filing", "Guidance / Advisory", "Simple / Quick", "Reliability, Quality, Integrity",
-                 "Deep Knowledge", "Efiling", "Quality", "Compliance"
-               ].map((item, idx) => (
-                 <div key={idx} className="group flex items-center gap-4 bg-slate-50 px-6 py-4 rounded-2xl border border-slate-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:border-[#0092df]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-default">
+                 {
+                   title: "Katy office and contact details",
+                   description: "The site publishes the Katy address, phone, email, and weekday hours used across its contact information and structured data.",
+                   href: "/contact",
+                   linkLabel: "View contact details",
+                 },
+                 {
+                   title: "Defined engagement stages",
+                   description: "The documented process covers initial review, written scope, record collection, reconciliation, preparation, review, and next steps.",
+                   href: "/texas/katy-tax-accountant",
+                   linkLabel: "Review the process",
+                 },
+                 {
+                   title: "Transparent service areas",
+                   description: "IntegraFin identifies Katy as its office and describes nearby cities as service areas instead of claiming additional locations.",
+                   href: "/texas-tax-accounting-services",
+                   linkLabel: "View Texas coverage",
+                 },
+                 {
+                   title: "No promised tax outcomes",
+                   description: "Service pages explain that refunds, savings, penalty relief, settlements, and other results depend on the facts and applicable rules.",
+                   href: "/services",
+                   linkLabel: "Review service scope",
+                 },
+               ].map((item) => (
+                 <article key={item.title} className="group flex h-full flex-col bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:border-[#0092df]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                    <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 group-hover:bg-[#0092df] transition-colors duration-300">
                      <CheckCircle2 className="w-5 h-5 text-[#0092df] group-hover:text-white transition-colors duration-300" />
                    </div>
-                   <span className="text-sm font-bold text-[#003580]">{item}</span>
-                 </div>
+                   <h3 className="mt-5 text-lg font-black text-[#003580]">{item.title}</h3>
+                   <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
+                   <Link href={item.href} className="mt-5 text-sm font-bold text-[#006fae] hover:text-[#003580] hover:underline">
+                     {item.linkLabel}
+                   </Link>
+                 </article>
                ))}
             </div>
          </div>
