@@ -3,8 +3,15 @@
 import { useState } from 'react';
 import { Loader2, CheckCircle2 } from 'lucide-react';
 import { submitLead } from '@/app/actions/leads';
+import { useRouter } from 'next/navigation';
+import { getLeadAttribution } from '@/lib/attribution';
+import { baseEventParameters, trackEvent, useFormAnalytics } from '@/lib/analytics';
+
+const FORM_SOURCE = 'home-page-callback';
 
 export default function HomeCallbackForm() {
+  const router = useRouter();
+  const trackFormStart = useFormAnalytics(FORM_SOURCE);
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
@@ -18,14 +25,22 @@ export default function HomeCallbackForm() {
       phone: formData.get('phone') as string,
       service: formData.get('service') as string,
       message: formData.get('message') as string,
-      source: 'home-page-callback',
+      source: FORM_SOURCE,
+      attribution: getLeadAttribution(),
     };
 
     try {
       const result = await submitLead(data);
       if (result.success) {
+        trackEvent('lead_submit', {
+          ...baseEventParameters(data.attribution),
+          service: data.service,
+          form_source: FORM_SOURCE,
+          cta_name: 'request_callback',
+        });
         setMessage({ type: 'success', text: result.message });
         (document.getElementById('home-callback-form') as HTMLFormElement).reset();
+        router.push('/thank-you');
       } else {
         setMessage({ type: 'error', text: result.message || 'Something went wrong.' });
       }
@@ -57,7 +72,12 @@ export default function HomeCallbackForm() {
   }
 
   return (
-    <form id="home-callback-form" action={handleSubmit} className="space-y-4">
+    <form
+      id="home-callback-form"
+      action={handleSubmit}
+      onFocusCapture={trackFormStart}
+      className="space-y-4"
+    >
       {message?.type === 'error' && (
         <div className="p-3 bg-red-50 border border-red-200 text-red-600 text-xs rounded-lg">
           {message.text}

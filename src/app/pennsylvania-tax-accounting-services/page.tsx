@@ -80,7 +80,7 @@ export default function PennsylvaniaTaxAccountingServicesPage() {
         {
           question: "Is remote service available for Pennsylvania clients?",
           answer:
-            "Yes. We work remotely through secure document sharing and virtual consultations.",
+            "Yes. We work remotely through an organized document process and virtual consultations.",
         },
         {
           question: "What should I prepare before the first consultation?",

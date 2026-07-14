@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
     title: "Admin - Blog Editor | IntegraFin",
-    description: "Secure, SEO-optimized blog editor for IntegraFin staff.",
+    description: "SEO-focused blog editor for IntegraFin staff.",
     robots: { index: false, follow: false },
 };
 
@@ -29,7 +29,7 @@ export default async function BlogEditorPage({ searchParams }: { searchParams: P
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">
                     {initialData ? "Edit Blog Post" : "IntegraFin Blog Editor"}
                 </h1>
-                <p className="text-gray-600">Secure authoring environment with real-time SEO validation.</p>
+                <p className="text-gray-600">Authoring environment with real-time SEO validation.</p>
             </div>
             <BlogEditor initialData={initialData} />
         </main>

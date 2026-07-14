@@ -149,7 +149,7 @@ const faqItems = [
   {
     question: "Do you have to be in Katy to help with my IRS letter?",
     answer:
-      "No. IntegraFin is based in Katy and supports nearby Fort Bend County clients, including Fulshear, Richmond, Rosenberg, Sugar Land, and surrounding areas through secure document workflows.",
+      "No. IntegraFin is based in Katy and supports nearby Fort Bend County clients, including Fulshear, Richmond, Rosenberg, Sugar Land, and surrounding areas through organized document workflows.",
   },
   {
     question: "What documents should I bring for IRS notice help?",
@@ -363,7 +363,7 @@ export default function IrsNoticeHelpKatyPage() {
           <p className="text-[#d7e3fc] leading-relaxed mb-5">
             IntegraFin Tax & Accounting is based at 2039 N Mason Rd, Suite 604, Katy,
             TX 77449. We support Katy, Fulshear, Richmond, Rosenberg, Sugar Land, and
-            nearby Fort Bend County clients through secure document workflows and clear
+            nearby Fort Bend County clients through organized document workflows and clear
             response planning.
           </p>
           <div className="grid sm:grid-cols-3 gap-4 text-sm">

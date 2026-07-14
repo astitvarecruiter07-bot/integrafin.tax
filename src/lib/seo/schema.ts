@@ -73,12 +73,12 @@ export const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   "name": "How to Form a New Business in Texas",
-  "description": "A step-by-step guide to entity selection and registration for new businesses in Texas, managed by tax experts.",
+  "description": "A general overview of entity review, registration, EIN, bookkeeping, payroll, and tax setup steps for a new Texas business.",
   "step": [
     {
       "@type": "HowToStep",
       "name": "Entity Selection",
-      "text": "Choose the optimal business structure (LLC, S-Corp, or C-Corp) to minimize liability and maximize tax efficiency."
+      "text": "Review ownership, operations, expected income, tax treatment, and legal considerations before choosing a structure. The appropriate entity depends on the business facts and may require legal advice."
     },
     {
       "@type": "HowToStep",
@@ -102,7 +102,7 @@ export const faqSchema = {
       "name": "How much does a tax expert cost in Katy TX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The cost of a tax expert in Katy, TX typically ranges from $150 to $400 for individual tax returns, and $500 to $2,000+ for business returns based on complexity. IntegraFin offers flat-rate, transparent pricing. Call (832) 647-1819 for a free quote."
+        "text": "Fees depend on the returns, entities, periods, record condition, deadlines, and services involved. IntegraFin reviews the requested work before providing scope and pricing information. Call (832) 647-1819 to discuss the initial details."
       }
     },
     {
@@ -110,7 +110,7 @@ export const faqSchema = {
       "name": "What documents do I need for tax filing?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You need your W-2 or 1099 forms, last year's tax return, Social Security numbers for dependents, receipts for deductions, bank statements, and investment income documents like 1099-DIV or 1099-B to properly file your taxes."
+        "text": "Common records include W-2 and 1099 forms, the prior-year return, dependent information, deduction support, estimated-payment records, bank records for relevant business activity, and investment forms such as 1099-DIV or 1099-B. The final list depends on the return and taxpayer facts."
       }
     },
     {
@@ -126,7 +126,7 @@ export const faqSchema = {
       "name": "Do you offer bookkeeping services for small businesses in Katy TX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, IntegraFin offers full-service monthly bookkeeping for small businesses in Katy, TX. This includes bank integrations, detailed financial statements, and QuickBooks support to keep your business audit-ready and help identify cost-saving opportunities."
+        "text": "IntegraFin offers bookkeeping support for small businesses in Katy. Scope may include account setup, transaction classification, reconciliations, review questions, financial reports, cleanup, and QuickBooks support, depending on the records and written engagement."
       }
     },
     {
@@ -134,7 +134,7 @@ export const faqSchema = {
       "name": "Can IntegraFin help me resolve back taxes with the IRS?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, our tax resolution specialists in Katy help you negotiate back taxes with the IRS. We can design structured installment agreements, file penalty abatement requests, or explore Offer in Compromise settlements to protect against liens and levies."
+        "text": "IntegraFin can review back-tax notices, filing history, balances, payment records, and supporting documents, then explain procedures that may be relevant. Payment plans, penalty relief, offers, representation, and agency outcomes depend on eligibility, facts, authorization, and IRS approval."
       }
     }
   ]
@@ -149,7 +149,7 @@ export const homepageFaqSchema = {
       "name": "Why choose IntegraFin for tax expert services in Katy TX?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "IntegraFin offers high-level accounting, strategic tax planning, and full IRS representation for businesses and individuals in Katy, TX. We guarantee accurate tax preparation, maximum legally allowed refunds, and ongoing compliance to help you safely scale your wealth."
+        "text": "IntegraFin provides Katy-area tax preparation, bookkeeping, payroll-record support, planning discussions, and IRS notice review. Each engagement is scoped from the records, deadlines, taxpayer facts, and professional authorization; refunds, savings, compliance, and agency outcomes are not guaranteed."
       }
     },
     {
@@ -165,7 +165,7 @@ export const homepageFaqSchema = {
       "name": "What types of businesses do you specialize in?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We specialize in providing accounting and tax services for technology startups, real estate asset managers, healthcare practice centers, and manufacturing plants. We offer corporate entity structuring, monthly bookkeeping, and R&D tax credits to accelerate capital growth."
+        "text": "IntegraFin's service pages address bookkeeping and tax workflows that can arise in real estate, construction, healthcare, professional services, retail, technology, and other businesses. The available work depends on the entity, records, filing history, and agreed scope."
       }
     },
     {
@@ -173,7 +173,7 @@ export const homepageFaqSchema = {
       "name": "What cities in Texas do your tax expert services serve?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Based in Katy, our tax expert services serve all surrounding areas like Houston, Sugar Land, Cypress, and Richmond. Our secure online tax portal also allows us to effectively manage tax compliance and advisory for clients located anywhere in Texas."
+        "text": "IntegraFin is based in Katy and serves clients in nearby communities including Houston, Sugar Land, Cypress, and Richmond. Many engagements can use remote meetings and an organized document process; the available service depends on the work and client location."
       }
     }
   ]

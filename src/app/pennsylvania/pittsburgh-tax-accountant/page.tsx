@@ -62,7 +62,7 @@ export default function PittsburghTaxAccountantPage() {
         {
           question: "Do you support Pittsburgh businesses remotely?",
           answer:
-            "Yes. We provide secure remote support for bookkeeping, tax filings, payroll workflows, and planning.",
+            "Yes. We provide remote support for bookkeeping, tax filings, payroll workflows, and planning.",
         },
         {
           question: "Can you help with both bookkeeping and tax preparation?",

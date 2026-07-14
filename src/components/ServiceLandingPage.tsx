@@ -226,7 +226,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
               <h2 className="text-2xl font-black sm:text-3xl">{data.whyTitle}</h2>
               <p className="mt-4 leading-relaxed text-[#d7e3fc]">
                 IntegraFin Tax & Accounting is based in Katy, TX and supports clients with tax,
-                bookkeeping, payroll, and advisory workflows through local and secure remote service.
+                bookkeeping, payroll, and advisory workflows through local and remote service.
               </p>
               <div className="mt-6 grid gap-3 text-sm sm:grid-cols-3 lg:grid-cols-1">
                 <div className="rounded-lg bg-white/10 p-4">

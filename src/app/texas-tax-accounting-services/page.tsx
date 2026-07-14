@@ -74,7 +74,7 @@ export default function TexasTaxAccountingServicesPage() {
         {
           question: "Do you provide remote tax and bookkeeping support across Texas?",
           answer:
-            "Yes. We work with clients across Texas through secure document sharing, virtual meetings, and recurring accounting workflows.",
+            "Yes. We work with clients across Texas through an organized document process, virtual meetings, and recurring accounting workflows.",
         },
         {
           question: "Can you help with Texas franchise tax and annual compliance tasks?",

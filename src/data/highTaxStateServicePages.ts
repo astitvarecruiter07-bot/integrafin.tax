@@ -90,7 +90,7 @@ export const highTaxStateServicePageList: HighTaxStateServicePageData[] = [
         "Document organization for IRS notices, California notices, audits, and prior-year issues",
       ],
       whyChoose: [
-        "Remote-first process built for clients who need secure document collection and clear deadlines.",
+        "Remote-first process built for clients who need organized document collection and clear deadlines.",
         "Integrated support across tax preparation, bookkeeping, payroll records, and tax resolution.",
         "Conservative tax guidance that avoids unsupported promises and starts with the client facts.",
         "Useful fit for California clients with business, investment, contractor, or multi-state records.",
@@ -109,7 +109,7 @@ export const highTaxStateServicePageList: HighTaxStateServicePageData[] = [
         {
           question: "Do you provide remote tax support for California clients?",
           answer:
-            "Yes. IntegraFin can support California clients remotely through secure document sharing, virtual consultations, and organized tax and bookkeeping workflows.",
+            "Yes. IntegraFin can support California clients remotely through an organized document process, virtual consultations, and structured tax and bookkeeping workflows.",
         },
         {
           question: "Can you help with California business tax and bookkeeping together?",
@@ -324,7 +324,7 @@ export const highTaxStateServicePageList: HighTaxStateServicePageData[] = [
         {
           question: "Do you help Illinois small businesses outside Chicago?",
           answer:
-            "Yes. We support clients throughout Illinois through secure remote service and organized document workflows.",
+            "Yes. We support clients throughout Illinois through remote service and organized document workflows.",
         },
         {
           question: "Can you help with Illinois sales tax recordkeeping?",
@@ -538,7 +538,7 @@ export const highTaxStateServicePageList: HighTaxStateServicePageData[] = [
         {
           question: "Can you support Massachusetts clients remotely?",
           answer:
-            "Yes. IntegraFin supports Massachusetts clients through secure document sharing, virtual consultations, and organized follow-up.",
+            "Yes. IntegraFin supports Massachusetts clients through an organized document process, virtual consultations, and structured follow-up.",
         },
         {
           question: "Do you help high-income Massachusetts taxpayers?",
@@ -757,7 +757,7 @@ export const highTaxStateServicePageList: HighTaxStateServicePageData[] = [
         {
           question: "Do you work with Ohio businesses remotely?",
           answer:
-            "Yes. IntegraFin supports Ohio clients through secure document sharing, virtual meetings, and structured follow-up.",
+            "Yes. IntegraFin supports Ohio clients through an organized document process, virtual meetings, and structured follow-up.",
         },
         {
           question: "Can you help with Ohio payroll and withholding documents?",

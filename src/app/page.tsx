@@ -112,7 +112,7 @@ export default function Home() {
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
                    <Check className="w-3.5 h-3.5 text-[#0092df]" />
                  </div>
-                 <span>Secure online and local Katy-area filing support</span>
+                 <span>Online and local Katy-area filing support</span>
                </li>
                <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
@@ -259,7 +259,7 @@ export default function Home() {
                 },
                 {
                   title: "Individual Tax Services",
-                  desc: "Expert tax preparation and planning to maximize deductions and ensure compliance with IRS regulations.",
+                  desc: "Individual tax preparation and planning based on the taxpayer's documents, filing history, eligibility, and applicable rules.",
                   href: "/individual-tax-preparation",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 11v8"/></svg>
                 },
@@ -271,7 +271,7 @@ export default function Home() {
                 },
                 {
                   title: "Additional Services",
-                  desc: "Support for ITIN, SSN, PEIN applications; international compliance (FBAR & FATCA); business certifications, and secure document management.",
+                  desc: "Support for tax-identification applications, international reporting workflows, business-certification documents, extensions, and document organization.",
                   href: "/services#additional",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z"/><path d="M4.5 8.5V4a2 2 0 0 1 2-2h9l5 5v13a2 2 0 0 1-2 2h-2"/></svg>
                 },

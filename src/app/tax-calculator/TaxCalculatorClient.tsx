@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { baseEventParameters, trackEvent } from "@/lib/analytics";
 
 /* ------------------------- 2025/2026 TAX DATA ------------------------- */
 
@@ -8,6 +9,14 @@ type FilingStatus = "single" | "married_joint" | "married_separate" | "head_of_h
 type TaxYear = "2025" | "2026";
 type TaxBracket = { rate: number; min: number; max: number };
 type CgBracket = { rate: number; max: number };
+
+function trackCalculatorCompletion(calculatorName: string, taxYear: TaxYear) {
+    trackEvent("calculator_complete", {
+        ...baseEventParameters(),
+        calculator_name: calculatorName,
+        tax_year: taxYear,
+    });
+}
 
 type TaxYearData = {
     label: string;
@@ -842,6 +851,7 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
             childCredit,
             totalPayments,
         });
+        trackCalculatorCompletion("federal_income_tax", taxYear);
     };
 
     return (
@@ -1182,6 +1192,7 @@ function SelfEmploymentTab({ taxYear }: { taxYear: TaxYear }) {
             seDeduction,
             netEarningsBase: seBase,
         });
+        trackCalculatorCompletion("self_employment_tax", taxYear);
     };
 
     return (
@@ -1348,6 +1359,7 @@ function CapitalGainsTab({ taxYear }: { taxYear: TaxYear }) {
             longTermTopRate: topRate * 100,
             taxableLongTermGains,
         });
+        trackCalculatorCompletion("capital_gains_tax", taxYear);
     };
 
     return (
@@ -1463,6 +1475,7 @@ function ComparisonTab({ taxYear }: { taxYear: TaxYear }) {
             savings: Math.abs(taxA - taxB),
             better: taxA < taxB ? "A" : taxB < taxA ? "B" : "equal",
         });
+        trackCalculatorCompletion("scenario_comparison", taxYear);
     };
 
     return (
@@ -1790,7 +1803,7 @@ export default function TaxCalculatorClient() {
                         <div className="space-y-5">
                             <h3 className="text-2xl font-black text-[#003580] tracking-normal">Ready for a reviewed estimate?</h3>
                             <p className="text-sm text-gray-600 leading-relaxed">
-                                Send your details through the secure contact form and our team will follow up with the next steps.
+                                Send your details through the contact form for team follow-up and next-step information.
                             </p>
                             <Link href="/contact" className="w-full inline-flex justify-center bg-[#0047AB] text-white font-black py-4 rounded-xl shadow-lg shadow-[#0047AB]/20 uppercase tracking-[0.2em] transition-all hover:bg-[#003580]">
                                 Book a tax review

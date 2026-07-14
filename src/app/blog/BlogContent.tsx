@@ -250,7 +250,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                         <NewsletterSignup
                             source="blog-newsletter"
                             placeholder="you@example.com"
-                            buttonLabel="Subscribe Securely"
+                            buttonLabel="Subscribe"
                             variant="light"
                         />
                     </div>

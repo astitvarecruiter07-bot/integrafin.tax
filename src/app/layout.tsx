@@ -7,6 +7,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { localBusinessSchema, organizationSchema } from "@/lib/seo/schema";
 import Script from "next/script";
+import AnalyticsTracker from "@/components/AnalyticsTracker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -53,16 +54,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-GRMDY21D72";
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-GRMDY21D72" />
+        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} />
         <Script id="google-analytics">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-GRMDY21D72');
+            gtag('config', '${gaMeasurementId}');
           `}
         </Script>
         <script
@@ -76,6 +79,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         <Navbar />
+        <AnalyticsTracker />
         <div id="site-content">{children}</div>
         <Footer />
         <SpeedInsights />

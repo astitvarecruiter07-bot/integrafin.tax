@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Case Studies & Client Success",
-    description: "Explore IntegraFin's client success stories and case studies demonstrating real results in tax planning, bookkeeping, and growth strategies for businesses.",
+    title: "Tax & Accounting Workflow Examples | IntegraFin",
+    description: "Review illustrative tax, bookkeeping, reporting, and business-setup workflow examples. These scenarios are not client testimonials or promised results.",
     openGraph: {
-        title: "Case Studies & Client Success | IntegraFin",
-        description: "Explore IntegraFin's client success stories and case studies demonstrating real results in tax planning and growth strategies.",
+        title: "Tax & Accounting Workflow Examples | IntegraFin",
+        description: "Illustrative service scenarios showing how records, scope, and next steps may be organized without promising client outcomes.",
         type: "website",
         url: "https://integrafin.tax/case-study",
     },

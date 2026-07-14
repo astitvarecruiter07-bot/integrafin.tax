@@ -200,7 +200,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
             {[
               ["1. Initial review", "We identify the taxpayers, entities, periods, deadlines and immediate concern. If an agency notice is involved, preserve the original letter and envelope and follow the response date shown."],
               ["2. Written scope", "We explain the work included, information needed and known limitations. Bookkeeping cleanup, return preparation, planning and representation are distinct tasks unless the agreement combines them."],
-              ["3. Secure document collection", "Clients gather prior returns, statements, payroll reports, entity documents and relevant notices. Sensitive records should use the secure process provided during onboarding."],
+              ["3. Document collection", "Clients gather prior returns, statements, payroll reports, entity documents and relevant notices. The approved document method is confirmed during onboarding; sensitive records should not be sent through ordinary unsecured email."],
               ["4. Reconciliation and questions", "We compare reports to source records, investigate differences and ask the client to clarify business purpose or missing information. Unsupported assumptions are not treated as facts."],
               ["5. Preparation and review", "Deliverables are prepared from the agreed records and reviewed with the client. Tax positions and options are explained with appropriate qualifications when treatment is fact-specific."],
               ["6. Filing or next-step plan", "After required approvals, the work moves to filing, delivery or a notice-response plan. The client receives clear follow-up items rather than a vague promise that everything is handled."],
@@ -285,7 +285,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
           <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
             <h2 className="mb-4 text-2xl font-black text-primary">Nearby City Service Pages</h2>
             <p className="mb-5 text-slate-700 leading-relaxed">
-              IntegraFin serves {page.city} and nearby communities through the same secure, documented workflow. Use the
+              IntegraFin serves {page.city} and nearby communities through the same organized, documented workflow. Use the
               city page closest to the service context you need; every route leads to the same real Katy business rather
               than a network of invented offices.
             </p>

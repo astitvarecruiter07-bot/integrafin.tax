@@ -36,6 +36,7 @@ const sections = [
             { label: "Personal Data", desc: "Personally identifiable information, such as your name, shipping address, email address, and telephone number, that you voluntarily give to us when you fill out contact forms, request a callback, or subscribe to our newsletter." },
             { label: "Financial Data", desc: "Financial information, such as data related to your taxes, revenue, or business structure, provided voluntarily during consultations or calculations on our Site." },
             { label: "Derivative Data", desc: "Information our servers automatically collect when you access the Site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the Site." },
+            { label: "Marketing Attribution Data", desc: "The landing-page path, referrer path, UTM campaign parameters, and advertising click identifiers that may be stored in your browser and included with a form request. We do not intentionally send form fields, message content, phone numbers, email addresses, or calculator inputs and results to website analytics." },
           ].map((item, i) => (
             <li key={i} className="flex gap-3 items-start">
               <span className="mt-1 w-2 h-2 rounded-full bg-[#0092df] flex-shrink-0" />
@@ -141,7 +142,7 @@ const sections = [
 ];
 
 export default function PrivacyPage() {
-  const lastUpdated = "March 24, 2026";
+  const lastUpdated = "July 15, 2026";
 
   return (
     <main className="bg-slate-50 text-left">

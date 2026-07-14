@@ -3,8 +3,15 @@
 import { useState } from 'react';
 import { ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 import { submitLead } from '@/app/actions/leads';
+import { useRouter } from 'next/navigation';
+import { getLeadAttribution } from '@/lib/attribution';
+import { baseEventParameters, trackEvent, useFormAnalytics } from '@/lib/analytics';
+
+const FORM_SOURCE = 'contact-page';
 
 export default function ContactForm() {
+  const router = useRouter();
+  const trackFormStart = useFormAnalytics(FORM_SOURCE);
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
@@ -19,14 +26,22 @@ export default function ContactForm() {
       company: formData.get('company') as string,
       service: formData.get('service') as string,
       message: formData.get('message') as string,
-      source: 'contact-page',
+      source: FORM_SOURCE,
+      attribution: getLeadAttribution(),
     };
 
     try {
       const result = await submitLead(data);
       if (result.success) {
+        trackEvent('lead_submit', {
+          ...baseEventParameters(data.attribution),
+          service: data.service,
+          form_source: FORM_SOURCE,
+          cta_name: 'request_call_back',
+        });
         setMessage({ type: 'success', text: result.message });
         (document.getElementById('contact-form') as HTMLFormElement).reset();
+        router.push('/thank-you');
       } else {
         setMessage({ type: 'error', text: result.message || 'Something went wrong.' });
       }
@@ -58,7 +73,12 @@ export default function ContactForm() {
   }
 
   return (
-    <form id="contact-form" action={handleSubmit} className="space-y-6">
+    <form
+      id="contact-form"
+      action={handleSubmit}
+      onFocusCapture={trackFormStart}
+      className="space-y-6"
+    >
       {message?.type === 'error' && (
         <div className="p-4 bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg">
           {message.text}

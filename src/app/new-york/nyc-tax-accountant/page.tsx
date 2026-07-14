@@ -62,7 +62,7 @@ export default function NycTaxAccountantPage() {
         {
           question: "Do you support fully remote accounting workflows for NYC clients?",
           answer:
-            "Yes. We use secure digital workflows so clients can manage tax and accounting tasks remotely and efficiently.",
+            "Yes. We use organized remote workflows for tax and accounting tasks, with document methods confirmed during onboarding.",
         },
         {
           question: "Can you help with quarterly estimates and year-end planning?",

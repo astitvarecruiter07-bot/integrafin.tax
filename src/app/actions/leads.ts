@@ -14,14 +14,30 @@ const LeadSchema = z.object({
   company: z.string().max(100).optional(),
   service: z.string().min(2, 'Please select a service'),
   message: z.string().min(10, 'Message is too short').max(2000),
-  source: z.string().default('contact-page'),
-  revenue: z.string().optional(),
-  jurisdiction: z.string().optional(),
+  source: z.string().max(100).default('contact-page'),
+  revenue: z.string().max(100).optional(),
+  jurisdiction: z.string().max(100).optional(),
+  attribution: z.object({
+    firstLandingPage: z.string().max(500).startsWith('/').optional(),
+    currentSubmissionPage: z.string().max(500).startsWith('/').optional(),
+    referrer: z.string().max(500).optional(),
+    utmSource: z.string().max(200).optional(),
+    utmMedium: z.string().max(200).optional(),
+    utmCampaign: z.string().max(200).optional(),
+    utmContent: z.string().max(200).optional(),
+    utmTerm: z.string().max(200).optional(),
+    gclid: z.string().max(200).optional(),
+    gbraid: z.string().max(200).optional(),
+    wbraid: z.string().max(200).optional(),
+    msclkid: z.string().max(200).optional(),
+    firstTouchAt: z.string().datetime({ offset: true }).optional(),
+  }).optional(),
 });
 
 const NewsletterSchema = z.object({
   email: z.string().email('Invalid email address'),
-  source: z.string().default('newsletter'),
+  source: z.string().max(100).default('newsletter'),
+  attribution: LeadSchema.shape.attribution,
 });
 
 export type LeadInput = z.infer<typeof LeadSchema>;
@@ -29,6 +45,45 @@ export type NewsletterInput = z.infer<typeof NewsletterSchema>;
 
 const LEAD_LIMIT = 5;
 const LEAD_WINDOW_MS = 10 * 60 * 1000;
+
+function sanitizeAttributionPath(value: string | undefined) {
+  if (!value) return undefined;
+  const path = value.trim().split(/[?#]/, 1)[0];
+  return path.startsWith('/') && !path.startsWith('//') ? path : undefined;
+}
+
+function sanitizeAttributionReferrer(value: string | undefined) {
+  if (!value) return undefined;
+
+  try {
+    const referrer = new URL(value);
+    return `${referrer.origin}${referrer.pathname}`;
+  } catch {
+    return sanitizeAttributionPath(value);
+  }
+}
+
+function prepareAttribution(
+  attribution: LeadInput['attribution'] | NewsletterInput['attribution'],
+  submittedAt: Date,
+) {
+  return {
+    firstLandingPage: sanitizeAttributionPath(attribution?.firstLandingPage),
+    currentSubmissionPage: sanitizeAttributionPath(attribution?.currentSubmissionPage),
+    referrer: sanitizeAttributionReferrer(attribution?.referrer),
+    utmSource: attribution?.utmSource,
+    utmMedium: attribution?.utmMedium,
+    utmCampaign: attribution?.utmCampaign,
+    utmContent: attribution?.utmContent,
+    utmTerm: attribution?.utmTerm,
+    gclid: attribution?.gclid,
+    gbraid: attribution?.gbraid,
+    wbraid: attribution?.wbraid,
+    msclkid: attribution?.msclkid,
+    firstTouchAt: attribution?.firstTouchAt ? new Date(attribution.firstTouchAt) : undefined,
+    submittedAt,
+  };
+}
 
 async function getLeadRateLimitKey() {
   const headerStore = await headers();
@@ -53,15 +108,17 @@ export async function submitLead(data: LeadInput) {
     
     await dbConnect();
     
+    const submittedAt = new Date();
     const newLead = await ContactLead.create({
       ...validatedData,
+      attribution: prepareAttribution(validatedData.attribution, submittedAt),
       status: 'new',
-      createdAt: new Date(),
+      createdAt: submittedAt,
     });
     
     return {
       success: true,
-      message: 'Thank you! Your request has been submitted successfully. A tax expert will contact you shortly.',
+      message: 'Thank you. Your request has been submitted for team follow-up.',
       leadId: newLead._id.toString(),
     };
   } catch (error) {
@@ -98,6 +155,7 @@ export async function submitNewsletterSignup(data: NewsletterInput) {
 
     const emailPrefix = validatedData.email.split('@')[0] || 'Newsletter Subscriber';
 
+    const submittedAt = new Date();
     await ContactLead.create({
       name: emailPrefix,
       email: validatedData.email,
@@ -105,8 +163,9 @@ export async function submitNewsletterSignup(data: NewsletterInput) {
       service: 'Newsletter Signup',
       message: 'Requested IntegraFin tax and accounting updates.',
       source: validatedData.source,
+      attribution: prepareAttribution(validatedData.attribution, submittedAt),
       status: 'new',
-      createdAt: new Date(),
+      createdAt: submittedAt,
     });
 
     return {

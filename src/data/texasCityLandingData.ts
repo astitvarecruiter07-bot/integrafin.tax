@@ -92,7 +92,7 @@ export const texasCityPages: TexasCityLandingData[] = [
     hero: "Local tax preparation, bookkeeping and IRS notice support from IntegraFin's Katy office for business owners, self-employed professionals and families.",
     intro: [
       "Katy sits across Harris, Fort Bend and Waller counties, so local businesses often operate across more than one taxing and permitting jurisdiction. A contractor may work throughout west Houston, a retailer may sell in person and online, and a consultant may serve clients nationwide from a Katy home office. Those differences affect records and questions even when the federal filing rules are the same.",
-      "IntegraFin is based at 2039 N Mason Rd, Suite 604, Katy, TX 77449. Our tax accountant services in Katy combine organized return preparation with bookkeeping, payroll-record support and notice response planning. Clients can meet by appointment or use a secure remote workflow when that is more practical.",
+      "IntegraFin is based at 2039 N Mason Rd, Suite 604, Katy, TX 77449. Our tax accountant services in Katy combine organized return preparation with bookkeeping, payroll-record support and notice response planning. Clients can meet by appointment or use a remote workflow when that is more practical.",
       "We begin with the records and the actual issue. That may mean reconciling accounts before a business return, reviewing estimated-tax payments, separating owner and business activity, or reading an IRS notice line by line. We explain options without promising a refund, tax reduction or resolution outcome.",
     ],
     localExpertise: [
@@ -115,7 +115,7 @@ export const texasCityPages: TexasCityLandingData[] = [
       ...sharedResources,
     ],
     nearby: ["Fulshear", "Richmond", "Sugar Land", "Cypress", "Houston", "Brookshire"],
-    serviceAreaNote: "Katy is IntegraFin's physical office location. Meetings are available by appointment, and secure virtual service is available for clients who prefer not to travel.",
+    serviceAreaNote: "Katy is IntegraFin's physical office location. Meetings are available by appointment, and virtual service is available for clients who prefer not to travel.",
     faq: [
       { question: "Where is IntegraFin's Katy office?", answer: "IntegraFin is located at 2039 N Mason Rd, Suite 604, Katy, TX 77449. Schedule an appointment before visiting so the right team member and document list are ready." },
       { question: "Do you provide year-round accounting or only tax preparation?", answer: "Both. Engagements may include recurring bookkeeping, payroll-record review, tax planning, return preparation and IRS notice support, depending on the client's needs." },
@@ -133,11 +133,11 @@ export const texasCityPages: TexasCityLandingData[] = [
     primaryKeyword: "Houston small business accounting",
     supportingKeywords: ["tax accountant Houston", "bookkeeping cleanup Houston", "business tax preparation Houston", "IRS notice help Houston"],
     title: "Houston Small Business Tax & Accounting | IntegraFin",
-    description: "Houston small business accounting, tax preparation, bookkeeping cleanup and IRS notice support from IntegraFin. Schedule a secure consultation.",
+    description: "Houston small business accounting, tax preparation, bookkeeping cleanup and IRS notice support from IntegraFin. Schedule a consultation.",
     hero: "Practical accounting and tax support for Houston companies that need cleaner books, coordinated filing records and a reliable year-round process.",
     intro: [
       "Houston's economy ranges from energy and logistics to healthcare, construction, restaurants and professional services. That scale creates opportunity, but it also creates accounting complexity: project revenue, multiple payment systems, contractor reporting, payroll activity and business travel can all land in the same books.",
-      "IntegraFin helps Houston small businesses convert that activity into an organized accounting and tax workflow. We serve Houston from our Katy office through secure document exchange and virtual meetings. We do not claim a separate Houston office, and clients who want an in-person appointment can schedule one in Katy.",
+      "IntegraFin helps Houston small businesses convert that activity into an organized accounting and tax workflow. We serve Houston from our Katy office through an organized document process and virtual meetings. We do not claim a separate Houston office, and clients who want an in-person appointment can schedule one in Katy.",
       "Our work starts with clarity rather than a sales promise. We identify what is reconciled, what is missing, which deadlines matter and what decisions require current numbers. Tax preparation, planning and notice support are based on the client's records and applicable rules; outcomes are never guaranteed.",
     ],
     localExpertise: [
@@ -162,12 +162,12 @@ export const texasCityPages: TexasCityLandingData[] = [
     nearby: ["Katy", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Missouri City"],
     serviceAreaNote: "IntegraFin serves Houston remotely from its Katy office. We do not list or represent a separate Houston location. In-person meetings can be scheduled at the Katy address.",
     faq: [
-      { question: "Does IntegraFin have a Houston office?", answer: "No. IntegraFin's office is in Katy. Houston clients are served through secure remote workflows, with Katy appointments available when an in-person meeting is useful." },
+      { question: "Does IntegraFin have a Houston office?", answer: "No. IntegraFin's office is in Katy. Houston clients are served through remote workflows, with Katy appointments available when an in-person meeting is useful." },
       { question: "Can you clean up books before preparing a Houston business return?", answer: "Yes. We can scope reconciliations and bookkeeping cleanup before tax preparation. The required work depends on the condition of the records and the number of accounts and periods involved." },
       { question: "Do you work with Houston contractors and project-based firms?", answer: "Yes. We help organize revenue, direct costs, subcontractor activity, payroll records and overhead so the books better support filing and management decisions." },
       { question: "Can you advise whether a worker is an employee or contractor?", answer: "We can review tax-record and reporting implications, but classification depends on the facts and applicable law. Complex situations may also require employment-law advice." },
       { question: "Can you represent every client before the IRS?", answer: "Representation depends on the matter, professional authorization and the agreed scope. We first review the notice and explain what assistance is available; no resolution is guaranteed." },
-      { question: "How does remote accounting work for Houston clients?", answer: "Clients share records through a secure process, meet virtually and receive organized questions and deliverables. Sensitive tax documents should not be sent through ordinary unsecured email." },
+      { question: "How does remote accounting work for Houston clients?", answer: "The document method is confirmed during onboarding. Clients can meet virtually and receive organized questions and deliverables; sensitive tax documents should not be sent through ordinary unsecured email." },
     ],
   },
   {
@@ -182,7 +182,7 @@ export const texasCityPages: TexasCityLandingData[] = [
     hero: "Accounting, bookkeeping and tax support for Sugar Land owners who want reliable reports, organized filings and fewer year-end surprises.",
     intro: [
       "Sugar Land combines corporate employment centers with a large base of independent practices, consultants, retailers and family-owned companies. Many owners manage sophisticated operations but still rely on bookkeeping that was designed for a much smaller business. As transaction volume grows, unclear categories and unreconciled balances become harder to correct at year end.",
-      "IntegraFin provides small-business accounting in Sugar Land from our nearby Katy office. The service can include monthly bookkeeping, cleanup, tax preparation, payroll-record review and IRS notice support. Secure remote collaboration keeps the workflow practical without suggesting that IntegraFin maintains a Sugar Land office.",
+      "IntegraFin provides small-business accounting in Sugar Land from our nearby Katy office. The service can include monthly bookkeeping, cleanup, tax preparation, payroll-record review and IRS notice support. Remote collaboration keeps the workflow practical without suggesting that IntegraFin maintains a Sugar Land office.",
       "Good accounting is not simply data entry. It is a documented process for closing the books, resolving questions and preserving support for filings. We help owners understand what their reports do and do not show, then plan next steps around actual numbers instead of broad tax-saving promises.",
     ],
     localExpertise: [
@@ -205,9 +205,9 @@ export const texasCityPages: TexasCityLandingData[] = [
       ...sharedResources,
     ],
     nearby: ["Missouri City", "Richmond", "Rosenberg", "Katy", "Fulshear", "Houston"],
-    serviceAreaNote: "IntegraFin's office is in Katy, not Sugar Land. Sugar Land clients can work securely online or schedule an appointment at 2039 N Mason Rd, Suite 604, Katy, TX 77449.",
+    serviceAreaNote: "IntegraFin's office is in Katy, not Sugar Land. Sugar Land clients can work remotely or schedule an appointment at 2039 N Mason Rd, Suite 604, Katy, TX 77449.",
     faq: [
-      { question: "Can a nearby Katy accountant support a Sugar Land company?", answer: "Yes. IntegraFin serves Sugar Land businesses through secure virtual workflows and scheduled appointments at its Katy office." },
+      { question: "Can a nearby Katy accountant support a Sugar Land company?", answer: "Yes. IntegraFin serves Sugar Land businesses through virtual workflows and scheduled appointments at its Katy office." },
       { question: "What does monthly bookkeeping include?", answer: "Scope may include transaction classification, bank and credit-card reconciliations, review questions and financial reports. Payroll, sales-tax and cleanup work are scoped according to the engagement." },
       { question: "Can you help an S corporation with owner payroll questions?", answer: "We can review the accounting and tax context and coordinate records with the payroll process. Specific compensation decisions depend on facts and current rules and may require additional professional advice." },
       { question: "Do you promise tax savings for Sugar Land businesses?", answer: "No. We identify lawful planning questions and explain potential choices, but savings depend on facts, eligibility, timing and complete records. No outcome is guaranteed." },
@@ -227,7 +227,7 @@ export const texasCityPages: TexasCityLandingData[] = [
     hero: "Monthly bookkeeping and cleanup for Cypress businesses that need dependable numbers before payroll, tax filing and growth decisions.",
     intro: [
       "Cypress has grown into a major northwest Houston business and residential market, with contractors, clinics, restaurants, retailers and professional firms serving a wide surrounding area. Owners often start with simple bookkeeping, then add cards, loans, payroll and payment platforms faster than the accounting process can absorb them.",
-      "IntegraFin's bookkeeping services for Cypress focus on reconciliation and review. We trace deposits and expenses to source activity, identify open questions and build reports that can support both tax preparation and day-to-day decisions. Service is provided securely from our Katy office; IntegraFin does not claim a Cypress location.",
+      "IntegraFin's bookkeeping services for Cypress focus on reconciliation and review. We trace deposits and expenses to source activity, identify open questions and build reports that can support both tax preparation and day-to-day decisions. Service is provided from our Katy office; IntegraFin does not claim a Cypress location.",
       "The purpose is not to make every month look perfect. It is to create an honest, repeatable close that shows unresolved items and documents how they were handled. That discipline is especially important when a return, lender request or IRS letter later depends on the same records.",
     ],
     localExpertise: [
@@ -268,11 +268,11 @@ export const texasCityPages: TexasCityLandingData[] = [
     primaryKeyword: "tax accountant Spring TX",
     supportingKeywords: ["tax preparation Spring TX", "small business accounting Spring", "bookkeeping services Spring TX", "IRS notice help Spring TX"],
     title: "Tax Accountant in Spring, TX for Businesses | IntegraFin",
-    description: "Spring tax accountant for business returns, bookkeeping, tax planning and IRS notice review. Secure year-round support from IntegraFin today.",
+    description: "Spring tax accountant for business returns, bookkeeping, tax planning and IRS notice review. Year-round support from IntegraFin.",
     hero: "Year-round tax and accounting support for Spring business owners, independent professionals and families with complex records.",
     intro: [
       "Spring businesses operate within the broader north Houston economy while serving distinct local neighborhoods and commercial corridors. Independent practices, trades, logistics providers and consultants may collect income in several ways and incur costs across a wide service territory. Filing quality depends on bringing those records together accurately.",
-      "IntegraFin provides tax accountant services to Spring clients through secure remote collaboration from our Katy office. We assist with return preparation, bookkeeping, tax-planning discussions, payroll-record reconciliation and IRS notice review. We do not advertise a separate office in Spring.",
+      "IntegraFin provides tax accountant services to Spring clients through remote collaboration from our Katy office. We assist with return preparation, bookkeeping, tax-planning discussions, payroll-record reconciliation and IRS notice review. We do not advertise a separate office in Spring.",
       "Every engagement begins with scope. We identify the taxpayer, entities, returns, periods and records involved before recommending work. That protects the client from vague promises and helps the team distinguish routine preparation from cleanup, amended-return or representation questions.",
     ],
     localExpertise: [
@@ -295,14 +295,14 @@ export const texasCityPages: TexasCityLandingData[] = [
       ...sharedResources,
     ],
     nearby: ["The Woodlands", "Houston", "Cypress", "Tomball", "Humble", "Katy"],
-    serviceAreaNote: "IntegraFin does not maintain a Spring office. Spring clients are served through secure remote workflows, with scheduled in-person meetings available at the Katy office.",
+    serviceAreaNote: "IntegraFin does not maintain a Spring office. Spring clients are served through remote workflows, with scheduled in-person meetings available at the Katy office.",
     faq: [
       { question: "Can IntegraFin prepare both personal and business returns?", answer: "Depending on scope, we can support individuals and common business entity returns. We confirm the entities, forms and years involved before accepting the engagement." },
       { question: "Do you offer tax planning during the year?", answer: "Yes. Useful planning requires current records and projections. We discuss possible actions and limitations without guaranteeing a specific tax result." },
       { question: "Can you help if I missed a filing or payment?", answer: "We can review the periods and notices involved and help organize a compliance plan. Penalties, interest, relief and payment options depend on the facts and agency rules." },
       { question: "What happens if my Spring business books are incomplete?", answer: "We identify missing accounts and periods, then determine whether cleanup is needed before filing. We do not fill gaps with unsupported estimates." },
       { question: "Is IntegraFin connected with the IRS?", answer: "No. IntegraFin is an independent tax and accounting firm. IRS links on this page are provided as official public resources." },
-      { question: "Can all work be handled remotely?", answer: "Most document review and meetings can be handled securely online. We will explain any item that requires an original document, signature or different process." },
+      { question: "Can all work be handled remotely?", answer: "Most document review and meetings can be handled remotely. We will explain any item that requires an original document, signature or different process." },
     ],
   },
   {
@@ -313,11 +313,11 @@ export const texasCityPages: TexasCityLandingData[] = [
     primaryKeyword: "tax accountant The Woodlands TX",
     supportingKeywords: ["business accounting The Woodlands", "bookkeeping The Woodlands TX", "tax preparation The Woodlands", "IRS notice help The Woodlands"],
     title: "Business Tax Accountant in The Woodlands, TX | IntegraFin",
-    description: "The Woodlands business tax, bookkeeping, planning and IRS notice support. Work securely with IntegraFin's year-round accounting team. Schedule today.",
+    description: "The Woodlands business tax, bookkeeping, planning and IRS notice support. Work remotely with IntegraFin's year-round accounting team. Schedule a consultation.",
     hero: "Coordinated tax and accounting support for The Woodlands professionals, owner-led companies and families who value organized records.",
     intro: [
       "The Woodlands supports corporate offices, medical providers, professional firms and a strong base of owner-led businesses. Clients in those fields often have more than a simple annual filing need: they may manage an entity, payroll, investments, real estate or income from several sources.",
-      "IntegraFin helps The Woodlands clients coordinate bookkeeping and tax work through a secure remote process from our Katy office. Services may include business and individual tax preparation, monthly accounting, cleanup, payroll-record review and IRS notice response planning. No Woodlands office is claimed.",
+      "IntegraFin helps The Woodlands clients coordinate bookkeeping and tax work through a remote process from our Katy office. Services may include business and individual tax preparation, monthly accounting, cleanup, payroll-record review and IRS notice response planning. No Woodlands office is claimed.",
       "Complexity is handled by breaking the work into supportable steps. We inventory accounts and filings, reconcile source records, document assumptions and identify questions that need legal, payroll or investment expertise. Clear boundaries and complete facts are central to safe tax advice.",
     ],
     localExpertise: [
@@ -340,13 +340,13 @@ export const texasCityPages: TexasCityLandingData[] = [
       ...sharedResources,
     ],
     nearby: ["Spring", "Tomball", "Conroe", "Houston", "Cypress", "Magnolia"],
-    serviceAreaNote: "IntegraFin serves The Woodlands from its Katy office through secure virtual meetings and document exchange. It does not advertise a separate office in The Woodlands.",
+    serviceAreaNote: "IntegraFin serves The Woodlands from its Katy office through virtual meetings and an organized document process. It does not advertise a separate office in The Woodlands.",
     faq: [
       { question: "Can you coordinate business and personal tax work?", answer: "Yes, when included in scope. Coordinating the records can help identify inconsistencies, but each return and taxpayer is prepared according to its own facts." },
       { question: "Do you advise on investments or legal structures?", answer: "We address tax and accounting implications within our scope. Investment recommendations and legal advice should come from appropriate investment advisers and attorneys." },
       { question: "Can you help with multistate income?", answer: "We can review the states, income sources and filing history involved. Filing obligations are fact-specific, and additional state expertise may be needed for unusual matters." },
       { question: "Do you guarantee an IRS notice will be resolved in my favor?", answer: "No. We help review facts, organize documents and prepare next steps, but agency decisions and outcomes cannot be guaranteed." },
-      { question: "How secure is the remote process?", answer: "We use an organized document workflow and discourage sending sensitive tax records through ordinary unsecured email. Specific access steps are provided during onboarding." },
+      { question: "How are documents handled in the remote process?", answer: "We use an organized document workflow and discourage sending sensitive tax records through ordinary unsecured email. Specific access steps are provided during onboarding." },
       { question: "How do I prepare for a consultation?", answer: "Gather recent returns, bookkeeping reports, payroll summaries, entity records, relevant income documents and notices. A tailored list follows after the initial discussion." },
     ],
   },
@@ -358,11 +358,11 @@ export const texasCityPages: TexasCityLandingData[] = [
     primaryKeyword: "tax accountant Fulshear TX",
     supportingKeywords: ["bookkeeping services Fulshear TX", "small business accountant Fulshear", "tax preparation Fulshear TX", "IRS tax help Fulshear"],
     title: "Tax Accountant in Fulshear, TX for Business | IntegraFin",
-    description: "Fulshear tax accountant for business tax, bookkeeping, payroll records and IRS notice help from nearby Katy. Schedule a secure consultation.",
+    description: "Fulshear tax accountant for business tax, bookkeeping, payroll records and IRS notice help from nearby Katy. Schedule a consultation.",
     hero: "Nearby Katy-based tax preparation and accounting for Fulshear's growing community of business owners, professionals and families.",
     intro: [
       "Fulshear's rapid residential and commercial growth is creating new professional practices, contractors, property services and owner-operated companies. New businesses may add accounts, employees and vendors quickly, while established owners may discover that a once-simple bookkeeping setup no longer supports their filing or planning needs.",
-      "IntegraFin provides tax accountant support to Fulshear from our nearby Katy office. We help organize tax preparation, monthly bookkeeping, payroll-related records and IRS notice responses through secure online collaboration and scheduled Katy appointments. We do not claim a separate Fulshear office.",
+      "IntegraFin provides tax accountant support to Fulshear from our nearby Katy office. We help organize tax preparation, monthly bookkeeping, payroll-related records and IRS notice responses through online collaboration and scheduled Katy appointments. We do not claim a separate Fulshear office.",
       "Growth does not automatically produce a tax benefit, and no city page can determine what a taxpayer qualifies for. We review the entity, records and transactions first, explain the rules relevant to the engagement and use cautious language when treatment depends on additional facts.",
     ],
     localExpertise: [
@@ -392,7 +392,7 @@ export const texasCityPages: TexasCityLandingData[] = [
       { question: "Do you help with Texas franchise tax?", answer: "We can help assess filing workflow and organize relevant information. Requirements, thresholds and reports depend on entity facts and current Texas Comptroller rules." },
       { question: "Can you help with overdue books?", answer: "Yes. Cleanup is scoped by the periods, accounts and source records available. We identify limitations rather than inventing unsupported transactions." },
       { question: "Do you guarantee penalty relief?", answer: "No. Relief depends on law, agency criteria and taxpayer facts. We can help review notices and prepare support for options that may be available." },
-      { question: "Can meetings be virtual?", answer: "Yes. Fulshear clients can use secure document sharing and virtual meetings, with Katy appointments available when needed." },
+      { question: "Can meetings be virtual?", answer: "Yes. Fulshear clients can use an organized document process and virtual meetings, with Katy appointments available when needed." },
     ],
   },
   {
@@ -407,7 +407,7 @@ export const texasCityPages: TexasCityLandingData[] = [
     hero: "Tax preparation and small-business accounting for Richmond owners who need accurate records and straightforward next steps.",
     intro: [
       "Richmond is both a county center and part of a fast-changing Fort Bend business corridor. Longstanding local companies operate alongside new construction, healthcare, property and professional services. That mix means accounting systems can range from mature processes to a collection of bank downloads assembled near filing time.",
-      "IntegraFin supports Richmond taxpayers from our Katy office with business and individual tax preparation, bookkeeping, payroll-record coordination and IRS notice review. Most work can be handled securely online. We describe Richmond as a service area, not as an office location.",
+      "IntegraFin supports Richmond taxpayers from our Katy office with business and individual tax preparation, bookkeeping, payroll-record coordination and IRS notice review. Most work can be handled remotely. We describe Richmond as a service area, not as an office location.",
       "Our first job is to establish what can be supported. We reconcile records, ask about unusual items and explain where tax treatment depends on facts or current guidance. We do not advertise guaranteed refunds, guaranteed savings or automatic notice resolution.",
     ],
     localExpertise: [
@@ -430,13 +430,13 @@ export const texasCityPages: TexasCityLandingData[] = [
       ...sharedResources,
     ],
     nearby: ["Rosenberg", "Sugar Land", "Fulshear", "Katy", "Missouri City", "Needville"],
-    serviceAreaNote: "Richmond is served from IntegraFin's Katy office. We do not claim a Richmond office; clients may use secure remote service or schedule a Katy appointment.",
+    serviceAreaNote: "Richmond is served from IntegraFin's Katy office. We do not claim a Richmond office; clients may use remote service or schedule a Katy appointment.",
     faq: [
       { question: "Do you serve both Richmond businesses and individuals?", answer: "Yes, subject to the engagement. We confirm the returns, entities, years and services involved before work begins." },
       { question: "Can you prepare a return if the books are not reconciled?", answer: "The records may need cleanup first. We assess what is missing and explain the additional scope rather than preparing from balances that cannot be supported." },
       { question: "Can you advise on vehicle and equipment deductions?", answer: "We can review tax treatment based on business use, records, timing and current rules. Buying an asset does not by itself guarantee a deduction or tax savings." },
       { question: "Do you help with IRS payment options?", answer: "We can review the notice and discuss procedures that may be relevant. Approval and terms depend on IRS rules and the taxpayer's facts and compliance history." },
-      { question: "How do Richmond clients share documents?", answer: "We use an organized secure workflow and provide a tailored document list. Sensitive records should not be sent through ordinary unsecured email." },
+      { question: "How do Richmond clients share documents?", answer: "We confirm the document method during onboarding and provide a tailored document list. Sensitive records should not be sent through ordinary unsecured email." },
       { question: "Is the consultation a substitute for legal advice?", answer: "No. We provide tax and accounting services within scope and recommend legal counsel when a matter involves contracts, liability or other legal issues." },
     ],
   },
@@ -493,11 +493,11 @@ export const texasCityPages: TexasCityLandingData[] = [
     primaryKeyword: "tax accountant Missouri City TX",
     supportingKeywords: ["business accounting Missouri City", "bookkeeping services Missouri City TX", "tax preparation Missouri City", "IRS notice help Missouri City"],
     title: "Missouri City Tax Accountant for Business | IntegraFin",
-    description: "Missouri City tax accountant for business tax, bookkeeping, planning and IRS notice review. Work securely with nearby IntegraFin. Schedule a consultation.",
+    description: "Missouri City tax accountant for business tax, bookkeeping, planning and IRS notice review. Work remotely with nearby IntegraFin. Schedule a consultation.",
     hero: "Tax preparation and accounting support for Missouri City businesses, independent professionals and families across Fort Bend and Harris counties.",
     intro: [
       "Missouri City spans Fort Bend and Harris counties and connects closely with Sugar Land and Houston. Its business community includes healthcare providers, consultants, home-service companies, retailers and real-estate professionals whose income and expenses may cross city and county lines.",
-      "IntegraFin serves Missouri City from our Katy office through secure virtual collaboration. We support tax preparation, bookkeeping, business accounting, payroll-record review and IRS notice response planning. Clients are never told that IntegraFin has a Missouri City office when it does not.",
+      "IntegraFin serves Missouri City from our Katy office through virtual collaboration. We support tax preparation, bookkeeping, business accounting, payroll-record review and IRS notice response planning. Clients are never told that IntegraFin has a Missouri City office when it does not.",
       "City and county geography can affect operations, but federal tax treatment depends on law and the taxpayer's facts. We focus on records, entity activity and filing history, qualify recommendations where needed and avoid guaranteed refund or tax-reduction language.",
     ],
     localExpertise: [
@@ -520,14 +520,14 @@ export const texasCityPages: TexasCityLandingData[] = [
       ...sharedResources,
     ],
     nearby: ["Sugar Land", "Houston", "Richmond", "Rosenberg", "Katy", "Stafford"],
-    serviceAreaNote: "IntegraFin has no Missouri City office. Clients are served securely from Katy and may schedule in-person appointments at 2039 N Mason Rd, Suite 604, Katy, TX 77449.",
+    serviceAreaNote: "IntegraFin has no Missouri City office. Clients are served remotely from Katy and may schedule in-person appointments at 2039 N Mason Rd, Suite 604, Katy, TX 77449.",
     faq: [
       { question: "Does crossing county lines change federal tax rules?", answer: "Federal rules do not change at the county line, but business operations, permits and local records can differ. We review the actual jurisdictions and obligations involved." },
       { question: "Can you support a Missouri City home-based business?", answer: "Yes. We help organize income and expense records and discuss tax questions based on documented business use and other applicable facts." },
       { question: "Do you prepare sales-tax filings?", answer: "Sales-tax support depends on the engagement and registrations involved. Businesses should confirm current Texas Comptroller requirements for their products, services and locations." },
       { question: "Can you guarantee my IRS notice is wrong?", answer: "No. We compare the notice, return and source documents before reaching a conclusion. Some notices reflect missing or mismatched information; others may require a different response." },
       { question: "Do you work with families as well as businesses?", answer: "Yes, depending on scope. Coordinating owner and business information can be useful, while keeping each taxpayer's records and return requirements clear." },
-      { question: "Where would an in-person meeting occur?", answer: "At IntegraFin's Katy office by appointment. Most Missouri City engagements can also be handled through secure remote meetings and document exchange." },
+      { question: "Where would an in-person meeting occur?", answer: "At IntegraFin's Katy office by appointment. Most Missouri City engagements can also be handled through remote meetings and an organized document process." },
     ],
   },
 ];

@@ -292,7 +292,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     heroBullets: [
       "W-2, 1099, rental, investment, and multi-state documents",
       "Tax-credit and deduction review based on your records",
-      "Secure document workflow and clear next steps",
+      "Organized document workflow and clear next steps",
     ],
     primaryCta: "Request Tax Preparation Help",
     secondaryCta: "Call (832) 647-1819",
@@ -382,7 +382,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
       "Clear document requests before preparation begins.",
       "Tax-safe review of credits and deductions based on records rather than guesses.",
       "Support for taxpayers who also have business, bookkeeping, payroll, or IRS notice questions.",
-      "Secure remote workflow plus Katy-area office support when a local appointment helps.",
+      "Remote workflow plus Katy-area office support when a local appointment helps.",
     ],
     officialResourcesTitle: "Official Individual Tax Resources",
     officialResourcesIntro:

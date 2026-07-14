@@ -12,7 +12,7 @@ const ADMIN_LOGIN_WINDOW_MS = 10 * 60 * 1000;
 
 export const metadata: Metadata = {
   title: 'Admin Login | IntegraFin',
-  description: 'Secure admin login for IntegraFin staff.',
+  description: 'Admin login for IntegraFin staff.',
   robots: { index: false, follow: false },
 };
 
@@ -92,7 +92,7 @@ export default async function AdminLoginPage({
             </div>
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-gray-950">Admin Login</h1>
-              <p className="mt-1 text-sm text-gray-600">IntegraFin secure publishing access</p>
+              <p className="mt-1 text-sm text-gray-600">IntegraFin authenticated publishing access</p>
             </div>
           </div>
 

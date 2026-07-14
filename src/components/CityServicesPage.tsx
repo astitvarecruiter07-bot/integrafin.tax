@@ -237,7 +237,7 @@ export default function CityServicesPage({
             Nearby Areas We Support
           </h2>
           <p className="text-slate-700 mb-5 leading-relaxed">
-            We support {cityName} clients and nearby communities through the same secure tax,
+            We support {cityName} clients and nearby communities through the same organized tax,
             bookkeeping, payroll, and IRS notice workflow.
           </p>
           <div className="flex flex-wrap gap-2">

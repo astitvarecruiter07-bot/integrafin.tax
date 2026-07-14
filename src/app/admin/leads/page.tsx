@@ -83,6 +83,23 @@ export default async function AdminLeadsPage() {
                           <Info className="w-3 h-3" />
                           Source: {lead.source}
                         </div>
+                        {lead.attribution && (
+                          <details className="mt-2 max-w-xs text-xs text-gray-500">
+                            <summary className="cursor-pointer font-semibold text-[#0047AB]">
+                              Attribution
+                            </summary>
+                            <dl className="mt-2 space-y-1 break-words">
+                              <div><dt className="font-semibold inline">First page:</dt>{' '}<dd className="inline">{lead.attribution.firstLandingPage || 'Unavailable'}</dd></div>
+                              <div><dt className="font-semibold inline">Submitted on:</dt>{' '}<dd className="inline">{lead.attribution.currentSubmissionPage || 'Unavailable'}</dd></div>
+                              <div><dt className="font-semibold inline">Referrer:</dt>{' '}<dd className="inline">{lead.attribution.referrer || 'Direct / unavailable'}</dd></div>
+                              <div><dt className="font-semibold inline">Campaign:</dt>{' '}<dd className="inline">{lead.attribution.utmCampaign || 'None'}</dd></div>
+                              <div><dt className="font-semibold inline">Source / medium:</dt>{' '}<dd className="inline">{[lead.attribution.utmSource, lead.attribution.utmMedium].filter(Boolean).join(' / ') || 'None'}</dd></div>
+                              {(lead.attribution.gclid || lead.attribution.gbraid || lead.attribution.wbraid || lead.attribution.msclkid) && (
+                                <div><dt className="font-semibold inline">Ad click ID:</dt>{' '}<dd className="inline">Present</dd></div>
+                              )}
+                            </dl>
+                          </details>
+                        )}
                       </td>
                       <td className="px-6 py-6">
                         <p className="text-sm text-gray-600 line-clamp-2 max-w-xs" title={lead.message}>

@@ -17,35 +17,35 @@ const tabsData = [
     title: "Business - Tax & Accounting Services",
     description: "Our Business Tax & Accounting Services help businesses organize financial operations and support compliance with applicable tax requirements. We assist with tax planning, bookkeeping, payroll records, financial reporting, business setup, and tax filings through a coordinated process focused on accurate records, clear next steps, and reliable communication.",
     services: [
-      { title: "Accounting Software Selection & Implementation", desc: "Choosing the right accounting software is crucial for your business. We evaluate your needs and recommend the best solution, whether it's QuickBooks™, Xero, Zoho Books, or other platforms. Our team handles the complete setup, customization, integration, and training to ensure a smooth transition, enabling you to manage your finances efficiently." },
-      { title: "Full-Service Accounting & Back-Office Support", desc: "We provide end-to-end accounting and back-office support, including bookkeeping, payroll processing, financial reporting, tax compliance, and invoice management. Our services allow you to focus on growing your business while we take care of your financial operations with accuracy and efficiency." },
-      { title: "QuickBooks™ Setup & Support", desc: "We provide expert assistance in setting up and managing accounting software like QuickBooks™, Zoho Books, Xero, and other platforms. Our team ensures that your financial data is organized efficiently, allowing for accurate bookkeeping, expense tracking, and financial reporting." },
-      { title: "Bookkeeping & Write-Up Services", desc: "Our bookkeeping services help businesses maintain accurate financial records. We handle daily transactions, reconcile bank statements, and prepare financial reports, ensuring compliance with accounting standards. With our write-up services, you get detailed insights into your business’s financial health." },
-      { title: "Business Consulting", desc: "We offer strategic business consulting to help you make informed financial decisions. Whether it’s cash flow management, investment strategies, or financial forecasting, our experts provide valuable guidance to support business growth." },
-      { title: "Business Entity Selection", desc: "Choosing the right business structure—LLC, Corporation, or Sole Proprietorship—affects your tax obligations and legal protections. We provide expert advice on entity selection to ensure tax efficiency and compliance." },
-      { title: "Buying or Selling a Business", desc: "Navigating the complexities of business acquisitions and sales can be challenging. Our team provides due diligence, financial analysis, and valuation support to ensure a smooth transition during business purchases or sales." },
-      { title: "Incorporation & New Business Advisory", desc: "Starting a business? We assist in company incorporation, drafting essential documents, and guiding you through tax and legal requirements to ensure a successful launch." },
-      { title: "EIN / Tax ID Application", desc: "Every business needs an Employer Identification Number (EIN) for tax filing and compliance. We handle the application process for you, ensuring timely registration with the IRS." },
-      { title: "IRS & State Government Process Support", desc: "We assist with IRS and state-mandated tax filings, compliance processes, and necessary documentation to keep your business legally compliant." },
-      { title: "Financial Analysis & Statements (Compilation, Review, Audit)", desc: "Get accurate financial statements prepared, reviewed, or audited to ensure compliance, transparency, and informed decision-making for your business." },
-      { title: "IRS Representation", desc: "Facing an IRS audit or tax dispute? Our experts provide professional representation to negotiate, resolve issues, and ensure a fair outcome." },
-      { title: "Management Advisory Services", desc: "We offer expert business advisory services, helping you optimize operations, increase efficiency, and develop long-term financial strategies." },
-      { title: "Payroll Services (Full-Service Payroll)", desc: "Our payroll solutions handle salary processing, tax deductions, compliance, and employee payments, ensuring a smooth and accurate payroll system." },
-      { title: "Invoice Management & AR/AP Back-Office Support", desc: "We streamline your invoicing, manage accounts receivable/payable, and ensure timely payments to improve your business’s cash flow." },
-      { title: "Sales Tax Services", desc: "Ensure compliance with sales tax regulations through our expert assistance in tax registration, accurate calculations, and timely filings." },
-      { title: "401K & IRA Advisory for Business Owners", desc: "Plan for the future with our 401K and IRA advisory services, helping business owners maximize retirement savings and tax benefits." },
-      { title: "Tax Optimization & Maximization of Deductions", desc: "Reduce your tax burden legally by leveraging deductions, credits, and expert tax-saving strategies tailored to your financial situation." },
-      { title: "State & Local Registrations (Unemployment Insurance, Withholding)", desc: "We handle your business’s state and local tax registrations, including unemployment insurance and tax withholdings, ensuring compliance." }
+      { title: "Accounting Software Selection & Implementation", desc: "We review transaction volume, reporting needs, payroll connections, user access, and current records before recommending and configuring an accounting platform within the agreed scope." },
+      { title: "Accounting & Back-Office Support", desc: "Scope may include bookkeeping, payroll-record coordination, financial reporting, invoice records, and recurring close tasks. Deliverables depend on the systems, records, and written engagement." },
+      { title: "QuickBooks™ Setup & Support", desc: "QuickBooks support may include file setup, chart-of-accounts review, bank-feed configuration, reconciliation, cleanup, and reporting based on the condition of the file." },
+      { title: "Bookkeeping & Write-Up Services", desc: "Bookkeeping scope may include transaction classification, account reconciliation, open-question review, and financial reports based on the records provided." },
+      { title: "Business Reporting Discussions", desc: "We can review bookkeeping reports, cash-flow information, and projections with business owners. Investment, legal, and valuation advice requires an appropriate separate professional scope." },
+      { title: "Business Entity Tax Review", desc: "We discuss tax classification and recordkeeping considerations using the ownership, operations, payroll status, and expected activity. Legal formation and liability advice may require an attorney." },
+      { title: "Buying or Selling a Business", desc: "Accounting support may include record organization, financial-report review, and tax-document coordination. Legal, valuation, and transaction advice depends on separate qualified advisers." },
+      { title: "New Business Tax Setup", desc: "We assist with EIN, tax-classification, bookkeeping, payroll-record, and filing-readiness steps. State formation and legal documents remain subject to the agreed scope and legal advice." },
+      { title: "EIN / Tax ID Application", desc: "We can assist with EIN and other tax-identification application information. Eligibility, issuance, processing time, and agency decisions are outside IntegraFin's control." },
+      { title: "IRS & State Filing Process Support", desc: "We help organize records and prepare agreed filings or response documents. Filing requirements and outcomes depend on the taxpayer facts, applicable rules, deadlines, and agency review." },
+      { title: "Financial Reports and Supporting Schedules", desc: "We prepare agreed bookkeeping reports and supporting schedules from the available records. Audit, review, attestation, and assurance services are not implied unless separately authorized and engaged." },
+      { title: "IRS Notice and Representation Review", desc: "We review the notice, records, deadlines, and available authorization before defining assistance. Representation is available only when the matter and professional authorization permit it." },
+      { title: "Management Reporting Support", desc: "We can organize current financial information and discuss reporting questions; business results depend on operations, decisions, market conditions, and other factors outside the engagement." },
+      { title: "Payroll Record and Filing Support", desc: "Scope may include payroll reports, deposit records, filing status, wage summaries, and notice documentation. Employer obligations remain fact- and deadline-specific." },
+      { title: "Invoice and AR/AP Record Support", desc: "We help organize invoice, receivable, payable, and payment records within the selected bookkeeping workflow; collection timing and cash-flow outcomes are not guaranteed." },
+      { title: "Sales Tax Workflow Support", desc: "We can help identify registrations, source records, filing periods, and reporting questions. Obligations depend on jurisdictions, activities, nexus, and current rules." },
+      { title: "Retirement Account Tax Coordination", desc: "We can discuss tax-record and filing considerations for retirement contributions with the client's plan provider or financial adviser. Eligibility and tax effects depend on plan terms and taxpayer facts." },
+      { title: "Tax Planning Review", desc: "Planning discussions review income, deductions, credits, entity activity, timing, and documentation. Tax results depend on eligibility, records, applicable law, and actions completed on time." },
+      { title: "State & Local Registrations", desc: "We can assist with unemployment, withholding, sales-tax, and other registration workflows when included in scope. Approval and processing times depend on the relevant agency." }
     ],
     benefits: [
-      "Expert Guidance and Support",
-      "Time and Cost Savings",
-      "Tax Optimization and Deductions",
-      "Comprehensive Services for All Business Stages",
-      "Risk Mitigation and IRS Representation",
-      "Efficient Back-Office Support",
-      "Reliable Financial Reporting and Analysis",
-      "Dedicated Customer Support"
+      "Written scope and record checklist",
+      "Coordinated bookkeeping and tax workflow",
+      "Fact-based tax planning discussions",
+      "Entity and payroll-record context",
+      "IRS notice review subject to authorization",
+      "Recurring accounting support when engaged",
+      "Financial reports based on available records",
+      "Clear client questions and next steps"
     ]
   },
   {
@@ -53,22 +53,22 @@ const tabsData = [
     label: "Individual Tax Services",
     icon: <User className="w-5 h-5 flex-shrink-0" />,
     title: "Personalized Tax Preparation",
-    description: "Our Individual Tax Services ensure hassle-free tax filing, maximizing deductions while keeping you compliant with IRS regulations. Whether you're a salaried employee, freelancer, or retiree, we provide expert guidance on tax preparation, planning, and optimization. Our team helps you minimize liabilities, maximize refunds, and navigate complex tax situations with ease.  We also assist with IRS audit representation, back taxes, penalty abatements, and installment agreements, ensuring a stress-free resolution to tax issues. If you need estate and trust tax preparation, we offer strategic planning to minimize tax burdens and protect your financial legacy. With secure e-filing and dedicated support, we make tax filing simple, accurate, and reliable.",
+    description: "Individual tax preparation begins with the taxpayer's filing history, income documents, payments, dependents, deductions, credits, investments, state activity, and other relevant facts. Planning, notice support, representation, payment options, and estate or trust work are scoped separately when needed. Refunds, tax due, penalties, and agency outcomes depend on records, eligibility, law, timing, and government review.",
     services: [
-      { title: "Tax Filing & Preparation", desc: "Hassle-free tax filing with accurate preparation to ensure compliance while maximizing refunds and minimizing liabilities." },
-      { title: "Tax Planning & Optimization", desc: "Proactive tax planning to reduce your tax burden legally by identifying deductions, credits, and strategies tailored to your financial goals." },
-      { title: "Tax Resolution Services", desc: "Struggling with tax issues? We assist with IRS disputes, back taxes, audit representation, and penalty relief to resolve your tax challenges." },
-      { title: "Estate & Trust Tax Preparation", desc: "Expert guidance in estate and trust tax filings, ensuring compliance while preserving wealth and minimizing tax implications for beneficiaries." }
+      { title: "Tax Filing & Preparation", desc: "We organize the return from the documents and facts provided, identify open questions, and review the prepared filing with the taxpayer before authorization." },
+      { title: "Tax Planning Review", desc: "Planning discussions may address withholding, estimated payments, income timing, deductions, credits, and recordkeeping. Eligibility and results depend on taxpayer facts and current law." },
+      { title: "IRS Notice and Balance Support", desc: "We review notices, balances, returns, transcripts, payment records, and deadlines before explaining response or payment procedures that may be relevant." },
+      { title: "Estate & Trust Tax Preparation", desc: "Estate and trust work is accepted only after reviewing the entity, fiduciary documents, beneficiaries, income records, filing requirements, and need for legal or specialized advice." }
     ],
     benefits: [
-      "Expert Guidance and Support",
-      "Maximized Refunds & Tax Savings",
-      "Time-Saving & Hassle-Free Filing",
-      "Comprehensive Tax Planning & Optimization",
-      "IRS Audit Representation & Tax Resolution",
-      "Estate & Trust Tax Preparation",
-      "Secure & Confidential Tax Processing",
-      "Dedicated Customer Support"
+      "Document and filing-history review",
+      "Eligibility-based deduction and credit review",
+      "Withholding and estimated-payment discussions",
+      "Multi-state and self-employment context",
+      "Notice support subject to scope and authorization",
+      "Estate and trust intake review",
+      "Organized document workflow",
+      "Clear open questions and next steps"
     ]
   },
   {
@@ -76,26 +76,26 @@ const tabsData = [
     label: "Tax Resolution Services",
     icon: <Scale className="w-5 h-5 flex-shrink-0" />,
     title: "Tax Resolution Services",
-    description: "Our Tax Resolution Services help individuals and businesses resolve tax issues with the IRS and state tax authorities efficiently. Whether you owe back taxes, face penalties, or have unfiled returns, our experts work to find the best solution for your situation. We assist with IRS audit representation, offer in compromise, penalty abatement, and installment agreements, helping you reduce tax liabilities and avoid legal complications. Our team negotiates with the IRS on your behalf, ensuring fair resolutions while protecting your financial interests. With our expertise, you can achieve tax compliance and financial peace of mind.",
+    description: "Tax resolution work starts with the notice, returns, transcripts, balances, payment history, filing status, deadlines, and available authorization. The next step may involve missing returns, a notice response, payment-plan information, penalty documentation, or an offer review. Eligibility, representation, approval, terms, and agency outcomes depend on the taxpayer facts, records, applicable procedures, and IRS or state review.",
     services: [
-      { title: "Back Taxes Owed", desc: "We help you resolve unpaid taxes by negotiating payment plans, reducing penalties, and ensuring compliance with IRS regulations." },
+      { title: "Back Taxes Owed", desc: "We review balances, filed and missing returns, transcripts, payment records, and notices before explaining filing or payment procedures that may be relevant." },
       { title: "IRS Notice Review in Katy", desc: "Received a CP14, CP2000, Letter 12C, or identity verification letter? Visit our dedicated IRS Notice Help Katy TX page for local notice review and document organization." },
-      { title: "IRS Audit Representation", desc: "Our experts represent you before the IRS, handling audits professionally to minimize liabilities and protect your rights." },
-      { title: "Offer in Compromise", desc: "Settle your tax debt for less than the full amount owed through IRS-approved negotiation strategies." },
-      { title: "Payroll Taxes Owed", desc: "Avoid penalties by resolving overdue payroll tax issues with structured repayment plans and compliance assistance." },
-      { title: "Penalty/Interest Abatement", desc: "Reduce or eliminate IRS penalties and interest charges by proving reasonable cause or negotiating relief options." },
-      { title: "Tax Representation & Resolution", desc: "We advocate on your behalf to resolve complex tax disputes, ensuring fair treatment and financial relief." },
-      { title: "Unfiled Returns", desc: "Get back on track by filing overdue tax returns, minimizing penalties, and preventing legal action from the IRS." },
-      { title: "Why Choose an Enrolled Agent?", desc: "Enrolled Agents are federally authorized tax professionals who specialize in tax resolution and IRS negotiations." },
-      { title: "E-Filing Services", desc: "Secure and accurate electronic tax filing ensures faster processing, quicker refunds, and reduced risk of error." }
+      { title: "IRS Audit and Representation Review", desc: "Representation is considered only after reviewing the matter, records, deadlines, and professional authorization. No audit or liability outcome is promised." },
+      { title: "Offer in Compromise Review", desc: "We can help organize financial information and review published IRS eligibility factors. Acceptance and settlement terms are determined by the IRS." },
+      { title: "Payroll Taxes Owed", desc: "We review payroll returns, deposits, balances, notices, and missing periods before outlining filing, documentation, or payment-plan questions." },
+      { title: "Penalty Relief Documentation", desc: "We can help organize facts and records relevant to a penalty-relief request. Relief depends on law, agency criteria, filing history, documentation, and agency approval." },
+      { title: "Tax Representation & Response Support", desc: "Available assistance depends on the dispute, deadlines, records, engagement, and professional authorization; fair treatment or financial relief cannot be guaranteed." },
+      { title: "Unfiled Returns", desc: "We identify missing periods and records, prepare agreed returns, and explain the filing sequence. Penalties, collection activity, and agency action remain subject to applicable rules." },
+      { title: "Professional Authorization", desc: "The ability to represent a taxpayer depends on the professional's authorization, the tax matter, and the agreed engagement. The first step is confirming what assistance is available." },
+      { title: "Electronic Filing", desc: "Eligible returns may be transmitted electronically after taxpayer review and authorization. Processing time, acceptance, refunds, balances, and agency actions are outside IntegraFin's control." }
     ],
     benefits: [
-      "Reduce Tax Debt",
-      "IRS Audit Protection",
-      "Penalty & Interest Relief",
-      "Legal Compliance & Avoiding Wage Garnishment",
-      "Peace of Mind",
-      "Flexible Payment Plans"
+      "Notice and deadline review",
+      "Transcript and filing-history organization",
+      "Missing-return preparation when engaged",
+      "Payment-procedure information",
+      "Penalty documentation review",
+      "Representation only when authorized"
     ]
   },
   {
@@ -103,22 +103,22 @@ const tabsData = [
     label: "Additional Services",
     icon: <PlusCircle className="w-5 h-5 flex-shrink-0" />,
     title: "Additional Services",
-    description: "We offer a range of additional tax and compliance services to help individuals and businesses meet legal requirements and simplify financial processes. Our services include assistance with tax identification applications, international tax compliance, electronic filings, and secure document management. Whether you need help obtaining an ITIN, SSN, or FEIN, ensuring compliance with FBAR & FATCA regulations, or filing for business certifications such as HUB, MBE, or SBA HubZone, our experts provide professional guidance to streamline the process. We also offer FinCEN BOI (Beneficial Ownership Interest) Filing, ensuring compliance with anti-money laundering regulations, as well as tax extension filings to help avoid penalties and meet IRS deadlines. Our goal is to make tax and compliance processes hassle-free, secure, and efficient for individuals and businesses alike.",
+    description: "Additional services may include tax-identification application support, international information-return workflows, extension filings, certification-document organization, electronic signatures, and document-retention coordination. Eligibility, filing requirements, deadlines, approval, and processing times depend on the applicant facts, current rules, and the responsible agency.",
     services: [
       { title: "ITIN, SSN, FEIN Applications", desc: "Assistance with obtaining Individual Taxpayer Identification Number (ITIN), Social Security Number (SSN), and Federal Employer Identification Number (FEIN) for tax and business purposes." },
-      { title: "International Compliance (FBAR & FATCA)", desc: "Ensure compliance with foreign financial reporting requirements, including FBAR (Foreign Bank Account Reporting) and FATCA (Foreign Account Tax Compliance Act)." },
-      { title: "FinCEN BOI (Beneficial Ownership Interest) Filing", desc: "Meet FinCEN reporting requirements by disclosing beneficial ownership information to comply with anti-money laundering laws." },
-      { title: "Extension Filing", desc: "Request tax return extensions to avoid penalties and ensure compliance with IRS deadlines." },
-      { title: "Certification Support (HUB, MBE, WOBE, WMBE, SBA HubZone & 8(a))", desc: "Assistance with obtaining business certifications to qualify for government contracts and minority business benefits." },
-      { title: "Secure Online Document Storage & Retention", desc: "Safely store tax documents online with secure access and long-term retention options." },
-      { title: "E-Signing of Documents, Forms & Filings", desc: "Digitally sign and submit tax documents securely and conveniently from anywhere." }
+      { title: "International Reporting (FBAR & FATCA)", desc: "We can review foreign-account and asset information for reporting questions. Filing obligations depend on ownership, balances, residency, entity status, and current rules." },
+      { title: "FinCEN BOI Filing Review", desc: "We can help review reporting status and organize beneficial-ownership information when the service is available. Requirements and deadlines depend on current law and entity facts." },
+      { title: "Extension Filing", desc: "We can prepare an extension request when engaged before the applicable deadline. An extension to file generally does not extend the time to pay, and penalties depend on the facts and rules." },
+      { title: "Certification Application Support", desc: "We can help organize requested business documents for HUB, MBE, WOBE, WMBE, HubZone, or 8(a) applications. Eligibility and approval are determined by the program administrator." },
+      { title: "Document Collection & Retention Workflow", desc: "Clients receive instructions for providing documents and retaining engagement records. Available methods and retention periods are confirmed during onboarding." },
+      { title: "Electronic Signatures", desc: "Electronic signatures may be used for eligible documents when supported by the engagement process and applicable filing requirements." }
     ],
     benefits: [
-      "Simplified Compliance",
-      "Secure Digital Solutions",
-      "Seamless Tax Identification",
-      "Hassle-Free Business Certifications",
-      "Timely Filing & Extensions"
+      "Application-document checklist",
+      "International reporting review",
+      "Tax-identification support",
+      "Certification-document organization",
+      "Extension and signature workflows"
     ]
   },
   {
@@ -126,24 +126,24 @@ const tabsData = [
     label: "New Business Formation",
     icon: <Rocket className="w-5 h-5 flex-shrink-0" />,
     title: "New Business Formation & Consultation",
-    description: "Starting a new business is an exciting yet challenging process that requires careful planning and strategic decision-making. From choosing the right business structure to registering with state and federal authorities, every step plays a crucial role in the success and legal compliance of your business. Our New Business Formation & Consultation services are designed to provide entrepreneurs and small business owners with expert guidance, ensuring a smooth and hassle-free startup experience. We assist in selecting the ideal entity type—whether it's a Sole Proprietorship, Partnership, LLC, S-Corp, or C-Corp—based on your financial goals, liability concerns, and tax considerations. Our team ensures that your business is properly registered, obtains the necessary tax identification numbers (EIN, FEIN, SSN), and complies with state and federal regulations. We also offer support in setting up financial systems, securing licenses, and understanding tax obligations. Beyond initial setup, our consultation services extend to business planning, risk assessment, financial structuring, and growth strategies. We help you navigate the complexities of business operations, ensuring that you have a solid foundation to scale successfully. Whether you need help with filing your business formation documents, tax planning, or industry-specific compliance requirements, we provide tailored solutions to meet your unique needs. By leveraging our expertise, you can focus on what matters most—growing your business. Our team ensures that all legal, financial, and regulatory aspects are covered so that you can operate with confidence and peace of mind.",
+    description: "New business tax setup begins with the owners, proposed activity, state, expected income, payroll plans, accounting system, and filing needs. IntegraFin can discuss tax classification and recordkeeping, assist with EIN and account workflows, and coordinate bookkeeping and payroll-record setup. Entity formation, contracts, licenses, liability protection, funding, and legal compliance may require attorneys, agencies, lenders, or other qualified advisers.",
     services: [
-      { title: "Expert Entity Selection", desc: "We help you choose the best legal structure for your business (LLC, S-Corp, C-Corp, Partnership, etc.) to maximize tax advantages and liability protection." },
-      { title: "Complete Business Registration", desc: "Hassle-free assistance with registering your business, obtaining an EIN (Employer Identification Number), state tax IDs, and business licenses." },
-      { title: "Compliance & Tax Readiness", desc: "Ensure that your business meets IRS, state, and local tax regulations, including payroll setup and sales tax compliance." },
-      { title: "Financial Planning & Advisory", desc: "Guidance on setting up business bank accounts, bookkeeping systems, and financial reporting structures for smooth operations." },
-      { title: "Access to Business Funding", desc: "Get insights on securing business loans, venture capital, and grants to support your startup’s growth." },
-      { title: "Long-Term Business Strategy", desc: "From initial formation to expansion, we provide strategic consultation on marketing, operations, and risk management." },
-      { title: "Ongoing Support & Advisory", desc: "Our team is available beyond the formation process, offering continued tax planning, accounting, and financial advisory services as your business grows." }
+      { title: "Entity Tax Classification Review", desc: "We discuss federal tax classification and recordkeeping considerations. Legal structure, liability protection, ownership documents, and state-law advice require appropriate legal review." },
+      { title: "Registration and EIN Support", desc: "We can assist with EIN and selected tax-account registrations when included in scope. Agency issuance, approval, processing time, and licensing remain outside our control." },
+      { title: "Tax and Recordkeeping Readiness", desc: "We identify bookkeeping, payroll-record, sales-tax, estimated-tax, and filing questions based on the planned activity and jurisdictions." },
+      { title: "Bookkeeping Setup", desc: "We can help establish accounts, transaction categories, document routines, reconciliations, and reporting expectations for the new business." },
+      { title: "Funding Record Preparation", desc: "We can organize bookkeeping reports and requested tax records for a lender or funding application. Funding eligibility, approval, rates, and terms are determined by the provider." },
+      { title: "Owner and Adviser Coordination", desc: "Tax and accounting questions can be coordinated with the business's attorney, payroll provider, lender, insurance adviser, or other professionals when needed." },
+      { title: "Ongoing Accounting Support", desc: "Recurring bookkeeping, tax preparation, planning discussions, and payroll-record support are available only when included in a separate or continuing engagement." }
     ],
     benefits: [
-      "Expert Entity Selection",
-      "Complete Business Registration",
-      "Compliance & Tax Readiness",
-      "Financial Planning & Advisory",
-      "Access to Business Funding",
-      "Long-Term Business Strategy",
-      "Ongoing Support & Advisory"
+      "Entity and tax-classification questions",
+      "EIN and registration workflow support",
+      "Bookkeeping and account setup",
+      "Payroll-record readiness",
+      "First-year filing checklist",
+      "Coordination with legal and other advisers",
+      "Ongoing support only when engaged"
     ]
   }
 ];

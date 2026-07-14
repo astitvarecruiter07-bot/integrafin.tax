@@ -1,5 +1,22 @@
 import mongoose from 'mongoose';
 
+export interface ILeadAttribution {
+  firstLandingPage?: string;
+  currentSubmissionPage?: string;
+  referrer?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
+  gclid?: string;
+  gbraid?: string;
+  wbraid?: string;
+  msclkid?: string;
+  firstTouchAt?: Date;
+  submittedAt: Date;
+}
+
 export interface IContactLead extends mongoose.Document {
   name: string;
   email: string;
@@ -10,9 +27,30 @@ export interface IContactLead extends mongoose.Document {
   source: string;
   revenue?: string;
   jurisdiction?: string;
+  attribution?: ILeadAttribution;
   status: 'new' | 'contacted' | 'completed';
   createdAt: Date;
 }
+
+const LeadAttributionSchema = new mongoose.Schema<ILeadAttribution>(
+  {
+    firstLandingPage: { type: String, maxlength: 500 },
+    currentSubmissionPage: { type: String, maxlength: 500 },
+    referrer: { type: String, maxlength: 500 },
+    utmSource: { type: String, maxlength: 200 },
+    utmMedium: { type: String, maxlength: 200 },
+    utmCampaign: { type: String, maxlength: 200 },
+    utmContent: { type: String, maxlength: 200 },
+    utmTerm: { type: String, maxlength: 200 },
+    gclid: { type: String, maxlength: 200 },
+    gbraid: { type: String, maxlength: 200 },
+    wbraid: { type: String, maxlength: 200 },
+    msclkid: { type: String, maxlength: 200 },
+    firstTouchAt: { type: Date },
+    submittedAt: { type: Date, required: true },
+  },
+  { _id: false },
+);
 
 const ContactLeadSchema = new mongoose.Schema<IContactLead>(
   {
@@ -55,6 +93,9 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     },
     jurisdiction: {
       type: String,
+    },
+    attribution: {
+      type: LeadAttributionSchema,
     },
     status: {
       type: String,

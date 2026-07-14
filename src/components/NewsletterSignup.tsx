@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { submitNewsletterSignup } from "@/app/actions/leads";
+import { getLeadAttribution } from "@/lib/attribution";
+import { baseEventParameters, trackEvent, useFormAnalytics } from "@/lib/analytics";
 
 type NewsletterSignupProps = {
   source: string;
@@ -17,6 +19,7 @@ export default function NewsletterSignup({
   buttonLabel = "Subscribe",
   variant = "dark",
 }: NewsletterSignupProps) {
+  const trackFormStart = useFormAnalytics(source);
   const [email, setEmail] = useState("");
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -27,9 +30,15 @@ export default function NewsletterSignup({
     setMessage(null);
 
     try {
-      const result = await submitNewsletterSignup({ email, source });
+      const attribution = getLeadAttribution();
+      const result = await submitNewsletterSignup({ email, source, attribution });
       setMessage({ type: result.success ? "success" : "error", text: result.message });
       if (result.success) {
+        trackEvent("newsletter_submit", {
+          ...baseEventParameters(attribution),
+          form_source: source,
+          cta_name: "newsletter_subscribe",
+        });
         setEmail("");
       }
     } catch {
@@ -46,7 +55,11 @@ export default function NewsletterSignup({
 
   return (
     <div className="space-y-2">
-      <form className="flex flex-col sm:flex-row gap-2" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col sm:flex-row gap-2"
+        onSubmit={handleSubmit}
+        onFocusCapture={trackFormStart}
+      >
         <input
           suppressHydrationWarning
           type="email"

@@ -9,7 +9,7 @@ import {
 
 export const metadata: Metadata = {
   title: 'Industries We Serve | IntegraFin Tax & Accounting Expert Services',
-  description: 'IntegraFin provides tailored tax, accounting, and financial solutions for real estate, construction, healthcare, law firms, technology, and more. Expert compliance and strategies for your business.',
+  description: 'Review tax, bookkeeping, payroll-record, and accounting service contexts for real estate, construction, healthcare, professional services, technology, and other businesses.',
   alternates: { canonical: 'https://integrafin.tax/industries' },
   openGraph: {
     title: 'Industries We Serve | IntegraFin Tax & Accounting Expert Services',
@@ -20,77 +20,77 @@ export const metadata: Metadata = {
 const industries = [
   {
     title: "Real Estate",
-    description: "Providing tax planning, bookkeeping, and financial advisory for real estate investors, property managers, and developers to maximize deductions and ensure compliance.",
+    description: "Bookkeeping, entity-activity review, rental and property records, and tax-planning discussions for real estate investors, property managers, and developers.",
     icon: Building2
   },
   {
     title: "Construction",
-    description: "Assisting construction firms with project cost tracking, payroll management, and tax strategies to improve profitability and cash flow.",
+    description: "Project-cost records, contractor and payroll details, bookkeeping, and tax-preparation support for construction firms.",
     icon: Hammer
   },
   {
     title: "Manufacturing",
-    description: "Offering accounting, tax compliance, and inventory management solutions to streamline operations and optimize financial performance.",
+    description: "Accounting, inventory records, payroll details, and tax-filing support for manufacturing businesses.",
     icon: Factory
   },
   {
     title: "Wholesale & Distribution",
-    description: "Helping businesses manage supply chain finances, cash flow forecasting, and tax-efficient inventory control.",
+    description: "Inventory, purchasing, sales, cash-flow reporting, and tax-record support for wholesale and distribution businesses.",
     icon: Box
   },
   {
     title: "Transportation",
-    description: "Supporting trucking companies, logistics firms, and freight businesses with tax planning, regulatory compliance, and fuel tax credits.",
+    description: "Bookkeeping, vehicle and fuel records, payroll details, and tax-planning discussions for transportation and logistics businesses.",
     icon: Truck
   },
   {
     title: "Hospitality",
-    description: "Assisting hotels, restaurants, and event businesses with payroll, expense tracking, and tax-saving strategies for profitability.",
+    description: "Sales, payroll, tip, expense, and bookkeeping workflows for hotels, restaurants, and event businesses.",
     icon: Utensils
   },
   {
     title: "Nonprofit Organizations",
-    description: "Ensuring compliance with 501(c)(3) regulations, donor tracking, and financial reporting for tax-exempt entities.",
+    description: "Donor records, bookkeeping, reporting support, and tax-filing workflows for tax-exempt entities, subject to organization facts and scope.",
     icon: Heart
   },
   {
     title: "Financial Services",
-    description: "Providing accounting, tax, and compliance support for financial advisors, investment firms, and wealth management professionals.",
+    description: "Accounting, tax-record, payroll, and filing support for financial-service businesses, subject to applicable professional and regulatory boundaries.",
     icon: Landmark
   },
   {
     title: "Medical & Dental",
-    description: "Helping healthcare professionals and private practices with tax optimization, payroll, and revenue cycle management.",
+    description: "Bookkeeping, payroll records, owner activity, and tax-preparation support for medical and dental practices.",
     icon: Stethoscope
   },
   {
     title: "Healthcare",
-    description: "Offering financial consulting, bookkeeping, and compliance assistance to hospitals, clinics, and healthcare service providers.",
+    description: "Bookkeeping, financial reporting, payroll-record, and tax-filing support for clinics and healthcare service providers.",
     icon: HeartPulse
   },
   {
     title: "Law Firms & Legal Services",
-    description: "Managing trust accounting, financial reporting, and tax planning for attorneys and legal firms.",
+    description: "Bookkeeping, financial reporting, payroll records, and tax-planning discussions for law firms; legal trust-account rules require firm-specific review.",
     icon: Scale
   },
   {
     title: "Professional Services",
-    description: "Supporting consultants, freelancers, and service providers with tax strategies, bookkeeping, and financial planning.",
+    description: "Income and expense records, bookkeeping, estimated-tax discussions, and filing support for consultants and service providers.",
     icon: Briefcase
   },
   {
     title: "Technology & Consulting",
-    description: "Assisting tech startups and consulting firms with business formation, tax credits, and financial advisory.",
+    description: "Entity and bookkeeping setup, payroll records, filing support, and tax-credit documentation review for technology and consulting businesses.",
     icon: Laptop
   },
   {
     title: "Privately Held & Family-Owned Businesses",
-    description: "Providing strategic tax planning and succession planning for privately held and family-run businesses.",
+    description: "Bookkeeping, owner activity, entity returns, tax-planning discussions, and adviser coordination for privately held and family-run businesses.",
     icon: Users
   },
   {
     title: "Entrepreneurial & Small Business Retail",
-    description: "Helping small retailers with inventory management, tax compliance, and cash flow optimization.",
+    description: "Sales, inventory, payment-processor, payroll, bookkeeping, and tax-filing records for small retailers.",
     icon: ShoppingCart
   }
 ];
@@ -119,7 +119,7 @@ export default function IndustriesPage() {
               Industries <br className="hidden sm:block" /> We Serve
             </h1>
             <p className="text-[#D7E3FC] text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
-              Tailored tax, accounting, and financial solutions designed for sustainable growth across diverse sectors.
+              Tax, bookkeeping, payroll-record, and accounting workflows organized around the records and filing needs of different business sectors.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-8 py-4 rounded-xl font-bold tracking-widest uppercase text-sm shadow-xl shadow-[#00C2CB]/20 hover:scale-105 transition-all text-center">
@@ -137,15 +137,15 @@ export default function IndustriesPage() {
             <div className="space-y-8 animate-slide-in-left">
               <div className="flex items-center gap-3">
                 <span className="w-12 h-1.5 bg-[#0092df] rounded-full"></span>
-                <span className="text-[#0092df] text-sm font-black uppercase tracking-widest">Expertise Across Sectors</span>
+                <span className="text-[#0092df] text-sm font-black uppercase tracking-widest">Service Contexts Across Sectors</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#003580] tracking-tight">Comprehensive Support for Your Business</h2>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#003580] tracking-tight">Industry Context Shapes the Records We Review</h2>
               <div className="space-y-6 text-lg text-slate-600 font-medium leading-relaxed">
                 <p>
-                  We cater to a diverse range of industries, providing tailored tax, accounting, and financial solutions to meet the unique needs of businesses across various sectors. Whether you&apos;re a small startup, a family-owned business, or a large enterprise, our expert team ensures compliance, maximizes tax savings, and streamlines financial management for sustainable growth.
+                  Different businesses produce different records. A construction company may need job-cost and contractor detail, while a retailer may need inventory, sales-tax, and payment-processor reconciliation. The engagement begins by identifying the entity, filing history, accounting system, and records involved.
                 </p>
                 <p>
-                  From real estate, construction, and manufacturing to healthcare, law firms, and technology, we help businesses navigate complex tax regulations, optimize cash flow, and make informed financial decisions. Our industry-specific expertise allows us to provide customized strategies that drive efficiency, minimize liabilities, and enhance profitability, ensuring long-term success for your business.
+                  Industry context helps identify relevant questions, but it does not guarantee a tax result, filing outcome, cost reduction, or business performance. Recommendations depend on complete records, applicable rules, timing, eligibility, and the written scope.
                 </p>
               </div>
             </div>
@@ -173,8 +173,8 @@ export default function IndustriesPage() {
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-3xl sm:text-5xl font-black text-[#003580] tracking-tight">Our Specialized Sectors</h2>
-            <p className="text-slate-500 font-medium max-w-2xl mx-auto text-lg">Customized financial strategies tailored to your industry requirements.</p>
+            <h2 className="text-3xl sm:text-5xl font-black text-[#003580] tracking-tight">Business Sectors We Support</h2>
+            <p className="text-slate-500 font-medium max-w-2xl mx-auto text-lg">Examples of bookkeeping, payroll-record, tax-preparation, and planning contexts that may be included in an engagement.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

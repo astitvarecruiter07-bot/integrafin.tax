@@ -183,7 +183,7 @@ const faqItems = [
   {
     question: "Do I have to visit the Katy office in person?",
     answer:
-      "No. IntegraFin is based in Katy, but many bookkeeping workflows can be handled through secure document sharing, calls, and scheduled check-ins.",
+      "No. IntegraFin is based in Katy, but many bookkeeping workflows can be handled through an organized document process, calls, and scheduled check-ins.",
   },
 ];
 
