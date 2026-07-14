@@ -166,17 +166,7 @@ export default function ContactPage() {
                         name: "Contact IntegraFin",
                         description: "Get in touch with IntegraFin for expert tax and accounting services.",
                         mainEntity: {
-                            "@type": "Organization",
-                            name: "IntegraFin LLC",
-                            contactPoint: [
-                                {
-                                    "@type": "ContactPoint",
-                                    telephone: "+1-832-647-1819",
-                                    contactType: "customer service",
-                                    areaServed: "US",
-                                    availableLanguage: ["English"],
-                                },
-                            ],
+                            "@id": "https://integrafin.tax/#localbusiness",
                         },
                     }),
                 }}

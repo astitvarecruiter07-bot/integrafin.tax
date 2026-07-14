@@ -1,8 +1,10 @@
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["AccountingService", "LocalBusiness"],
+  "@id": "https://integrafin.tax/#localbusiness",
   "name": "IntegraFin Tax & Accounting",
-  "url": "https://integrafin.tax",
+  "legalName": "IntegraFin LLC",
+  "url": "https://integrafin.tax/",
   "telephone": "+1-832-647-1819",
   "email": "contact@integrafin.tax",
   "address": {
@@ -38,19 +40,22 @@ export const localBusinessSchema = {
   },
   "priceRange": "$$",
   "areaServed": ["Katy TX", "Houston TX", "Sugar Land TX", "Cypress TX", "Richmond TX"],
+  "parentOrganization": {
+    "@id": "https://integrafin.tax/#organization"
+  },
   "sameAs": [
-    "https://www.instagram.com/integrafinllc/",
-    "https://www.linkedin.com/company/integrafin/",
-    "https://x.com/Integrafintax"
+    "https://www.linkedin.com/company/integrafin/"
   ]
 };
 
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "IntegraFin",
-  "alternateName": "IntegraFin Tax & Accounting",
-  "url": "https://integrafin.tax",
+  "@id": "https://integrafin.tax/#organization",
+  "name": "IntegraFin Tax & Accounting",
+  "alternateName": "IntegraFin",
+  "legalName": "IntegraFin LLC",
+  "url": "https://integrafin.tax/",
   "logo": "https://integrafin.tax/logo.svg",
   "contactPoint": {
     "@type": "ContactPoint",
@@ -60,9 +65,7 @@ export const organizationSchema = {
     "availableLanguage": "English"
   },
   "sameAs": [
-    "https://www.instagram.com/integrafinllc/",
-    "https://www.linkedin.com/company/integrafin/",
-    "https://x.com/Integrafintax"
+    "https://www.linkedin.com/company/integrafin/"
   ]
 };
 
