@@ -7,7 +7,7 @@ import { getLeadAttribution } from "@/lib/attribution";
 export type AnalyticsEventName =
   | "form_view"
   | "form_start"
-  | "lead_submit"
+  | "generate_lead"
   | "newsletter_submit"
   | "phone_click"
   | "whatsapp_click"

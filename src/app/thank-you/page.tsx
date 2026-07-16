@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CalendarDays, CheckCircle2, Phone } from "lucide-react";
 
-const calendlyUrl = "https://calendly.com/integrafintax/30min";
+const calendlyUrl =
+  process.env.NEXT_PUBLIC_BOOKING_URL || "https://calendly.com/integrafintax/30min";
 
 export const metadata: Metadata = {
   title: "Request Received | IntegraFin Tax & Accounting",

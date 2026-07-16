@@ -33,7 +33,7 @@ export default function ContactForm() {
     try {
       const result = await submitLead(data);
       if (result.success) {
-        trackEvent('lead_submit', {
+        trackEvent('generate_lead', {
           ...baseEventParameters(data.attribution),
           service: data.service,
           form_source: FORM_SOURCE,

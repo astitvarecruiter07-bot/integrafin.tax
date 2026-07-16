@@ -7,6 +7,9 @@ import { requireAdminAuth } from '@/lib/adminAuth';
 import { headers } from 'next/headers';
 import { checkRateLimit } from '@/lib/rateLimit';
 import { revalidatePath } from 'next/cache';
+import { after } from 'next/server';
+import { sendNewLeadNotification } from '@/lib/leadNotifications';
+import { getLeadResponseSlaMinutes } from '@/lib/leadSla';
 
 const ADMIN_UNAUTHORIZED_MESSAGE = 'Your admin session expired. Sign in again to continue.';
 
@@ -149,11 +152,21 @@ export async function submitLead(data: LeadInput) {
       status: 'new',
       createdAt: submittedAt,
     });
+
+    const leadId = newLead._id.toString();
+    after(async () => {
+      await sendNewLeadNotification({
+        leadId,
+        service: validatedData.service,
+        source: validatedData.source,
+        submittedAt,
+      });
+    });
     
     return {
       success: true,
       message: 'Thank you. Your request has been submitted for team follow-up.',
-      leadId: newLead._id.toString(),
+      leadId,
     };
   } catch (error) {
     console.error('Lead submission error:', error);
@@ -239,12 +252,6 @@ export async function getLeads() {
       leads: [],
     };
   }
-}
-
-function getLeadSlaMinutes() {
-  const configured = Number(process.env.LEAD_RESPONSE_SLA_MINUTES || 60);
-  if (!Number.isFinite(configured)) return 60;
-  return Math.min(Math.max(Math.round(configured), 5), 10_080);
 }
 
 function serializeLead(lead: unknown) {
@@ -386,7 +393,7 @@ export async function getLeadMetrics() {
     await requireAdminAuth();
     await dbConnect();
 
-    const overdueBefore = new Date(Date.now() - getLeadSlaMinutes() * 60_000);
+    const overdueBefore = new Date(Date.now() - getLeadResponseSlaMinutes() * 60_000);
     const [statusCounts, valueTotals, overdueNewCount] = await Promise.all([
       ContactLead.aggregate<{ _id: string; count: number }>([
         { $group: { _id: '$status', count: { $sum: 1 } } },
@@ -438,7 +445,7 @@ export async function getLeadMetrics() {
         overdueNewCount,
         estimatedValue: totals?.openPipelineValue || 0,
         wonRevenue: totals?.wonRevenue || 0,
-        responseSlaMinutes: getLeadSlaMinutes(),
+        responseSlaMinutes: getLeadResponseSlaMinutes(),
         generatedAt: Date.now(),
       },
     };
@@ -456,7 +463,7 @@ export async function getLeadMetrics() {
         overdueNewCount: 0,
         estimatedValue: 0,
         wonRevenue: 0,
-        responseSlaMinutes: getLeadSlaMinutes(),
+        responseSlaMinutes: getLeadResponseSlaMinutes(),
         generatedAt: Date.now(),
       },
     };
