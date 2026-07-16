@@ -1,5 +1,21 @@
 import mongoose from 'mongoose';
 
+export const LEAD_STATUSES = [
+  'new',
+  'contact_attempted',
+  'contacted',
+  'qualified',
+  'appointment_booked',
+  'proposal_sent',
+  'client_won',
+  'client_lost',
+  'spam',
+  'duplicate',
+] as const;
+
+export type LeadStatus = (typeof LEAD_STATUSES)[number];
+export type StoredLeadStatus = LeadStatus | 'completed';
+
 export interface ILeadAttribution {
   firstLandingPage?: string;
   currentSubmissionPage?: string;
@@ -28,7 +44,14 @@ export interface IContactLead extends mongoose.Document {
   revenue?: string;
   jurisdiction?: string;
   attribution?: ILeadAttribution;
-  status: 'new' | 'contacted' | 'completed';
+  status: StoredLeadStatus;
+  estimatedValue?: number;
+  actualRevenue?: number;
+  reasonLost?: string;
+  firstResponseAt?: Date;
+  appointmentAt?: Date;
+  statusUpdatedAt?: Date;
+  internalNotes?: string;
   createdAt: Date;
 }
 
@@ -99,8 +122,37 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     },
     status: {
       type: String,
-      enum: ['new', 'contacted', 'completed'],
+      // `completed` remains readable for historical records but is not accepted by admin actions.
+      enum: [...LEAD_STATUSES, 'completed'],
       default: 'new',
+    },
+    estimatedValue: {
+      type: Number,
+      min: 0,
+      max: 1_000_000_000,
+    },
+    actualRevenue: {
+      type: Number,
+      min: 0,
+      max: 1_000_000_000,
+    },
+    reasonLost: {
+      type: String,
+      maxlength: 1000,
+    },
+    firstResponseAt: {
+      type: Date,
+    },
+    appointmentAt: {
+      type: Date,
+    },
+    statusUpdatedAt: {
+      type: Date,
+      default: Date.now,
+    },
+    internalNotes: {
+      type: String,
+      maxlength: 5000,
     },
     createdAt: {
       type: Date,

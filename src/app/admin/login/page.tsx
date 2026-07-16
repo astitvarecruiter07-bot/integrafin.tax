@@ -102,6 +102,8 @@ export default async function AdminLoginPage({
                 ? 'Admin access is not fully configured.'
                 : error === 'rate'
                   ? 'Too many login attempts. Please wait a few minutes before trying again.'
+                  : error === 'session'
+                    ? 'Your admin session expired. Sign in again to continue.'
                 : 'The username or password is incorrect.'}
             </div>
           )}
