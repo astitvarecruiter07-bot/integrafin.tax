@@ -128,12 +128,12 @@ export const texasCityPages: TexasCityLandingData[] = [
   {
     slug: "houston-tax-accountant",
     city: "Houston",
-    county: "Harris County and the Greater Houston area",
+    county: "the Greater Houston area",
     primaryService: "Small Business Tax & Accounting",
     primaryKeyword: "Houston small business accounting",
     supportingKeywords: ["tax accountant Houston", "bookkeeping cleanup Houston", "business tax preparation Houston", "IRS notice help Houston"],
-    title: "Houston Small Business Tax & Accounting | IntegraFin",
-    description: "Houston small business accounting, tax preparation, bookkeeping cleanup and IRS notice support from IntegraFin. Schedule a consultation.",
+    title: "Houston Tax Accountant & Small Business Accounting | IntegraFin",
+    description: "Explore Houston-area tax preparation, small business accounting, bookkeeping cleanup, payroll tax and IRS notice support from IntegraFin.",
     hero: "Practical accounting and tax support for Houston companies that need cleaner books, coordinated filing records and a reliable year-round process.",
     intro: [
       "Houston's economy ranges from energy and logistics to healthcare, construction, restaurants and professional services. That scale creates opportunity, but it also creates accounting complexity: project revenue, multiple payment systems, contractor reporting, payroll activity and business travel can all land in the same books.",

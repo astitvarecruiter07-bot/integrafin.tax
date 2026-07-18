@@ -443,7 +443,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "tax-resolution": {
     slug: "tax-resolution",
     url: `${baseUrl}/tax-resolution`,
-    lastModified: "2026-06-30",
+    lastModified: "2026-07-19",
     metaTitle: "Tax Resolution Services | IRS Notice & Back Tax Help | IntegraFin",
     metaDescription:
       "Tax resolution services for IRS notices, back taxes, unfiled returns, payment plans, penalty questions, audits, and payroll tax issues. Talk to IntegraFin.",
@@ -578,6 +578,9 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     ],
     helpfulLinks: [
       contactLink,
+      { href: "/texas/houston/irs-notice-help", label: "Houston IRS Notice Help" },
+      { href: "/texas/houston/irs-payment-plan-help", label: "Houston IRS Payment Plan Help" },
+      { href: "/texas/houston/unfiled-tax-return-help", label: "Houston Unfiled Tax Return Help" },
       { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },
       { href: "/payroll-tax-support", label: "Payroll Tax Support" },
       { href: "/individual-tax-preparation", label: "Individual Tax Preparation" },

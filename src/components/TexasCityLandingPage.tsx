@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { TexasCityLandingData } from "@/data/texasCityLandingData";
 import { texasCityPages } from "@/data/texasCityLandingData";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
+import { houstonIrsServicePageList } from "@/data/houstonIrsServicePages";
 
 const officeAddress = "2039 N Mason Rd, Suite 604, Katy, TX 77449";
 
@@ -80,13 +81,73 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
             {page.hero}
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/contact" className="rounded-xl bg-secondary px-7 py-3 font-bold text-primary-dark">
-              Schedule Consultation in {page.city}
+            <a href="#services" className="rounded-xl bg-secondary px-7 py-3 font-bold text-primary-dark">
+              Explore {page.city} Services
+            </a>
+            <Link href="/contact" className="rounded-xl border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
+              Schedule a Consultation
             </Link>
-            <a href="tel:+18326471819" className="rounded-xl border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
+            <a href="tel:+18326471819" className="rounded-xl border border-white/25 px-7 py-3 font-bold text-white hover:bg-white/10">
               Call (832) 647-1819
             </a>
           </div>
+        </div>
+      </section>
+
+      <section id="services" className="scroll-mt-24 border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+          <div className="max-w-3xl">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-primary">Choose the support you need</p>
+            <h2 className="mt-3 text-2xl font-black text-primary-dark sm:text-3xl">
+              Explore Tax and Accounting Services for {page.city}
+            </h2>
+            <p className="mt-3 leading-relaxed text-slate-700">
+              Start with the service closest to your situation. We confirm the records, deadlines, and scope during an
+              initial consultation, whether you need a one-time project or ongoing support.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {focusedServiceLinks.map((service) => (
+              <Link
+                key={service.href}
+                href={service.href}
+                className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-secondary hover:bg-white"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="font-black text-primary-dark">{service.label}</h3>
+                  <span aria-hidden="true" className="text-xl leading-none text-primary transition-transform group-hover:translate-x-1">
+                    &rarr;
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.description}</p>
+              </Link>
+            ))}
+          </div>
+          {page.slug === "houston-tax-accountant" && (
+            <div className="mt-8 rounded-2xl bg-primary-dark p-6 text-white sm:p-8">
+              <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+                <div>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-secondary">Houston IRS help</p>
+                  <h3 className="mt-3 text-2xl font-black">Received a notice, owe a balance, or have unfiled returns?</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#d7e3fc]">
+                    Choose the page that matches your immediate IRS issue for a focused checklist, official resources,
+                    and the records needed for a first review.
+                  </p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {houstonIrsServicePageList.map((service) => (
+                    <Link
+                      key={service.path}
+                      href={service.path}
+                      className="rounded-xl border border-white/15 bg-white/10 p-4 font-bold text-white transition-colors hover:bg-white/20"
+                    >
+                      {service.serviceName}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -148,24 +209,6 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">{service.description}</p>
               </section>
             ))}
-          </div>
-          <div className="mt-8 border-t border-slate-200 pt-7">
-            <h3 className="text-xl font-black text-primary-dark">Explore Dedicated Service Pages</h3>
-            <p className="mt-2 max-w-4xl text-sm leading-relaxed text-slate-600">
-              Use these service pages for detailed information about the records, workflow, and support available to {page.city} clients.
-            </p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {focusedServiceLinks.map((service) => (
-                <Link
-                  key={service.href}
-                  href={service.href}
-                  className="rounded-xl border border-slate-200 bg-slate-50 p-4 hover:border-secondary hover:bg-white transition-colors"
-                >
-                  <h4 className="font-black text-primary-dark">{service.label}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600">{service.description}</p>
-                </Link>
-              ))}
-            </div>
           </div>
         </article>
       </section>

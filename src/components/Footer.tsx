@@ -28,6 +28,7 @@ const serviceLinks = [
     { href: "/llc-formation-tax-setup", label: "LLC Formation Tax Setup" },
     { href: "/industries", label: "Industries Served" },
     { href: "/texas-tax-accounting-services", label: "Texas Services" },
+    { href: "/texas/houston-tax-accountant", label: "Houston Tax & Accounting" },
     { href: "/new-york-tax-accounting-services", label: "New York Services" },
     { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania Services" },
     ...highTaxStateServiceLinks.map((link) => ({

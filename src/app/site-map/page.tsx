@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
 import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
+import { houstonIrsServicePageList } from "@/data/houstonIrsServicePages";
 
 export const metadata: Metadata = {
   title: "HTML Sitemap | IntegraFin",
@@ -67,6 +68,7 @@ const sections = [
   {
     title: "Local Service Pages",
     links: [
+      ...houstonIrsServicePageList.map((page) => ({ href: page.path, label: page.serviceName })),
       { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },
       { href: "/texas/katy-bookkeeping-services", label: "Bookkeeping Services Katy TX" },
       { href: "/llc-formation-tax-setup", label: "LLC Formation Tax Setup" },

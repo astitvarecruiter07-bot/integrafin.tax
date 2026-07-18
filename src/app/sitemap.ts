@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import { mockBlogPosts } from '@/data/blogData';
 import { serviceLandingPageSlugs, serviceLandingPages } from '@/data/serviceLandingPages';
 import { highTaxStateServicePageList } from '@/data/highTaxStateServicePages';
+import { houstonIrsServicePageList } from '@/data/houstonIrsServicePages';
 import { getAllBlogPosts as getDbBlogPosts } from '@/app/actions/blog';
 
 export const revalidate = 86400;
@@ -22,7 +23,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/industries', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/texas-tax-accounting-services', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/katy-tax-accountant', lastModified: '2026-06-22', priority: 0.8 },
-    { path: '/texas/houston-tax-accountant', lastModified: '2026-06-22', priority: 0.8 },
+    { path: '/texas/houston-tax-accountant', lastModified: '2026-07-19', priority: 0.9 },
+    ...houstonIrsServicePageList.map((page) => ({
+      path: page.path,
+      lastModified: '2026-07-19',
+      priority: 0.8,
+    })),
     { path: '/texas/dallas-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/texas/sugar-land-small-business-accountant', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/cypress-bookkeeping-services', lastModified: '2026-06-22', priority: 0.8 },
