@@ -777,6 +777,7 @@ Implementation record (July 17, 2026):
 
 - Lead email delivery runs after the database save and does not expose customer contact details or message content to the email provider.
 - Delivery uses a MongoDB lead-ID idempotency key; failed or missing provider configuration does not discard the lead.
+- New leads persist the notification result and check timestamp so delivery configuration and provider failures are visible in the protected dashboard.
 - Production requires `RESEND_API_KEY`, `LEAD_NOTIFICATION_FROM`, and `LEAD_NOTIFICATION_TO`; see `LEAD_NOTIFICATIONS_SETUP.md`.
 
 Recommended operational target: respond within 5–15 minutes during business hours when feasible. Publish a response promise only if consistently achievable.

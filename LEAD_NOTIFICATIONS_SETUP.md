@@ -20,6 +20,7 @@ The sender domain must be verified with the email provider before production del
 - Customer email, phone, company, and message content are intentionally omitted from notification email.
 - Resend receives an idempotency key based on the MongoDB lead ID to avoid duplicate delivery when a request is retried.
 - A failed or unconfigured notification is logged without exposing the API key or customer message. The saved lead remains available in `/admin/leads`.
+- Each lead records a non-sensitive notification status (`sent`, `not_configured`, or `delivery_failed`) and the dashboard displays when delivery was checked.
 
 ## Production verification
 

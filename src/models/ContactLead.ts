@@ -16,6 +16,7 @@ export const LEAD_STATUSES = [
 
 export type LeadStatus = (typeof LEAD_STATUSES)[number];
 export type StoredLeadStatus = LeadStatus | 'completed';
+export type LeadNotificationStatus = 'pending' | 'sent' | 'not_configured' | 'delivery_failed';
 
 export interface ILeadAttribution {
   firstLandingPage?: string;
@@ -53,6 +54,9 @@ export interface IContactLead extends mongoose.Document {
   appointmentAt?: Date;
   statusUpdatedAt?: Date;
   internalNotes?: string;
+  notificationStatus?: LeadNotificationStatus;
+  notificationCheckedAt?: Date;
+  notificationSentAt?: Date;
   createdAt: Date;
 }
 
@@ -155,6 +159,17 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     internalNotes: {
       type: String,
       maxlength: 5000,
+    },
+    notificationStatus: {
+      type: String,
+      enum: ['pending', 'sent', 'not_configured', 'delivery_failed'],
+      default: 'pending',
+    },
+    notificationCheckedAt: {
+      type: Date,
+    },
+    notificationSentAt: {
+      type: Date,
     },
     createdAt: {
       type: Date,

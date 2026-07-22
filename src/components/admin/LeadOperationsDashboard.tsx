@@ -21,7 +21,7 @@ import {
   updateLeadDetails,
   updateLeadStatus,
 } from '@/app/actions/leads';
-import type { LeadStatus } from '@/models/ContactLead';
+import type { LeadNotificationStatus, LeadStatus } from '@/models/ContactLead';
 
 type LeadAttributionRecord = {
   firstLandingPage?: string;
@@ -53,6 +53,9 @@ export type AdminLeadRecord = {
   appointmentAt?: string;
   statusUpdatedAt?: string;
   internalNotes?: string;
+  notificationStatus?: LeadNotificationStatus;
+  notificationCheckedAt?: string;
+  notificationSentAt?: string;
   attribution?: LeadAttributionRecord;
   createdAt: string;
 };
@@ -109,6 +112,16 @@ const statusStyles: Record<LeadStatus | 'completed', string> = {
 
 function formatStatus(status: AdminLeadRecord['status']) {
   return status === 'completed' ? 'Completed (legacy)' : statusLabels[status] || status;
+}
+
+function formatNotificationStatus(status?: LeadNotificationStatus) {
+  const labels: Record<LeadNotificationStatus, string> = {
+    pending: 'Pending',
+    sent: 'Sent',
+    not_configured: 'Not configured',
+    delivery_failed: 'Delivery failed',
+  };
+  return status ? labels[status] : 'Not recorded';
 }
 
 function formatDate(value?: string, includeTime = false) {
@@ -508,6 +521,8 @@ export default function LeadOperationsDashboard({
                     <DetailField label="Phone" value={selectedLead.phone || 'Not provided'} />
                     <DetailField label="Service" value={selectedLead.service} />
                     <DetailField label="Source" value={selectedLead.source} />
+                    <DetailField label="Lead alert" value={formatNotificationStatus(selectedLead.notificationStatus)} />
+                    <DetailField label="Alert checked" value={formatDate(selectedLead.notificationCheckedAt, true)} />
                     <DetailField label="First response" value={formatDate(selectedLead.firstResponseAt, true)} />
                     <DetailField label="Appointment" value={formatDate(selectedLead.appointmentAt, true)} />
                     <DetailField label="Status updated" value={formatDate(selectedLead.statusUpdatedAt, true)} />

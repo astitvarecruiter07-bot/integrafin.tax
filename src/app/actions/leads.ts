@@ -162,12 +162,27 @@ export async function submitLead(data: LeadInput) {
 
     const leadId = newLead._id.toString();
     after(async () => {
-      await sendNewLeadNotification({
-        leadId,
-        service: validatedData.service,
-        source: validatedData.source,
-        submittedAt,
-      });
+      try {
+        const notificationResult = await sendNewLeadNotification({
+          leadId,
+          service: validatedData.service,
+          source: validatedData.source,
+          submittedAt,
+        });
+        const notificationCheckedAt = new Date();
+        await ContactLead.findByIdAndUpdate(leadId, {
+          $set: {
+            notificationStatus: notificationResult.sent ? 'sent' : notificationResult.reason,
+            notificationCheckedAt,
+            ...(notificationResult.sent ? { notificationSentAt: notificationCheckedAt } : {}),
+          },
+        });
+      } catch (error) {
+        console.error('Could not record lead notification status.', {
+          leadId,
+          error: error instanceof Error ? error.name : 'UnknownError',
+        });
+      }
     });
     
     return {
