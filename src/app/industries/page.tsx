@@ -8,11 +8,11 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: 'Industries We Serve | IntegraFin Tax & Accounting Expert Services',
+  title: 'Industry Tax & Accounting Services | IntegraFin',
   description: 'Review tax, bookkeeping, payroll-record, and accounting service contexts for real estate, construction, healthcare, professional services, technology, and other businesses.',
   alternates: { canonical: 'https://integrafin.tax/industries' },
   openGraph: {
-    title: 'Industries We Serve | IntegraFin Tax & Accounting Expert Services',
+    title: 'Industry Tax & Accounting Services | IntegraFin',
     url: 'https://integrafin.tax/industries',
   },
 };

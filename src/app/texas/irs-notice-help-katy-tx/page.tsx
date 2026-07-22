@@ -265,8 +265,8 @@ export default function IrsNoticeHelpKatyPage() {
             path forward.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
-              Book IRS Notice Consultation
+            <Link href="/contact?service=IRS%20Notice%20and%20Tax%20Resolution#contact-form" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
+              Request an IRS notice review
             </Link>
             <a href="tel:+18326471819" className="bg-white/10 text-white border border-white/20 px-7 py-3 rounded-xl font-bold">
               Call (832) 647-1819
@@ -467,7 +467,7 @@ export default function IrsNoticeHelpKatyPage() {
             <Link href="/blog/tax-resolution-options" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Tax Resolution Options
             </Link>
-            <Link href="/contact" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+            <Link href="/contact?service=IRS%20Notice%20and%20Tax%20Resolution#contact-form" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Contact IntegraFin
             </Link>
           </div>
@@ -488,7 +488,7 @@ export default function IrsNoticeHelpKatyPage() {
             ))}
           </div>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Link href="/contact" className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
+            <Link href="/contact?service=IRS%20Notice%20and%20Tax%20Resolution#contact-form" className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
               Book IRS Notice Consultation
             </Link>
             <a href="tel:+18326471819" className="inline-block bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold text-center">

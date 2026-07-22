@@ -14,6 +14,11 @@ import {
   Scale,
 } from "lucide-react";
 import type { ServiceLandingPageData, ServiceLandingPageSlug } from "@/data/serviceLandingPages";
+import {
+  getContactHref,
+  getLeadCtaLabel,
+  SERVICE_BY_LANDING_SLUG,
+} from "@/lib/leadServices";
 
 const provider = {
   "@type": "AccountingService",
@@ -101,6 +106,9 @@ function buildSchemas(data: ServiceLandingPageData) {
 export default function ServiceLandingPage({ data }: { data: ServiceLandingPageData }) {
   const Icon = iconBySlug[data.slug];
   const { serviceSchema, faqSchema, breadcrumbSchema } = buildSchemas(data);
+  const selectedService = SERVICE_BY_LANDING_SLUG[data.slug];
+  const contactHref = getContactHref(selectedService);
+  const primaryCta = getLeadCtaLabel(selectedService, data.primaryCta);
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -130,8 +138,8 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
               ))}
             </ul>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-7 py-3 font-bold text-primary-dark">
-                {data.primaryCta} <ArrowRight className="h-4 w-4" />
+              <Link href={contactHref} className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-7 py-3 font-bold text-primary-dark">
+                {primaryCta} <ArrowRight className="h-4 w-4" />
               </Link>
               <a href="tel:+18326471819" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
                 <Phone className="h-4 w-4" />
@@ -290,10 +298,10 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
               {data.helpfulLinks.map((link) => (
                 <Link
                   key={link.href}
-                  href={link.href}
+                  href={link.href === "/contact" ? contactHref : link.href}
                   className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-5 py-4 font-bold text-primary shadow-sm hover:border-secondary"
                 >
-                  <span>{link.label}</span>
+                  <span>{link.href === "/contact" ? primaryCta : link.label}</span>
                   <ArrowRight className="h-4 w-4 shrink-0" />
                 </Link>
               ))}
@@ -322,8 +330,8 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
             that fits your situation.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-7 py-3 font-bold text-primary-dark">
-              {data.primaryCta} <ArrowRight className="h-4 w-4" />
+            <Link href={contactHref} className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-7 py-3 font-bold text-primary-dark">
+              {primaryCta} <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/services" className="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
               Back To Services Hub

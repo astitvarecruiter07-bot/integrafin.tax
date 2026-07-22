@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import CityServicesPage from "@/components/CityServicesPage";
 
 export const metadata: Metadata = {
-  title: "Philadelphia Tax Accountant for Small Business Growth | IntegraFin",
+  title: "Philadelphia Tax Accountant for Businesses | IntegraFin",
   description:
     "Need a tax accountant in Philadelphia, PA? IntegraFin provides tax filing, bookkeeping, payroll support, and IRS tax resolution guidance.",
   alternates: { canonical: "https://integrafin.tax/pennsylvania/philadelphia-tax-accountant" },
   openGraph: {
-    title: "Philadelphia Tax Accountant for Small Business Growth | IntegraFin",
+    title: "Philadelphia Tax Accountant for Businesses | IntegraFin",
     description:
       "Tax preparation, bookkeeping, payroll, and IRS support for Philadelphia businesses and individuals.",
     url: "https://integrafin.tax/pennsylvania/philadelphia-tax-accountant",

@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import StateServicesPage from "@/components/StateServicesPage";
 
 export const metadata: Metadata = {
-  title: "Tax Accountant Pennsylvania Services for Businesses | IntegraFin",
+  title: "Pennsylvania Tax & Accounting Services | IntegraFin",
   description:
     "Need a tax accountant in Pennsylvania? IntegraFin supports bookkeeping, payroll, tax filing, tax planning, and IRS resolution for businesses and individuals.",
   alternates: { canonical: "https://integrafin.tax/pennsylvania-tax-accounting-services" },
   openGraph: {
-    title: "Tax Accountant Pennsylvania Services for Businesses | IntegraFin",
+    title: "Pennsylvania Tax & Accounting Services | IntegraFin",
     description:
       "Bookkeeping, business tax, payroll compliance, and tax resolution support for Pennsylvania clients.",
     url: "https://integrafin.tax/pennsylvania-tax-accounting-services",

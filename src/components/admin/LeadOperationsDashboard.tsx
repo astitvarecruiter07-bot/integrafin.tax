@@ -81,6 +81,7 @@ const statusOptions: Array<{ value: LeadStatus; label: string }> = [
   { value: 'contact_attempted', label: 'Contact attempted' },
   { value: 'contacted', label: 'Contacted' },
   { value: 'qualified', label: 'Qualified' },
+  { value: 'unqualified', label: 'Unqualified' },
   { value: 'appointment_booked', label: 'Appointment booked' },
   { value: 'proposal_sent', label: 'Proposal sent' },
   { value: 'client_won', label: 'Client won' },
@@ -96,6 +97,7 @@ const statusStyles: Record<LeadStatus | 'completed', string> = {
   contact_attempted: 'border-amber-200 bg-amber-50 text-amber-700',
   contacted: 'border-indigo-200 bg-indigo-50 text-indigo-700',
   qualified: 'border-violet-200 bg-violet-50 text-violet-700',
+  unqualified: 'border-slate-200 bg-slate-100 text-slate-700',
   appointment_booked: 'border-cyan-200 bg-cyan-50 text-cyan-700',
   proposal_sent: 'border-orange-200 bg-orange-50 text-orange-700',
   client_won: 'border-emerald-200 bg-emerald-50 text-emerald-700',
@@ -419,7 +421,13 @@ export default function LeadOperationsDashboard({
                       >
                         <td className="px-5 py-5">
                           <div className="font-bold text-[#003580]">{lead.name}</div>
-                          <a onClick={(event) => event.stopPropagation()} href={`mailto:${lead.email}`} className="mt-1 block text-xs text-slate-500 hover:text-[#0092df] hover:underline">{lead.email}</a>
+                          {lead.email ? (
+                            <a onClick={(event) => event.stopPropagation()} href={`mailto:${lead.email}`} className="mt-1 block text-xs text-slate-500 hover:text-[#0092df] hover:underline">{lead.email}</a>
+                          ) : lead.phone ? (
+                            <a onClick={(event) => event.stopPropagation()} href={`tel:${lead.phone}`} className="mt-1 block text-xs text-slate-500 hover:text-[#0092df] hover:underline">{lead.phone}</a>
+                          ) : (
+                            <span className="mt-1 block text-xs text-slate-400">No contact method</span>
+                          )}
                           {lead.company && <div className="mt-1 flex items-center gap-1 text-xs text-slate-400"><Building className="h-3 w-3" />{lead.company}</div>}
                         </td>
                         <td className="max-w-[240px] px-5 py-5">
@@ -463,9 +471,9 @@ export default function LeadOperationsDashboard({
                     </div>
                     {isLeadOverdue(selectedLead, metrics.responseSlaMinutes, metrics.generatedAt) && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-black uppercase text-amber-700">Overdue</span>}
                   </div>
-                  <div className="mt-4 grid grid-cols-2 gap-2">
-                    <a href={`mailto:${selectedLead.email}`} className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-[#0047AB] hover:bg-slate-50"><Mail className="h-3.5 w-3.5" />Email</a>
-                    <a href={`tel:${selectedLead.phone}`} className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-[#0047AB] hover:bg-slate-50"><Phone className="h-3.5 w-3.5" />Call</a>
+                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {selectedLead.email && <a href={`mailto:${selectedLead.email}`} className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-[#0047AB] hover:bg-slate-50"><Mail className="h-3.5 w-3.5" />Email</a>}
+                    {selectedLead.phone && <a href={`tel:${selectedLead.phone}`} className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-[#0047AB] hover:bg-slate-50"><Phone className="h-3.5 w-3.5" />Call</a>}
                   </div>
                 </div>
 
@@ -496,8 +504,8 @@ export default function LeadOperationsDashboard({
                   )}
 
                   <dl className="grid grid-cols-2 gap-4 rounded-xl bg-slate-50 p-4">
-                    <DetailField label="Email" value={selectedLead.email} />
-                    <DetailField label="Phone" value={selectedLead.phone} />
+                    <DetailField label="Email" value={selectedLead.email || 'Not provided'} />
+                    <DetailField label="Phone" value={selectedLead.phone || 'Not provided'} />
                     <DetailField label="Service" value={selectedLead.service} />
                     <DetailField label="Source" value={selectedLead.source} />
                     <DetailField label="First response" value={formatDate(selectedLead.firstResponseAt, true)} />

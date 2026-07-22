@@ -444,7 +444,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     slug: "tax-resolution",
     url: `${baseUrl}/tax-resolution`,
     lastModified: "2026-07-19",
-    metaTitle: "Tax Resolution Services | IRS Notice & Back Tax Help | IntegraFin",
+    metaTitle: "Tax Resolution & IRS Notice Help Katy TX | IntegraFin",
     metaDescription:
       "Tax resolution services for IRS notices, back taxes, unfiled returns, payment plans, penalty questions, audits, and payroll tax issues. Talk to IntegraFin.",
     name: "Tax Resolution Services",
@@ -948,7 +948,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     slug: "quickbooks-bookkeeping-services",
     url: `${baseUrl}/quickbooks-bookkeeping-services`,
     lastModified: "2026-06-30",
-    metaTitle: "QuickBooks Bookkeeping Services | Cleanup & Monthly Books | IntegraFin",
+    metaTitle: "QuickBooks Bookkeeping & Cleanup Katy TX | IntegraFin",
     metaDescription:
       "QuickBooks bookkeeping services for setup, cleanup, reconciliations, monthly books, and tax-ready reporting. Get bookkeeping help from IntegraFin.",
     name: "QuickBooks Bookkeeping Services",

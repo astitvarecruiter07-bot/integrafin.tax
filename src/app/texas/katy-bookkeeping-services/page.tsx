@@ -291,8 +291,8 @@ export default function KatyBookkeepingServicesPage() {
             bookkeeping support.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
-              Book Bookkeeping Consultation
+            <Link href="/contact?service=Bookkeeping%20Cleanup#contact-form" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
+              Request a cleanup assessment
             </Link>
             <a href="tel:+18326471819" className="bg-white/10 text-white border border-white/20 px-7 py-3 rounded-xl font-bold">
               Call (832) 647-1819
@@ -523,7 +523,7 @@ export default function KatyBookkeepingServicesPage() {
             <Link href="/tax-calculator" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               1099 and Federal Tax Calculator
             </Link>
-            <Link href="/contact" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+            <Link href="/contact?service=Bookkeeping%20Cleanup#contact-form" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Book A Bookkeeping Consultation
             </Link>
           </div>
@@ -544,7 +544,7 @@ export default function KatyBookkeepingServicesPage() {
             ))}
           </div>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Link href="/contact" className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
+            <Link href="/contact?service=Bookkeeping%20Cleanup#contact-form" className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
               Book Bookkeeping Consultation
             </Link>
             <a href="tel:+18326471819" className="inline-block bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold text-center">

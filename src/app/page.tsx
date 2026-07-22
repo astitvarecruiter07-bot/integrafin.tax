@@ -444,7 +444,7 @@ export default function Home() {
                 <span className="w-8 h-1 bg-[#0092df] rounded-full inline-block"></span>
                 <span className="text-[#0092df] text-sm font-black uppercase tracking-[0.1em]">Get In Touch</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-black text-[#003580] mb-4 tracking-tight">Request a Call Back</h2>
+              <h2 className="text-3xl md:text-4xl font-black text-[#003580] mb-4 tracking-tight">Request a Consultation</h2>
               <p className="text-slate-600 mb-10 leading-relaxed font-medium">Find an advisor. Our staff can help work out what is right for you.</p>
               
               <div className="bg-slate-50/50 p-6 rounded-2xl border border-slate-100">

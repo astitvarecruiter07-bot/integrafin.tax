@@ -8,6 +8,11 @@ export default function robots(): MetadataRoute.Robots {
                 allow: "/",
                 disallow: ["/admin", "/admin/*"],
             },
+            {
+                userAgent: "OAI-SearchBot",
+                allow: "/",
+                disallow: ["/admin", "/admin/*"],
+            },
         ],
         sitemap: "https://integrafin.tax/sitemap.xml",
     };

@@ -15,11 +15,14 @@ const ADMIN_UNAUTHORIZED_MESSAGE = 'Your admin session expired. Sign in again to
 
 const LeadSchema = z.object({
   name: z.string().min(2, 'Name is too short').max(100),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().min(10, 'Phone number is too short').max(20),
+  email: z.union([z.literal(''), z.string().email('Invalid email address')]).default(''),
+  phone: z.union([
+    z.literal(''),
+    z.string().min(10, 'Phone number is too short').max(20),
+  ]).default(''),
   company: z.string().max(100).optional(),
   service: z.string().min(2, 'Please select a service'),
-  message: z.string().min(10, 'Message is too short').max(2000),
+  message: z.string().max(2000).default(''),
   source: z.string().max(100).default('contact-page'),
   revenue: z.string().max(100).optional(),
   jurisdiction: z.string().max(100).optional(),
@@ -38,6 +41,9 @@ const LeadSchema = z.object({
     msclkid: z.string().max(200).optional(),
     firstTouchAt: z.string().datetime({ offset: true }).optional(),
   }).optional(),
+}).refine((lead) => Boolean(lead.email.trim() || lead.phone.trim()), {
+  message: 'Please provide an email address or phone number.',
+  path: ['email'],
 });
 
 const NewsletterSchema = z.object({
@@ -77,6 +83,7 @@ const firstResponseStatuses = new Set<(typeof LEAD_STATUSES)[number]>([
   'contact_attempted',
   'contacted',
   'qualified',
+  'unqualified',
   'appointment_booked',
   'proposal_sent',
   'client_won',

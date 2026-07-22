@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import CityServicesPage from "@/components/CityServicesPage";
 
 export const metadata: Metadata = {
-  title: "Buffalo Tax Accountant for Business and Personal Filing | IntegraFin",
+  title: "Buffalo Tax Accountant for Businesses | IntegraFin",
   description:
     "Need a tax accountant in Buffalo, NY? IntegraFin provides tax filing, bookkeeping, payroll support, and IRS issue guidance for Buffalo clients.",
   alternates: { canonical: "https://integrafin.tax/new-york/buffalo-tax-accountant" },
   openGraph: {
-    title: "Buffalo Tax Accountant for Business and Personal Filing | IntegraFin",
+    title: "Buffalo Tax Accountant for Businesses | IntegraFin",
     description:
       "Bookkeeping, tax preparation, payroll support, and IRS response planning for Buffalo businesses and individuals.",
     url: "https://integrafin.tax/new-york/buffalo-tax-accountant",

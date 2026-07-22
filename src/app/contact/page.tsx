@@ -1,188 +1,296 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { DollarSign, Mail, MessageSquare, MapPin, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock3,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  ShieldCheck,
+} from "lucide-react";
 import ContactForm from "@/components/ContactForm";
+import { getLeadCtaLabel, normalizeLeadService } from "@/lib/leadServices";
 
-export const metadata = {
-  title: 'Contact IntegraFin | Tax Accountant Katy TX',
-  description: 'Contact IntegraFin in Katy TX at (832) 647-1819. Located at 2039 N Mason Rd Suite 604. Book a free tax consultation with our tax expert team today. Open Mon-Fri 9AM-6PM.',
-  alternates: { canonical: 'https://integrafin.tax/contact' },
+export const metadata: Metadata = {
+  title: "Contact IntegraFin | Katy Tax & Accounting",
+  description:
+    "Contact IntegraFin in Katy, TX for tax preparation, bookkeeping, payroll support, LLC tax setup, or IRS notice help. Call (832) 647-1819 or request a consultation.",
+  alternates: { canonical: "https://integrafin.tax/contact" },
   openGraph: {
-    title: 'Contact IntegraFin | Tax Accountant Katy TX',
-    url: 'https://integrafin.tax/contact',
+    title: "Contact IntegraFin | Katy Tax & Accounting",
+    description:
+      "Request tax, bookkeeping, payroll, LLC tax-setup, or IRS notice support from IntegraFin in Katy, Texas.",
+    url: "https://integrafin.tax/contact",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "IntegraFin Tax & Accounting in Katy, Texas",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact IntegraFin | Katy Tax & Accounting",
+    description: "Request tax and accounting support from IntegraFin in Katy, Texas.",
+    images: ["/og-image.jpg"],
   },
 };
 
-export default function ContactPage() {
-    return (
-        <>
-            {/* Hero Section */}
-            <header className="relative bg-[#003580] overflow-hidden py-16 sm:py-24 md:py-32">
-                <div 
-                    className="absolute inset-0 opacity-20 bg-cover bg-center" 
-                    style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIhhzL_6DrqJErXL51mOsoGwc-5kpm0Yntn1CFMGPkhbw-RFnUfzJZcqHkMpROhE4e5n7QnTL-RljoQaVK1pugbWaGvVleExURhnBwUpTZx2e3qVhE8TJdLMHfdV1DfxKTY-_FaikaNbQ4KUY1OxnEw5LYhlDgGHIhHS2-JAHHJ2P1g14KcpAARNv7dO96w5Xd0qJ3YsBUplKtXDq_d_qZZR4ZLLcAFFZ5XLARsndVNDVwKvq6KvAC0F1XamxLcx3id5kXzp2Nh1Y')" }}
-                />
-                <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0092df 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }} />
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[#0092df]/10 blur-[120px] rounded-full pointer-events-none" />
-                <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at top right, rgba(0, 194, 203, 0.15), transparent 400px)' }} />
-                <div className="relative max-w-7xl mx-auto px-5 sm:px-8 text-center md:text-left">
-                    <div className="inline-block px-3 py-1 bg-[#00C2CB]/10 border border-[#00C2CB]/30 text-[#00C2CB] text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-                        Tax And Accounting Support
-                    </div>
-                    <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-black tracking-tighter mb-4 sm:mb-6 leading-tight max-w-4xl">
-                        Get in Touch with Our Tax &amp; <span className="text-[#00C2CB]">Accounting Experts</span>
-                    </h1>
-                    <p className="text-[#D7E3FC] text-sm sm:text-lg md:text-xl font-light max-w-2xl mb-6 sm:mb-10 leading-relaxed">
-                        Whether you need US tax filing, business bookkeeping, or cross-border tax support, our tax and accounting team is ready to review your needs.
-                    </p>
-                    <a href="#contact-form" className="inline-flex bg-[#00C2CB] text-[#003580] px-8 sm:px-10 py-4 sm:py-5 rounded-lg font-black text-xs sm:text-sm uppercase tracking-[0.2em] shadow-2xl hover:bg-[#00cedb] transition-all">
-                        Schedule a Consultation
-                    </a>
-                </div>
-            </header>
+const contactFaqs = [
+  {
+    question: "What should I include in my consultation request?",
+    answer:
+      "Select the service you need and provide either an email address or phone number. You may add a deadline, IRS notice number, or brief bookkeeping concern, but do not submit Social Security numbers, bank details, tax returns, or other sensitive records through the public form.",
+  },
+  {
+    question: "What happens after I contact IntegraFin?",
+    answer:
+      "The team reviews the service selected and follows up using the contact method you provided. The initial conversation identifies the records, deadlines, and scope that may be needed before work begins.",
+  },
+  {
+    question: "Can IntegraFin work with clients outside Katy?",
+    answer:
+      "Yes. IntegraFin is based in Katy, Texas and supports local and remote clients across the United States when the requested service and jurisdiction are within the available scope.",
+  },
+];
 
-            {/* Main Section */}
-            <main className="max-w-7xl mx-auto px-4 sm:px-8 -mt-8 sm:-mt-12 md:-mt-20 pb-16 sm:pb-24 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    {/* Left Column: Form */}
-                    <div className="lg:col-span-7 bg-white shadow-2xl p-5 sm:p-8 md:p-12 rounded-xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#00C2CB]/5 rounded-bl-full"></div>
-                        <h2 className="text-3xl font-extrabold text-[#003580] tracking-tight mb-2">How Can We Help You?</h2>
-                        <p className="text-gray-600 text-sm mb-10 font-light">Fill out the form below, and a tax advisor will reach out to you within 24 hours.</p>
-                        <ContactForm />
-                    </div>
+const contactPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://integrafin.tax/contact#webpage",
+  url: "https://integrafin.tax/contact",
+  name: "Contact IntegraFin Tax & Accounting",
+  description:
+    "Contact IntegraFin in Katy, Texas for tax preparation, bookkeeping, payroll support, LLC tax setup, and IRS notice help.",
+  mainEntity: { "@id": "https://integrafin.tax/#localbusiness" },
+};
 
-                    {/* Right Column: Info */}
-                    <div className="lg:col-span-5 space-y-8">
-                        {/* Contact Direct Card */}
-                        <div className="bg-[#003580] p-6 sm:p-10 rounded-xl text-white shadow-xl relative overflow-hidden">
-                            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/5 rounded-full"></div>
-                            <h3 className="text-2xl font-extrabold tracking-tight mb-8">Reach Us Directly</h3>
-                            <div className="space-y-6">
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                                        <Mail className="text-[#00C2CB] w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-1">Email Support</p>
-                                        <a className="text-lg font-light hover:text-[#00C2CB] transition-colors" href="mailto:contact@integrafin.tax">contact@integrafin.tax</a>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
-                                        <MessageSquare className="text-[#00C2CB] w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-1">WhatsApp Support</p>
-                                        <a className="text-lg font-light hover:text-[#00C2CB] transition-colors" href="https://wa.me/18326471819">+1-832-647-1819</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://integrafin.tax/" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://integrafin.tax/contact" },
+  ],
+};
 
-                        <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-                            <h4 className="font-extrabold text-[#003580] tracking-tight text-lg mb-2">Received an IRS Notice?</h4>
-                            <p className="text-sm text-gray-600 leading-relaxed mb-5">
-                                If your letter mentions a balance due, CP2000, Letter 12C, identity verification, or missing information, start with our Katy IRS notice help page.
-                            </p>
-                            <Link href="/texas/irs-notice-help-katy-tx" className="inline-flex bg-[#003580] text-white px-5 py-3 rounded-lg font-bold text-sm hover:bg-[#002050] transition-colors">
-                                View IRS Notice Help
-                            </Link>
-                        </div>
+const contactFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: contactFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
 
-                        {/* Locations Grid */}
-                        <div className="grid grid-cols-1 gap-6">
-                            {/* USA Location */}
-                            <div className="bg-gray-50 p-8 rounded-xl border-l-4 border-[#003580]">
-                                <div className="flex justify-between items-start mb-4">
-                                    <h4 className="font-black text-[#003580] tracking-tight uppercase text-sm">USA Head Office</h4>
-                                    <MapPin className="text-[#003580]/40 w-5 h-5" />
-                                </div>
-                                <p className="text-gray-600 font-light text-sm leading-relaxed mb-4">
-                                    IntegraFin LLC<br />
-                                    2039 N Mason Rd, Suite 604<br />
-                                    Katy, TX 77449
-                                </p>
-                                <div className="flex items-center gap-2 text-[#003580] font-bold text-sm">
-                                    <Phone className="w-4 h-4" />
-                                    <a href="tel:+18326471819" className="hover:text-[#00C2CB] transition-colors">+1-832-647-1819</a>
-                                </div>
-                            </div>
-                            {/* India Location */}
-                            <div className="bg-gray-50 p-8 rounded-xl border-l-4 border-[#D4A017]">
-                                <div className="flex justify-between items-start mb-4">
-                                    <h4 className="font-black text-[#003580] tracking-tight uppercase text-sm">India Operations Center</h4>
-                                    <MapPin className="text-[#D4A017]/40 w-5 h-5" />
-                                </div>
-                                <p className="text-gray-600 font-light text-sm leading-relaxed mb-4">
-                                    Block No. 214, 1st Floor, Brij Bhumi Complex<br />
-                                    Nagpur, Maharashtra - 440008
-                                </p>
-                                <div className="flex items-center gap-2 text-[#D4A017] font-bold text-sm">
-                                    <Phone className="w-4 h-4" />
-                                    <a href="tel:+918855075450" className="hover:text-[#D4A017] transition-colors">+91 88550 75450</a>
-                                </div>
-                            </div>
-                        </div>
+type ContactPageProps = {
+  searchParams: Promise<{ service?: string | string[] }>;
+};
 
-                        {/* Payment method */}
-                        <div className="bg-white p-8 rounded-xl shadow-lg flex items-center gap-6 border border-gray-100">
-                            <div className="w-16 h-16 bg-gray-50 flex items-center justify-center rounded-full shrink-0">
-                                <DollarSign className="text-[#003580] w-8 h-8" />
-                            </div>
-                            <div>
-                                <h4 className="font-extrabold text-[#003580] tracking-tight text-lg mb-1">Zelle Payment Option</h4>
-                                <p className="text-xs text-gray-600 leading-relaxed">
-                                    Clients may pay by <span className="font-bold text-[#003580]">Zelle</span> when it is included in their payment instructions. Confirm the recipient details with IntegraFin before sending a payment.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const requestedService = (await searchParams).service;
+  const initialService = normalizeLeadService(
+    Array.isArray(requestedService) ? requestedService[0] : requestedService,
+  );
+  const formHeading = initialService
+    ? getLeadCtaLabel(initialService, "Request a consultation")
+    : "Tell us what you need";
 
-            {/* Map Section Area */}
-            <section className="pb-0 px-4 sm:px-6 mb-12">
-                <div className="max-w-7xl mx-auto rounded-xl overflow-hidden shadow-lg">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3462.1234!2d-95.8244!3d29.7858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s2039+N+Mason+Rd+Suite+604+Katy+TX+77449!5e0!3m2!1sen!2sus!4v1"
-                        width="100%"
-                        height="400"
-                        style={{ border: 0, borderRadius: '12px' }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="IntegraFin Office Location - 2039 N Mason Rd Suite 604, Katy TX 77449"
-                    />
-                </div>
+  return (
+    <main className="bg-slate-50 font-sans text-slate-800">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactFaqSchema) }} />
+
+      <header className="relative overflow-hidden bg-primary-dark pb-24 pt-32 text-white sm:pb-28 sm:pt-40">
+        <Image
+          src="/A_professional,_wide-angle_202604082301.png"
+          alt="IntegraFin tax and accounting consultation workspace"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-right opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/95 to-primary-dark/65" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,194,203,0.2),transparent_38%)]" />
+
+        <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+          <nav aria-label="Breadcrumb" className="mb-7 flex items-center gap-2 text-sm font-semibold text-blue-100">
+            <Link href="/" className="transition-colors hover:text-white">Home</Link>
+            <span aria-hidden="true">/</span>
+            <span className="text-white">Contact</span>
+          </nav>
+
+          <div className="max-w-4xl">
+            <p className="mb-5 text-sm font-bold uppercase tracking-[0.16em] text-cyan-300">
+              Katy tax and accounting support
+            </p>
+            <h1 className="text-4xl font-black leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Talk with IntegraFin about your tax, books, or IRS notice.
+            </h1>
+            <p className="mt-6 max-w-3xl text-base leading-7 text-blue-100 sm:text-lg sm:leading-8">
+              Start with your name, the service you need, and one way to reach you. The team will
+              review the request and help identify the records, deadlines, and appropriate next step.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="#contact-form"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-secondary px-7 py-3.5 text-base font-bold text-primary-dark shadow-lg transition-colors hover:bg-cyan-300"
+              >
+                Start your request
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <a
+                href="tel:+18326471819"
+                data-analytics-label="contact_hero_phone_call"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 text-base font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                Call (832) 647-1819
+              </a>
+            </div>
+
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-blue-100">
+              <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-cyan-300" />Email or phone is enough</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-cyan-300" />Local and remote appointments</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-cyan-300" />No sensitive documents in this form</li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <section className="relative z-10 mx-auto -mt-14 max-w-7xl px-4 pb-20 sm:px-8 sm:pb-24">
+        <div className="grid items-start gap-7 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
+          <article className="rounded-3xl border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-900/10 sm:p-8 lg:p-10">
+            <div className="mb-8 border-b border-slate-200 pb-7">
+              <p className="text-sm font-bold text-brand-blue">Three quick details to begin</p>
+              <h2 className="mt-2 text-2xl font-black tracking-tight text-primary-dark sm:text-3xl">
+                {formHeading}
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-600 sm:text-base">
+                Choose a service and provide either email or phone. Company information and a message are optional.
+              </p>
+            </div>
+            <ContactForm initialService={initialService} />
+            <div className="mt-6 flex items-start gap-3 rounded-xl bg-blue-50 p-4 text-sm leading-6 text-slate-700">
+              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+              <p>
+                Do not include Social Security numbers, bank details, tax returns, or other sensitive records.
+                The team will confirm an appropriate document process when needed.
+              </p>
+            </div>
+          </article>
+
+          <aside className="space-y-6">
+            <section className="rounded-3xl bg-primary-dark p-7 text-white shadow-xl sm:p-8">
+              <h2 className="text-2xl font-black tracking-tight">Contact IntegraFin directly</h2>
+              <p className="mt-2 text-sm leading-6 text-blue-100">Use the option that is easiest for you during business hours.</p>
+              <div className="mt-7 space-y-3">
+                <a href="tel:+18326471819" data-analytics-label="contact_sidebar_phone_call" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary-dark"><Phone className="h-5 w-5" /></span>
+                  <span><span className="block text-sm text-blue-100">Call</span><span className="font-bold">(832) 647-1819</span></span>
+                </a>
+                <a href="mailto:contact@integrafin.tax" data-analytics-label="contact_sidebar_email" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary-dark"><Mail className="h-5 w-5" /></span>
+                  <span className="min-w-0"><span className="block text-sm text-blue-100">Email</span><span className="break-all font-bold">contact@integrafin.tax</span></span>
+                </a>
+                <a href="https://wa.me/18326471819" data-analytics-label="contact_sidebar_whatsapp" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary-dark"><MessageSquare className="h-5 w-5" /></span>
+                  <span><span className="block text-sm text-blue-100">WhatsApp</span><span className="font-bold">Message IntegraFin</span></span>
+                </a>
+              </div>
+              <div className="mt-6 flex items-start gap-3 border-t border-white/15 pt-5 text-sm text-blue-100">
+                <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
+                <p>Monday–Friday, 9:00 AM–6:00 PM Central</p>
+              </div>
             </section>
 
-            {/* ContactPoint Schema */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "ContactPage",
-                        name: "Contact IntegraFin",
-                        description: "Get in touch with IntegraFin for expert tax and accounting services.",
-                        mainEntity: {
-                            "@id": "https://integrafin.tax/#localbusiness",
-                        },
-                    }),
-                }}
+            <section className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-8">
+              <div className="flex items-start gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-primary"><MapPin className="h-5 w-5" /></span>
+                <div>
+                  <h2 className="text-xl font-black text-primary-dark">Katy office</h2>
+                  <address className="mt-2 not-italic text-sm leading-6 text-slate-600">
+                    IntegraFin LLC<br />
+                    2039 N Mason Rd, Suite 604<br />
+                    Katy, TX 77449
+                  </address>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=2039+N+Mason+Rd+Suite+604+Katy+TX+77449"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex font-bold text-primary hover:text-primary-dark hover:underline"
+                  >
+                    Get directions
+                  </a>
+                </div>
+              </div>
+              <details className="mt-6 border-t border-slate-200 pt-5 text-sm text-slate-600">
+                <summary className="cursor-pointer font-bold text-primary-dark">India operations contact</summary>
+                <p className="mt-3 leading-6">Nagpur, Maharashtra 440008 · <a href="tel:+918855075450" className="font-semibold text-primary hover:underline">+91 88550 75450</a></p>
+              </details>
+            </section>
+
+            <section className="rounded-3xl border border-amber-200 bg-amber-50 p-7 sm:p-8">
+              <h2 className="text-xl font-black text-primary-dark">Received an IRS notice?</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-700">
+                Keep the complete letter and envelope, note the response date, and review the notice before sending records.
+              </p>
+              <Link href="/texas/irs-notice-help-katy-tx" className="mt-5 inline-flex items-center gap-2 font-bold text-primary hover:text-primary-dark hover:underline">
+                Review Katy IRS notice help <ArrowRight className="h-4 w-4" />
+              </Link>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <section className="border-y border-slate-200 bg-white py-16 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.14em] text-brand-blue">Katy, Texas</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-primary-dark">Visit the IntegraFin office</h2>
+            <p className="mt-4 max-w-xl leading-7 text-slate-600">
+              Scheduled local appointments are available at the Katy office. Call or submit the form before visiting so the team can confirm timing and the records relevant to your request.
+            </p>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
+            <iframe
+              src="https://www.google.com/maps?q=2039+N+Mason+Rd+Suite+604+Katy+TX+77449&output=embed"
+              width="100%"
+              height="380"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Map to IntegraFin at 2039 N Mason Rd Suite 604 in Katy, Texas"
+              className="block min-h-[320px] w-full"
             />
-            {/* Breadcrumb Schema */}
-            <script
-              type="application/ld+json"
-              dangerouslySetInnerHTML={{ __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://integrafin.tax/" },
-                  { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://integrafin.tax/contact" }
-                ]
-              })}}
-            />
-        </>
-    );
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-20">
+        <div className="text-center">
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-brand-blue">Before you contact us</p>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-primary-dark">Consultation request FAQ</h2>
+        </div>
+        <div className="mt-10 grid gap-4">
+          {contactFaqs.map((faq) => (
+            <article key={faq.question} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+              <h3 className="text-lg font-black text-primary-dark">{faq.question}</h3>
+              <p className="mt-3 leading-7 text-slate-600">{faq.answer}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </main>
+  );
 }

@@ -5,6 +5,7 @@ export const LEAD_STATUSES = [
   'contact_attempted',
   'contacted',
   'qualified',
+  'unqualified',
   'appointment_booked',
   'proposal_sent',
   'client_won',
@@ -84,15 +85,15 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     },
     email: {
       type: String,
-      required: [true, 'Please provide an email.'],
-      match: [
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        'Please fill a valid email address',
-      ],
+      default: '',
+      validate: {
+        validator: (value: string) => !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+        message: 'Please fill a valid email address',
+      },
     },
     phone: {
       type: String,
-      required: [true, 'Please provide a phone number.'],
+      default: '',
     },
     company: {
       type: String,
@@ -104,7 +105,8 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     },
     message: {
       type: String,
-      required: [true, 'Please provide a message.'],
+      default: '',
+      maxlength: [2000, 'Message cannot be more than 2000 characters'],
     },
     source: {
       type: String,

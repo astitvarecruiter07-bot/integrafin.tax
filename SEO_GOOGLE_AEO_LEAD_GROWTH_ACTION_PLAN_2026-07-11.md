@@ -1,7 +1,7 @@
 # IntegraFin Google SEO, AEO, Local Visibility, and Lead Growth Action Plan
 
 Plan date: July 11, 2026  
-Website: https://integrafin.tax  
+Website: [https://integrafin.tax](https://integrafin.tax)
 Primary market: Katy, Fort Bend County, West Houston, and remote U.S. tax/accounting clients  
 Primary business objective: Generate qualified tax, bookkeeping, IRS notice, tax resolution, and LLC tax-setup leads  
 Repository: `C:\Users\Public\Downloads\integrafin_web`
@@ -35,7 +35,11 @@ For every completed task, record:
 
 ---
 
+
+
 # 1. Current Audit Snapshot
+
+
 
 ## What Is Working
 
@@ -50,6 +54,8 @@ For every completed task, record:
 - Contact and callback forms are functional.
 - GA4, Vercel Analytics, and Vercel Speed Insights are installed.
 
+
+
 ## Main Growth Bottlenecks
 
 1. Verifiable trust, credentials, authorship, and reviews are weaker than competitors.
@@ -63,20 +69,26 @@ For every completed task, record:
 9. OAI-SearchBot is allowed by the wildcard robots rule but is not explicitly named.
 10. Several visible and structured-data credential claims require verification.
 
+
+
 ## Current Priority Scores
 
-| Area | Current Estimate | Target | Priority |
-|---|---:|---:|---|
-| Technical SEO | 9/10 | 9.5/10 | Maintain |
-| On-page SEO | 8/10 | 9/10 | Medium |
-| Content coverage | 8/10 | 9/10 | Focus quality, not volume |
-| Local SEO and prominence | 4/10 | 8/10 | Critical |
-| E-E-A-T and trust | 4/10 | 9/10 | Critical |
-| AI/AEO readiness | 7/10 | 9/10 | High |
-| Lead conversion | 5/10 | 8.5/10 | Critical |
-| Lead attribution | 3/10 | 9/10 | Critical |
+
+| Area                     | Current Estimate | Target | Priority                  |
+| ------------------------ | ---------------- | ------ | ------------------------- |
+| Technical SEO            | 9/10             | 9.5/10 | Maintain                  |
+| On-page SEO              | 8/10             | 9/10   | Medium                    |
+| Content coverage         | 8/10             | 9/10   | Focus quality, not volume |
+| Local SEO and prominence | 4/10             | 8/10   | Critical                  |
+| E-E-A-T and trust        | 4/10             | 9/10   | Critical                  |
+| AI/AEO readiness         | 7/10             | 9/10   | High                      |
+| Lead conversion          | 5/10             | 8.5/10 | Critical                  |
+| Lead attribution         | 3/10             | 9/10   | Critical                  |
+
 
 ---
+
+
 
 # 2. Business Information Required Before SEO Claims Are Updated
 
@@ -102,6 +114,8 @@ These questions must be answered accurately. Do not publish assumptions.
 Do not proceed with credential, award, review, pricing, guarantee, or experience claims until proof is documented.
 
 ---
+
+
 
 # 3. P0: Trust, Credential, and YMYL Corrections
 
@@ -136,6 +150,8 @@ Completion record (July 11, 2026):
 - Verification passed: ESLint, TypeScript, and the Next.js production build with all 66 generated pages.
 - Deployment/live About-page validation remains a separate post-deployment check.
 
+
+
 ## 3.2 Audit Visible CPA, CA, EA, Certified, and Licensed Claims
 
 Status: `Completed`
@@ -168,6 +184,8 @@ Completion record (July 11, 2026):
 - Final exact-term scan found no CPA, EA, certified, or licensed claim in the website source. The only remaining standalone `CA` matches are California's state code and official California government URLs, not credential claims.
 - Verification passed: ESLint, TypeScript, `git diff --check`, and the Next.js production build with all 66 generated pages.
 
+
+
 ## 3.3 Replace Anonymous or Generic Testimonials
 
 Status: `Done`
@@ -179,11 +197,12 @@ Current issue:
 
 Required update:
 
-- [x] Remove the generic testimonial until a real approved testimonial is available. Removed from `src/app/page.tsx` in commit `3c27413` and verified absent from the production homepage after deployment commit `771dd38` on July 14, 2026.
-- [ ] Collect written approval from clients before publishing reviews.
+- [x] Remove the generic testimonial until a real approved testimonial is available. Removed from `src/app/page.tsx` in commit `3c27413` and verified absent from the production homepage after deployment commit `771dd38` on July 14, 2026
 - [ ] Display reviewer name or approved initials, company/industry when permitted, service used, date, and source.
 - [ ] Link to the original Google review when possible.
 - [ ] Never create fake reviews or mark up self-created reviews as Google ratings.
+
+
 
 ## 3.4 Replace Generic Trust Sections With Proof
 
@@ -205,12 +224,12 @@ Replace generic statements such as `Trust`, `Security`, `Years of Combined Exper
 
 Source completion record (July 14, 2026):
 
-- Replaced the homepage `Our Guarantees`, `Why Trust Us?`, years-of-experience, trust, security, and reliability labels with four checkable proof cards covering the Katy office, documented engagement stages, transparent service areas, and outcome limitations.
-- Reworked the About page hero, company description, mission, approach, and `Why Choose IntegraFin` cards to use published location, written scope, record-first review, workflow, and outcome-boundary evidence.
-- Labeled stock workspace imagery as illustrative so it cannot be mistaken for real team or office photography.
-- Replaced the Contact page's generic `Quick & Secure Payments` claim with factual Zelle instructions and a recipient-verification warning.
-- Removed unsupported `secure workflow` wording from homepage metadata and footer copy.
-- ESLint, TypeScript, production build, generated-page content checks, and `git diff --check` passed. Production deployment `57f3f94` was verified on July 14, 2026: the homepage, About page, and Contact page returned HTTP 200, displayed the new evidence-based content, and contained none of the replaced generic trust claims.
+- Replaced the homepage `Our Guarantees`, `Why Trust Us?`, years-of-experience, trust, security, and reliability labels with checkable proof covering the Katy office, documented engagement stages, transparent service areas, and outcome limitations.
+- Reworked the About and Contact pages to use factual location, scope, workflow, payment, and outcome-boundary information.
+- Labeled illustrative imagery so it cannot be mistaken for real team or office photography.
+- Production deployment `57f3f94` was verified on July 14, 2026.
+
+
 
 ## 3.5 Remove Unsupported Guarantee and Outcome Language
 
@@ -237,13 +256,13 @@ Required update:
 
 Completion record (July 14, 2026):
 
-- Rewrote unsupported refund, savings, liability, compliance, representation, settlement, pricing, portal-security, and business-outcome claims in structured data, core service pages, industry copy, city/state landing pages, case-study content, and legacy promotional articles.
-- Converted the case-study page from unverified client results into clearly labeled illustrative engagement workflows; the examples are not presented as testimonials, completed engagements, or promised outcomes.
-- Replaced unsupported `secure portal`, `secure document sharing`, and `secure remote workflow` statements with accurate process language. The site now says document methods are confirmed during onboarding and warns against ordinary unsecured email without claiming an unidentified security system.
-- Added or retained clear qualifications that results depend on complete records, applicable law, eligibility, timing, written scope, professional authorization, and agency decisions.
-- Source claim scans, ESLint, TypeScript, the Next.js production build, and `git diff --check` passed. A qualified professional or attorney has not yet reviewed the material claims, so this item is not marked fully complete.
+- Rewrote unsupported refund, savings, liability, compliance, representation, settlement, pricing, portal-security, and business-outcome claims across structured data and site content.
+- Converted the case-study page from unverified client results into clearly labeled illustrative engagement workflows.
+- Added qualifications that results depend on complete records, applicable law, eligibility, timing, written scope, professional authorization, and agency decisions.
 
 ---
+
+
 
 # 4. P0: Google Business Profile and Local SEO
 
@@ -282,6 +301,8 @@ Recommended GBP service groups:
 - Tax resolution consultation
 - LLC tax setup
 - Estimated tax planning
+
+
 
 ## 4.2 Review Acquisition System
 
@@ -362,24 +383,28 @@ Target: five relevant local or professional referring domains in the first 90 da
 
 ---
 
+
+
 # 5. P0: Keyword Ownership and Cannibalization Control
 
 Each valuable search intent must have one primary page.
 
-| Primary intent | Primary URL | Supporting pages | Required action |
-|---|---|---|---|
-| Katy tax and accounting firm | `/` | About, services, Katy city page | Keep homepage broad and brand/trust focused |
-| Tax accountant Katy TX | `/texas/katy-tax-accountant` | Homepage, business tax, individual tax | Make the city page the exact-intent landing page |
-| Bookkeeping services Katy TX | `/texas/katy-bookkeeping-services` | Bookkeeping cleanup, QuickBooks, services | Keep local bookkeeping intent here |
-| Small business tax accountant Katy | `/business-tax-accounting` | Katy city page, industries | Add stronger Katy small-business examples |
-| Individual tax preparation Katy TX | `/individual-tax-preparation` | Homepage, calculator | Add local filing and document intent |
-| IRS notice help Katy TX | `/texas/irs-notice-help-katy-tx` | Tax resolution, notice articles | Keep CP14, CP2000, Letter 12C focus here |
-| Tax resolution Katy TX | `/tax-resolution` | IRS notice page, tax resolution articles | Differentiate resolution process from notice triage |
-| QuickBooks cleanup Katy TX | `/quickbooks-bookkeeping-services` | Bookkeeping cleanup, Katy bookkeeping | Clarify software-specific intent |
-| Bookkeeping cleanup | `/bookkeeping-cleanup` | QuickBooks, Katy bookkeeping | Focus on catch-up and cleanup process |
-| LLC tax setup Texas | `/llc-formation-tax-setup` | Business tax, payroll, bookkeeping | Focus on tax classification, EIN, books, payroll, calendar |
-| Payroll tax support | `/payroll-tax-support` | Business tax, LLC setup | Focus on records, deposits, forms, notices |
-| Federal tax calculator | `/tax-calculator` | Calculator guide, individual tax | Keep informational/tool intent |
+
+| Primary intent                     | Primary URL                        | Supporting pages                          | Required action                                            |
+| ---------------------------------- | ---------------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
+| Katy tax and accounting firm       | `/`                                | About, services, Katy city page           | Keep homepage broad and brand/trust focused                |
+| Tax accountant Katy TX             | `/texas/katy-tax-accountant`       | Homepage, business tax, individual tax    | Make the city page the exact-intent landing page           |
+| Bookkeeping services Katy TX       | `/texas/katy-bookkeeping-services` | Bookkeeping cleanup, QuickBooks, services | Keep local bookkeeping intent here                         |
+| Small business tax accountant Katy | `/business-tax-accounting`         | Katy city page, industries                | Add stronger Katy small-business examples                  |
+| Individual tax preparation Katy TX | `/individual-tax-preparation`      | Homepage, calculator                      | Add local filing and document intent                       |
+| IRS notice help Katy TX            | `/texas/irs-notice-help-katy-tx`   | Tax resolution, notice articles           | Keep CP14, CP2000, Letter 12C focus here                   |
+| Tax resolution Katy TX             | `/tax-resolution`                  | IRS notice page, tax resolution articles  | Differentiate resolution process from notice triage        |
+| QuickBooks cleanup Katy TX         | `/quickbooks-bookkeeping-services` | Bookkeeping cleanup, Katy bookkeeping     | Clarify software-specific intent                           |
+| Bookkeeping cleanup                | `/bookkeeping-cleanup`             | QuickBooks, Katy bookkeeping              | Focus on catch-up and cleanup process                      |
+| LLC tax setup Texas                | `/llc-formation-tax-setup`         | Business tax, payroll, bookkeeping        | Focus on tax classification, EIN, books, payroll, calendar |
+| Payroll tax support                | `/payroll-tax-support`             | Business tax, LLC setup                   | Focus on records, deposits, forms, notices                 |
+| Federal tax calculator             | `/tax-calculator`                  | Calculator guide, individual tax          | Keep informational/tool intent                             |
+
 
 Required process:
 
@@ -395,45 +420,61 @@ Pause additional city/state page creation until current pages demonstrate impres
 
 ---
 
+
+
 # 6. P1: Metadata Updates
 
 The July 11 crawl found no missing or duplicate titles, but several outliers should be shortened.
 
 ## 6.1 Suggested Title Updates
 
-| URL | Suggested title |
-|---|---|
-| `/tax-resolution` | `Tax Resolution & IRS Notice Help Katy TX | IntegraFin` |
-| `/quickbooks-bookkeeping-services` | `QuickBooks Bookkeeping & Cleanup Katy TX | IntegraFin` |
-| `/industries` | `Industry Tax & Accounting Services | IntegraFin` |
-| `/new-york/buffalo-tax-accountant` | `Buffalo Tax Accountant for Businesses | IntegraFin` |
-| `/pennsylvania-tax-accounting-services` | `Pennsylvania Tax & Accounting Services | IntegraFin` |
-| `/pennsylvania/philadelphia-tax-accountant` | `Philadelphia Tax Accountant for Businesses | IntegraFin` |
-| `/pennsylvania/pittsburgh-tax-accountant` | `Pittsburgh Tax Accountant for Businesses | IntegraFin` |
+Status: `Source Complete - Live Verification Pending`
+
+| URL                                         | Suggested title                             |
+| ------------------------------------------- | ------------------------------------------- |
+| `/tax-resolution`                           | `Tax Resolution & IRS Notice Help Katy TX \| IntegraFin` |
+| `/quickbooks-bookkeeping-services`          | `QuickBooks Bookkeeping & Cleanup Katy TX \| IntegraFin` |
+| `/industries`                               | `Industry Tax & Accounting Services \| IntegraFin` |
+| `/new-york/buffalo-tax-accountant`          | `Buffalo Tax Accountant for Businesses \| IntegraFin` |
+| `/pennsylvania-tax-accounting-services`     | `Pennsylvania Tax & Accounting Services \| IntegraFin` |
+| `/pennsylvania/philadelphia-tax-accountant` | `Philadelphia Tax Accountant for Businesses \| IntegraFin` |
+| `/pennsylvania/pittsburgh-tax-accountant`   | `Pittsburgh Tax Accountant for Businesses \| IntegraFin` |
+
+
+
 
 ## 6.2 Suggested Description Updates
 
 These are drafts and must be checked against real services.
 
-| URL | Suggested description |
-|---|---|
-| `/` | `IntegraFin is a Katy tax and accounting firm providing tax preparation, bookkeeping, payroll-record support, and IRS notice help. Schedule a consultation.` |
-| `/about` | `Meet IntegraFin's tax and accounting team, learn how we support Katy businesses and families, and review our approach to accuracy, security, and service.` |
-| `/services` | `Explore IntegraFin tax preparation, bookkeeping, payroll-record, IRS notice, tax resolution, and LLC tax-setup services for businesses and individuals.` |
-| `/business-tax-accounting` | `Business tax preparation, bookkeeping, financial reporting, payroll-record, and planning support for Katy small businesses. Request a consultation.` |
-| `/industries` | `Tax and accounting support for real estate, construction, healthcare, professional services, technology, retail, and other growing businesses.` |
-| `/contact` | `Contact IntegraFin at our Katy office for tax preparation, bookkeeping, IRS notice, tax resolution, payroll-record, or LLC tax-setup support.` |
-| `/tax-calculator` | `Estimate 2025 filing or 2026 federal tax using filing status, deductions, credits, self-employment income, and capital gains. Federal estimate only.` |
+
+| URL                        | Suggested description                                                                                                                                        |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/`                        | `IntegraFin is a Katy tax and accounting firm providing tax preparation, bookkeeping, payroll-record support, and IRS notice help. Schedule a consultation.` |
+| `/about`                   | `Meet IntegraFin's tax and accounting team, learn how we support Katy businesses and families, and review our approach to accuracy, security, and service.`  |
+| `/services`                | `Explore IntegraFin tax preparation, bookkeeping, payroll-record, IRS notice, tax resolution, and LLC tax-setup services for businesses and individuals.`    |
+| `/business-tax-accounting` | `Business tax preparation, bookkeeping, financial reporting, payroll-record, and planning support for Katy small businesses. Request a consultation.`        |
+| `/industries`              | `Tax and accounting support for real estate, construction, healthcare, professional services, technology, retail, and other growing businesses.`             |
+| `/contact`                 | `Contact IntegraFin at our Katy office for tax preparation, bookkeeping, IRS notice, tax resolution, payroll-record, or LLC tax-setup support.`              |
+| `/tax-calculator`          | `Estimate 2025 filing or 2026 federal tax using filing status, deductions, credits, self-employment income, and capital gains. Federal estimate only.`       |
+
 
 After changes:
 
 - [ ] Verify live title and description.
-- [ ] Verify canonical URL.
+- [x] Verify canonical URL in source.
 - [ ] Inspect mobile and desktop snippets.
 - [ ] Request recrawl for priority pages.
 - [ ] Measure CTR in GSC after 28 days.
 
+Source completion record (July 23, 2026):
+
+- Shortened the seven title outliers listed above while preserving their primary intent and IntegraFin branding.
+- Production build verification is required before deployment; live metadata and GSC recrawl remain post-deployment actions.
+
 ---
+
+
 
 # 7. P1: On-Page SEO and AEO Page Template
 
@@ -458,6 +499,8 @@ Use this template for every important service, city, and high-intent article.
 15. Published and last-reviewed dates.
 16. Service-specific CTA.
 17. Related service and article links.
+
+
 
 ## AEO Answer Formats
 
@@ -486,6 +529,8 @@ Use concise paragraphs, numbered steps, checklists, comparison tables, descripti
 
 ---
 
+
+
 # 8. P1: Structured Data Plan
 
 Structured data must match visible content exactly.
@@ -503,6 +548,8 @@ File: `src/lib/seo/schema.ts`
 - [ ] Do not add self-serving aggregateRating markup.
 - [ ] Connect Organization, LocalBusiness, WebSite, WebPage, Service, and Person entities with stable IDs.
 
+
+
 ## Page-Level Schema
 
 - [ ] Homepage: Organization/LocalBusiness and WebSite.
@@ -512,6 +559,8 @@ File: `src/lib/seo/schema.ts`
 - [ ] About/team profiles: real Person and ProfilePage only.
 - [x] Contact page: ContactPage references the canonical LocalBusiness entity and its contact point. Completed July 14, 2026.
 - [ ] Calculator: WebApplication/SoftwareApplication only if implementation accurately matches properties.
+
+
 
 ## FAQ Schema Limitation
 
@@ -527,6 +576,8 @@ FAQ markup can remain when it matches visible content, but Google normally restr
 
 ---
 
+
+
 # 9. P1: ChatGPT, Google AI, and Answer-Engine Visibility
 
 Google says AI Overviews and AI Mode use normal SEO fundamentals. No special AI schema or machine-readable AI file is required.
@@ -535,6 +586,8 @@ Google says AI Overviews and AI Mode use normal SEO fundamentals. No special AI 
 
 File: `src/app/robots.ts`
 
+Status: `Source Complete - Live Verification Pending`
+
 Current wildcard behavior allows OAI-SearchBot, but add an explicit rule for clarity:
 
 ```text
@@ -542,11 +595,16 @@ User-agent: OAI-SearchBot
 Allow: /
 ```
 
-- [ ] Keep important pages crawlable.
+- [x] Keep important pages crawlable.
 - [ ] Ensure Vercel/CDN/firewall allows published crawler IPs.
 - [ ] Decide separately whether to allow GPTBot training access.
 - [ ] Keep ChatGPT-User access if user-requested page retrieval is desired.
-- [ ] Do not block CSS, JavaScript, or important images required for rendering.
+- [x] Do not block CSS, JavaScript, or important images required for rendering.
+
+Source completion record (July 23, 2026):
+
+- Added an explicit `OAI-SearchBot` allow rule while preserving `/admin` exclusions.
+- Wildcard crawling remains enabled for public pages and assets.
 
 Crawler purpose:
 
@@ -555,6 +613,8 @@ Crawler purpose:
 - ChatGPT-User: user-requested page access.
 - Googlebot: Google Search and AI features in Search.
 - Google-Extended: controls some Google AI training/grounding uses, not normal Google Search indexing.
+
+
 
 ## 9.2 Make Content Easy to Cite
 
@@ -569,6 +629,8 @@ Crawler purpose:
 - [ ] Use descriptive ARIA labels on interactive elements.
 - [ ] Avoid hiding essential answers behind tabs or client-side interactions.
 
+
+
 ## 9.3 AI Referral Measurement
 
 - [ ] Create a GA4 segment for `utm_source=chatgpt.com`.
@@ -580,7 +642,11 @@ Do not prioritize `llms.txt` ahead of crawlability, authorship, citations, page 
 
 ---
 
+
+
 # 10. P0: Lead Conversion and Attribution
+
+
 
 ## 10.1 GA4 Conversion Events
 
@@ -592,7 +658,7 @@ Implement and test:
 
 - [x] `form_view`
 - [x] `form_start`
-- [x] `lead_submit`
+- [x] `generate_lead` - GA4 recommended event used instead of the draft `lead_submit` name.
 - [x] `newsletter_submit`
 - [x] `phone_click`
 - [x] `whatsapp_click`
@@ -617,12 +683,10 @@ Never send sensitive tax, financial, personal, message, phone, or email content 
 
 Implementation record (July 15, 2026):
 
-- Added a shared GA4 event helper with a strict allowlist for event parameters and value guards that reject email-like, phone-like, and URL values.
-- Added `form_view` and first-interaction `form_start` events to both lead forms and the newsletter form. `lead_submit` and `newsletter_submit` fire only after the server confirms that the request was stored.
-- Added global click events for phone, email, WhatsApp, booking, and future portal links. The `/thank-you` Calendly CTA uses `https://calendly.com/integrafintax/30min` and emits `booking_start` on click.
-- Added `calculator_complete` to each tax-calculator result flow without sending inputs or calculated amounts.
-- ESLint, TypeScript, `git diff --check`, and the Next.js production build (67 pages) passed. Local server verification returned HTTP 200 for `/thank-you`, confirmed its `noindex` metadata and Calendly link, and confirmed that `/thank-you` is absent from the XML sitemap.
-- Before release, mark the desired events as GA4 key events and verify them in DebugView. Booking completion must come from a confirmed Calendly integration or webhook; it cannot be inferred safely from an outbound click.
+- Added a shared GA4 event helper with an allowlist for parameters and guards against email, phone, and URL values.
+- Lead and newsletter conversion events fire only after the server confirms that the submission was stored.
+- Added global phone, email, WhatsApp, booking, and future portal click events plus calculator completion events.
+- Mark `generate_lead` as a GA4 key event and verify it in DebugView after deployment.
 
 ## 10.2 Lead Attribution Fields
 
@@ -654,12 +718,15 @@ Capture and store:
 
 Implementation record (July 15, 2026):
 
-- Browser capture stores only first-touch attribution in local storage: a path-only first landing page, a query-string-free referrer, approved campaign parameters, and the first-touch timestamp. The current submission page is added when the form is sent.
-- The server validates every attribution field, strips query strings from page and referrer values, applies length limits, adds the server-side submission timestamp, and saves it in `ContactLead.attribution` for both lead and newsletter submissions.
-- The protected Admin Leads view now shows first page, submission page, referrer, campaign/source/medium, and whether an ad click ID is present.
-- A live test submission should be made after deployment using a non-sensitive test contact and a URL such as `?utm_source=test&utm_medium=qa&utm_campaign=lead-attribution`.
+- Browser capture stores first-touch path, query-string-free referrer, approved campaign parameters, and timestamp.
+- The server validates and sanitizes attribution before saving it to MongoDB for lead and newsletter submissions.
+- The protected Admin Leads view displays source attribution without exposing ad click IDs.
+
+
 
 ## 10.3 Lead Status and Revenue Feedback
+
+Status: `Source Complete - Live Dashboard Verification Pending`
 
 Expand the lead pipeline:
 
@@ -671,27 +738,46 @@ Expand the lead pipeline:
 - Proposal sent
 - Client won
 - Client lost
+- Unqualified
 - Spam
 - Duplicate
 
 Track:
 
-- [ ] Service requested
-- [ ] Qualified or unqualified
-- [ ] Estimated engagement value
-- [ ] Client won/lost
-- [ ] Actual revenue
-- [ ] Reason lost
-- [ ] Time to first response
-- [ ] Time to appointment
+- [x] Service requested
+- [x] Qualified or unqualified
+- [x] Estimated engagement value
+- [x] Client won/lost
+- [x] Actual revenue
+- [x] Reason lost
+- [x] Time to first response
+- [x] Time to appointment
+
+Implementation update — July 17, 2026:
+
+- Replaced the read-only lead table with an authenticated operations dashboard for status management, filtering, lead details, source attribution, estimated value, won revenue, appointments, internal notes, reason lost, and first-response tracking.
+- Added summary metrics for total leads, currently qualified leads, appointments, won clients, won revenue, and open-pipeline value. Closed, lost, spam, duplicate, and legacy-completed records are excluded from open-pipeline value.
+- Added a configurable response SLA, overdue-new-lead counts, visible overdue indicators, validation, safe expired-session recovery, and explicit load/action error states.
+- Preserved historical `completed` records while requiring all new updates to use the expanded pipeline.
+- Verification passed: ESLint, TypeScript, the Next.js production build with all 67 generated pages, authenticated production HTTP loading, session-protected loading, unauthenticated redirect to login, and a clean production server log. Click-level browser verification remains a post-deployment/manual check because the in-app browser was unavailable in this session.
+
+
 
 ## 10.4 Immediate Notifications
 
-- [ ] Send an email notification when a lead is submitted.
+Status: `Source Complete - Provider Configuration and Live Test Pending`
+
+- [x] Send an email notification when a lead is submitted.
 - [ ] Add SMS/Slack/Teams notification if operationally useful.
-- [ ] Include only necessary information and use secure handling.
-- [ ] Establish a response SLA.
-- [ ] Create alerts when a lead is not contacted within the SLA.
+- [x] Include only necessary information and use secure handling.
+- [x] Establish a configurable response SLA for the dashboard.
+- [x] Create in-dashboard alerts when a new lead is not contacted within the SLA.
+
+Implementation record (July 17, 2026):
+
+- Lead email delivery runs after the database save and does not expose customer contact details or message content to the email provider.
+- Delivery uses a MongoDB lead-ID idempotency key; failed or missing provider configuration does not discard the lead.
+- Production requires `RESEND_API_KEY`, `LEAD_NOTIFICATION_FROM`, and `LEAD_NOTIFICATION_TO`; see `LEAD_NOTIFICATIONS_SETUP.md`.
 
 Recommended operational target: respond within 5–15 minutes during business hours when feasible. Publish a response promise only if consistently achievable.
 
@@ -702,17 +788,20 @@ Status: `Source Complete - Booking Completion Tracking Pending`
 - [x] Create `/thank-you` with `noindex`.
 - [x] Show what happens next.
 - [x] Display response expectations.
-- [x] Offer calendar booking via the verified 30-minute Calendly link.
+- [x] Offer calendar booking using the configured booking URL or the current Calendly fallback.
 - [ ] Provide service-specific document preparation—not sensitive document upload through the public form.
 - [x] Trigger conversion events only after confirmed success.
 
 Implementation record (July 15, 2026):
 
-- Successful contact and homepage callback submissions route to `/thank-you` only after `submitLead` returns success.
-- The page states the follow-up boundary, warns against sending sensitive documents through ordinary email, and offers the verified Calendly consultation link and business phone number.
-- The page is intentionally not included in the sitemap and its production HTML contains `noindex` metadata.
+- Successful lead submissions route to `/thank-you` only after `submitLead` confirms storage.
+- The page is excluded from the sitemap, uses `noindex`, explains follow-up, warns against sending sensitive records through ordinary email, and provides booking and phone options.
+
+
 
 ## 10.6 Service-Specific CTAs
+
+Status: `Source Complete - Live Form Verification Pending`
 
 Replace generic CTAs with intent-specific offers:
 
@@ -724,9 +813,19 @@ Replace generic CTAs with intent-specific offers:
 - Payroll: `Request a payroll-record review`
 - Tax calculator: `Request a reviewed estimate`
 
+Source completion record (July 23, 2026):
+
+- Added a shared, validated service list and service-aware CTA labels.
+- Added service-prefilled contact links for the main service template, Katy bookkeeping, IRS notice help, and LLC tax setup pages.
+- Simplified both public lead forms so the service and one contact method are required while company and situation details remain optional.
+
 ---
 
+
+
 # 11. P1: Conversion Content and Trust Assets
+
+
 
 ## 11.1 Pricing or Scope Guidance
 
@@ -757,6 +856,8 @@ Do not invent pricing or claim flat-rate pricing unless it is consistently offer
 - [ ] Author/reviewer links
 - [ ] Personal professional profiles
 
+
+
 ## 11.3 Case Studies
 
 Create anonymized case studies only with client permission and documented facts.
@@ -782,6 +883,8 @@ Initial case-study topics:
 - LLC bookkeeping and payroll-readiness setup
 - Multi-state income documentation review
 
+
+
 ## 11.4 Secure Workflow
 
 - [ ] Publish an accurate explanation of document handling.
@@ -791,30 +894,36 @@ Initial case-study topics:
 
 ---
 
+
+
 # 12. P1: Content Roadmap
 
 Do not publish all topics at once. Publish only content that a qualified reviewer can improve and maintain.
 
 ## High-Intent Content Queue
 
-| Priority | Proposed topic | Target intent | Primary CTA |
-|---|---|---|---|
-| P0 | How much do bookkeeping services cost in Katy, TX? | Cost/commercial | Bookkeeping assessment |
-| P0 | What to do after receiving a CP2000 notice | Urgent IRS problem | IRS notice review |
-| P0 | CP14 balance-due notice checklist | Urgent IRS problem | IRS notice review |
-| P0 | Bookkeeping cleanup timeline and document checklist | Commercial | Cleanup assessment |
-| P0 | First-year Texas LLC tax and accounting calendar | LLC startup | LLC tax-setup call |
-| P1 | S corporation payroll and reasonable compensation basics | Business tax/payroll | Business consultation |
-| P1 | Quarterly estimated-tax checklist for 1099 professionals | Planning | Reviewed estimate |
-| P1 | Individual tax preparation document checklist | Filing | Tax consultation |
-| P1 | Business tax preparation checklist for LLCs and S corporations | Filing | Business consultation |
-| P1 | CP2000 vs audit: what is the difference? | IRS information | IRS notice review |
-| P1 | How to change accountants when your books are behind | Commercial | Cleanup assessment |
-| P1 | QuickBooks cleanup warning signs | Commercial | QuickBooks review |
-| P2 | Tax and bookkeeping checklist for Katy real estate professionals | Industry/local | Industry consultation |
-| P2 | Tax and bookkeeping checklist for medical and dental practices | Industry | Industry consultation |
-| P2 | Payroll and bookkeeping checklist for construction contractors | Industry/local | Business consultation |
-| P2 | Multi-state filing document checklist | Remote/state | Tax consultation |
+
+| Priority | Proposed topic                                                   | Target intent        | Primary CTA            |
+| -------- | ---------------------------------------------------------------- | -------------------- | ---------------------- |
+| P0       | How much do bookkeeping services cost in Katy, TX?               | Cost/commercial      | Bookkeeping assessment |
+| P0       | What to do after receiving a CP2000 notice                       | Urgent IRS problem   | IRS notice review      |
+| P0       | CP14 balance-due notice checklist                                | Urgent IRS problem   | IRS notice review      |
+| P0       | Bookkeeping cleanup timeline and document checklist              | Commercial           | Cleanup assessment     |
+| P0       | First-year Texas LLC tax and accounting calendar                 | LLC startup          | LLC tax-setup call     |
+| P1       | S corporation payroll and reasonable compensation basics         | Business tax/payroll | Business consultation  |
+| P1       | Quarterly estimated-tax checklist for 1099 professionals         | Planning             | Reviewed estimate      |
+| P1       | Individual tax preparation document checklist                    | Filing               | Tax consultation       |
+| P1       | Business tax preparation checklist for LLCs and S corporations   | Filing               | Business consultation  |
+| P1       | CP2000 vs audit: what is the difference?                         | IRS information      | IRS notice review      |
+| P1       | How to change accountants when your books are behind             | Commercial           | Cleanup assessment     |
+| P1       | QuickBooks cleanup warning signs                                 | Commercial           | QuickBooks review      |
+| P2       | Tax and bookkeeping checklist for Katy real estate professionals | Industry/local       | Industry consultation  |
+| P2       | Tax and bookkeeping checklist for medical and dental practices   | Industry             | Industry consultation  |
+| P2       | Payroll and bookkeeping checklist for construction contractors   | Industry/local       | Business consultation  |
+| P2       | Multi-state filing document checklist                            | Remote/state         | Tax consultation       |
+
+
+
 
 ## Existing Blog Refresh
 
@@ -839,6 +948,8 @@ Refresh checklist:
 - [ ] Links to owner landing pages
 - [ ] Accurate publish and reviewed dates
 
+
+
 ## Editorial Calendar
 
 Recommended sustainable cadence:
@@ -853,7 +964,11 @@ Quality and review capacity determine cadence. Do not publish filler to meet a v
 
 ---
 
+
+
 # 13. P1: Internal Linking Plan
+
+
 
 ## Hub Structure
 
@@ -884,6 +999,8 @@ Suggested anchors:
 
 ---
 
+
+
 # 14. P1: Performance and Core Web Vitals
 
 The PageSpeed API returned a quota error during the July 11 audit. The previous available project Lighthouse result showed mobile performance around 55, LCP around 5.6 seconds, and TBT around 610–730 ms. Re-test before and after changes.
@@ -894,19 +1011,29 @@ Targets:
 - INP: 200 ms or less
 - CLS: 0.1 or less
 
+
+
 ## Homepage Performance Tasks
 
-- [ ] Replace the autoplay client-side hero carousel with one static server-rendered hero.
-- [ ] Load only the first essential hero image above the fold.
-- [ ] Use responsive AVIF/WebP images.
+- [x] Replace the autoplay client-side hero carousel with one static server-rendered hero.
+- [x] Load only the first essential hero image above the fold.
+- [x] Use responsive optimized image output through `next/image`.
 - [ ] Replace remote stock images with compressed original office/team images.
-- [ ] Avoid a 3 MB source image when a smaller source is sufficient.
-- [ ] Confirm image dimensions and `sizes` values.
+- [x] Avoid a 3 MB source image when a smaller source is sufficient.
+- [x] Confirm image dimensions and `sizes` values.
 - [ ] Lazy-load below-the-fold media.
 - [ ] Review third-party script cost.
 - [ ] Load analytics in a way that minimizes main-thread blocking.
-- [ ] Reduce unused client JavaScript.
+- [x] Reduce unused client JavaScript in the homepage hero.
 - [ ] Test mobile CPU and network throttling.
+
+Source completion record (July 23, 2026):
+
+- Replaced the rotating client component with one server-rendered hero and one priority image.
+- Re-encoded the 2.93 MB PNG as a 371 KB JPEG source and labeled it as an illustrative workspace rather than a real IntegraFin office or team photo.
+- Kept responsive `next/image` delivery with an explicit `sizes="100vw"` value.
+
+
 
 ## Sitewide Performance Tasks
 
@@ -919,6 +1046,8 @@ Targets:
 - [ ] Check bundle size after each major client component.
 
 ---
+
+
 
 # 15. P2: Remaining Technical SEO Maintenance
 
@@ -939,7 +1068,11 @@ Targets:
 
 ---
 
+
+
 # 16. Competitor Response Strategy
+
+
 
 ## Patriots Tax & Bookkeeping
 
@@ -961,6 +1094,8 @@ IntegraFin response:
 - Win focused searches such as IRS notice help, bookkeeping cleanup, and LLC tax setup.
 - Highlight one coordinated workflow across books, tax, payroll records, and notices.
 
+
+
 ## MM CPA Services
 
 Their visible advantages:
@@ -978,6 +1113,8 @@ IntegraFin response:
 - Create original, practical content with official sources.
 - Publish industry-specific case studies.
 - Build a consistent LinkedIn and GBP publishing cadence.
+
+
 
 ## RT Mallard CPA
 
@@ -999,6 +1136,8 @@ IntegraFin response:
 - Publish clearer scope, onboarding, deliverables, and pricing factors.
 - Add secure document exchange and booking.
 
+
+
 ## Personal Bookkeeping Competitors
 
 Their visible advantages:
@@ -1014,6 +1153,8 @@ IntegraFin response:
 - Add pricing guidance.
 - Explain who manages each engagement.
 - Combine personal attention with broader tax/accounting capability.
+
+
 
 ## Recommended IntegraFin Positioning
 
@@ -1033,7 +1174,11 @@ Differentiators must be based on real operations:
 
 ---
 
+
+
 # 17. 30/60/90-Day Execution Plan
+
+
 
 ## Days 1–14: Fix Trust and Measurement
 
@@ -1043,13 +1188,15 @@ Differentiators must be based on real operations:
 - [x] Owner-deferred follow-up: finish external NAP cleanup by correcting older LinkedIn posts using `(832) 774-1882` and `hello@integrafin.tax`. Website/schema verification is complete; owner will handle the remaining external edits later.
 - [x] Deferred by owner: complete and verify GBP. Skipped for now on July 14, 2026.
 - [x] Deferred with GBP: start the real review-request workflow when a verified review destination is active or the owner selects another verified review source.
-- [ ] Add GA4 conversion events.
-- [ ] Add lead attribution fields.
-- [ ] Add immediate lead notifications.
-- [ ] Create thank-you and booking flow.
-- [ ] Add explicit OAI-SearchBot permission.
-- [ ] Shorten metadata outliers.
+- [x] Add GA4 conversion events. Source complete; GA4 key-event configuration and live DebugView verification remain.
+- [x] Add lead attribution fields. Source complete; live UTM lead verification remains.
+- [x] Add immediate lead notifications. Source complete; provider environment configuration and live delivery verification remain.
+- [x] Create thank-you and booking flow. Source complete; booking-completion integration remains.
+- [x] Add explicit OAI-SearchBot permission. Source complete July 23, 2026; live robots verification remains.
+- [x] Shorten metadata outliers. Source complete July 23, 2026; live metadata verification and recrawl remain.
 - [ ] Request indexing for materially changed priority pages.
+
+
 
 ## Days 15–30: Improve Proof and Conversion
 
@@ -1057,11 +1204,13 @@ Differentiators must be based on real operations:
 - [ ] Add real office and team photography.
 - [ ] Add secure-portal link and process explanation.
 - [ ] Add pricing or scope guidance.
-- [x] Replace generic trust blocks with evidence. Deployed in `57f3f94` and verified live on the homepage, About page, and Contact page on July 14, 2026.
+- [x] Replace generic trust blocks with evidence. Deployed and verified July 14, 2026.
 - [ ] Create first genuine case study.
-- [ ] Simplify the homepage hero.
-- [ ] Improve service-specific CTAs and forms.
-- [ ] Create GSC, GBP, GA4, and CRM dashboard.
+- [x] Simplify the homepage hero. Source complete July 23, 2026; live CWV verification remains.
+- [x] Improve service-specific CTAs and forms. Source complete July 23, 2026; live form verification remains.
+- [ ] Create GSC, GBP, GA4, and CRM dashboard. The protected lead operations dashboard is complete; external dashboard integrations remain.
+
+
 
 ## Days 31–60: Build Bottom-of-Funnel Authority
 
@@ -1074,6 +1223,8 @@ Differentiators must be based on real operations:
 - [ ] Add internal links and reviewer information.
 - [ ] Join or complete priority chamber/citation profiles.
 - [ ] Earn two or three relevant local/professional backlinks.
+
+
 
 ## Days 61–90: Optimize Using Real Data
 
@@ -1092,7 +1243,11 @@ Differentiators must be based on real operations:
 
 ---
 
+
+
 # 18. KPI Dashboard
+
+
 
 ## Google Search Console
 
@@ -1108,6 +1263,8 @@ Differentiators must be based on real operations:
 - Core Web Vitals
 - Manual actions/security issues
 
+
+
 ## Google Business Profile
 
 - Search terms
@@ -1120,6 +1277,8 @@ Differentiators must be based on real operations:
 - Average rating
 - Review response rate
 - Photo views
+
+
 
 ## GA4 and Analytics
 
@@ -1135,6 +1294,8 @@ Differentiators must be based on real operations:
 - Source/medium/campaign
 - ChatGPT and AI referrals
 
+
+
 ## CRM and Revenue
 
 - New leads
@@ -1149,6 +1310,8 @@ Differentiators must be based on real operations:
 - Cost per acquired client when paid channels are used
 - Time to first response
 
+
+
 ## Reporting Cadence
 
 - Weekly: errors, leads, GBP actions, ranking movement, review requests
@@ -1158,6 +1321,8 @@ Differentiators must be based on real operations:
 Do not judge SEO only by traffic. Qualified leads, clients, and revenue are the business outcomes.
 
 ---
+
+
 
 # 19. Launch QA Checklist for Every SEO Change
 
@@ -1186,6 +1351,8 @@ Do not judge SEO only by traffic. Qualified leads, clients, and revenue are the 
 
 ---
 
+
+
 # 20. Practices to Avoid
 
 - Do not create fake reviews, testimonials, credentials, awards, offices, or statistics.
@@ -1205,18 +1372,22 @@ Do not judge SEO only by traffic. Qualified leads, clients, and revenue are the 
 
 ---
 
+
+
 # 21. Official Guidance References
 
-- Google people-first content and E-E-A-T: https://developers.google.com/search/docs/fundamentals/creating-helpful-content
-- Google AI features and normal SEO requirements: https://developers.google.com/search/docs/appearance/ai-features
-- Google local ranking factors: https://support.google.com/business/answer/7091
-- Google structured-data policies: https://developers.google.com/search/docs/appearance/structured-data/sd-policies
-- Google LocalBusiness schema: https://developers.google.com/search/docs/appearance/structured-data/local-business
-- Google FAQ rich-result limitations: https://developers.google.com/search/blog/2023/08/howto-faq-changes
-- OpenAI ChatGPT search availability guidance: https://help.openai.com/en/articles/9237897-chatgpt-search
-- OpenAI publisher/developer crawler and referral guidance: https://help.openai.com/en/articles/12627856-publishers-and-developers-faq
+- Google people-first content and E-E-A-T: [https://developers.google.com/search/docs/fundamentals/creating-helpful-content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content)
+- Google AI features and normal SEO requirements: [https://developers.google.com/search/docs/appearance/ai-features](https://developers.google.com/search/docs/appearance/ai-features)
+- Google local ranking factors: [https://support.google.com/business/answer/7091](https://support.google.com/business/answer/7091)
+- Google structured-data policies: [https://developers.google.com/search/docs/appearance/structured-data/sd-policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)
+- Google LocalBusiness schema: [https://developers.google.com/search/docs/appearance/structured-data/local-business](https://developers.google.com/search/docs/appearance/structured-data/local-business)
+- Google FAQ rich-result limitations: [https://developers.google.com/search/blog/2023/08/howto-faq-changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes)
+- OpenAI ChatGPT search availability guidance: [https://help.openai.com/en/articles/9237897-chatgpt-search](https://help.openai.com/en/articles/9237897-chatgpt-search)
+- OpenAI publisher/developer crawler and referral guidance: [https://help.openai.com/en/articles/12627856-publishers-and-developers-faq](https://help.openai.com/en/articles/12627856-publishers-and-developers-faq)
 
 ---
+
+
 
 # 22. Final Priority Order
 

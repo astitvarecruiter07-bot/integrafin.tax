@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import CityServicesPage from "@/components/CityServicesPage";
 
 export const metadata: Metadata = {
-  title: "Pittsburgh Tax Accountant for Small Business Tax Support | IntegraFin",
+  title: "Pittsburgh Tax Accountant for Businesses | IntegraFin",
   description:
     "Need a tax accountant in Pittsburgh, PA? IntegraFin supports business tax filing, bookkeeping, payroll workflows, and IRS notice response.",
   alternates: { canonical: "https://integrafin.tax/pennsylvania/pittsburgh-tax-accountant" },
   openGraph: {
-    title: "Pittsburgh Tax Accountant for Small Business Tax Support | IntegraFin",
+    title: "Pittsburgh Tax Accountant for Businesses | IntegraFin",
     description:
       "Tax, bookkeeping, payroll, and IRS support for Pittsburgh business owners and individuals.",
     url: "https://integrafin.tax/pennsylvania/pittsburgh-tax-accountant",
