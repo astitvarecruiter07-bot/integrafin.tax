@@ -428,7 +428,7 @@ The July 11 crawl found no missing or duplicate titles, but several outliers sho
 
 ## 6.1 Suggested Title Updates
 
-Status: `Source Complete - Live Verification Pending`
+Status: `Completed - GSC CTR Monitoring Pending`
 
 | URL                                         | Suggested title                             |
 | ------------------------------------------- | ------------------------------------------- |
@@ -470,7 +470,12 @@ After changes:
 Source completion record (July 23, 2026):
 
 - Shortened the seven title outliers listed above while preserving their primary intent and IntegraFin branding.
-- Production build verification is required before deployment; live metadata and GSC recrawl remain post-deployment actions.
+- Production build verification passed before deployment; GSC recrawl and CTR monitoring remain external follow-up actions.
+
+Live verification record (July 23, 2026):
+
+- Deployed in commit `bed58db`; all seven pages returned HTTP 200 with the new titles in rendered production HTML.
+- Canonicals remained intact. Search Console recrawl and the 28-day CTR comparison remain external follow-up actions.
 
 ---
 
@@ -586,7 +591,7 @@ Google says AI Overviews and AI Mode use normal SEO fundamentals. No special AI 
 
 File: `src/app/robots.ts`
 
-Status: `Source Complete - Live Verification Pending`
+Status: `Source and Live Output Complete - CDN Monitoring Pending`
 
 Current wildcard behavior allows OAI-SearchBot, but add an explicit rule for clarity:
 
@@ -605,6 +610,7 @@ Source completion record (July 23, 2026):
 
 - Added an explicit `OAI-SearchBot` allow rule while preserving `/admin` exclusions.
 - Wildcard crawling remains enabled for public pages and assets.
+- Production `robots.txt` returned HTTP 200 with the explicit rule after deployment `bed58db`.
 
 Crawler purpose:
 
@@ -690,7 +696,7 @@ Implementation record (July 15, 2026):
 
 ## 10.2 Lead Attribution Fields
 
-Status: `Source Complete - Live Lead Verification Pending`
+Status: `Completed`
 
 Files:
 
@@ -722,11 +728,17 @@ Implementation record (July 15, 2026):
 - The server validates and sanitizes attribution before saving it to MongoDB for lead and newsletter submissions.
 - The protected Admin Leads view displays source attribution without exposing ad click IDs.
 
+Live verification record (July 23, 2026):
+
+- Production accepted a non-sensitive QA lead and returned a confirmed lead ID.
+- A read-only database check confirmed first landing page, submission page, referrer, source, medium, campaign, first-touch time, and submission time.
+- The QA record was marked as spam through the authenticated dashboard action after verification.
+
 
 
 ## 10.3 Lead Status and Revenue Feedback
 
-Status: `Source Complete - Live Dashboard Verification Pending`
+Status: `Completed`
 
 Expand the lead pipeline:
 
@@ -765,7 +777,7 @@ Implementation update — July 17, 2026:
 
 ## 10.4 Immediate Notifications
 
-Status: `Source Complete - Provider Configuration and Live Test Pending`
+Status: `Waiting for Production Resend Configuration`
 
 - [x] Send an email notification when a lead is submitted.
 - [ ] Add SMS/Slack/Teams notification if operationally useful.
@@ -779,6 +791,12 @@ Implementation record (July 17, 2026):
 - Delivery uses a MongoDB lead-ID idempotency key; failed or missing provider configuration does not discard the lead.
 - New leads persist the notification result and check timestamp so delivery configuration and provider failures are visible in the protected dashboard.
 - Production requires `RESEND_API_KEY`, `LEAD_NOTIFICATION_FROM`, and `LEAD_NOTIFICATION_TO`; see `LEAD_NOTIFICATIONS_SETUP.md`.
+
+Live verification record (July 23, 2026):
+
+- Deployed delivery-status persistence and dashboard visibility in commit `2a9c7cf`.
+- Production QA lead `6a612abfddfc39908dac9830` recorded `notificationStatus: not_configured`; the background task ran, but the required Resend environment configuration is absent or incomplete.
+- The QA lead was marked as spam. Add the three required Vercel environment values, redeploy, and repeat the test until the dashboard records `Sent`.
 
 Recommended operational target: respond within 5–15 minutes during business hours when feasible. Publish a response promise only if consistently achievable.
 
@@ -797,12 +815,13 @@ Implementation record (July 15, 2026):
 
 - Successful lead submissions route to `/thank-you` only after `submitLead` confirms storage.
 - The page is excluded from the sitemap, uses `noindex`, explains follow-up, warns against sending sensitive records through ordinary email, and provides booking and phone options.
+- Production returned HTTP 200 for `/thank-you`, retained `noindex`, omitted the URL from the sitemap, and the configured Calendly fallback returned HTTP 200 on July 23, 2026.
 
 
 
 ## 10.6 Service-Specific CTAs
 
-Status: `Source Complete - Live Form Verification Pending`
+Status: `Completed`
 
 Replace generic CTAs with intent-specific offers:
 
@@ -819,6 +838,7 @@ Source completion record (July 23, 2026):
 - Added a shared, validated service list and service-aware CTA labels.
 - Added service-prefilled contact links for the main service template, Katy bookkeeping, IRS notice help, and LLC tax setup pages.
 - Simplified both public lead forms so the service and one contact method are required while company and situation details remain optional.
+- Production rendered the service-prefilled contact form and successfully stored the non-sensitive QA submission before cleanup.
 
 ---
 
@@ -1033,6 +1053,7 @@ Source completion record (July 23, 2026):
 - Replaced the rotating client component with one server-rendered hero and one priority image.
 - Re-encoded the 2.93 MB PNG as a 371 KB JPEG source and labeled it as an illustrative workspace rather than a real IntegraFin office or team photo.
 - Kept responsive `next/image` delivery with an explicit `sizes="100vw"` value.
+- Production rendered the optimized hero source after deployment `bed58db`; field Core Web Vitals monitoring remains.
 
 
 
