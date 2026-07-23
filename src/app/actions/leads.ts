@@ -8,7 +8,7 @@ import { headers } from 'next/headers';
 import { checkRateLimit } from '@/lib/rateLimit';
 import { revalidatePath } from 'next/cache';
 import { after } from 'next/server';
-import { sendNewLeadNotification } from '@/lib/leadNotifications';
+import { sendLeadConfirmation, sendNewLeadNotification } from '@/lib/leadNotifications';
 import { getLeadResponseSlaMinutes } from '@/lib/leadSla';
 
 const ADMIN_UNAUTHORIZED_MESSAGE = 'Your admin session expired. Sign in again to continue.';
@@ -163,22 +163,34 @@ export async function submitLead(data: LeadInput) {
     const leadId = newLead._id.toString();
     after(async () => {
       try {
-        const notificationResult = await sendNewLeadNotification({
-          leadId,
-          service: validatedData.service,
-          source: validatedData.source,
-          submittedAt,
-        });
+        const [notificationResult, confirmationResult] = await Promise.all([
+          sendNewLeadNotification({
+            leadId,
+            service: validatedData.service,
+            source: validatedData.source,
+            submittedAt,
+          }),
+          sendLeadConfirmation({
+            leadId,
+            name: validatedData.name,
+            email: validatedData.email,
+            service: validatedData.service,
+            submittedAt,
+          }),
+        ]);
         const notificationCheckedAt = new Date();
         await ContactLead.findByIdAndUpdate(leadId, {
           $set: {
             notificationStatus: notificationResult.sent ? 'sent' : notificationResult.reason,
             notificationCheckedAt,
             ...(notificationResult.sent ? { notificationSentAt: notificationCheckedAt } : {}),
+            confirmationEmailStatus: confirmationResult.sent ? 'sent' : confirmationResult.reason,
+            confirmationEmailCheckedAt: notificationCheckedAt,
+            ...(confirmationResult.sent ? { confirmationEmailSentAt: notificationCheckedAt } : {}),
           },
         });
       } catch (error) {
-        console.error('Could not record lead notification status.', {
+        console.error('Could not record lead email status.', {
           leadId,
           error: error instanceof Error ? error.name : 'UnknownError',
         });
