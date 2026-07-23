@@ -349,6 +349,9 @@ export default function LlcFormationTaxSetupPage() {
                 S corp review can require very different work. Government filing fees, legal fees, registered-agent
                 costs, and software subscriptions are separate unless a written engagement says otherwise.
               </p>
+              <Link href="/pricing" className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary">
+                Compare all service pricing and scope <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
           <div className="grid gap-5 lg:grid-cols-3">

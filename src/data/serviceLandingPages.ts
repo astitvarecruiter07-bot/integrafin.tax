@@ -110,7 +110,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "business-tax-accounting": {
     slug: "business-tax-accounting",
     url: `${baseUrl}/business-tax-accounting`,
-    lastModified: "2026-06-30",
+    lastModified: "2026-07-24",
     metaTitle: "Business Tax & Accounting Services | IntegraFin",
     metaDescription:
       "Business tax and accounting services for LLCs, S corps, partnerships, and small business owners. Get bookkeeping, tax prep, payroll records, and advisory support.",
@@ -277,7 +277,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "individual-tax-preparation": {
     slug: "individual-tax-preparation",
     url: `${baseUrl}/individual-tax-preparation`,
-    lastModified: "2026-06-30",
+    lastModified: "2026-07-24",
     metaTitle: "Individual Tax Preparation Services | IntegraFin",
     metaDescription:
       "Individual tax preparation for W-2 employees, 1099 workers, families, investors, rental owners, and multi-state taxpayers. Schedule a tax consultation.",
@@ -443,7 +443,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "tax-resolution": {
     slug: "tax-resolution",
     url: `${baseUrl}/tax-resolution`,
-    lastModified: "2026-07-19",
+    lastModified: "2026-07-24",
     metaTitle: "Tax Resolution & IRS Notice Help Katy TX | IntegraFin",
     metaDescription:
       "Tax resolution services for IRS notices, back taxes, unfiled returns, payment plans, penalty questions, audits, and payroll tax issues. Talk to IntegraFin.",
@@ -613,7 +613,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "bookkeeping-cleanup": {
     slug: "bookkeeping-cleanup",
     url: `${baseUrl}/bookkeeping-cleanup`,
-    lastModified: "2026-06-30",
+    lastModified: "2026-07-24",
     metaTitle: "Bookkeeping Cleanup Services | Catch-Up Books | IntegraFin",
     metaDescription:
       "Bookkeeping cleanup services for messy or behind books. IntegraFin helps reconcile accounts, fix categories, organize records, and prepare tax-ready reports.",
@@ -780,7 +780,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "payroll-tax-support": {
     slug: "payroll-tax-support",
     url: `${baseUrl}/payroll-tax-support`,
-    lastModified: "2026-06-30",
+    lastModified: "2026-07-24",
     metaTitle: "Payroll Tax Support | Employer Filing Help | IntegraFin",
     metaDescription:
       "Payroll tax support for employer records, deposits, quarterly filings, notices, wage reports, and cleanup questions. Get help from IntegraFin.",
@@ -947,7 +947,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "quickbooks-bookkeeping-services": {
     slug: "quickbooks-bookkeeping-services",
     url: `${baseUrl}/quickbooks-bookkeeping-services`,
-    lastModified: "2026-06-30",
+    lastModified: "2026-07-24",
     metaTitle: "QuickBooks Bookkeeping & Cleanup Katy TX | IntegraFin",
     metaDescription:
       "QuickBooks bookkeeping services for setup, cleanup, reconciliations, monthly books, and tax-ready reporting. Get bookkeeping help from IntegraFin.",

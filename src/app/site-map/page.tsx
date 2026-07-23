@@ -18,6 +18,7 @@ const sections = [
     links: [
       { href: "/", label: "Home" },
       { href: "/services", label: "Services" },
+      { href: "/pricing", label: "Pricing and Scope" },
       { href: "/contact", label: "Contact" },
       { href: "/blog", label: "Blog" },
       { href: "/case-study", label: "Case Study" },

@@ -9,6 +9,7 @@ const navLinks = [
     { href: "/about", label: "About Us" },
     { href: "/industries", label: "Industries" },
     { href: "/services", label: "Services" },
+    { href: "/pricing", label: "Pricing" },
     { href: "/tax-calculator", label: "Tax Calculator" },
     { href: "/blog", label: "Blog" },
     { href: "/case-study", label: "Case Study" },
@@ -59,7 +60,7 @@ export default function Navbar() {
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden lg:flex items-center gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
@@ -79,7 +80,7 @@ export default function Navbar() {
                 {/* CTA Button */}
                 <Link
                     href="/contact"
-                    className={`hidden md:inline-flex items-center px-5 py-1.5 text-sm font-semibold rounded-full transition-colors duration-200 ${!scrolled
+                    className={`hidden lg:inline-flex items-center px-5 py-1.5 text-sm font-semibold rounded-full transition-colors duration-200 ${!scrolled
                         ? "bg-[#003580] text-white hover:bg-[#002050]"
                         : "bg-primary-dark text-white hover:bg-primary"
                         }`}
@@ -90,7 +91,7 @@ export default function Navbar() {
                 {/* Mobile Toggle */}
                 <button
                     onClick={() => setIsOpen(!isOpen)} 
-                    className={`md:hidden relative z-10 p-2 ${!scrolled ? 'text-slate-800' : 'text-slate-800'}`}
+                    className={`lg:hidden relative z-10 p-2 ${!scrolled ? 'text-slate-800' : 'text-slate-800'}`}
                     aria-label="Toggle navigation menu"
                 >
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,10 +108,10 @@ export default function Navbar() {
             {isOpen && (
                 <>
                     <div
-                        className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
+                        className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
                         onClick={() => setIsOpen(false)}
                     />
-                    <div className="md:hidden mt-2 mx-4 sm:mx-6 bg-white rounded-2xl shadow-xl p-5 sm:p-6 animate-fade-in relative z-50">
+                    <div className="lg:hidden mt-2 mx-4 sm:mx-6 bg-white rounded-2xl shadow-xl p-5 sm:p-6 animate-fade-in relative z-50">
                         <div className="flex flex-col gap-2">
                             {navLinks.map((link) => (
                                 <Link

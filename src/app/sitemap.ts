@@ -13,8 +13,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes = [
     { path: '', lastModified: '2026-06-15', priority: 1.0 },
     { path: '/about', lastModified: '2026-06-05', priority: 0.8 },
-    { path: '/services', lastModified: '2026-06-30', priority: 0.8 },
-    { path: '/llc-formation-tax-setup', lastModified: '2026-06-30', priority: 0.8 },
+    { path: '/services', lastModified: '2026-07-24', priority: 0.8 },
+    { path: '/pricing', lastModified: '2026-07-24', priority: 0.8 },
+    { path: '/llc-formation-tax-setup', lastModified: '2026-07-24', priority: 0.8 },
     ...serviceLandingPageSlugs.map((slug) => ({
       path: `/${slug}`,
       lastModified: serviceLandingPages[slug].lastModified,
@@ -58,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/tax-calculator-guide', lastModified: '2026-06-16', priority: 0.7 },
     { path: '/privacy', lastModified: '2026-03-24', priority: 0.5 },
     { path: '/terms', lastModified: '2026-03-24', priority: 0.5 },
-    { path: '/site-map', lastModified: '2026-06-30', priority: 0.5 },
+    { path: '/site-map', lastModified: '2026-07-24', priority: 0.5 },
   ];
 
   const staticEntries = routes.map((route) => ({

@@ -297,6 +297,17 @@ export default function ServicesContent() {
               </Link>
             ))}
           </div>
+          <div className="mt-5 flex flex-col gap-4 rounded-xl border border-secondary/30 bg-secondary/5 p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="font-black text-primary-dark">Understand pricing before you engage</h3>
+              <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                Compare likely inclusions, separate work, quote factors, records needed, and timing dependencies.
+              </p>
+            </div>
+            <Link href="/pricing" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white">
+              View pricing and scope <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
 
         {/* Toggle / Tabs Navigation */}

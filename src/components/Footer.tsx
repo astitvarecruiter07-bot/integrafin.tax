@@ -7,6 +7,7 @@ const quickLinks = [
     { href: "/", label: "Home" },
     { href: "/about", label: "About Us" },
     { href: "/services", label: "Services" },
+    { href: "/pricing", label: "Pricing & Scope" },
     { href: "/blog", label: "Blog" },
     { href: "/tax-calculator", label: "Tax Calculator" },
     { href: "/case-study", label: "Case Study" },

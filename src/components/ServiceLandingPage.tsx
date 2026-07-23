@@ -295,6 +295,13 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
               Related pages that support {data.relatedServiceLabel.toLowerCase()} questions.
             </p>
             <div className="mt-6 grid gap-3">
+              <Link
+                href="/pricing"
+                className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-white px-5 py-4 font-bold text-primary shadow-sm hover:border-secondary"
+              >
+                <span>Pricing and scope guide</span>
+                <ArrowRight className="h-4 w-4 shrink-0" />
+              </Link>
               {data.helpfulLinks.map((link) => (
                 <Link
                   key={link.href}
