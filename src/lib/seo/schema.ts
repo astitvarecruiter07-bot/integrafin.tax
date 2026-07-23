@@ -44,7 +44,10 @@ export const localBusinessSchema = {
     "@id": "https://integrafin.tax/#organization"
   },
   "sameAs": [
-    "https://www.linkedin.com/company/integrafin/"
+    "https://www.instagram.com/integrafinllc/",
+    "https://www.facebook.com/integrafintax/",
+    "https://www.linkedin.com/company/integrafin/",
+    "https://www.youtube.com/@IntegraFinTax"
   ]
 };
 
@@ -65,7 +68,10 @@ export const organizationSchema = {
     "availableLanguage": "English"
   },
   "sameAs": [
-    "https://www.linkedin.com/company/integrafin/"
+    "https://www.instagram.com/integrafinllc/",
+    "https://www.facebook.com/integrafintax/",
+    "https://www.linkedin.com/company/integrafin/",
+    "https://www.youtube.com/@IntegraFinTax"
   ]
 };
 
