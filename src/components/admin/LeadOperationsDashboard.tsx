@@ -21,6 +21,7 @@ import {
   updateLeadDetails,
   updateLeadStatus,
 } from '@/app/actions/leads';
+import { getJustCallDialerUrl } from '@/lib/justCall';
 import type {
   AppointmentSource,
   AppointmentStatus,
@@ -261,6 +262,40 @@ export default function LeadOperationsDashboard({
     }
 
     setNotice({ type: 'error', text: result.message });
+  }
+
+  function handleJustCall(phone: string) {
+    const dialerUrl = getJustCallDialerUrl(phone);
+    if (!dialerUrl) {
+      setNotice({
+        type: 'error',
+        text: 'JustCall needs a complete phone number. Add + and the country code, or use the device-call option.',
+      });
+      return;
+    }
+
+    const popupWidth = 385;
+    const popupHeight = 665;
+    const popupLeft = Math.max(0, window.screenX + Math.round((window.outerWidth - popupWidth) / 2));
+    const popupTop = Math.max(0, window.screenY + Math.round((window.outerHeight - popupHeight) / 2));
+    const popup = window.open(
+      'about:blank',
+      'integrafin-justcall-dialer',
+      `popup=yes,width=${popupWidth},height=${popupHeight},left=${popupLeft},top=${popupTop},resizable=yes,scrollbars=yes`,
+    );
+
+    if (!popup) {
+      setNotice({
+        type: 'error',
+        text: 'The JustCall window was blocked. Allow pop-ups for integrafin.tax and try again.',
+      });
+      return;
+    }
+
+    popup.opener = null;
+    popup.location.replace(dialerUrl);
+    popup.focus();
+    setNotice(null);
   }
 
   async function refreshMetrics() {
@@ -517,7 +552,25 @@ export default function LeadOperationsDashboard({
                   </div>
                   <div className="mt-4 grid gap-2 sm:grid-cols-2">
                     {selectedLead.email && <a href={`mailto:${selectedLead.email}`} className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-[#0047AB] hover:bg-slate-50"><Mail className="h-3.5 w-3.5" />Email</a>}
-                    {selectedLead.phone && <a href={`tel:${selectedLead.phone}`} className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-[#0047AB] hover:bg-slate-50"><Phone className="h-3.5 w-3.5" />Call</a>}
+                    {selectedLead.phone && (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => handleJustCall(selectedLead.phone)}
+                          className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#003580] px-3 py-2 text-xs font-bold text-white hover:bg-[#002050]"
+                        >
+                          <Phone className="h-3.5 w-3.5" />
+                          Call with JustCall
+                        </button>
+                        <a
+                          href={`tel:${selectedLead.phone}`}
+                          className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-[#0047AB] hover:bg-slate-50"
+                        >
+                          <Phone className="h-3.5 w-3.5" />
+                          Call using device
+                        </a>
+                      </>
+                    )}
                   </div>
                 </div>
 
