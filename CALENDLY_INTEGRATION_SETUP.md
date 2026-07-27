@@ -1,5 +1,41 @@
 # Calendly lead integration
 
+## Free-plan hourly polling
+
+Calendly Free supports API reads but not webhook subscriptions. The repository
+includes an hourly GitHub Actions workflow that calls:
+
+`POST https://integrafin.tax/api/jobs/calendly-sync`
+
+The endpoint retrieves the current Calendly user's active and canceled scheduled
+events, retrieves their invitees, and applies the same idempotent lead updates as
+the webhook integration.
+
+### Required free-plan configuration
+
+1. Create a Calendly personal access token with `users:read` and
+   `scheduled_events:read`. Calendly may show invitee access under the scheduled
+   events permission.
+2. Add the token to the Vercel production environment as
+   `CALENDLY_API_TOKEN`.
+3. Generate a separate random value containing at least 32 characters.
+4. Add that value to the Vercel production environment as
+   `CALENDLY_SYNC_SECRET`, then redeploy.
+5. In the GitHub repository, open **Settings → Secrets and variables → Actions**.
+6. Create a repository secret named `CALENDLY_SYNC_SECRET` with exactly the same
+   value used in Vercel.
+7. Open **Actions → Hourly Calendly sync → Run workflow** for the first test.
+8. Confirm that the workflow reports the number of events and invitees checked.
+
+The scheduled workflow runs at minute 23 of every hour. GitHub schedules may be
+delayed during periods of high demand, so this is an hourly synchronization, not
+a real-time webhook.
+
+The endpoint response and GitHub workflow logs contain counts only. They do not
+include invitee names, emails, phone numbers, or booking answers.
+
+## Paid-plan webhook option
+
 The production webhook endpoint is:
 
 `https://integrafin.tax/api/webhooks/calendly?token=YOUR_WEBHOOK_SECRET`

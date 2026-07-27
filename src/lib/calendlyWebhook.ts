@@ -62,7 +62,7 @@ export function normalizeCalendlyEmail(value: unknown) {
   return email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : undefined;
 }
 
-export function verifyCalendlyWebhookSecret(provided: string | null, expected: string) {
+export function verifySharedSecret(provided: string | null, expected: string) {
   if (!provided || !expected) return false;
   const providedBuffer = Buffer.from(provided);
   const expectedBuffer = Buffer.from(expected);

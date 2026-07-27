@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import {
   fetchCalendlyScheduledEvent,
   parseCalendlyWebhook,
-  verifyCalendlyWebhookSecret,
+  verifySharedSecret,
 } from "@/lib/calendlyWebhook";
 import { syncCalendlyLead } from "@/lib/calendlyLeadSync";
 
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     request.nextUrl.searchParams.get("token") ||
     request.headers.get("x-integrafin-webhook-secret");
 
-  if (!verifyCalendlyWebhookSecret(providedSecret, expectedSecret)) {
+  if (!verifySharedSecret(providedSecret, expectedSecret)) {
     return NextResponse.json({ received: false }, { status: 401 });
   }
 

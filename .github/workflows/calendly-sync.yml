@@ -1,0 +1,48 @@
+name: Hourly Calendly sync
+
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: calendly-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Sync Calendly appointments
+        env:
+          CALENDLY_SYNC_SECRET: ${{ secrets.CALENDLY_SYNC_SECRET }}
+        run: |
+          if [ -z "$CALENDLY_SYNC_SECRET" ]; then
+            echo "CALENDLY_SYNC_SECRET is not configured in GitHub Actions."
+            exit 1
+          fi
+
+          response="$(
+            curl \
+              --silent \
+              --show-error \
+              --fail-with-body \
+              --max-time 60 \
+              --request POST \
+              --header "Authorization: Bearer $CALENDLY_SYNC_SECRET" \
+              https://integrafin.tax/api/jobs/calendly-sync
+          )"
+
+          node -e '
+            const result = JSON.parse(process.argv[1]);
+            if (!result.synced) process.exit(1);
+            const summary = result.summary || {};
+            console.log(
+              `Calendly sync complete: ${summary.eventsChecked || 0} events, ` +
+              `${summary.inviteesChecked || 0} invitees checked.`
+            );
+          ' "$response"
