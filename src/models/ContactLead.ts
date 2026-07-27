@@ -18,6 +18,8 @@ export type LeadStatus = (typeof LEAD_STATUSES)[number];
 export type StoredLeadStatus = LeadStatus | 'completed';
 export type LeadNotificationStatus = 'pending' | 'sent' | 'not_configured' | 'delivery_failed';
 export type LeadConfirmationStatus = LeadNotificationStatus | 'not_applicable';
+export type AppointmentStatus = 'scheduled' | 'canceled';
+export type AppointmentSource = 'calendly' | 'manual';
 
 export interface ILeadAttribution {
   firstLandingPage?: string;
@@ -53,6 +55,13 @@ export interface IContactLead extends mongoose.Document {
   reasonLost?: string;
   firstResponseAt?: Date;
   appointmentAt?: Date;
+  appointmentStatus?: AppointmentStatus;
+  appointmentSource?: AppointmentSource;
+  appointmentCanceledAt?: Date;
+  calendlyInviteeUri?: string;
+  calendlyEventUri?: string;
+  calendlyEventName?: string;
+  calendlyLastWebhookAt?: Date;
   statusUpdatedAt?: Date;
   internalNotes?: string;
   notificationStatus?: LeadNotificationStatus;
@@ -156,6 +165,32 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     appointmentAt: {
       type: Date,
     },
+    appointmentStatus: {
+      type: String,
+      enum: ['scheduled', 'canceled'],
+    },
+    appointmentSource: {
+      type: String,
+      enum: ['calendly', 'manual'],
+    },
+    appointmentCanceledAt: {
+      type: Date,
+    },
+    calendlyInviteeUri: {
+      type: String,
+      maxlength: 600,
+    },
+    calendlyEventUri: {
+      type: String,
+      maxlength: 600,
+    },
+    calendlyEventName: {
+      type: String,
+      maxlength: 200,
+    },
+    calendlyLastWebhookAt: {
+      type: Date,
+    },
     statusUpdatedAt: {
       type: Date,
       default: Date.now,
@@ -195,6 +230,11 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   }
+);
+
+ContactLeadSchema.index(
+  { calendlyInviteeUri: 1 },
+  { unique: true, sparse: true, name: 'unique_calendly_invitee_uri' },
 );
 
 const existingModel = mongoose.models.ContactLead as mongoose.Model<IContactLead> | undefined;

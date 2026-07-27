@@ -22,6 +22,8 @@ import {
   updateLeadStatus,
 } from '@/app/actions/leads';
 import type {
+  AppointmentSource,
+  AppointmentStatus,
   LeadConfirmationStatus,
   LeadNotificationStatus,
   LeadStatus,
@@ -55,6 +57,11 @@ export type AdminLeadRecord = {
   reasonLost?: string;
   firstResponseAt?: string;
   appointmentAt?: string;
+  appointmentStatus?: AppointmentStatus;
+  appointmentSource?: AppointmentSource;
+  appointmentCanceledAt?: string;
+  calendlyEventName?: string;
+  calendlyLastWebhookAt?: string;
   statusUpdatedAt?: string;
   internalNotes?: string;
   notificationStatus?: LeadNotificationStatus;
@@ -134,6 +141,18 @@ function formatNotificationStatus(status?: LeadNotificationStatus) {
 function formatConfirmationStatus(status?: LeadConfirmationStatus) {
   if (status === 'not_applicable') return 'Not applicable';
   return formatNotificationStatus(status);
+}
+
+function formatAppointmentStatus(status?: AppointmentStatus) {
+  if (status === 'scheduled') return 'Scheduled';
+  if (status === 'canceled') return 'Canceled';
+  return 'Not recorded';
+}
+
+function formatAppointmentSource(source?: AppointmentSource, appointmentAt?: string) {
+  if (source === 'calendly') return 'Calendly';
+  if (source === 'manual') return 'Manual';
+  return appointmentAt ? 'Manual / legacy' : 'Not recorded';
 }
 
 function formatDate(value?: string, includeTime = false) {
@@ -539,6 +558,11 @@ export default function LeadOperationsDashboard({
                     <DetailField label="Email checked" value={formatDate(selectedLead.confirmationEmailCheckedAt, true)} />
                     <DetailField label="First response" value={formatDate(selectedLead.firstResponseAt, true)} />
                     <DetailField label="Appointment" value={formatDate(selectedLead.appointmentAt, true)} />
+                    <DetailField label="Appointment status" value={formatAppointmentStatus(selectedLead.appointmentStatus)} />
+                    <DetailField label="Appointment source" value={formatAppointmentSource(selectedLead.appointmentSource, selectedLead.appointmentAt)} />
+                    <DetailField label="Calendly event" value={selectedLead.calendlyEventName || 'Not recorded'} />
+                    <DetailField label="Appointment canceled" value={formatDate(selectedLead.appointmentCanceledAt, true)} />
+                    <DetailField label="Calendly sync" value={formatDate(selectedLead.calendlyLastWebhookAt, true)} />
                     <DetailField label="Status updated" value={formatDate(selectedLead.statusUpdatedAt, true)} />
                   </dl>
 
