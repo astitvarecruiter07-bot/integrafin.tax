@@ -13,6 +13,16 @@ function getTrackedClick(anchor: HTMLAnchorElement): AnalyticsEventName | undefi
   if (href.includes("wa.me/") || href.includes("whatsapp.com/")) return "whatsapp_click";
   if (href.includes("calendly.com/") || href.includes("/booking")) return "booking_start";
   if (href.includes("portal")) return "portal_click";
+
+  try {
+    const destination = new URL(anchor.href);
+    if (destination.origin === window.location.origin && destination.pathname === "/contact") {
+      return "contact_cta_click";
+    }
+  } catch {
+    // Ignore malformed or non-navigational href values.
+  }
+
   return undefined;
 }
 
@@ -38,7 +48,9 @@ export default function AnalyticsTracker() {
 
       trackEvent(eventName, {
         ...baseEventParameters(),
-        cta_name: anchor.dataset.analyticsLabel || eventName,
+        cta_name:
+          anchor.dataset.analyticsLabel ||
+          (eventName === "contact_cta_click" ? "contact_link" : eventName),
       });
     }
 

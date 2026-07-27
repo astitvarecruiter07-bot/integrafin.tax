@@ -356,12 +356,14 @@ export default function PricingPage() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/contact#contact-form"
+              data-analytics-label="pricing_hero_request_quote"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-7 py-3 font-bold text-primary-dark"
             >
               Request a written quote <ArrowRight className="h-4 w-4" />
             </Link>
             <a
               href="tel:+18326471819"
+              data-analytics-label="pricing_hero_phone_call"
               className="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/10 px-7 py-3 font-bold text-white"
             >
               Call (832) 647-1819
@@ -481,6 +483,7 @@ export default function PricingPage() {
                 <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                   <Link
                     href={getContactHref(service.leadService)}
+                    data-analytics-label={`pricing_${service.id}_request_quote`}
                     className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white"
                   >
                     Request this service quote <ArrowRight className="h-4 w-4" />
@@ -546,6 +549,7 @@ export default function PricingPage() {
           </p>
           <Link
             href="/contact#contact-form"
+            data-analytics-label="pricing_bottom_request_quote"
             className="mt-7 inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-7 py-3 font-bold text-primary-dark"
           >
             Request a written quote <ArrowRight className="h-4 w-4" />
