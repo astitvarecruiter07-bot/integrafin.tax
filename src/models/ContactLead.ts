@@ -145,6 +145,7 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     email: {
       type: String,
       default: '',
+      maxlength: 254,
       validate: {
         validator: (value: string) => !value || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
         message: 'Please fill a valid email address',
@@ -153,6 +154,7 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     phone: {
       type: String,
       default: '',
+      maxlength: 30,
     },
     company: {
       type: String,
@@ -161,6 +163,7 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     service: {
       type: String,
       required: [true, 'Please specify the service.'],
+      maxlength: 200,
     },
     message: {
       type: String,
@@ -171,12 +174,15 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
       type: String,
       required: [true, 'Please provide the source page.'],
       default: 'contact-page',
+      maxlength: 100,
     },
     revenue: {
       type: String,
+      maxlength: 100,
     },
     jurisdiction: {
       type: String,
+      maxlength: 100,
     },
     attribution: {
       type: LeadAttributionSchema,

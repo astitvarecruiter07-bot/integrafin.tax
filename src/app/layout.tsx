@@ -8,6 +8,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { rootSchemaGraph } from "@/lib/seo/schema";
 import Script from "next/script";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
+import { serializeJsonLd } from "@/lib/seo/jsonLd";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -54,7 +55,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-GRMDY21D72";
+  const configuredGaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
+  const gaMeasurementId = /^G-[A-Z0-9]+$/.test(configuredGaId)
+    ? configuredGaId
+    : "G-GRMDY21D72";
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -70,7 +74,7 @@ export default function RootLayout({
         </Script>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(rootSchemaGraph) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(rootSchemaGraph) }}
         />
       </head>
       <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>

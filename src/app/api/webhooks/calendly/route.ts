@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import {
   fetchCalendlyScheduledEvent,
   parseCalendlyWebhook,
-  verifySharedSecret,
+  verifyCalendlyWebhookSignature,
 } from "@/lib/calendlyWebhook";
 import { syncCalendlyLead } from "@/lib/calendlyLeadSync";
 
@@ -12,19 +12,33 @@ export const dynamic = "force-dynamic";
 
 const MAX_WEBHOOK_BYTES = 256 * 1024;
 
+async function readBodyWithLimit(request: NextRequest, maxBytes: number) {
+  if (!request.body) return "";
+
+  const reader = request.body.getReader();
+  const decoder = new TextDecoder();
+  let totalBytes = 0;
+  let body = "";
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    totalBytes += value.byteLength;
+    if (totalBytes > maxBytes) {
+      await reader.cancel();
+      return null;
+    }
+    body += decoder.decode(value, { stream: true });
+  }
+
+  return body + decoder.decode();
+}
+
 export async function POST(request: NextRequest) {
   const expectedSecret = process.env.CALENDLY_WEBHOOK_SECRET?.trim() || "";
   if (expectedSecret.length < 32) {
     console.error("Calendly webhook is not configured.");
     return NextResponse.json({ received: false }, { status: 503 });
-  }
-
-  const providedSecret =
-    request.nextUrl.searchParams.get("token") ||
-    request.headers.get("x-integrafin-webhook-secret");
-
-  if (!verifySharedSecret(providedSecret, expectedSecret)) {
-    return NextResponse.json({ received: false }, { status: 401 });
   }
 
   const contentLength = Number(request.headers.get("content-length") || 0);
@@ -35,13 +49,22 @@ export async function POST(request: NextRequest) {
   let rawBody: string;
   let payload: unknown;
   try {
-    rawBody = await request.text();
-    if (Buffer.byteLength(rawBody, "utf8") > MAX_WEBHOOK_BYTES) {
+    const limitedBody = await readBodyWithLimit(request, MAX_WEBHOOK_BYTES);
+    if (limitedBody === null) {
       return NextResponse.json({ received: false }, { status: 413 });
     }
+    rawBody = limitedBody;
     payload = JSON.parse(rawBody);
   } catch {
     return NextResponse.json({ received: false }, { status: 400 });
+  }
+
+  if (!verifyCalendlyWebhookSignature(
+    request.headers.get("calendly-webhook-signature"),
+    rawBody,
+    expectedSecret,
+  )) {
+    return NextResponse.json({ received: false }, { status: 401 });
   }
 
   const event = parseCalendlyWebhook(payload);

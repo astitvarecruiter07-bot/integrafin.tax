@@ -19,10 +19,22 @@ export function getAdminAuthConfig() {
   };
 }
 
+export function isAdminAuthConfigValid() {
+  const { user, pass, sessionSecret } = getAdminAuthConfig();
+  return Boolean(
+    user &&
+    user.length <= 120 &&
+    pass &&
+    pass.length >= 12 &&
+    sessionSecret &&
+    sessionSecret.length >= 32
+  );
+}
+
 export function verifyAdminCredentialPair(incomingUser: string, incomingPass: string) {
   const { user, pass } = getAdminAuthConfig();
 
-  if (!user || !pass) {
+  if (!isAdminAuthConfigValid() || !user || !pass) {
     return null;
   }
 
@@ -36,7 +48,7 @@ export function verifyAdminCredentialPair(incomingUser: string, incomingPass: st
 export function verifyAdminBasicCredentials(authHeader: string | null | undefined) {
   const { user, pass } = getAdminAuthConfig();
 
-  if (!user || !pass || !authHeader?.startsWith('Basic ')) {
+  if (!isAdminAuthConfigValid() || !user || !pass || !authHeader?.startsWith('Basic ')) {
     return null;
   }
 

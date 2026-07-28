@@ -1,10 +1,42 @@
 'use server';
 
+import { z } from 'zod';
 import dbConnect from '@/lib/mongodb';
 import BlogPost from '@/models/BlogPost';
 import { revalidatePath } from 'next/cache';
 import { sanitizeHtml } from '@/utils/seo';
 import { requireAdminAuth } from '@/lib/adminAuth';
+
+const SafeImageUrlSchema = z.string().trim().max(2000).refine((value) => {
+  if (!value) return true;
+  if (value.startsWith('/') && !value.startsWith('//')) return true;
+
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}, 'Use an HTTPS image URL or a site-relative image path.');
+
+const BlogPostPayloadSchema = z.object({
+  title: z.string().trim().min(1).max(180),
+  slug: z.string().trim().min(1).max(120).regex(
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+    'The slug may contain lowercase letters, numbers, and single hyphens only.',
+  ),
+  excerpt: z.string().trim().min(1).max(500),
+  category: z.string().trim().min(1).max(80).optional(),
+  contentHtml: z.string().min(1).max(500_000),
+  image: SafeImageUrlSchema.optional(),
+  featured: z.boolean().optional(),
+  author: z.object({
+    name: z.string().trim().min(1).max(120),
+    image: SafeImageUrlSchema.optional(),
+  }).strict().optional(),
+}).strict();
+
+const BlogSlugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(120);
 
 export type DbBlogPost = {
   slug: string;
@@ -40,12 +72,13 @@ export async function saveBlogPost(payload: {
 }) {
   try {
     await requireAdminAuth();
+    const validatedPayload = BlogPostPayloadSchema.parse(payload);
     await dbConnect();
 
-    const { slug } = payload;
+    const { slug } = validatedPayload;
     const sanitizedPayload = {
-      ...payload,
-      contentHtml: sanitizeHtml(payload.contentHtml),
+      ...validatedPayload,
+      contentHtml: sanitizeHtml(validatedPayload.contentHtml),
     };
 
     // Update if exists, otherwise create
@@ -63,8 +96,13 @@ export async function saveBlogPost(payload: {
 
     return { success: true, data: JSON.parse(JSON.stringify(blogPost)) };
   } catch (error) {
-    console.error('Error saving blog post:', error);
-    return { success: false, error: error instanceof Error ? error.message : 'Failed to save blog post' };
+    console.error('Error saving blog post:', {
+      error: error instanceof Error ? error.name : 'UnknownError',
+    });
+    if (error instanceof z.ZodError) {
+      return { success: false, error: error.issues[0]?.message || 'Invalid blog post.' };
+    }
+    return { success: false, error: 'Failed to save blog post.' };
   }
 }
 
@@ -81,8 +119,11 @@ export async function getAllBlogPosts(): Promise<DbBlogPost[]> {
 
 export async function getBlogPostBySlug(slug: string): Promise<DbBlogPost | null> {
   try {
+    const safeSlug = BlogSlugSchema.safeParse(slug);
+    if (!safeSlug.success) return null;
+
     await dbConnect();
-    const post = await BlogPost.findOne({ slug });
+    const post = await BlogPost.findOne({ slug: safeSlug.data });
     return post ? (JSON.parse(JSON.stringify(post)) as DbBlogPost) : null;
   } catch (error) {
     console.error('Error fetching blog post by slug:', error);

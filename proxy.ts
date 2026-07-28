@@ -6,7 +6,11 @@ import {
   getAdminSessionTtlSeconds,
   verifyAdminSessionToken,
 } from '@/lib/adminSession';
-import { getAdminAuthConfig, verifyAdminBasicCredentials } from '@/lib/adminCredentials';
+import {
+  getAdminAuthConfig,
+  isAdminAuthConfigValid,
+  verifyAdminBasicCredentials,
+} from '@/lib/adminCredentials';
 
 function unauthorizedResponse() {
   return new NextResponse('Authentication required', {
@@ -44,7 +48,7 @@ export async function proxy(req: NextRequest) {
     return NextResponse.redirect(secureUrl, 308);
   }
 
-  if (!user || !pass || !sessionSecret) {
+  if (!user || !pass || !sessionSecret || !isAdminAuthConfigValid()) {
     return new NextResponse('Admin auth is not configured', { status: 500 });
   }
 
@@ -73,8 +77,9 @@ export async function proxy(req: NextRequest) {
     httpOnly: true,
     sameSite: 'lax',
     secure: process.env.NODE_ENV === 'production',
-    path: '/',
+    path: '/admin',
     maxAge: getAdminSessionTtlSeconds(),
+    priority: 'high',
   });
   return response;
 }

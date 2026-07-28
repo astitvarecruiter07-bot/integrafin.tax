@@ -1,17 +1,22 @@
-export const LEAD_SERVICE_OPTIONS = [
-  { value: "Individual Tax Preparation", label: "Individual Tax Preparation" },
-  { value: "Business Tax and Accounting", label: "Business Tax and Accounting" },
-  { value: "Bookkeeping Cleanup", label: "Bookkeeping Cleanup" },
-  { value: "QuickBooks Bookkeeping", label: "QuickBooks Bookkeeping" },
-  { value: "IRS Notice and Tax Resolution", label: "IRS Notice and Tax Resolution" },
-  { value: "Payroll Tax Support", label: "Payroll Tax Support" },
-  { value: "LLC Formation and Tax Setup", label: "LLC Formation and Tax Setup" },
-  { value: "Other Enquiry", label: "Other Enquiry" },
+export const LEAD_SERVICE_VALUES = [
+  "Individual Tax Preparation",
+  "Business Tax and Accounting",
+  "Bookkeeping Cleanup",
+  "QuickBooks Bookkeeping",
+  "IRS Notice and Tax Resolution",
+  "Payroll Tax Support",
+  "LLC Formation and Tax Setup",
+  "Other Enquiry",
 ] as const;
 
-export type LeadService = (typeof LEAD_SERVICE_OPTIONS)[number]["value"];
+export type LeadService = (typeof LEAD_SERVICE_VALUES)[number];
 
-const leadServiceValues = new Set<string>(LEAD_SERVICE_OPTIONS.map(({ value }) => value));
+export const LEAD_SERVICE_OPTIONS = LEAD_SERVICE_VALUES.map((value) => ({
+  value,
+  label: value,
+}));
+
+const leadServiceValues = new Set<string>(LEAD_SERVICE_VALUES);
 
 export function normalizeLeadService(value: unknown): LeadService | "" {
   if (typeof value !== "string") return "";

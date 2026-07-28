@@ -1,3 +1,5 @@
+import DOMPurify from 'isomorphic-dompurify';
+
 export interface Author {
     name: string;
     url?: string;
@@ -17,68 +19,57 @@ const ALLOWED_TAGS = new Set([
     'a', 'ul', 'ol', 'li', 'blockquote', 'img', 'figure', 'figcaption', 'span', 'div',
 ]);
 
-const ALLOWED_ATTRS = new Set(['href', 'title', 'target', 'rel', 'src', 'alt', 'class']);
-const URI_ATTRS = new Set(['href', 'src']);
+const ALLOWED_ATTRS = new Set(['href', 'title', 'src', 'alt', 'class']);
 const ALLOWED_URI = /^(?:(?:https?|mailto|tel):|\/|#)/i;
+const safeNewTabLinks = new WeakMap<Node, string>();
 
-function escapeAttribute(value: string) {
-    return value
-        .replace(/&/g, '&amp;')
-        .replace(/"/g, '&quot;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-}
+DOMPurify.addHook('beforeSanitizeAttributes', (node) => {
+    if (node.nodeType !== 1) return;
+    const element = node as Element;
 
-function sanitizeAttributes(rawAttributes: string) {
-    const attributes: string[] = [];
-    const attrPattern = /([a-zA-Z0-9:-]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g;
-    let match: RegExpExecArray | null;
-
-    while ((match = attrPattern.exec(rawAttributes)) !== null) {
-        const name = match[1].toLowerCase();
-        const value = match[2] ?? match[3] ?? match[4] ?? '';
-
-        if (!ALLOWED_ATTRS.has(name) || name.startsWith('on')) {
-            continue;
-        }
-
-        if (URI_ATTRS.has(name) && value && !ALLOWED_URI.test(value.trim())) {
-            continue;
-        }
-
-        if (name === 'target' && value !== '_blank') {
-            continue;
-        }
-
-        attributes.push(`${name}="${escapeAttribute(value)}"`);
+    if (element.tagName.toLowerCase() !== 'a' || element.getAttribute('target') !== '_blank') {
+        return;
     }
 
-    return attributes.length ? ` ${attributes.join(' ')}` : '';
-}
+    const safeRel = (element.getAttribute('rel') || '')
+        .split(/\s+/)
+        .filter((value) => ['nofollow', 'sponsored', 'ugc'].includes(value.toLowerCase()))
+        .map((value) => value.toLowerCase());
+
+    safeNewTabLinks.set(
+        node,
+        Array.from(new Set([...safeRel, 'noopener', 'noreferrer'])).join(' '),
+    );
+});
+
+DOMPurify.addHook('afterSanitizeAttributes', (node) => {
+    if (node.nodeType !== 1) return;
+    const element = node as Element;
+    const rel = safeNewTabLinks.get(node);
+    safeNewTabLinks.delete(node);
+
+    if (element.tagName.toLowerCase() === 'a' && rel) {
+        element.setAttribute('target', '_blank');
+        element.setAttribute('rel', rel);
+    }
+});
 
 /**
  * Sanitizes the given HTML string to prevent XSS attacks.
- * Keeps a strict tag and attribute whitelist without loading browser-only DOM libraries.
+ * Uses a real HTML parser so malformed markup and mutation-XSS payloads cannot
+ * bypass the tag and attribute allowlists.
  */
 export function sanitizeHtml(html: string): string {
-    return html
-        .replace(/<!--[\s\S]*?-->/g, '')
-        .replace(/<(script|style|iframe|object|embed|form|input|button|textarea|select|option|meta|link|base)[^>]*>[\s\S]*?<\/\1>/gi, '')
-        .replace(/<\/?([a-zA-Z0-9]+)([^>]*)>/g, (tag, tagName: string, rawAttributes: string) => {
-            const normalizedTag = tagName.toLowerCase();
+    const clean = String(DOMPurify.sanitize(html, {
+        ALLOWED_TAGS: Array.from(ALLOWED_TAGS),
+        ALLOWED_ATTR: Array.from(ALLOWED_ATTRS),
+        ALLOWED_URI_REGEXP: ALLOWED_URI,
+        ALLOW_DATA_ATTR: false,
+        ALLOW_ARIA_ATTR: false,
+        FORBID_TAGS: ['svg', 'math', 'template'],
+    }));
 
-            if (!ALLOWED_TAGS.has(normalizedTag)) {
-                return '';
-            }
-
-            if (tag.startsWith('</')) {
-                return `</${normalizedTag}>`;
-            }
-
-            const isSelfClosing = tag.endsWith('/>') || normalizedTag === 'br' || normalizedTag === 'img';
-            const attributes = sanitizeAttributes(rawAttributes);
-            return `<${normalizedTag}${attributes}${isSelfClosing ? ' />' : '>'}`;
-        });
+    return clean;
 }
 
 /**

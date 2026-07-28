@@ -47,13 +47,15 @@ const nextConfig: NextConfig = {
       "object-src 'none'",
       "frame-ancestors 'none'",
       "img-src 'self' data: https:",
-      "font-src 'self' data: https:",
-      "style-src 'self' 'unsafe-inline' https:",
+      "font-src 'self' data:",
+      "style-src 'self' 'unsafe-inline'",
       "frame-src 'self' https://www.google.com",
       isDev
         ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:"
-        : "script-src 'self' 'unsafe-inline' https: blob:",
-      "connect-src 'self' https:",
+        : "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+      isDev
+        ? "connect-src 'self' https: ws: wss:"
+        : "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.vercel-insights.com",
       "form-action 'self'",
       "upgrade-insecure-requests",
     ].join('; ');
@@ -66,8 +68,24 @@ const nextConfig: NextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          { key: 'Cross-Origin-Resource-Policy', value: 'same-site' },
+          { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
           { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+        ],
+      },
+      {
+        source: '/admin/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'private, no-store, max-age=0' },
+          { key: 'X-Robots-Tag', value: 'noindex, nofollow, noarchive' },
+        ],
+      },
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'no-store, max-age=0' },
         ],
       },
     ];

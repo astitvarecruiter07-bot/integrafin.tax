@@ -1181,7 +1181,9 @@ function SelfEmploymentTab({ taxYear }: { taxYear: TaxYear }) {
         const medicareThreshold = Math.max(0, taxData.additionalMedicareThreshold[status] - wages);
         const additionalMedicare = owesSelfEmploymentTax && seBase > medicareThreshold ? (seBase - medicareThreshold) * 0.009 : 0;
         const seTax = ssTax + medicareTax + additionalMedicare;
-        const seDeduction = seTax / 2;
+        // Form 8959 Additional Medicare Tax is not part of the deductible
+        // employer-equivalent portion of self-employment tax.
+        const seDeduction = (ssTax + medicareTax) / 2;
 
         const deduction = getStandardDeduction(taxYear, status);
         const taxableIncome = Math.max(0, net + wages - deduction - seDeduction);
@@ -1271,7 +1273,7 @@ function SelfEmploymentTab({ taxYear }: { taxYear: TaxYear }) {
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <ResultCard label="Self-Employment Tax" value={fmt(result.seTax)} sub={`SS: ${fmt(result.ssComponent)} + Med: ${fmt(result.medicareComponent)}`} />
                             <ResultCard label="Income Tax" value={fmt(result.incomeTax)} />
-                            <ResultCard label="SE Deduction" value={fmt(result.seDeduction)} sub="50% of SE tax" />
+                            <ResultCard label="SE Deduction" value={fmt(result.seDeduction)} sub="50% of regular SE tax; excludes Additional Medicare Tax" />
                         </div>
 
                         {result.netEarningsBase < 400 && (

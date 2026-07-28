@@ -38,7 +38,7 @@ include invitee names, emails, phone numbers, or booking answers.
 
 The production webhook endpoint is:
 
-`https://integrafin.tax/api/webhooks/calendly?token=YOUR_WEBHOOK_SECRET`
+`https://integrafin.tax/api/webhooks/calendly`
 
 The endpoint processes `invitee.created` and `invitee.canceled` events. It matches
 bookings to the newest non-newsletter lead with the same email address. A direct
@@ -51,8 +51,9 @@ GitHub or `.env.local` files that may be shared.
 
 - `CALENDLY_API_TOKEN`: a Calendly personal access token with the minimum required
   scheduled-event, invitee, and webhook scopes.
-- `CALENDLY_WEBHOOK_SECRET`: a separate random value containing at least 32
-  characters. This value is included only in the webhook subscription URL.
+- `CALENDLY_WEBHOOK_SECRET`: the webhook signing key returned by Calendly when
+  the webhook subscription is created. Store it only in the deployment
+  environment; never put it in the callback URL.
 
 Redeploy the application after adding or changing either value.
 
@@ -64,8 +65,9 @@ Redeploy the application after adding or changing either value.
 3. Create one webhook subscription for `invitee.created` and `invitee.canceled`.
 4. Use `user` scope for the IntegraFin booking owner, or `organization` scope when
    the token belongs to an owner/admin and all team bookings should be included.
-5. Set the webhook URL to the production endpoint above with the same
-   `CALENDLY_WEBHOOK_SECRET` value.
+5. Set the webhook URL to the production endpoint above, capture the signing key
+   returned for the subscription, and save that value as
+   `CALENDLY_WEBHOOK_SECRET` in Vercel.
 6. Book a test appointment using an email address that belongs to a test lead.
 7. Confirm the lead shows `Appointment booked`, the correct appointment time,
    `Calendly` as the source, and the Calendly event name.
@@ -77,6 +79,8 @@ with a booking created after the subscription is active.
 ## Behavior and safeguards
 
 - Duplicate webhook deliveries do not create duplicate Calendly leads.
+- The endpoint verifies Calendly's HMAC-SHA256 signature over the raw request
+  body and rejects signatures older than five minutes.
 - Reschedules do not clear the current appointment when Calendly sends the
   cancellation event for the old invitee.
 - A cancellation only changes the lead currently linked to that invitee URI.

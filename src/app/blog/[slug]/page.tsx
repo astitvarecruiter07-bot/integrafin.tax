@@ -23,6 +23,8 @@ import {
   organizationRef,
   websiteRef,
 } from "@/lib/seo/schema";
+import { serializeJsonLd } from "@/lib/seo/jsonLd";
+import { sanitizeHtml } from "@/utils/seo";
 
 const relatedResourceLinks = [
   { href: "/services", label: "Tax and accounting services" },
@@ -119,7 +121,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const modifiedIso = getBlogPostModifiedIso(post);
   const displayPublishedDate = formatDisplayDate(publishedIso);
   const displayModifiedDate = formatDisplayDate(modifiedIso);
-  const contentText = post.contentHtml ? stripHtml(post.contentHtml) : post.content?.join(" ") || "";
+  // Sanitize again at the render boundary so legacy or directly imported
+  // database records cannot bypass the editor's save-time protection.
+  const safeContentHtml = post.contentHtml ? sanitizeHtml(post.contentHtml) : "";
+  const contentText = safeContentHtml ? stripHtml(safeContentHtml) : post.content?.join(" ") || "";
   const wordCount = contentText.split(/\s+/).filter(Boolean).length || undefined;
   const faqJsonLd = post.faq?.length
     ? {
@@ -200,10 +205,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12 lg:items-start">
             <div className="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-10">
               <div className="prose prose-lg max-w-none">
-                {post.contentHtml ? (
+                {safeContentHtml ? (
                   <div
                     className="text-foreground/80 leading-relaxed text-base blog-content-html"
-                    dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+                    dangerouslySetInnerHTML={{ __html: safeContentHtml }}
                   />
                 ) : (
                   post.content?.map((paragraph: string, i: number) => (
@@ -298,7 +303,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             "@context": "https://schema.org",
             "@graph": [
               {

@@ -11,22 +11,26 @@ import { after } from 'next/server';
 import { sendLeadConfirmation, sendNewLeadNotification } from '@/lib/leadNotifications';
 import { getLeadResponseSlaMinutes } from '@/lib/leadSla';
 import { FOLLOW_UP_ACTIVE_STATUSES } from '@/lib/leadFollowUp';
+import { LEAD_SERVICE_VALUES } from '@/lib/leadServices';
 
 const ADMIN_UNAUTHORIZED_MESSAGE = 'Your admin session expired. Sign in again to continue.';
 
 const LeadSchema = z.object({
-  name: z.string().min(2, 'Name is too short').max(100),
-  email: z.union([z.literal(''), z.string().email('Invalid email address')]).default(''),
+  name: z.string().trim().min(2, 'Name is too short').max(100),
+  email: z.union([z.literal(''), z.string().trim().email('Invalid email address').max(254)]).default(''),
   phone: z.union([
     z.literal(''),
-    z.string().min(10, 'Phone number is too short').max(20),
+    z.string().trim().min(10, 'Phone number is too short').max(20).regex(
+      /^[+\d][\d\s().-]+$/,
+      'Invalid phone number',
+    ),
   ]).default(''),
-  company: z.string().max(100).optional(),
-  service: z.string().min(2, 'Please select a service'),
-  message: z.string().max(2000).default(''),
-  source: z.string().max(100).default('contact-page'),
-  revenue: z.string().max(100).optional(),
-  jurisdiction: z.string().max(100).optional(),
+  company: z.string().trim().max(100).optional(),
+  service: z.enum(LEAD_SERVICE_VALUES, 'Please select a valid service'),
+  message: z.string().trim().max(2000).default(''),
+  source: z.string().trim().min(1).max(100).default('contact-page'),
+  revenue: z.string().trim().max(100).optional(),
+  jurisdiction: z.string().trim().max(100).optional(),
   attribution: z.object({
     firstLandingPage: z.string().max(500).startsWith('/').optional(),
     currentSubmissionPage: z.string().max(500).startsWith('/').optional(),
@@ -48,8 +52,8 @@ const LeadSchema = z.object({
 });
 
 const NewsletterSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  source: z.string().max(100).default('newsletter'),
+  email: z.string().trim().email('Invalid email address').max(254),
+  source: z.string().trim().min(1).max(100).default('newsletter'),
   attribution: LeadSchema.shape.attribution,
 });
 

@@ -13,6 +13,7 @@ import {
     getBlogPostUrl,
 } from "@/lib/seo/blog";
 import { localBusinessRef, organizationRef, websiteRef } from "@/lib/seo/schema";
+import { serializeJsonLd } from "@/lib/seo/jsonLd";
 import BlogContent from "./BlogContent";
 
 const blogDescription =
@@ -67,7 +68,7 @@ export default async function BlogPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
+                    __html: serializeJsonLd({
                         "@context": "https://schema.org",
                         "@graph": [
                             {

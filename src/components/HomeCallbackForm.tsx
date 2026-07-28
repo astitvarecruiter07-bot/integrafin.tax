@@ -31,6 +31,13 @@ export default function HomeCallbackForm() {
 
     const email = String(formData.get('email') || '').trim();
     const phone = String(formData.get('phone') || '').trim();
+    const service = normalizeLeadService(formData.get('service'));
+
+    if (!service) {
+      setMessage({ type: 'error', text: 'Please select a valid service.' });
+      setIsPending(false);
+      return;
+    }
 
     if (!email && !phone) {
       setMessage({ type: 'error', text: 'Please provide an email address or phone number.' });
@@ -42,7 +49,7 @@ export default function HomeCallbackForm() {
       name: String(formData.get('name') || '').trim(),
       email,
       phone,
-      service: String(formData.get('service') || '').trim(),
+      service,
       message: String(formData.get('message') || '').trim(),
       source: FORM_SOURCE,
       attribution: getLeadAttribution(),

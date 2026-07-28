@@ -63,8 +63,9 @@ async function loginAdmin(formData: FormData) {
     httpOnly: true,
     sameSite: 'lax',
     secure: process.env.NODE_ENV === 'production',
-    path: '/',
+    path: '/admin',
     maxAge: getAdminSessionTtlSeconds(),
+    priority: 'high',
   });
 
   redirect(nextPath);

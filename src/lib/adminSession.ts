@@ -1,7 +1,8 @@
 const SESSION_TTL_SECONDS = 60 * 60 * 8;
 
 function getSecret() {
-  return process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_SESSION_TOKEN || '';
+  const secret = process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_SESSION_TOKEN || '';
+  return secret.length >= 32 ? secret : '';
 }
 
 function toBase64Url(base64: string) {
@@ -103,9 +104,18 @@ export async function verifyAdminSessionToken(token: string | undefined) {
   if (!constantTimeEqual(providedSig, expectedSig)) return false;
 
   try {
-    const payload = JSON.parse(decodeBase64Url(payloadB64)) as { exp?: number };
-    if (!payload.exp) return false;
-    return payload.exp > Math.floor(Date.now() / 1000);
+    const payload = JSON.parse(decodeBase64Url(payloadB64)) as { exp?: number; u?: string };
+    const configuredUser = process.env.ADMIN_BASIC_USER || '';
+    const now = Math.floor(Date.now() / 1000);
+    if (
+      !Number.isSafeInteger(payload.exp) ||
+      !payload.u ||
+      !configuredUser ||
+      !constantTimeEqual(payload.u, configuredUser)
+    ) {
+      return false;
+    }
+    return payload.exp! > now && payload.exp! <= now + SESSION_TTL_SECONDS;
   } catch {
     return false;
   }

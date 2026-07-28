@@ -24,24 +24,31 @@ const BlogPostSchema = new mongoose.Schema<IBlogPost>(
       type: String,
       required: [true, 'Please provide a title.'],
       trim: true,
+      maxlength: 180,
     },
     slug: {
       type: String,
       required: [true, 'Please provide a slug.'],
       unique: true,
       index: true,
+      trim: true,
+      maxlength: 120,
+      match: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
     },
     excerpt: {
       type: String,
       required: [true, 'Please provide an excerpt/description.'],
+      maxlength: 500,
     },
     category: {
       type: String,
       default: 'General',
+      maxlength: 80,
     },
     contentHtml: {
       type: String,
       required: [true, 'Please provide content.'],
+      maxlength: 500_000,
     },
     date: {
       type: String,
@@ -62,14 +69,17 @@ const BlogPostSchema = new mongoose.Schema<IBlogPost>(
     },
     image: {
       type: String,
+      maxlength: 2000,
     },
     author: {
       name: {
         type: String,
         default: 'IntegraFin LLC',
+        maxlength: 120,
       },
       image: {
         type: String,
+        maxlength: 2000,
       },
     },
   },

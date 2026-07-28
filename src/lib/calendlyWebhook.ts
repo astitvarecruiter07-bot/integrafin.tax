@@ -1,10 +1,11 @@
-import { timingSafeEqual } from "node:crypto";
+import { createHmac, timingSafeEqual } from "node:crypto";
 
 const CALENDLY_API_ORIGIN = "https://api.calendly.com";
 const MAX_URI_LENGTH = 600;
 const MAX_NAME_LENGTH = 200;
 const MAX_EMAIL_LENGTH = 254;
 const MAX_PHONE_LENGTH = 30;
+const WEBHOOK_TIMESTAMP_TOLERANCE_SECONDS = 5 * 60;
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -70,6 +71,60 @@ export function verifySharedSecret(provided: string | null, expected: string) {
     providedBuffer.length === expectedBuffer.length &&
     timingSafeEqual(providedBuffer, expectedBuffer)
   );
+}
+
+/**
+ * Calendly signs `${timestamp}.${rawBody}` with HMAC-SHA256 and sends
+ * `t=<unix-seconds>,v1=<hex-digest>`. Rejecting old timestamps limits replay.
+ */
+export function verifyCalendlyWebhookSignature(
+  signatureHeader: string | null,
+  rawBody: string,
+  signingKey: string,
+  nowMs = Date.now(),
+) {
+  if (!signatureHeader || signingKey.length < 32) return false;
+
+  const values = signatureHeader.split(",").reduce<Record<string, string[]>>(
+    (parts, item) => {
+      const separator = item.indexOf("=");
+      if (separator <= 0) return parts;
+      const name = item.slice(0, separator).trim();
+      const value = item.slice(separator + 1).trim();
+      if (name && value) (parts[name] ||= []).push(value);
+      return parts;
+    },
+    {},
+  );
+
+  const timestampText = values.t?.[0];
+  const signatures = values.v1 || [];
+  if (!timestampText || !/^\d{10}$/.test(timestampText) || signatures.length === 0) {
+    return false;
+  }
+
+  const timestamp = Number(timestampText);
+  const nowSeconds = Math.floor(nowMs / 1000);
+  if (
+    !Number.isSafeInteger(timestamp) ||
+    Math.abs(nowSeconds - timestamp) > WEBHOOK_TIMESTAMP_TOLERANCE_SECONDS
+  ) {
+    return false;
+  }
+
+  const expected = createHmac("sha256", signingKey)
+    .update(`${timestampText}.${rawBody}`, "utf8")
+    .digest("hex");
+  const expectedBuffer = Buffer.from(expected, "hex");
+
+  return signatures.some((signature) => {
+    if (!/^[a-f\d]{64}$/i.test(signature)) return false;
+    const providedBuffer = Buffer.from(signature, "hex");
+    return (
+      providedBuffer.length === expectedBuffer.length &&
+      timingSafeEqual(providedBuffer, expectedBuffer)
+    );
+  });
 }
 
 export function parseCalendlyWebhook(value: unknown): CalendlyWebhookEvent | undefined {
