@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  localBusinessRef,
+} from "@/lib/seo/schema";
 
 const pageUrl = "https://integrafin.tax/texas/irs-notice-help-katy-tx";
+const serviceId = `${pageUrl}#service`;
 
 export const metadata: Metadata = {
   title: "IRS Notice Help Katy TX | IntegraFin Tax & Accounting",
@@ -86,6 +93,33 @@ const documentChecklist = [
   "Prior IRS letters, response confirmations, fax receipts, or mailed-document tracking",
 ];
 
+const noticeScope = {
+  included: [
+    "Identify the notice or letter, tax period, response date, requested action, and stated IRS contact path",
+    "Compare the notice with the relevant return, payment records, transcripts, and available supporting documents",
+    "Organize a fact-based response, correction, document, payment-review, or escalation workflow when agreed in writing",
+  ],
+  separate: [
+    "Preparing missing or amended returns, reconstructing books, or resolving an underlying balance unless separately engaged",
+    "Appeals, audits, collection cases, litigation, or representation beyond the available authorization and written scope",
+    "Guaranteed acceptance, penalty removal, payment terms, processing time, or other IRS outcome",
+  ],
+  timing: [
+    "Read the full notice immediately and follow the response, payment, appeal, or document date printed on it.",
+    "Do not assume that requesting professional help pauses an IRS deadline or collection process.",
+    "Review time depends on the notice, tax periods, records, transcripts, authorization, and urgency.",
+  ],
+  pricing: [
+    "Notice type, number of tax periods, taxpayers, entities, deadlines, and agencies involved",
+    "Return, transcript, bookkeeping, payroll, payment, and supporting-document condition",
+    "Response drafting, correction, amendment, representation, follow-up, or tax-resolution work outside triage",
+  ],
+  limitations: [
+    "The IRS controls processing, response acceptance, balances, penalties, payment terms, and enforcement decisions.",
+    "Legal disputes or court matters may require qualified legal counsel beyond IntegraFin's available scope.",
+  ],
+};
+
 const irsResources = [
   {
     href: "https://www.irs.gov/individuals/understanding-your-irs-notice-or-letter",
@@ -166,24 +200,12 @@ const faqItems = [
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceId,
   name: "IRS Notice Help in Katy, TX",
-  serviceType: "IRS Notice Help and Tax Resolution Support",
+  serviceType: "IRS notice identification, document review, and response preparation",
   keywords:
-    "IRS notice help Katy TX, IRS letter help Katy TX, tax resolution Katy TX, IRS tax help Fort Bend County",
-  provider: {
-    "@type": "AccountingService",
-    name: "IntegraFin Tax & Accounting",
-    url: "https://integrafin.tax",
-    telephone: "+1-832-647-1819",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "2039 N Mason Rd, Suite 604",
-      addressLocality: "Katy",
-      addressRegion: "TX",
-      postalCode: "77449",
-      addressCountry: "US",
-    },
-  },
+    "IRS notice help Katy TX, IRS letter help Katy TX, CP14 help Katy, CP2000 help Katy, Letter 12C help Katy",
+  provider: localBusinessRef,
   areaServed: [
     { "@type": "City", name: "Katy" },
     { "@type": "City", name: "Fulshear" },
@@ -195,45 +217,27 @@ const serviceSchema = {
   description:
     "IntegraFin helps Katy and Fort Bend County clients review IRS notices, organize tax records, and plan response or payment-option next steps.",
   url: pageUrl,
+  mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+const faqSchema = buildFaqSchema(pageUrl, faqItems);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://integrafin.tax/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Texas Tax and Accounting Services",
-      item: "https://integrafin.tax/texas-tax-accounting-services",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "IRS Notice Help Katy TX",
-      item: pageUrl,
-    },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+  { name: "Home", item: "https://integrafin.tax/" },
+  {
+    name: "Texas Tax and Accounting Services",
+    item: "https://integrafin.tax/texas-tax-accounting-services",
+  },
+  { name: "IRS Notice Help Katy TX", item: pageUrl },
+]);
+
+const webPageSchema = buildWebPageSchema({
+  url: pageUrl,
+  name: "IRS Notice Help Katy TX | IntegraFin Tax & Accounting",
+  description:
+    "Received an IRS notice in Katy, TX? IntegraFin helps review IRS letters, organize tax records, plan response steps, and discuss payment options.",
+  mainEntityId: serviceId,
+});
 
 export default function IrsNoticeHelpKatyPage() {
   return (
@@ -250,6 +254,10 @@ export default function IrsNoticeHelpKatyPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
 
       <section className="bg-primary-dark pt-28 sm:pt-32 pb-14 sm:pb-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
@@ -259,6 +267,13 @@ export default function IrsNoticeHelpKatyPage() {
           <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
             IRS Notice Help in Katy, TX
           </h1>
+          <p className="text-white mt-6 max-w-3xl mx-auto rounded-xl border border-white/15 bg-white/10 p-5 text-left text-base md:text-lg leading-relaxed">
+            <span className="font-black text-secondary">Short answer:</span>{" "}
+            If you receive an IRS notice in Katy, read the full letter, check its number and
+            deadline, and compare the IRS statement with your return and payment records.
+            IntegraFin can organize the documents and map whether the next step is a response,
+            correction, payment review, or broader tax-resolution workflow.
+          </p>
           <p className="text-[#d7e3fc] mt-5 max-w-3xl mx-auto text-base md:text-lg">
             Received an IRS letter? IntegraFin helps Katy and Fort Bend County clients review
             the notice, organize tax records, understand response steps, and plan a practical
@@ -271,7 +286,7 @@ export default function IrsNoticeHelpKatyPage() {
             <a href="tel:+18326471819" className="bg-white/10 text-white border border-white/20 px-7 py-3 rounded-xl font-bold">
               Call (832) 647-1819
             </a>
-            <Link href="/services#tax-resolution" className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
+            <Link href="/tax-resolution" className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
               View Tax Resolution Services
             </Link>
           </div>
@@ -279,20 +294,6 @@ export default function IrsNoticeHelpKatyPage() {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-12 sm:py-16">
-        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
-            Quick Answer: What To Do With An IRS Notice
-          </h2>
-          <p className="text-slate-700 leading-relaxed">
-            If you receive an IRS notice in Katy, start by reading the full letter, checking the
-            notice number and deadline, and comparing the IRS statement with your return, payment
-            records, and transcripts. IntegraFin can help you organize the documents and decide
-            whether the next step is a correction, response, payment-plan review, or tax resolution
-            workflow.
-          </p>
-          <p className="text-slate-500 text-sm mt-4">Last reviewed: June 15, 2026</p>
-        </article>
-
         <div className="grid md:grid-cols-2 gap-8">
           <article className="bg-white rounded-2xl p-7 shadow-sm border border-slate-100">
             <h2 className="text-2xl font-black text-primary mb-4">
@@ -316,6 +317,50 @@ export default function IrsNoticeHelpKatyPage() {
             </ul>
           </article>
         </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 pb-10">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-7">
+            <h2 className="text-2xl font-black text-primary">What is included</h2>
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              {noticeScope.included.map((item) => <li key={item}>• {item}</li>)}
+            </ul>
+          </article>
+          <article className="rounded-2xl border border-amber-200 bg-amber-50 p-7">
+            <h2 className="text-2xl font-black text-primary">What requires a separate scope</h2>
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              {noticeScope.separate.map((item) => <li key={item}>• {item}</li>)}
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 pb-10">
+        <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
+          <h2 className="text-2xl font-black text-primary sm:text-3xl">
+            Timing, pricing factors, and limitations
+          </h2>
+          <div className="mt-7 grid gap-5 lg:grid-cols-3">
+            {[
+              ["Important deadline", noticeScope.timing],
+              ["Factors that affect pricing", noticeScope.pricing],
+              ["What IntegraFin cannot promise", noticeScope.limitations],
+            ].map(([title, items]) => (
+              <section key={title as string} className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 className="font-black text-primary-dark">{title as string}</h3>
+                <ul className="mt-3 space-y-3 text-sm leading-relaxed text-slate-700">
+                  {(items as string[]).map((item) => <li key={item}>• {item}</li>)}
+                </ul>
+              </section>
+            ))}
+          </div>
+          <p className="mt-6 text-sm leading-relaxed text-slate-600">
+            Content owner: IntegraFin Tax &amp; Accounting. Last substantive review: July 29, 2026.
+            A named professional reviewer will be published only after identity, role, and
+            qualifications are verified.
+          </p>
+        </article>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-10">
@@ -446,11 +491,11 @@ export default function IrsNoticeHelpKatyPage() {
             Helpful IntegraFin Pages
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            <Link href="/" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+            <Link href="/texas/katy-tax-accountant" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Katy Tax Accountant Services
             </Link>
-            <Link href="/services#tax-resolution" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Tax Resolution Services
+            <Link href="/tax-resolution" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Tax Resolution Katy TX
             </Link>
             <Link href="/texas-tax-accounting-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Texas Tax and Accounting Services

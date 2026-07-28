@@ -389,6 +389,7 @@ Target: five relevant local or professional referring domains in the first 90 da
 
 Each valuable search intent must have one primary page.
 
+Status: `Source Ownership Implemented - GSC Validation and Monitoring Pending`
 
 | Primary intent                     | Primary URL                        | Supporting pages                          | Required action                                            |
 | ---------------------------------- | ---------------------------------- | ----------------------------------------- | ---------------------------------------------------------- |
@@ -410,13 +411,25 @@ Required process:
 
 - [ ] Export GSC queries and landing pages for the last 90 days.
 - [ ] Identify queries where multiple IntegraFin URLs receive impressions.
-- [ ] Choose one owner URL per query cluster.
-- [ ] Reposition competing pages instead of deleting useful content blindly.
-- [ ] Update internal anchors to point to the owner URL.
+- [x] Choose one owner URL per query cluster.
+- [x] Reposition competing pages instead of deleting useful content blindly.
+- [x] Update internal anchors to point to the owner URL.
 - [ ] Request indexing after material intent changes.
 - [ ] Monitor for 28 days before making another major change.
 
 Pause additional city/state page creation until current pages demonstrate impressions, engagement, and differentiated value.
+
+Source implementation record (July 29, 2026):
+
+- Added `src/data/keywordOwnership.ts` as the canonical owner, supporting-page, preferred-anchor, and intent-boundary registry for all 12 priority clusters.
+- Kept the homepage broad around `Katy tax and accounting firm`; the exact `tax accountant Katy TX` title, structured-data keywords, and internal anchors now resolve to `/texas/katy-tax-accountant`.
+- Repositioned `/business-tax-accounting` around Katy small-business tax work and added local business examples.
+- Repositioned `/individual-tax-preparation` around Katy filing, document, Texas-residency, and multi-state intent.
+- Separated `/texas/irs-notice-help-katy-tx` notice triage (CP14, CP2000, and Letter 12C) from `/tax-resolution` back-tax, unfiled-return, payment, penalty, audit, and payroll-tax intent.
+- Separated recurring Katy bookkeeping from platform-agnostic bookkeeping cleanup and software-specific QuickBooks cleanup.
+- Repositioned the LLC page around the exact `LLC tax setup Texas` intent.
+- Corrected competing internal anchors that sent `Katy Tax Accountant` to `/` or `Tax Resolution` to the generic services section.
+- GSC query exports, multi-URL impression analysis, recrawl requests, and the 28-day comparison remain external follow-up work; no claim of search-performance completion is made without that evidence.
 
 ---
 
@@ -485,6 +498,8 @@ Live verification record (July 23, 2026):
 
 Use this template for every important service, city, and high-intent article.
 
+Status: `Priority Owner Templates Implemented - Named Professional Review Pending`
+
 ## Required Structure
 
 1. One descriptive H1 containing the primary service and location when appropriate.
@@ -523,14 +538,26 @@ Use concise paragraphs, numbered steps, checklists, comparison tables, descripti
 
 ## Content Quality Rules
 
-- [ ] Answer the query completely before promoting the service.
-- [ ] Add original examples and process knowledge.
-- [ ] Do not rewrite competitors or IRS pages without additional value.
-- [ ] Do not write to an arbitrary word count.
-- [ ] Do not change review dates without substantive review.
+- [x] Answer the query completely before promoting the service.
+- [x] Add original examples and process knowledge.
+- [x] Do not rewrite competitors or IRS pages without additional value.
+- [x] Do not write to an arbitrary word count.
+- [x] Do not change review dates without substantive review.
 - [ ] Disclose substantial AI assistance when readers would reasonably expect disclosure.
 - [ ] Have tax content reviewed by a qualified named professional.
-- [ ] Correct or archive outdated information promptly.
+- [x] Correct or archive outdated information promptly.
+
+Source implementation record (July 29, 2026):
+
+- Added a 40-70 word `Short answer:` block directly below the H1 on all 12 priority keyword-owner routes.
+- Added `Who this applies to`, included scope, separate-scope exclusions, timing and deadline guidance, pricing factors, limitations, local disclosure, records checklists, official sources, FAQs, CTAs, and related links to the six shared service owner pages.
+- Added the same reusable AEO structure to the Texas city-page template, including `/texas/katy-tax-accountant`.
+- Added dedicated scope, timing, pricing-factor, and limitation blocks to the Katy bookkeeping and Katy IRS notice pages.
+- Reworked the Texas LLC page so its short answer follows the H1 and its exclusions, pricing, checklist, safety notes, official sources, and FAQs are explicit.
+- Adapted the homepage and federal calculator to their broader brand/tool intent without forcing irrelevant service-page sections onto them.
+- Replaced generic `Reviewed by: IntegraFin tax team` wording with an accurate organization-level content owner and an explicit pending named-reviewer status.
+- A named professional reviewer remains blocked until the owner provides a real identity, role, publishable qualifications, and approval. No person or credential was invented.
+- Verification passed: ESLint, TypeScript, `git diff --check`, the production build with all 71 generated pages, and rendered-output checks across all 12 priority owner routes.
 
 ---
 
@@ -539,6 +566,8 @@ Use concise paragraphs, numbered steps, checklists, comparison tables, descripti
 # 8. P1: Structured Data Plan
 
 Structured data must match visible content exactly.
+
+Status: `Canonical Schema Graph Implemented - Live Google Validation Pending`
 
 ## Root Organization and LocalBusiness
 
@@ -549,21 +578,21 @@ File: `src/lib/seo/schema.ts`
 - [x] Verify website address, phone, hours, geo coordinates, priceRange, and areaServed. Source audit completed July 14, 2026; GBP confirmation remains pending.
 - [ ] Add a real business image.
 - [x] Keep only verified `sameAs` profiles. LinkedIn retained; unverified Instagram and X profiles removed July 14, 2026.
-- [ ] Verify the Yelp URL before keeping it.
-- [ ] Do not add self-serving aggregateRating markup.
-- [ ] Connect Organization, LocalBusiness, WebSite, WebPage, Service, and Person entities with stable IDs.
+- [x] Keep Yelp out of schema until its URL is verified. No Yelp URL is emitted.
+- [x] Do not add self-serving aggregateRating markup.
+- [x] Connect Organization, LocalBusiness, WebSite, WebPage, and Service entities with stable IDs. Person remains intentionally absent until a real professional is verified.
 
 
 
 ## Page-Level Schema
 
-- [ ] Homepage: Organization/LocalBusiness and WebSite.
-- [ ] Service pages: Service and BreadcrumbList.
-- [ ] City pages: Service, BreadcrumbList, and visible FAQ content.
+- [x] Homepage: Organization/LocalBusiness, WebSite, and WebPage.
+- [x] Service pages: Service, WebPage, BreadcrumbList, and visible FAQ content where present.
+- [x] City pages: Service, WebPage, BreadcrumbList, and visible FAQ content.
 - [ ] Blog posts: Article/BlogPosting, named author, reviewer where appropriate, dates, image, publisher, and citations.
-- [ ] About/team profiles: real Person and ProfilePage only.
+- [x] About page: AboutPage and BreadcrumbList. Real Person/ProfilePage remains intentionally absent until an approved identity is available.
 - [x] Contact page: ContactPage references the canonical LocalBusiness entity and its contact point. Completed July 14, 2026.
-- [ ] Calculator: WebApplication/SoftwareApplication only if implementation accurately matches properties.
+- [x] Calculator: SoftwareApplication, WebPage, BreadcrumbList, and visible FAQ content accurately match the implemented estimator.
 
 
 
@@ -577,7 +606,20 @@ FAQ markup can remain when it matches visible content, but Google normally restr
 - [ ] Schema.org Validator
 - [ ] GSC Enhancement reports
 - [ ] URL Inspection rendered HTML
-- [ ] Manual check that schema text matches visible text
+- [x] Manual source and generated-HTML check that schema text matches visible text
+
+Source implementation record (July 29, 2026):
+
+- Rebuilt `src/lib/seo/schema.ts` around one canonical `@graph` with stable Organization, LocalBusiness, WebSite, logo, and homepage WebPage IDs.
+- Connected the LocalBusiness to its parent Organization and connected WebSite/WebPage publisher, `isPartOf`, `about`, `mainEntity`, and breadcrumb relationships by `@id`.
+- Replaced repeated embedded provider objects across shared service, state, city, Texas-city, Houston IRS, Katy IRS notice, Katy bookkeeping, and Texas LLC templates with the canonical LocalBusiness reference.
+- Added WebPage entities and stable Service IDs across service and city templates, including all priority keyword-owner pages.
+- Added AboutPage, ContactPage, Services CollectionPage, calculator SoftwareApplication/WebPage, calculator-guide Article/WebPage, blog CollectionPage/Blog, and BlogPosting/WebPage connections.
+- Replaced disconnected generic blog-team author entities with the canonical IntegraFin Organization. Named Person/reviewer schema remains blocked until a real identity is verified.
+- Removed unsupported Instagram, Facebook, and YouTube `sameAs` URLs from the root graph; LinkedIn is the only retained verified profile. Yelp, aggregate ratings, and self-authored review markup are not emitted.
+- Did not add a LocalBusiness image because the available site imagery is labeled illustrative and is not verified as a real office or business photo.
+- Verification passed: TypeScript, ESLint, `git diff --check`, the production build with all 71 generated pages, JSON parsing of all 239 rendered JSON-LD blocks with zero failures, stable-ID graph checks, and a rendered scan showing no unsupported social, aggregate-rating, or Person claims.
+- Google Rich Results Test, Schema.org Validator, Search Console enhancements, and URL Inspection remain post-deployment validation steps.
 
 ---
 

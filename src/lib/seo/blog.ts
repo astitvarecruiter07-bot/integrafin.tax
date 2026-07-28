@@ -85,7 +85,8 @@ export function getBlogPostModifiedIso(post: BlogSeoPost) {
 }
 
 export function getBlogPostAuthor(post: BlogSeoPost) {
-  return post.author?.name || "IntegraFin Tax & Accounting Team";
+  void post;
+  return "IntegraFin Tax & Accounting";
 }
 
 export function formatBlogPostTitle(title: string) {
@@ -115,9 +116,10 @@ export function buildBlogPostKeywords(post: BlogSeoPost) {
 }
 
 export function buildBreadcrumbJsonLd(items: Array<{ name: string; item: string }>) {
+  const currentUrl = items.at(-1)?.item || `${SITE_URL}/`;
   return {
-    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${currentUrl}#breadcrumb`,
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,

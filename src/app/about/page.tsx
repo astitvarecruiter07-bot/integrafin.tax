@@ -2,6 +2,22 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Target, CheckCircle2, Landmark, MapPin, FileText, ClipboardCheck, Map } from "lucide-react";
+import { buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo/schema";
+
+const pageUrl = "https://integrafin.tax/about";
+
+const aboutPageSchema = buildWebPageSchema({
+  url: pageUrl,
+  type: "AboutPage",
+  name: "About IntegraFin | Tax & Accounting Services in Katy, TX",
+  description:
+    "Learn where IntegraFin is based, the tax and accounting services offered, and the documented process used to scope client work.",
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+  { name: "Home", item: "https://integrafin.tax/" },
+  { name: "About IntegraFin", item: pageUrl },
+]);
 
 export const metadata: Metadata = {
   title: 'About IntegraFin | Tax & Accounting Services in Katy, TX',
@@ -16,6 +32,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
     return (
         <main className="pt-20">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             {/* Hero Section */}
             <section className="relative min-h-[400px] sm:min-h-[600px] flex items-center overflow-hidden bg-primary-dark">
                 <div className="absolute inset-0 opacity-20">

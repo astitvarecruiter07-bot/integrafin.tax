@@ -11,8 +11,8 @@ import {
     getBlogPostModifiedIso,
     getBlogPostPublishedIso,
     getBlogPostUrl,
-    toAbsoluteUrl,
 } from "@/lib/seo/blog";
+import { localBusinessRef, organizationRef, websiteRef } from "@/lib/seo/schema";
 import BlogContent from "./BlogContent";
 
 const blogDescription =
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     'tax planning',
     'payroll compliance',
   ],
-  authors: [{ name: 'IntegraFin Tax & Accounting Team' }],
+  authors: [{ name: 'IntegraFin Tax & Accounting' }],
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
@@ -76,14 +76,11 @@ export default async function BlogPage() {
                                 url: `${SITE_URL}/blog`,
                                 name: "Tax and Accounting Blog",
                                 description: blogDescription,
-                                isPartOf: { "@id": `${SITE_URL}/#website` },
-                                about: [
-                                    "Tax planning",
-                                    "IRS compliance",
-                                    "Bookkeeping",
-                                    "Payroll",
-                                    "Small business accounting",
-                                ],
+                                isPartOf: websiteRef,
+                                about: localBusinessRef,
+                                mainEntity: { "@id": `${SITE_URL}/blog#blog` },
+                                breadcrumb: { "@id": `${SITE_URL}/blog#breadcrumb` },
+                                inLanguage: "en-US",
                             },
                             {
                                 "@type": "Blog",
@@ -91,15 +88,8 @@ export default async function BlogPage() {
                                 name: "IntegraFin Tax and Accounting Blog",
                                 description: blogDescription,
                                 url: `${SITE_URL}/blog`,
-                                publisher: {
-                                    "@type": "Organization",
-                                    "@id": `${SITE_URL}/#organization`,
-                                    name: "IntegraFin",
-                                    logo: {
-                                        "@type": "ImageObject",
-                                        url: toAbsoluteUrl("/images/logo1.png"),
-                                    },
-                                },
+                                publisher: organizationRef,
+                                isPartOf: websiteRef,
                                 blogPost: allPosts.map((post) => ({
                                     "@type": "BlogPosting",
                                     "@id": `${getBlogPostUrl(post.slug)}#article`,
@@ -108,11 +98,11 @@ export default async function BlogPage() {
                                     image: [getBlogPostImage(post)],
                                     datePublished: getBlogPostPublishedIso(post),
                                     dateModified: getBlogPostModifiedIso(post),
-                                    author: {
-                                        "@type": "Organization",
-                                        name: "IntegraFin Tax & Accounting Team",
+                                    author: organizationRef,
+                                    publisher: organizationRef,
+                                    mainEntityOfPage: {
+                                        "@id": `${getBlogPostUrl(post.slug)}#webpage`,
                                     },
-                                    mainEntityOfPage: getBlogPostUrl(post.slug),
                                 })),
                             },
                             {

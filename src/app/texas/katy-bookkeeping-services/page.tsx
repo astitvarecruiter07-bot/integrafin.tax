@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  localBusinessRef,
+} from "@/lib/seo/schema";
 
 const pageUrl = "https://integrafin.tax/texas/katy-bookkeeping-services";
+const serviceId = `${pageUrl}#service`;
 
 export const metadata: Metadata = {
   title: "Bookkeeping Services Katy TX | Small Business | IntegraFin",
@@ -102,6 +109,33 @@ const recordsChecklist = [
   "IRS, Texas, sales tax, payroll, or franchise tax notices if any are open",
 ];
 
+const bookkeepingScope = {
+  included: [
+    "Agreed monthly transaction review, account reconciliation, and financial-report preparation",
+    "Missing-record and open-question lists for the owner before the monthly close",
+    "Bookkeeping reports organized for tax preparation, planning, lending, or notice review",
+  ],
+  separate: [
+    "Historical cleanup, QuickBooks repair, tax returns, payroll filings, or IRS notice response unless included in writing",
+    "Audits, reviews, attestations, fraud examinations, valuations, or assurance services",
+    "Legal advice or unsupported transaction classifications when source records are unavailable",
+  ],
+  timing: [
+    "Monthly close timing depends on when complete bank, card, payroll, loan, and merchant records arrive.",
+    "Start cleanup before tax, lender, or notice deadlines leave too little time to resolve open transactions.",
+    "Official filing and notice deadlines still apply while bookkeeping questions are being resolved.",
+  ],
+  pricing: [
+    "Transaction volume, number of accounts, entities, months, payroll systems, loans, and payment processors",
+    "Condition of reconciliations, opening balances, categories, owner activity, and supporting documents",
+    "Cleanup, tax, payroll, notice, QuickBooks-specific, or expedited work outside recurring bookkeeping",
+  ],
+  limitations: [
+    "Reports depend on the records supplied; unresolved items are documented rather than guessed.",
+    "Bookkeeping does not guarantee a tax result, loan approval, agency decision, or assurance over the records.",
+  ],
+};
+
 const reviewDetails = {
   reviewer: "IntegraFin Tax & Accounting team",
   date: "June 16, 2026",
@@ -190,25 +224,12 @@ const faqItems = [
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceId,
   name: "Bookkeeping Services in Katy, TX",
-  serviceType: "Small Business Bookkeeping and Bookkeeping Cleanup",
+  serviceType: "Local monthly and recurring small business bookkeeping",
   keywords:
-    "bookkeeping services Katy TX, small business bookkeeping Katy TX, bookkeeping cleanup Katy TX, QuickBooks bookkeeping Katy TX",
-  provider: {
-    "@type": "AccountingService",
-    name: "IntegraFin Tax & Accounting",
-    url: "https://integrafin.tax",
-    telephone: "+1-832-647-1819",
-    email: "contact@integrafin.tax",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "2039 N Mason Rd, Suite 604",
-      addressLocality: "Katy",
-      addressRegion: "TX",
-      postalCode: "77449",
-      addressCountry: "US",
-    },
-  },
+    "bookkeeping services Katy TX, small business bookkeeping Katy TX, monthly bookkeeping Katy, bookkeeping company Katy",
+  provider: localBusinessRef,
   areaServed: [
     { "@type": "City", name: "Katy" },
     { "@type": "Place", name: "Cinco Ranch" },
@@ -221,45 +242,27 @@ const serviceSchema = {
   description:
     "IntegraFin provides Katy bookkeeping services for small businesses that need monthly bookkeeping, cleanup, reconciliations, reporting, and tax-ready records.",
   url: pageUrl,
+  mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+const faqSchema = buildFaqSchema(pageUrl, faqItems);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://integrafin.tax/",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Texas Tax and Accounting Services",
-      item: "https://integrafin.tax/texas-tax-accounting-services",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Bookkeeping Services Katy TX",
-      item: pageUrl,
-    },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+  { name: "Home", item: "https://integrafin.tax/" },
+  {
+    name: "Texas Tax and Accounting Services",
+    item: "https://integrafin.tax/texas-tax-accounting-services",
+  },
+  { name: "Bookkeeping Services Katy TX", item: pageUrl },
+]);
+
+const webPageSchema = buildWebPageSchema({
+  url: pageUrl,
+  name: "Bookkeeping Services Katy TX | Small Business | IntegraFin",
+  description:
+    "Need bookkeeping services in Katy, TX? IntegraFin helps with monthly bookkeeping, cleanup, reconciliations, and tax-ready reports.",
+  mainEntityId: serviceId,
+});
 
 export default function KatyBookkeepingServicesPage() {
   return (
@@ -276,6 +279,10 @@ export default function KatyBookkeepingServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
 
       <section className="bg-primary-dark pt-28 sm:pt-32 pb-14 sm:pb-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
@@ -285,6 +292,13 @@ export default function KatyBookkeepingServicesPage() {
           <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
             Bookkeeping Services in Katy, TX
           </h1>
+          <p className="text-white mt-6 max-w-3xl mx-auto rounded-xl border border-white/15 bg-white/10 p-5 text-left text-base md:text-lg leading-relaxed">
+            <span className="font-black text-secondary">Short answer:</span>{" "}
+            Bookkeeping services in Katy, TX should make business records easier to trust.
+            IntegraFin organizes income and expenses, reconciles accounts, prepares useful reports,
+            identifies missing records, and keeps books ready for tax preparation, planning, lending
+            questions, and IRS notice review.
+          </p>
           <p className="text-[#d7e3fc] mt-5 max-w-3xl mx-auto text-base md:text-lg">
             IntegraFin helps Katy and Fort Bend County businesses clean up old books, reconcile
             accounts, organize records, and keep reports tax-ready through practical monthly
@@ -305,21 +319,6 @@ export default function KatyBookkeepingServicesPage() {
       </section>
 
       <section className="max-w-6xl mx-auto px-6 py-12 sm:py-16">
-        <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
-            Quick Answer: Bookkeeping Services Katy TX
-          </h2>
-          <p className="text-slate-700 leading-relaxed">
-            Bookkeeping services in Katy, TX should make your business records easier to trust.
-            IntegraFin helps organize income and expense activity, reconcile accounts, prepare
-            useful reports, identify missing records, and keep business books ready for tax
-            preparation, planning, lending questions, and IRS notice review.
-          </p>
-          <p className="text-slate-500 text-sm mt-4">
-            Last reviewed: {reviewDetails.date} by {reviewDetails.reviewer}.
-          </p>
-        </article>
-
         <div className="grid md:grid-cols-3 gap-6">
           {serviceHighlights.map((item) => (
             <article key={item.title} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
@@ -328,6 +327,50 @@ export default function KatyBookkeepingServicesPage() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 pb-10">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-7">
+            <h2 className="text-2xl font-black text-primary">What is included</h2>
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              {bookkeepingScope.included.map((item) => <li key={item}>• {item}</li>)}
+            </ul>
+          </article>
+          <article className="rounded-2xl border border-amber-200 bg-amber-50 p-7">
+            <h2 className="text-2xl font-black text-primary">What requires a separate scope</h2>
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              {bookkeepingScope.separate.map((item) => <li key={item}>• {item}</li>)}
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 pb-10">
+        <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
+          <h2 className="text-2xl font-black text-primary sm:text-3xl">
+            Timing, pricing factors, and limitations
+          </h2>
+          <div className="mt-7 grid gap-5 lg:grid-cols-3">
+            {[
+              ["Important timing", bookkeepingScope.timing],
+              ["Factors that affect pricing", bookkeepingScope.pricing],
+              ["Important limitations", bookkeepingScope.limitations],
+            ].map(([title, items]) => (
+              <section key={title as string} className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 className="font-black text-primary-dark">{title as string}</h3>
+                <ul className="mt-3 space-y-3 text-sm leading-relaxed text-slate-700">
+                  {(items as string[]).map((item) => <li key={item}>• {item}</li>)}
+                </ul>
+              </section>
+            ))}
+          </div>
+          <p className="mt-6 text-sm leading-relaxed text-slate-600">
+            Content owner: {reviewDetails.reviewer}. Last substantive review: {reviewDetails.date}.
+            A named professional reviewer will be published only after identity, role, and
+            qualifications are verified.
+          </p>
+        </article>
       </section>
 
       <section className="max-w-6xl mx-auto px-6 pb-10">
@@ -499,7 +542,7 @@ export default function KatyBookkeepingServicesPage() {
             Helpful IntegraFin Pages
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
-            <Link href="/" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+            <Link href="/texas/katy-tax-accountant" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Katy Tax Accountant Services
             </Link>
             <Link href="/texas/irs-notice-help-katy-tx" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
@@ -511,8 +554,14 @@ export default function KatyBookkeepingServicesPage() {
             <Link href="/texas/fulshear-tax-accountant" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Fulshear Tax Accountant Services
             </Link>
-            <Link href="/services#business" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Business Tax and Accounting Services
+            <Link href="/business-tax-accounting" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Small Business Tax Accountant Katy
+            </Link>
+            <Link href="/bookkeeping-cleanup" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Bookkeeping Cleanup Services
+            </Link>
+            <Link href="/quickbooks-bookkeeping-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              QuickBooks Cleanup Katy TX
             </Link>
             <Link href="/blog/small-business-accounting-tips" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Small Business Accounting Tips

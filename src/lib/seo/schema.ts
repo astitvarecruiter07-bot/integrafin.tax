@@ -1,186 +1,196 @@
-export const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": ["AccountingService", "LocalBusiness"],
-  "@id": "https://integrafin.tax/#localbusiness",
-  "name": "IntegraFin Tax & Accounting",
-  "legalName": "IntegraFin LLC",
-  "url": "https://integrafin.tax/",
-  "telephone": "+1-832-647-1819",
-  "email": "contact@integrafin.tax",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "2039 N Mason Rd, Suite 604",
-    "addressLocality": "Katy",
-    "addressRegion": "TX",
-    "postalCode": "77449",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 29.7858,
-    "longitude": -95.8244
-  },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-    "opens": "09:00",
-    "closes": "18:00"
-  }],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Tax & Accounting Services Katy TX",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Tax & Accounting Katy TX" }},
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Individual Tax Preparation Katy TX" }},
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IRS Tax Resolution Katy TX" }},
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Payroll Services Katy TX" }},
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bookkeeping Services Katy TX" }},
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New Business Consultation Katy TX" }}
-    ]
-  },
-  "priceRange": "$$",
-  "areaServed": ["Katy TX", "Houston TX", "Sugar Land TX", "Cypress TX", "Richmond TX"],
-  "parentOrganization": {
-    "@id": "https://integrafin.tax/#organization"
-  },
-  "sameAs": [
-    "https://www.instagram.com/integrafinllc/",
-    "https://www.facebook.com/integrafintax/",
-    "https://www.linkedin.com/company/integrafin/",
-    "https://www.youtube.com/@IntegraFinTax"
-  ]
-};
+export const SITE_URL = "https://integrafin.tax";
 
-export const organizationSchema = {
-  "@context": "https://schema.org",
+export const SCHEMA_IDS = {
+  organization: `${SITE_URL}/#organization`,
+  localBusiness: `${SITE_URL}/#localbusiness`,
+  website: `${SITE_URL}/#website`,
+  logo: `${SITE_URL}/#logo`,
+  homepage: `${SITE_URL}/#webpage`,
+} as const;
+
+export const organizationRef = { "@id": SCHEMA_IDS.organization } as const;
+export const localBusinessRef = { "@id": SCHEMA_IDS.localBusiness } as const;
+export const websiteRef = { "@id": SCHEMA_IDS.website } as const;
+
+const organizationSchema = {
   "@type": "Organization",
-  "@id": "https://integrafin.tax/#organization",
-  "name": "IntegraFin Tax & Accounting",
-  "alternateName": "IntegraFin",
-  "legalName": "IntegraFin LLC",
-  "url": "https://integrafin.tax/",
-  "logo": "https://integrafin.tax/logo.svg",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+1-832-647-1819",
-    "contactType": "customer service",
-    "areaServed": "US",
-    "availableLanguage": "English"
+  "@id": SCHEMA_IDS.organization,
+  name: "IntegraFin Tax & Accounting",
+  alternateName: "IntegraFin",
+  legalName: "IntegraFin LLC",
+  url: `${SITE_URL}/`,
+  logo: {
+    "@type": "ImageObject",
+    "@id": SCHEMA_IDS.logo,
+    url: `${SITE_URL}/logo.svg`,
+    contentUrl: `${SITE_URL}/logo.svg`,
+    caption: "IntegraFin Tax & Accounting",
   },
-  "sameAs": [
-    "https://www.instagram.com/integrafinllc/",
-    "https://www.facebook.com/integrafintax/",
-    "https://www.linkedin.com/company/integrafin/",
-    "https://www.youtube.com/@IntegraFinTax"
-  ]
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+1-832-647-1819",
+    contactType: "customer service",
+    areaServed: "US",
+    availableLanguage: "English",
+  },
+  sameAs: ["https://www.linkedin.com/company/integrafin/"],
 };
 
-export const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  "name": "How to Form a New Business in Texas",
-  "description": "A general overview of entity review, registration, EIN, bookkeeping, payroll, and tax setup steps for a new Texas business.",
-  "step": [
+const localBusinessSchema = {
+  "@type": ["AccountingService", "LocalBusiness"],
+  "@id": SCHEMA_IDS.localBusiness,
+  name: "IntegraFin Tax & Accounting",
+  legalName: "IntegraFin LLC",
+  url: `${SITE_URL}/`,
+  telephone: "+1-832-647-1819",
+  email: "contact@integrafin.tax",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "2039 N Mason Rd, Suite 604",
+    addressLocality: "Katy",
+    addressRegion: "TX",
+    postalCode: "77449",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 29.7858,
+    longitude: -95.8244,
+  },
+  openingHoursSpecification: [
     {
-      "@type": "HowToStep",
-      "name": "Entity Selection",
-      "text": "Review ownership, operations, expected income, tax treatment, and legal considerations before choosing a structure. The appropriate entity depends on the business facts and may require legal advice."
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
     },
-    {
-      "@type": "HowToStep",
-      "name": "State Registration",
-      "text": "File the necessary formation documents with the Texas Secretary of State and local regulators to gain legal recognition."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "EIN and Tax Setup",
-      "text": "Obtain an Employer Identification Number (EIN) from the IRS and set up payroll, bookkeeping, and state tax accounts."
-    }
-  ]
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "IntegraFin tax and accounting services",
+    itemListElement: [
+      ["Small Business Tax Accountant Katy", "/business-tax-accounting"],
+      ["Individual Tax Preparation Katy TX", "/individual-tax-preparation"],
+      ["Tax Resolution Katy TX", "/tax-resolution"],
+      ["Payroll Tax Support", "/payroll-tax-support"],
+      ["Bookkeeping Services Katy TX", "/texas/katy-bookkeeping-services"],
+      ["QuickBooks Cleanup Katy TX", "/quickbooks-bookkeeping-services"],
+      ["LLC Tax Setup Texas", "/llc-formation-tax-setup"],
+    ].map(([name, path]) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name,
+        url: `${SITE_URL}${path}`,
+      },
+    })),
+  },
+  priceRange: "$$",
+  areaServed: [
+    { "@type": "City", name: "Katy" },
+    { "@type": "City", name: "Houston" },
+    { "@type": "City", name: "Sugar Land" },
+    { "@type": "City", name: "Cypress" },
+    { "@type": "City", name: "Richmond" },
+    { "@type": "AdministrativeArea", name: "Fort Bend County" },
+    { "@type": "AdministrativeArea", name: "Texas" },
+    { "@type": "Country", name: "United States" },
+  ],
+  parentOrganization: organizationRef,
+  sameAs: ["https://www.linkedin.com/company/integrafin/"],
 };
 
-export const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does a tax expert cost in Katy TX?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Fees depend on the returns, entities, periods, record condition, deadlines, and services involved. IntegraFin reviews the requested work before providing scope and pricing information. Call (832) 647-1819 to discuss the initial details."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What documents do I need for tax filing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Common records include W-2 and 1099 forms, the prior-year return, dependent information, deduction support, estimated-payment records, bank records for relevant business activity, and investment forms such as 1099-DIV or 1099-B. The final list depends on the return and taxpayer facts."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does IntegraFin help with IRS audits in Katy TX?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IntegraFin can review IRS correspondence, compare it with the relevant return and records, and explain the next documentation and response steps. The assistance available depends on the notice, the facts, and the agreed engagement scope."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you offer bookkeeping services for small businesses in Katy TX?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IntegraFin offers bookkeeping support for small businesses in Katy. Scope may include account setup, transaction classification, reconciliations, review questions, financial reports, cleanup, and QuickBooks support, depending on the records and written engagement."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can IntegraFin help me resolve back taxes with the IRS?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IntegraFin can review back-tax notices, filing history, balances, payment records, and supporting documents, then explain procedures that may be relevant. Payment plans, penalty relief, offers, representation, and agency outcomes depend on eligibility, facts, authorization, and IRS approval."
-      }
-    }
-  ]
+const websiteSchema = {
+  "@type": "WebSite",
+  "@id": SCHEMA_IDS.website,
+  url: `${SITE_URL}/`,
+  name: "IntegraFin Tax & Accounting",
+  alternateName: "IntegraFin",
+  publisher: organizationRef,
+  inLanguage: "en-US",
 };
 
-export const homepageFaqSchema = {
+export const rootSchemaGraph = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Why choose IntegraFin for tax expert services in Katy TX?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IntegraFin provides Katy-area tax preparation, bookkeeping, payroll-record support, planning discussions, and IRS notice review. Each engagement is scoped from the records, deadlines, taxpayer facts, and professional authorization; refunds, savings, compliance, and agency outcomes are not guaranteed."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How can I schedule a free consultation with your accountants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You can schedule a free consultation by filling out our online form or calling (832) 647-1819 during business hours. Our team will review your financial situation and outline practical next steps without any obligation to file."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What types of businesses do you specialize in?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IntegraFin's service pages address bookkeeping and tax workflows that can arise in real estate, construction, healthcare, professional services, retail, technology, and other businesses. The available work depends on the entity, records, filing history, and agreed scope."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What cities in Texas do your tax expert services serve?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IntegraFin is based in Katy and serves clients in nearby communities including Houston, Sugar Land, Cypress, and Richmond. Many engagements can use remote meetings and an organized document process; the available service depends on the work and client location."
-      }
-    }
-  ]
+  "@graph": [organizationSchema, localBusinessSchema, websiteSchema],
 };
+
+export const homepageWebPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": SCHEMA_IDS.homepage,
+  url: `${SITE_URL}/`,
+  name: "Katy Tax and Accounting Firm | IntegraFin Tax & Accounting",
+  description:
+    "IntegraFin is a Katy tax and accounting firm helping businesses and families with tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support.",
+  isPartOf: websiteRef,
+  about: localBusinessRef,
+  mainEntity: localBusinessRef,
+  inLanguage: "en-US",
+};
+
+export function buildWebPageSchema({
+  url,
+  name,
+  description,
+  mainEntityId,
+  type = "WebPage",
+}: {
+  url: string;
+  name: string;
+  description?: string;
+  mainEntityId?: string;
+  type?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage";
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": type,
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    ...(description ? { description } : {}),
+    isPartOf: websiteRef,
+    about: localBusinessRef,
+    breadcrumb: { "@id": `${url}#breadcrumb` },
+    ...(mainEntityId ? { mainEntity: { "@id": mainEntityId } } : {}),
+    inLanguage: "en-US",
+  };
+}
+
+export function buildBreadcrumbSchema(
+  url: string,
+  items: readonly { name: string; item: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.item,
+    })),
+  };
+}
+
+export function buildFaqSchema(
+  url: string,
+  faqs: readonly { question: string; answer: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${url}#faq`,
+    url,
+    isPartOf: { "@id": `${url}#webpage` },
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}

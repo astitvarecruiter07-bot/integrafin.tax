@@ -1,5 +1,11 @@
 import Link from "next/link";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  localBusinessRef,
+} from "@/lib/seo/schema";
 
 type FaqItem = {
   question: string;
@@ -58,33 +64,17 @@ export default function CityServicesPage({
   nearbyAreas,
   lastReviewed,
 }: CityServicesPageProps) {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    name: `${cityName}, ${stateCode} Tax and Accounting FAQ`,
-    url: pageUrl,
-    lastReviewed,
-    mainEntity: faqItems.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
+  const serviceId = `${pageUrl}#service`;
+  const faqSchema = buildFaqSchema(pageUrl, faqItems);
 
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": serviceId,
     name: `Tax and Accounting Services in ${cityName}, ${stateCode}`,
     serviceType: "Tax and Accounting Services",
     keywords: [primaryKeyword, ...secondaryKeywords].join(", "),
-    provider: {
-      "@type": "Organization",
-      name: "IntegraFin",
-      url: "https://integrafin.tax",
-    },
+    provider: localBusinessRef,
     areaServed: [
       {
         "@type": "City",
@@ -97,38 +87,22 @@ export default function CityServicesPage({
     ],
     description: heroDescription,
     url: pageUrl,
+    mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://integrafin.tax/",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Services",
-        item: "https://integrafin.tax/services",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: `${stateName} Services`,
-        item: statePageUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: `${cityName} Tax and Accounting Services`,
-        item: pageUrl,
-      },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+    { name: "Home", item: "https://integrafin.tax/" },
+    { name: "Services", item: "https://integrafin.tax/services" },
+    { name: `${stateName} Services`, item: statePageUrl },
+    { name: `${cityName} Tax and Accounting Services`, item: pageUrl },
+  ]);
+
+  const webPageSchema = buildWebPageSchema({
+    url: pageUrl,
+    name: `Tax Accountant in ${cityName}, ${stateName}`,
+    description: directAnswer,
+    mainEntityId: serviceId,
+  });
 
   return (
     <main className="bg-slate-50 min-h-screen">
@@ -143,6 +117,10 @@ export default function CityServicesPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
 
       <section className="bg-primary-dark pt-28 sm:pt-32 pb-14 sm:pb-20">

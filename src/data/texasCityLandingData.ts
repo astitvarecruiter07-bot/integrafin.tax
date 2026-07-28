@@ -86,9 +86,9 @@ export const texasCityPages: TexasCityLandingData[] = [
     county: "Harris, Fort Bend and Waller counties",
     primaryService: "Tax Accountant",
     primaryKeyword: "tax accountant Katy TX",
-    supportingKeywords: ["tax preparation Katy TX", "business tax accountant Katy TX", "small business accounting Katy", "IRS tax help Katy TX"],
-    title: "Tax Accountant in Katy, TX for Businesses | IntegraFin",
-    description: "Katy tax accountant for business tax, bookkeeping, payroll records and IRS notice help. Visit our Mason Road office or schedule a consultation.",
+    supportingKeywords: ["tax preparation Katy TX", "Katy tax and accounting", "local tax help Katy", "tax accountant Fort Bend County"],
+    title: "Tax Accountant Katy TX | Local Tax Help | IntegraFin",
+    description: "Katy tax accountant for individuals and businesses needing tax preparation and coordinated accounting support. Visit our Mason Road office or schedule online.",
     hero: "Local tax preparation, bookkeeping and IRS notice support from IntegraFin's Katy office for business owners, self-employed professionals and families.",
     intro: [
       "Katy sits across Harris, Fort Bend and Waller counties, so local businesses often operate across more than one taxing and permitting jurisdiction. A contractor may work throughout west Houston, a retailer may sell in person and online, and a consultant may serve clients nationwide from a Katy home office. Those differences affect records and questions even when the federal filing rules are the same.",

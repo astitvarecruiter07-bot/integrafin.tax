@@ -1,71 +1,60 @@
 import Link from "next/link";
 import type { HoustonIrsServicePageData } from "@/data/houstonIrsServicePages";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  localBusinessRef,
+} from "@/lib/seo/schema";
 
 const siteUrl = "https://integrafin.tax";
 const officeAddress = "2039 N Mason Rd, Suite 604, Katy, TX 77449";
 
 export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServicePageData }) {
   const pageUrl = `${siteUrl}${data.path}`;
+  const serviceId = `${pageUrl}#service`;
 
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": serviceId,
     name: data.serviceName,
     serviceType: data.serviceName,
     description: data.metaDescription,
     url: pageUrl,
-    provider: {
-      "@type": "Organization",
-      name: "IntegraFin Tax & Accounting",
-      url: siteUrl,
-      telephone: "+1-832-647-1819",
-      email: "contact@integrafin.tax",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "2039 N Mason Rd, Suite 604",
-        addressLocality: "Katy",
-        addressRegion: "TX",
-        postalCode: "77449",
-        addressCountry: "US",
-      },
-    },
+    provider: localBusinessRef,
     areaServed: [
       { "@type": "City", name: "Houston" },
       { "@type": "AdministrativeArea", name: "Greater Houston" },
     ],
     keywords: [data.primaryKeyword, ...data.supportingKeywords].join(", "),
+    mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: data.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  };
+  const faqSchema = buildFaqSchema(pageUrl, data.faqs);
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Houston Tax and Accounting",
-        item: `${siteUrl}/texas/houston-tax-accountant`,
-      },
-      { "@type": "ListItem", position: 3, name: data.serviceName, item: pageUrl },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+    { name: "Home", item: `${siteUrl}/` },
+    {
+      name: "Houston Tax and Accounting",
+      item: `${siteUrl}/texas/houston-tax-accountant`,
+    },
+    { name: data.serviceName, item: pageUrl },
+  ]);
+
+  const webPageSchema = buildWebPageSchema({
+    url: pageUrl,
+    name: data.metaTitle,
+    description: data.metaDescription,
+    mainEntityId: serviceId,
+  });
 
   return (
     <main className="min-h-screen bg-slate-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       <section className="bg-primary-dark pb-16 pt-28 sm:pt-32">
         <div className="mx-auto max-w-6xl px-6 text-center">

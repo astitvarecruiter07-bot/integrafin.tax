@@ -4,6 +4,7 @@ import { Check, CheckCircle2, ChevronRight } from "lucide-react";
 import HomeCallbackForm from "@/components/HomeCallbackForm";
 import HeroCarousel from "@/components/HeroCarousel";
 import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
+import { homepageWebPageSchema } from "@/lib/seo/schema";
 
 export const metadata = {
   title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
@@ -49,6 +50,10 @@ const stateServiceHubs = [
 export default function Home() {
   return (
     <main className="bg-slate-50 selection:bg-[#0092df] selection:text-white relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageWebPageSchema) }}
+      />
       {/* Navbar space is handled by layout.tsx */}
       
       {/* Hero Section */}
@@ -252,14 +257,14 @@ export default function Home() {
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  title: "Business - Tax & Accounting Services",
-                  desc: "Comprehensive accounting and bookkeeping solutions, including software implementation, payroll, financial statements, and tax compliance for businesses of all sizes.",
+                  title: "Small Business Tax Accountant in Katy",
+                  desc: "Tax preparation and year-round accounting for Katy LLCs, S corporations, partnerships, sole proprietors, contractors, consultants, healthcare practices, retailers, and other owner-managed businesses.",
                   href: "/business-tax-accounting",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><rect x="8" y="10" width="8" height="8" rx="1"/></svg>
                 },
                 {
-                  title: "Individual Tax Services",
-                  desc: "Individual tax preparation and planning based on the taxpayer's documents, filing history, eligibility, and applicable rules.",
+                  title: "Individual Tax Preparation Katy TX",
+                  desc: "Local filing support based on income documents, filing history, Texas residency, other-state activity, eligibility, and applicable rules.",
                   href: "/individual-tax-preparation",
                   icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 11v8"/></svg>
                 },

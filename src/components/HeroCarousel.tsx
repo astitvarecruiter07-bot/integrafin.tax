@@ -38,9 +38,11 @@ export default function HeroCarousel() {
           </h1>
 
           <p className="mx-auto mt-7 max-w-3xl text-base font-medium leading-relaxed text-slate-200 sm:text-lg md:text-xl lg:mx-0">
-            Book a 30-minute consultation with IntegraFin to discuss the records, deadlines, and
-            service you need. We support businesses and families in Katy, Fort Bend County, and
-            remotely across the United States.
+            <span className="font-black text-[#41c3ff]">Short answer:</span>{" "}
+            IntegraFin is a Katy tax and accounting firm helping businesses, self-employed
+            professionals, and families organize tax preparation, bookkeeping, payroll records,
+            and IRS notice next steps. Work begins with the relevant records, deadlines, and
+            requested service before a written scope is confirmed.
           </p>
 
           <ul className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm font-semibold text-slate-100 lg:justify-start">

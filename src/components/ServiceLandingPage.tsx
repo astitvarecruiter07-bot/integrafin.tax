@@ -14,27 +14,18 @@ import {
   Scale,
 } from "lucide-react";
 import type { ServiceLandingPageData, ServiceLandingPageSlug } from "@/data/serviceLandingPages";
+import { serviceAeoDetails } from "@/data/serviceAeoDetails";
 import {
   getContactHref,
   getLeadCtaLabel,
   SERVICE_BY_LANDING_SLUG,
 } from "@/lib/leadServices";
-
-const provider = {
-  "@type": "AccountingService",
-  name: "IntegraFin Tax & Accounting",
-  url: "https://integrafin.tax",
-  telephone: "+1-832-647-1819",
-  email: "contact@integrafin.tax",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "2039 N Mason Rd, Suite 604",
-    addressLocality: "Katy",
-    addressRegion: "TX",
-    postalCode: "77449",
-    addressCountry: "US",
-  },
-};
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  localBusinessRef,
+} from "@/lib/seo/schema";
 
 const areaServed = [
   { "@type": "Country", name: "United States" },
@@ -53,16 +44,19 @@ const iconBySlug: Record<ServiceLandingPageSlug, ComponentType<{ className?: str
 };
 
 function buildSchemas(data: ServiceLandingPageData) {
+  const serviceId = `${data.url}#service`;
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": serviceId,
     name: data.name,
     serviceType: data.serviceType,
     keywords: data.keywords,
     description: data.metaDescription,
     url: data.url,
-    provider,
+    provider: localBusinessRef,
     areaServed,
+    mainEntityOfPage: { "@id": `${data.url}#webpage` },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: `${data.name} scope`,
@@ -77,44 +71,38 @@ function buildSchemas(data: ServiceLandingPageData) {
     },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: data.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
+  const faqSchema = buildFaqSchema(data.url, data.faqs);
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://integrafin.tax/" },
-      { "@type": "ListItem", position: 2, name: "Services", item: "https://integrafin.tax/services" },
-      { "@type": "ListItem", position: 3, name: data.name, item: data.url },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema(data.url, [
+    { name: "Home", item: "https://integrafin.tax/" },
+    { name: "Services", item: "https://integrafin.tax/services" },
+    { name: data.name, item: data.url },
+  ]);
 
-  return { serviceSchema, faqSchema, breadcrumbSchema };
+  const webPageSchema = buildWebPageSchema({
+    url: data.url,
+    name: data.metaTitle,
+    description: data.metaDescription,
+    mainEntityId: serviceId,
+  });
+
+  return { serviceSchema, faqSchema, breadcrumbSchema, webPageSchema };
 }
 
 export default function ServiceLandingPage({ data }: { data: ServiceLandingPageData }) {
   const Icon = iconBySlug[data.slug];
-  const { serviceSchema, faqSchema, breadcrumbSchema } = buildSchemas(data);
+  const { serviceSchema, faqSchema, breadcrumbSchema, webPageSchema } = buildSchemas(data);
   const selectedService = SERVICE_BY_LANDING_SLUG[data.slug];
   const contactHref = getContactHref(selectedService);
   const primaryCta = getLeadCtaLabel(selectedService, data.primaryCta);
+  const aeo = serviceAeoDetails[data.slug];
 
   return (
     <main className="min-h-screen bg-slate-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       <section className="bg-primary-dark pt-28 sm:pt-32 pb-12 sm:pb-16">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -126,6 +114,10 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
             <h1 className="max-w-4xl text-3xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
               {data.heroTitle}
             </h1>
+            <p className="mt-6 max-w-3xl rounded-lg border border-white/15 bg-white/10 p-5 text-base leading-relaxed text-white sm:text-lg">
+              <span className="font-black text-secondary">Short answer:</span>{" "}
+              {data.quickAnswer}
+            </p>
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#d7e3fc] sm:text-lg">
               {data.heroDescription}
             </p>
@@ -168,9 +160,11 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
       <section className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <article className="rounded-lg border border-slate-200 bg-white p-7 shadow-sm sm:p-9">
-            <h2 className="text-2xl font-black text-primary sm:text-3xl">{data.quickAnswerTitle}</h2>
-            <p className="mt-4 leading-relaxed text-slate-700">{data.quickAnswer}</p>
-            <p className="mt-5 text-sm font-semibold text-slate-500">Last reviewed: June 30, 2026</p>
+            <h2 className="text-2xl font-black text-primary sm:text-3xl">Who this applies to</h2>
+            <p className="mt-4 leading-relaxed text-slate-700">{aeo.whoThisAppliesTo}</p>
+            <p className="mt-5 text-sm font-semibold text-slate-500">
+              Published: {aeo.published} · Last substantive review: {aeo.lastReviewed}
+            </p>
           </article>
           <div className="grid gap-4 sm:grid-cols-3">
             {data.highlights.map((item) => (
@@ -227,6 +221,33 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-6 pb-12 sm:pb-16">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <article className="rounded-lg border border-emerald-200 bg-emerald-50 p-7">
+            <h2 className="text-2xl font-black text-primary">What is included</h2>
+            <ul className="mt-5 grid gap-3 text-sm leading-relaxed text-slate-700">
+              {aeo.included.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-700" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+          <article className="rounded-lg border border-amber-200 bg-amber-50 p-7">
+            <h2 className="text-2xl font-black text-primary">What requires a separate scope</h2>
+            <ul className="mt-5 grid gap-3 text-sm leading-relaxed text-slate-700">
+              {aeo.notIncluded.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <Scale className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <section className="bg-primary-dark py-12 text-white sm:py-16">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
@@ -260,6 +281,44 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
+        <div className="mb-8 max-w-4xl">
+          <h2 className="text-2xl font-black text-primary sm:text-3xl">
+            Timing, deadlines, pricing, and limitations
+          </h2>
+          <p className="mt-3 leading-relaxed text-slate-700">
+            These factors help define the written scope before work begins. Exact timing and fees
+            are confirmed after the records, periods, deadlines, and requested deliverables are reviewed.
+          </p>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {[
+            ["Important timing and deadlines", aeo.timingAndDeadlines],
+            ["Factors that affect pricing", aeo.pricingFactors],
+            ["Important limitations", aeo.limitations],
+          ].map(([title, items]) => (
+            <article key={title as string} className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 className="text-lg font-black text-primary-dark">{title as string}</h3>
+              <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-slate-700">
+                {(items as readonly string[]).map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <ClipboardCheck className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
+          <p>
+            <span className="font-black text-primary-dark">Content owner:</span>{" "}
+            IntegraFin Tax &amp; Accounting. A named professional reviewer will be added only
+            after the reviewer&apos;s identity, role, and publishable qualifications are verified.
+          </p>
         </div>
       </section>
 

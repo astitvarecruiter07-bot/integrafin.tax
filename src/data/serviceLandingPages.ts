@@ -76,18 +76,18 @@ export const serviceLandingPageSlugs: ServiceLandingPageSlug[] = [
 export const focusedServiceLinks = [
   {
     href: "/business-tax-accounting",
-    label: "Business Tax & Accounting",
+    label: "Small Business Tax Accountant Katy",
     description: "Year-round tax, accounting, bookkeeping, and advisory support for small businesses.",
   },
   {
     href: "/individual-tax-preparation",
-    label: "Individual Tax Preparation",
+    label: "Individual Tax Preparation Katy TX",
     description: "Personal tax filing support for W-2, 1099, rental, investment, and multi-state situations.",
   },
   {
     href: "/tax-resolution",
-    label: "Tax Resolution",
-    description: "IRS notice, back tax, payment-plan, penalty, audit, and unfiled-return support.",
+    label: "Tax Resolution Katy TX",
+    description: "Underlying back-tax, payment-plan, penalty, audit, payroll-tax, and unfiled-return support.",
   },
   {
     href: "/bookkeeping-cleanup",
@@ -101,7 +101,7 @@ export const focusedServiceLinks = [
   },
   {
     href: "/quickbooks-bookkeeping-services",
-    label: "QuickBooks Bookkeeping Services",
+    label: "QuickBooks Cleanup Katy TX",
     description: "QuickBooks setup, cleanup, monthly bookkeeping, reconciliation, and reporting support.",
   },
 ] as const;
@@ -110,18 +110,18 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "business-tax-accounting": {
     slug: "business-tax-accounting",
     url: `${baseUrl}/business-tax-accounting`,
-    lastModified: "2026-07-24",
-    metaTitle: "Business Tax & Accounting Services | IntegraFin",
+    lastModified: "2026-07-29",
+    metaTitle: "Small Business Tax Accountant Katy TX | IntegraFin",
     metaDescription:
-      "Business tax and accounting services for LLCs, S corps, partnerships, and small business owners. Get bookkeeping, tax prep, payroll records, and advisory support.",
-    name: "Business Tax & Accounting Services",
-    serviceType: "Small business tax preparation, accounting, bookkeeping, and advisory support",
+      "Small business tax accountant in Katy for LLCs, S corps, partnerships, and sole proprietors. Get tax preparation, bookkeeping, payroll-record, and planning support.",
+    name: "Small Business Tax Accountant in Katy",
+    serviceType: "Katy small business tax preparation, accounting, bookkeeping, and advisory support",
     keywords:
-      "business tax accounting, small business tax services, business tax preparation, small business accounting, LLC tax accountant",
-    eyebrow: "Business Tax & Accounting",
-    heroTitle: "Business tax and accounting support built around clean records",
+      "small business tax accountant Katy, Katy business tax preparation, small business accounting Katy, LLC tax accountant Katy",
+    eyebrow: "Katy Small Business Tax & Accounting",
+    heroTitle: "Small business tax accountant support for Katy owners",
     heroDescription:
-      "IntegraFin helps business owners connect bookkeeping, tax preparation, payroll records, entity questions, and year-round planning in one practical workflow.",
+      "IntegraFin helps Katy small business owners connect bookkeeping, tax preparation, payroll records, entity questions, and year-round planning in one practical workflow.",
     heroBullets: [
       "LLCs, S corps, partnerships, and sole proprietors",
       "Bookkeeping, payroll records, and tax-ready reporting",
@@ -131,9 +131,9 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     secondaryCta: "Call (832) 647-1819",
     hubHref: "/services#business",
     hubLabel: "View Business Services Hub",
-    quickAnswerTitle: "Quick Answer: Business Tax & Accounting",
+    quickAnswerTitle: "Quick Answer: Small Business Tax Accounting in Katy",
     quickAnswer:
-      "Business tax and accounting works best when monthly records, payroll details, owner activity, estimated taxes, and filing documents are kept in the same review rhythm. IntegraFin helps organize that workflow so tax preparation is not separated from the records that support it.",
+      "A small business tax accountant connects monthly records, payroll details, owner activity, estimated taxes, and filing documents in one review rhythm. IntegraFin applies that workflow to Katy LLCs, S corporations, partnerships, sole proprietors, and other owner-managed businesses.",
     highlights: [
       {
         title: "Business tax preparation",
@@ -179,9 +179,9 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     situationsTitle: "Common Business Tax Situations",
     situations: [
       {
-        title: "Books are not ready for filing",
+        title: "Katy service business books are not ready",
         description:
-          "The return cannot be prepared confidently because income, expenses, bank reconciliations, payroll, or owner activity need cleanup first.",
+          "A local contractor, consultant, healthcare practice, retailer, or other service business cannot move confidently into filing because income, expenses, bank reconciliations, payroll, or owner activity need cleanup first.",
       },
       {
         title: "Business structure changed",
@@ -277,18 +277,18 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "individual-tax-preparation": {
     slug: "individual-tax-preparation",
     url: `${baseUrl}/individual-tax-preparation`,
-    lastModified: "2026-07-24",
-    metaTitle: "Individual Tax Preparation Services | IntegraFin",
+    lastModified: "2026-07-29",
+    metaTitle: "Individual Tax Preparation Katy TX | IntegraFin",
     metaDescription:
-      "Individual tax preparation for W-2 employees, 1099 workers, families, investors, rental owners, and multi-state taxpayers. Schedule a tax consultation.",
-    name: "Individual Tax Preparation Services",
-    serviceType: "Personal income tax preparation and filing support",
+      "Individual tax preparation in Katy, TX for W-2 employees, 1099 workers, families, investors, rental owners, and multi-state taxpayers. Schedule a consultation.",
+    name: "Individual Tax Preparation in Katy, TX",
+    serviceType: "Katy individual income tax preparation and filing support",
     keywords:
-      "individual tax preparation, personal tax preparation, tax filing help, 1099 tax preparation, tax preparer",
-    eyebrow: "Individual Tax Preparation",
-    heroTitle: "Personal tax preparation with the documents, credits, and details reviewed",
+      "individual tax preparation Katy TX, personal tax preparation Katy, 1099 tax preparation Katy, tax filing help Katy",
+    eyebrow: "Individual Tax Preparation Katy TX",
+    heroTitle: "Individual tax preparation for Katy families and self-employed filers",
     heroDescription:
-      "IntegraFin helps individuals, families, self-employed taxpayers, and multi-state filers prepare organized tax records and avoid last-minute filing confusion.",
+      "IntegraFin helps Katy-area individuals, families, self-employed taxpayers, and multi-state filers organize documents, review filing details, and avoid last-minute confusion.",
     heroBullets: [
       "W-2, 1099, rental, investment, and multi-state documents",
       "Tax-credit and deduction review based on your records",
@@ -298,9 +298,9 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     secondaryCta: "Call (832) 647-1819",
     hubHref: "/services#individual",
     hubLabel: "View Individual Services Hub",
-    quickAnswerTitle: "Quick Answer: Individual Tax Preparation",
+    quickAnswerTitle: "Quick Answer: Individual Tax Preparation in Katy",
     quickAnswer:
-      "Individual tax preparation is more than entering forms. A useful review checks income documents, withholding, estimated payments, credits, deductions, dependents, investments, rental details, and prior-year carryovers before the return is finalized.",
+      "Individual tax preparation is more than entering forms. For Katy-area filers, a useful review checks income documents, withholding, estimated payments, credits, deductions, dependents, investments, rental details, Texas residency, other-state activity, and prior-year carryovers before the return is finalized.",
     highlights: [
       {
         title: "Personal tax filing",
@@ -443,20 +443,20 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "tax-resolution": {
     slug: "tax-resolution",
     url: `${baseUrl}/tax-resolution`,
-    lastModified: "2026-07-24",
-    metaTitle: "Tax Resolution & IRS Notice Help Katy TX | IntegraFin",
+    lastModified: "2026-07-29",
+    metaTitle: "Tax Resolution Katy TX | Back Tax Help | IntegraFin",
     metaDescription:
-      "Tax resolution services for IRS notices, back taxes, unfiled returns, payment plans, penalty questions, audits, and payroll tax issues. Talk to IntegraFin.",
-    name: "Tax Resolution Services",
-    serviceType: "IRS notice, back tax, payment plan, penalty, audit, and unfiled return support",
+      "Tax resolution in Katy for back taxes, unfiled returns, payment-plan review, penalty questions, audits, and payroll tax issues. Talk to IntegraFin.",
+    name: "Tax Resolution Services in Katy, TX",
+    serviceType: "Back tax, payment plan, penalty, audit, payroll tax, and unfiled return support",
     keywords:
-      "tax resolution, IRS notice help, back tax help, payment plan help, penalty abatement, unfiled tax returns",
-    eyebrow: "Tax Resolution",
-    heroTitle: "Resolve IRS and state tax problems with organized next steps",
+      "tax resolution Katy TX, back tax help Katy, IRS payment plan help, penalty abatement support, unfiled tax returns",
+    eyebrow: "Tax Resolution Katy TX",
+    heroTitle: "Tax resolution for back taxes and unresolved filing problems",
     heroDescription:
-      "IntegraFin helps taxpayers and business owners review notices, organize records, understand response options, and plan the next move for back taxes or filing issues.",
+      "IntegraFin helps Katy taxpayers and business owners move beyond initial notice triage by organizing records and evaluating next steps for back taxes, unfiled returns, payment arrangements, penalties, audits, or payroll tax issues.",
     heroBullets: [
-      "IRS notices, balances, audits, and document requests",
+      "Back-tax balances, audits, and unresolved filing issues",
       "Payment-plan and penalty-question support",
       "Unfiled returns and business payroll tax records",
     ],
@@ -466,12 +466,12 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     hubLabel: "View Tax Resolution Hub",
     quickAnswerTitle: "Quick Answer: Tax Resolution",
     quickAnswer:
-      "Tax resolution starts with the notice, transcript, filed returns, payment history, and supporting records. The right path may involve filing missing returns, responding to a notice, reviewing a balance, requesting a payment plan, or documenting a penalty question.",
+      "Tax resolution addresses an underlying balance, missing return, audit, penalty, payroll tax problem, or other unresolved compliance issue. It starts with transcripts, filed returns, payment history, deadlines, and supporting records. If you only need help identifying and responding to a CP14, CP2000, or Letter 12C, use the dedicated Katy IRS notice-help page first.",
     highlights: [
       {
-        title: "Notice review",
+        title: "Resolution case assessment",
         description:
-          "We identify the notice number, tax year, deadline, requested action, and records needed before a response is prepared.",
+          "We identify the tax years, balances, filing gaps, deadlines, transcript issues, and records that determine which resolution paths can be evaluated.",
       },
       {
         title: "Back tax and payment planning",
@@ -489,9 +489,9 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
       "The work begins with fact-finding. Strong resolution planning depends on accurate balances, deadlines, records, and filing history.",
     processSteps: [
       {
-        title: "1. Notice and deadline review",
+        title: "1. Case and deadline review",
         description:
-          "We review the IRS or state letter, tax year, response deadline, proposed changes, and contact instructions.",
+          "We review the tax years, filing status, IRS or state correspondence, response deadlines, balances, and contact instructions.",
       },
       {
         title: "2. Transcript and return comparison",
@@ -517,9 +517,9 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
           "A taxpayer receives a balance notice and needs to compare the amount with returns, payments, transcripts, and possible payment options.",
       },
       {
-        title: "CP2000 or income mismatch",
+        title: "Audit or examination support",
         description:
-          "A proposed IRS change needs to be compared with W-2, 1099, brokerage, business, or withholding records.",
+          "An open examination requires returns, correspondence, bookkeeping, receipts, and other supporting records to be organized around the issues under review.",
       },
       {
         title: "Unfiled tax returns",
@@ -613,7 +613,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "bookkeeping-cleanup": {
     slug: "bookkeeping-cleanup",
     url: `${baseUrl}/bookkeeping-cleanup`,
-    lastModified: "2026-07-24",
+    lastModified: "2026-07-29",
     metaTitle: "Bookkeeping Cleanup Services | Catch-Up Books | IntegraFin",
     metaDescription:
       "Bookkeeping cleanup services for messy or behind books. IntegraFin helps reconcile accounts, fix categories, organize records, and prepare tax-ready reports.",
@@ -692,9 +692,9 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
           "Owner draws, contributions, reimbursements, and personal expenses need to be separated where records allow.",
       },
       {
-        title: "QuickBooks file is hard to trust",
+        title: "Accounting file is hard to trust",
         description:
-          "The file has duplicate entries, old bank feeds, uncategorized activity, negative balances, or reports that do not match statements.",
+          "The accounting file has duplicate entries, stale feeds, uncategorized activity, negative balances, or reports that do not match statements. Software-specific QuickBooks work is handled on the dedicated QuickBooks page.",
       },
       {
         title: "IRS or lender requested records",
@@ -780,7 +780,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "payroll-tax-support": {
     slug: "payroll-tax-support",
     url: `${baseUrl}/payroll-tax-support`,
-    lastModified: "2026-07-24",
+    lastModified: "2026-07-29",
     metaTitle: "Payroll Tax Support | Employer Filing Help | IntegraFin",
     metaDescription:
       "Payroll tax support for employer records, deposits, quarterly filings, notices, wage reports, and cleanup questions. Get help from IntegraFin.",
@@ -947,16 +947,16 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "quickbooks-bookkeeping-services": {
     slug: "quickbooks-bookkeeping-services",
     url: `${baseUrl}/quickbooks-bookkeeping-services`,
-    lastModified: "2026-07-24",
-    metaTitle: "QuickBooks Bookkeeping & Cleanup Katy TX | IntegraFin",
+    lastModified: "2026-07-29",
+    metaTitle: "QuickBooks Cleanup Katy TX | Bookkeeping | IntegraFin",
     metaDescription:
-      "QuickBooks bookkeeping services for setup, cleanup, reconciliations, monthly books, and tax-ready reporting. Get bookkeeping help from IntegraFin.",
-    name: "QuickBooks Bookkeeping Services",
-    serviceType: "QuickBooks setup, bookkeeping cleanup, monthly reconciliation, and reporting support",
+      "QuickBooks cleanup in Katy, TX for setup errors, duplicates, unreconciled accounts, bank feeds, monthly books, and tax-ready reporting. Talk to IntegraFin.",
+    name: "QuickBooks Cleanup and Bookkeeping in Katy, TX",
+    serviceType: "QuickBooks-specific setup, cleanup, monthly reconciliation, and reporting support",
     keywords:
-      "QuickBooks bookkeeping services, QuickBooks cleanup, QuickBooks bookkeeper, QuickBooks reconciliation, QuickBooks setup",
-    eyebrow: "QuickBooks Bookkeeping Services",
-    heroTitle: "QuickBooks bookkeeping support that turns transactions into tax-ready records",
+      "QuickBooks cleanup Katy TX, QuickBooks bookkeeper Katy, QuickBooks reconciliation Katy, QuickBooks setup Katy",
+    eyebrow: "QuickBooks Cleanup Katy TX",
+    heroTitle: "QuickBooks cleanup and bookkeeping for Katy businesses",
     heroDescription:
       "IntegraFin helps business owners set up, clean up, reconcile, and maintain QuickBooks files so reports are easier to review before tax season.",
     heroBullets: [

@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import TaxCalculatorClient from "./TaxCalculatorClient";
+import {
+    buildBreadcrumbSchema,
+    buildFaqSchema,
+    buildWebPageSchema,
+    organizationRef,
+} from "@/lib/seo/schema";
 
 const pageUrl = "https://integrafin.tax/tax-calculator";
+const applicationId = `${pageUrl}#application`;
 
 export const metadata: Metadata = {
     title: "2025 & 2026 Federal Tax Calculator | Refund Estimator",
@@ -74,6 +81,7 @@ const calculatorFaqs = [
 const softwareApplicationSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": applicationId,
     name: "2025 and 2026 Federal Tax Calculator & Refund Estimator",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Any",
@@ -94,44 +102,24 @@ const softwareApplicationSchema = {
         price: "0",
         priceCurrency: "USD",
     },
-    publisher: {
-        "@type": "Organization",
-        name: "IntegraFin Tax & Accounting",
-        url: "https://integrafin.tax",
-    },
+    publisher: organizationRef,
+    mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
 };
 
-const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: calculatorFaqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer,
-        },
-    })),
-};
+const faqSchema = buildFaqSchema(pageUrl, calculatorFaqs);
 
-const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-        {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://integrafin.tax/",
-        },
-        {
-            "@type": "ListItem",
-            position: 2,
-            name: "Federal Tax Calculator",
-            item: pageUrl,
-        },
-    ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+    { name: "Home", item: "https://integrafin.tax/" },
+    { name: "Federal Tax Calculator", item: pageUrl },
+]);
+
+const webPageSchema = buildWebPageSchema({
+    url: pageUrl,
+    name: "2025 & 2026 Federal Tax Calculator | Refund Estimator",
+    description:
+        "Estimate 2025 or 2026 federal income tax, refund or balance due, self-employment tax, capital gains, deductions, credits, and filing scenarios using IRS-sourced tables.",
+    mainEntityId: applicationId,
+});
 
 export default function TaxCalculatorPage() {
     return (
@@ -147,6 +135,10 @@ export default function TaxCalculatorPage() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
             />
             <TaxCalculatorClient />
         </>

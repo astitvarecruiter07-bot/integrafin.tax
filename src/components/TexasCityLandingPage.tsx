@@ -3,11 +3,18 @@ import type { TexasCityLandingData } from "@/data/texasCityLandingData";
 import { texasCityPages } from "@/data/texasCityLandingData";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
 import { houstonIrsServicePageList } from "@/data/houstonIrsServicePages";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  localBusinessRef,
+} from "@/lib/seo/schema";
 
 const officeAddress = "2039 N Mason Rd, Suite 604, Katy, TX 77449";
 
 export default function TexasCityLandingPage({ page }: { page: TexasCityLandingData }) {
   const pageUrl = `https://integrafin.tax/texas/${page.slug}`;
+  const serviceId = `${pageUrl}#service`;
   const relatedPages = texasCityPages
     .filter(({ slug, city }) => slug !== page.slug && page.nearby.includes(city))
     .slice(0, 6);
@@ -15,59 +22,41 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": serviceId,
     name: `${page.primaryService} in ${page.city}, TX`,
     serviceType: "Tax and accounting services",
     description: page.hero,
     url: pageUrl,
-    provider: {
-      "@type": "Organization",
-      name: "IntegraFin",
-      url: "https://integrafin.tax",
-      telephone: "+1-832-647-1819",
-      email: "contact@integrafin.tax",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "2039 N Mason Rd, Suite 604",
-        addressLocality: "Katy",
-        addressRegion: "TX",
-        postalCode: "77449",
-        addressCountry: "US",
-      },
-    },
+    provider: localBusinessRef,
     areaServed: { "@type": "City", name: page.city },
     keywords: [page.primaryKeyword, ...page.supportingKeywords].join(", "),
+    mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: page.faq.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
+  const faqSchema = buildFaqSchema(pageUrl, page.faq);
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://integrafin.tax/" },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Texas Tax and Accounting Services",
-        item: "https://integrafin.tax/texas-tax-accounting-services",
-      },
-      { "@type": "ListItem", position: 3, name: `${page.primaryService} in ${page.city}`, item: pageUrl },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+    { name: "Home", item: "https://integrafin.tax/" },
+    {
+      name: "Texas Tax and Accounting Services",
+      item: "https://integrafin.tax/texas-tax-accounting-services",
+    },
+    { name: `${page.primaryService} in ${page.city}`, item: pageUrl },
+  ]);
+
+  const webPageSchema = buildWebPageSchema({
+    url: pageUrl,
+    name: page.title,
+    description: page.description,
+    mainEntityId: serviceId,
+  });
 
   return (
     <main className="min-h-screen bg-slate-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       <section className="bg-primary-dark pb-16 pt-28 sm:pt-32">
         <div className="mx-auto max-w-6xl px-6 text-center">
@@ -77,6 +66,13 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
           <h1 className="text-3xl font-black tracking-tight text-white md:text-5xl">
             {page.primaryService} in {page.city}, TX
           </h1>
+          <p className="mx-auto mt-6 max-w-3xl rounded-xl border border-white/15 bg-white/10 p-5 text-left text-base leading-relaxed text-white md:text-lg">
+            <span className="font-black text-secondary">Short answer:</span>{" "}
+            IntegraFin provides {page.primaryService.toLowerCase()} support for {page.city}-area
+            businesses, self-employed professionals, and individuals. Work begins with the relevant
+            records, filing history, deadlines, and requested outcome, then moves into a written scope
+            for preparation, bookkeeping, payroll-record, planning, or IRS notice assistance.
+          </p>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-[#d7e3fc] md:text-lg">
             {page.hero}
           </p>
@@ -159,7 +155,64 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
           <div className="space-y-5 text-slate-700 leading-relaxed">
             {page.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
-          <p className="mt-6 text-sm font-semibold text-slate-500">Last reviewed: June 22, 2026</p>
+          <p className="mt-6 text-sm font-semibold text-slate-500">
+            City content last reviewed: June 22, 2026 · AEO template updated: July 29, 2026
+          </p>
+        </article>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-10">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-7">
+            <h2 className="text-2xl font-black text-primary">What may be included</h2>
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <li>• Initial review of relevant returns, books, payroll reports, notices, records, and deadlines</li>
+              <li>• A written scope for the selected tax, bookkeeping, accounting, payroll-record, or notice workflow</li>
+              <li>• Document requests, preparation steps, client review, and next-step notes for the agreed deliverables</li>
+            </ul>
+          </article>
+          <article className="rounded-2xl border border-amber-200 bg-amber-50 p-7">
+            <h2 className="text-2xl font-black text-primary">What requires a separate scope</h2>
+            <ul className="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
+              <li>• Bookkeeping cleanup, amended returns, payroll corrections, notice work, and representation not listed in the engagement</li>
+              <li>• Legal advice, legal entity documents, audits, reviews, attestations, valuations, or assurance services</li>
+              <li>• Work for additional entities, owners, states, periods, or agencies discovered after intake</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-10">
+        <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
+          <h2 className="text-2xl font-black text-primary sm:text-3xl">
+            Timing, pricing factors, and important limitations
+          </h2>
+          <div className="mt-7 grid gap-5 lg:grid-cols-3">
+            {[
+              [
+                "Important timing",
+                "Start before the applicable filing, payment, notice, payroll, or document deadline. Extensions, payments, returns, and agency responses may have different due dates.",
+              ],
+              [
+                "Pricing factors",
+                "Fees depend on the entities, periods, states, transaction volume, record condition, forms, notices, cleanup needs, deadlines, and deliverables included in writing.",
+              ],
+              [
+                "What IntegraFin cannot promise",
+                "Refunds, tax savings, filing acceptance, penalty relief, representation availability, processing time, and agency outcomes depend on facts, law, authorization, and government review.",
+              ],
+            ].map(([title, description]) => (
+              <section key={title} className="rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <h3 className="font-black text-primary-dark">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700">{description}</p>
+              </section>
+            ))}
+          </div>
+          <p className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
+            <span className="font-black text-primary-dark">Content owner:</span>{" "}
+            IntegraFin Tax &amp; Accounting. A named professional reviewer will be published only
+            after the person&apos;s identity, role, and qualifications are verified for public use.
+          </p>
         </article>
       </section>
 

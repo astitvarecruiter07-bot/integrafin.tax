@@ -442,7 +442,12 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
                             Last reviewed
                         </p>
                         <p className="text-[#003580] font-bold mt-1">June 16, 2026</p>
-                        <p className="text-sm text-slate-600 mt-2">Reviewed by: IntegraFin tax team</p>
+                        <p className="text-sm text-slate-600 mt-2">
+                            Content owner: IntegraFin Tax &amp; Accounting
+                        </p>
+                        <p className="text-xs text-slate-500 mt-2">
+                            Named professional reviewer pending verified public identity and qualifications.
+                        </p>
                     </div>
                 </div>
 
@@ -1592,7 +1597,11 @@ export default function TaxCalculatorClient() {
                         </h1>
                         
                         <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
-                            Estimate your federal tax picture for 2025 filing or 2026 planning, then see how filing status, deductions, credits, and other income can change the result.
+                            <span className="font-black text-[#00C2CB]">Short answer:</span>{" "}
+                            Use this federal tax calculator to estimate 2025 filing or 2026 planning
+                            results from filing status, income, deductions, credits, self-employment,
+                            and long-term gains. It is a planning estimate, not a filed return, and
+                            excludes state tax and several federal adjustments.
                         </p>
 
                         <div className="flex flex-wrap items-center gap-6">

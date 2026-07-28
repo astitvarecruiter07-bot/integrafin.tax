@@ -17,8 +17,12 @@ import {
   getBlogPostPublishedIso,
   getBlogPostUrl,
   stripHtml,
-  toAbsoluteUrl,
 } from "@/lib/seo/blog";
+import {
+  localBusinessRef,
+  organizationRef,
+  websiteRef,
+} from "@/lib/seo/schema";
 
 const relatedResourceLinks = [
   { href: "/services", label: "Tax and accounting services" },
@@ -307,24 +311,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 dateModified: modifiedIso,
                 articleSection: post.category || "Tax Insight",
                 wordCount,
-                author: {
-                  "@type": "Organization",
-                  name: authorName,
-                  url: `${SITE_URL}/about`,
-                },
-                publisher: {
-                  "@type": "Organization",
-                  "@id": `${SITE_URL}/#organization`,
-                  name: "IntegraFin",
-                  logo: {
-                    "@type": "ImageObject",
-                    url: toAbsoluteUrl("/images/logo1.png"),
-                  },
-                },
+                author: organizationRef,
+                publisher: organizationRef,
                 mainEntityOfPage: {
-                  "@type": "WebPage",
-                  "@id": canonicalUrl,
+                  "@id": `${canonicalUrl}#webpage`,
                 },
+              },
+              {
+                "@type": "WebPage",
+                "@id": `${canonicalUrl}#webpage`,
+                url: canonicalUrl,
+                name: post.title,
+                description,
+                isPartOf: websiteRef,
+                about: localBusinessRef,
+                breadcrumb: { "@id": `${canonicalUrl}#breadcrumb` },
+                primaryImageOfPage: {
+                  "@type": "ImageObject",
+                  url: imageUrl,
+                },
+                mainEntity: { "@id": `${canonicalUrl}#article` },
+                publisher: organizationRef,
+                inLanguage: "en-US",
               },
               buildBreadcrumbJsonLd([
                 { name: "Home", item: `${SITE_URL}/` },

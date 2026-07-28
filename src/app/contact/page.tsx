@@ -11,6 +11,7 @@ import {
   Phone,
   ShieldCheck,
 } from "lucide-react";
+import { buildBreadcrumbSchema, buildFaqSchema, buildWebPageSchema } from "@/lib/seo/schema";
 import ContactForm from "@/components/ContactForm";
 import { getLeadCtaLabel, normalizeLeadService } from "@/lib/leadServices";
 
@@ -60,35 +61,22 @@ const contactFaqs = [
   },
 ];
 
-const contactPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "@id": "https://integrafin.tax/contact#webpage",
-  url: "https://integrafin.tax/contact",
+const contactPageUrl = "https://integrafin.tax/contact";
+const contactPageSchema = buildWebPageSchema({
+  url: contactPageUrl,
+  type: "ContactPage",
   name: "Contact IntegraFin Tax & Accounting",
   description:
     "Contact IntegraFin in Katy, Texas for tax preparation, bookkeeping, payroll support, LLC tax setup, and IRS notice help.",
-  mainEntity: { "@id": "https://integrafin.tax/#localbusiness" },
-};
+  mainEntityId: "https://integrafin.tax/#localbusiness",
+});
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://integrafin.tax/" },
-    { "@type": "ListItem", position: 2, name: "Contact", item: "https://integrafin.tax/contact" },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema(contactPageUrl, [
+  { name: "Home", item: "https://integrafin.tax/" },
+  { name: "Contact", item: contactPageUrl },
+]);
 
-const contactFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: contactFaqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: { "@type": "Answer", text: faq.answer },
-  })),
-};
+const contactFaqSchema = buildFaqSchema(contactPageUrl, contactFaqs);
 
 type ContactPageProps = {
   searchParams: Promise<{ service?: string | string[] }>;

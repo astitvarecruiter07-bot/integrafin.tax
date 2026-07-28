@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  organizationRef,
+} from "@/lib/seo/schema";
 
 const pageUrl = "https://integrafin.tax/tax-calculator-guide";
+const articleId = `${pageUrl}#article`;
 
 export const metadata: Metadata = {
   title: "2025 and 2026 Federal Tax Calculator Guide | IntegraFin",
@@ -123,36 +130,32 @@ const faqs = [
 const guideSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
+  "@id": articleId,
   headline: "2025 and 2026 Federal Tax Calculator Guide",
   description:
     "A practical guide for using a federal tax calculator to estimate 2025 and 2026 income tax, self-employment tax, and capital gains.",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",
-  author: {
-    "@type": "Organization",
-    name: "IntegraFin Tax & Accounting",
-    url: "https://integrafin.tax",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "IntegraFin Tax & Accounting",
-    url: "https://integrafin.tax",
-  },
-  mainEntityOfPage: pageUrl,
+  author: organizationRef,
+  publisher: organizationRef,
+  mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+const faqSchema = buildFaqSchema(pageUrl, faqs);
+
+const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+  { name: "Home", item: "https://integrafin.tax/" },
+  { name: "Federal Tax Calculator", item: "https://integrafin.tax/tax-calculator" },
+  { name: "Federal Tax Calculator Guide", item: pageUrl },
+]);
+
+const webPageSchema = buildWebPageSchema({
+  url: pageUrl,
+  name: "2025 and 2026 Federal Tax Calculator Guide | IntegraFin",
+  description:
+    "A practical guide for using a federal tax calculator to estimate 2025 and 2026 income tax, self-employment tax, and capital gains.",
+  mainEntityId: articleId,
+});
 
 export default function TaxCalculatorGuidePage() {
   return (
@@ -165,6 +168,8 @@ export default function TaxCalculatorGuidePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       <section className="bg-[#003580] pt-32 pb-16 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">

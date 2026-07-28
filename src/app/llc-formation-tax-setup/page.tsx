@@ -10,19 +10,26 @@ import {
   ReceiptText,
   ShieldCheck,
 } from "lucide-react";
+import {
+  buildBreadcrumbSchema,
+  buildFaqSchema,
+  buildWebPageSchema,
+  localBusinessRef,
+} from "@/lib/seo/schema";
 
 const pageUrl = "https://integrafin.tax/llc-formation-tax-setup";
+const serviceId = `${pageUrl}#service`;
 
 export const metadata: Metadata = {
-  title: "LLC Formation Tax Setup | EIN & Bookkeeping | IntegraFin",
+  title: "LLC Tax Setup Texas | EIN & Bookkeeping | IntegraFin",
   description:
-    "Start an LLC with tax setup support from IntegraFin. Get help planning EIN, tax classification, bookkeeping, payroll records, and first-year compliance steps.",
+    "LLC tax setup in Texas with EIN planning, tax classification review, bookkeeping, payroll records, and a first-year compliance calendar from IntegraFin.",
   alternates: { canonical: pageUrl },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "LLC Formation Tax Setup | EIN & Bookkeeping | IntegraFin",
+    title: "LLC Tax Setup Texas | EIN & Bookkeeping | IntegraFin",
     description:
-      "Formation support connected to tax setup, EIN planning, bookkeeping, payroll records, and first-year compliance workflow.",
+      "Texas LLC formation support connected to tax setup, EIN planning, bookkeeping, payroll records, and a first-year compliance workflow.",
     url: pageUrl,
   },
 };
@@ -168,26 +175,13 @@ const faqItems = [
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceId,
   name: "LLC Formation Tax Setup",
   serviceType: "Business formation tax setup and bookkeeping launch support",
   description:
     "IntegraFin helps new business owners connect LLC formation, EIN planning, federal tax classification, bookkeeping, payroll records, and first-year compliance workflow.",
   url: pageUrl,
-  provider: {
-    "@type": "AccountingService",
-    name: "IntegraFin Tax & Accounting",
-    url: "https://integrafin.tax",
-    telephone: "+1-832-647-1819",
-    email: "contact@integrafin.tax",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "2039 N Mason Rd, Suite 604",
-      addressLocality: "Katy",
-      addressRegion: "TX",
-      postalCode: "77449",
-      addressCountry: "US",
-    },
-  },
+  provider: localBusinessRef,
   areaServed: [
     { "@type": "Country", name: "United States" },
     { "@type": "AdministrativeArea", name: "Texas" },
@@ -196,38 +190,27 @@ const serviceSchema = {
   offers: pricingBlocks.map((block) => ({
     "@type": "Offer",
     name: block.title,
-    priceSpecification: {
-      "@type": "PriceSpecification",
-      priceCurrency: "USD",
-      description: block.price,
-    },
-    availability: "https://schema.org/InStock",
+    description: block.price,
     url: pageUrl,
   })),
+  mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
+const faqSchema = buildFaqSchema(pageUrl, faqItems);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://integrafin.tax/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://integrafin.tax/services" },
-    { "@type": "ListItem", position: 3, name: "LLC Formation Tax Setup", item: pageUrl },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+  { name: "Home", item: "https://integrafin.tax/" },
+  { name: "Services", item: "https://integrafin.tax/services" },
+  { name: "LLC Tax Setup Texas", item: pageUrl },
+]);
+
+const webPageSchema = buildWebPageSchema({
+  url: pageUrl,
+  name: "LLC Tax Setup Texas | EIN & Bookkeeping | IntegraFin",
+  description:
+    "LLC tax setup in Texas with EIN planning, tax classification review, bookkeeping, payroll records, and a first-year compliance calendar from IntegraFin.",
+  mainEntityId: serviceId,
+});
 
 export default function LlcFormationTaxSetupPage() {
   return (
@@ -235,21 +218,29 @@ export default function LlcFormationTaxSetupPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
       <section className="bg-primary-dark pt-28 sm:pt-32 pb-16">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div>
               <p className="mb-4 text-xs font-black uppercase tracking-[0.2em] text-secondary">
-                LLC Formation Tax Setup
+                LLC Tax Setup Texas
               </p>
               <h1 className="max-w-4xl text-3xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Start an LLC with the tax, EIN, and bookkeeping setup handled clearly
+                Texas LLC tax setup for EIN, books, payroll, and first-year deadlines
               </h1>
+              <p className="mt-6 max-w-3xl rounded-xl border border-white/15 bg-white/10 p-5 text-base leading-relaxed text-white sm:text-lg">
+                <span className="font-black text-secondary">Short answer:</span>{" "}
+                A new Texas LLC needs more than a state filing. The formation record, EIN,
+                federal tax classification, bank account, bookkeeping system, payroll plan, and
+                first-year compliance calendar should align. IntegraFin helps owners build that
+                tax and accounting workflow before the first filing season.
+              </p>
               <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#d7e3fc] sm:text-lg">
-                IntegraFin helps new business owners connect formation decisions with federal tax classification,
-                EIN planning, bookkeeping records, payroll readiness, and first-year compliance steps. We keep the
-                advice fact-based and do not promise automatic tax savings from forming an LLC.
+                IntegraFin helps Texas business owners connect formation decisions with federal tax classification,
+                EIN planning, bookkeeping records, payroll readiness, Texas filing considerations, and first-year
+                compliance steps. We keep the advice fact-based and do not promise automatic tax savings from forming an LLC.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/contact?service=LLC%20Formation%20and%20Tax%20Setup#contact-form" className="inline-flex items-center justify-center gap-2 rounded-xl bg-secondary px-7 py-3 font-bold text-primary-dark">
@@ -282,14 +273,17 @@ export default function LlcFormationTaxSetupPage() {
               <Building2 className="h-6 w-6" />
             </div>
             <h2 className="mb-4 text-2xl font-black text-primary sm:text-3xl">
-              Quick answer
+              What requires a separate scope
             </h2>
-            <p className="text-slate-700 leading-relaxed">
-              A new LLC should not be treated as just a filing. The formation record, EIN, tax classification,
-              bank account, bookkeeping system, payroll plan, and first-year filing calendar should line up. IntegraFin
-              helps owners build that tax and accounting workflow before the first filing season.
+            <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
+              <li>• Legal advice, operating agreements, ownership disputes, and registered-agent services</li>
+              <li>• State filing fees, government charges, software subscriptions, and third-party provider fees</li>
+              <li>• Tax returns, payroll processing, recurring bookkeeping, elections, or notices not included in writing</li>
+              <li>• Guaranteed tax savings, liability protection, filing acceptance, or government processing time</li>
+            </ul>
+            <p className="mt-5 text-sm font-semibold text-slate-500">
+              Published: June 30, 2026 · Last substantive review: July 29, 2026
             </p>
-            <p className="mt-5 text-sm font-semibold text-slate-500">Last reviewed: June 30, 2026</p>
           </article>
 
           <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
@@ -311,6 +305,11 @@ export default function LlcFormationTaxSetupPage() {
             </div>
           </article>
         </div>
+        <p className="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
+          <span className="font-black text-primary-dark">Content owner:</span>{" "}
+          IntegraFin Tax &amp; Accounting. A named professional reviewer will be published only
+          after identity, role, and qualifications are verified.
+        </p>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 pb-12">
