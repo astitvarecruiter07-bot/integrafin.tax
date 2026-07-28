@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import {
   getLeadMetrics,
+  recordCallActivity,
   recordFirstResponse,
   updateLeadDetails,
   updateLeadStatus,
@@ -25,6 +26,7 @@ import { getJustCallDialerUrl } from '@/lib/justCall';
 import type {
   AppointmentSource,
   AppointmentStatus,
+  CallOutcome,
   LeadConfirmationStatus,
   LeadNotificationStatus,
   LeadStatus,
@@ -41,6 +43,13 @@ type LeadAttributionRecord = {
   gbraid?: string;
   wbraid?: string;
   msclkid?: string;
+};
+
+type CallActivityRecord = {
+  outcome: CallOutcome;
+  notes?: string;
+  calledAt: string;
+  nextFollowUpAt?: string;
 };
 
 export type AdminLeadRecord = {
@@ -65,6 +74,11 @@ export type AdminLeadRecord = {
   calendlyLastWebhookAt?: string;
   statusUpdatedAt?: string;
   internalNotes?: string;
+  callActivities?: CallActivityRecord[];
+  callAttemptCount?: number;
+  lastCallAt?: string;
+  lastCallOutcome?: CallOutcome;
+  nextFollowUpAt?: string;
   notificationStatus?: LeadNotificationStatus;
   notificationCheckedAt?: string;
   notificationSentAt?: string;
@@ -82,6 +96,7 @@ export type LeadMetrics = {
   appointmentCount: number;
   clientWonCount: number;
   overdueNewCount: number;
+  overdueFollowUpCount: number;
   estimatedValue: number;
   wonRevenue: number;
   responseSlaMinutes: number;
@@ -108,7 +123,25 @@ const statusOptions: Array<{ value: LeadStatus; label: string }> = [
   { value: 'duplicate', label: 'Duplicate' },
 ];
 
+const callOutcomeOptions: Array<{ value: CallOutcome; label: string }> = [
+  { value: 'answered', label: 'Answered' },
+  { value: 'no_answer', label: 'No answer' },
+  { value: 'voicemail', label: 'Voicemail left' },
+  { value: 'wrong_number', label: 'Wrong number' },
+];
+
 const statusLabels = Object.fromEntries(statusOptions.map(({ value, label }) => [value, label]));
+const callOutcomeLabels = Object.fromEntries(
+  callOutcomeOptions.map(({ value, label }) => [value, label]),
+) as Record<CallOutcome, string>;
+const followUpActiveStatuses = new Set<AdminLeadRecord['status']>([
+  'new',
+  'contact_attempted',
+  'contacted',
+  'qualified',
+  'appointment_booked',
+  'proposal_sent',
+]);
 
 const statusStyles: Record<LeadStatus | 'completed', string> = {
   new: 'border-sky-200 bg-sky-50 text-sky-700',
@@ -127,6 +160,10 @@ const statusStyles: Record<LeadStatus | 'completed', string> = {
 
 function formatStatus(status: AdminLeadRecord['status']) {
   return status === 'completed' ? 'Completed (legacy)' : statusLabels[status] || status;
+}
+
+function formatCallOutcome(outcome?: CallOutcome) {
+  return outcome ? callOutcomeLabels[outcome] : 'Not recorded';
 }
 
 function formatNotificationStatus(status?: LeadNotificationStatus) {
@@ -189,6 +226,17 @@ function isLeadOverdue(lead: AdminLeadRecord, responseSlaMinutes: number, refere
   return referenceTime - new Date(lead.createdAt).getTime() > responseSlaMinutes * 60_000;
 }
 
+function isFollowUpOverdue(lead: AdminLeadRecord, referenceTime: number) {
+  if (!lead.nextFollowUpAt || !followUpActiveStatuses.has(lead.status)) return false;
+  const followUpTime = new Date(lead.nextFollowUpAt).getTime();
+  return !Number.isNaN(followUpTime) && followUpTime < referenceTime;
+}
+
+function hasCallablePhone(phone: string) {
+  const digitCount = phone.replace(/\D/g, '').length;
+  return digitCount >= 10 && digitCount <= 15;
+}
+
 function getLeadAge(lead: AdminLeadRecord, referenceTime: number) {
   const minutes = Math.max(0, Math.floor((referenceTime - new Date(lead.createdAt).getTime()) / 60_000));
   if (minutes < 60) return `${minutes}m old`;
@@ -223,12 +271,16 @@ export default function LeadOperationsDashboard({
   const [serviceFilter, setServiceFilter] = useState('all');
   const [sourceFilter, setSourceFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('all');
+  const [callOutcome, setCallOutcome] = useState<CallOutcome>('answered');
+  const [callNotes, setCallNotes] = useState('');
+  const [nextFollowUpAt, setNextFollowUpAt] = useState('');
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState<{ type: 'success' | 'error'; text: string } | null>(
     initialLoadError ? { type: 'error', text: initialLoadError } : null,
   );
 
   const selectedLead = leads.find((lead) => lead._id === selectedId);
+  const selectedLeadHasPhone = Boolean(selectedLead && hasCallablePhone(selectedLead.phone));
   const services = useMemo(() => [...new Set(leads.map((lead) => lead.service))].sort(), [leads]);
   const sources = useMemo(() => [...new Set(leads.map((lead) => lead.source))].sort(), [leads]);
 
@@ -253,6 +305,13 @@ export default function LeadOperationsDashboard({
 
   function replaceLead(updatedLead: AdminLeadRecord) {
     setLeads((current) => current.map((lead) => (lead._id === updatedLead._id ? updatedLead : lead)));
+  }
+
+  function selectLead(leadId: string) {
+    setSelectedId(leadId);
+    setCallOutcome('answered');
+    setCallNotes('');
+    setNextFollowUpAt('');
   }
 
   function handleActionFailure(result: AdminActionFailure) {
@@ -391,6 +450,42 @@ export default function LeadOperationsDashboard({
     }
   }
 
+  async function handleRecordCallActivity() {
+    if (!selectedLead) return;
+
+    const followUpDate = nextFollowUpAt ? new Date(nextFollowUpAt) : null;
+    if (followUpDate && (Number.isNaN(followUpDate.getTime()) || followUpDate.getTime() <= Date.now())) {
+      setNotice({ type: 'error', text: 'Choose a valid future date and time for the next follow-up.' });
+      return;
+    }
+
+    setSaving(true);
+    setNotice(null);
+    try {
+      const result = await recordCallActivity({
+        leadId: selectedLead._id,
+        outcome: callOutcome,
+        notes: callNotes,
+        nextFollowUpAt: followUpDate?.toISOString() || null,
+      });
+
+      if (result.success) {
+        replaceLead(result.lead as AdminLeadRecord);
+        setCallOutcome('answered');
+        setCallNotes('');
+        setNextFollowUpAt('');
+        setNotice({ type: 'success', text: result.message });
+        await refreshMetrics();
+      } else {
+        handleActionFailure(result);
+      }
+    } catch {
+      setNotice({ type: 'error', text: 'Could not record the call attempt. Please try again.' });
+    } finally {
+      setSaving(false);
+    }
+  }
+
   const summaryCards = [
     { label: 'Total leads', value: metrics.total, detail: `${metrics.newCount} new`, icon: Users },
     { label: 'Qualified', value: metrics.qualifiedCount, detail: `${metrics.appointmentCount} appointments`, icon: UserCheck },
@@ -407,10 +502,22 @@ export default function LeadOperationsDashboard({
             <h1 className="mt-2 text-4xl font-black tracking-tight text-[#003580]">Customer Leads</h1>
             <p className="mt-2 text-slate-600">Qualify enquiries, track follow-up and connect source to revenue.</p>
           </div>
-          {metrics.overdueNewCount > 0 && (
+          {(metrics.overdueNewCount > 0 || metrics.overdueFollowUpCount > 0) && (
             <div className="flex items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold text-amber-800">
               <AlertCircle className="h-5 w-5" aria-hidden="true" />
-              {metrics.overdueNewCount} new {metrics.overdueNewCount === 1 ? 'lead is' : 'leads are'} beyond the {metrics.responseSlaMinutes}-minute SLA
+              <span>
+                {metrics.overdueNewCount > 0 && (
+                  <>
+                    {metrics.overdueNewCount} new {metrics.overdueNewCount === 1 ? 'lead is' : 'leads are'} beyond the {metrics.responseSlaMinutes}-minute SLA
+                  </>
+                )}
+                {metrics.overdueNewCount > 0 && metrics.overdueFollowUpCount > 0 && ' · '}
+                {metrics.overdueFollowUpCount > 0 && (
+                  <>
+                    {metrics.overdueFollowUpCount} {metrics.overdueFollowUpCount === 1 ? 'follow-up is' : 'follow-ups are'} overdue
+                  </>
+                )}
+              </span>
             </div>
           )}
         </header>
@@ -492,10 +599,14 @@ export default function LeadOperationsDashboard({
                     <tr><td colSpan={5} className="px-6 py-16 text-center text-sm text-slate-400">No leads match these filters.</td></tr>
                   ) : filteredLeads.map((lead) => {
                     const overdue = isLeadOverdue(lead, metrics.responseSlaMinutes, metrics.generatedAt);
+                    const followUpOverdue = isFollowUpOverdue(lead, metrics.generatedAt);
+                    const hasScheduledFollowUp = Boolean(
+                      lead.nextFollowUpAt && followUpActiveStatuses.has(lead.status),
+                    );
                     return (
                       <tr
                         key={lead._id}
-                        onClick={() => setSelectedId(lead._id)}
+                        onClick={() => selectLead(lead._id)}
                         className={`cursor-pointer transition-colors ${selectedId === lead._id ? 'bg-sky-50/70' : 'hover:bg-slate-50'}`}
                       >
                         <td className="px-5 py-5">
@@ -523,7 +634,12 @@ export default function LeadOperationsDashboard({
                           <div className="mt-1 text-xs text-slate-400">{getLeadAge(lead, metrics.generatedAt)}</div>
                         </td>
                         <td className="px-5 py-5">
-                          {lead.firstResponseAt ? (
+                          {hasScheduledFollowUp ? (
+                            <div className={`flex items-center gap-2 text-xs font-semibold ${followUpOverdue ? 'text-rose-700' : 'text-[#0047AB]'}`}>
+                              {followUpOverdue ? <AlertCircle className="h-4 w-4" /> : <Clock3 className="h-4 w-4" />}
+                              {followUpOverdue ? 'Overdue' : 'Due'} {formatDate(lead.nextFollowUpAt, true)}
+                            </div>
+                          ) : lead.firstResponseAt ? (
                             <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700"><CheckCircle2 className="h-4 w-4" />Responded {formatDate(lead.firstResponseAt, true)}</div>
                           ) : overdue ? (
                             <div className="flex items-center gap-2 text-xs font-bold text-amber-700"><AlertCircle className="h-4 w-4" />Response overdue</div>
@@ -548,11 +664,14 @@ export default function LeadOperationsDashboard({
                       <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Lead details</p>
                       <h2 className="mt-1 text-xl font-black text-[#003580]">{selectedLead.name}</h2>
                     </div>
-                    {isLeadOverdue(selectedLead, metrics.responseSlaMinutes, metrics.generatedAt) && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-black uppercase text-amber-700">Overdue</span>}
+                    <div className="flex flex-wrap justify-end gap-1.5">
+                      {isFollowUpOverdue(selectedLead, metrics.generatedAt) && <span className="rounded-full bg-rose-100 px-2.5 py-1 text-[10px] font-black uppercase text-rose-700">Follow-up overdue</span>}
+                      {isLeadOverdue(selectedLead, metrics.responseSlaMinutes, metrics.generatedAt) && <span className="rounded-full bg-amber-100 px-2.5 py-1 text-[10px] font-black uppercase text-amber-700">Response overdue</span>}
+                    </div>
                   </div>
                   <div className="mt-4 grid gap-2 sm:grid-cols-2">
                     {selectedLead.email && <a href={`mailto:${selectedLead.email}`} className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-[#0047AB] hover:bg-slate-50"><Mail className="h-3.5 w-3.5" />Email</a>}
-                    {selectedLead.phone && (
+                    {selectedLeadHasPhone && (
                       <>
                         <button
                           type="button"
@@ -600,6 +719,87 @@ export default function LeadOperationsDashboard({
                     </button>
                   )}
 
+                  {selectedLeadHasPhone && (
+                    <section className="rounded-xl border border-slate-200 p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <h3 className="text-xs font-black uppercase tracking-widest text-slate-500">Call outcome</h3>
+                          <p className="mt-1 text-xs text-slate-500">Record the result after each calling attempt.</p>
+                        </div>
+                        <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-black uppercase text-slate-600">
+                          {selectedLead.callAttemptCount || 0} attempts
+                        </span>
+                      </div>
+
+                      <div className="mt-4 space-y-3">
+                        <div>
+                          <label htmlFor="call-outcome" className="text-xs font-bold text-slate-600">Outcome</label>
+                          <select
+                            id="call-outcome"
+                            value={callOutcome}
+                            disabled={saving}
+                            onChange={(event) => setCallOutcome(event.target.value as CallOutcome)}
+                            className="mt-1.5 w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-[#0092df] focus:ring-2 focus:ring-sky-100 disabled:opacity-60"
+                          >
+                            {callOutcomeOptions.map((outcome) => <option key={outcome.value} value={outcome.value}>{outcome.label}</option>)}
+                          </select>
+                        </div>
+                        <div>
+                          <label htmlFor="next-follow-up" className="text-xs font-bold text-slate-600">Next follow-up (optional)</label>
+                          <input
+                            id="next-follow-up"
+                            type="datetime-local"
+                            value={nextFollowUpAt}
+                            disabled={saving}
+                            onChange={(event) => setNextFollowUpAt(event.target.value)}
+                            className="mt-1.5 w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-[#0092df] focus:ring-2 focus:ring-sky-100 disabled:opacity-60"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="call-notes" className="text-xs font-bold text-slate-600">Call note (optional)</label>
+                          <textarea
+                            id="call-notes"
+                            value={callNotes}
+                            disabled={saving}
+                            maxLength={1000}
+                            rows={3}
+                            onChange={(event) => setCallNotes(event.target.value)}
+                            placeholder="Important details from this attempt"
+                            className="mt-1.5 w-full rounded-lg border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-[#0092df] focus:ring-2 focus:ring-sky-100 disabled:opacity-60"
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          disabled={saving}
+                          onClick={handleRecordCallActivity}
+                          className="w-full rounded-lg bg-[#00C2CB] px-4 py-2.5 text-sm font-black text-[#003580] hover:brightness-105 disabled:opacity-60"
+                        >
+                          {saving ? 'Saving…' : 'Record call attempt'}
+                        </button>
+                      </div>
+
+                      <div className="mt-5 border-t border-slate-200 pt-4">
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-slate-400">Recent attempts</h4>
+                        {selectedLead.callActivities?.length ? (
+                          <div className="mt-3 space-y-2">
+                            {selectedLead.callActivities.slice(0, 6).map((activity, index) => (
+                              <article key={`${activity.calledAt}-${index}`} className="rounded-lg bg-slate-50 p-3">
+                                <div className="flex items-center justify-between gap-3">
+                                  <span className="text-xs font-black text-[#0047AB]">{formatCallOutcome(activity.outcome)}</span>
+                                  <time className="text-[10px] font-semibold text-slate-400">{formatDate(activity.calledAt, true)}</time>
+                                </div>
+                                {activity.notes && <p className="mt-1.5 whitespace-pre-wrap text-xs leading-5 text-slate-600">{activity.notes}</p>}
+                                {activity.nextFollowUpAt && <p className="mt-1.5 text-[11px] font-semibold text-slate-500">Follow-up: {formatDate(activity.nextFollowUpAt, true)}</p>}
+                              </article>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="mt-2 text-xs text-slate-400">No call attempts recorded yet.</p>
+                        )}
+                      </div>
+                    </section>
+                  )}
+
                   <dl className="grid grid-cols-2 gap-4 rounded-xl bg-slate-50 p-4">
                     <DetailField label="Email" value={selectedLead.email || 'Not provided'} />
                     <DetailField label="Phone" value={selectedLead.phone || 'Not provided'} />
@@ -610,6 +810,10 @@ export default function LeadOperationsDashboard({
                     <DetailField label="Customer email" value={formatConfirmationStatus(selectedLead.confirmationEmailStatus)} />
                     <DetailField label="Email checked" value={formatDate(selectedLead.confirmationEmailCheckedAt, true)} />
                     <DetailField label="First response" value={formatDate(selectedLead.firstResponseAt, true)} />
+                    <DetailField label="Last call" value={formatDate(selectedLead.lastCallAt, true)} />
+                    <DetailField label="Last outcome" value={formatCallOutcome(selectedLead.lastCallOutcome)} />
+                    <DetailField label="Next follow-up" value={formatDate(selectedLead.nextFollowUpAt, true)} />
+                    <DetailField label="Call attempts" value={String(selectedLead.callAttemptCount || 0)} />
                     <DetailField label="Appointment" value={formatDate(selectedLead.appointmentAt, true)} />
                     <DetailField label="Appointment status" value={formatAppointmentStatus(selectedLead.appointmentStatus)} />
                     <DetailField label="Appointment source" value={formatAppointmentSource(selectedLead.appointmentSource, selectedLead.appointmentAt)} />

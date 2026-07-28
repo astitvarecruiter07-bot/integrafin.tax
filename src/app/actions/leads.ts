@@ -2,7 +2,7 @@
 
 import { z } from 'zod';
 import dbConnect from '@/lib/mongodb';
-import ContactLead, { LEAD_STATUSES } from '@/models/ContactLead';
+import ContactLead, { CALL_OUTCOMES, LEAD_STATUSES } from '@/models/ContactLead';
 import { requireAdminAuth } from '@/lib/adminAuth';
 import { headers } from 'next/headers';
 import { checkRateLimit } from '@/lib/rateLimit';
@@ -79,6 +79,13 @@ const FirstResponseSchema = z.object({
   leadId: LeadIdSchema,
 });
 
+const RecordCallActivitySchema = z.object({
+  leadId: LeadIdSchema,
+  outcome: z.enum(CALL_OUTCOMES),
+  notes: z.string().trim().max(1000).optional(),
+  nextFollowUpAt: z.string().datetime({ offset: true }).nullable().optional(),
+});
+
 const firstResponseStatuses = new Set<(typeof LEAD_STATUSES)[number]>([
   'contact_attempted',
   'contacted',
@@ -89,6 +96,15 @@ const firstResponseStatuses = new Set<(typeof LEAD_STATUSES)[number]>([
   'client_won',
   'client_lost',
 ]);
+
+const followUpActiveStatuses: Array<(typeof LEAD_STATUSES)[number]> = [
+  'new',
+  'contact_attempted',
+  'contacted',
+  'qualified',
+  'appointment_booked',
+  'proposal_sent',
+];
 
 function sanitizeAttributionPath(value: string | undefined) {
   if (!value) return undefined;
@@ -422,13 +438,73 @@ export async function recordFirstResponse(input: unknown) {
   }
 }
 
+export async function recordCallActivity(input: unknown) {
+  try {
+    await requireAdminAuth();
+    const data = RecordCallActivitySchema.parse(input);
+    await dbConnect();
+
+    const calledAt = new Date();
+    const nextFollowUpAt = data.nextFollowUpAt ? new Date(data.nextFollowUpAt) : undefined;
+    if (nextFollowUpAt && nextFollowUpAt.getTime() <= calledAt.getTime()) {
+      return {
+        success: false as const,
+        message: 'The next follow-up must be scheduled in the future.',
+      };
+    }
+
+    const callActivity = {
+      outcome: data.outcome,
+      calledAt,
+      ...(data.notes ? { notes: data.notes } : {}),
+      ...(nextFollowUpAt ? { nextFollowUpAt } : {}),
+    };
+    const set: Record<string, unknown> = {
+      lastCallAt: calledAt,
+      lastCallOutcome: data.outcome,
+      ...(nextFollowUpAt ? { nextFollowUpAt } : {}),
+    };
+    const update: Record<string, unknown> = {
+      $set: set,
+      $inc: { callAttemptCount: 1 },
+      $push: {
+        callActivities: {
+          $each: [callActivity],
+          $position: 0,
+          $slice: 50,
+        },
+      },
+    };
+    if (!nextFollowUpAt) {
+      update.$unset = { nextFollowUpAt: 1 };
+    }
+
+    const lead = await ContactLead.findByIdAndUpdate(
+      data.leadId,
+      update,
+      { returnDocument: 'after', runValidators: true },
+    ).lean();
+
+    if (!lead) return { success: false as const, message: 'Lead not found.' };
+
+    revalidatePath('/admin/leads');
+    return {
+      success: true as const,
+      message: nextFollowUpAt ? 'Call attempt and follow-up recorded.' : 'Call attempt recorded.',
+      lead: serializeLead(lead),
+    };
+  } catch (error) {
+    return adminActionError(error, 'Could not record the call attempt.');
+  }
+}
+
 export async function getLeadMetrics() {
   try {
     await requireAdminAuth();
     await dbConnect();
 
     const overdueBefore = new Date(Date.now() - getLeadResponseSlaMinutes() * 60_000);
-    const [statusCounts, valueTotals, overdueNewCount] = await Promise.all([
+    const [statusCounts, valueTotals, overdueNewCount, overdueFollowUpCount] = await Promise.all([
       ContactLead.aggregate<{ _id: string; count: number }>([
         { $group: { _id: '$status', count: { $sum: 1 } } },
       ]),
@@ -463,6 +539,10 @@ export async function getLeadMetrics() {
         firstResponseAt: null,
         createdAt: { $lt: overdueBefore },
       }),
+      ContactLead.countDocuments({
+        status: { $in: followUpActiveStatuses },
+        nextFollowUpAt: { $lt: new Date() },
+      }),
     ]);
 
     const counts = Object.fromEntries(statusCounts.map(({ _id, count }) => [_id, count]));
@@ -477,6 +557,7 @@ export async function getLeadMetrics() {
         appointmentCount: counts.appointment_booked || 0,
         clientWonCount: counts.client_won || 0,
         overdueNewCount,
+        overdueFollowUpCount,
         estimatedValue: totals?.openPipelineValue || 0,
         wonRevenue: totals?.wonRevenue || 0,
         responseSlaMinutes: getLeadResponseSlaMinutes(),
@@ -495,6 +576,7 @@ export async function getLeadMetrics() {
         appointmentCount: 0,
         clientWonCount: 0,
         overdueNewCount: 0,
+        overdueFollowUpCount: 0,
         estimatedValue: 0,
         wonRevenue: 0,
         responseSlaMinutes: getLeadResponseSlaMinutes(),

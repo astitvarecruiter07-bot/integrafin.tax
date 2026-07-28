@@ -14,8 +14,16 @@ export const LEAD_STATUSES = [
   'duplicate',
 ] as const;
 
+export const CALL_OUTCOMES = [
+  'answered',
+  'no_answer',
+  'voicemail',
+  'wrong_number',
+] as const;
+
 export type LeadStatus = (typeof LEAD_STATUSES)[number];
 export type StoredLeadStatus = LeadStatus | 'completed';
+export type CallOutcome = (typeof CALL_OUTCOMES)[number];
 export type LeadNotificationStatus = 'pending' | 'sent' | 'not_configured' | 'delivery_failed';
 export type LeadConfirmationStatus = LeadNotificationStatus | 'not_applicable';
 export type AppointmentStatus = 'scheduled' | 'canceled';
@@ -36,6 +44,13 @@ export interface ILeadAttribution {
   msclkid?: string;
   firstTouchAt?: Date;
   submittedAt: Date;
+}
+
+export interface ICallActivity {
+  outcome: CallOutcome;
+  notes?: string;
+  calledAt: Date;
+  nextFollowUpAt?: Date;
 }
 
 export interface IContactLead extends mongoose.Document {
@@ -64,6 +79,11 @@ export interface IContactLead extends mongoose.Document {
   calendlyLastWebhookAt?: Date;
   statusUpdatedAt?: Date;
   internalNotes?: string;
+  callActivities?: ICallActivity[];
+  callAttemptCount?: number;
+  lastCallAt?: Date;
+  lastCallOutcome?: CallOutcome;
+  nextFollowUpAt?: Date;
   notificationStatus?: LeadNotificationStatus;
   notificationCheckedAt?: Date;
   notificationSentAt?: Date;
@@ -89,6 +109,28 @@ const LeadAttributionSchema = new mongoose.Schema<ILeadAttribution>(
     msclkid: { type: String, maxlength: 200 },
     firstTouchAt: { type: Date },
     submittedAt: { type: Date, required: true },
+  },
+  { _id: false },
+);
+
+const CallActivitySchema = new mongoose.Schema<ICallActivity>(
+  {
+    outcome: {
+      type: String,
+      enum: CALL_OUTCOMES,
+      required: true,
+    },
+    notes: {
+      type: String,
+      maxlength: 1000,
+    },
+    calledAt: {
+      type: Date,
+      required: true,
+    },
+    nextFollowUpAt: {
+      type: Date,
+    },
   },
   { _id: false },
 );
@@ -199,6 +241,25 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
       type: String,
       maxlength: 5000,
     },
+    callActivities: {
+      type: [CallActivitySchema],
+      default: [],
+    },
+    callAttemptCount: {
+      type: Number,
+      min: 0,
+      default: 0,
+    },
+    lastCallAt: {
+      type: Date,
+    },
+    lastCallOutcome: {
+      type: String,
+      enum: CALL_OUTCOMES,
+    },
+    nextFollowUpAt: {
+      type: Date,
+    },
     notificationStatus: {
       type: String,
       enum: ['pending', 'sent', 'not_configured', 'delivery_failed'],
@@ -236,6 +297,7 @@ ContactLeadSchema.index(
   { calendlyInviteeUri: 1 },
   { unique: true, sparse: true, name: 'unique_calendly_invitee_uri' },
 );
+ContactLeadSchema.index({ nextFollowUpAt: 1 }, { name: 'lead_next_follow_up' });
 
 const existingModel = mongoose.models.ContactLead as mongoose.Model<IContactLead> | undefined;
 
