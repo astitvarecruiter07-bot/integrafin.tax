@@ -20,9 +20,15 @@ import {
   recordCallActivity,
   recordFirstResponse,
   updateLeadDetails,
+  updateLeadFollowUp,
   updateLeadStatus,
 } from '@/app/actions/leads';
 import { getJustCallDialerUrl } from '@/lib/justCall';
+import {
+  getFollowUpBucket,
+  isFollowUpActiveStatus,
+  type FollowUpBucket,
+} from '@/lib/leadFollowUp';
 import type {
   AppointmentSource,
   AppointmentStatus,
@@ -109,6 +115,8 @@ type AdminActionFailure = {
   code?: 'UNAUTHORIZED';
 };
 
+type FollowUpFilter = 'all' | Exclude<FollowUpBucket, 'inactive'>;
+
 const statusOptions: Array<{ value: LeadStatus; label: string }> = [
   { value: 'new', label: 'New' },
   { value: 'contact_attempted', label: 'Contact attempted' },
@@ -130,18 +138,25 @@ const callOutcomeOptions: Array<{ value: CallOutcome; label: string }> = [
   { value: 'wrong_number', label: 'Wrong number' },
 ];
 
+const followUpFilterOptions: Array<{ value: FollowUpFilter; label: string }> = [
+  { value: 'all', label: 'All leads' },
+  { value: 'overdue', label: 'Overdue' },
+  { value: 'today', label: 'Today' },
+  { value: 'upcoming', label: 'Upcoming' },
+  { value: 'none', label: 'No follow-up' },
+];
+
 const statusLabels = Object.fromEntries(statusOptions.map(({ value, label }) => [value, label]));
 const callOutcomeLabels = Object.fromEntries(
   callOutcomeOptions.map(({ value, label }) => [value, label]),
 ) as Record<CallOutcome, string>;
-const followUpActiveStatuses = new Set<AdminLeadRecord['status']>([
-  'new',
-  'contact_attempted',
-  'contacted',
-  'qualified',
-  'appointment_booked',
-  'proposal_sent',
-]);
+const followUpSortPriority: Record<FollowUpBucket, number> = {
+  overdue: 0,
+  today: 1,
+  upcoming: 2,
+  none: 3,
+  inactive: 4,
+};
 
 const statusStyles: Record<LeadStatus | 'completed', string> = {
   new: 'border-sky-200 bg-sky-50 text-sky-700',
@@ -227,9 +242,7 @@ function isLeadOverdue(lead: AdminLeadRecord, responseSlaMinutes: number, refere
 }
 
 function isFollowUpOverdue(lead: AdminLeadRecord, referenceTime: number) {
-  if (!lead.nextFollowUpAt || !followUpActiveStatuses.has(lead.status)) return false;
-  const followUpTime = new Date(lead.nextFollowUpAt).getTime();
-  return !Number.isNaN(followUpTime) && followUpTime < referenceTime;
+  return getFollowUpBucket(lead.nextFollowUpAt, lead.status, referenceTime) === 'overdue';
 }
 
 function hasCallablePhone(phone: string) {
@@ -271,9 +284,13 @@ export default function LeadOperationsDashboard({
   const [serviceFilter, setServiceFilter] = useState('all');
   const [sourceFilter, setSourceFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('all');
+  const [followUpFilter, setFollowUpFilter] = useState<FollowUpFilter>('all');
   const [callOutcome, setCallOutcome] = useState<CallOutcome>('answered');
   const [callNotes, setCallNotes] = useState('');
   const [nextFollowUpAt, setNextFollowUpAt] = useState('');
+  const [followUpEditAt, setFollowUpEditAt] = useState(
+    toDateTimeLocal(initialLeads[0]?.nextFollowUpAt),
+  );
   const [saving, setSaving] = useState(false);
   const [notice, setNotice] = useState<{ type: 'success' | 'error'; text: string } | null>(
     initialLoadError ? { type: 'error', text: initialLoadError } : null,
@@ -281,37 +298,96 @@ export default function LeadOperationsDashboard({
 
   const selectedLead = leads.find((lead) => lead._id === selectedId);
   const selectedLeadHasPhone = Boolean(selectedLead && hasCallablePhone(selectedLead.phone));
+  const selectedLeadFollowUpActive = Boolean(
+    selectedLead && isFollowUpActiveStatus(selectedLead.status),
+  );
   const services = useMemo(() => [...new Set(leads.map((lead) => lead.service))].sort(), [leads]);
   const sources = useMemo(() => [...new Set(leads.map((lead) => lead.source))].sort(), [leads]);
+  const followUpCounts = useMemo(() => {
+    const counts: Record<FollowUpFilter, number> = {
+      all: leads.length,
+      overdue: 0,
+      today: 0,
+      upcoming: 0,
+      none: 0,
+    };
+
+    leads.forEach((lead) => {
+      const bucket = getFollowUpBucket(lead.nextFollowUpAt, lead.status, metrics.generatedAt);
+      if (bucket !== 'inactive') counts[bucket] += 1;
+    });
+    return counts;
+  }, [leads, metrics.generatedAt]);
 
   const filteredLeads = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
     const days = dateFilter === 'all' ? 0 : Number(dateFilter);
     const earliest = days ? metrics.generatedAt - days * 86_400_000 : 0;
 
-    return leads.filter((lead) => {
-      const matchesSearch =
-        !normalizedSearch ||
-        [lead.name, lead.email, lead.phone, lead.company, lead.service]
-          .filter(Boolean)
-          .some((value) => value?.toLowerCase().includes(normalizedSearch));
-      const matchesStatus = statusFilter === 'all' || lead.status === statusFilter;
-      const matchesService = serviceFilter === 'all' || lead.service === serviceFilter;
-      const matchesSource = sourceFilter === 'all' || lead.source === sourceFilter;
-      const matchesDate = !earliest || new Date(lead.createdAt).getTime() >= earliest;
-      return matchesSearch && matchesStatus && matchesService && matchesSource && matchesDate;
-    });
-  }, [dateFilter, leads, metrics.generatedAt, search, serviceFilter, sourceFilter, statusFilter]);
+    return leads
+      .filter((lead) => {
+        const matchesSearch =
+          !normalizedSearch ||
+          [lead.name, lead.email, lead.phone, lead.company, lead.service]
+            .filter(Boolean)
+            .some((value) => value?.toLowerCase().includes(normalizedSearch));
+        const matchesStatus = statusFilter === 'all' || lead.status === statusFilter;
+        const matchesService = serviceFilter === 'all' || lead.service === serviceFilter;
+        const matchesSource = sourceFilter === 'all' || lead.source === sourceFilter;
+        const matchesDate = !earliest || new Date(lead.createdAt).getTime() >= earliest;
+        const followUpBucket = getFollowUpBucket(
+          lead.nextFollowUpAt,
+          lead.status,
+          metrics.generatedAt,
+        );
+        const matchesFollowUp = followUpFilter === 'all' || followUpBucket === followUpFilter;
+        return matchesSearch && matchesStatus && matchesService && matchesSource && matchesDate && matchesFollowUp;
+      })
+      .sort((firstLead, secondLead) => {
+        const firstBucket = getFollowUpBucket(
+          firstLead.nextFollowUpAt,
+          firstLead.status,
+          metrics.generatedAt,
+        );
+        const secondBucket = getFollowUpBucket(
+          secondLead.nextFollowUpAt,
+          secondLead.status,
+          metrics.generatedAt,
+        );
+        const priorityDifference =
+          followUpSortPriority[firstBucket] - followUpSortPriority[secondBucket];
+        if (priorityDifference) return priorityDifference;
+
+        if (firstLead.nextFollowUpAt && secondLead.nextFollowUpAt) {
+          const followUpDifference =
+            new Date(firstLead.nextFollowUpAt).getTime() -
+            new Date(secondLead.nextFollowUpAt).getTime();
+          if (followUpDifference) return followUpDifference;
+        }
+
+        return new Date(secondLead.createdAt).getTime() - new Date(firstLead.createdAt).getTime();
+      });
+  }, [
+    dateFilter,
+    followUpFilter,
+    leads,
+    metrics.generatedAt,
+    search,
+    serviceFilter,
+    sourceFilter,
+    statusFilter,
+  ]);
 
   function replaceLead(updatedLead: AdminLeadRecord) {
     setLeads((current) => current.map((lead) => (lead._id === updatedLead._id ? updatedLead : lead)));
   }
 
-  function selectLead(leadId: string) {
-    setSelectedId(leadId);
+  function selectLead(lead: AdminLeadRecord) {
+    setSelectedId(lead._id);
     setCallOutcome('answered');
     setCallNotes('');
     setNextFollowUpAt('');
+    setFollowUpEditAt(toDateTimeLocal(lead.nextFollowUpAt));
   }
 
   function handleActionFailure(result: AdminActionFailure) {
@@ -470,10 +546,12 @@ export default function LeadOperationsDashboard({
       });
 
       if (result.success) {
-        replaceLead(result.lead as AdminLeadRecord);
+        const updatedLead = result.lead as AdminLeadRecord;
+        replaceLead(updatedLead);
         setCallOutcome('answered');
         setCallNotes('');
         setNextFollowUpAt('');
+        setFollowUpEditAt(toDateTimeLocal(updatedLead.nextFollowUpAt));
         setNotice({ type: 'success', text: result.message });
         await refreshMetrics();
       } else {
@@ -481,6 +559,43 @@ export default function LeadOperationsDashboard({
       }
     } catch {
       setNotice({ type: 'error', text: 'Could not record the call attempt. Please try again.' });
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleFollowUpUpdate(complete = false) {
+    if (!selectedLead) return;
+
+    const followUpDate = complete ? null : followUpEditAt ? new Date(followUpEditAt) : null;
+    if (!complete && (!followUpDate || Number.isNaN(followUpDate.getTime()))) {
+      setNotice({ type: 'error', text: 'Choose a valid follow-up date and time.' });
+      return;
+    }
+    if (followUpDate && followUpDate.getTime() <= Date.now()) {
+      setNotice({ type: 'error', text: 'Choose a future date and time for the follow-up.' });
+      return;
+    }
+
+    setSaving(true);
+    setNotice(null);
+    try {
+      const result = await updateLeadFollowUp({
+        leadId: selectedLead._id,
+        nextFollowUpAt: followUpDate?.toISOString() || null,
+      });
+
+      if (result.success) {
+        const updatedLead = result.lead as AdminLeadRecord;
+        replaceLead(updatedLead);
+        setFollowUpEditAt(toDateTimeLocal(updatedLead.nextFollowUpAt));
+        setNotice({ type: 'success', text: result.message });
+        await refreshMetrics();
+      } else {
+        handleActionFailure(result);
+      }
+    } catch {
+      setNotice({ type: 'error', text: 'Could not update the follow-up. Please try again.' });
     } finally {
       setSaving(false);
     }
@@ -581,6 +696,29 @@ export default function LeadOperationsDashboard({
             <Filter className="h-3.5 w-3.5" aria-hidden="true" />
             Showing {filteredLeads.length} of {leads.length} leads
           </div>
+          <div className="mt-4 border-t border-slate-200 pt-4">
+            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Follow-up queue</p>
+            <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Filter leads by follow-up timing">
+              {followUpFilterOptions.map((option) => {
+                const active = followUpFilter === option.value;
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => setFollowUpFilter(option.value)}
+                    className={`rounded-full border px-3 py-1.5 text-xs font-bold transition-colors ${
+                      active
+                        ? 'border-[#003580] bg-[#003580] text-white'
+                        : 'border-slate-200 bg-white text-slate-600 hover:border-sky-300 hover:text-[#0047AB]'
+                    }`}
+                  >
+                    {option.label} <span className={active ? 'text-sky-100' : 'text-slate-400'}>{followUpCounts[option.value]}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </section>
 
         <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_400px]">
@@ -599,14 +737,20 @@ export default function LeadOperationsDashboard({
                     <tr><td colSpan={5} className="px-6 py-16 text-center text-sm text-slate-400">No leads match these filters.</td></tr>
                   ) : filteredLeads.map((lead) => {
                     const overdue = isLeadOverdue(lead, metrics.responseSlaMinutes, metrics.generatedAt);
-                    const followUpOverdue = isFollowUpOverdue(lead, metrics.generatedAt);
-                    const hasScheduledFollowUp = Boolean(
-                      lead.nextFollowUpAt && followUpActiveStatuses.has(lead.status),
+                    const followUpBucket = getFollowUpBucket(
+                      lead.nextFollowUpAt,
+                      lead.status,
+                      metrics.generatedAt,
                     );
+                    const followUpOverdue = followUpBucket === 'overdue';
+                    const hasScheduledFollowUp =
+                      followUpBucket === 'overdue' ||
+                      followUpBucket === 'today' ||
+                      followUpBucket === 'upcoming';
                     return (
                       <tr
                         key={lead._id}
-                        onClick={() => selectLead(lead._id)}
+                        onClick={() => selectLead(lead)}
                         className={`cursor-pointer transition-colors ${selectedId === lead._id ? 'bg-sky-50/70' : 'hover:bg-slate-50'}`}
                       >
                         <td className="px-5 py-5">
@@ -717,6 +861,72 @@ export default function LeadOperationsDashboard({
                     >
                       Record first response now
                     </button>
+                  )}
+
+                  {(selectedLeadFollowUpActive || selectedLead.nextFollowUpAt) && (
+                    <section className="rounded-xl border border-sky-200 bg-sky-50/60 p-4">
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <h3 className="text-xs font-black uppercase tracking-widest text-[#0047AB]">Manage follow-up</h3>
+                          <p className="mt-1 text-xs text-slate-600">
+                            {selectedLead.nextFollowUpAt
+                              ? `Currently scheduled for ${formatDate(selectedLead.nextFollowUpAt, true)}`
+                              : 'No follow-up is currently scheduled.'}
+                          </p>
+                        </div>
+                        {isFollowUpOverdue(selectedLead, metrics.generatedAt) && (
+                          <span className="rounded-full bg-rose-100 px-2.5 py-1 text-[10px] font-black uppercase text-rose-700">Overdue</span>
+                        )}
+                      </div>
+
+                      {selectedLeadFollowUpActive ? (
+                        <>
+                          <label htmlFor="follow-up-edit" className="mt-4 block text-xs font-bold text-slate-600">
+                            Follow-up date and time
+                          </label>
+                          <input
+                            id="follow-up-edit"
+                            type="datetime-local"
+                            value={followUpEditAt}
+                            disabled={saving}
+                            onChange={(event) => setFollowUpEditAt(event.target.value)}
+                            className="mt-1.5 w-full rounded-lg border border-sky-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-[#0092df] focus:ring-2 focus:ring-sky-100 disabled:opacity-60"
+                          />
+                          <div className={`mt-3 grid gap-2 ${selectedLead.nextFollowUpAt ? 'sm:grid-cols-2' : ''}`}>
+                            <button
+                              type="button"
+                              disabled={saving}
+                              onClick={() => handleFollowUpUpdate(false)}
+                              className="rounded-lg bg-[#003580] px-3 py-2.5 text-xs font-bold text-white hover:bg-[#002050] disabled:opacity-60"
+                            >
+                              {selectedLead.nextFollowUpAt ? 'Reschedule' : 'Schedule follow-up'}
+                            </button>
+                            {selectedLead.nextFollowUpAt && (
+                              <button
+                                type="button"
+                                disabled={saving}
+                                onClick={() => handleFollowUpUpdate(true)}
+                                className="rounded-lg border border-emerald-200 bg-white px-3 py-2.5 text-xs font-bold text-emerald-700 hover:bg-emerald-50 disabled:opacity-60"
+                              >
+                                Mark complete
+                              </button>
+                            )}
+                          </div>
+                        </>
+                      ) : (
+                        <div className="mt-3">
+                          <p className="text-xs text-slate-500">This lead’s pipeline status is outside the active follow-up queue.</p>
+                          <button
+                            type="button"
+                            disabled={saving}
+                            onClick={() => handleFollowUpUpdate(true)}
+                            className="mt-2 rounded-lg border border-emerald-200 bg-white px-3 py-2 text-xs font-bold text-emerald-700 hover:bg-emerald-50 disabled:opacity-60"
+                          >
+                            Clear existing follow-up
+                          </button>
+                        </div>
+                      )}
+                    </section>
                   )}
 
                   {selectedLeadHasPhone && (

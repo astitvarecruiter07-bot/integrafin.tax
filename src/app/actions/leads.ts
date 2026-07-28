@@ -10,6 +10,7 @@ import { revalidatePath } from 'next/cache';
 import { after } from 'next/server';
 import { sendLeadConfirmation, sendNewLeadNotification } from '@/lib/leadNotifications';
 import { getLeadResponseSlaMinutes } from '@/lib/leadSla';
+import { FOLLOW_UP_ACTIVE_STATUSES } from '@/lib/leadFollowUp';
 
 const ADMIN_UNAUTHORIZED_MESSAGE = 'Your admin session expired. Sign in again to continue.';
 
@@ -86,6 +87,11 @@ const RecordCallActivitySchema = z.object({
   nextFollowUpAt: z.string().datetime({ offset: true }).nullable().optional(),
 });
 
+const UpdateLeadFollowUpSchema = z.object({
+  leadId: LeadIdSchema,
+  nextFollowUpAt: z.string().datetime({ offset: true }).nullable(),
+});
+
 const firstResponseStatuses = new Set<(typeof LEAD_STATUSES)[number]>([
   'contact_attempted',
   'contacted',
@@ -96,15 +102,6 @@ const firstResponseStatuses = new Set<(typeof LEAD_STATUSES)[number]>([
   'client_won',
   'client_lost',
 ]);
-
-const followUpActiveStatuses: Array<(typeof LEAD_STATUSES)[number]> = [
-  'new',
-  'contact_attempted',
-  'contacted',
-  'qualified',
-  'appointment_booked',
-  'proposal_sent',
-];
 
 function sanitizeAttributionPath(value: string | undefined) {
   if (!value) return undefined;
@@ -498,6 +495,42 @@ export async function recordCallActivity(input: unknown) {
   }
 }
 
+export async function updateLeadFollowUp(input: unknown) {
+  try {
+    await requireAdminAuth();
+    const data = UpdateLeadFollowUpSchema.parse(input);
+    await dbConnect();
+
+    const nextFollowUpAt = data.nextFollowUpAt ? new Date(data.nextFollowUpAt) : null;
+    if (nextFollowUpAt && nextFollowUpAt.getTime() <= Date.now()) {
+      return {
+        success: false as const,
+        message: 'The next follow-up must be scheduled in the future.',
+      };
+    }
+
+    const update = nextFollowUpAt
+      ? { $set: { nextFollowUpAt } }
+      : { $unset: { nextFollowUpAt: 1 } };
+    const lead = await ContactLead.findByIdAndUpdate(
+      data.leadId,
+      update,
+      { returnDocument: 'after', runValidators: true },
+    ).lean();
+
+    if (!lead) return { success: false as const, message: 'Lead not found.' };
+
+    revalidatePath('/admin/leads');
+    return {
+      success: true as const,
+      message: nextFollowUpAt ? 'Follow-up rescheduled.' : 'Follow-up completed.',
+      lead: serializeLead(lead),
+    };
+  } catch (error) {
+    return adminActionError(error, 'Could not update the follow-up.');
+  }
+}
+
 export async function getLeadMetrics() {
   try {
     await requireAdminAuth();
@@ -540,7 +573,7 @@ export async function getLeadMetrics() {
         createdAt: { $lt: overdueBefore },
       }),
       ContactLead.countDocuments({
-        status: { $in: followUpActiveStatuses },
+        status: { $in: FOLLOW_UP_ACTIVE_STATUSES },
         nextFollowUpAt: { $lt: new Date() },
       }),
     ]);
