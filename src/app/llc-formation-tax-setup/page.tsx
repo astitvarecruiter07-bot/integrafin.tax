@@ -16,6 +16,7 @@ import {
   buildWebPageSchema,
   localBusinessRef,
 } from "@/lib/seo/schema";
+import { serviceGuideLinks } from "@/data/internalLinking";
 
 const pageUrl = "https://integrafin.tax/llc-formation-tax-setup";
 const serviceId = `${pageUrl}#service`;
@@ -433,6 +434,23 @@ export default function LlcFormationTaxSetupPage() {
                 <h3 className="font-black text-primary-dark">{resource.label}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{resource.description}</p>
               </a>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-12">
+        <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-secondary">Supporting guidance</p>
+          <h2 className="mt-2 text-2xl font-black text-primary sm:text-3xl">LLC Tax and Recordkeeping Guides</h2>
+          <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">
+            Review these guides before your setup call to identify entity, bookkeeping, payroll, and owner-tax questions.
+          </p>
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {serviceGuideLinks["llc-formation-tax-setup"].map((guide) => (
+              <Link key={guide.href} href={guide.href} className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 font-bold text-primary hover:border-secondary hover:bg-white">
+                {guide.label}
+              </Link>
             ))}
           </div>
         </article>

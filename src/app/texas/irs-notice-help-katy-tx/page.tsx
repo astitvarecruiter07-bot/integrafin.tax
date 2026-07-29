@@ -6,6 +6,7 @@ import {
   buildWebPageSchema,
   localBusinessRef,
 } from "@/lib/seo/schema";
+import { serviceGuideLinks } from "@/data/internalLinking";
 
 const pageUrl = "https://integrafin.tax/texas/irs-notice-help-katy-tx";
 const serviceId = `${pageUrl}#service`;
@@ -509,9 +510,11 @@ export default function IrsNoticeHelpKatyPage() {
             <Link href="/tax-calculator" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               2025 Tax Refund Estimator
             </Link>
-            <Link href="/blog/tax-resolution-options" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Tax Resolution Options
-            </Link>
+            {serviceGuideLinks["irs-notice-help-katy-tx"].map((guide) => (
+              <Link key={guide.href} href={guide.href} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+                {guide.label}
+              </Link>
+            ))}
             <Link href="/contact?service=IRS%20Notice%20and%20Tax%20Resolution#contact-form" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Contact IntegraFin
             </Link>

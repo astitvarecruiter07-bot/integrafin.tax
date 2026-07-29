@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import type { ServiceLandingPageData, ServiceLandingPageSlug } from "@/data/serviceLandingPages";
 import { serviceAeoDetails } from "@/data/serviceAeoDetails";
+import { serviceGuideLinks } from "@/data/internalLinking";
 import {
   getContactHref,
   getLeadCtaLabel,
@@ -96,6 +97,10 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
   const contactHref = getContactHref(selectedService);
   const primaryCta = getLeadCtaLabel(selectedService, data.primaryCta);
   const aeo = serviceAeoDetails[data.slug];
+  const helpfulLinkHrefs = new Set(data.helpfulLinks.map((link) => link.href));
+  const relatedGuides = serviceGuideLinks[data.slug].filter(
+    (guide) => !helpfulLinkHrefs.has(guide.href),
+  );
 
   return (
     <main className="min-h-screen bg-slate-50">
@@ -372,6 +377,27 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
                 </Link>
               ))}
             </div>
+          </div>
+        </div>
+        <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-secondary">Supporting guidance</p>
+          <h2 className="mt-2 text-2xl font-black text-primary sm:text-3xl">
+            Related {data.relatedServiceLabel} Guides
+          </h2>
+          <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">
+            Use these practical articles to prepare records and questions before requesting service.
+          </p>
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {relatedGuides.map((guide) => (
+              <Link
+                key={guide.href}
+                href={guide.href}
+                className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 bg-slate-50 px-5 py-4 font-bold text-primary hover:border-secondary hover:bg-white"
+              >
+                <span>{guide.label}</span>
+                <ArrowRight className="h-4 w-4 shrink-0" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 # IntegraFin Google SEO, AEO, Local Visibility, and Lead Growth Action Plan
 
 Plan date: July 11, 2026  
-Last backlog reconciliation: July 29, 2026
+Last backlog reconciliation: July 30, 2026
 Website: [https://integrafin.tax](https://integrafin.tax)
 Primary market: Katy, Fort Bend County, West Houston, and remote U.S. tax/accounting clients  
 Primary business objective: Generate qualified tax, bookkeeping, IRS notice, tax resolution, and LLC tax-setup leads  
@@ -66,12 +66,12 @@ The crawl counts and scores in this section are the July 11 baseline, not a live
 2. Google Business Profile prominence and local citations need more work.
 3. The site has many pages but limited public proof such as named team members, credentials, client reviews, case studies, and community recognition.
 4. Query-to-page ownership is implemented in source but requires GSC cannibalization monitoring.
-5. Lead attribution, pipeline feedback, AI classification, and conversion-event source code are implemented; GA4 administration, production notification delivery, and booking-completion verification remain.
+5. Lead attribution, GA4 administration, production notifications, and booking-completion verification are owner-confirmed; the next gap is recurring source-to-qualified-lead and revenue analysis.
 6. The homepage carousel was replaced with a static optimized hero; field LCP, INP, CLS, and template performance still require measurement.
 7. Metadata outliers were shortened; live snippet verification, recrawl, and CTR monitoring remain.
 8. Google has not necessarily recrawled all newly deployed content yet.
-9. OAI-SearchBot and ChatGPT-User are explicit in source; deployment, CDN behavior, and the separate GPTBot owner policy remain.
-10. Unsupported credential claims were removed, but verified professional profiles, authorship, and qualified review still require owner evidence.
+9. OAI-SearchBot and ChatGPT-User are explicitly allowed and GPTBot is explicitly blocked in source; production deployment verification remains.
+10. Unsupported credential claims were removed and qualified review is owner-confirmed, but verified professional profiles and authorship still require publishable proof.
 
 
 
@@ -637,7 +637,7 @@ Google says AI Overviews and AI Mode use normal SEO fundamentals. No special AI 
 
 File: `src/app/robots.ts`
 
-Status: `Source Complete - Deployment, CDN Monitoring, and Training Policy Decision Pending`
+Status: `Source Complete - Deployment Verification Pending`
 
 Current wildcard behavior allows OAI-SearchBot, but add an explicit rule for clarity:
 
@@ -648,7 +648,7 @@ Allow: /
 
 - [x] Keep important pages crawlable.
 - **Supporting requirement:** Ensure Vercel/CDN/firewall allows published crawler IPs.
-- **Supporting requirement:** Decide separately whether to allow GPTBot training access.
+- [x] Decide separately whether to allow GPTBot training access.
 - [x] Keep ChatGPT-User access for user-requested page retrieval.
 - [x] Do not block CSS, JavaScript, or important images required for rendering.
 
@@ -664,6 +664,13 @@ Source completion record (July 29, 2026):
 - Kept `OAI-SearchBot` explicitly allowed for ChatGPT search discovery and citation.
 - Did not change GPTBot access. The wildcard policy currently allows it, and any decision to block training access remains an owner policy decision.
 - Production `/robots.txt`, CDN/firewall access, and OpenAI crawler-IP behavior must be rechecked after deployment.
+
+Source completion record (July 30, 2026):
+
+- Owner policy set to exclude public site content from potential GPTBot training.
+- Added an explicit site-wide `GPTBot` disallow rule.
+- Preserved explicit public-page access for `OAI-SearchBot` and `ChatGPT-User`.
+- Production `/robots.txt` must be rechecked after deployment to confirm the new GPTBot rule is live.
 
 Crawler purpose:
 
@@ -1301,29 +1308,29 @@ Differentiators must be based on real operations:
 
 # 17. Canonical Active Backlog and 30/60/90 Sequence
 
-Last reconciled against the repository: July 29, 2026.
+Last reconciled against the repository and owner completion confirmations: July 30, 2026.
 
 Only the checkboxes in this section are counted as active project tasks. Detailed checklists elsewhere define requirements and evidence. A task is complete only when its definition of done is satisfied; source completion and external verification are recorded separately.
 
 | Active category | Count | Task IDs |
 | --- | ---: | --- |
-| Repository work ready now | 2 | T-101–T-102 |
-| External account work | 6 | T-002–T-005, T-108–T-109 |
-| Owner facts, proof, or policy decisions | 6 | T-006–T-008, T-105–T-107 |
+| Repository work ready now | 1 | T-102 |
+| External account work | 2 | T-108–T-109 |
+| Owner facts, proof, or policy decisions | 3 | T-105–T-107 |
 | Content requiring review | 2 | T-103–T-104 |
 | Recurring work after data is available | 5 | T-201–T-205 |
-| **Total active tasks** | **21** | |
+| **Total active tasks** | **13** | |
 
 ## P0: Deploy, Measure, and Unblock Trust
 
-- [x] **T-001 `[EXTERNAL]` Deploy and verify the July 29 source changes.** Completed July 29, 2026. Production `/robots.txt` includes `OAI-SearchBot` and `ChatGPT-User`; representative service/location anchors render; the AI-UTM contact path and deployed analytics classifier/event bundle were verified; runtime GA4/DebugView validation remains correctly assigned to T-003.
-- [ ] **T-002 `[EXTERNAL]` Submit the sitemap and request indexing for materially changed priority URLs in GSC.** Dependency: verified Search Console access and T-001. Done when the sitemap is accepted, priority URLs are inspected/requested, and submitted evidence and dates are recorded.
-- [ ] **T-003 `[EXTERNAL]` Finish GA4 administration and live event QA.** Dependency: GA4 admin access and T-001. Done when `generate_lead` is a key event; `ai_source` and `traffic_channel` are registered where required; form, phone, booking-start, calculator, and AI-referral events are verified once in DebugView; and no sensitive values appear.
-- [ ] **T-004 `[EXTERNAL]` Configure production lead-notification email and verify delivery.** Dependency: approved Resend sender/domain and Vercel environment access. Done when `RESEND_API_KEY`, `LEAD_NOTIFICATION_FROM`, and `LEAD_NOTIFICATION_TO` are configured, a non-sensitive QA lead records `notificationStatus: sent`, and the QA record is cleaned up or marked spam.
-- [ ] **T-005 `[EXTERNAL]` Verify Calendly completion ingestion and add `booking_complete` measurement.** Dependency: Calendly webhook/account access and T-001. Done when a test booking is associated with the lead or safely attributed session, appointment status is stored, `booking_complete` fires once without personal data, and cancellation behavior is verified.
-- [ ] **T-006 `[OWNER]` Complete the verified business-information packet in Section 2.** Dependency: owner documents and decisions. Done when legal name, address eligibility, team, credentials, representation authority, real services, languages, industries, pricing policy, consultation policy, response expectations, portal, and approved proof assets are documented.
-- [ ] **T-007 `[OWNER]` Obtain qualified review of material tax, credential, guarantee, and representation claims.** Dependency: T-006 and an identified qualified reviewer. Done when the reviewer, scope, date, corrections, and approval evidence are recorded without inventing public credentials.
-- [ ] **T-008 `[OWNER]` Decide and document the GPTBot training policy.** Dependency: owner consent decision. Done when the choice is recorded and `robots.ts` is changed only if the owner chooses to block training; ChatGPT search and user-requested retrieval remain separate policies.
+- [x] **T-001 `[EXTERNAL]` Deploy and verify the July 29 source changes.** Completed July 29, 2026. Production `/robots.txt` includes `OAI-SearchBot` and `ChatGPT-User`; representative service/location anchors render; the AI-UTM contact path and deployed analytics classifier/event bundle were verified. T-003 runtime GA4/DebugView validation was later confirmed complete by the owner.
+- [x] **T-002 `[EXTERNAL]` Submit the sitemap and request indexing for materially changed priority URLs in GSC.** Completed July 30, 2026 by owner confirmation. The owner confirmed this Search Console task is done. GSC screenshots, exports, inspected URL list, and submission timestamps are not stored in the repository; attach them later if an auditable record is required.
+- [x] **T-003 `[EXTERNAL]` Finish GA4 administration and live event QA.** Completed July 30, 2026 by owner confirmation. The owner confirmed GA4 was added and the task completed; account screenshots and DebugView evidence are not stored in the repository.
+- [x] **T-004 `[EXTERNAL]` Configure production lead-notification email and verify delivery.** Completed July 30, 2026 by owner confirmation. The owner confirmed the Vercel and Resend lead-form notification setup is complete; delivery logs are not stored in the repository.
+- [x] **T-005 `[EXTERNAL]` Verify Calendly completion ingestion and add `booking_complete` measurement.** Completed July 30, 2026 by owner confirmation. Calendly account, webhook, event, and cancellation evidence are not stored in the repository.
+- [x] **T-006 `[OWNER]` Complete the verified business-information packet in Section 2.** Completed July 30, 2026 by owner confirmation. The underlying private business-information packet is not stored in this repository.
+- [x] **T-007 `[OWNER]` Obtain qualified review of material tax, credential, guarantee, and representation claims.** Completed July 30, 2026 by owner confirmation. Reviewer identity, scope, corrections, and approval evidence are not stored in the repository.
+- [x] **T-008 `[OWNER]` Decide and document the GPTBot training policy.** Completed July 30, 2026. Policy: disallow `GPTBot` from the entire site to exclude content from potential training while continuing to allow `OAI-SearchBot` for ChatGPT search discovery and `ChatGPT-User` for user-requested retrieval. Implemented explicitly in `src/app/robots.ts`.
 
 T-001 completion evidence:
 
@@ -1332,11 +1339,17 @@ T-001 completion evidence:
 - Live `/robots.txt` returned HTTP 200 with wildcard, `OAI-SearchBot`, and `ChatGPT-User` rules while preserving `/admin` exclusions.
 - Live business-tax, Houston city, Houston IRS-notice, California state, and AI-UTM contact URLs returned HTTP 200.
 - Stable `overview`, `services` or `direct-answer`, `official-resources`, and `frequently-asked-questions` anchors were verified on the applicable representative templates.
-- The served production JavaScript bundle contained `ai_referral_visit`, `integrafin_ai_referral_visit_v1`, and the ChatGPT source classifier. A real-browser GA4 event check is not claimed here and remains part of T-003.
+- The served production JavaScript bundle contained `ai_referral_visit`, `integrafin_ai_referral_visit_v1`, and the ChatGPT source classifier. T-003 live GA4 administration and event QA was later confirmed complete by the owner.
+
+T-002 completion evidence:
+
+- Owner confirmed on July 30, 2026 that the sitemap submission and priority indexing-request task is complete.
+- This record does not claim independent repository verification of Search Console account state.
+- T-201 weekly indexing monitoring is now eligible to begin.
 
 ## P1: Repository Work Ready to Start
 
-- [ ] **T-101 `[SOURCE]` Implement intent-based internal linking.** Dependency: none. Done when each article links to one primary owner service, each priority service links to two or three relevant articles, city/state templates link to appropriate service owners, generic `Read More` anchors are replaced where context permits, nested-page breadcrumb coverage is audited, and an orphan/depth report is saved.
+- [x] **T-101 `[SOURCE]` Implement intent-based internal linking.** Completed July 30, 2026. Added a canonical article-to-service intent map with category and keyword fallbacks for database posts; connected every rendered article to a priority owner service; added two or three unique supporting guides to all 12 priority owner pages; retained focused city/state-to-service links; replaced generic `Read More` anchors; added missing Industries and Workflow Examples breadcrumb markup; and saved `INTERNAL_LINK_AUDIT_2026-07-30.md`. A second QA pass removed overlapping guide destinations from the individual-tax, payroll, and calculator experiences and added a repeatable duplicate-destination check. The final rendered audit covered all 62 sitemap routes with zero broken destinations, orphans, zero-inbound routes, routes deeper than three clicks, generic anchors, duplicate priority-page article destinations, article/owner coverage gaps, priority service/guide deficits, or breadcrumb gaps.
 - [ ] **T-102 `[SOURCE]` Complete the remaining source performance audit.** Dependency: none. Done when below-the-fold media, third-party scripts, analytics loading, image dimensions, map behavior, and major client bundles are reviewed across homepage, contact, calculator, blog, city, and service templates; safe fixes are implemented; and remaining field-only checks are separated.
 - [ ] **T-103 `[CONTENT]` Refresh three older high-opportunity articles.** Dependency: T-007 for final tax review. Done when each chosen article has current dates/rules, primary sources, useful original examples, a practical checklist, limitations, one owner service CTA, accurate modified dates, and reviewer evidence.
 - [ ] **T-104 `[CONTENT]` Publish the first bottom-of-funnel guide.** Dependency: keyword validation and T-007. Start with one of: bookkeeping cost in Katy, CP2000 response, CP14 checklist, bookkeeping-cleanup timeline, or Texas LLC first-year calendar. Done when one differentiated guide is published, internally linked, reviewed, indexed, and measured before another guide is approved.
@@ -1360,7 +1373,7 @@ T-001 completion evidence:
 - The anonymous testimonial and generic unsupported trust claims were removed and production-verified July 14, 2026.
 - Lead attribution, pipeline/revenue feedback, service-aware forms, thank-you flow, and protected lead operations were implemented and tested July 15–23, 2026.
 - Homepage hero simplification, source-image optimization, metadata cleanup, pricing/scope guidance, structured-data graph work, and OpenAI search crawler access were implemented by July 29, 2026.
-- AI referral classification, GA4 event source code, lead storage, admin filtering, stable citation anchors, and explicit `ChatGPT-User` access were implemented, build-verified, deployed, and HTTP-verified July 29, 2026; T-003 covers the remaining GA4 runtime/account verification.
+- AI referral classification, GA4 event source code, lead storage, admin filtering, stable citation anchors, and explicit `ChatGPT-User` access were implemented, build-verified, deployed, and HTTP-verified July 29, 2026; GA4 runtime/account verification was owner-confirmed July 30, 2026.
 
 ## Sequence
 
@@ -1521,16 +1534,15 @@ This is a reusable release template, not an active backlog. Copy the applicable 
 
 # 22. Current Priority Order
 
-This summary reflects the July 29, 2026 reconciliation. Section 17 task IDs control execution and completion.
+This summary reflects the July 30, 2026 reconciliation. Section 17 task IDs control execution and completion.
 
-1. T-001 is complete; finish Search Console indexing and GA4/notification/booking configuration next: T-002 through T-005.
-2. Complete verified business facts and qualified claim review: T-006 through T-008.
-3. Complete intent-based internal linking and the remaining source performance audit: T-101 and T-102.
-4. Add real people, office, workflow, portal, and case-study proof only after owner evidence is available: T-105 through T-107.
-5. Resume GBP, genuine reviews, citations, and earned local/professional authority when approved: T-108 and T-109.
-6. Refresh three existing articles before expanding publication volume: T-103.
-7. Publish and measure one bottom-of-funnel guide before approving another: T-104.
-8. Run the recurring measurement and maintenance program: T-201 through T-205.
-9. Approve new city/state pages only when Search Console demand, differentiated proof, qualified leads, and maintenance capacity justify them.
+1. T-001 through T-008 are complete based on deployment evidence and owner confirmations.
+2. Complete the remaining source performance audit next: T-102. T-101 intent-based internal linking is complete.
+3. Add real people, office, workflow, portal, and case-study proof only after owner evidence is available: T-105 through T-107.
+4. Resume GBP, genuine reviews, citations, and earned local/professional authority when approved: T-108 and T-109.
+5. Refresh three existing articles before expanding publication volume: T-103.
+6. Publish and measure one bottom-of-funnel guide before approving another: T-104.
+7. Run the recurring measurement and maintenance program: T-201 through T-205.
+8. Approve new city/state pages only when Search Console demand, differentiated proof, qualified leads, and maintenance capacity justify them.
 
 The fastest realistic route to more qualified leads is not publishing more generic pages. It is combining IntegraFin's strong technical/content foundation with verifiable expertise, real local prominence, genuine reviews, clear conversion paths, fast lead follow-up, and source-to-revenue measurement.

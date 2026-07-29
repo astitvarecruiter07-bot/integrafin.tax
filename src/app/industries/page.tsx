@@ -6,14 +6,29 @@ import {
   Stethoscope, HeartPulse, Scale, Briefcase, Laptop, Users, ShoppingCart, 
   ChevronRight, Box
 } from "lucide-react";
+import { buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo/schema";
+
+const pageUrl = "https://integrafin.tax/industries";
+const pageDescription = "Review tax, bookkeeping, payroll-record, and accounting service contexts for real estate, construction, healthcare, professional services, technology, and other businesses.";
+
+const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
+  { name: "Home", item: "https://integrafin.tax/" },
+  { name: "Industries", item: pageUrl },
+]);
+
+const webPageSchema = buildWebPageSchema({
+  url: pageUrl,
+  name: "Industry Tax & Accounting Services | IntegraFin",
+  description: pageDescription,
+});
 
 export const metadata: Metadata = {
   title: 'Industry Tax & Accounting Services | IntegraFin',
-  description: 'Review tax, bookkeeping, payroll-record, and accounting service contexts for real estate, construction, healthcare, professional services, technology, and other businesses.',
-  alternates: { canonical: 'https://integrafin.tax/industries' },
+  description: pageDescription,
+  alternates: { canonical: pageUrl },
   openGraph: {
     title: 'Industry Tax & Accounting Services | IntegraFin',
-    url: 'https://integrafin.tax/industries',
+    url: pageUrl,
   },
 };
 
@@ -98,6 +113,8 @@ const industries = [
 export default function IndustriesPage() {
   return (
     <main className="pt-20 bg-slate-50 selection:bg-[#0092df] selection:text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
       {/* Hero Section */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden bg-[#003580]">
         <div className="absolute inset-0 opacity-30">

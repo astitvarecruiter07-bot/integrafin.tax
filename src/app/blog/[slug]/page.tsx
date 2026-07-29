@@ -25,16 +25,7 @@ import {
 } from "@/lib/seo/schema";
 import { serializeJsonLd } from "@/lib/seo/jsonLd";
 import { sanitizeHtml } from "@/utils/seo";
-
-const relatedResourceLinks = [
-  { href: "/services", label: "Tax and accounting services" },
-  { href: "/texas/irs-notice-help-katy-tx", label: "IRS notice help in Katy TX" },
-  { href: "/texas-tax-accounting-services", label: "Texas tax and accounting services" },
-  { href: "/new-york-tax-accounting-services", label: "New York tax and accounting services" },
-  { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania tax and accounting services" },
-  { href: "/tax-calculator", label: "Tax estimator" },
-  { href: "/contact", label: "Talk to IntegraFin" },
-];
+import { getBlogIntentLinks } from "@/data/internalLinking";
 
 function formatDisplayDate(value: string) {
   return new Intl.DateTimeFormat("en-US", {
@@ -126,6 +117,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const safeContentHtml = post.contentHtml ? sanitizeHtml(post.contentHtml) : "";
   const contentText = safeContentHtml ? stripHtml(safeContentHtml) : post.content?.join(" ") || "";
   const wordCount = contentText.split(/\s+/).filter(Boolean).length || undefined;
+  const intentLinks = getBlogIntentLinks(post);
+  const relatedResourceLinks = [
+    intentLinks.primary,
+    ...intentLinks.supporting,
+    { href: "/blog", label: "More Tax and Accounting Guides" },
+    { href: "/contact", label: "Talk to IntegraFin" },
+  ];
   const faqJsonLd = post.faq?.length
     ? {
         "@type": "FAQPage",
@@ -252,9 +250,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
 
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h2 className="mb-3 text-xl font-bold text-foreground">Related Resources</h2>
+                <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-[#0092df]">Primary next step</p>
+                <h2 className="mb-3 text-xl font-bold text-foreground">{intentLinks.primary.label}</h2>
                 <p className="mb-5 text-sm leading-relaxed text-text-secondary">
-                  Move from general guidance into service-specific next steps.
+                  Move from this general guide into the service page that owns the related search intent.
                 </p>
                 <div className="grid gap-3">
                   {relatedResourceLinks.map((link) => (

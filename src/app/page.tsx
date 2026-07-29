@@ -300,7 +300,7 @@ export default function Home() {
                    <h3 className="text-xl font-black text-[#003580] mb-5 tracking-tight">{srv.title}</h3>
                    <p className="text-slate-600 text-sm mb-8 flex-grow leading-relaxed font-medium">{srv.desc}</p>
                    <Link href={srv.href} className="mt-auto inline-flex items-center justify-center gap-2 text-[#0092df] py-3 px-6 rounded-xl font-bold text-sm bg-slate-50 hover:bg-[#0092df] hover:text-white transition-colors w-full">
-                     Read More <ChevronRight className="w-4 h-4" />
+                     Explore {srv.title} <ChevronRight className="w-4 h-4" />
                    </Link>
                 </div>
               ))}

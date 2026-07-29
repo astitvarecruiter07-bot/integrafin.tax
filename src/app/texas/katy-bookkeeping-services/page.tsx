@@ -6,6 +6,7 @@ import {
   buildWebPageSchema,
   localBusinessRef,
 } from "@/lib/seo/schema";
+import { serviceGuideLinks } from "@/data/internalLinking";
 
 const pageUrl = "https://integrafin.tax/texas/katy-bookkeeping-services";
 const serviceId = `${pageUrl}#service`;
@@ -563,12 +564,11 @@ export default function KatyBookkeepingServicesPage() {
             <Link href="/quickbooks-bookkeeping-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               QuickBooks Cleanup Katy TX
             </Link>
-            <Link href="/blog/small-business-accounting-tips" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Small Business Accounting Tips
-            </Link>
-            <Link href="/blog/payroll-best-practices" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Payroll Best Practices
-            </Link>
+            {serviceGuideLinks["katy-bookkeeping-services"].map((guide) => (
+              <Link key={guide.href} href={guide.href} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+                {guide.label}
+              </Link>
+            ))}
             <Link href="/tax-calculator" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               1099 and Federal Tax Calculator
             </Link>

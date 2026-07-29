@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { TexasCityLandingData } from "@/data/texasCityLandingData";
 import { texasCityPages } from "@/data/texasCityLandingData";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
+import { serviceGuideLinks } from "@/data/internalLinking";
 import { houstonIrsServicePageList } from "@/data/houstonIrsServicePages";
 import {
   buildBreadcrumbSchema,
@@ -397,6 +398,25 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
             </div>
           </article>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-10">
+        <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-secondary">Local tax guidance</p>
+          <h2 className="mt-2 text-2xl font-black text-primary sm:text-3xl">
+            Tax and Accounting Guides for {page.city}
+          </h2>
+          <p className="mt-3 max-w-3xl leading-relaxed text-slate-700">
+            Use these practical guides alongside the dedicated service pages above to prepare for a local consultation.
+          </p>
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
+            {serviceGuideLinks["texas-city-tax-accountant"].map((guide) => (
+              <Link key={guide.href} href={guide.href} className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 font-bold text-primary hover:border-secondary hover:bg-white">
+                {guide.label}
+              </Link>
+            ))}
+          </div>
+        </article>
       </section>
 
       <section id="frequently-asked-questions" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-16">

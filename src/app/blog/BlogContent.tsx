@@ -215,7 +215,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                             href={`/blog/${post.slug}`}
                                             className="text-[#0092df] font-black text-xs uppercase tracking-widest hover:text-[#003580] transition-colors inline-flex items-center gap-1"
                                         >
-                                            Read More
+                                            Read: {post.title}
                                             <ArrowRight className="w-3 h-3" />
                                         </Link>
                                     </div>

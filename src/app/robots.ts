@@ -18,6 +18,10 @@ export default function robots(): MetadataRoute.Robots {
                 allow: "/",
                 disallow: ["/admin", "/admin/*"],
             },
+            {
+                userAgent: "GPTBot",
+                disallow: "/",
+            },
         ],
         sitemap: "https://integrafin.tax/sitemap.xml",
     };
