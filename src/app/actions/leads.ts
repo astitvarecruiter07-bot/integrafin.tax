@@ -12,6 +12,7 @@ import { sendLeadConfirmation, sendNewLeadNotification } from '@/lib/leadNotific
 import { getLeadResponseSlaMinutes } from '@/lib/leadSla';
 import { FOLLOW_UP_ACTIVE_STATUSES } from '@/lib/leadFollowUp';
 import { LEAD_SERVICE_VALUES } from '@/lib/leadServices';
+import { AI_REFERRAL_SOURCES } from '@/lib/aiReferral';
 
 const ADMIN_UNAUTHORIZED_MESSAGE = 'Your admin session expired. Sign in again to continue.';
 
@@ -44,6 +45,7 @@ const LeadSchema = z.object({
     gbraid: z.string().max(200).optional(),
     wbraid: z.string().max(200).optional(),
     msclkid: z.string().max(200).optional(),
+    aiReferralSource: z.enum(AI_REFERRAL_SOURCES).optional(),
     firstTouchAt: z.string().datetime({ offset: true }).optional(),
   }).optional(),
 }).refine((lead) => Boolean(lead.email.trim() || lead.phone.trim()), {
@@ -141,6 +143,7 @@ function prepareAttribution(
     gbraid: attribution?.gbraid,
     wbraid: attribution?.wbraid,
     msclkid: attribution?.msclkid,
+    aiReferralSource: attribution?.aiReferralSource,
     firstTouchAt: attribution?.firstTouchAt ? new Date(attribution.firstTouchAt) : undefined,
     submittedAt,
   };

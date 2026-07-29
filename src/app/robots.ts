@@ -13,6 +13,11 @@ export default function robots(): MetadataRoute.Robots {
                 allow: "/",
                 disallow: ["/admin", "/admin/*"],
             },
+            {
+                userAgent: "ChatGPT-User",
+                allow: "/",
+                disallow: ["/admin", "/admin/*"],
+            },
         ],
         sitemap: "https://integrafin.tax/sitemap.xml",
     };

@@ -104,7 +104,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
-      <section className="bg-primary-dark pt-28 sm:pt-32 pb-12 sm:pb-16">
+      <section id="overview" className="scroll-mt-24 bg-primary-dark pt-28 sm:pt-32 pb-12 sm:pb-16">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <div className="mb-4 inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-secondary">
@@ -157,7 +157,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
+      <section id="who-this-applies-to" className="scroll-mt-24 mx-auto max-w-7xl px-6 py-12 sm:py-16">
         <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
           <article className="rounded-lg border border-slate-200 bg-white p-7 shadow-sm sm:p-9">
             <h2 className="text-2xl font-black text-primary sm:text-3xl">Who this applies to</h2>
@@ -177,7 +177,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
-      <section className="bg-white py-12 sm:py-16">
+      <section id="process" className="scroll-mt-24 bg-white py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-7 max-w-4xl">
             <h2 className="text-2xl font-black text-primary sm:text-3xl">{data.processTitle}</h2>
@@ -194,7 +194,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-6 py-12 sm:py-16 lg:grid-cols-2">
+      <section id="common-situations" className="scroll-mt-24 mx-auto grid max-w-7xl gap-8 px-6 py-12 sm:py-16 lg:grid-cols-2">
         <div>
           <h2 className="text-2xl font-black text-primary sm:text-3xl">{data.situationsTitle}</h2>
           <div className="mt-6 grid gap-4">
@@ -221,7 +221,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-12 sm:pb-16">
+      <section id="scope" className="scroll-mt-24 mx-auto max-w-7xl px-6 pb-12 sm:pb-16">
         <div className="grid gap-6 lg:grid-cols-2">
           <article className="rounded-lg border border-emerald-200 bg-emerald-50 p-7">
             <h2 className="text-2xl font-black text-primary">What is included</h2>
@@ -248,7 +248,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
-      <section className="bg-primary-dark py-12 text-white sm:py-16">
+      <section id="why-integrafin" className="scroll-mt-24 bg-primary-dark py-12 text-white sm:py-16">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
@@ -284,7 +284,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
+      <section id="timing-pricing-limitations" className="scroll-mt-24 mx-auto max-w-7xl px-6 py-12 sm:py-16">
         <div className="mb-8 max-w-4xl">
           <h2 className="text-2xl font-black text-primary sm:text-3xl">
             Timing, deadlines, pricing, and limitations
@@ -322,7 +322,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12 sm:py-16">
+      <section id="official-resources" className="scroll-mt-24 mx-auto max-w-7xl px-6 py-12 sm:py-16">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <h2 className="text-2xl font-black text-primary sm:text-3xl">{data.officialResourcesTitle}</h2>
@@ -376,7 +376,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-12 sm:pb-16">
+      <section id="frequently-asked-questions" className="scroll-mt-24 mx-auto max-w-7xl px-6 pb-12 sm:pb-16">
         <h2 className="text-2xl font-black text-primary sm:text-3xl">{data.name} FAQ</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
           {data.faqs.map((faq) => (

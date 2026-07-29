@@ -16,7 +16,8 @@ export type AnalyticsEventName =
   | "booking_start"
   | "booking_complete"
   | "calculator_complete"
-  | "portal_click";
+  | "portal_click"
+  | "ai_referral_visit";
 
 type SafeEventParameter = string | number | boolean | undefined;
 type AnalyticsParameters = Record<string, SafeEventParameter>;
@@ -33,6 +34,8 @@ const safeParameterNames = new Set([
   "utm_campaign",
   "calculator_name",
   "tax_year",
+  "ai_source",
+  "traffic_channel",
 ]);
 
 function isSafeAnalyticsValue(value: SafeEventParameter) {
@@ -86,6 +89,8 @@ export function attributionEventParameters(attribution: LeadAttribution): Analyt
     utm_source: attribution.utmSource,
     utm_medium: attribution.utmMedium,
     utm_campaign: attribution.utmCampaign,
+    ai_source: attribution.aiReferralSource,
+    traffic_channel: attribution.aiReferralSource ? "ai_referral" : undefined,
   };
 }
 

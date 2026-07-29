@@ -58,7 +58,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
-      <section className="bg-primary-dark pb-16 pt-28 sm:pt-32">
+      <section id="overview" className="scroll-mt-24 bg-primary-dark pb-16 pt-28 sm:pt-32">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-secondary">
             Serving {page.city} and {page.county}
@@ -147,7 +147,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+      <section id="local-support" className="scroll-mt-24 mx-auto max-w-6xl px-6 py-12 sm:py-16">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="mb-5 text-2xl font-black text-primary sm:text-3xl">
             Local Tax and Accounting Support in {page.city}
@@ -161,7 +161,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
         </article>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="scope" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <div className="grid gap-6 lg:grid-cols-2">
           <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-7">
             <h2 className="text-2xl font-black text-primary">What may be included</h2>
@@ -182,7 +182,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="timing-pricing-limitations" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="text-2xl font-black text-primary sm:text-3xl">
             Timing, pricing factors, and important limitations
@@ -216,7 +216,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
         </article>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="local-business-context" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
           <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
             <h2 className="mb-5 text-2xl font-black text-primary sm:text-3xl">
@@ -245,7 +245,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="related-services" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="mb-3 text-2xl font-black text-primary sm:text-3xl">
             {page.primaryService} and Related Services in {page.city}
@@ -285,7 +285,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
         </article>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="engagement-process" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="mb-3 text-2xl font-black text-primary sm:text-3xl">What the Engagement Process Looks Like</h2>
           <p className="mb-7 text-slate-700 leading-relaxed">
@@ -348,7 +348,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="official-resources" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="mb-4 text-2xl font-black text-primary sm:text-3xl">Local Business Resources</h2>
           <p className="mb-6 max-w-4xl text-slate-700 leading-relaxed">{page.resourceIntro}</p>
@@ -399,7 +399,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-16">
+      <section id="frequently-asked-questions" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-16">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="mb-7 text-2xl font-black text-primary sm:text-3xl">
             Frequently Asked Questions About {page.primaryService} in {page.city}

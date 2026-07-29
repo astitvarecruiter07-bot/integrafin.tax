@@ -56,7 +56,7 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
-      <section className="bg-primary-dark pb-16 pt-28 sm:pt-32">
+      <section id="overview" className="scroll-mt-24 bg-primary-dark pb-16 pt-28 sm:pt-32">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-secondary">{data.eyebrow}</p>
           <h1 className="text-3xl font-black tracking-tight text-white md:text-5xl">{data.heroTitle}</h1>
@@ -85,7 +85,7 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+      <section id="direct-answer" className="scroll-mt-24 mx-auto max-w-6xl px-6 py-12 sm:py-16">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-primary">Direct answer</p>
           <h2 className="mt-3 text-2xl font-black text-primary-dark sm:text-3xl">{data.quickAnswerTitle}</h2>
@@ -97,7 +97,7 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
         </article>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="common-situations" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="text-2xl font-black text-primary sm:text-3xl">{data.situationsTitle}</h2>
           <p className="mt-3 max-w-4xl leading-relaxed text-slate-700">{data.situationsIntro}</p>
@@ -112,7 +112,7 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
         </article>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="first-steps" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
             <h2 className="text-2xl font-black text-primary">{data.firstStepsTitle}</h2>
@@ -186,7 +186,7 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-10">
+      <section id="official-resources" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="text-2xl font-black text-primary sm:text-3xl">Official IRS resources</h2>
           <p className="mt-3 max-w-4xl leading-relaxed text-slate-700">
@@ -223,7 +223,7 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
         </article>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 pb-16">
+      <section id="frequently-asked-questions" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-16">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="text-2xl font-black text-primary sm:text-3xl">Frequently asked questions</h2>
           <div className="mt-7 space-y-6">

@@ -49,6 +49,7 @@ type LeadAttributionRecord = {
   gbraid?: string;
   wbraid?: string;
   msclkid?: string;
+  aiReferralSource?: string;
 };
 
 type CallActivityRecord = {
@@ -228,6 +229,14 @@ function formatMoney(value?: number) {
   }).format(value || 0);
 }
 
+function formatAiSource(value?: string) {
+  if (!value) return 'Not an identified AI referral';
+  return value
+    .split('_')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
 function toDateTimeLocal(value?: string) {
   if (!value) return '';
   const date = new Date(value);
@@ -283,6 +292,7 @@ export default function LeadOperationsDashboard({
   const [statusFilter, setStatusFilter] = useState('all');
   const [serviceFilter, setServiceFilter] = useState('all');
   const [sourceFilter, setSourceFilter] = useState('all');
+  const [aiSourceFilter, setAiSourceFilter] = useState('all');
   const [dateFilter, setDateFilter] = useState('all');
   const [followUpFilter, setFollowUpFilter] = useState<FollowUpFilter>('all');
   const [callOutcome, setCallOutcome] = useState<CallOutcome>('answered');
@@ -303,6 +313,17 @@ export default function LeadOperationsDashboard({
   );
   const services = useMemo(() => [...new Set(leads.map((lead) => lead.service))].sort(), [leads]);
   const sources = useMemo(() => [...new Set(leads.map((lead) => lead.source))].sort(), [leads]);
+  const aiSources = useMemo(
+    () =>
+      [
+        ...new Set(
+          leads
+            .map((lead) => lead.attribution?.aiReferralSource)
+            .filter((source): source is string => Boolean(source)),
+        ),
+      ].sort(),
+    [leads],
+  );
   const followUpCounts = useMemo(() => {
     const counts: Record<FollowUpFilter, number> = {
       all: leads.length,
@@ -328,12 +349,24 @@ export default function LeadOperationsDashboard({
       .filter((lead) => {
         const matchesSearch =
           !normalizedSearch ||
-          [lead.name, lead.email, lead.phone, lead.company, lead.service]
+          [
+            lead.name,
+            lead.email,
+            lead.phone,
+            lead.company,
+            lead.service,
+            lead.attribution?.aiReferralSource,
+          ]
             .filter(Boolean)
             .some((value) => value?.toLowerCase().includes(normalizedSearch));
         const matchesStatus = statusFilter === 'all' || lead.status === statusFilter;
         const matchesService = serviceFilter === 'all' || lead.service === serviceFilter;
         const matchesSource = sourceFilter === 'all' || lead.source === sourceFilter;
+        const matchesAiSource =
+          aiSourceFilter === 'all' ||
+          (aiSourceFilter === 'none'
+            ? !lead.attribution?.aiReferralSource
+            : lead.attribution?.aiReferralSource === aiSourceFilter);
         const matchesDate = !earliest || new Date(lead.createdAt).getTime() >= earliest;
         const followUpBucket = getFollowUpBucket(
           lead.nextFollowUpAt,
@@ -341,7 +374,7 @@ export default function LeadOperationsDashboard({
           metrics.generatedAt,
         );
         const matchesFollowUp = followUpFilter === 'all' || followUpBucket === followUpFilter;
-        return matchesSearch && matchesStatus && matchesService && matchesSource && matchesDate && matchesFollowUp;
+        return matchesSearch && matchesStatus && matchesService && matchesSource && matchesAiSource && matchesDate && matchesFollowUp;
       })
       .sort((firstLead, secondLead) => {
         const firstBucket = getFollowUpBucket(
@@ -368,6 +401,7 @@ export default function LeadOperationsDashboard({
         return new Date(secondLead.createdAt).getTime() - new Date(firstLead.createdAt).getTime();
       });
   }, [
+    aiSourceFilter,
     dateFilter,
     followUpFilter,
     leads,
@@ -661,7 +695,7 @@ export default function LeadOperationsDashboard({
         )}
 
         <section className="mb-5 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
             <label className="relative xl:col-span-1">
               <span className="sr-only">Search leads</span>
               <Search className="absolute left-3 top-3.5 h-4 w-4 text-slate-400" aria-hidden="true" />
@@ -684,6 +718,13 @@ export default function LeadOperationsDashboard({
             <FilterSelect label="Source" value={sourceFilter} onChange={setSourceFilter}>
               <option value="all">All sources</option>
               {sources.map((source) => <option key={source} value={source}>{source}</option>)}
+            </FilterSelect>
+            <FilterSelect label="AI referral" value={aiSourceFilter} onChange={setAiSourceFilter}>
+              <option value="all">All traffic</option>
+              <option value="none">No identified AI source</option>
+              {aiSources.map((source) => (
+                <option key={source} value={source}>{formatAiSource(source)}</option>
+              ))}
             </FilterSelect>
             <FilterSelect label="Date" value={dateFilter} onChange={setDateFilter}>
               <option value="all">All dates</option>
@@ -1064,6 +1105,7 @@ export default function LeadOperationsDashboard({
                         <DetailField label="First page" value={selectedLead.attribution.firstLandingPage} />
                         <DetailField label="Submission page" value={selectedLead.attribution.currentSubmissionPage} />
                         <DetailField label="Referrer" value={selectedLead.attribution.referrer || 'Direct / unavailable'} />
+                        <DetailField label="AI referral source" value={formatAiSource(selectedLead.attribution.aiReferralSource)} />
                         <DetailField label="Campaign" value={selectedLead.attribution.utmCampaign || 'None'} />
                         <DetailField label="Source / medium" value={[selectedLead.attribution.utmSource, selectedLead.attribution.utmMedium].filter(Boolean).join(' / ') || 'None'} />
                         <DetailField label="Ad click ID" value={(selectedLead.attribution.gclid || selectedLead.attribution.gbraid || selectedLead.attribution.wbraid || selectedLead.attribution.msclkid) ? 'Present' : 'None'} />

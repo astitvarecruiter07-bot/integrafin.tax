@@ -4,6 +4,10 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { captureLeadAttribution } from "@/lib/attribution";
 import { baseEventParameters, trackEvent, type AnalyticsEventName } from "@/lib/analytics";
+import { detectAiReferralSource } from "@/lib/aiReferral";
+
+const AI_REFERRAL_SESSION_KEY = "integrafin_ai_referral_visit_v1";
+let aiReferralVisitTracked = false;
 
 function getTrackedClick(anchor: HTMLAnchorElement): AnalyticsEventName | undefined {
   const href = anchor.getAttribute("href")?.trim().toLowerCase();
@@ -30,7 +34,29 @@ export default function AnalyticsTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
-    captureLeadAttribution();
+    const attribution = captureLeadAttribution();
+    const currentAiReferralSource = detectAiReferralSource({
+      utmSource: new URLSearchParams(window.location.search).get("utm_source") || undefined,
+      referrer: document.referrer,
+    });
+    if (!currentAiReferralSource || aiReferralVisitTracked) return;
+
+    try {
+      if (window.sessionStorage.getItem(AI_REFERRAL_SESSION_KEY)) {
+        aiReferralVisitTracked = true;
+        return;
+      }
+      window.sessionStorage.setItem(AI_REFERRAL_SESSION_KEY, "1");
+    } catch {
+      // In-memory deduplication still prevents repeat events in restricted browsers.
+    }
+
+    aiReferralVisitTracked = true;
+    trackEvent("ai_referral_visit", {
+      ...baseEventParameters(attribution),
+      ai_source: currentAiReferralSource,
+      traffic_channel: "ai_referral",
+    });
   }, [pathname]);
 
   useEffect(() => {

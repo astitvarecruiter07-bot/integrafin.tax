@@ -1,3 +1,9 @@
+import {
+  detectAiReferralSource,
+  normalizeAiReferralSource,
+  type AiReferralSource,
+} from "@/lib/aiReferral";
+
 export type LeadAttribution = {
   firstLandingPage?: string;
   currentSubmissionPage?: string;
@@ -11,6 +17,7 @@ export type LeadAttribution = {
   gbraid?: string;
   wbraid?: string;
   msclkid?: string;
+  aiReferralSource?: AiReferralSource;
   firstTouchAt?: string;
 };
 
@@ -82,6 +89,7 @@ function normalizeStoredAttribution(value: unknown): StoredAttribution | undefin
     gbraid: cleanString(candidate.gbraid, MAX_CAMPAIGN_VALUE_LENGTH),
     wbraid: cleanString(candidate.wbraid, MAX_CAMPAIGN_VALUE_LENGTH),
     msclkid: cleanString(candidate.msclkid, MAX_CAMPAIGN_VALUE_LENGTH),
+    aiReferralSource: normalizeAiReferralSource(candidate.aiReferralSource),
     firstTouchAt: cleanTimestamp(candidate.firstTouchAt),
   };
 
@@ -131,6 +139,13 @@ export function captureLeadAttribution(): LeadAttribution {
       existing?.[fieldName] ||
       cleanString(searchParameters.get(queryName), MAX_CAMPAIGN_VALUE_LENGTH);
   }
+
+  next.aiReferralSource =
+    existing?.aiReferralSource ||
+    detectAiReferralSource({
+      utmSource: next.utmSource,
+      referrer: document.referrer,
+    });
 
   writeStoredAttribution(next);
 

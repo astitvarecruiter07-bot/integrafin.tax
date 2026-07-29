@@ -136,7 +136,7 @@ export default function StateServicesPage({
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 py-12 sm:py-16">
+      <section id="overview" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-12 sm:py-16">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
             Quick Answer: What We Do In {stateName}
@@ -189,7 +189,7 @@ export default function StateServicesPage({
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-10">
+      <section id="state-compliance" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             State Tax Compliance Support In {stateName}
@@ -250,7 +250,7 @@ export default function StateServicesPage({
         </section>
       )}
 
-      <section className="max-w-6xl mx-auto px-6 pb-10">
+      <section id="services" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
             Core Tax and Accounting Services in {stateName}
@@ -286,7 +286,7 @@ export default function StateServicesPage({
         </article>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-10">
+      <section id="resources" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             Recommended Tax Resources
@@ -308,7 +308,7 @@ export default function StateServicesPage({
         </article>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-16">
+      <section id="frequently-asked-questions" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-16">
         <div className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-6">
             Frequently Asked Questions

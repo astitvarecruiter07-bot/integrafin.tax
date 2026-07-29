@@ -93,6 +93,8 @@ export default function Navbar() {
                     onClick={() => setIsOpen(!isOpen)} 
                     className={`lg:hidden relative z-10 p-2 ${!scrolled ? 'text-slate-800' : 'text-slate-800'}`}
                     aria-label="Toggle navigation menu"
+                    aria-expanded={isOpen}
+                    aria-controls="mobile-navigation-menu"
                 >
                     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         {isOpen ? (
@@ -111,7 +113,7 @@ export default function Navbar() {
                         className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
                         onClick={() => setIsOpen(false)}
                     />
-                    <div className="lg:hidden mt-2 mx-4 sm:mx-6 bg-white rounded-2xl shadow-xl p-5 sm:p-6 animate-fade-in relative z-50">
+                    <div id="mobile-navigation-menu" className="lg:hidden mt-2 mx-4 sm:mx-6 bg-white rounded-2xl shadow-xl p-5 sm:p-6 animate-fade-in relative z-50">
                         <div className="flex flex-col gap-2">
                             {navLinks.map((link) => (
                                 <Link

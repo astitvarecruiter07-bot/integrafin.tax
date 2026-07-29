@@ -1,6 +1,7 @@
 # IntegraFin Google SEO, AEO, Local Visibility, and Lead Growth Action Plan
 
 Plan date: July 11, 2026  
+Last backlog reconciliation: July 29, 2026
 Website: [https://integrafin.tax](https://integrafin.tax)
 Primary market: Katy, Fort Bend County, West Houston, and remote U.S. tax/accounting clients  
 Primary business objective: Generate qualified tax, bookkeeping, IRS notice, tax resolution, and LLC tax-setup leads  
@@ -14,30 +15,33 @@ This plan does not guarantee rankings. Search visibility depends on competition,
 
 ## How to Use This Plan
 
-Use these status labels:
+Section 17 is the only canonical active task list. Checkboxes in Sections 2–15 are requirement, evidence, or operating checklists that provide detail; they must not be added together or treated as separate backlog items. Section 19 is a reusable QA template, not unfinished project work.
 
-- `Not Started`
-- `Waiting for Business Information`
-- `In Progress`
-- `Ready for Review`
-- `Completed`
-- `Monitoring`
-- `Rejected`
+Every active Section 17 task uses one ownership label:
 
-For every completed task, record:
+- `[SOURCE]`: can be completed in this repository.
+- `[OWNER]`: requires verified business facts, consent, credentials, assets, or a policy decision.
+- `[EXTERNAL]`: requires access to Google, Vercel, Resend, Calendly, a directory, or another third-party account.
+- `[CONTENT]`: requires research, drafting, primary sources, and qualified review before publication.
+- `[RECURRING]`: an operating cadence, not a one-time implementation.
 
-- Completion date
-- Person responsible
-- Exact URL or file changed
-- Proof such as Search Console screenshot, live URL, GBP screenshot, analytics event, or test result
-- Baseline metric
-- Result after 14, 30, 60, and 90 days
+Status rules:
+
+- `[ ]` means genuinely pending.
+- `[x]` means the stated scope is complete and has evidence.
+- A repository change is not marked externally complete until the live account or production output is verified.
+- A deferred task remains pending and is labeled with its dependency; deferral is not completion.
+- Reusable QA criteria remain plain bullets and are copied into a release record when used.
+
+For every completed canonical task, record the completion date, responsible party, exact URL or file, verification evidence, and any post-deployment monitoring requirement.
 
 ---
 
 
 
-# 1. Current Audit Snapshot
+# 1. July 11 Audit Baseline and July 29 Reconciliation
+
+The crawl counts and scores in this section are the July 11 baseline, not a live dashboard. Source improvements completed after that date are recorded below and in the relevant completion records. Do not overwrite baseline values without new comparable crawl, GSC, GA4, GBP, and field-performance evidence.
 
 
 
@@ -56,22 +60,22 @@ For every completed task, record:
 
 
 
-## Main Growth Bottlenecks
+## Current Growth Bottlenecks After Source Reconciliation
 
 1. Verifiable trust, credentials, authorship, and reviews are weaker than competitors.
 2. Google Business Profile prominence and local citations need more work.
 3. The site has many pages but limited public proof such as named team members, credentials, client reviews, case studies, and community recognition.
-4. The homepage and Katy tax-accountant page can compete for the same keyword if their intent is not kept separate.
-5. Lead attribution, conversion events, CRM notifications, and source-to-revenue reporting are incomplete.
-6. The homepage carousel and media may still hurt mobile LCP and interaction performance.
-7. Some titles and descriptions are longer than ideal and may be rewritten.
+4. Query-to-page ownership is implemented in source but requires GSC cannibalization monitoring.
+5. Lead attribution, pipeline feedback, AI classification, and conversion-event source code are implemented; GA4 administration, production notification delivery, and booking-completion verification remain.
+6. The homepage carousel was replaced with a static optimized hero; field LCP, INP, CLS, and template performance still require measurement.
+7. Metadata outliers were shortened; live snippet verification, recrawl, and CTR monitoring remain.
 8. Google has not necessarily recrawled all newly deployed content yet.
-9. OAI-SearchBot is allowed by the wildcard robots rule but is not explicitly named.
-10. Several visible and structured-data credential claims require verification.
+9. OAI-SearchBot and ChatGPT-User are explicit in source; deployment, CDN behavior, and the separate GPTBot owner policy remain.
+10. Unsupported credential claims were removed, but verified professional profiles, authorship, and qualified review still require owner evidence.
 
 
 
-## Current Priority Scores
+## July 11 Baseline Priority Scores
 
 
 | Area                     | Current Estimate | Target | Priority                  |
@@ -94,22 +98,22 @@ For every completed task, record:
 
 These questions must be answered accurately. Do not publish assumptions.
 
-- [ ] Which named team members work for IntegraFin?
-- [ ] Which team members are U.S. CPAs?
-- [ ] Which team members are Enrolled Agents?
-- [ ] Which team members are Chartered Accountants, and in which country/jurisdiction?
-- [ ] Which licenses or credentials can be verified publicly?
-- [ ] Who can legally and professionally represent clients before the IRS?
-- [ ] Which services are directly performed by IntegraFin and which are referred to partners?
-- [ ] Does IntegraFin provide a genuine secure client portal? Record its URL and provider.
-- [ ] Is a free consultation genuinely offered?
-- [ ] Is a 24-hour response time operationally achievable?
-- [ ] Does IntegraFin use flat-rate pricing? If yes, document real ranges and scope.
-- [ ] Which industries have actual client experience?
-- [ ] Which languages are genuinely supported during client service?
-- [ ] What is the exact legal entity name used on contracts, invoices, tax documents, GBP, and directories?
-- [ ] Is the Katy address client-facing, staffed, and eligible under Google Business Profile rules?
-- [ ] Which existing clients have approved public testimonials or case studies?
+- **Supporting requirement:** Which named team members work for IntegraFin?
+- **Supporting requirement:** Which team members are U.S. CPAs?
+- **Supporting requirement:** Which team members are Enrolled Agents?
+- **Supporting requirement:** Which team members are Chartered Accountants, and in which country/jurisdiction?
+- **Supporting requirement:** Which licenses or credentials can be verified publicly?
+- **Supporting requirement:** Who can legally and professionally represent clients before the IRS?
+- **Supporting requirement:** Which services are directly performed by IntegraFin and which are referred to partners?
+- **Supporting requirement:** Does IntegraFin provide a genuine secure client portal? Record its URL and provider.
+- **Supporting requirement:** Is a free consultation genuinely offered?
+- **Supporting requirement:** Is a 24-hour response time operationally achievable?
+- **Supporting requirement:** Does IntegraFin use flat-rate pricing? If yes, document real ranges and scope.
+- **Supporting requirement:** Which industries have actual client experience?
+- **Supporting requirement:** Which languages are genuinely supported during client service?
+- **Supporting requirement:** What is the exact legal entity name used on contracts, invoices, tax documents, GBP, and directories?
+- **Supporting requirement:** Is the Katy address client-facing, staffed, and eligible under Google Business Profile rules?
+- **Supporting requirement:** Which existing clients have approved public testimonials or case studies?
 
 Do not proceed with credential, award, review, pricing, guarantee, or experience claims until proof is documented.
 
@@ -136,10 +140,10 @@ Current risk:
 Required update:
 
 - [x] Remove the generic Person schema until a real person can be represented.
-- [ ] Create one Person/ProfilePage entity per real professional only after credentials are verified.
-- [ ] Use real name, job title, image, employer, credential, license jurisdiction, profile URL, and verified sameAs links.
+- **Supporting requirement:** Create one Person/ProfilePage entity per real professional only after credentials are verified.
+- **Supporting requirement:** Use real name, job title, image, employer, credential, license jurisdiction, profile URL, and verified sameAs links.
 - [x] Do not use `alumniOf` for a licensing board.
-- [ ] Validate the live About page after deployment.
+- **Supporting requirement:** Validate the live About page after deployment.
 
 Completion record (July 11, 2026):
 
@@ -198,9 +202,9 @@ Current issue:
 Required update:
 
 - [x] Remove the generic testimonial until a real approved testimonial is available. Removed from `src/app/page.tsx` in commit `3c27413` and verified absent from the production homepage after deployment commit `771dd38` on July 14, 2026
-- [ ] Display reviewer name or approved initials, company/industry when permitted, service used, date, and source.
-- [ ] Link to the original Google review when possible.
-- [ ] Never create fake reviews or mark up self-created reviews as Google ratings.
+- **Supporting requirement:** Display reviewer name or approved initials, company/industry when permitted, service used, date, and source.
+- **Supporting requirement:** Link to the original Google review when possible.
+- **Supporting requirement:** Never create fake reviews or mark up self-created reviews as Google ratings.
 
 
 
@@ -210,17 +214,17 @@ Status: `Done`
 
 Replace generic statements such as `Trust`, `Security`, `Years of Combined Experience`, and `Our Guarantees` with verified proof:
 
-- [ ] Number of years in operation
-- [ ] Named professionals and credentials
-- [ ] Real Google review count and rating
-- [ ] Secure portal provider and process; no provider is claimed until it is verified.
-- [ ] Real office photos; current stock imagery is explicitly labeled illustrative and is not presented as team or office proof.
-- [ ] Typical response time
+- **Supporting requirement:** Number of years in operation
+- **Supporting requirement:** Named professionals and credentials
+- **Supporting requirement:** Real Google review count and rating
+- **Supporting requirement:** Secure portal provider and process; no provider is claimed until it is verified.
+- **Supporting requirement:** Real office photos; current stock imagery is explicitly labeled illustrative and is not presented as team or office proof.
+- **Supporting requirement:** Typical response time
 - [x] Engagement and onboarding steps
-- [ ] Languages genuinely supported
-- [ ] Industries with documented client experience
-- [ ] Professional memberships
-- [ ] Client-retention or service statistics only when measured
+- **Supporting requirement:** Languages genuinely supported
+- **Supporting requirement:** Industries with documented client experience
+- **Supporting requirement:** Professional memberships
+- **Supporting requirement:** Client-retention or service statistics only when measured
 
 Source completion record (July 14, 2026):
 
@@ -252,7 +256,7 @@ Required update:
 
 - [x] Use conservative language based on engagement scope and taxpayer facts.
 - [x] State that results depend on records, law, eligibility, timing, and agency decisions.
-- [ ] Have a qualified professional or attorney review material claims. Owner action required before final sign-off.
+- **Supporting requirement:** Have a qualified professional or attorney review material claims. Owner action required before final sign-off.
 
 Completion record (July 14, 2026):
 
@@ -274,20 +278,20 @@ Status: `Deferred by owner on July 14, 2026`
 
 This work is intentionally skipped for now and does not block the remaining execution plan.
 
-- [ ] Confirm the profile is verified.
-- [ ] Use the exact legal/public-facing name consistently.
-- [ ] Confirm the Katy address complies with GBP rules.
-- [ ] Confirm phone, website, hours, holiday hours, and appointment URL.
-- [ ] Choose the most accurate primary category.
-- [ ] Add accurate secondary categories such as bookkeeping service, tax consultant, accountant, or payroll service only when applicable.
-- [ ] Add every real service with short descriptions.
-- [ ] Add service areas without creating false offices.
-- [ ] Upload real office exterior, suite entrance, interior, team, and work-process photos.
-- [ ] Add a logo and cover image.
-- [ ] Add appointment and contact links with UTM tracking.
-- [ ] Publish one useful GBP post every week.
-- [ ] Answer GBP questions using accurate, non-promotional language.
-- [ ] Monitor calls, website clicks, messages, directions, and search terms monthly.
+- **Supporting requirement:** Confirm the profile is verified.
+- **Supporting requirement:** Use the exact legal/public-facing name consistently.
+- **Supporting requirement:** Confirm the Katy address complies with GBP rules.
+- **Supporting requirement:** Confirm phone, website, hours, holiday hours, and appointment URL.
+- **Supporting requirement:** Choose the most accurate primary category.
+- **Supporting requirement:** Add accurate secondary categories such as bookkeeping service, tax consultant, accountant, or payroll service only when applicable.
+- **Supporting requirement:** Add every real service with short descriptions.
+- **Supporting requirement:** Add service areas without creating false offices.
+- **Supporting requirement:** Upload real office exterior, suite entrance, interior, team, and work-process photos.
+- **Supporting requirement:** Add a logo and cover image.
+- **Supporting requirement:** Add appointment and contact links with UTM tracking.
+- **Supporting requirement:** Publish one useful GBP post every week.
+- **Supporting requirement:** Answer GBP questions using accurate, non-promotional language.
+- **Supporting requirement:** Monitor calls, website clicks, messages, directions, and search terms monthly.
 
 Recommended GBP service groups:
 
@@ -308,14 +312,14 @@ Recommended GBP service groups:
 
 Status: `Not Started`
 
-- [ ] Create a direct Google review link.
-- [ ] Ask every eligible real client after a successful milestone.
-- [ ] Send the request by email or SMS with no incentive.
-- [ ] Do not review-gate or ask only happy clients.
-- [ ] Respond to every review professionally.
-- [ ] Mention service context naturally in responses without keyword stuffing.
-- [ ] Track requests sent, reviews received, rating, and response time.
-- [ ] Obtain client permission before reusing review text on the website.
+- **Supporting requirement:** Create a direct Google review link.
+- **Supporting requirement:** Ask every eligible real client after a successful milestone.
+- **Supporting requirement:** Send the request by email or SMS with no incentive.
+- **Supporting requirement:** Do not review-gate or ask only happy clients.
+- **Supporting requirement:** Respond to every review professionally.
+- **Supporting requirement:** Mention service context naturally in responses without keyword stuffing.
+- **Supporting requirement:** Track requests sent, reviews received, rating, and response time.
+- **Supporting requirement:** Obtain client permission before reusing review text on the website.
 
 Initial target: 10–20 genuine reviews in 90 days only if the real client volume supports it.
 
@@ -345,18 +349,18 @@ Verification record (July 14, 2026):
 
 Priority profiles:
 
-- [ ] Bing Places
-- [ ] Apple Business Connect
-- [ ] Yelp
-- [ ] Facebook
+- **Supporting requirement:** Bing Places
+- **Supporting requirement:** Apple Business Connect
+- **Supporting requirement:** Yelp
+- **Supporting requirement:** Facebook
 - [x] LinkedIn company page - profile and Katy address verified July 14, 2026; older posts with conflicting phone/email still require correction.
-- [ ] Katy Area Chamber of Commerce
-- [ ] Fort Bend Chamber of Commerce
-- [ ] BBB, if the business chooses and qualifies
-- [ ] QuickBooks ProAdvisor directory, only for certified professionals
-- [ ] IRS preparer directory, only for eligible credentialed professionals
-- [ ] Relevant state or professional associations
-- [ ] Reputable local business directories
+- **Supporting requirement:** Katy Area Chamber of Commerce
+- **Supporting requirement:** Fort Bend Chamber of Commerce
+- **Supporting requirement:** BBB, if the business chooses and qualifies
+- **Supporting requirement:** QuickBooks ProAdvisor directory, only for certified professionals
+- **Supporting requirement:** IRS preparer directory, only for eligible credentialed professionals
+- **Supporting requirement:** Relevant state or professional associations
+- **Supporting requirement:** Reputable local business directories
 
 Remove or correct duplicate, outdated, or inconsistent profiles.
 
@@ -409,13 +413,13 @@ Status: `Source Ownership Implemented - GSC Validation and Monitoring Pending`
 
 Required process:
 
-- [ ] Export GSC queries and landing pages for the last 90 days.
-- [ ] Identify queries where multiple IntegraFin URLs receive impressions.
+- **Supporting requirement:** Export GSC queries and landing pages for the last 90 days.
+- **Supporting requirement:** Identify queries where multiple IntegraFin URLs receive impressions.
 - [x] Choose one owner URL per query cluster.
 - [x] Reposition competing pages instead of deleting useful content blindly.
 - [x] Update internal anchors to point to the owner URL.
-- [ ] Request indexing after material intent changes.
-- [ ] Monitor for 28 days before making another major change.
+- **Supporting requirement:** Request indexing after material intent changes.
+- **Supporting requirement:** Monitor for 28 days before making another major change.
 
 Pause additional city/state page creation until current pages demonstrate impressions, engagement, and differentiated value.
 
@@ -474,11 +478,11 @@ These are drafts and must be checked against real services.
 
 After changes:
 
-- [ ] Verify live title and description.
+- **Supporting requirement:** Verify live title and description.
 - [x] Verify canonical URL in source.
-- [ ] Inspect mobile and desktop snippets.
-- [ ] Request recrawl for priority pages.
-- [ ] Measure CTR in GSC after 28 days.
+- **Supporting requirement:** Inspect mobile and desktop snippets.
+- **Supporting requirement:** Request recrawl for priority pages.
+- **Supporting requirement:** Measure CTR in GSC after 28 days.
 
 Source completion record (July 23, 2026):
 
@@ -543,8 +547,8 @@ Use concise paragraphs, numbered steps, checklists, comparison tables, descripti
 - [x] Do not rewrite competitors or IRS pages without additional value.
 - [x] Do not write to an arbitrary word count.
 - [x] Do not change review dates without substantive review.
-- [ ] Disclose substantial AI assistance when readers would reasonably expect disclosure.
-- [ ] Have tax content reviewed by a qualified named professional.
+- **Supporting requirement:** Disclose substantial AI assistance when readers would reasonably expect disclosure.
+- **Supporting requirement:** Have tax content reviewed by a qualified named professional.
 - [x] Correct or archive outdated information promptly.
 
 Source implementation record (July 29, 2026):
@@ -576,7 +580,7 @@ File: `src/lib/seo/schema.ts`
 - [x] Add stable `@id` values for the Organization and LocalBusiness entities. Completed July 14, 2026.
 - [x] Use the documented public name and legal name. Completed in source July 14, 2026; confirm the same names in GBP before final NAP sign-off.
 - [x] Verify website address, phone, hours, geo coordinates, priceRange, and areaServed. Source audit completed July 14, 2026; GBP confirmation remains pending.
-- [ ] Add a real business image.
+- **Supporting requirement:** Add a real business image.
 - [x] Keep only verified `sameAs` profiles. LinkedIn retained; unverified Instagram and X profiles removed July 14, 2026.
 - [x] Keep Yelp out of schema until its URL is verified. No Yelp URL is emitted.
 - [x] Do not add self-serving aggregateRating markup.
@@ -589,7 +593,7 @@ File: `src/lib/seo/schema.ts`
 - [x] Homepage: Organization/LocalBusiness, WebSite, and WebPage.
 - [x] Service pages: Service, WebPage, BreadcrumbList, and visible FAQ content where present.
 - [x] City pages: Service, WebPage, BreadcrumbList, and visible FAQ content.
-- [ ] Blog posts: Article/BlogPosting, named author, reviewer where appropriate, dates, image, publisher, and citations.
+- **Supporting requirement:** Blog posts: Article/BlogPosting, named author, reviewer where appropriate, dates, image, publisher, and citations.
 - [x] About page: AboutPage and BreadcrumbList. Real Person/ProfilePage remains intentionally absent until an approved identity is available.
 - [x] Contact page: ContactPage references the canonical LocalBusiness entity and its contact point. Completed July 14, 2026.
 - [x] Calculator: SoftwareApplication, WebPage, BreadcrumbList, and visible FAQ content accurately match the implemented estimator.
@@ -602,10 +606,10 @@ FAQ markup can remain when it matches visible content, but Google normally restr
 
 ## Validation
 
-- [ ] Google Rich Results Test
-- [ ] Schema.org Validator
-- [ ] GSC Enhancement reports
-- [ ] URL Inspection rendered HTML
+- **Supporting requirement:** Google Rich Results Test
+- **Supporting requirement:** Schema.org Validator
+- **Supporting requirement:** GSC Enhancement reports
+- **Supporting requirement:** URL Inspection rendered HTML
 - [x] Manual source and generated-HTML check that schema text matches visible text
 
 Source implementation record (July 29, 2026):
@@ -633,7 +637,7 @@ Google says AI Overviews and AI Mode use normal SEO fundamentals. No special AI 
 
 File: `src/app/robots.ts`
 
-Status: `Source and Live Output Complete - CDN Monitoring Pending`
+Status: `Source Complete - Deployment, CDN Monitoring, and Training Policy Decision Pending`
 
 Current wildcard behavior allows OAI-SearchBot, but add an explicit rule for clarity:
 
@@ -643,9 +647,9 @@ Allow: /
 ```
 
 - [x] Keep important pages crawlable.
-- [ ] Ensure Vercel/CDN/firewall allows published crawler IPs.
-- [ ] Decide separately whether to allow GPTBot training access.
-- [ ] Keep ChatGPT-User access if user-requested page retrieval is desired.
+- **Supporting requirement:** Ensure Vercel/CDN/firewall allows published crawler IPs.
+- **Supporting requirement:** Decide separately whether to allow GPTBot training access.
+- [x] Keep ChatGPT-User access for user-requested page retrieval.
 - [x] Do not block CSS, JavaScript, or important images required for rendering.
 
 Source completion record (July 23, 2026):
@@ -653,6 +657,13 @@ Source completion record (July 23, 2026):
 - Added an explicit `OAI-SearchBot` allow rule while preserving `/admin` exclusions.
 - Wildcard crawling remains enabled for public pages and assets.
 - Production `robots.txt` returned HTTP 200 with the explicit rule after deployment `bed58db`.
+
+Source completion record (July 29, 2026):
+
+- Added an explicit `ChatGPT-User` allow rule while preserving the `/admin` exclusions.
+- Kept `OAI-SearchBot` explicitly allowed for ChatGPT search discovery and citation.
+- Did not change GPTBot access. The wildcard policy currently allows it, and any decision to block training access remains an owner policy decision.
+- Production `/robots.txt`, CDN/firewall access, and OpenAI crawler-IP behavior must be rechecked after deployment.
 
 Crawler purpose:
 
@@ -666,25 +677,41 @@ Crawler purpose:
 
 ## 9.2 Make Content Easy to Cite
 
-- [ ] Put the direct factual answer near the top.
-- [ ] Use stable headings and anchors.
-- [ ] Cite IRS and state primary sources.
-- [ ] Identify author and reviewer.
-- [ ] State the applicable tax year and jurisdiction.
-- [ ] Include concrete dates instead of vague language.
-- [ ] Explain limitations and exceptions.
-- [ ] Keep important facts in visible HTML text.
-- [ ] Use descriptive ARIA labels on interactive elements.
-- [ ] Avoid hiding essential answers behind tabs or client-side interactions.
+- [x] Put the direct factual answer near the top of shared service, state, city, Texas-city, and Houston IRS templates.
+- [x] Use stable headings and anchors on the major answer, scope, process, resource, and FAQ sections.
+- [x] Cite IRS and state primary sources on the shared service, Texas-city, and Houston IRS templates.
+- **Supporting requirement:** Identify author and reviewer.
+- **Supporting requirement:** State the applicable tax year and jurisdiction.
+- [x] Include concrete publication or review dates on the high-priority answer templates.
+- [x] Explain scope limitations and exceptions on the shared service, Texas-city, and Houston IRS templates.
+- [x] Keep the main answers, limitations, and sources in visible server-rendered HTML text.
+- [x] Add descriptive state and control relationships to the shared mobile navigation.
+- [x] Keep essential answers visible instead of requiring tabs or client-side interactions.
+
+Source completion record (July 29, 2026):
+
+- Added stable fragment targets including `#overview`, `#services`, `#scope`, `#official-resources`, and `#frequently-asked-questions` where those sections apply.
+- Added scroll offsets so anchored answers remain visible below the fixed navigation.
+- Preserved the existing policy against inventing a named professional reviewer. Authorship and professional credentials remain pending verified owner-supplied information.
+- Tax-year and jurisdiction labeling remains a page-by-page editorial check because not every service is tied to one filing year or one jurisdiction.
 
 
 
 ## 9.3 AI Referral Measurement
 
-- [ ] Create a GA4 segment for `utm_source=chatgpt.com`.
-- [ ] Track referrals from ChatGPT, Perplexity, Gemini, Copilot, Bing, and other identifiable sources.
-- [ ] Record landing page, service selected, lead quality, appointment, client, and revenue.
-- [ ] Review AI referral conversions monthly, not only sessions.
+- **Supporting requirement:** Create a GA4 segment for `utm_source=chatgpt.com`.
+- [x] Track identifiable referrals from ChatGPT, Perplexity, Gemini, Copilot/Bing Chat, Claude, Meta AI, You.com, and Phind.
+- [x] Record the AI source with first landing page and UTM data, then retain service, lead quality, appointment, client, and revenue in the lead pipeline.
+- **Supporting requirement:** Review AI referral conversions monthly, not only sessions.
+
+Source completion record (July 29, 2026):
+
+- Added first-touch AI referral classification using both `utm_source` and known referring hosts.
+- Added a once-per-session GA4 `ai_referral_visit` event with `ai_source`, `traffic_channel`, landing-page, page-type, city/state-intent, and safe campaign parameters.
+- Added `aiReferralSource` validation and storage to lead submissions and newsletter submissions.
+- Added an AI-referral filter and attribution detail to the admin lead dashboard. Combine it with the 30-day date filter and pipeline statuses to review lead quality, appointments, clients won, and recorded revenue.
+- GA4 custom dimensions, the saved comparison/audience, and the monthly operating review remain external admin tasks.
+- Google AI Overview and AI Mode visits are not reliably separable as a distinct referral channel. Google includes traffic from these AI features in the normal Search Console Web search-type reporting, so use landing-page and query trends as directional evidence rather than claiming exact AI Overview attribution.
 
 Do not prioritize `llms.txt` ahead of crawlability, authorship, citations, page quality, internal links, performance, and authority.
 
@@ -712,9 +739,9 @@ Implement and test:
 - [x] `whatsapp_click`
 - [x] `email_click`
 - [x] `booking_start`
-- [ ] `booking_complete` - requires a verified Calendly completion integration or webhook.
+- **Supporting requirement:** `booking_complete` - requires a verified Calendly completion integration or webhook.
 - [x] `calculator_complete`
-- [ ] `portal_click` - listener is ready, but the site has no verified portal destination yet.
+- **Supporting requirement:** `portal_click` - listener is ready, but the site has no verified portal destination yet.
 
 Event parameters:
 
@@ -724,7 +751,7 @@ Event parameters:
 - [x] City/state intent
 - [x] Form source
 - [x] CTA name
-- [ ] Device category - available as a standard GA4 dimension; verify after deployment.
+- **Supporting requirement:** Device category - available as a standard GA4 dimension; verify after deployment.
 - [x] Campaign/source/medium when available
 
 Never send sensitive tax, financial, personal, message, phone, or email content to analytics.
@@ -822,7 +849,7 @@ Implementation update — July 17, 2026:
 Status: `Waiting for Production Resend Configuration`
 
 - [x] Send an email notification when a lead is submitted.
-- [ ] Add SMS/Slack/Teams notification if operationally useful.
+- **Supporting requirement:** Add SMS/Slack/Teams notification if operationally useful.
 - [x] Include only necessary information and use secure handling.
 - [x] Establish a configurable response SLA for the dashboard.
 - [x] Create in-dashboard alerts when a new lead is not contacted within the SLA.
@@ -850,7 +877,7 @@ Status: `Source Complete - Booking Completion Tracking Pending`
 - [x] Show what happens next.
 - [x] Display response expectations.
 - [x] Offer calendar booking using the configured booking URL or the current Calendly fallback.
-- [ ] Provide service-specific document preparation—not sensitive document upload through the public form.
+- **Supporting requirement:** Provide service-specific document preparation—not sensitive document upload through the public form.
 - [x] Trigger conversion events only after confirmed success.
 
 Implementation record (July 15, 2026):
@@ -892,7 +919,7 @@ Source completion record (July 23, 2026):
 
 ## 11.1 Pricing or Scope Guidance
 
-Status: `Waiting for Business Information`
+Status: `Source Complete for Scope Guidance - Numeric Pricing Waiting for Business Information`
 
 Create `/pricing` or add pricing factors to service pages.
 
@@ -908,20 +935,30 @@ Possible content:
 
 Do not invent pricing or claim flat-rate pricing unless it is consistently offered.
 
+Source completion record (July 29, 2026):
+
+- `/pricing` provides service-by-service inclusions, separate-scope items, quote factors, records needed, and timing without inventing prices.
+- Shared service and Texas-city templates also explain inclusions, exclusions, pricing factors, deadlines, and limitations.
+- Numeric prices, starting prices, retainers, or flat-rate claims remain blocked until the owner supplies real, consistently used commercial terms.
+
 ## 11.2 Real Team Page
 
-- [ ] Real team photos
-- [ ] Names and roles
-- [ ] Verified credentials
-- [ ] Areas of practice
-- [ ] Languages
-- [ ] Professional memberships
-- [ ] Author/reviewer links
-- [ ] Personal professional profiles
+Status: `Waiting for Verified Owner Information and Original Assets`
+
+- **Supporting requirement:** Real team photos
+- **Supporting requirement:** Names and roles
+- **Supporting requirement:** Verified credentials
+- **Supporting requirement:** Areas of practice
+- **Supporting requirement:** Languages
+- **Supporting requirement:** Professional memberships
+- **Supporting requirement:** Author/reviewer links
+- **Supporting requirement:** Personal professional profiles
 
 
 
 ## 11.3 Case Studies
+
+Status: `Waiting for Client Permission and Documented Facts`
 
 Create anonymized case studies only with client permission and documented facts.
 
@@ -950,16 +987,26 @@ Initial case-study topics:
 
 ## 11.4 Secure Workflow
 
-- [ ] Publish an accurate explanation of document handling.
-- [ ] Link to the real secure portal.
-- [ ] Explain what must not be emailed or submitted publicly.
-- [ ] Explain onboarding, engagement letter, document request, review, filing/response, and follow-up.
+Status: `Public-Form Safety Complete - Portal and Full Workflow Waiting for Business Information`
+
+- [x] Publish accurate public-form warnings that prohibit sensitive tax and financial information.
+- **Supporting requirement:** Link to the real secure portal.
+- [x] Explain what must not be emailed or submitted publicly.
+- **Supporting requirement:** Explain onboarding, engagement letter, document request, review, filing/response, and follow-up.
+
+Source completion record (July 29, 2026):
+
+- The contact page and both lead forms warn users not to submit Social Security numbers, bank details, tax returns, or other sensitive records.
+- The thank-you page warns users not to send sensitive documents through ordinary email until an approved method is confirmed.
+- A public portal URL, provider, access process, retention policy, and complete onboarding workflow must not be invented and remain owner dependencies.
 
 ---
 
 
 
 # 12. P1: Content Roadmap
+
+Status: `Not Started - Qualified Review Capacity Required`
 
 Do not publish all topics at once. Publish only content that a qualified reviewer can improve and maintain.
 
@@ -1001,15 +1048,15 @@ Refresh older generic posts before publishing many new posts:
 
 Refresh checklist:
 
-- [ ] Current tax year
-- [ ] Named author/reviewer
-- [ ] Primary official sources
-- [ ] Original examples
-- [ ] Practical checklist
-- [ ] Clear limitations
-- [ ] Service CTA
-- [ ] Links to owner landing pages
-- [ ] Accurate publish and reviewed dates
+- **Supporting requirement:** Current tax year
+- **Supporting requirement:** Named author/reviewer
+- **Supporting requirement:** Primary official sources
+- **Supporting requirement:** Original examples
+- **Supporting requirement:** Practical checklist
+- **Supporting requirement:** Clear limitations
+- **Supporting requirement:** Service CTA
+- **Supporting requirement:** Links to owner landing pages
+- **Supporting requirement:** Accurate publish and reviewed dates
 
 
 
@@ -1031,6 +1078,8 @@ Quality and review capacity determine cadence. Do not publish filler to meet a v
 
 # 13. P1: Internal Linking Plan
 
+Status: `Next Repository Task - Not Started`
+
 
 
 ## Hub Structure
@@ -1039,15 +1088,15 @@ Homepage → core service pages → local/service pages → supporting articles 
 
 Required actions:
 
-- [ ] Link every article to one primary service page.
-- [ ] Link every service page to two or three supporting articles.
-- [ ] Link city pages to the correct service owner pages.
-- [ ] Link state pages to relevant service hubs without forcing unrelated local anchors.
-- [ ] Use descriptive anchor text instead of `Learn More` and `Read More`.
-- [ ] Add breadcrumbs to every nested page.
-- [ ] Keep priority pages within three clicks of the homepage.
-- [ ] Check for orphan pages monthly.
-- [ ] Do not add excessive repetitive footer links.
+- **Supporting requirement:** Link every article to one primary service page.
+- **Supporting requirement:** Link every service page to two or three supporting articles.
+- **Supporting requirement:** Link city pages to the correct service owner pages.
+- **Supporting requirement:** Link state pages to relevant service hubs without forcing unrelated local anchors.
+- **Supporting requirement:** Use descriptive anchor text instead of `Learn More` and `Read More`.
+- **Supporting requirement:** Add breadcrumbs to every nested page.
+- **Supporting requirement:** Keep priority pages within three clicks of the homepage.
+- **Supporting requirement:** Check for orphan pages monthly.
+- **Supporting requirement:** Do not add excessive repetitive footer links.
 
 Suggested anchors:
 
@@ -1066,6 +1115,8 @@ Suggested anchors:
 
 # 14. P1: Performance and Core Web Vitals
 
+Status: `Major Homepage Source Work Complete - Template Audit and Field Validation Pending`
+
 The PageSpeed API returned a quota error during the July 11 audit. The previous available project Lighthouse result showed mobile performance around 55, LCP around 5.6 seconds, and TBT around 610–730 ms. Re-test before and after changes.
 
 Targets:
@@ -1081,14 +1132,14 @@ Targets:
 - [x] Replace the autoplay client-side hero carousel with one static server-rendered hero.
 - [x] Load only the first essential hero image above the fold.
 - [x] Use responsive optimized image output through `next/image`.
-- [ ] Replace remote stock images with compressed original office/team images.
+- **Supporting requirement:** Replace remote stock images with compressed original office/team images.
 - [x] Avoid a 3 MB source image when a smaller source is sufficient.
 - [x] Confirm image dimensions and `sizes` values.
-- [ ] Lazy-load below-the-fold media.
-- [ ] Review third-party script cost.
-- [ ] Load analytics in a way that minimizes main-thread blocking.
+- **Supporting requirement:** Audit lazy loading across every below-the-fold media instance; the contact map is already lazy and `next/image` handles non-priority images by default.
+- **Supporting requirement:** Review third-party script cost.
+- [x] Load Google Analytics through `next/script` instead of a blocking synchronous script; validate its real field cost separately.
 - [x] Reduce unused client JavaScript in the homepage hero.
-- [ ] Test mobile CPU and network throttling.
+- **Supporting requirement:** Test mobile CPU and network throttling.
 
 Source completion record (July 23, 2026):
 
@@ -1101,13 +1152,13 @@ Source completion record (July 23, 2026):
 
 ## Sitewide Performance Tasks
 
-- [ ] Review Vercel Speed Insights field data.
-- [ ] Review GSC Core Web Vitals.
-- [ ] Test homepage, contact, calculator, blog, city, and service templates.
-- [ ] Check font loading and consider self-hosting fonts if appropriate.
-- [ ] Confirm no layout shifts from images, embeds, or dynamic content.
-- [ ] Review map iframe impact on the contact page.
-- [ ] Check bundle size after each major client component.
+- **Supporting requirement:** Review Vercel Speed Insights field data.
+- **Supporting requirement:** Review GSC Core Web Vitals.
+- **Supporting requirement:** Test homepage, contact, calculator, blog, city, and service templates.
+- [x] Use `next/font` for optimized, self-hosted-at-build font delivery with `display: swap`.
+- **Supporting requirement:** Confirm no layout shifts from images, embeds, or dynamic content.
+- [x] Lazy-load the contact-page map iframe; field impact remains part of the template performance test.
+- **Supporting requirement:** Check bundle size after each major client component.
 
 ---
 
@@ -1115,20 +1166,28 @@ Source completion record (July 23, 2026):
 
 # 15. P2: Remaining Technical SEO Maintenance
 
-- [ ] Submit and monitor `https://integrafin.tax/sitemap.xml` in GSC.
-- [ ] Request indexing for materially changed priority pages.
-- [ ] Verify the seven new state pages are discovered and indexed.
-- [ ] Review GSC Pages report weekly for crawled-not-indexed and discovered-not-indexed URLs.
-- [ ] Check redirects and 404s monthly.
-- [ ] Keep lastModified dates accurate; change only after substantial updates.
-- [ ] Validate canonical host redirects for HTTP and `www`.
-- [ ] Confirm Open Graph images render correctly.
-- [ ] Confirm logo URLs used by schema and metadata return 200.
-- [ ] Check all external official-source links quarterly.
-- [ ] Monitor Search Console manual actions and security issues.
-- [ ] Verify admin and thank-you pages are noindex.
-- [ ] Do not include low-value utility pages in the sitemap.
-- [ ] Review sitemap growth before adding more templated pages.
+Status: `Source Baseline Partially Complete - External Validation and Recurring Monitoring Pending`
+
+- **Supporting requirement:** Submit and monitor `https://integrafin.tax/sitemap.xml` in GSC.
+- **Supporting requirement:** Request indexing for materially changed priority pages.
+- **Supporting requirement:** Verify the seven new state pages are discovered and indexed.
+- **Supporting requirement:** Review GSC Pages report weekly for crawled-not-indexed and discovered-not-indexed URLs.
+- **Supporting requirement:** Check redirects and 404s monthly.
+- **Supporting requirement:** Keep lastModified dates accurate; change only after substantial updates.
+- [x] Validate canonical host redirects for HTTP and `www`; confirmed in the July 11 audit snapshot.
+- **Supporting requirement:** Confirm Open Graph images render correctly.
+- **Supporting requirement:** Confirm logo URLs used by schema and metadata return 200.
+- **Supporting requirement:** Check all external official-source links quarterly.
+- **Supporting requirement:** Monitor Search Console manual actions and security issues.
+- [x] Verify admin and thank-you pages are `noindex` in source; thank-you production output was also verified July 23, 2026.
+- [x] Exclude admin and thank-you routes from the sitemap.
+- **Supporting requirement:** Review sitemap growth before adding more templated pages.
+
+Source reconciliation record (July 29, 2026):
+
+- Admin pages define `index: false, follow: false`; the thank-you page defines `index: false`.
+- The sitemap contains public service, location, content, legal, and utility discovery pages but excludes admin and thank-you routes.
+- Live GSC coverage, submitted-versus-indexed counts, Core Web Vitals, link checks, and recurring crawl monitoring remain external work.
 
 ---
 
@@ -1240,70 +1299,66 @@ Differentiators must be based on real operations:
 
 
 
-# 17. 30/60/90-Day Execution Plan
+# 17. Canonical Active Backlog and 30/60/90 Sequence
 
+Last reconciled against the repository: July 29, 2026.
 
+Only the checkboxes in this section are counted as active project tasks. Detailed checklists elsewhere define requirements and evidence. A task is complete only when its definition of done is satisfied; source completion and external verification are recorded separately.
 
-## Days 1–14: Fix Trust and Measurement
+| Active category | Count | Task IDs |
+| --- | ---: | --- |
+| Repository work ready now | 2 | T-101–T-102 |
+| External account/deployment work | 7 | T-001–T-005, T-108–T-109 |
+| Owner facts, proof, or policy decisions | 6 | T-006–T-008, T-105–T-107 |
+| Content requiring review | 2 | T-103–T-104 |
+| Recurring work after data is available | 5 | T-201–T-205 |
+| **Total active tasks** | **22** | |
 
-- [x] Verify or remove all CPA/CA/EA/certified/licensed claims. Completed July 11, 2026; see sections 3.1 and 3.2.
-- [x] Remove or replace the inaccurate Person schema. Completed July 11, 2026; see section 3.1.
-- [x] Deploy the source change that removes the anonymous testimonial, then verify the live homepage. Production deployment `771dd38` returned HTTP 200 with the testimonial absent on July 14, 2026.
-- [x] Owner-deferred follow-up: finish external NAP cleanup by correcting older LinkedIn posts using `(832) 774-1882` and `hello@integrafin.tax`. Website/schema verification is complete; owner will handle the remaining external edits later.
-- [x] Deferred by owner: complete and verify GBP. Skipped for now on July 14, 2026.
-- [x] Deferred with GBP: start the real review-request workflow when a verified review destination is active or the owner selects another verified review source.
-- [x] Add GA4 conversion events. Source complete; GA4 key-event configuration and live DebugView verification remain.
-- [x] Add lead attribution fields. Source complete; live UTM lead verification remains.
-- [x] Add immediate lead notifications. Source complete; provider environment configuration and live delivery verification remain.
-- [x] Create thank-you and booking flow. Source complete; booking-completion integration remains.
-- [x] Add explicit OAI-SearchBot permission. Source complete July 23, 2026; live robots verification remains.
-- [x] Shorten metadata outliers. Source complete July 23, 2026; live metadata verification and recrawl remain.
-- [ ] Request indexing for materially changed priority pages.
+## P0: Deploy, Measure, and Unblock Trust
 
+- [ ] **T-001 `[EXTERNAL]` Deploy and verify the July 29 source changes.** Dependency: production deployment access. Done when production `/robots.txt` includes `OAI-SearchBot` and `ChatGPT-User`, representative service/location anchors render, one non-sensitive AI-attribution QA path is verified, and the deployed revision is recorded.
+- [ ] **T-002 `[EXTERNAL]` Submit the sitemap and request indexing for materially changed priority URLs in GSC.** Dependency: verified Search Console access and T-001. Done when the sitemap is accepted, priority URLs are inspected/requested, and submitted evidence and dates are recorded.
+- [ ] **T-003 `[EXTERNAL]` Finish GA4 administration and live event QA.** Dependency: GA4 admin access and T-001. Done when `generate_lead` is a key event; `ai_source` and `traffic_channel` are registered where required; form, phone, booking-start, calculator, and AI-referral events are verified once in DebugView; and no sensitive values appear.
+- [ ] **T-004 `[EXTERNAL]` Configure production lead-notification email and verify delivery.** Dependency: approved Resend sender/domain and Vercel environment access. Done when `RESEND_API_KEY`, `LEAD_NOTIFICATION_FROM`, and `LEAD_NOTIFICATION_TO` are configured, a non-sensitive QA lead records `notificationStatus: sent`, and the QA record is cleaned up or marked spam.
+- [ ] **T-005 `[EXTERNAL]` Verify Calendly completion ingestion and add `booking_complete` measurement.** Dependency: Calendly webhook/account access and T-001. Done when a test booking is associated with the lead or safely attributed session, appointment status is stored, `booking_complete` fires once without personal data, and cancellation behavior is verified.
+- [ ] **T-006 `[OWNER]` Complete the verified business-information packet in Section 2.** Dependency: owner documents and decisions. Done when legal name, address eligibility, team, credentials, representation authority, real services, languages, industries, pricing policy, consultation policy, response expectations, portal, and approved proof assets are documented.
+- [ ] **T-007 `[OWNER]` Obtain qualified review of material tax, credential, guarantee, and representation claims.** Dependency: T-006 and an identified qualified reviewer. Done when the reviewer, scope, date, corrections, and approval evidence are recorded without inventing public credentials.
+- [ ] **T-008 `[OWNER]` Decide and document the GPTBot training policy.** Dependency: owner consent decision. Done when the choice is recorded and `robots.ts` is changed only if the owner chooses to block training; ChatGPT search and user-requested retrieval remain separate policies.
 
+## P1: Repository Work Ready to Start
 
-## Days 15–30: Improve Proof and Conversion
+- [ ] **T-101 `[SOURCE]` Implement intent-based internal linking.** Dependency: none. Done when each article links to one primary owner service, each priority service links to two or three relevant articles, city/state templates link to appropriate service owners, generic `Read More` anchors are replaced where context permits, nested-page breadcrumb coverage is audited, and an orphan/depth report is saved.
+- [ ] **T-102 `[SOURCE]` Complete the remaining source performance audit.** Dependency: none. Done when below-the-fold media, third-party scripts, analytics loading, image dimensions, map behavior, and major client bundles are reviewed across homepage, contact, calculator, blog, city, and service templates; safe fixes are implemented; and remaining field-only checks are separated.
+- [ ] **T-103 `[CONTENT]` Refresh three older high-opportunity articles.** Dependency: T-007 for final tax review. Done when each chosen article has current dates/rules, primary sources, useful original examples, a practical checklist, limitations, one owner service CTA, accurate modified dates, and reviewer evidence.
+- [ ] **T-104 `[CONTENT]` Publish the first bottom-of-funnel guide.** Dependency: keyword validation and T-007. Start with one of: bookkeeping cost in Katy, CP2000 response, CP14 checklist, bookkeeping-cleanup timeline, or Texas LLC first-year calendar. Done when one differentiated guide is published, internally linked, reviewed, indexed, and measured before another guide is approved.
+- [ ] **T-105 `[OWNER]` Publish real team and office proof.** Dependency: T-006 plus publishable names, roles, original photos, and credential evidence. Done when the About/team content and schema match verified visible facts and no stock image is presented as proof.
+- [ ] **T-106 `[OWNER]` Publish the secure-client workflow.** Dependency: verified portal provider/URL and real operating process. Done when the portal link, document rules, onboarding, engagement letter, request/review/filing flow, and support boundaries are accurately explained.
+- [ ] **T-107 `[OWNER]` Publish the first genuine case study.** Dependency: documented facts and client permission. Done when the situation, scope, process, timeframe, outcome, limitations, permission, and related CTA are supported without sensitive information or exaggerated results.
+- [ ] **T-108 `[EXTERNAL]` Resume Google Business Profile and genuine-review work when approved by the owner.** Dependency: verified GBP/address eligibility and owner approval. Done when the profile facts, categories, services, photos, appointment UTM, review link, request process, and response policy are verified. This task is pending—not completed—while deferred.
+- [ ] **T-109 `[EXTERNAL]` Build priority citations and local/professional authority.** Dependency: T-006 legal/NAP facts. Done when selected Bing, Apple, chamber, professional, and reputable directory profiles use consistent verified data and the first two or three relevant earned links are documented.
 
-- [ ] Publish real team profiles.
-- [ ] Add real office and team photography.
-- [ ] Add secure-portal link and process explanation.
-- [ ] Add pricing or scope guidance.
-- [x] Replace generic trust blocks with evidence. Deployed and verified July 14, 2026.
-- [ ] Create first genuine case study.
-- [x] Simplify the homepage hero. Source complete July 23, 2026; live CWV verification remains.
-- [x] Improve service-specific CTAs and forms. Source complete July 23, 2026; live form verification remains.
-- [ ] Create GSC, GBP, GA4, and CRM dashboard. The protected lead operations dashboard is complete; external dashboard integrations remain.
+## Recurring Tasks After Data Is Available
 
+- [ ] **T-201 `[RECURRING — weekly]` Review GSC indexing, crawl exclusions, manual actions, security issues, redirects, and 404s.** Start after T-002; record each review date and exceptions.
+- [ ] **T-202 `[RECURRING — monthly]` Review qualified-lead and revenue performance.** Start after T-003 and T-004; compare organic and AI referrals, landing pages, services, form/phone/booking conversion, lead quality, appointments, clients won, response time, and revenue.
+- [ ] **T-203 `[RECURRING — monthly]` Review performance field data.** Start after T-001; use Vercel Speed Insights and GSC Core Web Vitals for the main templates and open specific remediation tasks for regressions.
+- [ ] **T-204 `[RECURRING — monthly]` Review query-to-page ownership and content value.** Start after 28 days of stable data; improve low-CTR pages, improve traffic-without-leads pages, and consolidate pages with no differentiated value.
+- [ ] **T-205 `[RECURRING — quarterly]` Audit external official-source links, citation consistency, backlinks, sitemap growth, review reuse permissions, and whether more city/state content is justified.**
 
+## Completed Milestones Kept for Reference
 
-## Days 31–60: Build Bottom-of-Funnel Authority
+- Credential claims and the inaccurate Person schema were removed or corrected July 11, 2026.
+- The anonymous testimonial and generic unsupported trust claims were removed and production-verified July 14, 2026.
+- Lead attribution, pipeline/revenue feedback, service-aware forms, thank-you flow, and protected lead operations were implemented and tested July 15–23, 2026.
+- Homepage hero simplification, source-image optimization, metadata cleanup, pricing/scope guidance, structured-data graph work, and OpenAI search crawler access were implemented by July 29, 2026.
+- AI referral classification, GA4 event source code, lead storage, admin filtering, stable citation anchors, and explicit `ChatGPT-User` access were implemented and build-verified July 29, 2026; T-001 and T-003 cover the remaining live verification.
 
-- [ ] Publish bookkeeping-cost guide.
-- [ ] Publish CP2000 guide.
-- [ ] Publish CP14 checklist.
-- [ ] Publish bookkeeping-cleanup timeline.
-- [ ] Publish Texas LLC first-year calendar.
-- [ ] Refresh three older blog posts.
-- [ ] Add internal links and reviewer information.
-- [ ] Join or complete priority chamber/citation profiles.
-- [ ] Earn two or three relevant local/professional backlinks.
+## Sequence
 
-
-
-## Days 61–90: Optimize Using Real Data
-
-- [ ] Review GSC query-to-page ownership.
-- [ ] Review indexed versus submitted URLs.
-- [ ] Compare CTR before and after metadata changes.
-- [ ] Review GBP discovery terms, calls, messages, and directions.
-- [ ] Review AI referral leads.
-- [ ] Review form, phone, WhatsApp, and booking conversion rates.
-- [ ] Improve pages with impressions but low CTR.
-- [ ] Improve pages with traffic but low conversion.
-- [ ] Consolidate or rewrite pages with no differentiated value.
-- [ ] Earn remaining local backlinks.
-- [ ] Publish second case study.
-- [ ] Decide whether new state/city content is justified by demand and proof.
+- Days 1–14: T-001 through T-008, starting all available external configuration and owner-information work in parallel.
+- Days 15–30: T-101 and T-102; begin T-105 through T-109 only as their owner dependencies arrive.
+- Days 31–60: T-103 and one T-104 guide after qualified review; do not publish the entire content queue at once.
+- Days 61–90: run T-201 through T-205 and use measured qualified leads and revenue—not page count—to select the next work.
 
 ---
 
@@ -1390,28 +1445,30 @@ Do not judge SEO only by traffic. Qualified leads, clients, and revenue are the 
 
 # 19. Launch QA Checklist for Every SEO Change
 
-- [ ] Page returns HTTP 200.
-- [ ] Exactly one H1.
-- [ ] Unique title and description.
-- [ ] Correct canonical URL.
-- [ ] Index/follow is correct.
-- [ ] Included in sitemap only if indexable and valuable.
-- [ ] Mobile layout works.
-- [ ] No horizontal overflow.
-- [ ] Images load with useful alt text.
-- [ ] No console errors.
-- [ ] Internal links resolve.
-- [ ] External sources resolve.
-- [ ] JSON-LD is valid and matches visible content.
-- [ ] CTA works.
-- [ ] Form success and failure states work.
-- [ ] Analytics event fires once.
-- [ ] No sensitive data enters analytics.
-- [ ] Lead appears in the CRM/database.
-- [ ] Notification is delivered.
-- [ ] PageSpeed/CWV checked.
-- [ ] GSC URL Inspection completed for priority pages.
-- [ ] Completion evidence added to this plan or `seo-track.md`.
+This is a reusable release template, not an active backlog. Copy the applicable items into a dated deployment record and record pass, fail, or not applicable.
+
+- Page returns HTTP 200.
+- Exactly one H1.
+- Unique title and description.
+- Correct canonical URL.
+- Index/follow is correct.
+- Included in sitemap only if indexable and valuable.
+- Mobile layout works.
+- No horizontal overflow.
+- Images load with useful alt text.
+- No console errors.
+- Internal links resolve.
+- External sources resolve.
+- JSON-LD is valid and matches visible content.
+- CTA works.
+- Form success and failure states work.
+- Analytics event fires once.
+- No sensitive data enters analytics.
+- Lead appears in the CRM/database.
+- Notification is delivered.
+- PageSpeed/CWV checked.
+- GSC URL Inspection completed for priority pages.
+- Completion evidence added to this plan or `seo-track.md`.
 
 ---
 
@@ -1453,19 +1510,19 @@ Do not judge SEO only by traffic. Qualified leads, clients, and revenue are the 
 
 
 
-# 22. Final Priority Order
+# 22. Current Priority Order
 
-Execute work in this order:
+This summary reflects the July 29, 2026 reconciliation. Section 17 task IDs control execution and completion.
 
-1. Verify and correct trust/credential claims.
-2. Complete GBP and build genuine reviews.
-3. Install lead attribution, conversion tracking, notifications, and CRM feedback.
-4. Add real team, office, portal, pricing/process, and case-study proof.
-5. Separate keyword ownership between homepage, local pages, and service pages.
-6. Simplify the homepage hero and improve mobile performance.
-7. Refresh high-intent service content and older articles.
-8. Earn local and professional backlinks.
-9. Optimize for AI citations through clear answers, primary sources, authorship, and crawl access.
-10. Use GSC, GBP, GA4, and revenue data to decide the next pages and campaigns.
+1. Deploy and live-verify the completed source work: T-001.
+2. Finish Search Console indexing and GA4/notification/booking configuration: T-002 through T-005.
+3. Obtain verified business facts and qualified claim review: T-006 through T-008.
+4. Complete intent-based internal linking and the remaining source performance audit: T-101 and T-102.
+5. Add real people, office, workflow, portal, and case-study proof only after owner evidence is available: T-105 through T-107.
+6. Resume GBP, genuine reviews, citations, and earned local/professional authority when approved: T-108 and T-109.
+7. Refresh three existing articles before expanding publication volume: T-103.
+8. Publish and measure one bottom-of-funnel guide before approving another: T-104.
+9. Run the recurring measurement and maintenance program: T-201 through T-205.
+10. Approve new city/state pages only when Search Console demand, differentiated proof, qualified leads, and maintenance capacity justify them.
 
 The fastest realistic route to more qualified leads is not publishing more generic pages. It is combining IntegraFin's strong technical/content foundation with verifiable expertise, real local prominence, genuine reviews, clear conversion paths, fast lead follow-up, and source-to-revenue measurement.

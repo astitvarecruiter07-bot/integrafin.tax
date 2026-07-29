@@ -145,7 +145,7 @@ export default function CityServicesPage({
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 py-12 sm:py-16">
+      <section id="overview" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-12 sm:py-16">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100 mb-8">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
             Quick Answer: Tax and Accounting Help in {cityName}
@@ -178,7 +178,7 @@ export default function CityServicesPage({
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-10">
+      <section id="common-situations" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             Common Tax and Accounting Scenarios in {cityName}
@@ -209,7 +209,7 @@ export default function CityServicesPage({
         </section>
       ) : null}
 
-      <section className="max-w-6xl mx-auto px-6 pb-10">
+      <section id="service-areas" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             Nearby Areas We Support
@@ -228,7 +228,7 @@ export default function CityServicesPage({
         </article>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-10">
+      <section id="why-integrafin" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             Why Businesses in {cityName} Choose IntegraFin
@@ -241,7 +241,7 @@ export default function CityServicesPage({
         </article>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-10">
+      <section id="services" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-4">
             Tax and Accounting Services Available in {cityName}
@@ -264,7 +264,7 @@ export default function CityServicesPage({
         </article>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-10">
+      <section id="resources" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-10">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-5">
             Helpful Resources
@@ -283,7 +283,7 @@ export default function CityServicesPage({
         </article>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 pb-16">
+      <section id="frequently-asked-questions" className="scroll-mt-24 max-w-6xl mx-auto px-6 pb-16">
         <article className="bg-white rounded-2xl p-7 sm:p-10 shadow-sm border border-slate-100">
           <h2 className="text-2xl sm:text-3xl font-black text-primary mb-6">
             Frequently Asked Questions
