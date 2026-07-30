@@ -23,6 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     { path: '/industries', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/texas-tax-accounting-services', lastModified: '2026-06-22', priority: 0.8 },
+    { path: '/contractor-bookkeeping-services', lastModified: '2026-07-31', priority: 0.8 },
     { path: '/texas/katy-tax-accountant', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/houston-tax-accountant', lastModified: '2026-07-19', priority: 0.9 },
     ...houstonIrsServicePageList.map((page) => ({
@@ -31,6 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     })),
     { path: '/texas/dallas-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
+    { path: '/texas/dallas-contractor-bookkeeping-services', lastModified: '2026-07-31', priority: 0.8 },
     { path: '/texas/sugar-land-small-business-accountant', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/cypress-bookkeeping-services', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/spring-tax-accountant', lastModified: '2026-06-22', priority: 0.8 },

@@ -4,7 +4,8 @@ export type ServiceLandingPageSlug =
   | "tax-resolution"
   | "bookkeeping-cleanup"
   | "payroll-tax-support"
-  | "quickbooks-bookkeeping-services";
+  | "quickbooks-bookkeeping-services"
+  | "contractor-bookkeeping-services";
 
 type TextBlock = {
   title: string;
@@ -71,6 +72,7 @@ export const serviceLandingPageSlugs: ServiceLandingPageSlug[] = [
   "bookkeeping-cleanup",
   "payroll-tax-support",
   "quickbooks-bookkeeping-services",
+  "contractor-bookkeeping-services",
 ];
 
 export const focusedServiceLinks = [
@@ -103,6 +105,11 @@ export const focusedServiceLinks = [
     href: "/quickbooks-bookkeeping-services",
     label: "QuickBooks Cleanup Katy TX",
     description: "QuickBooks setup, cleanup, monthly bookkeeping, reconciliation, and reporting support.",
+  },
+  {
+    href: "/contractor-bookkeeping-services",
+    label: "Contractor Bookkeeping Services",
+    description: "Bookkeeping, job-costing record support, cleanup, and tax-ready reporting for Texas contractors and trades.",
   },
 ] as const;
 
@@ -1110,5 +1117,179 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
       },
     ],
     relatedServiceLabel: "QuickBooks bookkeeping",
+  },
+  "contractor-bookkeeping-services": {
+    slug: "contractor-bookkeeping-services",
+    url: `${baseUrl}/contractor-bookkeeping-services`,
+    lastModified: "2026-07-31",
+    metaTitle: "Contractor Bookkeeping Services in Texas | IntegraFin",
+    metaDescription:
+      "Contractor bookkeeping for Texas construction and trade businesses. Organize job-cost records, reconciliations, subcontractor payments, and tax-ready reports with IntegraFin.",
+    name: "Contractor Bookkeeping Services in Texas",
+    serviceType: "Bookkeeping, cleanup, reporting, and tax-ready record support for contractors and construction businesses",
+    keywords:
+      "contractor bookkeeping services Texas, construction bookkeeping Texas, bookkeeping for contractors, job costing bookkeeping, contractor bookkeeping Dallas",
+    eyebrow: "Texas Contractor Bookkeeping",
+    heroTitle: "Contractor bookkeeping for Texas construction and trade businesses",
+    heroDescription:
+      "IntegraFin helps contractors and trade businesses organize the records behind their jobs, vendor and subcontractor payments, reconciliations, payroll reports, and tax preparation workflow. Service is based from Katy and available remotely across Texas.",
+    heroBullets: [
+      "Monthly bookkeeping and cleanup for construction and trade businesses",
+      "Job-cost, subcontractor-payment, and payroll-record organization",
+      "Financial reports prepared for business-tax review and owner decisions",
+    ],
+    primaryCta: "Request contractor bookkeeping support",
+    secondaryCta: "Call (832) 647-1819",
+    hubHref: "/texas-tax-accounting-services",
+    hubLabel: "View Texas Services Hub",
+    quickAnswerTitle: "Quick Answer: Contractor Bookkeeping",
+    quickAnswer:
+      "Contractor bookkeeping is a regular process for reconciling accounts, organizing income and direct costs, documenting subcontractor and payroll activity, and producing reports that are useful before tax preparation or a business decision. The exact setup depends on the company's records, contracts, software, and agreed scope.",
+    highlights: [
+      {
+        title: "Monthly books and reconciliations",
+        description:
+          "Review bank, card, loan, payroll, and payment activity so reports are based on reconciled source records rather than an end-of-year estimate.",
+      },
+      {
+        title: "Job-cost record support",
+        description:
+          "Organize available job, vendor, labor, material, and overhead records in a consistent workflow. Job-cost detail depends on the source records and software available.",
+      },
+      {
+        title: "Tax-ready contractor records",
+        description:
+          "Prepare clearer financial reports and open-item lists for business-tax preparation, subcontractor reporting, payroll review, and owner planning conversations.",
+      },
+    ],
+    processTitle: "A Practical Contractor Bookkeeping Process",
+    processDescription:
+      "The first step is to understand how the contractor receives payments, tracks jobs, pays workers and vendors, and stores source records. We then define a written bookkeeping scope and a repeatable monthly workflow.",
+    processSteps: [
+      {
+        title: "1. Records and workflow review",
+        description:
+          "We review the accounting file, statements, job records, invoices, bills, payroll reports, contractor payments, and prior reports available for the agreed period.",
+      },
+      {
+        title: "2. Cleanup priorities",
+        description:
+          "Unreconciled accounts, unclear transfers, duplicate activity, mixed owner transactions, and missing support are identified before they carry into tax work or reporting.",
+      },
+      {
+        title: "3. Monthly organization",
+        description:
+          "Accounts are reconciled, activity is reviewed against available records, and unresolved items are documented for client follow-up rather than guessed.",
+      },
+      {
+        title: "4. Reports and next steps",
+        description:
+          "The engagement delivers the agreed reports and open questions. Tax returns, payroll filings, sales-tax filings, notice work, or specialized construction reporting require separate scope unless included in writing.",
+      },
+    ],
+    situationsTitle: "Common Contractor Bookkeeping Situations",
+    situations: [
+      {
+        title: "Job costs are hard to see",
+        description:
+          "Revenue, materials, labor, subcontractor payments, equipment, and overhead are recorded, but the owner cannot easily trace the available records to a job or project discussion.",
+      },
+      {
+        title: "Books are behind before tax season",
+        description:
+          "Bank statements, receipts, invoices, and payment data exist, but accounts have not been reconciled and the business return cannot be prepared from reliable reports.",
+      },
+      {
+        title: "Subcontractor and payroll records need coordination",
+        description:
+          "A growing trade business needs payment records, payroll reports, and bookkeeping totals organized before year-end forms or tax preparation are reviewed.",
+      },
+      {
+        title: "Cash flow feels unclear between projects",
+        description:
+          "The owner needs current financial reports and a documented list of open items before making decisions about upcoming work, equipment, staffing, or estimated taxes.",
+      },
+    ],
+    checklistTitle: "Records to Gather for a Contractor Bookkeeping Review",
+    checklistIntro:
+      "Bring or upload what is available. Missing records are common, particularly during cleanup; the initial review helps identify the specific documents still needed.",
+    checklist: [
+      "Business bank, credit-card, loan, and line-of-credit statements",
+      "Accounting software access or exports and prior reconciliation reports",
+      "Customer invoices, payment-processor reports, deposits, and available job records",
+      "Vendor bills, receipts, material purchases, equipment records, and lease documents",
+      "Subcontractor payment records and available W-9 or year-end reporting information",
+      "Payroll summaries, payroll tax filings, and payroll-provider reports",
+      "Prior business tax returns, entity records, and estimated-tax payment information",
+      "Any IRS, Texas Comptroller, payroll, or other agency notices",
+    ],
+    whyTitle: "Why IntegraFin for Contractor Bookkeeping",
+    whyChoose: [
+      "Bookkeeping is connected to business-tax preparation and recordkeeping rather than treated as isolated data entry.",
+      "The workflow starts with real source records, open questions, and an agreed scope instead of assumptions about a contractor's books.",
+      "Contractor-specific items such as job records, subcontractor payments, payroll reports, and direct costs can be discussed in the same organized review.",
+      "Texas businesses can work remotely with a real Katy office; IntegraFin does not claim offices in cities where it has none.",
+    ],
+    officialResourcesTitle: "Official Contractor and Business Recordkeeping Resources",
+    officialResourcesIntro:
+      "These official resources help business owners understand general recordkeeping and Texas tax-administration topics. Requirements depend on the business's facts and registrations.",
+    officialResources: [
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping",
+        label: "IRS: Small Business Recordkeeping",
+        description: "IRS guidance on keeping records that support business income and expenses.",
+      },
+      {
+        href: "https://www.irs.gov/publications/p583",
+        label: "IRS Publication 583",
+        description: "IRS publication on starting a business and keeping records.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/independent-contractor-self-employed-or-employee",
+        label: "IRS: Worker Classification",
+        description: "IRS starting point for worker-classification information; classification depends on facts and law.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/",
+        label: "Texas Comptroller: Taxes",
+        description: "Official Texas information for franchise, sales, and other state-administered taxes.",
+      },
+    ],
+    helpfulLinks: [
+      contactLink,
+      { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping" },
+      { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/texas-tax-accounting-services", label: "Texas Tax and Accounting Services" },
+    ],
+    faqs: [
+      {
+        question: "What does contractor bookkeeping usually include?",
+        answer:
+          "The scope may include reconciliations, transaction organization, financial reports, cleanup, and review of available job, subcontractor, or payroll records. The final work depends on the accounting file, source records, and written engagement.",
+      },
+      {
+        question: "Can you help organize contractor books before tax preparation?",
+        answer:
+          "Yes. We can assess the bookkeeping cleanup and reconciliation work needed before business-tax preparation begins. Tax preparation is a separate service unless the written scope combines it.",
+      },
+      {
+        question: "Can you help with job-costing records?",
+        answer:
+          "We can review the available accounting and source records and help establish an organized workflow for the agreed reports. The detail available depends on how jobs, invoices, labor, materials, and other costs are recorded.",
+      },
+      {
+        question: "Can you determine whether a worker is an employee or independent contractor?",
+        answer:
+          "We can help organize the tax and payment records involved, but worker classification depends on the facts and applicable law. Material classification questions may require qualified legal or employment advice.",
+      },
+      {
+        question: "Do you have contractor-bookkeeping offices throughout Texas?",
+        answer:
+          "No. IntegraFin is based in Katy and serves Texas contractors through organized remote workflows. In-person appointments are available at the Katy office by appointment.",
+      },
+    ],
+    relatedServiceLabel: "contractor bookkeeping",
   },
 };

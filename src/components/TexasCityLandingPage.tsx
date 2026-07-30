@@ -392,6 +392,11 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
                   {related.primaryService} in {related.city}
                 </Link>
               ))}
+              {page.relatedLinks?.map((related) => (
+                <Link key={related.href} href={related.href} className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold text-primary hover:border-secondary">
+                  {related.label}
+                </Link>
+              ))}
               <Link href="/texas-tax-accounting-services" className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold text-primary hover:border-secondary">
                 Texas Tax and Accounting Services
               </Link>

@@ -86,6 +86,8 @@ export default function DallasTaxAccountantPage() {
         },
       ]}
       resourceLinks={[
+        { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
+        { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
         { href: "/texas-tax-accounting-services", label: "Texas Tax and Accounting Services Hub" },
         { href: "/services#business", label: "Business Tax and Accounting Services" },
         { href: "/blog/payroll-best-practices", label: "Payroll Best Practices Guide" },

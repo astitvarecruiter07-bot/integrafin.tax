@@ -27,6 +27,7 @@ export type TexasCityLandingData = {
   resourceIntro: string;
   resources: CityResource[];
   nearby: string[];
+  relatedLinks?: { href: string; label: string }[];
   serviceAreaNote: string;
   faq: CityFaq[];
 };
@@ -483,6 +484,140 @@ export const texasCityPages: TexasCityLandingData[] = [
       { question: "Will you classify expenses to maximize deductions?", answer: "We classify transactions according to their documented business purpose and applicable treatment. We do not relabel personal or unsupported costs to create a deduction." },
       { question: "Can monthly books support tax planning?", answer: "Current reconciled books make projections more useful. Planning still depends on complete facts, timing and current law, so no particular savings can be promised." },
       { question: "How do I start bookkeeping service?", answer: "Schedule a consultation and gather recent statements, current reports, payroll summaries, loan documents and prior returns. We then assess scope and next steps." },
+    ],
+  },
+  {
+    slug: "dallas-contractor-bookkeeping-services",
+    city: "Dallas",
+    county: "Dallas County and the Dallas-Fort Worth area",
+    primaryService: "Contractor Bookkeeping Services",
+    primaryKeyword: "contractor bookkeeping Dallas TX",
+    supportingKeywords: [
+      "construction bookkeeping Dallas",
+      "bookkeeping for contractors Dallas",
+      "job costing bookkeeping Dallas",
+      "Dallas construction bookkeeping services",
+    ],
+    title: "Contractor Bookkeeping Services in Dallas, TX | IntegraFin",
+    description:
+      "Dallas contractor bookkeeping for construction and trade businesses. Organize job-cost records, reconciliations, subcontractor payments, and tax-ready reports with IntegraFin.",
+    hero:
+      "Dallas contractor bookkeeping for construction and trade businesses that need cleaner records, more useful financial reports, and a practical path to tax-ready books.",
+    intro: [
+      "Dallas contractors and trade businesses often manage several moving parts at once: customer deposits, job invoices, materials, payroll, subcontractor payments, equipment costs and business overhead. When those records arrive through different bank accounts, apps and project systems, the books can stop answering basic questions about cash, open items and the information needed for tax preparation.",
+      "IntegraFin provides contractor bookkeeping support to Dallas businesses through an organized remote workflow from our Katy office. We do not claim a Dallas office. The work begins by reviewing the accounting file and available source records, then defining a written scope for cleanup, recurring bookkeeping, reports and related tax-record support.",
+      "A contractor-focused process does not mean guessing at profit by job or creating a tax result. We reconcile what can be supported, organize available job, vendor, payroll and subcontractor information, identify open questions and prepare the agreed reports for owner review or the next tax-preparation step.",
+    ],
+    localExpertise: [
+      "The Dallas-Fort Worth construction and home-service market includes general contractors, remodelers, electricians, plumbers, HVAC businesses, roofers, painters, landscapers and specialty subcontractors. Their accounting workflows differ, but each needs consistent source records before a report or tax return can be trusted. Local context helps us ask the right questions about project work, billing practices, workers and payment systems without inventing city-specific tax rules.",
+      "For a Dallas contractor, a useful bookkeeping rhythm connects bank activity to invoices, bills, labor, subcontractor payments, payroll reports and other records in the agreed scope. That creates clearer follow-up questions before year end, rather than leaving every uncertainty for the week a business return is due.",
+    ],
+    industries: [
+      "general contractors and remodelers",
+      "electricians, plumbers and HVAC companies",
+      "roofing, painting, landscaping and concrete businesses",
+      "home-service companies and specialty trades",
+      "independent subcontractors and project-based service businesses",
+    ],
+    serviceDetails: [
+      {
+        title: "Monthly contractor bookkeeping in Dallas",
+        description:
+          "We review and reconcile the agreed bank, card, loan, payroll and payment activity, organize transactions from available support and prepare reports with documented open questions. Monthly timing depends on complete records arriving on time.",
+      },
+      {
+        title: "Job-cost and project-record organization",
+        description:
+          "We can review the available job, invoice, labor, material, vendor and overhead records and help organize them for the agreed reporting workflow. The level of job detail depends on the source records and systems the business maintains.",
+      },
+      {
+        title: "Subcontractor and payroll-record coordination",
+        description:
+          "Contractor payments, payroll reports and bookkeeping totals should be reviewed together before year-end reporting or business-tax preparation. Worker classification and filing obligations depend on facts and applicable law and may require separate advice or scope.",
+      },
+      {
+        title: "Bookkeeping cleanup before tax preparation",
+        description:
+          "Behind or unreliable books may need reconciliation repair, transaction review and missing-record follow-up before tax work can begin. Cleanup, tax preparation, payroll filings and agency matters are separate services unless included in writing.",
+      },
+      {
+        title: "Tax-ready financial reporting",
+        description:
+          "The goal is clearer financial statements and supporting records for the agreed period, not a promise of tax savings, job profitability or a filing outcome. Final tax treatment depends on complete facts, documentation and applicable law.",
+      },
+    ],
+    scenarios: [
+      "A Dallas remodeler has customer payments, material purchases, subcontractor payments and owner draws in the same accounts and needs a cleanup plan before business-tax preparation.",
+      "An electrical contractor wants available labor, materials and vendor records organized more consistently so the owner can ask better questions about active jobs and cash needs.",
+      "A roofing company has several payment methods and months of unreconciled activity, making it difficult to match deposits and expenses to the records needed for year-end review.",
+      "A growing HVAC company needs payroll summaries, subcontractor payments and bookkeeping totals reviewed together before 1099 or business-tax records are finalized.",
+      "A contractor receives an IRS or Texas notice and needs the cited books, payment records and prior filings organized before a response scope is determined.",
+    ],
+    resourceIntro:
+      "These official resources provide general recordkeeping, worker-classification and Texas tax-administration information. Requirements and tax treatment depend on the contractor's actual operations, registrations, workers and records.",
+    resources: [
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping",
+        label: "IRS: Small Business Recordkeeping",
+        description: "General IRS recordkeeping guidance for business income and expense support.",
+      },
+      {
+        href: "https://www.irs.gov/publications/p583",
+        label: "IRS Publication 583",
+        description: "IRS publication on starting a business and keeping records.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/independent-contractor-self-employed-or-employee",
+        label: "IRS: Worker Classification",
+        description: "IRS starting point for worker-classification information; conclusions depend on facts and law.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/",
+        label: "Texas Comptroller Tax Resources",
+        description: "Official information about Texas franchise, sales and other state-administered taxes.",
+      },
+    ],
+    nearby: ["Plano", "Frisco", "Irving", "Garland", "Richardson", "Fort Worth"],
+    relatedLinks: [
+      { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
+      { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
+      { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves Dallas contractor businesses remotely from its Katy office. We do not list or represent a Dallas office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    faq: [
+      {
+        question: "What does contractor bookkeeping include for a Dallas business?",
+        answer:
+          "The scope may include agreed reconciliations, transaction organization, cleanup, financial reports and review of available job, subcontractor or payroll records. The final scope depends on the accounting file, systems, records and period involved.",
+      },
+      {
+        question: "Can IntegraFin help clean up contractor books before tax preparation?",
+        answer:
+          "Yes. We can review the books and scope the cleanup and reconciliation work needed before tax preparation begins. Tax preparation is a separate engagement unless the written scope combines it.",
+      },
+      {
+        question: "Can contractor expenses be organized by job or project?",
+        answer:
+          "We can review the available invoices, bills, labor, material and accounting records and set an agreed workflow for reporting. The usefulness of job-level detail depends on how consistently the business records those items.",
+      },
+      {
+        question: "What records are useful for subcontractor and 1099 reporting?",
+        answer:
+          "Start with payment records, invoices, vendor information, available W-9 forms, and prior year-end reports. Reporting requirements and worker treatment depend on the facts, so the final scope is confirmed during review.",
+      },
+      {
+        question: "Does IntegraFin have a Dallas office?",
+        answer:
+          "No. IntegraFin's office is in Katy. Dallas contractors are served through organized remote workflows, and Katy appointments are available by appointment when an in-person meeting is useful.",
+      },
+      {
+        question: "Can you guarantee a contractor's tax savings or job profitability?",
+        answer:
+          "No. Tax results and job profitability depend on complete records, business decisions, contracts, costs, applicable law and other facts. We focus on accurate, documented bookkeeping workflows rather than guarantees.",
+      },
     ],
   },
   {

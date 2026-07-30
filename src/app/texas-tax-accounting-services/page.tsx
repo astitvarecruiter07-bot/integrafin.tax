@@ -69,6 +69,7 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/rosenberg-bookkeeping-services", label: "Rosenberg Bookkeeping Services" },
         { href: "/texas/missouri-city-tax-accountant", label: "Missouri City Tax Accountant Services" },
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
+        { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
       ]}
       faqItems={[
         {
@@ -108,6 +109,8 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/sugar-land-small-business-accountant", label: "Sugar Land Small Business Accountant" },
         { href: "/texas/richmond-tax-accountant", label: "Richmond Tax Accountant Services" },
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
+        { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
+        { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
         { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance for Businesses" },
         { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
         { href: "/blog/tax-resolution-options", label: "Understanding Your Tax Resolution Options" },

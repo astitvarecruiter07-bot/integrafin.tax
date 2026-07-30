@@ -192,4 +192,34 @@ export const serviceAeoDetails: Record<ServiceLandingPageSlug, ServiceAeoDetails
     published: "June 30, 2026",
     lastReviewed: "July 29, 2026",
   },
+  "contractor-bookkeeping-services": {
+    whoThisAppliesTo:
+      "Texas general contractors, remodelers, electricians, plumbers, HVAC businesses, roofers, landscapers, painters, concrete companies, and subcontractor-heavy trade businesses that need cleaner books and organized records for operations or tax preparation.",
+    included: [
+      "Review of the agreed accounting file, statements, available job records, vendor and subcontractor payments, payroll reports, and prior reports",
+      "Agreed reconciliation, transaction organization, cleanup, open-item documentation, and financial-report preparation",
+      "A practical bookkeeping workflow for the agreed period and recurring process, based on available records",
+    ],
+    notIncluded: [
+      "Tax returns, payroll processing or filings, sales-tax filings, notice response, specialized construction software implementation, or representation unless included in writing",
+      "Legal worker-classification advice, contract review, lien advice, audits, reviews, attestations, valuations, or assurance services",
+      "Guaranteed job profitability, tax savings, financing, agency outcomes, or reports supported by missing or unverifiable records",
+    ],
+    timingAndDeadlines: [
+      "Begin cleanup before business-tax, payroll, 1099, lender, or agency deadlines leave too little time to investigate open items.",
+      "Monthly close timing depends on when complete statements, payroll reports, invoices, job records, and client responses are available.",
+      "Official agency deadlines continue to apply while records are being organized; do not assume bookkeeping support extends a filing or notice date.",
+    ],
+    pricingFactors: [
+      "Number of entities, accounts, months, transactions, jobs, payment systems, payroll providers, and available source records",
+      "Condition of reconciliations, accounting file, job documentation, owner activity, subcontractor records, and open balances",
+      "Cleanup, tax, payroll, sales-tax, notice, software, or expedited work outside the recurring bookkeeping scope",
+    ],
+    limitations: [
+      "Reports and job-cost information depend on the records supplied and the agreed method of organizing them; unresolved items are documented rather than guessed.",
+      "Contractor bookkeeping is not an audit, review, attestation, legal opinion, or guarantee of a tax or business outcome.",
+    ],
+    published: "July 31, 2026",
+    lastReviewed: "July 31, 2026",
+  },
 };

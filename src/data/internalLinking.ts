@@ -198,6 +198,11 @@ export const serviceGuideLinks = {
     { href: "/blog/financial-planning-for-startups", label: "Startup Financial-Planning Guide" },
     { href: "/blog/irs-compliance-guide", label: "Business Record-Keeping Guide" },
   ],
+  "contractor-bookkeeping-services": [
+    { href: "/blog/small-business-accounting-tips", label: "Small-Business Accounting Tips" },
+    { href: "/blog/irs-compliance-guide", label: "Business Record-Keeping Guide" },
+    { href: "/blog/payroll-best-practices", label: "Payroll Best Practices for Business Owners" },
+  ],
   "llc-formation-tax-setup": [
     { href: "/blog/financial-planning-for-startups", label: "Financial Planning for Startups" },
     { href: "/blog/reduce-self-employment-tax-business-owners", label: "Self-Employment Tax Guide for Owners" },
