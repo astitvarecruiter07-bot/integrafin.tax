@@ -70,6 +70,7 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/missouri-city-tax-accountant", label: "Missouri City Tax Accountant Services" },
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
         { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
+        { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
       ]}
       faqItems={[
         {
@@ -111,6 +112,7 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
         { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
         { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
+        { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
         { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance for Businesses" },
         { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
         { href: "/blog/tax-resolution-options", label: "Understanding Your Tax Resolution Options" },

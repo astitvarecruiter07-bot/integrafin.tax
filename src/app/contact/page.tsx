@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { buildBreadcrumbSchema, buildFaqSchema, buildWebPageSchema } from "@/lib/seo/schema";
 import ContactForm from "@/components/ContactForm";
+import OfficeMapEmbed from "@/components/OfficeMapEmbed";
 import { getLeadCtaLabel, normalizeLeadService } from "@/lib/leadServices";
 
 export const metadata: Metadata = {
@@ -250,17 +251,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             </p>
           </div>
           <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
-            <iframe
-              src="https://www.google.com/maps?q=2039+N+Mason+Rd+Suite+604+Katy+TX+77449&output=embed"
-              width="100%"
-              height="380"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Map to IntegraFin at 2039 N Mason Rd Suite 604 in Katy, Texas"
-              className="block min-h-[320px] w-full"
-            />
+            <OfficeMapEmbed />
           </div>
         </div>
       </section>

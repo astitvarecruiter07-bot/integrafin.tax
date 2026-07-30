@@ -21,9 +21,29 @@ export default function Navbar() {
     const pathname = usePathname();
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        let animationFrameId: number | undefined;
+
+        const updateScrolledState = () => {
+            animationFrameId = undefined;
+            const nextScrolled = window.scrollY > 20;
+            setScrolled((currentScrolled) =>
+                currentScrolled === nextScrolled ? currentScrolled : nextScrolled
+            );
+        };
+
+        const handleScroll = () => {
+            if (animationFrameId !== undefined) return;
+            animationFrameId = window.requestAnimationFrame(updateScrolledState);
+        };
+
+        updateScrolledState();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (animationFrameId !== undefined) {
+                window.cancelAnimationFrame(animationFrameId);
+            }
+        };
     }, []);
 
     // Lock body scroll when mobile menu is open

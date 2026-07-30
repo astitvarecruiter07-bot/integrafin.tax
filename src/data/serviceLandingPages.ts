@@ -1258,6 +1258,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     helpfulLinks: [
       contactLink,
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping" },
+      { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
       { href: "/business-tax-accounting", label: "Business Tax and Accounting" },

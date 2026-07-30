@@ -621,6 +621,140 @@ export const texasCityPages: TexasCityLandingData[] = [
     ],
   },
   {
+    slug: "fort-worth-catch-up-bookkeeping",
+    city: "Fort Worth",
+    county: "Tarrant County and the Dallas-Fort Worth area",
+    primaryService: "Catch-Up Bookkeeping",
+    primaryKeyword: "catch-up bookkeeping Fort Worth TX",
+    supportingKeywords: [
+      "bookkeeping cleanup Fort Worth",
+      "backlog bookkeeping Fort Worth TX",
+      "catch up on bookkeeping Fort Worth",
+      "bookkeeping cleanup for contractors Fort Worth",
+    ],
+    title: "Catch-Up Bookkeeping in Fort Worth, TX | IntegraFin",
+    description:
+      "Catch-up bookkeeping for Fort Worth businesses with behind books, unreconciled accounts, and tax-ready reporting needs. Get a practical cleanup plan from IntegraFin.",
+    hero:
+      "Catch-up bookkeeping for Fort Worth business owners who need behind books, unreconciled accounts, and open questions organized before tax, payroll, lender, or business deadlines.",
+    intro: [
+      "When a Fort Worth business falls behind on bookkeeping, the problem is usually more than uncategorized transactions. Bank and card accounts may not reconcile, owner activity may be mixed with business expenses, payroll totals may not match the ledger, and old balances may not tie to current statements. Those gaps can make tax preparation, financing questions and day-to-day decisions harder than they need to be.",
+      "IntegraFin provides catch-up bookkeeping for Fort Worth clients through an organized remote workflow from our Katy office. We do not claim a Fort Worth office. The first review identifies the accounts, months, statements, systems and missing records involved, then defines a written cleanup scope and practical order of work.",
+      "The goal is to make the available records more useful and clearly document what remains unresolved. We do not invent missing receipts, guess at transaction purpose, or promise a tax or lending outcome. Cleanup can prepare books for the next agreed service, such as tax preparation, recurring bookkeeping or payroll-record review.",
+    ],
+    localExpertise: [
+      "Fort Worth includes owner-operated service companies, construction and home-service businesses, retailers, professional practices and growing small businesses. The cleanup approach should reflect how the business actually collects money, pays bills, handles payroll, uses credit or loans, and stores supporting records—not a one-size-fits-all chart of accounts.",
+      "A catch-up project works best when it starts with source documents and a defined period. Reconciled accounts and documented open items give the owner a clearer point of departure for tax preparation, recurring reports, contractor-payment records and future financial decisions.",
+    ],
+    industries: [
+      "contractors, remodelers and home-service companies",
+      "retail, e-commerce and restaurant businesses",
+      "consultants, agencies and professional practices",
+      "trucking, logistics and field-service businesses",
+      "LLCs, sole proprietors and owner-operated companies",
+    ],
+    serviceDetails: [
+      {
+        title: "Bookkeeping cleanup for behind Fort Worth books",
+        description:
+          "We assess the periods behind, accounts involved, available statements and current accounting file, then create an agreed cleanup sequence. The time required depends on transaction volume, missing records, reconciliations and open questions.",
+      },
+      {
+        title: "Account reconciliation and transaction review",
+        description:
+          "Bank, card, loan, payroll and payment-processor activity can be compared to the available books and source records. Differences, duplicates, unsupported entries and unclear transfers are documented for follow-up rather than assumed.",
+      },
+      {
+        title: "Owner, payroll and contractor-record organization",
+        description:
+          "Cleanup may involve separating available business and owner activity and organizing payroll or contractor-payment records for review. Tax treatment, worker classification and filing requirements depend on facts and may require separate scope.",
+      },
+      {
+        title: "Tax-ready financial reports",
+        description:
+          "The agreed cleanup work can produce clearer financial statements and an open-item list for business-tax preparation. Tax returns are not included unless the engagement states that they are.",
+      },
+      {
+        title: "A go-forward monthly bookkeeping process",
+        description:
+          "After cleanup, businesses may choose a recurring bookkeeping rhythm to prevent the same backlog from returning. Ongoing support is planned from the business's records, software and agreed reporting needs.",
+      },
+    ],
+    scenarios: [
+      "A Fort Worth contractor has several months of bank and credit-card activity but no completed reconciliations before a business-tax return can be prepared.",
+      "A service business uses several payment systems and needs deposits, fees, refunds and invoices reviewed against the accounts that received the money.",
+      "An LLC has mixed personal and business transactions and needs the available records separated and open questions documented for owner review.",
+      "A company needs payroll totals, contractor payments and bookkeeping reports organized before year-end records or a lender request are reviewed.",
+      "A growing business wants to move from emergency cleanup to a practical monthly close process with clearer reports and fewer unresolved balances.",
+    ],
+    resourceIntro:
+      "These official resources provide general guidance for business recordkeeping and tax topics. They are starting points, not a substitute for reviewing the records and obligations of a particular Fort Worth business.",
+    resources: [
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping",
+        label: "IRS: Small Business Recordkeeping",
+        description: "General IRS guidance on records that support business income and expenses.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/why-should-i-keep-records",
+        label: "IRS: Why Businesses Should Keep Records",
+        description: "IRS explanation of why organized business records matter.",
+      },
+      {
+        href: "https://www.irs.gov/publications/p583",
+        label: "IRS Publication 583",
+        description: "IRS publication on starting a business and keeping records.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/",
+        label: "Texas Comptroller Tax Resources",
+        description: "Official information about Texas franchise, sales and other state-administered taxes.",
+      },
+    ],
+    nearby: ["Dallas", "Arlington", "Benbrook", "Burleson", "Keller", "North Richland Hills"],
+    relatedLinks: [
+      { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
+      { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves Fort Worth clients remotely from its Katy office. We do not list or represent a Fort Worth office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    faq: [
+      {
+        question: "What is catch-up bookkeeping?",
+        answer:
+          "Catch-up bookkeeping is the agreed work needed to bring behind books closer to a usable, reconciled condition. It commonly includes review of statements, transactions, accounts, missing records and unresolved balances for specific periods.",
+      },
+      {
+        question: "Can catch-up bookkeeping help before business-tax preparation?",
+        answer:
+          "Yes. Cleanup and reconciliation can make the books more usable before tax preparation begins. The tax return itself is a separate service unless it is included in the written engagement.",
+      },
+      {
+        question: "How long does Fort Worth bookkeeping cleanup take?",
+        answer:
+          "Timing depends on the number of months, accounts, transactions, available statements, record condition and client responses. We review those factors before confirming an agreed scope and timing estimate.",
+      },
+      {
+        question: "Can you clean up books for a Fort Worth contractor?",
+        answer:
+          "Yes. We can review available contractor records such as bank activity, invoices, bills, job records, subcontractor payments and payroll reports, then scope the cleanup needed for the agreed reports or next service.",
+      },
+      {
+        question: "Do you have a Fort Worth office?",
+        answer:
+          "No. IntegraFin's office is in Katy. Fort Worth clients are served through organized remote workflows, and Katy appointments are available by appointment when an in-person meeting is useful.",
+      },
+      {
+        question: "Can you guarantee the cleanup will reduce taxes or secure financing?",
+        answer:
+          "No. Tax and financing outcomes depend on complete records, lender or agency review, current law and other facts. Cleanup focuses on better organized records and documented open questions, not guaranteed results.",
+      },
+    ],
+  },
+  {
     slug: "missouri-city-tax-accountant",
     city: "Missouri City",
     county: "Fort Bend and Harris counties",

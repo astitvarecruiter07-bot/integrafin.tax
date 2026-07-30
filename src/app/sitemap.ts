@@ -33,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     { path: '/texas/dallas-tax-accountant', lastModified: '2026-05-23', priority: 0.8 },
     { path: '/texas/dallas-contractor-bookkeeping-services', lastModified: '2026-07-31', priority: 0.8 },
+    { path: '/texas/fort-worth-catch-up-bookkeeping', lastModified: '2026-07-31', priority: 0.8 },
     { path: '/texas/sugar-land-small-business-accountant', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/cypress-bookkeeping-services', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/spring-tax-accountant', lastModified: '2026-06-22', priority: 0.8 },

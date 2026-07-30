@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import NewsletterSignup from "@/components/NewsletterSignup";
+import DeferredNewsletterSignup from "@/components/DeferredNewsletterSignup";
 import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
 
 const quickLinks = [
@@ -144,7 +144,7 @@ export default function Footer() {
                             Subscribe to our newsletter for tax tips and financial insights.
                         </p>
                         <div className="mb-6">
-                            <NewsletterSignup source="footer-newsletter" />
+                            <DeferredNewsletterSignup source="footer-newsletter" />
                         </div>
                         <div className="space-y-3 text-sm text-gray-400">
                             <p className="text-white font-semibold flex flex-col gap-1">
