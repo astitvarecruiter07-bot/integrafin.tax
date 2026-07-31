@@ -56,7 +56,7 @@ export default function TexasTaxAccountingServicesPage() {
         "Responsive communication and organized document workflows",
         "Planning-focused approach that supports long-term compliance",
       ]}
-      nearbyCities={["Katy", "Houston", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Fulshear", "Richmond", "Rosenberg", "Missouri City", "Dallas", "Plano", "Frisco", "Austin"]}
+      nearbyCities={["Katy", "Houston", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Fulshear", "Richmond", "Rosenberg", "Missouri City", "Dallas", "Plano", "Frisco", "Austin", "San Antonio"]}
       cityPageLinks={[
         { href: "/texas/katy-tax-accountant", label: "Katy Tax Accountant Services" },
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
@@ -74,6 +74,7 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
         { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
         { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+        { href: "/texas/san-antonio-contractor-tax-accountant", label: "San Antonio Contractor Tax Accountant" },
       ]}
       faqItems={[
         {
@@ -119,6 +120,7 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
         { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
         { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+        { href: "/texas/san-antonio-contractor-tax-accountant", label: "San Antonio Contractor Tax Accountant" },
         { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance for Businesses" },
         { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
         { href: "/blog/tax-resolution-options", label: "Understanding Your Tax Resolution Options" },

@@ -584,6 +584,7 @@ export const texasCityPages: TexasCityLandingData[] = [
       { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
       { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
       { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+      { href: "/texas/san-antonio-contractor-tax-accountant", label: "San Antonio Contractor Tax Accountant" },
       { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
@@ -724,6 +725,7 @@ export const texasCityPages: TexasCityLandingData[] = [
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
       { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
       { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+      { href: "/texas/san-antonio-contractor-tax-accountant", label: "San Antonio Contractor Tax Accountant" },
       { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
     ],
     serviceAreaNote:
@@ -858,6 +860,7 @@ export const texasCityPages: TexasCityLandingData[] = [
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
       { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
       { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+      { href: "/texas/san-antonio-contractor-tax-accountant", label: "San Antonio Contractor Tax Accountant" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
     ],
@@ -1130,6 +1133,7 @@ export const texasCityPages: TexasCityLandingData[] = [
       { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
       { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+      { href: "/texas/san-antonio-contractor-tax-accountant", label: "San Antonio Contractor Tax Accountant" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
     ],
@@ -1166,6 +1170,152 @@ export const texasCityPages: TexasCityLandingData[] = [
         question: "Can bookkeeping guarantee tax savings or job profitability?",
         answer:
           "No. Tax results and job profitability depend on complete records, contracts, pricing, costs, business decisions, applicable law and other facts. Bookkeeping focuses on clearer records and reports, not guaranteed outcomes.",
+      },
+    ],
+  },
+  {
+    slug: "san-antonio-contractor-tax-accountant",
+    city: "San Antonio",
+    county: "Bexar County",
+    primaryService: "Contractor Tax Accountant",
+    primaryKeyword: "contractor tax accountant San Antonio TX",
+    supportingKeywords: [
+      "contractor tax preparation San Antonio",
+      "construction accounting San Antonio TX",
+      "business tax accountant Bexar County",
+      "bookkeeping for contractors San Antonio",
+    ],
+    title: "Contractor Tax Accountant in San Antonio, TX | IntegraFin",
+    description:
+      "San Antonio contractor tax accountant for tax-ready books, business tax preparation, job-cost records, payroll, and subcontractor documentation.",
+    hero:
+      "Tax and accounting support for San Antonio contractors who need organized books, documented job activity, and a clearer path into business-tax preparation.",
+    intro: [
+      "Construction and home-service businesses rarely arrive at tax season with one simple income stream. A San Antonio contractor may have progress invoices, deposits, retainage, change orders, materials, equipment, payroll, subcontractor payments and jobs spread across Bexar County and surrounding communities. Those records need to connect before a business return can be prepared from reliable figures.",
+      "IntegraFin supports San Antonio contractors through an organized remote workflow from our Katy office. We do not claim a San Antonio office. The first step is a records review covering the accounting file, bank and card statements, invoices, payment activity, payroll reports, subcontractor records, fixed assets, loans and prior filings available for the agreed period.",
+      "The engagement can combine bookkeeping cleanup, recurring accounting and business-tax preparation when those services are included in writing. Recommendations depend on complete records, entity structure, filing history and applicable law; no tax savings, refund, audit result or business outcome is guaranteed.",
+    ],
+    localExpertise: [
+      "San Antonio's contractor market includes residential construction, commercial improvements, military and government-adjacent work, multifamily projects and recurring home-service calls. Local context helps frame practical accounting questions: where work occurs, how contracts bill, whether retainage or deposits are tracked, how materials and equipment are recorded, and how payroll or subcontractor activity reaches the books.",
+      "A tax-ready workflow should connect reconciled accounts, customer billing, job records, payroll, contractor payments, asset purchases and owner activity. When those pieces agree, tax preparation begins with clearer support and fewer unresolved balances rather than a last-minute reconstruction of the year.",
+    ],
+    industries: [
+      "general contractors and remodelers",
+      "electrical, plumbing and HVAC contractors",
+      "roofing, painting and exterior-service companies",
+      "commercial and residential specialty trades",
+      "landscaping, concrete and property-service businesses",
+    ],
+    serviceDetails: [
+      {
+        title: "Business tax preparation for San Antonio contractors",
+        description:
+          "We organize the agreed federal and Texas business-tax work around the entity, filing history and supported accounting records. Missing information and open tax questions are identified before filing decisions are finalized.",
+      },
+      {
+        title: "Tax-ready bookkeeping and cleanup",
+        description:
+          "Bank, card, loan, payroll and payment activity can be reconciled and reviewed before return preparation. Cleanup may include transaction questions, balance-sheet corrections and missing-record follow-up based on the written scope.",
+      },
+      {
+        title: "Job-cost and contract record organization",
+        description:
+          "Available invoices, deposits, retainage, change orders, labor, materials, equipment and subcontractor costs can be organized for the agreed reporting workflow. Job-level results depend on the source records and systems the contractor maintains.",
+      },
+      {
+        title: "Payroll and subcontractor coordination",
+        description:
+          "Payroll reports, general-ledger totals, contractor payments and available W-9 records can be reviewed together before year-end reporting. Worker classification and filing duties depend on facts and applicable law.",
+      },
+      {
+        title: "Estimated-tax and year-round planning support",
+        description:
+          "Current books and realistic projections can support discussions about estimated payments, owner activity, equipment purchases and upcoming filing needs. The effect of any action depends on timing, documentation and the contractor's specific facts.",
+      },
+      {
+        title: "Texas franchise and sales-tax workflow",
+        description:
+          "Contractors may have Texas franchise-tax and, depending on their work, sales-tax questions. We help organize relevant records and identify issues for review without assuming that the same treatment applies to every contract or business.",
+      },
+    ],
+    scenarios: [
+      "A San Antonio contractor has unreconciled accounts, owner transactions and job deposits that need to be reviewed before the business return is prepared.",
+      "A specialty trade company needs payroll reports, subcontractor payments and available W-9 records organized before year-end reporting.",
+      "A remodeler wants invoices, change orders, materials and labor tied more consistently to the jobs shown in the accounting file.",
+      "A growing home-service business bought vehicles or equipment and needs purchase, loan and depreciation records assembled for tax preparation.",
+      "An owner wants recurring bookkeeping and planning so estimated-tax and filing questions are addressed before the next deadline.",
+    ],
+    resourceIntro:
+      "San Antonio contractors can use these official resources for small-business support, permitting, federal recordkeeping and Texas tax-administration starting points. Confirm current requirements directly with the responsible agency.",
+    resources: [
+      {
+        href: "https://www.sa.gov/Directory/Departments/EDD/Business-Owners/Starting-Your-Small-Business",
+        label: "City of San Antonio: Starting Your Small Business",
+        description: "Official City of San Antonio hub for Launch SA, advising, outreach, programs and small-business resources.",
+      },
+      {
+        href: "https://www.sa.gov/Directory/Initiatives/Small-Business-Permitting-Guide",
+        label: "City of San Antonio: Small Business Permitting Guide",
+        description: "City guidance for zoning, certificates of occupancy, construction permits and other business-permitting starting points.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping",
+        label: "IRS: Small Business Recordkeeping",
+        description: "General IRS guidance on records that support business income, expenses, assets and tax filings.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/independent-contractor-self-employed-or-employee",
+        label: "IRS: Independent Contractor or Employee",
+        description: "Federal starting point for worker-classification information; treatment depends on the working relationship and applicable law.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/",
+        label: "Texas Comptroller Tax Resources",
+        description: "Official information about Texas franchise, sales and other state-administered taxes.",
+      },
+    ],
+    nearby: ["Austin", "New Braunfels", "Boerne", "Seguin", "Houston", "Round Rock"],
+    relatedLinks: [
+      { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+      { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
+      { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves San Antonio contractors remotely from its Katy office. We do not list or represent a San Antonio office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    lastReviewed: "August 1, 2026",
+    faq: [
+      {
+        question: "What should a San Antonio contractor provide for business-tax preparation?",
+        answer:
+          "The starting list often includes prior returns, reconciled bookkeeping reports, bank and card statements, payroll forms, contractor-payment records, asset and loan documents, estimated-tax payments and relevant Texas filings. The final request depends on the entity and engagement.",
+      },
+      {
+        question: "Can IntegraFin clean up contractor books before preparing the return?",
+        answer:
+          "Yes. We can scope reconciliations, transaction review, balance-sheet cleanup and missing-record follow-up before tax preparation. Cleanup and return preparation are separate services unless both are included in the written engagement.",
+      },
+      {
+        question: "Can job costs and change orders be organized for tax-ready reporting?",
+        answer:
+          "We can review available contracts, invoices, change orders, deposits, labor, materials and vendor activity and set an agreed reporting workflow. The detail available depends on the contractor's source records and consistent job coding.",
+      },
+      {
+        question: "Can you help review payroll and subcontractor records?",
+        answer:
+          "We can help reconcile available payroll reports, contractor payments, W-9 details and accounting totals. Worker classification and information-reporting requirements depend on the facts and applicable law.",
+      },
+      {
+        question: "Does every San Antonio contractor collect Texas sales tax?",
+        answer:
+          "No single answer applies to every contract. Texas treatment can depend on the work performed, contract type, materials and customer. Current facts should be reviewed against Texas Comptroller guidance before a filing position is selected.",
+      },
+      {
+        question: "Does IntegraFin have a San Antonio office?",
+        answer:
+          "No. IntegraFin's office is in Katy. San Antonio contractors are served through an organized remote workflow, with Katy appointments available when an in-person meeting is useful.",
       },
     ],
   },
