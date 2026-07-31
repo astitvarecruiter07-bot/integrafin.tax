@@ -134,7 +134,7 @@ Each city hub should link to its active city-service pages in a visible “Servi
 | A1 | `/contractor-bookkeeping-services` | contractor bookkeeping services Texas | job costing bookkeeping, construction bookkeeping, 1099 contractor bookkeeping | Live verified 2026-07-31 — request indexing and validate keyword data |
 | A2 | `/texas/dallas-contractor-bookkeeping-services` | contractor bookkeeping Dallas TX | job costing, cleanup, subcontractor records | Live verified 2026-07-31 — request indexing and validate keyword data |
 | A3 | `/texas/fort-worth-catch-up-bookkeeping` | catch-up bookkeeping Fort Worth TX | cleanup for contractors, reconciliations, tax-ready books | Live verified 2026-07-31 — request indexing |
-| A4 | `/texas/plano-roofing-company-bookkeeping` | roofing company bookkeeping Plano TX | job costs, subcontractor records, seasonal cash flow | Planned |
+| A4 | `/texas/plano-roofing-company-bookkeeping` | roofing company bookkeeping Plano TX | job costs, subcontractor records, seasonal cash flow | Built in source 2026-07-31 — awaiting deployment, keyword validation, and indexing |
 | A5 | `/texas/austin-bookkeeping-for-electricians` | bookkeeping for electricians Austin TX | service calls, job tracking, payroll records | Planned |
 | A6 | `/texas/san-antonio-contractor-tax-accountant` | contractor tax accountant San Antonio TX | tax-ready books, business tax preparation | Planned |
 
@@ -164,7 +164,7 @@ Do not build separate electrician, plumbing, HVAC, roofing, painting, landscapin
 | Order | URL | Primary candidate | Supporting terms / content angle | Status |
 |---|---|---|---|---|
 | B1 | `/small-business-bookkeeping-services` | bookkeeping services for small business | monthly bookkeeping, outsourced bookkeeping | Planned service hub |
-| B2 | `/texas/frisco-small-business-accountant` | small business accountant Frisco TX | bookkeeping, tax prep, payroll support | Planned |
+| B2 | `/texas/frisco-small-business-accountant` | small business accountant Frisco TX | bookkeeping, tax prep, payroll support | Built in source 2026-07-31 — awaiting deployment, keyword validation, and indexing |
 | B3 | `/texas/round-rock-llc-accountant` | LLC accountant Round Rock TX | new business accounting, bookkeeping setup | Planned |
 | B4 | `/texas/sugar-land-payroll-services` | payroll services Sugar Land TX | payroll-record support for small business | Planned; validate overlap |
 | B5 | `/texas/houston-bookkeeping-cleanup` | bookkeeping cleanup Houston TX | cleanup, reconciliations, tax-ready records | Planned; niche rather than broad Houston term |
@@ -334,7 +334,8 @@ Use one row per URL. Keep the source and date for every metric.
 |---|---|---|---|---|---|---:|---:|---:|---:|---|
 | `/texas/dallas-contractor-bookkeeping-services` | contractor bookkeeping Dallas TX | Contractors | Pending keyword validation; live verified 2026-07-31 | 2026-07-31 | Waiting |  |  |  |  | Request indexing and validate GSC/keyword-tool data |
 | `/texas/fort-worth-catch-up-bookkeeping` | catch-up bookkeeping Fort Worth TX | Contractors | Validated by user, 2026-07-31; live verified 2026-07-31 | 2026-07-31 | Waiting |  |  |  |  | Request indexing |
-| `/texas/frisco-small-business-accountant` | small business accountant Frisco TX | Small business | Pending |  |  |  |  |  |  | Validate |
+| `/texas/plano-roofing-company-bookkeeping` | roofing company bookkeeping Plano TX | Contractors | Pending keyword validation; built in source 2026-07-31 |  |  |  |  |  |  | Deploy, request indexing, and validate GSC/keyword-tool data |
+| `/texas/frisco-small-business-accountant` | small business accountant Frisco TX | Small business | Pending keyword validation; built in source 2026-07-31 |  |  |  |  |  |  | Deploy, request indexing, and validate GSC/keyword-tool data |
 
 ## 11. First 90-Day Roadmap
 

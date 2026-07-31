@@ -56,7 +56,7 @@ export default function TexasTaxAccountingServicesPage() {
         "Responsive communication and organized document workflows",
         "Planning-focused approach that supports long-term compliance",
       ]}
-      nearbyCities={["Katy", "Houston", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Fulshear", "Richmond", "Rosenberg", "Missouri City", "Dallas"]}
+      nearbyCities={["Katy", "Houston", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Fulshear", "Richmond", "Rosenberg", "Missouri City", "Dallas", "Plano", "Frisco"]}
       cityPageLinks={[
         { href: "/texas/katy-tax-accountant", label: "Katy Tax Accountant Services" },
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
@@ -71,6 +71,8 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
         { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
         { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+        { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
+        { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
       ]}
       faqItems={[
         {
@@ -113,6 +115,8 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
         { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
         { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+        { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
+        { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
         { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance for Businesses" },
         { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
         { href: "/blog/tax-resolution-options", label: "Understanding Your Tax Resolution Options" },

@@ -157,7 +157,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
             {page.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
           <p className="mt-6 text-sm font-semibold text-slate-500">
-            City content last reviewed: June 22, 2026 · AEO template updated: July 29, 2026
+            City content last reviewed: {page.lastReviewed ?? "June 22, 2026"} · AEO template updated: July 29, 2026
           </p>
         </article>
       </section>

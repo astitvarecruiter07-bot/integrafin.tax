@@ -29,6 +29,7 @@ export type TexasCityLandingData = {
   nearby: string[];
   relatedLinks?: { href: string; label: string }[];
   serviceAreaNote: string;
+  lastReviewed?: string;
   faq: CityFaq[];
 };
 
@@ -581,6 +582,8 @@ export const texasCityPages: TexasCityLandingData[] = [
     relatedLinks: [
       { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
       { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
+      { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
+      { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
       { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
@@ -718,6 +721,8 @@ export const texasCityPages: TexasCityLandingData[] = [
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
       { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
+      { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
+      { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
     ],
     serviceAreaNote:
       "IntegraFin serves Fort Worth clients remotely from its Katy office. We do not list or represent a Fort Worth office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
@@ -751,6 +756,276 @@ export const texasCityPages: TexasCityLandingData[] = [
         question: "Can you guarantee the cleanup will reduce taxes or secure financing?",
         answer:
           "No. Tax and financing outcomes depend on complete records, lender or agency review, current law and other facts. Cleanup focuses on better organized records and documented open questions, not guaranteed results.",
+      },
+    ],
+  },
+  {
+    slug: "plano-roofing-company-bookkeeping",
+    city: "Plano",
+    county: "Collin and Denton counties",
+    primaryService: "Roofing Company Bookkeeping",
+    primaryKeyword: "roofing company bookkeeping Plano TX",
+    supportingKeywords: [
+      "roofing bookkeeping Plano",
+      "bookkeeping for roofers Plano TX",
+      "contractor bookkeeping Plano TX",
+      "job costing bookkeeping for roofing companies",
+    ],
+    title: "Roofing Company Bookkeeping in Plano, TX | IntegraFin",
+    description:
+      "Plano roofing company bookkeeping for job-cost records, subcontractor payments, cleanup, reconciliations, and tax-ready reports. Work remotely with IntegraFin.",
+    hero:
+      "Bookkeeping for Plano roofing companies that need cleaner job records, subcontractor details, reconciled accounts, and reports that are easier to use before tax season.",
+    intro: [
+      "Roofing companies often have a bookkeeping pattern that looks different from a general professional-service business. A single month can include deposits, draws, materials, supplier credits, crews, subcontractor payments, equipment costs, insurance-related paperwork, financing activity and owner reimbursements. If those items are not organized consistently, the books may not explain which jobs are complete, which costs are still open, or what records are ready for tax preparation.",
+      "IntegraFin supports Plano roofing companies through an organized remote workflow from our Katy office. We do not claim a Plano office. The first step is a records review: accounts, statements, accounting software, job records, invoices, vendor bills, payroll reports and contractor-payment details available for the period in scope.",
+      "The goal is practical bookkeeping support, not a promise of profit, tax savings or financing approval. We help reconcile supported activity, organize available job and subcontractor records, document open questions and prepare tax-ready reports for the agreed period.",
+    ],
+    localExpertise: [
+      "Plano sits inside a large North Texas contractor market with residential repair work, commercial projects, storm-related demand, supplier relationships and crews that may work across city lines. Local context helps us ask better intake questions about job stages, deposits, materials, subcontractors and payment timing, but the accounting still depends on the company's own records.",
+      "A roofing-focused bookkeeping workflow should make it easier to review revenue, direct costs, overhead, payroll records, subcontractor payments and unresolved job questions. When those categories are handled consistently, the owner has a cleaner handoff for tax preparation and a better starting point for go-forward monthly bookkeeping.",
+    ],
+    industries: [
+      "roofing contractors and repair companies",
+      "storm-restoration and exterior-service businesses",
+      "general contractors with roofing divisions",
+      "subcontractor-heavy trade businesses",
+      "owner-operated construction and home-service companies",
+    ],
+    serviceDetails: [
+      {
+        title: "Bookkeeping cleanup for Plano roofers",
+        description:
+          "We review the accounting file, bank and card accounts, loan or equipment activity, supplier records and available job documentation, then scope the cleanup needed for the agreed period. Unsupported or unclear items are documented for owner follow-up rather than guessed.",
+      },
+      {
+        title: "Job-cost record organization",
+        description:
+          "Available job records, customer invoices, deposits, materials, labor, subcontractor costs and overhead can be organized for the agreed reporting workflow. The level of job detail depends on the systems and source records the company maintains.",
+      },
+      {
+        title: "Subcontractor and 1099 record support",
+        description:
+          "Payment records, W-9 files, vendor names, invoices and prior year-end reports can be reviewed together before 1099 or business-tax records are finalized. Reporting duties and worker treatment depend on facts and applicable law.",
+      },
+      {
+        title: "Reconciliations and tax-ready reports",
+        description:
+          "Bank, card, loan, payroll and payment activity can be reconciled to the agreed records so the financial reports are more useful for tax preparation. Tax preparation is separate unless the written engagement includes it.",
+      },
+      {
+        title: "Go-forward monthly bookkeeping",
+        description:
+          "After cleanup, a monthly workflow can help prevent job, vendor, payroll and owner-activity questions from piling up again. Recurring support is scoped from the company's software, records and reporting needs.",
+      },
+    ],
+    scenarios: [
+      "A Plano roofing contractor has material purchases, customer deposits, subcontractor payments and owner draws mixed across several accounts before year-end review.",
+      "A storm-restoration company needs available job records, supplier bills and payments organized before tax preparation or a lender request.",
+      "A roofing business has months of unreconciled bank and card activity and needs a cleanup plan before moving into monthly bookkeeping.",
+      "A contractor needs payroll summaries, subcontractor payments and bookkeeping totals reviewed together before year-end reporting questions are addressed.",
+      "An owner wants to understand which accounting records are missing before deciding whether the current books can support business-tax preparation.",
+    ],
+    resourceIntro:
+      "Plano roofing companies can use these official and local resources as starting points for business support, recordkeeping and Texas tax-administration questions. Program details and requirements should be confirmed directly with the source.",
+    resources: [
+      {
+        href: "https://www.planotexas.org/35/Business-Assistance",
+        label: "Plano Economic Development: Business Assistance",
+        description: "Official Plano business-assistance resources, including small-business, incentive and workforce links.",
+      },
+      {
+        href: "https://www.planochamber.org/",
+        label: "Plano Chamber of Commerce",
+        description: "Local business advocacy, events, programs and small-business resources for Plano companies.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping",
+        label: "IRS: Small Business Recordkeeping",
+        description: "General IRS guidance on records that support business income and expenses.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/",
+        label: "Texas Comptroller Tax Resources",
+        description: "Official information about Texas franchise, sales and other state-administered taxes.",
+      },
+    ],
+    nearby: ["Dallas", "Frisco", "Fort Worth", "Richardson", "Garland", "McKinney"],
+    relatedLinks: [
+      { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
+      { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
+      { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
+      { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves Plano roofing companies remotely from its Katy office. We do not list or represent a Plano office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    lastReviewed: "July 31, 2026",
+    faq: [
+      {
+        question: "What bookkeeping records should a Plano roofing company keep?",
+        answer:
+          "Useful records often include bank and card statements, customer invoices, deposits, supplier bills, receipts, payroll reports, subcontractor invoices, W-9 forms, loan records and job notes. The exact list depends on the company's systems and engagement scope.",
+      },
+      {
+        question: "Can roofing expenses be organized by job?",
+        answer:
+          "We can review the available job records, invoices, bills, materials, labor and accounting activity and set an agreed workflow for reporting. Job-level detail is only as useful as the source records the business keeps.",
+      },
+      {
+        question: "Can IntegraFin help clean up roofing company books before tax preparation?",
+        answer:
+          "Yes. We can scope cleanup, reconciliations and missing-record follow-up before tax preparation begins. Tax preparation is separate unless it is included in the written engagement.",
+      },
+      {
+        question: "Can you help with subcontractor and 1099 records?",
+        answer:
+          "We can help organize available payment records, invoices, W-9 information and vendor details. Reporting requirements and worker treatment depend on facts and law, so the final scope is confirmed during review.",
+      },
+      {
+        question: "Does IntegraFin have a Plano office?",
+        answer:
+          "No. IntegraFin's office is in Katy. Plano roofing companies are served through organized remote workflows, and Katy appointments are available by appointment when an in-person meeting is useful.",
+      },
+      {
+        question: "Can bookkeeping guarantee a roofing company's profit or tax savings?",
+        answer:
+          "No. Profit and tax results depend on contracts, costs, complete records, business decisions, applicable law and other facts. Bookkeeping focuses on clearer records and reports, not guaranteed outcomes.",
+      },
+    ],
+  },
+  {
+    slug: "frisco-small-business-accountant",
+    city: "Frisco",
+    county: "Collin and Denton counties",
+    primaryService: "Small Business Accountant",
+    primaryKeyword: "small business accountant Frisco TX",
+    supportingKeywords: [
+      "Frisco small business accounting",
+      "bookkeeping services Frisco TX",
+      "business tax preparation Frisco",
+      "Frisco bookkeeping cleanup",
+    ],
+    title: "Small Business Accountant in Frisco, TX | IntegraFin",
+    description:
+      "Frisco small business accountant for bookkeeping, business tax preparation, payroll-record support, cleanup, and tax-ready reports. Work remotely with IntegraFin.",
+    hero:
+      "Small-business accounting for Frisco owners who need cleaner books, organized tax records, payroll-record support, and a practical process before deadlines arrive.",
+    intro: [
+      "Frisco's small-business base includes professional services, healthcare practices, technology firms, retailers, restaurants, real-estate professionals, consultants and local service companies. Many start lean, then outgrow informal bookkeeping as bank accounts, payroll, contractors, sales channels and owner activity become more complex.",
+      "IntegraFin supports Frisco small businesses remotely from our Katy office. We do not claim a Frisco office. The first review looks at the entity, current books, filing history, payroll records, tax deadlines and requested outcome before defining a written scope.",
+      "Small-business accounting should connect monthly records with tax preparation and planning. We help organize reconciliations, reports, payroll or contractor records and open questions so owners are not trying to solve a full year's records at the last minute.",
+    ],
+    localExpertise: [
+      "Frisco companies often serve clients across Collin County, Denton County and the wider Dallas-Fort Worth area. That can create practical record questions: where work occurs, how sales are collected, whether contractors or employees support delivery, which systems hold the source data and how owner reimbursements are handled.",
+      "The local market is active, but the accounting work still comes down to evidence. A cleaner bookkeeping process helps connect revenue, expenses, payroll records, business-tax preparation and notice-response support without promising a particular tax result.",
+    ],
+    industries: [
+      "consultants, agencies and professional-service firms",
+      "medical, dental and wellness practices",
+      "technology, IT and software-service businesses",
+      "real-estate and property-service businesses",
+      "retail, restaurant and local service companies",
+    ],
+    serviceDetails: [
+      {
+        title: "Monthly bookkeeping for Frisco small businesses",
+        description:
+          "We reconcile the agreed accounts, review transaction categories, identify open questions and prepare reports based on the available records. The monthly close works best when source documents arrive consistently.",
+      },
+      {
+        title: "Business tax preparation support",
+        description:
+          "Tax preparation starts with clean books, prior returns, entity facts, owner activity, payroll records and complete supporting documents. Filing outcomes depend on facts, records and current law.",
+      },
+      {
+        title: "Bookkeeping cleanup and catch-up work",
+        description:
+          "Behind books may require reconciliation repair, transaction review, balance-sheet cleanup and missing-record follow-up before reports are useful. Cleanup is scoped separately from recurring monthly support.",
+      },
+      {
+        title: "Payroll and contractor-record coordination",
+        description:
+          "Payroll reports, contractor payments, owner compensation and bookkeeping totals can be reviewed together before year-end records or business-tax preparation. Requirements depend on facts and applicable law.",
+      },
+      {
+        title: "Entity and first-year accounting setup",
+        description:
+          "Newer companies may need an accounting workflow, chart-of-accounts review, tax-classification discussion, EIN or registration coordination and recordkeeping habits that support the first tax year.",
+      },
+    ],
+    scenarios: [
+      "A Frisco LLC has several months of unreconciled activity and needs clean reports before business-tax preparation can begin.",
+      "A professional practice wants deposits, merchant fees, payroll reports and owner payments organized in a monthly close process.",
+      "A consultant uses contractors and needs vendor records, payments and year-end reporting details reviewed before tax season.",
+      "A retailer or restaurant needs sales, refunds, processor fees, inventory-related costs and sales-tax records organized more consistently.",
+      "A new business wants bookkeeping setup and tax-record planning before transactions and payroll questions pile up.",
+    ],
+    resourceIntro:
+      "Frisco small-business owners can use these local and official resources for business support, permitting starting points, recordkeeping and Texas tax-administration information. Confirm current requirements directly with each source.",
+    resources: [
+      {
+        href: "https://friscoedc.com/businesses/small-business-resources",
+        label: "Frisco EDC Small Business Resources",
+        description: "Local, state and federal resource links for Frisco small businesses, including city permit and map resources.",
+      },
+      {
+        href: "https://friscochamber.com/about-the-chamber/",
+        label: "Frisco Chamber of Commerce",
+        description: "Business advocacy, resources and connections for the Frisco business community.",
+      },
+      {
+        href: "https://gov.texas.gov/apps/business/portal/",
+        label: "Texas Small Business Resource Portal",
+        description: "State resource portal for Texas businesses and self-employed owners.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed",
+        label: "IRS Small Business and Self-Employed",
+        description: "Federal tax and recordkeeping information for business owners.",
+      },
+    ],
+    nearby: ["Dallas", "Plano", "Fort Worth", "McKinney", "Allen", "Prosper"],
+    relatedLinks: [
+      { href: "/texas-tax-accounting-services", label: "Texas Tax and Accounting Services" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
+      { href: "/payroll-tax-support", label: "Payroll Tax Support" },
+      { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves Frisco small businesses remotely from its Katy office. We do not list or represent a Frisco office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    lastReviewed: "July 31, 2026",
+    faq: [
+      {
+        question: "What does a small business accountant do for a Frisco business?",
+        answer:
+          "The scope may include bookkeeping, reconciliations, business-tax preparation support, payroll-record review, cleanup, reporting and planning conversations. The exact work is defined from the records, entity and deadlines involved.",
+      },
+      {
+        question: "Can IntegraFin help if my Frisco business books are behind?",
+        answer:
+          "Yes. We can review the accounting file, statements, reports and missing records, then scope cleanup before tax preparation or recurring bookkeeping begins.",
+      },
+      {
+        question: "Do you work with Frisco LLCs and S corporations?",
+        answer:
+          "Yes. We can support LLCs, S corporations, partnerships, sole proprietors and other owner-managed businesses when the work fits the agreed tax and accounting scope.",
+      },
+      {
+        question: "Can bookkeeping support payroll and contractor records?",
+        answer:
+          "Yes. Payroll reports, contractor payments, W-9 details and bookkeeping totals often need to be reviewed together before year-end reporting and business-tax preparation.",
+      },
+      {
+        question: "Does IntegraFin have a Frisco office?",
+        answer:
+          "No. IntegraFin's office is in Katy. Frisco clients are served through organized remote workflows, and Katy appointments are available by appointment when an in-person meeting is useful.",
+      },
+      {
+        question: "Can you guarantee lower taxes for my Frisco business?",
+        answer:
+          "No. Tax outcomes depend on complete records, eligibility, timing, entity facts and current law. We focus on accurate records, lawful planning discussions and clear next steps.",
       },
     ],
   },
