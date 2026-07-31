@@ -306,19 +306,23 @@ export default function Home() {
               ))}
            </div>
 
-           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-             <Link href="/bookkeeping-cleanup" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-               <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Bookkeeping Cleanup</h3>
-               <p className="mt-2 text-sm leading-relaxed text-slate-600">Catch-up bookkeeping, reconciliations, missing records, and tax-ready financial reports.</p>
-             </Link>
-             <Link href="/quickbooks-bookkeeping-services" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-               <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">QuickBooks Bookkeeping</h3>
-               <p className="mt-2 text-sm leading-relaxed text-slate-600">QuickBooks setup, cleanup, monthly reconciliation, and reporting support.</p>
-             </Link>
-             <Link href="/payroll-tax-support" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-               <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Payroll Tax Support</h3>
-               <p className="mt-2 text-sm leading-relaxed text-slate-600">Employer payroll records, tax deposits, filings, notices, and year-end wage reporting.</p>
-             </Link>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Link href="/bookkeeping-cleanup" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Bookkeeping Cleanup</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">Catch-up bookkeeping, reconciliations, missing records, and tax-ready financial reports.</p>
+              </Link>
+              <Link href="/quickbooks-bookkeeping-services" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">QuickBooks Bookkeeping</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">QuickBooks setup, cleanup, monthly reconciliation, and reporting support.</p>
+              </Link>
+              <Link href="/contractor-bookkeeping-services" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Contractor Bookkeeping</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">Job-cost records, subcontractor details, cleanup, and tax-ready reports for Texas contractors.</p>
+              </Link>
+              <Link href="/payroll-tax-support" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+                <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Payroll Tax Support</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">Employer payroll records, tax deposits, filings, notices, and year-end wage reporting.</p>
+              </Link>
            </div>
         </div>
       </section>

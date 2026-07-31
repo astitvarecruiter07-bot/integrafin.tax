@@ -187,6 +187,11 @@ const focusedServiceLinks = [
     label: "QuickBooks Bookkeeping Services",
     description: "QuickBooks setup, cleanup, monthly bookkeeping, reconciliation, and reporting support.",
   },
+  {
+    href: "/contractor-bookkeeping-services",
+    label: "Contractor Bookkeeping Services",
+    description: "Bookkeeping, cleanup, job-cost record support, and tax-ready reporting for Texas contractors.",
+  },
 ];
 
 export default function ServicesContent() {

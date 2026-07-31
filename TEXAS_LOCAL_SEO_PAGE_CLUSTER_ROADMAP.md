@@ -131,9 +131,9 @@ Each city hub should link to its active city-service pages in a visible “Servi
 
 | Order | URL | Primary candidate | Supporting terms / content angle | Status |
 |---|---|---|---|---|
-| A1 | `/contractor-bookkeeping-services` | contractor bookkeeping services Texas | job costing bookkeeping, construction bookkeeping, 1099 contractor bookkeeping | Built in code — awaiting deployment and keyword validation |
-| A2 | `/texas/dallas-contractor-bookkeeping-services` | contractor bookkeeping Dallas TX | job costing, cleanup, subcontractor records | Built in code — awaiting deployment and keyword validation |
-| A3 | `/texas/fort-worth-catch-up-bookkeeping` | catch-up bookkeeping Fort Worth TX | cleanup for contractors, reconciliations, tax-ready books | Built in code — validated by user; awaiting deployment |
+| A1 | `/contractor-bookkeeping-services` | contractor bookkeeping services Texas | job costing bookkeeping, construction bookkeeping, 1099 contractor bookkeeping | Live verified 2026-07-31 — request indexing and validate keyword data |
+| A2 | `/texas/dallas-contractor-bookkeeping-services` | contractor bookkeeping Dallas TX | job costing, cleanup, subcontractor records | Live verified 2026-07-31 — request indexing and validate keyword data |
+| A3 | `/texas/fort-worth-catch-up-bookkeeping` | catch-up bookkeeping Fort Worth TX | cleanup for contractors, reconciliations, tax-ready books | Live verified 2026-07-31 — request indexing |
 | A4 | `/texas/plano-roofing-company-bookkeeping` | roofing company bookkeeping Plano TX | job costs, subcontractor records, seasonal cash flow | Planned |
 | A5 | `/texas/austin-bookkeeping-for-electricians` | bookkeeping for electricians Austin TX | service calls, job tracking, payroll records | Planned |
 | A6 | `/texas/san-antonio-contractor-tax-accountant` | contractor tax accountant San Antonio TX | tax-ready books, business tax preparation | Planned |
@@ -332,8 +332,8 @@ Use one row per URL. Keep the source and date for every metric.
 
 | URL | Primary keyword | Service cluster | Validation source/date | Publish date | Indexed? | 28-day impressions | 28-day clicks | Avg. position | Leads | Next action |
 |---|---|---|---|---|---|---:|---:|---:|---:|---|
-| `/texas/dallas-contractor-bookkeeping-services` | contractor bookkeeping Dallas TX | Contractors | Pending |  |  |  |  |  |  | Build and validate |
-| `/texas/fort-worth-catch-up-bookkeeping` | catch-up bookkeeping Fort Worth TX | Contractors | Validated by user, 2026-07-31 |  |  |  |  |  |  | Deploy and request indexing |
+| `/texas/dallas-contractor-bookkeeping-services` | contractor bookkeeping Dallas TX | Contractors | Pending keyword validation; live verified 2026-07-31 | 2026-07-31 | Waiting |  |  |  |  | Request indexing and validate GSC/keyword-tool data |
+| `/texas/fort-worth-catch-up-bookkeeping` | catch-up bookkeeping Fort Worth TX | Contractors | Validated by user, 2026-07-31; live verified 2026-07-31 | 2026-07-31 | Waiting |  |  |  |  | Request indexing |
 | `/texas/frisco-small-business-accountant` | small business accountant Frisco TX | Small business | Pending |  |  |  |  |  |  | Validate |
 
 ## 11. First 90-Day Roadmap
@@ -352,10 +352,10 @@ Use one row per URL. Keep the source and date for every metric.
 |---|---|---|---|
 | 1 | Confirm contractor bookkeeping scope and approved claims | Service owner | Not started |
 | 2 | Validate Dallas contractor bookkeeping candidate in Google Search Console and a keyword tool | SEO owner | Not started |
-| 3 | Create `/contractor-bookkeeping-services` service hub | Website team | Built in code — awaiting deployment |
-| 4 | Create `/texas/dallas-contractor-bookkeeping-services` | Website team | Built in code — awaiting deployment |
-| 5 | Add sitemap and internal links for the Dallas page | Website team | Built in code — awaiting deployment |
-| 6 | Request indexing and begin tracking | SEO owner | Not started |
+| 3 | Create `/contractor-bookkeeping-services` service hub | Website team | Live verified 2026-07-31 |
+| 4 | Create `/texas/dallas-contractor-bookkeeping-services` | Website team | Live verified 2026-07-31 |
+| 5 | Add sitemap and internal links for the Dallas page | Website team | Live verified 2026-07-31 |
+| 6 | Request indexing and begin tracking | SEO owner | Ready now; indexing not requested yet |
 | 7 | Use 28-day data to approve Fort Worth or another next page | SEO + service owner | Not started |
 
 ## 13. Research Note
