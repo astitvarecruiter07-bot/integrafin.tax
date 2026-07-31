@@ -1260,6 +1260,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping" },
       { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
       { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
+      { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
       { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },

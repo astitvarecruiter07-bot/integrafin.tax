@@ -64,6 +64,7 @@ const sections = [
       { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
       { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
       { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
+      { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
       { href: "/new-york/nyc-tax-accountant", label: "NYC Tax Accountant" },
       { href: "/new-york/buffalo-tax-accountant", label: "Buffalo Tax Accountant" },
       { href: "/pennsylvania/philadelphia-tax-accountant", label: "Philadelphia Tax Accountant" },

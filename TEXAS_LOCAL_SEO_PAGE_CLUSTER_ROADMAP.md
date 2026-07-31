@@ -135,7 +135,7 @@ Each city hub should link to its active city-service pages in a visible “Servi
 | A2 | `/texas/dallas-contractor-bookkeeping-services` | contractor bookkeeping Dallas TX | job costing, cleanup, subcontractor records | Live verified 2026-07-31 — request indexing and validate keyword data |
 | A3 | `/texas/fort-worth-catch-up-bookkeeping` | catch-up bookkeeping Fort Worth TX | cleanup for contractors, reconciliations, tax-ready books | Live verified 2026-07-31 — request indexing |
 | A4 | `/texas/plano-roofing-company-bookkeeping` | roofing company bookkeeping Plano TX | job costs, subcontractor records, seasonal cash flow | Built in source 2026-07-31 — awaiting deployment, keyword validation, and indexing |
-| A5 | `/texas/austin-bookkeeping-for-electricians` | bookkeeping for electricians Austin TX | service calls, job tracking, payroll records | Planned |
+| A5 | `/texas/austin-bookkeeping-for-electricians` | bookkeeping for electricians Austin TX | service calls, job tracking, payroll records | Built in source 2026-08-01 - awaiting deployment, keyword validation, and indexing |
 | A6 | `/texas/san-antonio-contractor-tax-accountant` | contractor tax accountant San Antonio TX | tax-ready books, business tax preparation | Planned |
 
 Do not build separate electrician, plumbing, HVAC, roofing, painting, landscaping, and concrete pages for every city yet. Add a trade-specific page only when it has validated demand, a relevant service offer, and enough unique expertise to write a helpful page.
@@ -336,6 +336,7 @@ Use one row per URL. Keep the source and date for every metric.
 | `/texas/fort-worth-catch-up-bookkeeping` | catch-up bookkeeping Fort Worth TX | Contractors | Validated by user, 2026-07-31; live verified 2026-07-31 | 2026-07-31 | Waiting |  |  |  |  | Request indexing |
 | `/texas/plano-roofing-company-bookkeeping` | roofing company bookkeeping Plano TX | Contractors | Pending keyword validation; built in source 2026-07-31 |  |  |  |  |  |  | Deploy, request indexing, and validate GSC/keyword-tool data |
 | `/texas/frisco-small-business-accountant` | small business accountant Frisco TX | Small business | Pending keyword validation; built in source 2026-07-31 |  |  |  |  |  |  | Deploy, request indexing, and validate GSC/keyword-tool data |
+| `/texas/austin-bookkeeping-for-electricians` | bookkeeping for electricians Austin TX | Contractors | Pending keyword validation; built in source 2026-08-01 |  |  |  |  |  |  | Deploy, request indexing, and validate GSC/keyword-tool data |
 
 ## 11. First 90-Day Roadmap
 
