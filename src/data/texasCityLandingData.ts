@@ -162,6 +162,11 @@ export const texasCityPages: TexasCityLandingData[] = [
       ...sharedResources,
     ],
     nearby: ["Katy", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Missouri City"],
+    relatedLinks: [
+      { href: "/texas/houston-bookkeeping-cleanup", label: "Houston Bookkeeping Cleanup" },
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+    ],
     serviceAreaNote: "IntegraFin serves Houston remotely from its Katy office. We do not list or represent a separate Houston location. In-person meetings can be scheduled at the Katy address.",
     faq: [
       { question: "Does IntegraFin have a Houston office?", answer: "No. IntegraFin's office is in Katy. Houston clients are served through remote workflows, with Katy appointments available when an in-person meeting is useful." },
@@ -207,6 +212,11 @@ export const texasCityPages: TexasCityLandingData[] = [
       ...sharedResources,
     ],
     nearby: ["Missouri City", "Richmond", "Rosenberg", "Katy", "Fulshear", "Houston"],
+    relatedLinks: [
+      { href: "/texas/sugar-land-payroll-services", label: "Sugar Land Payroll Services" },
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
+      { href: "/payroll-tax-support", label: "Payroll Tax Support" },
+    ],
     serviceAreaNote: "IntegraFin's office is in Katy, not Sugar Land. Sugar Land clients can work remotely or schedule an appointment at 2039 N Mason Rd, Suite 604, Katy, TX 77449.",
     faq: [
       { question: "Can a nearby Katy accountant support a Sugar Land company?", answer: "Yes. IntegraFin serves Sugar Land businesses through virtual workflows and scheduled appointments at its Katy office." },
@@ -722,6 +732,7 @@ export const texasCityPages: TexasCityLandingData[] = [
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
       { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/texas/fort-worth-small-business-tax-preparation", label: "Fort Worth Small Business Tax Preparation" },
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
       { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
       { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
@@ -1033,6 +1044,595 @@ export const texasCityPages: TexasCityLandingData[] = [
         question: "Can you guarantee lower taxes for my Frisco business?",
         answer:
           "No. Tax outcomes depend on complete records, eligibility, timing, entity facts and current law. We focus on accurate records, lawful planning discussions and clear next steps.",
+      },
+    ],
+  },
+  {
+    slug: "round-rock-llc-accountant",
+    city: "Round Rock",
+    county: "Williamson and Travis counties",
+    primaryService: "LLC Accountant",
+    primaryKeyword: "LLC accountant Round Rock TX",
+    supportingKeywords: [
+      "Round Rock LLC bookkeeping",
+      "LLC accounting services Round Rock",
+      "small business accountant Round Rock TX",
+      "new business accounting Round Rock",
+      "business tax preparation Round Rock TX",
+    ],
+    title: "LLC Accountant in Round Rock, TX | IntegraFin",
+    description:
+      "Round Rock LLC accountant for bookkeeping setup, tax classification, business tax preparation, payroll records, and Texas compliance support. Get started.",
+    hero:
+      "LLC accounting for Round Rock owners who need a clean bookkeeping setup, organized tax records, payroll or contractor coordination, and a practical first-year or ongoing compliance process.",
+    intro: [
+      "A Round Rock LLC can begin with a simple formation filing and quickly develop a more complicated accounting life. New bank accounts, owner contributions, reimbursements, customer payments, software subscriptions, contractors, payroll and equipment purchases all need a consistent place in the records before the first business-tax deadline arrives.",
+      "IntegraFin provides LLC accounting services to Round Rock businesses remotely from our Katy office. We do not claim a Round Rock office. The initial review covers the formation and EIN records, ownership, federal tax treatment, current books, filing history, payroll or contractor activity and the owner's immediate priorities before a written scope is prepared.",
+      "An LLC is a state-law entity, not a promise of a particular federal tax result. Our work connects Round Rock LLC bookkeeping with tax-ready reporting and planning questions while keeping legal formation advice, government fees and services outside the engagement clearly separated.",
+    ],
+    localExpertise: [
+      "Round Rock sits in the north Austin business corridor and spans Williamson and Travis counties. Its mix of technology companies, professional firms, healthcare practices, construction trades, retailers and home-based businesses means LLC owners may sell across jurisdictions, hire workers, use online payment systems or operate from more than one worksite.",
+      "Local context helps identify the right intake questions, but the books still need documentary support. A useful accounting workflow distinguishes business and personal activity, tracks owner transactions, reconciles payment deposits, coordinates payroll or contractor records and preserves the information needed for federal and Texas filings.",
+    ],
+    industries: [
+      "consultants, agencies and technology-service firms",
+      "healthcare, wellness and professional practices",
+      "construction, repair and home-service companies",
+      "retail, restaurant and e-commerce businesses",
+      "real-estate professionals and owner-operated startups",
+    ],
+    serviceDetails: [
+      {
+        title: "Round Rock LLC bookkeeping setup",
+        description:
+          "We can review the chart of accounts, bank and card feeds, opening balances, owner contributions, reimbursements and document workflow so the accounting system reflects how the LLC actually operates.",
+      },
+      {
+        title: "Monthly LLC accounting and reconciliations",
+        description:
+          "Recurring work may include reconciling agreed accounts, reviewing transaction categories, documenting open questions and preparing financial reports from the records supplied. Timing depends on complete information arriving consistently.",
+      },
+      {
+        title: "Federal tax classification and election readiness",
+        description:
+          "We can review how ownership, default federal treatment, possible elections, payroll readiness and filing requirements fit together. An LLC or election does not automatically reduce taxes, and legal entity advice may require counsel.",
+      },
+      {
+        title: "Business tax preparation for Round Rock LLCs",
+        description:
+          "Tax preparation starts with reconciled books, prior returns, formation and ownership records, payroll or contractor details, asset activity and estimated payments. The return scope and result depend on the LLC's facts and current law.",
+      },
+      {
+        title: "Payroll and contractor-record coordination",
+        description:
+          "Available payroll reports, owner compensation, contractor payments, W-9 details and bookkeeping totals can be reviewed together. Worker classification and information-reporting duties depend on the facts and applicable rules.",
+      },
+      {
+        title: "Texas compliance record support",
+        description:
+          "We help organize records relevant to Texas franchise-tax and sales-tax questions when applicable. Registration, filing and tax treatment must be confirmed for the specific business rather than assumed from LLC status alone.",
+      },
+    ],
+    scenarios: [
+      "A newly formed Round Rock LLC needs its banking, bookkeeping and owner-transaction workflow established before regular sales and expenses accelerate.",
+      "A single-member LLC has mixed personal and business transactions and needs reconciled records before federal tax preparation can begin.",
+      "A growing service company is considering an S corporation election and needs its books, payroll readiness and owner-payment records reviewed before making a tax decision.",
+      "A multi-member LLC needs contributions, distributions, reimbursements and operating activity organized for its partnership tax return and owner reporting.",
+      "An established Round Rock business has behind books and needs cleanup, balance-sheet review and missing-record follow-up before recurring monthly accounting starts.",
+    ],
+    resourceIntro:
+      "Round Rock LLC owners can use these official local, state and federal resources to verify formation, local operating and tax information. Program details and filing requirements should be confirmed directly with the organization responsible.",
+    resources: [
+      {
+        href: "https://www.roundrocktexas.gov/city-businesses/locating-a-buisness-in-round-rock/",
+        label: "City of Round Rock: Locating a Business",
+        description: "Official city starting points for local business requirements, development contacts and business-support resources.",
+      },
+      {
+        href: "https://roundrockchamber.org/about/member-resources/",
+        label: "Round Rock Chamber Member Resources",
+        description: "Local business programs, events, connections and member-resource information from the Round Rock Chamber.",
+      },
+      {
+        href: "https://www.sos.state.tx.us/corp/instructions/205.shtml",
+        label: "Texas Secretary of State: LLC Formation Instructions",
+        description: "Official instructions for the Texas certificate of formation for a limited liability company.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/franchise/",
+        label: "Texas Comptroller: Franchise Tax",
+        description: "Official Texas franchise-tax information, forms and filing resources for taxable entities.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/limited-liability-company-llc",
+        label: "IRS: Limited Liability Companies",
+        description: "Federal information about LLC tax classification and filing treatment from the IRS.",
+      },
+    ],
+    nearby: ["Austin", "Frisco", "Dallas", "Plano", "San Antonio", "Fort Worth"],
+    relatedLinks: [
+      { href: "/llc-formation-tax-setup", label: "Texas LLC Formation and Tax Setup" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
+      { href: "/payroll-tax-support", label: "Payroll Tax Support" },
+      { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+      { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves Round Rock LLC owners remotely from its Katy office. We do not list or represent a Round Rock office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    lastReviewed: "August 1, 2026",
+    faq: [
+      {
+        question: "What does an LLC accountant do for a Round Rock business?",
+        answer:
+          "The scope may include bookkeeping setup, reconciliations, cleanup, financial reports, business-tax preparation, payroll or contractor-record review and tax-planning discussions. The exact work depends on the LLC's ownership, tax treatment, records and deadlines.",
+      },
+      {
+        question: "Does forming a Texas LLC automatically change my federal taxes?",
+        answer:
+          "No. Federal treatment depends on the number and type of owners and any valid tax elections. LLC formation does not automatically create a deduction or lower tax bill, so the entity and tax facts should be reviewed together.",
+      },
+      {
+        question: "Can IntegraFin set up bookkeeping for a new Round Rock LLC?",
+        answer:
+          "Yes. We can scope a bookkeeping launch covering the accounting file, chart of accounts, bank and card activity, owner transactions, document storage and monthly close process. Software subscriptions and legal formation work are separate unless stated in writing.",
+      },
+      {
+        question: "Can you clean up an LLC's books before business-tax preparation?",
+        answer:
+          "Yes. We can review statements, ledgers, prior reports and missing records, then scope reconciliations and cleanup before tax preparation. Cleanup and return preparation are separate services unless the engagement combines them.",
+      },
+      {
+        question: "Can you help a Round Rock LLC evaluate an S corporation election?",
+        answer:
+          "We can review tax, payroll and recordkeeping considerations based on the owner's facts and current law. An S corporation election has eligibility, timing, filing and payroll implications and does not guarantee savings.",
+      },
+      {
+        question: "Does IntegraFin have a Round Rock office?",
+        answer:
+          "No. IntegraFin's office is in Katy. Round Rock LLC clients are served through organized remote workflows, with Katy appointments available when an in-person meeting is useful.",
+      },
+    ],
+  },
+  {
+    slug: "sugar-land-payroll-services",
+    city: "Sugar Land",
+    county: "Fort Bend County",
+    primaryService: "Payroll Services for Small Businesses",
+    primaryKeyword: "payroll services Sugar Land TX",
+    supportingKeywords: [
+      "small business payroll Sugar Land",
+      "payroll tax support Sugar Land TX",
+      "payroll bookkeeping Sugar Land",
+      "payroll record services Sugar Land",
+      "employment tax support Sugar Land",
+    ],
+    title: "Payroll Services in Sugar Land, TX | IntegraFin",
+    description:
+      "Payroll services for Sugar Land small businesses needing payroll-record coordination, tax workflow support, bookkeeping alignment, and year-end wage records.",
+    hero:
+      "Payroll-record and tax workflow support for Sugar Land employers that need wages, tax deposits, accounting entries, and year-end records organized around one documented process.",
+    intro: [
+      "Payroll affects more than each pay date. Employee setup, wage and hour records, withholding details, benefit deductions, tax deposits, quarterly returns, unemployment wage reports, W-2 information and general-ledger entries all need to agree. A break in one system can become a bookkeeping or filing problem later.",
+      "IntegraFin supports Sugar Land small businesses remotely from our Katy office. We do not claim a Sugar Land office. We begin by identifying the employer, employees, current payroll system or provider, filing history, open notices, bookkeeping records and deadlines before defining the payroll-record or tax-support scope.",
+      "This page describes payroll-record coordination and payroll-tax workflow support. Payroll processing, direct deposits, employee onboarding, benefit administration, filings, corrections and representation are included only when the written engagement specifically says so. No penalty or filing outcome is guaranteed.",
+    ],
+    localExpertise: [
+      "Sugar Land employers range from professional and healthcare practices to restaurants, retailers, construction businesses, technology firms and local service companies. Their payroll records may include hourly and salaried staff, variable schedules, tips, bonuses, reimbursements, multiple worksites or employees who perform services outside Fort Bend County.",
+      "Local context helps identify state and city operating questions, while federal employment-tax and Texas unemployment-tax duties depend on employer facts and registrations. The accounting workflow should connect payroll summaries, withdrawals, tax liabilities, wage reports and benefit or reimbursement entries without assuming the payroll platform resolved every issue.",
+    ],
+    industries: [
+      "medical, dental and wellness practices",
+      "restaurants, retailers and hospitality businesses",
+      "construction, repair and home-service companies",
+      "consulting, technology and professional-service firms",
+      "owner-managed companies hiring their first employees",
+    ],
+    serviceDetails: [
+      {
+        title: "Payroll-record review for Sugar Land employers",
+        description:
+          "We review available payroll registers, employee totals, tax withdrawals, filed returns, wage reports and accounting entries to identify mismatches and missing records within the agreed period.",
+      },
+      {
+        title: "Payroll bookkeeping coordination",
+        description:
+          "Payroll summaries can be reconciled to the general ledger, bank activity and recorded liabilities so wages, employer taxes, deductions and payments are not treated as one unexplained withdrawal.",
+      },
+      {
+        title: "Federal payroll-tax workflow support",
+        description:
+          "We help organize records relevant to federal withholding, Social Security, Medicare, FUTA, deposits and applicable employment-tax returns. Filing and correction work depends on the written scope and employer's assigned requirements.",
+      },
+      {
+        title: "Texas unemployment-tax record support",
+        description:
+          "Available Texas Workforce Commission account, wage-report and payment records can be reviewed with the books. Registration, rates, deadlines and liability depend on the employer's facts and current agency requirements.",
+      },
+      {
+        title: "Year-end W-2 and wage-record coordination",
+        description:
+          "Year-to-date payroll data, employee details, taxable benefits, reimbursements and prior corrections should be reviewed before year-end forms are finalized. Preparation or filing is included only when agreed in writing.",
+      },
+      {
+        title: "Payroll notice and discrepancy review",
+        description:
+          "If a federal or Texas payroll notice arrives, we can review the letter, stated period, deadline and available filings and payment records before a response or correction project is scoped.",
+      },
+    ],
+    scenarios: [
+      "A Sugar Land employer's payroll withdrawals do not match the wage, tax and liability amounts recorded in the general ledger.",
+      "A growing practice is hiring its first employees and needs payroll records, provider responsibilities and bookkeeping entries mapped before the first pay date.",
+      "A restaurant or retailer needs payroll summaries, tips, reimbursements and tax withdrawals organized for bookkeeping and year-end review.",
+      "An employer changes payroll providers and needs beginning balances, prior filings, employee details and year-to-date totals checked during the transition.",
+      "A business receives an IRS or Texas unemployment-tax notice and needs the cited quarter, deposits, returns and wage records assembled before responding.",
+    ],
+    resourceIntro:
+      "Sugar Land employers can use these official local, federal and Texas resources to verify current business, employment-tax, unemployment-tax and wage-reporting information. The responsible agency controls its requirements and deadlines.",
+    resources: [
+      {
+        href: "https://sugarlandecodev.com/do-business/small-business",
+        label: "Sugar Land Economic Development: Small Business",
+        description: "Official local startup, permitting, business-planning and small-business resource information.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/employment-taxes",
+        label: "IRS: Employment Taxes",
+        description: "Federal information about withholding, Social Security, Medicare, FUTA, deposits, returns and due dates.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/employment-tax-recordkeeping",
+        label: "IRS: Employment Tax Recordkeeping",
+        description: "Official guidance on payroll and employment-tax records employers should retain.",
+      },
+      {
+        href: "https://www.twc.texas.gov/businesses/unemployment-tax",
+        label: "Texas Workforce Commission: Unemployment Tax",
+        description: "Texas employer registration, wage-reporting, unemployment-tax and account-management resources.",
+      },
+      {
+        href: "https://www.ssa.gov/employer/",
+        label: "Social Security: Employer W-2 Filing",
+        description: "Official employer wage-reporting and Business Services Online information.",
+      },
+    ],
+    nearby: ["Katy", "Houston", "Richmond", "Rosenberg", "Missouri City", "Fulshear"],
+    relatedLinks: [
+      { href: "/payroll-tax-support", label: "Payroll Tax Support" },
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/texas/sugar-land-small-business-accountant", label: "Sugar Land Small Business Accountant" },
+      { href: "/texas/katy-bookkeeping-services", label: "Katy Bookkeeping Services" },
+      { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves Sugar Land employers remotely from its Katy office. We do not list or represent a Sugar Land office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    lastReviewed: "August 1, 2026",
+    faq: [
+      {
+        question: "What payroll services does IntegraFin provide to Sugar Land businesses?",
+        answer:
+          "The scope may include payroll-record review, bookkeeping reconciliation, payroll-tax workflow support, year-end wage-record coordination and notice review. Processing, direct deposit, filings, corrections and representation are included only when stated in the written engagement.",
+      },
+      {
+        question: "Can IntegraFin reconcile payroll to my bookkeeping?",
+        answer:
+          "Yes. We can compare available payroll registers, bank withdrawals, tax payments and general-ledger entries and document differences that require employer, provider or filing follow-up.",
+      },
+      {
+        question: "Can you help a Sugar Land business change payroll providers?",
+        answer:
+          "We can review available year-to-date totals, prior returns, employee records, tax liabilities and accounting balances as part of a transition scope. Provider setup and filings depend on the services agreed in writing.",
+      },
+      {
+        question: "Can you guarantee payroll penalties will be removed?",
+        answer:
+          "No. Penalties, corrections, credits and agency decisions depend on the facts, filing history, payments, documentation, authorization and applicable law. We can review the records and explain the available next-step scope.",
+      },
+      {
+        question: "How long should employment-tax records be kept?",
+        answer:
+          "The IRS generally instructs employers to retain employment-tax records for at least four years, with longer periods applying to some records or other legal and business needs. Confirm retention requirements for the specific record and situation.",
+      },
+      {
+        question: "Does IntegraFin have a Sugar Land office?",
+        answer:
+          "No. IntegraFin's office is in Katy. Sugar Land businesses are served through organized remote workflows, with Katy appointments available when an in-person meeting is useful.",
+      },
+    ],
+  },
+  {
+    slug: "houston-bookkeeping-cleanup",
+    city: "Houston",
+    county: "the Greater Houston area",
+    primaryService: "Bookkeeping Cleanup",
+    primaryKeyword: "bookkeeping cleanup Houston TX",
+    supportingKeywords: [
+      "catch-up bookkeeping Houston",
+      "QuickBooks cleanup Houston TX",
+      "cleanup bookkeeping services Houston",
+      "tax-ready bookkeeping Houston",
+      "small business bookkeeping cleanup Houston",
+    ],
+    title: "Bookkeeping Cleanup in Houston, TX | IntegraFin",
+    description:
+      "Houston bookkeeping cleanup for behind or unreliable books. Get reconciliations, transaction review, balance-sheet cleanup, and tax-ready record support.",
+    hero:
+      "Bookkeeping cleanup for Houston businesses that need behind accounts reconciled, unsupported balances investigated, open questions documented, and records organized for tax or ongoing monthly work.",
+    intro: [
+      "Bookkeeping can fall behind after rapid growth, a staff or provider change, software migration, new payment channels, mixed owner transactions or months without completed reconciliations. The accounting file may contain data, but that does not mean the bank, card, loan, payroll, merchant and balance-sheet accounts agree with the source records.",
+      "IntegraFin provides bookkeeping cleanup to Houston businesses remotely from our Katy office. We do not claim a Houston cleanup office or a second Houston location. The first review identifies the entity, periods, accounts, transaction volume, filing deadline, available statements and known problems before the project scope and sequence are confirmed.",
+      "Cleanup is a reconstruction and reconciliation process, not an audit or guarantee that every historical record can be recovered. We use the available evidence, ask the owner to resolve business-purpose questions, document unsupported or missing items and separate tax preparation or recurring bookkeeping unless those services are included in writing.",
+    ],
+    localExpertise: [
+      "Houston businesses may combine project revenue, service calls, merchant deposits, online sales, payroll, contractor payments, inventory, equipment, loans and owner activity across several systems. Construction, logistics, healthcare, professional services, restaurants and retailers each create different reconciliation and documentation patterns.",
+      "A Houston bookkeeping cleanup should reflect the company's actual operating cycle. Processor deposits may need to be separated from gross sales and fees, project costs may need source support, payroll withdrawals should connect to payroll summaries, and loan or asset balances should be traced instead of posted entirely to expense.",
+    ],
+    industries: [
+      "construction, trade and project-based businesses",
+      "energy, industrial and field-service companies",
+      "logistics, transportation and distribution businesses",
+      "medical, dental and professional practices",
+      "restaurants, retailers and multichannel sellers",
+    ],
+    serviceDetails: [
+      {
+        title: "Houston catch-up bookkeeping",
+        description:
+          "Behind periods can be organized month by month using available statements, transaction records and client answers. The number of periods and accounts determines the sequence and estimated effort.",
+      },
+      {
+        title: "Bank, card and processor reconciliations",
+        description:
+          "Agreed bank, credit-card and payment-processor balances are compared with statements and accounting activity so duplicates, omissions and unexplained differences can be identified.",
+      },
+      {
+        title: "Transaction and chart-of-accounts review",
+        description:
+          "Uncategorized, duplicated, personal, transfer, loan, asset and unusual transactions can be reviewed against available support. Business purpose is confirmed by the client rather than invented.",
+      },
+      {
+        title: "Balance-sheet cleanup",
+        description:
+          "Opening balances, undeposited funds, receivables, payables, loans, payroll liabilities, equity and other balance-sheet accounts can be investigated within the agreed scope.",
+      },
+      {
+        title: "Payroll and contractor-record alignment",
+        description:
+          "Available payroll summaries, contractor payments, W-9 details and general-ledger totals can be reviewed together before year-end reporting or business-tax preparation.",
+      },
+      {
+        title: "Tax-ready handoff and monthly transition",
+        description:
+          "The cleanup deliverable can include agreed financial reports, unresolved-item notes and a proposed go-forward process. Tax returns and ongoing bookkeeping remain separate unless combined in writing.",
+      },
+    ],
+    scenarios: [
+      "A Houston company has a full year of downloaded bank-feed activity but no completed reconciliations and unreliable opening balances.",
+      "A restaurant or retailer's processor deposits, refunds, fees and sales-tax records do not match the revenue recorded in the books.",
+      "A contractor has mixed owner, vehicle, material, payroll and subcontractor activity that must be reviewed before business-tax preparation.",
+      "A business changes bookkeepers or accounting platforms and needs historical balances and prior-period activity assessed before monthly work resumes.",
+      "An owner receives a tax or financing document request and discovers that balance-sheet accounts and financial reports do not agree with source statements.",
+    ],
+    resourceIntro:
+      "Houston business owners can use these official local, state and federal resources for business support, recordkeeping and Texas tax-administration information. Each organization controls its own programs and requirements.",
+    resources: [
+      {
+        href: "https://www.houstontx.gov/obo/",
+        label: "City of Houston Office of Business Opportunity",
+        description: "City resources for entrepreneurs, vendors and small businesses in Houston.",
+      },
+      {
+        href: "https://www.sbdc.uh.edu/sbdc/",
+        label: "University of Houston Texas Gulf Coast SBDC",
+        description: "Business advising and training resources for companies across the Gulf Coast region.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping",
+        label: "IRS: Small Business Recordkeeping",
+        description: "Federal guidance on records supporting income, expenses, financial statements and tax returns.",
+      },
+      {
+        href: "https://www.irs.gov/publications/p583",
+        label: "IRS Publication 583",
+        description: "IRS information about starting a business, accounting systems and keeping business records.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/",
+        label: "Texas Comptroller Tax Resources",
+        description: "Official Texas franchise, sales and other state-administered tax information.",
+      },
+    ],
+    nearby: ["Katy", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Missouri City"],
+    relatedLinks: [
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
+      { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
+      { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves Houston bookkeeping-cleanup clients remotely from its Katy office. We do not list or represent a separate Houston office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    lastReviewed: "August 1, 2026",
+    faq: [
+      {
+        question: "What is included in bookkeeping cleanup for a Houston business?",
+        answer:
+          "The scope may include accounting-file review, catch-up work, reconciliations, transaction review, balance-sheet investigation, open-item documentation and agreed financial reports. The periods, accounts and deliverables are confirmed after the initial assessment.",
+      },
+      {
+        question: "How is bookkeeping cleanup different from monthly bookkeeping?",
+        answer:
+          "Cleanup addresses historical, unreconciled or unreliable records. Monthly bookkeeping maintains current periods on a recurring schedule after dependable opening balances and workflows are established.",
+      },
+      {
+        question: "Can IntegraFin clean up QuickBooks for a Houston business?",
+        answer:
+          "QuickBooks cleanup may be available after reviewing the file, connected accounts, reconciliations, transaction volume, integrations and source records. Software access alone does not establish that the underlying activity is complete or supported.",
+      },
+      {
+        question: "Can cleanup be completed before my business-tax deadline?",
+        answer:
+          "Timing depends on the periods, accounts, transaction volume, record availability, open questions and deadline. We confirm a target only after reviewing the file; tax preparation is separate unless included in the engagement.",
+      },
+      {
+        question: "Does cleanup guarantee that my books are accurate?",
+        answer:
+          "No. Cleanup improves organization and reconciles the agreed records, but results remain limited by the completeness and reliability of source documents and client answers. It is not an audit, review or assurance engagement.",
+      },
+      {
+        question: "Does IntegraFin have a Houston office?",
+        answer:
+          "No. IntegraFin's office is in Katy. Houston businesses are served through organized remote workflows, with Katy appointments available when an in-person meeting is useful.",
+      },
+    ],
+  },
+  {
+    slug: "fort-worth-small-business-tax-preparation",
+    city: "Fort Worth",
+    county: "Tarrant County",
+    primaryService: "Small Business Tax Preparation",
+    primaryKeyword: "business tax preparation Fort Worth TX",
+    supportingKeywords: [
+      "small business tax preparation Fort Worth",
+      "Fort Worth business tax accountant",
+      "LLC tax preparation Fort Worth",
+      "S corporation tax preparation Fort Worth",
+      "tax-ready bookkeeping Fort Worth",
+    ],
+    title: "Business Tax Preparation in Fort Worth, TX | IntegraFin",
+    description:
+      "Fort Worth business tax preparation for LLCs, S corporations, partnerships, and owner-operated companies needing tax-ready books and organized filing records.",
+    hero:
+      "Small-business tax preparation for Fort Worth owners who need entity, bookkeeping, payroll, contractor, asset, and owner records organized before the return is prepared.",
+    intro: [
+      "A business return is the end of a year-long recordkeeping process, not a substitute for it. Fort Worth LLCs, S corporations, partnerships and sole proprietors may need reconciled books, prior returns, ownership details, payroll records, contractor payments, asset activity, loans, estimated payments and state filing information assembled before preparation can begin.",
+      "IntegraFin provides small-business tax preparation to Fort Worth owners remotely from our Katy office. We do not claim a Fort Worth office. Intake identifies the entity, owners, tax classification, filing history, states, bookkeeping condition, payroll or contractor activity, open notices and deadlines before a written return-preparation scope is confirmed.",
+      "Tax results depend on complete records, eligibility, elections, timing and current law. We do not promise refunds, deductions, savings, filing acceptance or agency outcomes. Bookkeeping cleanup, amendments, payroll filings, notice work and representation are separate unless the engagement includes them.",
+    ],
+    localExpertise: [
+      "Fort Worth's small-business economy includes construction and trade companies, transportation and logistics providers, professional firms, healthcare practices, retailers, restaurants, real-estate businesses and manufacturers. Different operating models create different tax records, from project costs and vehicles to inventory, merchant deposits, equipment and multistate revenue.",
+      "Local business context helps organize the return questions, but federal entity treatment and Texas-administered taxes depend on the company's facts. A useful preparation process traces reported income and expenses to the books, reconciles owner and payroll activity, identifies missing schedules and keeps uncertain positions qualified until supporting information is available.",
+    ],
+    industries: [
+      "construction contractors and home-service companies",
+      "transportation, logistics and distribution businesses",
+      "medical, dental and professional practices",
+      "restaurants, retailers and online sellers",
+      "consultants, real-estate professionals and owner-operated firms",
+    ],
+    serviceDetails: [
+      {
+        title: "Fort Worth LLC tax preparation",
+        description:
+          "Single-member and multi-member LLC filing requirements depend on ownership and federal tax treatment. Formation records, elections, prior returns, books and owner activity are reviewed before the return path is assumed.",
+      },
+      {
+        title: "S corporation return preparation",
+        description:
+          "Preparation may require reconciled books, shareholder details, payroll and officer-compensation records, distributions, loans, asset activity, prior elections and other entity-specific information.",
+      },
+      {
+        title: "Partnership and owner-record coordination",
+        description:
+          "Partnership preparation may involve ownership changes, contributions, distributions, liabilities, prior-year records and information needed for owner reporting. The scope depends on the agreement and available support.",
+      },
+      {
+        title: "Tax-ready bookkeeping review",
+        description:
+          "Profit-and-loss, balance-sheet and general-ledger reports are reviewed with agreed source records to identify unreconciled balances, unusual transactions and missing details before preparation proceeds.",
+      },
+      {
+        title: "Payroll, contractor and asset records",
+        description:
+          "Payroll forms, contractor-payment records, vehicles, equipment, loans and other significant business activity can be organized for the return. Classification and tax treatment depend on facts and law.",
+      },
+      {
+        title: "Texas business filing coordination",
+        description:
+          "Records relevant to Texas franchise-tax and sales-tax questions can be reviewed when applicable. Texas obligations are not assumed for every business and may require a separate filing scope.",
+      },
+    ],
+    scenarios: [
+      "A Fort Worth LLC has current revenue and expense reports but unreconciled balance-sheet accounts that must be reviewed before return preparation.",
+      "An S corporation needs payroll forms, shareholder distributions, loans and owner activity organized with the books before the entity and shareholder work is completed.",
+      "A contractor or logistics company has vehicle, equipment, payroll and subcontractor records spread across several systems before tax season.",
+      "A partnership has ownership or contribution changes and needs current entity and owner records assembled for the return-preparation process.",
+      "A business filed an extension but still needs cleanup, missing documents and estimated-payment records addressed before the final return deadline.",
+    ],
+    resourceIntro:
+      "Fort Worth business owners can use these official local, federal and Texas resources for small-business support, filing information, recordkeeping and state tax administration. Confirm current requirements with the responsible agency.",
+    resources: [
+      {
+        href: "https://www.fortworthtexas.gov/departments/econdev/bac",
+        label: "Fort Worth Business Assistance Center",
+        description: "City-supported training, counseling, funding and small-business resource connections in Fort Worth.",
+      },
+      {
+        href: "https://www.taxpayeradvocate.irs.gov/news/tax-tips/tas-tax-tip-small-business-filing-and-recordkeeping-requirements/2026/05/",
+        label: "Taxpayer Advocate: Small Business Filing Requirements",
+        description: "Federal entity return and recordkeeping overview for sole proprietors, partnerships and corporations.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping",
+        label: "IRS: Small Business Recordkeeping",
+        description: "Official federal guidance on business records supporting financial statements and tax returns.",
+      },
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/business-taxes",
+        label: "IRS: Business Taxes",
+        description: "Federal starting point for income, self-employment, employment and excise tax information.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/franchise/",
+        label: "Texas Comptroller: Franchise Tax",
+        description: "Official Texas franchise-tax information, forms and filing resources for taxable entities.",
+      },
+    ],
+    nearby: ["Dallas", "Plano", "Frisco", "Austin", "Round Rock", "San Antonio"],
+    relatedLinks: [
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
+      { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+      { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant" },
+      { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
+      { href: "/contractor-bookkeeping-services", label: "Contractor Bookkeeping Services" },
+    ],
+    serviceAreaNote:
+      "IntegraFin serves Fort Worth small businesses remotely from its Katy office. We do not list or represent a Fort Worth office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
+    lastReviewed: "August 1, 2026",
+    faq: [
+      {
+        question: "What records are needed for Fort Worth business tax preparation?",
+        answer:
+          "The starting list often includes prior returns, reconciled profit-and-loss and balance-sheet reports, general ledger, bank and card statements, payroll forms, contractor records, ownership documents, asset and loan activity, estimated payments and relevant federal or Texas notices.",
+      },
+      {
+        question: "Can IntegraFin prepare returns for Fort Worth LLCs and S corporations?",
+        answer:
+          "Yes, when the entity, tax classification, ownership, records and filing needs fit the agreed scope. An LLC's return type depends on ownership and valid tax elections rather than the LLC name alone.",
+      },
+      {
+        question: "Can you clean up the books before preparing the return?",
+        answer:
+          "Yes. We can assess catch-up, reconciliation and balance-sheet cleanup before return preparation. Cleanup and tax preparation are separate services unless both are included in the written engagement.",
+      },
+      {
+        question: "Does a tax extension extend the payment deadline?",
+        answer:
+          "A filing extension generally does not extend the deadline to pay an expected federal balance. Entity, state and local rules can differ, so the applicable extension and payment requirements should be reviewed for the specific taxpayer.",
+      },
+      {
+        question: "Can IntegraFin guarantee a lower tax bill?",
+        answer:
+          "No. Tax results depend on complete facts, records, elections, eligibility, timing and current law. We focus on accurate preparation, documented positions and clear next steps rather than guaranteed savings.",
+      },
+      {
+        question: "Does IntegraFin have a Fort Worth office?",
+        answer:
+          "No. IntegraFin's office is in Katy. Fort Worth businesses are served through organized remote workflows, with Katy appointments available when an in-person meeting is useful.",
       },
     ],
   },

@@ -12,6 +12,36 @@ export type ServiceAeoDetails = {
 };
 
 export const serviceAeoDetails: Record<ServiceLandingPageSlug, ServiceAeoDetails> = {
+  "small-business-bookkeeping-services": {
+    whoThisAppliesTo:
+      "Owner-managed companies, LLCs, S corporations, partnerships, sole proprietors, consultants, practices, retailers, restaurants, contractors, and other small businesses that need current monthly records and a documented reporting process.",
+    included: [
+      "Review of the accounting file, agreed accounts, reporting needs, record condition, and monthly close responsibilities",
+      "Recurring transaction organization, reconciliations, balance review, financial reports, and open-item documentation within the written scope",
+      "Coordination of available owner, payroll, contractor, and tax-ready records without assuming separate filings are included",
+    ],
+    notIncluded: [
+      "Historical cleanup, tax returns, payroll processing, notices, corrections, or advisory projects unless included in writing",
+      "Audits, reviews, attestations, valuations, fraud examinations, legal advice, or assurance that records are complete",
+      "Guaranteed deadlines, tax savings, financing, business results, or accuracy when source records are incomplete",
+    ],
+    timingAndDeadlines: [
+      "Monthly close timing depends on when complete statements, reports, source documents, and client answers are received.",
+      "Behind periods may require cleanup before recurring bookkeeping can start from reliable opening balances.",
+      "Tax, payroll, lending, and agency deadlines should be identified during intake because each may require a separate scope and timetable.",
+    ],
+    pricingFactors: [
+      "Number of entities, accounts, payment systems, months, transactions, and reporting requirements",
+      "Condition of the accounting file, reconciliations, opening balances, integrations, owner activity, and supporting records",
+      "Cleanup, payroll, tax preparation, notices, multi-state work, or expedited deliverables outside monthly bookkeeping",
+    ],
+    limitations: [
+      "Reports are prepared from the records supplied; unsupported items are documented rather than treated as verified business activity.",
+      "Bookkeeping organizes financial records but does not provide an audit opinion or guarantee any tax, lending, or operating outcome.",
+    ],
+    published: "August 1, 2026",
+    lastReviewed: "August 1, 2026",
+  },
   "business-tax-accounting": {
     whoThisAppliesTo:
       "Katy LLCs, S corporations, partnerships, sole proprietors, contractors, consultants, practices, retailers, and other owner-managed businesses that need tax work connected to reliable books and payroll records.",

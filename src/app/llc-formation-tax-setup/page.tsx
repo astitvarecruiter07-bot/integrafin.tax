@@ -315,6 +315,26 @@ export default function LlcFormationTaxSetupPage() {
 
       <section className="mx-auto max-w-7xl px-6 pb-12">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
+          <p className="text-xs font-black uppercase tracking-[0.18em] text-secondary">Local LLC accounting</p>
+          <h2 className="mt-2 text-2xl font-black text-primary sm:text-3xl">
+            LLC Accountant in Round Rock, TX
+          </h2>
+          <p className="mt-3 max-w-4xl leading-relaxed text-slate-700">
+            Round Rock owners can use our dedicated local page to review LLC bookkeeping setup, monthly accounting,
+            tax classification, business-tax preparation, payroll records, and Texas compliance support delivered
+            remotely from IntegraFin&apos;s Katy office.
+          </p>
+          <Link
+            href="/texas/round-rock-llc-accountant"
+            className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-white"
+          >
+            Explore Round Rock LLC accounting <ArrowRight className="h-4 w-4" />
+          </Link>
+        </article>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 pb-12">
+        <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <div className="mb-6 flex items-center gap-3">
             <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <ListChecks className="h-5 w-5" />

@@ -198,6 +198,11 @@ export const serviceGuideLinks = {
     { href: "/blog/financial-planning-for-startups", label: "Startup Financial-Planning Guide" },
     { href: "/blog/irs-compliance-guide", label: "Business Record-Keeping Guide" },
   ],
+  "small-business-bookkeeping-services": [
+    { href: "/blog/small-business-accounting-tips", label: "Small-Business Accounting Tips" },
+    { href: "/blog/financial-planning-for-startups", label: "Financial Planning for Startups" },
+    { href: "/blog/irs-compliance-guide", label: "Business Record-Keeping Guide" },
+  ],
   "contractor-bookkeeping-services": [
     { href: "/blog/small-business-accounting-tips", label: "Small-Business Accounting Tips" },
     { href: "/blog/irs-compliance-guide", label: "Business Record-Keeping Guide" },

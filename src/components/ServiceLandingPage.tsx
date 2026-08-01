@@ -42,6 +42,7 @@ const iconBySlug: Record<ServiceLandingPageSlug, ComponentType<{ className?: str
   "bookkeeping-cleanup": ClipboardCheck,
   "payroll-tax-support": Landmark,
   "quickbooks-bookkeeping-services": BookOpenCheck,
+  "small-business-bookkeeping-services": BookOpenCheck,
   "contractor-bookkeeping-services": BookOpenCheck,
 };
 

@@ -3,6 +3,7 @@ export const LEAD_SERVICE_VALUES = [
   "Business Tax and Accounting",
   "Bookkeeping Cleanup",
   "QuickBooks Bookkeeping",
+  "Small Business Bookkeeping",
   "Contractor Bookkeeping",
   "IRS Notice and Tax Resolution",
   "Payroll Tax Support",
@@ -35,6 +36,7 @@ export function getLeadCtaLabel(service: LeadService, fallback = "Request a Cons
     "Business Tax and Accounting": "Book a small-business tax consultation",
     "LLC Formation and Tax Setup": "Book an entity tax-setup call",
     "QuickBooks Bookkeeping": "Request QuickBooks support",
+    "Small Business Bookkeeping": "Request small-business bookkeeping",
     "Contractor Bookkeeping": "Request contractor bookkeeping support",
     "Payroll Tax Support": "Request payroll support",
     "Individual Tax Preparation": "Request tax preparation help",
@@ -50,5 +52,6 @@ export const SERVICE_BY_LANDING_SLUG = {
   "bookkeeping-cleanup": "Bookkeeping Cleanup",
   "payroll-tax-support": "Payroll Tax Support",
   "quickbooks-bookkeeping-services": "QuickBooks Bookkeeping",
+  "small-business-bookkeeping-services": "Small Business Bookkeeping",
   "contractor-bookkeeping-services": "Contractor Bookkeeping",
 } as const satisfies Record<string, LeadService>;

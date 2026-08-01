@@ -5,6 +5,7 @@ export type ServiceLandingPageSlug =
   | "bookkeeping-cleanup"
   | "payroll-tax-support"
   | "quickbooks-bookkeeping-services"
+  | "small-business-bookkeeping-services"
   | "contractor-bookkeeping-services";
 
 type TextBlock = {
@@ -72,6 +73,7 @@ export const serviceLandingPageSlugs: ServiceLandingPageSlug[] = [
   "bookkeeping-cleanup",
   "payroll-tax-support",
   "quickbooks-bookkeeping-services",
+  "small-business-bookkeeping-services",
   "contractor-bookkeeping-services",
 ];
 
@@ -105,6 +107,11 @@ export const focusedServiceLinks = [
     href: "/quickbooks-bookkeeping-services",
     label: "QuickBooks Cleanup Katy TX",
     description: "QuickBooks setup, cleanup, monthly bookkeeping, reconciliation, and reporting support.",
+  },
+  {
+    href: "/small-business-bookkeeping-services",
+    label: "Small Business Bookkeeping Services",
+    description: "Monthly outsourced bookkeeping, reconciliations, reporting, and tax-ready records for small businesses.",
   },
   {
     href: "/contractor-bookkeeping-services",
@@ -252,6 +259,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     ],
     helpfulLinks: [
       contactLink,
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
       { href: "/payroll-tax-support", label: "Payroll Tax Support" },
       { href: "/llc-formation-tax-setup", label: "LLC Formation Tax Setup" },
@@ -755,6 +763,8 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     ],
     helpfulLinks: [
       contactLink,
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
+      { href: "/texas/houston-bookkeeping-cleanup", label: "Houston Bookkeeping Cleanup" },
       { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
       { href: "/business-tax-accounting", label: "Business Tax & Accounting" },
       { href: "/texas/katy-bookkeeping-services", label: "Bookkeeping Services Katy TX" },
@@ -922,6 +932,8 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     ],
     helpfulLinks: [
       contactLink,
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
+      { href: "/texas/sugar-land-payroll-services", label: "Sugar Land Payroll Services" },
       { href: "/business-tax-accounting", label: "Business Tax & Accounting" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
       { href: "/tax-resolution", label: "Tax Resolution" },
@@ -1089,6 +1101,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     ],
     helpfulLinks: [
       contactLink,
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
       { href: "/business-tax-accounting", label: "Business Tax & Accounting" },
       { href: "/texas/katy-bookkeeping-services", label: "Bookkeeping Services Katy TX" },
@@ -1257,6 +1270,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     ],
     helpfulLinks: [
       contactLink,
+      { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping" },
       { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
       { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
@@ -1296,5 +1310,190 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
       },
     ],
     relatedServiceLabel: "contractor bookkeeping",
+  },
+  "small-business-bookkeeping-services": {
+    slug: "small-business-bookkeeping-services",
+    url: `${baseUrl}/small-business-bookkeeping-services`,
+    lastModified: "2026-08-01",
+    metaTitle: "Bookkeeping Services for Small Business | IntegraFin",
+    metaDescription:
+      "Bookkeeping services for small businesses with monthly reconciliations, financial reports, payroll-record coordination, cleanup planning, and tax-ready books.",
+    name: "Bookkeeping Services for Small Business",
+    serviceType: "Monthly and outsourced bookkeeping services for small businesses",
+    keywords:
+      "bookkeeping services for small business, small business bookkeeping services, monthly bookkeeping services, outsourced bookkeeping services, virtual bookkeeping services, tax-ready bookkeeping",
+    eyebrow: "Small Business Bookkeeping",
+    heroTitle: "Bookkeeping services for small businesses",
+    heroDescription:
+      "IntegraFin helps owner-managed businesses maintain reconciled accounts, organized transaction records, useful financial reports, and a repeatable monthly close that supports tax preparation and day-to-day decisions.",
+    heroBullets: [
+      "Monthly bank and credit-card reconciliations",
+      "Profit-and-loss and balance-sheet reporting",
+      "Tax-ready records and documented open questions",
+    ],
+    primaryCta: "Request Small Business Bookkeeping",
+    secondaryCta: "Call (832) 647-1819",
+    hubHref: "/services#business",
+    hubLabel: "View Business Services Hub",
+    quickAnswerTitle: "Quick Answer: Small Business Bookkeeping Services",
+    quickAnswer:
+      "Small-business bookkeeping is a recurring process for recording supported transactions, reconciling accounts, reviewing balances, and preparing financial reports. IntegraFin provides monthly and outsourced bookkeeping services through an organized remote workflow, with cleanup, payroll, tax preparation, and advisory work scoped separately when needed.",
+    highlights: [
+      {
+        title: "Monthly bookkeeping",
+        description:
+          "Agreed bank, card, loan, payment-processor, and other balance-sheet accounts are reconciled on a regular schedule using the records available for the period.",
+      },
+      {
+        title: "Financial reporting",
+        description:
+          "Profit-and-loss and balance-sheet reports are prepared with open questions documented so owners can review the numbers before they are used for tax or business decisions.",
+      },
+      {
+        title: "Tax-ready record coordination",
+        description:
+          "Bookkeeping records, owner activity, payroll summaries, contractor payments, and tax-preparation questions can be organized together without treating separate filings as automatically included.",
+      },
+    ],
+    processTitle: "Monthly Bookkeeping Workflow for Small Businesses",
+    processDescription:
+      "The workflow is designed to create a consistent close rather than a once-a-year reconstruction. Exact timing and deliverables are confirmed after the accounting file, accounts, transaction volume, and reporting needs are reviewed.",
+    processSteps: [
+      {
+        title: "1. Accounting-file review",
+        description:
+          "We review the current platform, chart of accounts, connected feeds, prior reports, account list, filing context, and known bookkeeping problems.",
+      },
+      {
+        title: "2. Scope and onboarding",
+        description:
+          "The written scope identifies accounts, periods, document responsibilities, reporting cadence, open cleanup needs, and services that remain separate.",
+      },
+      {
+        title: "3. Reconcile and review",
+        description:
+          "Transactions are organized from available support, agreed accounts are reconciled, and unusual or unsupported items are sent back as questions rather than guessed.",
+      },
+      {
+        title: "4. Reports and next steps",
+        description:
+          "The agreed reports and open-item notes are prepared for owner review, tax-preparation handoff, or the next monthly close.",
+      },
+    ],
+    situationsTitle: "When Outsourced Bookkeeping May Help",
+    situations: [
+      {
+        title: "The owner is still doing the books after hours",
+        description:
+          "The business needs a repeatable document, reconciliation, question, and reporting process that does not depend on a year-end rush.",
+      },
+      {
+        title: "Reports do not match the source accounts",
+        description:
+          "Bank, card, loan, payroll, or processor balances need review before the reports can support tax preparation or operating decisions.",
+      },
+      {
+        title: "Payroll and contractor records are disconnected",
+        description:
+          "Payroll summaries, contractor payments, owner transactions, and the general ledger need a coordinated monthly review before year-end reporting.",
+      },
+      {
+        title: "The books are current but inconsistent",
+        description:
+          "Categories, supporting documents, reconciliations, and close timing need a defined standard so future periods are easier to review.",
+      },
+      {
+        title: "Historical cleanup is needed first",
+        description:
+          "Behind or unreliable periods may require a separately scoped cleanup before monthly bookkeeping can begin from a dependable opening position.",
+      },
+    ],
+    checklistTitle: "Records for a Bookkeeping Review",
+    checklistIntro:
+      "Start with the available records. The final request list depends on the platform, accounts, business model, periods, and services included in the engagement.",
+    checklist: [
+      "Current accounting-file access and recent profit-and-loss and balance-sheet reports",
+      "Bank, credit-card, loan, and payment-processor statements for the agreed period",
+      "Customer invoices, sales summaries, vendor bills, receipts, and deposit support when relevant",
+      "Payroll reports, contractor-payment records, W-9 details, and owner-payment information",
+      "Prior business returns and any tax or agency notices that affect the bookkeeping scope",
+      "A list of known errors, unreconciled accounts, missing records, and reporting deadlines",
+    ],
+    whyTitle: "Why IntegraFin for Small Business Bookkeeping",
+    whyChoose: [
+      "Bookkeeping is connected to business-tax and payroll-record workflows while keeping each engagement's boundaries clear.",
+      "Unsupported transactions are documented as questions rather than assigned a business purpose without client confirmation.",
+      "The process can move from a separately scoped cleanup into an ongoing monthly close when the opening records are dependable.",
+      "Clients can work remotely with a real Katy office and accurate service-area language rather than a network of invented locations.",
+    ],
+    officialResourcesTitle: "Official Small Business Recordkeeping Resources",
+    officialResourcesIntro:
+      "These government resources explain general bookkeeping, recordkeeping, tax, and business-management topics. They do not replace advice based on a business's own records and obligations.",
+    officialResources: [
+      {
+        href: "https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping",
+        label: "IRS: Small Business Recordkeeping",
+        description: "IRS guidance on records used to support income, expenses, payroll, financial statements, and tax returns.",
+      },
+      {
+        href: "https://www.irs.gov/publications/p583",
+        label: "IRS Publication 583",
+        description: "Federal starting-a-business and recordkeeping guidance, including examples of business records and accounting systems.",
+      },
+      {
+        href: "https://www.sba.gov/business-guide/manage-your-business",
+        label: "U.S. SBA: Manage Your Business",
+        description: "Small Business Administration resources for finances, employees, taxes, compliance, and day-to-day operations.",
+      },
+      {
+        href: "https://comptroller.texas.gov/taxes/",
+        label: "Texas Comptroller Tax Resources",
+        description: "Official Texas information for franchise, sales, and other state-administered taxes when applicable.",
+      },
+    ],
+    helpfulLinks: [
+      contactLink,
+      { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
+      { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup Services" },
+      { href: "/business-tax-accounting", label: "Business Tax and Accounting" },
+      { href: "/payroll-tax-support", label: "Payroll Tax Support" },
+      { href: "/contractor-bookkeeping-services", label: "Contractor Bookkeeping Services" },
+      { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
+      { href: "/texas/round-rock-llc-accountant", label: "Round Rock LLC Accountant" },
+      { href: "/texas-tax-accounting-services", label: "Texas Tax and Accounting Services" },
+    ],
+    faqs: [
+      {
+        question: "What do bookkeeping services for a small business include?",
+        answer:
+          "A recurring scope may include transaction organization, agreed account reconciliations, balance review, financial reports, open-item questions, and tax-ready record coordination. The exact accounts, periods, reports, and responsibilities are defined in writing.",
+      },
+      {
+        question: "How is monthly bookkeeping different from bookkeeping cleanup?",
+        answer:
+          "Monthly bookkeeping maintains current periods on a recurring schedule. Cleanup addresses historical, unreconciled, duplicated, incomplete, or unreliable records and is normally assessed and priced as a separate project.",
+      },
+      {
+        question: "Can IntegraFin provide outsourced bookkeeping remotely?",
+        answer:
+          "Yes. Clients can use an organized remote workflow for document collection, questions, meetings, and reporting. IntegraFin's physical office is in Katy, Texas, and no other office location is implied.",
+      },
+      {
+        question: "Are payroll processing and tax preparation included?",
+        answer:
+          "Not automatically. Payroll records can be coordinated with the books, but payroll processing, filings, corrections, notices, and tax-return preparation require a separate or combined written scope.",
+      },
+      {
+        question: "Which bookkeeping software does IntegraFin support?",
+        answer:
+          "Platform fit is confirmed during review. QuickBooks support is available, but the engagement is based on the accounting file, source records, integrations, reporting needs, and condition of the books rather than software name alone.",
+      },
+      {
+        question: "Can bookkeeping guarantee tax savings or accurate business decisions?",
+        answer:
+          "No. Reports depend on the completeness and accuracy of the records provided, and tax or business outcomes depend on additional facts, decisions, and current law. Bookkeeping improves organization and visibility but does not guarantee an outcome.",
+      },
+    ],
+    relatedServiceLabel: "small business bookkeeping",
   },
 };

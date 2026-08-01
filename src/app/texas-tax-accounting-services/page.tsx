@@ -56,7 +56,7 @@ export default function TexasTaxAccountingServicesPage() {
         "Responsive communication and organized document workflows",
         "Planning-focused approach that supports long-term compliance",
       ]}
-      nearbyCities={["Katy", "Houston", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Fulshear", "Richmond", "Rosenberg", "Missouri City", "Dallas", "Plano", "Frisco", "Austin", "San Antonio"]}
+      nearbyCities={["Katy", "Houston", "Sugar Land", "Cypress", "Spring", "The Woodlands", "Fulshear", "Richmond", "Rosenberg", "Missouri City", "Dallas", "Plano", "Frisco", "Austin", "Round Rock", "San Antonio"]}
       cityPageLinks={[
         { href: "/texas/katy-tax-accountant", label: "Katy Tax Accountant Services" },
         { href: "/texas/houston-tax-accountant", label: "Houston Tax Accountant Services" },
@@ -71,10 +71,14 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
         { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
         { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+        { href: "/texas/fort-worth-small-business-tax-preparation", label: "Fort Worth Small Business Tax Preparation" },
         { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
         { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
         { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+        { href: "/texas/round-rock-llc-accountant", label: "Round Rock LLC Accountant" },
         { href: "/texas/san-antonio-contractor-tax-accountant", label: "San Antonio Contractor Tax Accountant" },
+        { href: "/texas/sugar-land-payroll-services", label: "Sugar Land Payroll Services" },
+        { href: "/texas/houston-bookkeeping-cleanup", label: "Houston Bookkeeping Cleanup" },
       ]}
       faqItems={[
         {
@@ -115,12 +119,17 @@ export default function TexasTaxAccountingServicesPage() {
         { href: "/texas/richmond-tax-accountant", label: "Richmond Tax Accountant Services" },
         { href: "/texas/dallas-tax-accountant", label: "Dallas Tax Accountant Services" },
         { href: "/contractor-bookkeeping-services", label: "Texas Contractor Bookkeeping Services" },
+        { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
         { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping Services" },
         { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },
+        { href: "/texas/fort-worth-small-business-tax-preparation", label: "Fort Worth Small Business Tax Preparation" },
         { href: "/texas/plano-roofing-company-bookkeeping", label: "Plano Roofing Company Bookkeeping" },
         { href: "/texas/frisco-small-business-accountant", label: "Frisco Small Business Accountant" },
         { href: "/texas/austin-bookkeeping-for-electricians", label: "Austin Bookkeeping for Electricians" },
+        { href: "/texas/round-rock-llc-accountant", label: "Round Rock LLC Accountant" },
         { href: "/texas/san-antonio-contractor-tax-accountant", label: "San Antonio Contractor Tax Accountant" },
+        { href: "/texas/sugar-land-payroll-services", label: "Sugar Land Payroll Services" },
+        { href: "/texas/houston-bookkeeping-cleanup", label: "Houston Bookkeeping Cleanup" },
         { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance for Businesses" },
         { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
         { href: "/blog/tax-resolution-options", label: "Understanding Your Tax Resolution Options" },
