@@ -1,6 +1,6 @@
 # Texas Local SEO Page Cluster Roadmap
 
-Last updated: 2026-07-31  
+Last updated: 2026-08-01
 Owner: IntegraFin marketing and website team  
 Companion SOP: [OPTIMIZED_TEXAS_SEO_SOP.md](./OPTIMIZED_TEXAS_SEO_SOP.md)
 
@@ -163,12 +163,14 @@ Do not build separate electrician, plumbing, HVAC, roofing, painting, landscapin
 
 | Order | URL | Primary candidate | Supporting terms / content angle | Status |
 |---|---|---|---|---|
-| B1 | `/small-business-bookkeeping-services` | bookkeeping services for small business | monthly bookkeeping services, outsourced bookkeeping services, virtual bookkeeping services | Built and locally verified 2026-08-01 — awaiting deployment, keyword-tool validation and indexing |
+| B1 | `/small-business-bookkeeping-services` | bookkeeping services for small business | monthly bookkeeping services, outsourced bookkeeping services, virtual bookkeeping services | Live verified 2026-08-01 — request indexing and complete keyword-tool validation |
 | B2 | `/texas/frisco-small-business-accountant` | small business accountant Frisco TX | bookkeeping, tax prep, payroll support | Live verified 2026-08-01 — request indexing and validate keyword data |
-| B3 | `/texas/round-rock-llc-accountant` | LLC accountant Round Rock TX | Round Rock LLC bookkeeping, LLC accounting services Round Rock, small business accountant Round Rock TX | Built and locally verified 2026-08-01 — awaiting deployment, keyword validation and indexing |
-| B4 | `/texas/sugar-land-payroll-services` | payroll services Sugar Land TX | small business payroll Sugar Land, payroll tax support Sugar Land TX, payroll bookkeeping Sugar Land | Built and locally verified 2026-08-01 — awaiting deployment, service-scope review, keyword-tool validation and indexing |
-| B5 | `/texas/houston-bookkeeping-cleanup` | bookkeeping cleanup Houston TX | catch-up bookkeeping Houston, QuickBooks cleanup Houston TX, tax-ready bookkeeping Houston | Built and locally verified 2026-08-01 — awaiting deployment, keyword-tool validation and indexing |
-| B6 | `/texas/fort-worth-small-business-tax-preparation` | business tax preparation Fort Worth TX | small business tax preparation Fort Worth, LLC tax preparation Fort Worth, tax-ready bookkeeping Fort Worth | Built and locally verified 2026-08-01 — awaiting deployment, keyword-tool validation and indexing |
+| B3 | `/texas/round-rock-llc-accountant` | LLC accountant Round Rock TX | Round Rock LLC bookkeeping, LLC accounting services Round Rock, small business accountant Round Rock TX | Live verified 2026-08-01 — request indexing and complete keyword-tool validation |
+| B4 | `/texas/sugar-land-payroll-services` | payroll services Sugar Land TX | small business payroll Sugar Land, payroll tax support Sugar Land TX, payroll bookkeeping Sugar Land | Live verified 2026-08-01 — confirm service scope, request indexing and complete keyword-tool validation |
+| B5 | `/texas/houston-bookkeeping-cleanup` | bookkeeping cleanup Houston TX | catch-up bookkeeping Houston, QuickBooks cleanup Houston TX, tax-ready bookkeeping Houston | Live verified 2026-08-01 — request indexing and complete keyword-tool validation |
+| B6 | `/texas/fort-worth-small-business-tax-preparation` | business tax preparation Fort Worth TX | small business tax preparation Fort Worth, LLC tax preparation Fort Worth, tax-ready bookkeeping Fort Worth | Live verified 2026-08-01 — request indexing and complete keyword-tool validation |
+
+**Cluster B status:** 6 of 6 planned pages are built and live. There are no approved Cluster B pages left to build or deploy. Formal keyword-tool validation, service-owner review where noted, Search Console indexing and performance measurement remain separate SEO tasks.
 
 ### Cluster C — Indian-American and US–India Tax (restricted)
 
@@ -338,11 +340,11 @@ Use one row per URL. Keep the source and date for every metric.
 | `/texas/frisco-small-business-accountant` | small business accountant Frisco TX | Small business | Pending keyword validation; live verified 2026-08-01 | 2026-08-01 | Waiting |  |  |  |  | Request indexing and validate GSC/keyword-tool data |
 | `/texas/austin-bookkeeping-for-electricians` | bookkeeping for electricians Austin TX | Contractors | Pending keyword validation; live verified 2026-08-01 | 2026-08-01 | Waiting |  |  |  |  | Request indexing and validate GSC/keyword-tool data |
 | `/texas/san-antonio-contractor-tax-accountant` | contractor tax accountant San Antonio TX | Contractors | Pending keyword validation; live verified 2026-08-01 | 2026-08-01 | Waiting |  |  |  |  | Request indexing and validate GSC/keyword-tool data |
-| `/texas/round-rock-llc-accountant` | LLC accountant Round Rock TX | Small business | Pending keyword validation; built and locally verified 2026-08-01 |  | Not deployed |  |  |  |  | Deploy, verify, request indexing and validate GSC/keyword-tool data |
-| `/small-business-bookkeeping-services` | bookkeeping services for small business | Small business | Search-intent review completed; formal keyword-tool validation pending; built and locally verified 2026-08-01 |  | Not deployed |  |  |  |  | Deploy, verify, request indexing and validate keyword-tool data |
-| `/texas/sugar-land-payroll-services` | payroll services Sugar Land TX | Small business | Search-intent review completed; service-scope and formal keyword-tool validation pending; built and locally verified 2026-08-01 |  | Not deployed |  |  |  |  | Confirm scope, deploy, verify and request indexing |
-| `/texas/houston-bookkeeping-cleanup` | bookkeeping cleanup Houston TX | Small business | Search-intent review completed; formal keyword-tool validation pending; built and locally verified 2026-08-01 |  | Not deployed |  |  |  |  | Deploy, verify, request indexing and validate keyword-tool data |
-| `/texas/fort-worth-small-business-tax-preparation` | business tax preparation Fort Worth TX | Small business | Search-intent review completed; formal keyword-tool validation pending; built and locally verified 2026-08-01 |  | Not deployed |  |  |  |  | Deploy, verify, request indexing and validate keyword-tool data |
+| `/texas/round-rock-llc-accountant` | LLC accountant Round Rock TX | Small business | Pending keyword validation; live verified 2026-08-01 | 2026-08-01 | Waiting |  |  |  |  | Request indexing and validate GSC/keyword-tool data |
+| `/small-business-bookkeeping-services` | bookkeeping services for small business | Small business | Search-intent review completed; formal keyword-tool validation pending; live verified 2026-08-01 | 2026-08-01 | Waiting |  |  |  |  | Request indexing and validate keyword-tool data |
+| `/texas/sugar-land-payroll-services` | payroll services Sugar Land TX | Small business | Search-intent review completed; service-scope and formal keyword-tool validation pending; live verified 2026-08-01 | 2026-08-01 | Waiting |  |  |  |  | Confirm scope, request indexing and validate keyword-tool data |
+| `/texas/houston-bookkeeping-cleanup` | bookkeeping cleanup Houston TX | Small business | Search-intent review completed; formal keyword-tool validation pending; live verified 2026-08-01 | 2026-08-01 | Waiting |  |  |  |  | Request indexing and validate keyword-tool data |
+| `/texas/fort-worth-small-business-tax-preparation` | business tax preparation Fort Worth TX | Small business | Search-intent review completed; formal keyword-tool validation pending; live verified 2026-08-01 | 2026-08-01 | Waiting |  |  |  |  | Request indexing and validate keyword-tool data |
 
 ## 11. First 90-Day Roadmap
 
@@ -367,6 +369,8 @@ Use one row per URL. Keep the source and date for every metric.
 - Built and locally verified `/texas/round-rock-llc-accountant` with LLC-specific bookkeeping, tax-classification, business-tax, payroll-record and Texas compliance content; primary and supporting keyword ownership; FAQ and Service schema; official resources; and internal links.
 - Built and locally verified `/small-business-bookkeeping-services`, `/texas/sugar-land-payroll-services`, `/texas/houston-bookkeeping-cleanup` and `/texas/fort-worth-small-business-tax-preparation` with unique intent-specific copy, primary and secondary keyword clusters, official resources, internal links, metadata and structured data.
 - Verified all four new routes return `200 OK` with the intended title, self-canonical, `index, follow`, one H1, primary and secondary keyword presence, FAQ and Service schema, and XML sitemap inclusion.
+- Passed TypeScript and the optimized production build after adding all four remaining Cluster B pages.
+- Verified Round Rock and all four newly completed Cluster B pages on the canonical domain; all five return `200 OK` with the intended title, self-canonical, `index, follow`, one H1, FAQ and Service schema, and live XML sitemap inclusion.
 - Updated the roadmap and local SEO tracker with build dates, live validation evidence and remaining indexing/measurement work.
 
 ### Updated task list
@@ -382,8 +386,8 @@ Use one row per URL. Keep the source and date for every metric.
 | 7 | Review 28-day performance and improve pages with real query data | SEO + website team | Waiting for data |
 | 8 | Validate and approve `/texas/round-rock-llc-accountant` target keywords and service claims | SEO + service owner | Pending formal validation and owner review |
 | 9 | Build the Round Rock LLC accountant page | Website team | Completed in source and locally verified 2026-08-01 |
-| 10 | Deploy and verify Round Rock plus the four remaining Cluster B pages on the canonical domain | Website team | Ready for deployment |
-| 11 | Confirm the exact Sugar Land payroll service scope before deployment | Service owner | Pending; page currently limits claims to payroll-record and tax-workflow support |
+| 10 | Deploy and verify Round Rock plus the four newly completed Cluster B pages on the canonical domain | Website team | Completed; live verified 2026-08-01 |
+| 11 | Confirm the exact Sugar Land payroll service scope before broadening page claims | Service owner | Pending; live page currently limits claims to payroll-record and tax-workflow support |
 | 12 | Complete keyword-tool validation for all newly built Cluster B pages | SEO owner | Search-intent review complete; tool data pending |
 
 ## 13. Research Note
