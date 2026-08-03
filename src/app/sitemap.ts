@@ -24,6 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/industries', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/texas-tax-accounting-services', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/contractor-bookkeeping-services', lastModified: '2026-07-31', priority: 0.8 },
+    { path: '/bookkeeping-for-roofing-contractors-houston', lastModified: '2026-08-03', priority: 0.9 },
     { path: '/texas/katy-tax-accountant', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/houston-tax-accountant', lastModified: '2026-07-19', priority: 0.9 },
     ...houstonIrsServicePageList.map((page) => ({

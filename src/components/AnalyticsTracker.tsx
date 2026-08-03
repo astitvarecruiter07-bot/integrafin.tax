@@ -78,10 +78,30 @@ export default function AnalyticsTracker() {
           anchor.dataset.analyticsLabel ||
           (eventName === "contact_cta_click" ? "contact_link" : eventName),
       });
+      if (eventName === "phone_click") {
+        window.fbq?.("track", "Contact", { content_name: "Phone Call" });
+      }
     }
 
     document.addEventListener("click", handleClick);
     return () => document.removeEventListener("click", handleClick);
+  }, []);
+
+  useEffect(() => {
+    function handleCalendlyMessage(event: MessageEvent) {
+      if (event.origin !== "https://calendly.com") return;
+      if (!event.data || typeof event.data !== "object") return;
+      if ((event.data as { event?: string }).event !== "calendly.event_scheduled") return;
+
+      trackEvent("booking_complete", {
+        ...baseEventParameters(),
+        cta_name: "calendly_event_scheduled",
+      });
+      window.fbq?.("track", "Schedule", { content_name: "IntegraFin Consultation" });
+    }
+
+    window.addEventListener("message", handleCalendlyMessage);
+    return () => window.removeEventListener("message", handleCalendlyMessage);
   }, []);
 
   return null;

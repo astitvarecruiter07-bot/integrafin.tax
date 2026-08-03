@@ -52,10 +52,10 @@ const nextConfig: NextConfig = {
       "frame-src 'self' https://www.google.com",
       isDev
         ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:"
-        : "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+        : "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net",
       isDev
         ? "connect-src 'self' https: ws: wss:"
-        : "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.vercel-insights.com",
+        : "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.vercel-insights.com https://www.facebook.com https://*.facebook.com",
       "form-action 'self'",
       "upgrade-insecure-requests",
     ].join('; ');

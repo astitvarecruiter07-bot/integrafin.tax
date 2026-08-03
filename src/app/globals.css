@@ -81,6 +81,16 @@ body {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Campaign pages include their own focused header and footer. */
+body:has(.roofing-landing) > header,
+body:has(.roofing-landing) > footer {
+  display: none;
+}
+
+body:has(.roofing-landing) #site-content {
+  min-height: 100vh;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

@@ -32,6 +32,7 @@ const LeadSchema = z.object({
   source: z.string().trim().min(1).max(100).default('contact-page'),
   revenue: z.string().trim().max(100).optional(),
   jurisdiction: z.string().trim().max(100).optional(),
+  website: z.literal('').optional(),
   attribution: z.object({
     firstLandingPage: z.string().max(500).startsWith('/').optional(),
     currentSubmissionPage: z.string().max(500).startsWith('/').optional(),
