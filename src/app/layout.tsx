@@ -63,7 +63,8 @@ export default function RootLayout({
   const googleTagManagerId = /^GTM-[A-Z0-9]+$/.test(configuredGtmId)
     ? configuredGtmId
     : "";
-  const configuredMetaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
+  const configuredMetaPixelId =
+    process.env.NEXT_PUBLIC_META_PIXEL_ID || "2309929793153519";
   const metaPixelId = /^\d{6,20}$/.test(configuredMetaPixelId)
     ? configuredMetaPixelId
     : "";
@@ -110,6 +111,13 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+        {metaPixelId && (
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1" />`,
+            }}
+          />
+        )}
         <Navbar />
         <AnalyticsTracker />
         <div id="site-content">{children}</div>
