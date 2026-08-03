@@ -1,6 +1,6 @@
 # Texas Local SEO Page Cluster Roadmap
 
-Last updated: 2026-08-01
+Last updated: 2026-08-03
 Owner: IntegraFin marketing and website team  
 Companion SOP: [OPTIMIZED_TEXAS_SEO_SOP.md](./OPTIMIZED_TEXAS_SEO_SOP.md)
 
@@ -181,6 +181,10 @@ This cluster is on hold. Do not create or optimize pages until the firm confirms
 - Its procedures for US–India cross-border matters.
 - Whether it supports FBAR, FATCA, ITIN, NRI, or India filing matters.
 - The approved service language, disclaimers, and engagement boundaries.
+
+| Order | Candidate URL | Primary candidate | Status |
+|---|---|---|---|
+| C1 | `/texas/us-india-tax-services` | US India tax services Texas | Pending — explicitly placed on hold 2026-08-03; do not build or optimize until every Cluster C prerequisite above is confirmed in writing |
 
 After verification, start with one factual Texas service hub rather than many city pages. Then create only city pages supported by real demand and unique content.
 
