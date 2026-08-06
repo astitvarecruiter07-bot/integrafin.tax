@@ -1027,7 +1027,7 @@ export const mockBlogPosts: BlogPost[] = [
                 <li>Do you receive a W-2 too? Consider whether additional paycheck withholding can help cover future tax.</li>
             </ul>
 
-            <p>For a first-pass projection, use the <a href="/quarterly-estimated-tax-calculator">2026 quarterly estimated tax calculator</a>, then reconcile the result against your actual books and prior-year return.</p>
+            <p>For a first-pass projection, use the <a href="/quarterly-estimated-tax-calculator">2026 quarterly estimated tax calculator</a>, then reconcile the result against your actual books and prior-year return. For the full forward-looking calculation process, safe-harbor benchmarks, and remaining deadlines, read <a href="/blog/how-to-calculate-2026-quarterly-estimated-tax-payments">how to calculate 2026 quarterly estimated tax payments</a>.</p>
 
             <h2>How to Avoid Missing September 15, 2026 (Q3) and Beyond</h2>
             <p><strong>Direct answer:</strong> Treat September 15, 2026 as the next checkpoint now. The easiest way to avoid another missed estimated tax payment is to schedule reminders, automate a tax savings rhythm, and update your estimate before income changes become a filing-season surprise.</p>

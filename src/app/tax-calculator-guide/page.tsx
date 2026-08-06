@@ -356,6 +356,10 @@ export default function TaxCalculatorGuidePage() {
           <h2 className="text-3xl font-black text-[#003580]">Choose a focused tax calculator</h2>
           <p className="text-slate-600 mt-3 max-w-3xl">
             Start with the calculator that matches the income or payment question you are planning for.
+            For the IRS payment test, safe-harbor benchmarks, and 2026 deadlines, read our{" "}
+            <Link href="/blog/how-to-calculate-2026-quarterly-estimated-tax-payments" className="font-semibold text-[#0057b8] hover:underline">
+              2026 quarterly estimated tax payment guide
+            </Link>.
           </p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mt-7">
             <Link href="/quarterly-estimated-tax-calculator" className="rounded-xl border border-slate-200 bg-white p-4 font-semibold text-[#0057b8] hover:border-[#00C2CB]">Quarterly estimated tax calculator</Link>

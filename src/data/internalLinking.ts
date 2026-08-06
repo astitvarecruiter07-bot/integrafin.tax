@@ -170,13 +170,13 @@ export function getBlogIntentLinks(post: BlogLinkSource): BlogIntentLinks {
 export const serviceGuideLinks = {
   "business-tax-accounting": [
     { href: "/blog/reduce-self-employment-tax-business-owners", label: "Self-Employment Tax Guide for Business Owners" },
+    { href: "/blog/how-to-calculate-2026-quarterly-estimated-tax-payments", label: "2026 Quarterly Estimated Tax Payment Guide" },
     { href: "/blog/irs-compliance-guide", label: "Business IRS Filing and Record-Keeping Guide" },
-    { href: "/blog/small-business-accounting-tips", label: "Small-Business Accounting Tips" },
   ],
   "individual-tax-preparation": [
     { href: "/blog/missed-estimated-tax-payment-june-15-deadline", label: "Missed Estimated Tax Payment Guide" },
+    { href: "/blog/how-to-calculate-2026-quarterly-estimated-tax-payments", label: "How to Calculate 2026 Estimated Tax Payments" },
     { href: "/blog/tax-planning-strategies-2025", label: "Individual Tax-Planning Strategies" },
-    { href: "/blog/federal-scholarship-tax-credit-2027-guide", label: "Federal Scholarship Tax Credit Guide" },
   ],
   "tax-resolution": [
     { href: "/blog/tax-resolution-options", label: "Tax Resolution Options Explained" },
