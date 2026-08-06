@@ -22,9 +22,18 @@ const sections = [
       { href: "/contact", label: "Contact" },
       { href: "/blog", label: "Blog" },
       { href: "/case-study", label: "Case Study" },
-      { href: "/tax-calculator", label: "2025 and 2026 Federal Tax Calculator" },
       { href: "/tax-calculator-guide", label: "Federal Tax Calculator Guide" },
       { href: "/industries", label: "Industries Served" },
+    ],
+  },
+  {
+    title: "Tax Calculators",
+    links: [
+      { href: "/tax-calculator", label: "2025 and 2026 Federal Tax Calculator" },
+      { href: "/quarterly-estimated-tax-calculator", label: "2026 Quarterly Estimated Tax Calculator" },
+      { href: "/self-employment-tax-calculator", label: "2026 Self-Employment Tax Calculator" },
+      { href: "/1099-tax-calculator", label: "2026 1099 Tax Calculator" },
+      { href: "/capital-gains-tax-calculator", label: "2026 Capital Gains Tax Calculator" },
     ],
   },
   {

@@ -351,6 +351,21 @@ export default function TaxCalculatorGuidePage() {
         </div>
       </section>
 
+      <section className="pb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl font-black text-[#003580]">Choose a focused tax calculator</h2>
+          <p className="text-slate-600 mt-3 max-w-3xl">
+            Start with the calculator that matches the income or payment question you are planning for.
+          </p>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mt-7">
+            <Link href="/quarterly-estimated-tax-calculator" className="rounded-xl border border-slate-200 bg-white p-4 font-semibold text-[#0057b8] hover:border-[#00C2CB]">Quarterly estimated tax calculator</Link>
+            <Link href="/self-employment-tax-calculator" className="rounded-xl border border-slate-200 bg-white p-4 font-semibold text-[#0057b8] hover:border-[#00C2CB]">Self-employment tax calculator</Link>
+            <Link href="/1099-tax-calculator" className="rounded-xl border border-slate-200 bg-white p-4 font-semibold text-[#0057b8] hover:border-[#00C2CB]">1099 tax calculator</Link>
+            <Link href="/capital-gains-tax-calculator" className="rounded-xl border border-slate-200 bg-white p-4 font-semibold text-[#0057b8] hover:border-[#00C2CB]">Capital gains tax calculator</Link>
+          </div>
+        </div>
+      </section>
+
       <section className="pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="bg-[#003580] text-white rounded-2xl p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8">

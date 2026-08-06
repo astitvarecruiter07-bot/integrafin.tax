@@ -803,7 +803,7 @@ export const mockBlogPosts: BlogPost[] = [
                 <li>Do you receive a W-2 too? Consider whether additional paycheck withholding can help cover future tax.</li>
             </ul>
 
-            <p>For a first-pass projection, use the <a href="/tax-calculator">IntegraFin tax estimator</a>, then reconcile the result against your actual books and prior-year return.</p>
+            <p>For a first-pass projection, use the <a href="/quarterly-estimated-tax-calculator">2026 quarterly estimated tax calculator</a>, then reconcile the result against your actual books and prior-year return.</p>
 
             <h2>How to Avoid Missing September 15, 2026 (Q3) and Beyond</h2>
             <p><strong>Direct answer:</strong> Treat September 15, 2026 as the next checkpoint now. The easiest way to avoid another missed estimated tax payment is to schedule reminders, automate a tax savings rhythm, and update your estimate before income changes become a filing-season surprise.</p>
@@ -1245,7 +1245,7 @@ export const mockBlogPosts: BlogPost[] = [
             <h2>Self-Employment Tax Planning Is Bigger Than Entity Structure</h2>
             <p>Entity structure is only one part of reducing unnecessary taxes legally. Strong tax planning can also include retirement contributions, accountable reimbursement plans, health insurance treatment, vehicle expense strategy, depreciation planning, clean expense tracking, and estimated tax management.</p>
 
-            <p>For a practical first pass, use the <a href="/tax-calculator">IntegraFin tax estimator</a>, then compare the result with your books, payroll readiness, and state rules. For broader support, review our <a href="/services">tax and accounting services</a>.</p>
+            <p>For a practical first pass, use the <a href="/self-employment-tax-calculator">2026 self-employment tax calculator</a>, then compare the result with your books, payroll readiness, and state rules. Contractors can also start from gross receipts with the <a href="/1099-tax-calculator">1099 tax calculator for freelancers</a>. For broader support, review our <a href="/services">tax and accounting services</a>.</p>
 
             <h2>Dangerous Mistakes to Avoid</h2>
             <ul>

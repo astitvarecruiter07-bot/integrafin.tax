@@ -443,6 +443,12 @@ export default function ServicesContent() {
           <Link href="/tax-calculator" className="inline-flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold">
             Open Federal Tax Calculator <ArrowRight className="w-4 h-4" />
           </Link>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mt-6">
+            <Link href="/quarterly-estimated-tax-calculator" className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold text-primary hover:border-secondary">Quarterly estimated tax</Link>
+            <Link href="/self-employment-tax-calculator" className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold text-primary hover:border-secondary">Self-employment tax</Link>
+            <Link href="/1099-tax-calculator" className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold text-primary hover:border-secondary">1099 contractor tax</Link>
+            <Link href="/capital-gains-tax-calculator" className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 font-semibold text-primary hover:border-secondary">Capital gains tax</Link>
+          </div>
         </div>
       </section>
 

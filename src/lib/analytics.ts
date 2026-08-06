@@ -64,7 +64,17 @@ export function getPageType(path = currentPath()) {
   if (!path) return "unknown";
   if (path === "/") return "homepage";
   if (path === "/contact") return "contact";
-  if (path === "/tax-calculator") return "calculator";
+  if (
+    [
+      "/tax-calculator",
+      "/quarterly-estimated-tax-calculator",
+      "/self-employment-tax-calculator",
+      "/1099-tax-calculator",
+      "/capital-gains-tax-calculator",
+    ].includes(path)
+  ) {
+    return "calculator";
+  }
   if (path.startsWith("/blog/")) return "article";
   if (path === "/blog") return "blog_index";
   if (/^\/(texas|new-york|pennsylvania)\//.test(path)) return "local_landing";

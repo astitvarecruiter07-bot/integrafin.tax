@@ -32,7 +32,11 @@ Product Manager operating rhythm:
 
 ---
 
+
+
 ## 1. Product Summary
+
+
 
 ### Working Product Name
 
@@ -45,6 +49,8 @@ Alternative customer-facing names to test:
 - QuickBooks Cleanup Readiness Calculator
 - Catch-Up Bookkeeping Assessment
 
+
+
 ### One-Sentence Description
 
 A free, mobile-friendly assessment that helps a small-business owner understand the likely condition, urgency, and cleanup complexity of their books before requesting an IntegraFin consultation.
@@ -52,6 +58,8 @@ A free, mobile-friendly assessment that helps a small-business owner understand 
 ### Customer Promise
 
 > Answer a few simple questions and receive a bookkeeping health score, likely cleanup level, priority issues, and a personalized preparation checklist.
+
+
 
 ### Business Objective
 
@@ -62,6 +70,8 @@ Generate qualified bookkeeping-cleanup consultations and convert suitable cleanu
 **Qualified consultation requests per 100 completed calculator assessments.**
 
 ---
+
+
 
 ## 2. Problem Statement
 
@@ -82,7 +92,11 @@ Give the visitor immediate value while collecting structured information that he
 
 ---
 
+
+
 ## 3. Target Customer
+
+
 
 ### Primary User
 
@@ -95,6 +109,8 @@ A U.S. small-business owner who:
 - Needs help separating personal and business activity
 - Wants to understand what professional cleanup may involve
 
+
+
 ### High-Priority Segments
 
 1. Businesses 4–24 months behind
@@ -104,9 +120,13 @@ A U.S. small-business owner who:
 5. Businesses with active payroll
 6. Businesses preparing for tax filing or financing
 
+
+
 ### Jobs to Be Done
 
 > When I suspect my bookkeeping is incomplete or incorrect, I want a quick way to understand the likely severity and next steps so I can decide whether to hire professional help.
+
+
 
 ### Not the Primary User
 
@@ -117,6 +137,8 @@ A U.S. small-business owner who:
 - Someone attempting to upload confidential documents through a public form
 
 ---
+
+
 
 ## 4. Product Principles
 
@@ -132,7 +154,11 @@ A U.S. small-business owner who:
 
 ---
 
+
+
 ## 5. Goals and Non-Goals
+
+
 
 ### MVP Goals
 
@@ -142,6 +168,8 @@ A U.S. small-business owner who:
 - [ ] Route qualified users to a cleanup consultation
 - [ ] Create a path from cleanup to recurring bookkeeping
 - [ ] Measure the complete acquisition and conversion funnel
+
+
 
 ### MVP Non-Goals
 
@@ -153,6 +181,8 @@ A U.S. small-business owner who:
 - [ ] Do not diagnose fraud or certify bookkeeping accuracy
 - [ ] Do not replace professional review
 
+
+
 ### Possible Future Goals
 
 - AI-written result explanations based on approved content
@@ -163,6 +193,8 @@ A U.S. small-business owner who:
 - Data-driven price bands calibrated from completed projects
 
 ---
+
+
 
 ## 6. MVP User Journey
 
@@ -197,6 +229,8 @@ Search, blog, service page, advertisement, or referral
           Cleanup project and possible monthly work
 ```
 
+
+
 ### User Experience Requirements
 
 - One primary question per mobile screen
@@ -210,6 +244,8 @@ Search, blog, service page, advertisement, or referral
 - Clear distinction between preliminary assessment and professional review
 
 ---
+
+
 
 ## 7. Proposed Assessment Questions
 
@@ -229,6 +265,8 @@ Options:
 - No accounting system
 - Other or not sure
 
+
+
 ### Q2. Months Behind
 
 **Question:** How far behind are your books?
@@ -242,6 +280,8 @@ Options:
 - 13–24 months
 - More than 24 months
 - Not sure
+
+
 
 ### Q3. Monthly Transaction Volume
 
@@ -270,6 +310,8 @@ Options:
 - 8 or more
 - Not sure
 
+
+
 ### Q5. Reconciliation Status
 
 **Question:** When were all business accounts last reconciled?
@@ -283,6 +325,8 @@ Options:
 - They have never been reconciled
 - Not sure what reconciliation means
 
+
+
 ### Q6. Payroll
 
 **Question:** Does the business have employees or run payroll?
@@ -294,6 +338,8 @@ Options:
 - Yes, but payroll records may be incomplete
 - Not sure
 
+
+
 ### Q7. Personal and Business Activity
 
 **Question:** Are personal and business transactions mixed together?
@@ -304,6 +350,8 @@ Options:
 - Occasionally
 - Frequently
 - Not sure
+
+
 
 ### Q8. Additional Complexity
 
@@ -319,6 +367,8 @@ Allow multiple selections:
 - Subcontractors or 1099 payments
 - None of these
 - Not sure
+
+
 
 ### Q9. Deadline
 
@@ -344,7 +394,11 @@ Optional deadline type:
 
 ---
 
+
+
 ## 8. Scoring Model
+
+
 
 ### Scoring Policy
 
@@ -352,39 +406,49 @@ The initial scoring model is a hypothesis. It must be tested against anonymized 
 
 ### Proposed Complexity Weights
 
-| Factor | Low | Medium | High | Maximum points |
-|---|---:|---:|---:|---:|
-| Months behind | 0 | 10–20 | 25–30 | 30 |
-| Monthly transactions | 0–3 | 6–10 | 15 | 15 |
-| Financial accounts | 0–3 | 6 | 10 | 10 |
-| Reconciliation status | 0–5 | 10–15 | 20 | 20 |
-| Payroll complexity | 0 | 4 | 8 | 8 |
-| Mixed personal activity | 0 | 5 | 10 | 10 |
-| Additional complexity | 0–4 | 5–8 | 10 | 10 |
-| Multiple entities | 0 | 5 | 10 | 10 |
+
+| Factor                  | Low | Medium | High  | Maximum points |
+| ----------------------- | --- | ------ | ----- | -------------- |
+| Months behind           | 0   | 10–20  | 25–30 | 30             |
+| Monthly transactions    | 0–3 | 6–10   | 15    | 15             |
+| Financial accounts      | 0–3 | 6      | 10    | 10             |
+| Reconciliation status   | 0–5 | 10–15  | 20    | 20             |
+| Payroll complexity      | 0   | 4      | 8     | 8              |
+| Mixed personal activity | 0   | 5      | 10    | 10             |
+| Additional complexity   | 0–4 | 5–8    | 10    | 10             |
+| Multiple entities       | 0   | 5      | 10    | 10             |
+
 
 The raw points may exceed 100. Normalize the final complexity score to a 0–100 scale.
 
 ### Proposed Result Categories
 
-| Score | Internal key | Customer-facing result |
-|---:|---|---|
-| 0–24 | `reasonably_current` | Books appear reasonably current |
-| 25–44 | `light_catch_up` | Light catch-up may be required |
-| 45–69 | `moderate_cleanup` | Moderate cleanup is likely |
-| 70–100 | `complex_cleanup` | Complex cleanup is likely |
+
+| Score  | Internal key         | Customer-facing result          |
+| ------ | -------------------- | ------------------------------- |
+| 0–24   | `reasonably_current` | Books appear reasonably current |
+| 25–44  | `light_catch_up`     | Light catch-up may be required  |
+| 45–69  | `moderate_cleanup`   | Moderate cleanup is likely      |
+| 70–100 | `complex_cleanup`    | Complex cleanup is likely       |
+
+
+
 
 ### Urgency Model
 
 Urgency must remain separate from complexity.
 
-| Deadline | Urgency |
-|---|---|
-| Within 14 days | Critical |
-| Within 30 days | High |
-| Within 60 days | Medium |
-| More than 60 days | Normal |
-| No deadline | Normal |
+
+| Deadline          | Urgency  |
+| ----------------- | -------- |
+| Within 14 days    | Critical |
+| Within 30 days    | High     |
+| Within 60 days    | Medium   |
+| More than 60 days | Normal   |
+| No deadline       | Normal   |
+
+
+
 
 ### Scoring Calibration Tasks
 
@@ -398,7 +462,11 @@ Urgency must remain separate from complexity.
 
 ---
 
+
+
 ## 9. Result Experience
+
+
 
 ### Free Basic Result
 
@@ -418,6 +486,8 @@ Example:
 >
 > Your primary complexity factors are eight unreconciled months, four financial accounts, and active payroll.
 
+
+
 ### Full Action Plan
 
 Available after contact submission:
@@ -429,6 +499,8 @@ Available after contact submission:
 - Questions to prepare for the consultation
 - Link to request or book a professional review
 
+
+
 ### Possible Recommendations
 
 - Books review only
@@ -438,6 +510,8 @@ Available after contact submission:
 - Cleanup plus business tax preparation
 - Cleanup plus payroll-record review
 - Monthly bookkeeping after cleanup
+
+
 
 ### Pricing Policy
 
@@ -451,7 +525,11 @@ Future price ranges may be introduced only after comparing calculator prediction
 
 ---
 
+
+
 ## 10. Lead Capture Requirements
+
+
 
 ### Lead Form Fields
 
@@ -478,6 +556,8 @@ Automatically populated:
 - Structured assessment answers
 - Marketing attribution
 
+
+
 ### Proposed CTA Copy
 
 Primary result CTA:
@@ -491,6 +571,8 @@ Consultation CTA:
 Alternative CTA to test:
 
 > **Talk to IntegraFin About Fixing My Books**
+
+
 
 ### Submission Behavior
 
@@ -506,7 +588,11 @@ Alternative CTA to test:
 
 ---
 
+
+
 ## 11. Data Requirements
+
+
 
 ### Proposed Lead Assessment Object
 
@@ -531,6 +617,8 @@ bookkeepingAssessment: {
 }
 ```
 
+
+
 ### Data Rules
 
 - Store structured values, not only a long message
@@ -539,6 +627,8 @@ bookkeepingAssessment: {
 - Do not store credentials, account numbers, tax IDs, or uploaded financial records
 - Define how long calculator lead data will be retained
 - Include calculator data in lead deletion and privacy workflows
+
+
 
 ### Admin Dashboard Summary
 
@@ -555,7 +645,11 @@ Display without opening the full lead:
 
 ---
 
+
+
 ## 12. Technical Plan
+
+
 
 ### Existing Capabilities to Reuse
 
@@ -573,6 +667,8 @@ The website already includes:
 - Customer confirmation emails
 - Lead operations dashboard
 - Analytics helpers
+
+
 
 ### Proposed File Structure
 
@@ -597,6 +693,8 @@ src/app/sitemap.ts
 src/data/internalLinking.ts
 ```
 
+
+
 ### Calculation Contract
 
 ```ts
@@ -610,6 +708,8 @@ calculateCleanupAssessment(answers) => {
 }
 ```
 
+
+
 ### Technical Principles
 
 - Keep scoring in a pure TypeScript module
@@ -622,20 +722,28 @@ calculateCleanupAssessment(answers) => {
 
 ---
 
+
+
 ## 13. Analytics Plan
+
+
 
 ### Required Events
 
-| Event | Trigger |
-|---|---|
-| `cleanup_calculator_view` | Calculator page viewed |
-| `cleanup_calculator_start` | First answer or Start selected |
-| `cleanup_calculator_step` | Each question completed |
-| `cleanup_calculator_complete` | Final question completed |
-| `cleanup_result_view` | Basic result displayed |
-| `cleanup_lead_form_start` | User interacts with lead form |
-| `cleanup_lead_submit` | Lead saved successfully |
-| `cleanup_consultation_click` | Consultation CTA selected |
+
+| Event                         | Trigger                        |
+| ----------------------------- | ------------------------------ |
+| `cleanup_calculator_view`     | Calculator page viewed         |
+| `cleanup_calculator_start`    | First answer or Start selected |
+| `cleanup_calculator_step`     | Each question completed        |
+| `cleanup_calculator_complete` | Final question completed       |
+| `cleanup_result_view`         | Basic result displayed         |
+| `cleanup_lead_form_start`     | User interacts with lead form  |
+| `cleanup_lead_submit`         | Lead saved successfully        |
+| `cleanup_consultation_click`  | Consultation CTA selected      |
+
+
+
 
 ### Safe Analytics Parameters
 
@@ -665,6 +773,8 @@ Page views
                 -> Clients won
 ```
 
+
+
 ### Initial Internal Targets
 
 These are product hypotheses, not industry guarantees. Review them after the first 30 days.
@@ -677,7 +787,11 @@ These are product hypotheses, not industry guarantees. Review them after the fir
 
 ---
 
+
+
 ## 14. SEO and Distribution Plan
+
+
 
 ### Proposed URL
 
@@ -691,6 +805,8 @@ These are product hypotheses, not industry guarantees. Review them after the fir
 - Catch-up bookkeeping calculator
 - How much work is required to fix bookkeeping?
 
+
+
 ### Page Requirements
 
 - Clear title and meta description
@@ -702,6 +818,8 @@ These are product hypotheses, not industry guarantees. Review them after the fir
 - FAQ section
 - Appropriate WebPage, SoftwareApplication, Breadcrumb, and FAQ schema where valid
 - Honest limitations and professional-review language
+
+
 
 ### Internal Links
 
@@ -716,6 +834,8 @@ Add links from:
 - Relevant blog posts
 - Footer or tools navigation if justified
 
+
+
 ### Launch Distribution
 
 - Google Business Profile post
@@ -728,15 +848,23 @@ Add links from:
 
 ---
 
+
+
 ## 15. Trust, Privacy, and Disclaimer
+
+
 
 ### Proposed Disclaimer
 
 > This assessment provides a preliminary scope based only on the information entered. It is not a quote, audit, assurance service, tax opinion, legal opinion, or guarantee. Final scope, timing, and pricing require review of the accounting records. Tax preparation, filings, notices, payroll corrections, and other services may require separate engagements.
 
+
+
 ### Sensitive-Information Warning
 
 > Do not enter Social Security numbers, tax identification numbers, bank details, passwords, tax returns, or other confidential financial records in this calculator.
+
+
 
 ### Required Review
 
@@ -748,6 +876,8 @@ Add links from:
 - [ ] Analytics privacy review
 
 ---
+
+
 
 ## 16. Accessibility Requirements
 
@@ -764,7 +894,11 @@ Add links from:
 
 ---
 
+
+
 ## 17. MVP Acceptance Criteria
+
+
 
 ### Calculator
 
@@ -775,6 +909,8 @@ Add links from:
 - [ ] Basic result is visible before contact submission
 - [ ] Deadline urgency is separate from complexity
 - [ ] Result identifies the factors that influenced the score
+
+
 
 ### Lead Capture
 
@@ -787,6 +923,8 @@ Add links from:
 - [ ] Customer confirmation does not contain sensitive data
 - [ ] Successful submission is tracked exactly once
 
+
+
 ### Quality
 
 - [ ] Works on common mobile and desktop sizes
@@ -797,6 +935,8 @@ Add links from:
 - [ ] Production build and lint checks pass
 - [ ] No confidential document or credential input exists
 
+
+
 ### Content
 
 - [ ] All questions are approved by the service owner
@@ -806,7 +946,11 @@ Add links from:
 
 ---
 
+
+
 ## 18. QA Test Matrix
+
+
 
 ### Scoring Tests
 
@@ -821,6 +965,8 @@ Add links from:
 - [ ] Multiple selected complexity factors
 - [ ] Client and server return identical results
 
+
+
 ### Form Tests
 
 - [ ] Email only
@@ -833,6 +979,8 @@ Add links from:
 - [ ] Rate-limited submission
 - [ ] Notification failure with successful database save
 - [ ] Confirmation email not applicable when no email supplied
+
+
 
 ### Experience Tests
 
@@ -848,7 +996,11 @@ Add links from:
 
 ---
 
+
+
 ## 19. Delivery Roadmap
+
+
 
 ### Phase 0 — Discovery and Approval
 
@@ -930,7 +1082,11 @@ Target: First 30 days
 
 ---
 
+
+
 ## 20. Prioritized Product Backlog
+
+
 
 ### Must Have for MVP
 
@@ -949,6 +1105,8 @@ Target: First 30 days
 - [ ] Disclaimer and privacy warning
 - [ ] Automated scoring tests
 
+
+
 ### Should Have
 
 - [ ] Personalized preparation checklist
@@ -959,6 +1117,8 @@ Target: First 30 days
 - [ ] Print-friendly result
 - [ ] FAQ content and schema
 
+
+
 ### Could Have
 
 - [ ] Downloadable PDF action plan
@@ -967,6 +1127,8 @@ Target: First 30 days
 - [ ] Industry-specific result guidance
 - [ ] Automatic follow-up sequence
 - [ ] Internal lead-priority score
+
+
 
 ### Not Now
 
@@ -979,7 +1141,11 @@ Target: First 30 days
 
 ---
 
+
+
 ## 21. AI Product Strategy
+
+
 
 ### MVP: No Generative AI Required
 
@@ -995,6 +1161,8 @@ Once the funnel and scoring are validated, AI may:
 - Draft a lead follow-up email
 - Suggest discovery-call questions
 
+
+
 ### AI Guardrails
 
 - AI cannot change the approved score or category
@@ -1005,6 +1173,8 @@ Once the funnel and scoring are validated, AI may:
 - AI output must have a deterministic fallback
 - Do not send sensitive customer data to a model without an approved data policy
 - Log prompt and content versions for quality review
+
+
 
 ### AI Success Test
 
@@ -1018,21 +1188,27 @@ Only keep AI-generated explanations if they improve at least one of the followin
 
 ---
 
+
+
 ## 22. Risks and Mitigations
 
-| Risk | Impact | Mitigation |
-|---|---|---|
-| Result feels like a guaranteed quote | Trust and scope disputes | Use complexity categories and explicit assumptions |
-| Scoring is inaccurate | Low-quality leads or customer confusion | Calibrate against historical projects and version rules |
-| Too many questions | High abandonment | Keep MVP to 7–9 questions and measure step drop-off |
-| Entire result is gated | Reduced trust and completion | Show useful basic result before lead capture |
-| Sensitive information is entered | Privacy and security exposure | Use fixed options and visible warnings; no uploads |
-| High-urgency leads expect immediate help | Service expectation mismatch | State response process and do not imply deadlines pause |
-| Team ignores calculator data | Lost operational value | Put score and urgency directly in notifications/dashboard |
-| AI invents advice | Compliance and trust risk | Keep AI out of scoring and ground future explanations |
-| Price range is poorly calibrated | Commercial loss or disputes | Delay price bands until real project data is available |
+
+| Risk                                     | Impact                                  | Mitigation                                                |
+| ---------------------------------------- | --------------------------------------- | --------------------------------------------------------- |
+| Result feels like a guaranteed quote     | Trust and scope disputes                | Use complexity categories and explicit assumptions        |
+| Scoring is inaccurate                    | Low-quality leads or customer confusion | Calibrate against historical projects and version rules   |
+| Too many questions                       | High abandonment                        | Keep MVP to 7–9 questions and measure step drop-off       |
+| Entire result is gated                   | Reduced trust and completion            | Show useful basic result before lead capture              |
+| Sensitive information is entered         | Privacy and security exposure           | Use fixed options and visible warnings; no uploads        |
+| High-urgency leads expect immediate help | Service expectation mismatch            | State response process and do not imply deadlines pause   |
+| Team ignores calculator data             | Lost operational value                  | Put score and urgency directly in notifications/dashboard |
+| AI invents advice                        | Compliance and trust risk               | Keep AI out of scoring and ground future explanations     |
+| Price range is poorly calibrated         | Commercial loss or disputes             | Delay price bands until real project data is available    |
+
 
 ---
+
+
 
 ## 23. Open Product Decisions
 
@@ -1051,19 +1227,27 @@ Resolve these before development begins:
 
 ---
 
+
+
 ## 24. Decision Log
 
-| Date | Decision | Owner | Reason | Impact |
-|---|---|---|---|---|
-| 2026-08-02 | Start with a rules-based bookkeeping cleanup assessment | Product | Faster, safer, and easier to validate than AI scoring | AI explanations deferred |
-| 2026-08-02 | Show a basic result before lead capture | Product | Build trust and provide immediate value | Detailed plan becomes the lead incentive |
-| 2026-08-02 | Do not provide an exact MVP price | Product | Scope cannot be confirmed without reviewing the books | Use complexity and urgency categories |
+
+| Date       | Decision                                                | Owner   | Reason                                                | Impact                                   |
+| ---------- | ------------------------------------------------------- | ------- | ----------------------------------------------------- | ---------------------------------------- |
+| 2026-08-02 | Start with a rules-based bookkeeping cleanup assessment | Product | Faster, safer, and easier to validate than AI scoring | AI explanations deferred                 |
+| 2026-08-02 | Show a basic result before lead capture                 | Product | Build trust and provide immediate value               | Detailed plan becomes the lead incentive |
+| 2026-08-02 | Do not provide an exact MVP price                       | Product | Scope cannot be confirmed without reviewing the books | Use complexity and urgency categories    |
+
 
 Add new decisions above this line or append them chronologically.
 
 ---
 
+
+
 ## 25. Research and Interview Notes
+
+
 
 ### Customer Interview Questions
 
@@ -1076,6 +1260,8 @@ Add new decisions above this line or append them chronologically.
 7. What would make you distrust an online bookkeeping calculator?
 8. What would convince you to request a professional review?
 
+
+
 ### Service-Team Interview Questions
 
 1. Which intake facts best predict cleanup effort?
@@ -1086,15 +1272,21 @@ Add new decisions above this line or append them chronologically.
 6. What information makes the first call more productive?
 7. Which cleanup clients are most likely to become monthly clients?
 
+
+
 ### Notes
 
 Record research findings here:
 
-- _No interviews recorded yet._
+- *No interviews recorded yet.*
 
 ---
 
+
+
 ## 26. Weekly Product Status
+
+
 
 ### Current Product Status
 
@@ -1107,6 +1299,8 @@ Record research findings here:
 - Product concept selected
 - Initial PM working plan created
 
+
+
 #### Planned Next
 
 - [ ] Assign product owner and bookkeeping service owner
@@ -1115,10 +1309,14 @@ Record research findings here:
 - [ ] Decide whether the professional review is free or paid
 - [ ] Approve customer-facing product name
 
+
+
 #### Blockers
 
 - Historical project data for scoring calibration has not been selected
 - Final operational handoff and response expectation are not defined
+
+
 
 #### Key Metric
 
@@ -1126,25 +1324,33 @@ Record research findings here:
 
 ---
 
+
+
 ## 27. Post-Launch Weekly Review Template
 
 Copy this section for each weekly review.
 
 ### Week of YYYY-MM-DD
 
+
+
 #### Funnel
 
-| Metric | This week | Previous week | Change |
-|---|---:|---:|---:|
-| Calculator page views |  |  |  |
-| Assessment starts |  |  |  |
-| Completed assessments |  |  |  |
-| Lead submissions |  |  |  |
-| Consultation clicks |  |  |  |
-| Appointments |  |  |  |
-| Qualified leads |  |  |  |
-| Clients won |  |  |  |
-| Revenue won |  |  |  |
+
+| Metric                | This week | Previous week | Change |
+| --------------------- | --------- | ------------- | ------ |
+| Calculator page views |           |               |        |
+| Assessment starts     |           |               |        |
+| Completed assessments |           |               |        |
+| Lead submissions      |           |               |        |
+| Consultation clicks   |           |               |        |
+| Appointments          |           |               |        |
+| Qualified leads       |           |               |        |
+| Clients won           |           |               |        |
+| Revenue won           |           |               |        |
+
+
+
 
 #### Quality Review
 
@@ -1154,6 +1360,8 @@ Copy this section for each weekly review.
 - Common customer confusion:
 - Common unqualified-lead reason:
 - Service-team feedback:
+
+
 
 #### Decisions and Experiments
 
@@ -1165,7 +1373,11 @@ Copy this section for each weekly review.
 
 ---
 
+
+
 ## 28. Launch Readiness Checklist
+
+
 
 ### Product
 
@@ -1174,6 +1386,8 @@ Copy this section for each weekly review.
 - [ ] Result content approved
 - [ ] Consultation handoff confirmed
 - [ ] Product owner approves launch
+
+
 
 ### Engineering
 
@@ -1186,6 +1400,8 @@ Copy this section for each weekly review.
 - [ ] Lint passes
 - [ ] Production build passes
 
+
+
 ### Trust and Compliance
 
 - [ ] Disclaimer approved
@@ -1194,6 +1410,8 @@ Copy this section for each weekly review.
 - [ ] Analytics contains no personal information
 - [ ] Accessibility review completed
 
+
+
 ### Marketing
 
 - [ ] Metadata approved
@@ -1201,6 +1419,8 @@ Copy this section for each weekly review.
 - [ ] Sitemap updated
 - [ ] Launch announcement prepared
 - [ ] Supporting content identified
+
+
 
 ### Operations
 
@@ -1211,6 +1431,8 @@ Copy this section for each weekly review.
 - [ ] Cleanup-to-monthly offer documented
 
 ---
+
+
 
 ## 29. Immediate Next Actions
 
@@ -1228,4 +1450,3 @@ Complete these actions in order:
 10. [ ] Convert the approved specification into engineering tasks.
 
 Do not begin building a QuickBooks connection or generative-AI scoring system during the MVP.
-

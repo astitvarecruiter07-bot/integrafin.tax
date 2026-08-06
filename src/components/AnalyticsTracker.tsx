@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { captureLeadAttribution } from "@/lib/attribution";
 import { baseEventParameters, trackEvent, type AnalyticsEventName } from "@/lib/analytics";
@@ -32,6 +32,18 @@ function getTrackedClick(anchor: HTMLAnchorElement): AnalyticsEventName | undefi
 
 export default function AnalyticsTracker() {
   const pathname = usePathname();
+  const previousPathname = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (previousPathname.current === null) {
+      previousPathname.current = pathname;
+      return;
+    }
+
+    if (previousPathname.current === pathname) return;
+    previousPathname.current = pathname;
+    window.fbq?.("track", "PageView");
+  }, [pathname]);
 
   useEffect(() => {
     const attribution = captureLeadAttribution();

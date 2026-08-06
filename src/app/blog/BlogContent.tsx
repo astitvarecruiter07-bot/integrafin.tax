@@ -29,6 +29,10 @@ const resourceLinks = [
     { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania Tax Services" },
     { href: "/blog/irs-compliance-guide", label: "IRS Compliance Guide" },
     { href: "/tax-calculator", label: "Tax Estimator" },
+    { href: "/quarterly-estimated-tax-calculator", label: "Quarterly Tax Calculator" },
+    { href: "/self-employment-tax-calculator", label: "Self-Employment Calculator" },
+    { href: "/1099-tax-calculator", label: "1099 Tax Calculator" },
+    { href: "/capital-gains-tax-calculator", label: "Capital Gains Calculator" },
 ];
 
 export default function BlogContent({ initialPosts }: BlogContentProps) {

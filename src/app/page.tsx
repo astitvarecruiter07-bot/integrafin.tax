@@ -410,6 +410,37 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 px-6 lg:px-8 bg-white border-t border-slate-200/60">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+            <div>
+              <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">Free Planning Tools</span>
+              <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">2026 Federal Tax Calculators</h2>
+              <p className="text-slate-600 mt-4 max-w-3xl">
+                Estimate federal income tax, quarterly payments, self-employment tax, 1099 contractor tax, or capital gains using IRS- and SSA-sourced planning figures. Federal estimates only.
+              </p>
+            </div>
+            <Link href="/tax-calculator" className="inline-flex items-center justify-center rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#0057b8] transition-colors">
+              Use Federal Tax Calculator
+            </Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { href: "/quarterly-estimated-tax-calculator", title: "Quarterly Estimated Tax", description: "Plan remaining 2026 federal estimated payments after withholding and payments already made." },
+              { href: "/self-employment-tax-calculator", title: "Self-Employment Tax", description: "Estimate Schedule SE Social Security, Medicare, income tax, and the deductible portion." },
+              { href: "/1099-tax-calculator", title: "1099 & Freelancer Tax", description: "Start with gross contract income and expenses to estimate net profit and a tax reserve." },
+              { href: "/capital-gains-tax-calculator", title: "Capital Gains Tax", description: "Compare short- and long-term federal gain treatment using 2026 thresholds." },
+            ].map((calculator) => (
+              <Link key={calculator.href} href={calculator.href} className="rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:border-[#0092df]/50 hover:shadow-lg transition-all">
+                <h3 className="text-lg font-black text-[#003580]">{calculator.title}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mt-2">{calculator.description}</p>
+                <span className="inline-flex mt-4 text-sm font-bold text-[#0057b8]">Open calculator →</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 px-6 lg:px-8 bg-slate-50 border-t border-slate-200/60">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">

@@ -1,7 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { baseEventParameters, trackEvent } from "@/lib/analytics";
+import {
+    calculatorLandingConfigs,
+    type TaxCalculatorVariant,
+} from "./calculatorLandingConfig";
 
 /* ------------------------- 2025/2026 TAX DATA ------------------------- */
 
@@ -73,6 +77,14 @@ const CALCULATOR_SOURCE_LINKS = [
     {
         href: "https://www.irs.gov/businesses/small-businesses-self-employed/self-employment-tax-social-security-and-medicare-taxes",
         label: "IRS self-employment tax guidance",
+    },
+    {
+        href: "https://www.irs.gov/forms-pubs/about-form-1040-es",
+        label: "IRS Form 1040-ES and instructions",
+    },
+    {
+        href: "https://www.irs.gov/forms-pubs/about-publication-505",
+        label: "IRS Publication 505: withholding and estimated tax",
     },
     {
         href: "https://www.irs.gov/taxtopics/tc751",
@@ -284,61 +296,12 @@ const CALCULATOR_LIMITATIONS = [
     "The result is not a filed return, IRS software, or a guarantee of refund or tax due.",
 ];
 
-const TAX_CALCULATOR_FAQS = [
-    {
-        question: "How accurate is this tax calculator?",
-        answer:
-            "It provides a planning estimate using selected-year federal brackets, standard deductions, Child Tax Credit amounts, Social Security wage bases, and capital-gain thresholds. Final tax can change after full Form 1040 details, phaseouts, state taxes, penalties, and refundable-credit rules are reviewed.",
-    },
-    {
-        question: "Does this calculator estimate my 2025 tax refund?",
-        answer:
-            "Yes. Choose 2025 filing, enter income, withholding, deductions, credits, and qualifying children, and the calculator estimates a federal refund or balance due.",
-    },
-    {
-        question: "Can I use this for 2026 tax planning?",
-        answer:
-            "Yes. Choose 2026 planning to estimate federal income tax, self-employment tax, long-term capital gains, and quarterly planning amounts using 2026 IRS and SSA figures.",
-    },
-    {
-        question: "Does this include self-employment tax?",
-        answer:
-            "Yes. The self-employment tab estimates Social Security and Medicare tax on 92.35% of net self-employment earnings and coordinates with optional W-2 wages.",
-    },
-    {
-        question: "Does this include state income tax?",
-        answer:
-            "No. This calculator currently focuses on federal estimates. State income tax, local tax, franchise tax, and sales tax are outside the calculator scope.",
-    },
-    {
-        question: "Does this include capital gains tax?",
-        answer:
-            "Yes. The capital gains tab estimates short-term gains as ordinary income and long-term gains using selected-year 0%, 15%, and 20% thresholds. It does not include NIIT or special capital-gain rates.",
-    },
-    {
-        question: "What tax brackets does this calculator use?",
-        answer:
-            "It uses IRS-published 2025 federal income tax brackets and 2026 inflation-adjusted federal tax brackets, plus selected-year standard deduction and long-term capital-gain thresholds.",
-    },
-    {
-        question: "Why is my refund different from my tax liability?",
-        answer:
-            "Tax liability is the estimated tax after deductions and credits. Refund or balance due compares that liability with withholding and estimated payments already paid.",
-    },
-    {
-        question: "Should I use standard or itemized deductions?",
-        answer:
-            "Use the larger deduction only after reviewing your actual deductible expenses. The calculator lets you compare the standard deduction with an itemized deduction estimate.",
-    },
-    {
-        question: "When are 2026 estimated tax payments due?",
-        answer:
-            "For 2026 planning, the calculator displays estimated payment dates of April 15, 2026, June 15, 2026, September 15, 2026, and January 15, 2027.",
-    },
-];
-
 const RELATED_TAX_RESOURCES = [
     { href: "/tax-calculator-guide", label: "2025 and 2026 federal tax calculator guide" },
+    { href: "/quarterly-estimated-tax-calculator", label: "2026 quarterly estimated tax calculator" },
+    { href: "/self-employment-tax-calculator", label: "2026 self-employment tax calculator" },
+    { href: "/1099-tax-calculator", label: "1099 tax calculator for freelancers" },
+    { href: "/capital-gains-tax-calculator", label: "2026 capital gains tax calculator" },
     { href: "/services#individual", label: "Individual tax preparation services" },
     { href: "/services#business", label: "Small business tax and accounting services" },
     { href: "/texas-tax-accounting-services", label: "Texas tax and accounting services" },
@@ -408,6 +371,60 @@ function getChildTaxCreditEstimate(
     const tentativeCredit = qualifyingChildren * data.childTaxCredit;
     const phaseout = income > phaseoutStart ? Math.ceil((income - phaseoutStart) / 1000) * 50 : 0;
     return Math.min(Math.max(0, tentativeCredit - phaseout), totalTax);
+}
+
+type SelfEmploymentEstimate = {
+    seTax: number;
+    ssComponent: number;
+    medicareComponent: number;
+    incomeTax: number;
+    totalTax: number;
+    quarterlyEstimate: number;
+    seDeduction: number;
+    netEarningsBase: number;
+};
+
+function calculateSelfEmploymentEstimate({
+    netIncome,
+    w2Wages,
+    status,
+    taxYear,
+}: {
+    netIncome: number;
+    w2Wages: number;
+    status: FilingStatus;
+    taxYear: TaxYear;
+}): SelfEmploymentEstimate {
+    const taxData = TAX_DATA[taxYear];
+    const net = Math.max(0, netIncome);
+    const wages = Math.max(0, w2Wages);
+    const seBase = net * 0.9235;
+    const owesSelfEmploymentTax = seBase >= 400;
+    const remainingSocialSecurityBase = Math.max(0, taxData.ssWageBase - wages);
+    const ssTax = owesSelfEmploymentTax ? Math.min(seBase, remainingSocialSecurityBase) * 0.124 : 0;
+    const medicareTax = owesSelfEmploymentTax ? seBase * 0.029 : 0;
+    const medicareThreshold = Math.max(0, taxData.additionalMedicareThreshold[status] - wages);
+    const additionalMedicare =
+        owesSelfEmploymentTax && seBase > medicareThreshold
+            ? (seBase - medicareThreshold) * 0.009
+            : 0;
+    const seTax = ssTax + medicareTax + additionalMedicare;
+    const seDeduction = (ssTax + medicareTax) / 2;
+    const deduction = getStandardDeduction(taxYear, status);
+    const taxableIncome = Math.max(0, net + wages - deduction - seDeduction);
+    const { total: incomeTax } = calcIncomeTax(taxableIncome, status, taxYear);
+    const totalTax = seTax + incomeTax;
+
+    return {
+        seTax,
+        ssComponent: ssTax,
+        medicareComponent: medicareTax + additionalMedicare,
+        incomeTax,
+        totalTax,
+        quarterlyEstimate: totalTax / 4,
+        seDeduction,
+        netEarningsBase: seBase,
+    };
 }
 
 function formatPercent(rate: number) {
@@ -595,15 +612,21 @@ function LimitationsSection() {
     );
 }
 
-function CalculatorFaqSection() {
+function CalculatorFaqSection({
+    title,
+    faqs,
+}: {
+    title: string;
+    faqs: { question: string; answer: string }[];
+}) {
     return (
         <section className="py-16 bg-white border-b border-gray-100">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
                 <h2 className="text-3xl font-black text-[#003580] tracking-normal">
-                    Federal tax calculator FAQ
+                    {title}
                 </h2>
                 <div className="space-y-4 mt-8">
-                    {TAX_CALCULATOR_FAQS.map((faq) => (
+                    {faqs.map((faq) => (
                         <article key={faq.question} className="border border-slate-200 rounded-xl p-5">
                             <h3 className="text-lg font-bold text-[#003580]">{faq.question}</h3>
                             <p className="text-slate-600 text-sm leading-relaxed mt-2">{faq.answer}</p>
@@ -612,6 +635,57 @@ function CalculatorFaqSection() {
                 </div>
             </div>
         </section>
+    );
+}
+
+function FocusedCalculatorContent({ variant }: { variant: TaxCalculatorVariant }) {
+    const config = calculatorLandingConfigs[variant];
+    const relatedCalculators = [
+        { href: "/tax-calculator", label: "Federal tax calculator and refund estimator" },
+        { href: "/quarterly-estimated-tax-calculator", label: "Quarterly estimated tax calculator" },
+        { href: "/self-employment-tax-calculator", label: "Self-employment tax calculator" },
+        { href: "/1099-tax-calculator", label: "1099 tax calculator" },
+        { href: "/capital-gains-tax-calculator", label: "Capital gains tax calculator" },
+    ].filter((link) => link.href !== config.path);
+
+    return (
+        <>
+            <section className="py-16 bg-white border-b border-gray-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
+                        {config.contentEyebrow}
+                    </p>
+                    <h2 className="text-3xl sm:text-4xl font-black text-[#003580] max-w-4xl">
+                        {config.contentHeading}
+                    </h2>
+                    <p className="text-slate-600 leading-relaxed mt-4 max-w-4xl">{config.contentIntro}</p>
+                    <div className="grid gap-4 md:grid-cols-3 mt-10">
+                        {config.explanationPoints.map((point) => (
+                            <article key={point.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                                <h3 className="font-black text-[#003580]">{point.title}</h3>
+                                <p className="text-sm text-slate-600 leading-relaxed mt-2">{point.description}</p>
+                            </article>
+                        ))}
+                    </div>
+                    <article className="mt-8 rounded-2xl border border-[#00C2CB]/30 bg-[#00C2CB]/5 p-6">
+                        <h3 className="text-xl font-black text-[#003580]">{config.exampleTitle}</h3>
+                        <p className="text-sm text-slate-700 leading-relaxed mt-3">{config.exampleBody}</p>
+                    </article>
+                </div>
+            </section>
+            <section className="py-14 bg-slate-50 border-b border-gray-100">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <h2 className="text-3xl font-black text-[#003580]">Related federal tax calculators</h2>
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mt-7">
+                        {relatedCalculators.map((link) => (
+                            <Link key={link.href} href={link.href} className="rounded-xl border border-slate-200 bg-white p-4 text-sm font-semibold text-[#0057b8] hover:border-[#00C2CB] hover:text-[#003580]">
+                                {link.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </>
     );
 }
 
@@ -648,7 +722,7 @@ function RelatedResourcesSection() {
 
 /* ───────────────────────── TABS ───────────────────────── */
 
-type TabKey = "federal" | "selfEmployment" | "capitalGains" | "comparison";
+type TabKey = "federal" | "quarterly" | "selfEmployment" | "1099" | "capitalGains" | "comparison";
 
 const TABS: { key: TabKey; label: string; icon: React.ReactNode }[] = [
     {
@@ -661,11 +735,29 @@ const TABS: { key: TabKey; label: string; icon: React.ReactNode }[] = [
         ),
     },
     {
+        key: "quarterly",
+        label: "Quarterly Tax",
+        icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+        ),
+    },
+    {
         key: "selfEmployment",
         label: "Self-Employment",
         icon: (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.193 23.193 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+        ),
+    },
+    {
+        key: "1099",
+        label: "1099 / Freelancer",
+        icon: (
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 14l2 2 4-4m-8 9h10a2 2 0 002-2V5a2 2 0 00-2-2H9L5 7v12a2 2 0 002 2z" />
             </svg>
         ),
     },
@@ -1157,48 +1249,19 @@ function SelfEmploymentTab({ taxYear }: { taxYear: TaxYear }) {
     const [status, setStatus] = useState<FilingStatus>("single");
     const [netIncome, setNetIncome] = useState("");
     const [w2Wages, setW2Wages] = useState("");
-    const [result, setResult] = useState<{
-        seTax: number;
-        ssComponent: number;
-        medicareComponent: number;
-        incomeTax: number;
-        totalTax: number;
-        quarterlyEstimate: number;
-        seDeduction: number;
-        netEarningsBase: number;
-    } | null>(null);
+    const [result, setResult] = useState<SelfEmploymentEstimate | null>(null);
 
     const calculate = () => {
         const net = parseNum(netIncome);
         if (net <= 0) return;
-        const wages = parseNum(w2Wages);
-
-        const seBase = net * 0.9235;
-        const owesSelfEmploymentTax = seBase >= 400;
-        const remainingSocialSecurityBase = Math.max(0, taxData.ssWageBase - wages);
-        const ssTax = owesSelfEmploymentTax ? Math.min(seBase, remainingSocialSecurityBase) * 0.124 : 0;
-        const medicareTax = owesSelfEmploymentTax ? seBase * 0.029 : 0;
-        const medicareThreshold = Math.max(0, taxData.additionalMedicareThreshold[status] - wages);
-        const additionalMedicare = owesSelfEmploymentTax && seBase > medicareThreshold ? (seBase - medicareThreshold) * 0.009 : 0;
-        const seTax = ssTax + medicareTax + additionalMedicare;
-        // Form 8959 Additional Medicare Tax is not part of the deductible
-        // employer-equivalent portion of self-employment tax.
-        const seDeduction = (ssTax + medicareTax) / 2;
-
-        const deduction = getStandardDeduction(taxYear, status);
-        const taxableIncome = Math.max(0, net + wages - deduction - seDeduction);
-        const { total: incomeTax } = calcIncomeTax(taxableIncome, status, taxYear);
-
-        setResult({
-            seTax,
-            ssComponent: ssTax,
-            medicareComponent: medicareTax + additionalMedicare,
-            incomeTax,
-            totalTax: seTax + incomeTax,
-            quarterlyEstimate: (seTax + incomeTax) / 4,
-            seDeduction,
-            netEarningsBase: seBase,
-        });
+        setResult(
+            calculateSelfEmploymentEstimate({
+                netIncome: net,
+                w2Wages: parseNum(w2Wages),
+                status,
+                taxYear,
+            }),
+        );
         trackCalculatorCompletion("self_employment_tax", taxYear);
     };
 
@@ -1304,6 +1367,202 @@ function SelfEmploymentTab({ taxYear }: { taxYear: TaxYear }) {
 }
 
 /* ═══════════════════════ CAPITAL GAINS TAB ═══════════════════════ */
+
+function QuarterlyEstimatedTaxTab({ taxYear }: { taxYear: TaxYear }) {
+    const taxData = TAX_DATA[taxYear];
+    const [status, setStatus] = useState<FilingStatus>("single");
+    const [netIncome, setNetIncome] = useState("");
+    const [w2Wages, setW2Wages] = useState("");
+    const [withholding, setWithholding] = useState("");
+    const [paymentsMade, setPaymentsMade] = useState("");
+    const [remainingInstallments, setRemainingInstallments] = useState("2");
+    const [result, setResult] = useState<
+        (SelfEmploymentEstimate & {
+            totalPayments: number;
+            remainingLiability: number;
+            estimatedOverpayment: number;
+            remainingInstallmentEstimate: number;
+        }) | null
+    >(null);
+
+    const calculate = () => {
+        const net = parseNum(netIncome);
+        const wages = parseNum(w2Wages);
+        if (net + wages <= 0) return;
+
+        const estimate = calculateSelfEmploymentEstimate({ netIncome: net, w2Wages: wages, status, taxYear });
+        const totalPayments = parseNum(withholding) + parseNum(paymentsMade);
+        const remainingLiability = Math.max(0, estimate.totalTax - totalPayments);
+        const installmentCount = Math.max(1, parseInt(remainingInstallments, 10) || 1);
+
+        setResult({
+            ...estimate,
+            totalPayments,
+            remainingLiability,
+            estimatedOverpayment: Math.max(0, totalPayments - estimate.totalTax),
+            remainingInstallmentEstimate: remainingLiability / installmentCount,
+        });
+        trackCalculatorCompletion("quarterly_estimated_tax", taxYear);
+    };
+
+    return (
+        <div className="grid lg:grid-cols-5 gap-8">
+            <div className="lg:col-span-2">
+                <div className="glass-card rounded-2xl p-6 space-y-5">
+                    <SelectInput label="Filing Status" value={status} onChange={(value) => setStatus(value as FilingStatus)} options={FILING_STATUSES} id="quarterly-status" />
+                    <MoneyInput label="Expected Net Self-Employment Income" value={netIncome} onChange={setNetIncome} id="quarterly-net-income" placeholder="80,000" />
+                    <MoneyInput label="Expected W-2 Wages (optional)" value={w2Wages} onChange={setW2Wages} id="quarterly-w2-wages" placeholder="0" />
+                    <MoneyInput label="Expected Federal Withholding" value={withholding} onChange={setWithholding} id="quarterly-withholding" placeholder="0" />
+                    <MoneyInput label="Estimated Payments Already Made" value={paymentsMade} onChange={setPaymentsMade} id="quarterly-payments-made" placeholder="0" />
+                    <SelectInput
+                        label="Remaining Planned Installments"
+                        value={remainingInstallments}
+                        onChange={setRemainingInstallments}
+                        options={[
+                            { value: "1", label: "1 remaining installment" },
+                            { value: "2", label: "2 remaining installments" },
+                            { value: "3", label: "3 remaining installments" },
+                            { value: "4", label: "4 installments for the year" },
+                        ]}
+                        id="quarterly-remaining-installments"
+                    />
+                    <button type="button" onClick={calculate} disabled={!netIncome && !w2Wages} className="w-full py-3.5 bg-gradient-to-r from-primary to-accent-dark text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" id="quarterly-calculate-btn">
+                        Estimate Quarterly Payments
+                    </button>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                        This is a simplified federal planning estimate. It does not test every Form 1040-ES safe-harbor rule, annualized-income method, credit, deduction, penalty, or special deadline.
+                    </p>
+                </div>
+            </div>
+            <div className="lg:col-span-3 space-y-5">
+                {!result ? (
+                    <div className="glass-card rounded-2xl p-12 text-center">
+                        <h3 className="text-lg font-bold text-foreground mb-2">Quarterly Estimated Tax Planner</h3>
+                        <p className="text-text-secondary text-sm max-w-md mx-auto">
+                            Enter annual planning amounts and payments already made to estimate the federal balance remaining across the installments you select.
+                        </p>
+                    </div>
+                ) : (
+                    <>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            <ResultCard label="Estimated Annual Federal Tax" value={fmt(result.totalTax)} sub="Income tax plus self-employment tax" accent />
+                            <ResultCard label="Estimated Remaining Liability" value={fmt(result.remainingLiability)} sub={`After ${fmt(result.totalPayments)} of withholding and payments`} />
+                            <ResultCard label="Planning Amount per Remaining Installment" value={fmt(result.remainingInstallmentEstimate)} sub={`Across ${remainingInstallments} selected installment${remainingInstallments === "1" ? "" : "s"}`} />
+                            <ResultCard label="Estimated Overpayment" value={fmt(result.estimatedOverpayment)} sub="Shown only when payments exceed this simplified estimate" />
+                        </div>
+                        <div className="glass-card rounded-2xl p-6">
+                            <h4 className="font-bold text-foreground mb-4">{taxYear} Estimated Tax Due Dates</h4>
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                {taxData.estimatedTaxDueDates.map((quarter) => (
+                                    <div key={quarter.q} className="bg-accent-light rounded-xl p-3 text-center">
+                                        <p className="text-xs text-text-secondary">{quarter.q}</p>
+                                        <p className="font-bold text-foreground text-sm">{quarter.date}</p>
+                                        <p className="text-xs text-text-secondary">{quarter.period}</p>
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-xs text-slate-500 mt-4">
+                                Disaster relief, fiscal-year filing, weekends, holidays, or individual circumstances may change a deadline. Confirm the applicable date with current IRS guidance.
+                            </p>
+                        </div>
+                    </>
+                )}
+            </div>
+        </div>
+    );
+}
+
+function Tax1099Tab({ taxYear }: { taxYear: TaxYear }) {
+    const [status, setStatus] = useState<FilingStatus>("single");
+    const [grossReceipts, setGrossReceipts] = useState("");
+    const [businessExpenses, setBusinessExpenses] = useState("");
+    const [w2Wages, setW2Wages] = useState("");
+    const [payments, setPayments] = useState("");
+    const [result, setResult] = useState<
+        (SelfEmploymentEstimate & {
+            grossReceipts: number;
+            expenses: number;
+            netProfit: number;
+            payments: number;
+            remainingLiability: number;
+            reserveRate: number;
+        }) | null
+    >(null);
+
+    const calculate = () => {
+        const gross = parseNum(grossReceipts);
+        if (gross <= 0) return;
+        const expenses = parseNum(businessExpenses);
+        const netProfit = Math.max(0, gross - expenses);
+        const estimate = calculateSelfEmploymentEstimate({
+            netIncome: netProfit,
+            w2Wages: parseNum(w2Wages),
+            status,
+            taxYear,
+        });
+        const paid = parseNum(payments);
+
+        setResult({
+            ...estimate,
+            grossReceipts: gross,
+            expenses,
+            netProfit,
+            payments: paid,
+            remainingLiability: Math.max(0, estimate.totalTax - paid),
+            reserveRate: gross > 0 ? (estimate.totalTax / gross) * 100 : 0,
+        });
+        trackCalculatorCompletion("1099_tax", taxYear);
+    };
+
+    return (
+        <div className="grid lg:grid-cols-5 gap-8">
+            <div className="lg:col-span-2">
+                <div className="glass-card rounded-2xl p-6 space-y-5">
+                    <SelectInput label="Filing Status" value={status} onChange={(value) => setStatus(value as FilingStatus)} options={FILING_STATUSES} id="tax1099-status" />
+                    <MoneyInput label="Gross 1099 / Contract Income" value={grossReceipts} onChange={setGrossReceipts} id="tax1099-gross" placeholder="100,000" />
+                    <MoneyInput label="Estimated Business Expenses" value={businessExpenses} onChange={setBusinessExpenses} id="tax1099-expenses" placeholder="20,000" />
+                    <MoneyInput label="W-2 Wages (optional)" value={w2Wages} onChange={setW2Wages} id="tax1099-w2" placeholder="0" />
+                    <MoneyInput label="Federal Withholding and Payments" value={payments} onChange={setPayments} id="tax1099-payments" placeholder="0" />
+                    <button type="button" onClick={calculate} disabled={!grossReceipts} className="w-full py-3.5 bg-gradient-to-r from-primary to-accent-dark text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer" id="tax1099-calculate-btn">
+                        Estimate 1099 Taxes
+                    </button>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                        Enter only estimated ordinary and necessary business expenses. A Form 1099 amount is gross information, not automatically the same as taxable net profit.
+                    </p>
+                </div>
+            </div>
+            <div className="lg:col-span-3 space-y-5">
+                {!result ? (
+                    <div className="glass-card rounded-2xl p-12 text-center">
+                        <h3 className="text-lg font-bold text-foreground mb-2">1099 and Freelancer Tax Planner</h3>
+                        <p className="text-text-secondary text-sm max-w-md mx-auto">
+                            Start with gross contract income and business expenses to estimate net profit, federal income tax, self-employment tax, and a quarterly reserve.
+                        </p>
+                    </div>
+                ) : (
+                    <>
+                        <div className="grid sm:grid-cols-2 gap-4">
+                            <ResultCard label="Estimated Net Profit" value={fmt(result.netProfit)} sub={`${fmt(result.grossReceipts)} gross minus ${fmt(result.expenses)} entered expenses`} />
+                            <ResultCard label="Estimated Combined Federal Tax" value={fmt(result.totalTax)} sub="Income tax plus self-employment tax" accent />
+                            <ResultCard label="Estimated Remaining Liability" value={fmt(result.remainingLiability)} sub={`After ${fmt(result.payments)} entered payments`} />
+                            <ResultCard label="Illustrative Gross-Income Reserve Rate" value={`${result.reserveRate.toFixed(1)}%`} sub="Estimated total tax divided by gross receipts; not a universal set-aside rate" />
+                        </div>
+                        <div className="grid sm:grid-cols-3 gap-4">
+                            <ResultCard label="Self-Employment Tax" value={fmt(result.seTax)} />
+                            <ResultCard label="Income Tax" value={fmt(result.incomeTax)} />
+                            <ResultCard label="Quarterly Planning Amount" value={fmt(result.quarterlyEstimate)} sub="One-fourth of the annual estimate before entered payments" />
+                        </div>
+                        {result.expenses >= result.grossReceipts && (
+                            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-sm text-amber-800">
+                                Entered expenses equal or exceed gross receipts, so the tool limits estimated net profit to $0. It does not calculate or carry a business loss to other parts of a tax return.
+                            </div>
+                        )}
+                    </>
+                )}
+            </div>
+        </div>
+    );
+}
 
 function CapitalGainsTab({ taxYear }: { taxYear: TaxYear }) {
     const taxData = TAX_DATA[taxYear];
@@ -1568,15 +1827,29 @@ function ComparisonTab({ taxYear }: { taxYear: TaxYear }) {
 
 /* ═══════════════════════ MAIN PAGE ═══════════════════════ */
 
-export default function TaxCalculatorClient() {
-    const [activeTab, setActiveTab] = useState<TabKey>("federal");
+export default function TaxCalculatorClient({
+    variant = "hub",
+}: {
+    variant?: TaxCalculatorVariant;
+}) {
+    const landingConfig = calculatorLandingConfigs[variant];
+    const [activeTab, setActiveTab] = useState<TabKey>(landingConfig.initialTab);
     const [taxYear, setTaxYear] = useState<TaxYear>("2026");
     const taxData = TAX_DATA[taxYear];
+
+    useEffect(() => {
+        trackEvent("view_content", {
+            ...baseEventParameters(),
+            calculator_name: landingConfig.analyticsName,
+            tax_year: "2026",
+        });
+        window.fbq?.("track", "ViewContent", { content_name: landingConfig.h1 });
+    }, [landingConfig.analyticsName, landingConfig.h1]);
 
     return (
         <main>
             {/* Hero Header */}
-            <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden" style={{ background: "linear-gradient(to bottom, #0047AB, #002D6E)" }}>
+            <section className={`relative overflow-hidden ${variant === "hub" ? "pt-32 pb-20 md:pt-40 md:pb-28" : "pt-28 pb-10 md:pt-32 md:pb-12"}`} style={{ background: "linear-gradient(to bottom, #0047AB, #002D6E)" }}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
                     <div className="max-w-3xl">
                         <Link
@@ -1591,19 +1864,16 @@ export default function TaxCalculatorClient() {
                         
                         <div className="inline-flex items-center space-x-2 bg-[#00C2CB]/20 border border-[#00C2CB]/30 px-4 py-1.5 rounded-full mb-6">
                             <span className="w-2 h-2 rounded-full bg-[#00C2CB] animate-pulse"></span>
-                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00C2CB]">Free 2025 + 2026 Tax Estimator</span>
+                            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00C2CB]">{landingConfig.badge}</span>
                         </div>
 
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight tracking-normal text-white mb-6">
-                            2025 and 2026 Federal Tax Calculator & Refund Estimator
+                        <h1 className={`${variant === "hub" ? "text-4xl sm:text-5xl md:text-6xl" : "text-4xl sm:text-5xl"} font-black leading-tight tracking-normal text-white mb-6`}>
+                            {landingConfig.h1}
                         </h1>
                         
                         <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
                             <span className="font-black text-[#00C2CB]">Short answer:</span>{" "}
-                            Use this federal tax calculator to estimate 2025 filing or 2026 planning
-                            results from filing status, income, deductions, credits, self-employment,
-                            and long-term gains. It is a planning estimate, not a filed return, and
-                            excludes state tax and several federal adjustments.
+                            {landingConfig.description}
                         </p>
 
                         <div className="flex flex-wrap items-center gap-6">
@@ -1639,6 +1909,7 @@ export default function TaxCalculatorClient() {
             </section>
 
             {/* Tab Navigation */}
+            {variant === "hub" && (
             <section className="sticky top-[68px] z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="flex overflow-x-auto gap-1 py-3 scrollbar-hide">
@@ -1652,6 +1923,7 @@ export default function TaxCalculatorClient() {
                                     : "text-gray-500 hover:bg-gray-50 hover:text-[#0047AB]"
                                     }`}
                                 id={`tab-${tab.key}`}
+                                aria-pressed={activeTab === tab.key}
                             >
                                 {tab.icon}
                                 {tab.label}
@@ -1660,6 +1932,7 @@ export default function TaxCalculatorClient() {
                     </div>
                 </div>
             </section>
+            )}
 
             {/* Tab Content */}
             <section className="section-padding bg-section-bg min-h-[600px]" id="tax-estimator">
@@ -1691,7 +1964,9 @@ export default function TaxCalculatorClient() {
                     </div>
 
                     {activeTab === "federal" && <FederalIncomeTab key={`federal-${taxYear}`} taxYear={taxYear} />}
+                    {activeTab === "quarterly" && <QuarterlyEstimatedTaxTab key={`quarterly-${taxYear}`} taxYear={taxYear} />}
                     {activeTab === "selfEmployment" && <SelfEmploymentTab key={`se-${taxYear}`} taxYear={taxYear} />}
+                    {activeTab === "1099" && <Tax1099Tab key={`tax1099-${taxYear}`} taxYear={taxYear} />}
                     {activeTab === "capitalGains" && <CapitalGainsTab key={`cg-${taxYear}`} taxYear={taxYear} />}
                     {activeTab === "comparison" && <ComparisonTab key={`cmp-${taxYear}`} taxYear={taxYear} />}
                 </div>
@@ -1746,9 +2021,9 @@ export default function TaxCalculatorClient() {
                 </div>
             </section>
 
-            <DataTablesSection taxYear={taxYear} />
+            {variant === "hub" ? <DataTablesSection taxYear={taxYear} /> : <FocusedCalculatorContent variant={variant} />}
             <LimitationsSection />
-            <CalculatorFaqSection />
+            <CalculatorFaqSection title={`${landingConfig.h1} FAQ`} faqs={landingConfig.faqs} />
             <RelatedResourcesSection />
 
             {/* Info Section */}
