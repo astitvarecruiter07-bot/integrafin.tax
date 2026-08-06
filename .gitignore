@@ -50,3 +50,5 @@ next-env.d.ts
 # temp and scratch
 scratch/
 *.html
+.local-server.pid
+.local-server.port
