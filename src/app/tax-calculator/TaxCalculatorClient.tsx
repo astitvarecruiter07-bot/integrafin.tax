@@ -298,6 +298,7 @@ const CALCULATOR_LIMITATIONS = [
 
 const RELATED_TAX_RESOURCES = [
     { href: "/tax-calculator-guide", label: "2025 and 2026 federal tax calculator guide" },
+    { href: "/blog/how-to-calculate-2026-quarterly-estimated-tax-payments", label: "How to calculate 2026 quarterly estimated tax payments" },
     { href: "/quarterly-estimated-tax-calculator", label: "2026 quarterly estimated tax calculator" },
     { href: "/self-employment-tax-calculator", label: "2026 self-employment tax calculator" },
     { href: "/1099-tax-calculator", label: "1099 tax calculator for freelancers" },

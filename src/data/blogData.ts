@@ -24,6 +24,230 @@ export interface BlogPost {
 
 export const mockBlogPosts: BlogPost[] = [
     {
+        slug: "how-to-calculate-2026-quarterly-estimated-tax-payments",
+        title: "How to Calculate 2026 Quarterly Estimated Tax Payments",
+        excerpt: "Calculate 2026 quarterly estimated tax payments, review IRS due dates and safe-harbor rules, and plan what to pay by September 15.",
+        category: "Tax Planning",
+        date: "August 7, 2026",
+        updatedAt: "2026-08-07",
+        readTime: "11 min read",
+        featured: true,
+        image: "https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=1200",
+        imageAlt: "Business owner calculating 2026 quarterly estimated tax payments",
+        author: {
+            name: "IntegraFin Tax & Accounting Team",
+        },
+        keywords: [
+            "2026 quarterly estimated tax payments",
+            "2026 estimated tax calculator",
+            "quarterly estimated tax calculator",
+            "Form 1040-ES 2026",
+            "how to calculate estimated taxes",
+            "self-employed quarterly taxes",
+            "freelancer quarterly tax payments",
+            "2026 estimated tax due dates",
+            "September 15 2026 estimated tax",
+            "estimated tax safe harbor",
+        ],
+        faq: [
+            {
+                question: "When are 2026 quarterly estimated tax payments due?",
+                answer: "For calendar-year individual taxpayers, the 2026 Form 1040-ES due dates are April 15, 2026; June 15, 2026; September 15, 2026; and January 15, 2027. Special rules can apply to fiscal-year taxpayers, farmers, fishermen, and disaster-affected taxpayers.",
+            },
+            {
+                question: "Who generally needs to make 2026 estimated tax payments?",
+                answer: "In most cases, an individual may need estimated payments when they expect to owe at least $1,000 for 2026 after withholding and refundable credits, and those payments and credits are less than the smaller of 90% of 2026 tax or 100% of 2025 tax. Higher-income and special-category rules can change the calculation.",
+            },
+            {
+                question: "What is the estimated tax safe harbor for 2026?",
+                answer: "Most taxpayers generally avoid the underpayment penalty if they owe less than $1,000 after withholding and credits, or paid at least the smaller of 90% of current-year tax or 100% of prior-year tax. The prior-year percentage generally becomes 110% when 2025 AGI exceeded $150,000, or $75,000 for married filing separately.",
+            },
+            {
+                question: "Are 2026 estimated tax payments always four equal amounts?",
+                answer: "Not always. Equal installments are common, but taxpayers with uneven income may qualify to use the annualized income installment method. That method can produce unequal required payments and generally requires Form 2210 with Schedule AI.",
+            },
+            {
+                question: "Can I increase paycheck withholding instead of making estimated payments?",
+                answer: "Possibly. The IRS says employees may be able to avoid estimated payments on other income by submitting a new Form W-4 and asking an employer to withhold more. The right approach depends on timing, income, and the amount already paid.",
+            },
+            {
+                question: "Does the IntegraFin calculator determine my IRS safe harbor?",
+                answer: "No. It provides a simplified federal projection and equal-payment planning estimate. It does not compare every Form 1040-ES safe-harbor alternative, annualize uneven income, calculate Form 2210 penalties, or include state estimated taxes.",
+            },
+        ],
+        contentHtml: `
+            <div class="tax-answer-card">
+                <p><strong>Short answer:</strong> Estimate your full-year 2026 federal tax, subtract expected withholding and refundable credits, review the Form 1040-ES payment test, and divide the amount you plan to pay across the remaining deadlines. For a fast first pass, use the <a href="/quarterly-estimated-tax-calculator">2026 quarterly estimated tax calculator</a>, then compare the result with your 2025 return and the official 2026 Form 1040-ES worksheet.</p>
+            </div>
+
+            <p>Quarterly estimated taxes are how many freelancers, contractors, business owners, investors, and people with income outside a paycheck pay federal tax during the year. The hardest part is usually not clicking the payment button. It is deciding how much to send without draining cash or creating an avoidable tax balance.</p>
+
+            <p>This guide explains the 2026 calculation in plain language, including the IRS payment test, safe-harbor benchmarks, due dates, uneven-income rules, and a practical example. It focuses on federal individual estimated tax; state rules require a separate calculation.</p>
+
+            <div class="tax-note">
+                <p><strong>Last reviewed:</strong> August 7, 2026. The IRS last updated its estimated-tax overview on June 28, 2026, and the 2026 Form 1040-ES is dated February 12, 2026. Check IRS disaster relief and later guidance before relying on a deadline.</p>
+            </div>
+
+            <h2>2026 Estimated Tax Due Dates</h2>
+            <p><strong>Direct answer:</strong> Calendar-year individuals can pay the full 2026 estimated amount by April 15, 2026, or use the four Form 1040-ES installment dates below.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Payment</th>
+                            <th>2026 Form 1040-ES due date</th>
+                            <th>Planning status on August 7</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>First</td><td>April 15, 2026</td><td>Passed</td></tr>
+                        <tr><td>Second</td><td>June 15, 2026</td><td>Passed</td></tr>
+                        <tr><td>Third</td><td><strong>September 15, 2026</strong></td><td>Next standard deadline</td></tr>
+                        <tr><td>Fourth</td><td>January 15, 2027</td><td>Final standard installment</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>The IRS says the January 15 payment generally is not required if you file the 2026 return by February 1, 2027 and pay the entire balance with the return. Weekend, holiday, fiscal-year, disaster, farmer, and fisherman rules may produce a different date or payment schedule.</p>
+
+            <h2>Who Generally Needs 2026 Estimated Tax Payments?</h2>
+            <p><strong>Direct answer:</strong> Under the general 2026 Form 1040-ES rule, both of these conditions must apply:</p>
+
+            <ol>
+                <li>You expect to owe at least <strong>$1,000</strong> for 2026 after subtracting withholding and refundable credits.</li>
+                <li>Your expected withholding and refundable credits are less than the smaller of <strong>90% of your 2026 tax</strong> or <strong>100% of the tax on your 2025 return</strong>.</li>
+            </ol>
+
+            <p>This commonly affects sole proprietors, partners, S corporation shareholders, 1099 contractors, gig workers, landlords, investors with gains, and employees whose withholding does not cover income from a side business. Estimated tax can include income tax, self-employment tax, and other taxes such as alternative minimum tax.</p>
+
+            <p>You generally do not have to make 2026 estimated payments if you were a U.S. citizen or resident alien for all of 2025, your 2025 return covered 12 months, and you had no 2025 tax liability. Special rules apply to higher-income taxpayers and people with substantial farming or fishing income.</p>
+
+            <h2>How to Calculate 2026 Quarterly Estimated Tax Payments</h2>
+            <p><strong>Direct answer:</strong> Start with a full-year federal projection, not a percentage of one invoice. Then reconcile that projection with withholding, credits, payments already made, and a safe-harbor benchmark.</p>
+
+            <h3>Step 1: Project full-year income</h3>
+            <p>Add expected wages, net business profit, interest, dividends, taxable retirement income, rents, and capital gains. For a business, use profit after ordinary and necessary expenses—not gross deposits alone. Update the projection when actual results change.</p>
+
+            <h3>Step 2: Estimate deductions and taxable income</h3>
+            <p>Use the 2026 standard deduction or a reasonable itemized-deduction estimate, plus eligible adjustments. Filing status, dependents, retirement contributions, health insurance, qualified business income, and phaseouts can materially change the result.</p>
+
+            <h3>Step 3: Estimate federal taxes and credits</h3>
+            <p>Calculate expected income tax and, when applicable, self-employment tax, Additional Medicare Tax, net investment income tax, alternative minimum tax, and other federal taxes. Then subtract expected credits. A simplified calculator may not model every one of these items.</p>
+
+            <h3>Step 4: Subtract withholding and payments already made</h3>
+            <p>Include expected federal withholding from wages, pensions, or other payments and 2026 estimated payments already credited. Do not include state withholding in the federal number.</p>
+
+            <h3>Step 5: Compare the current-year and prior-year benchmarks</h3>
+            <p>Form 1040-ES generally compares 90% of expected 2026 tax with 100% of 2025 tax and uses the smaller amount in its required-payment calculation. If 2025 adjusted gross income exceeded $150,000, or $75,000 for married filing separately, substitute 110% for the 100% prior-year figure. The 2025 return must cover all 12 months.</p>
+
+            <h3>Step 6: Allocate the remaining amount</h3>
+            <p>If equal installments fit your facts, subtract qualifying payments already made and divide the remaining planning amount across the remaining due dates. If income arrived unevenly or an earlier installment was short, do not assume an equal split resolves the earlier period; review Form 2210 and the annualized method.</p>
+
+            <div class="tax-cta-panel">
+                <h3>Run a 2026 quarterly estimate</h3>
+                <p>Enter filing status, income, deductions, credits, withholding, and payments already made to create a simplified federal projection.</p>
+                <p><a href="/quarterly-estimated-tax-calculator">Use the free quarterly estimated tax calculator</a>.</p>
+            </div>
+
+            <h2>2026 Safe Harbor Explained</h2>
+            <p><strong>Direct answer:</strong> A safe harbor is a payment benchmark for avoiding the federal underpayment penalty; it is not necessarily the same as paying the final tax balance in full.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr><th>Benchmark</th><th>General rule</th><th>Important limit</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Small balance</td><td>Owe less than $1,000 after withholding and credits</td><td>Use the official definitions and return figures</td></tr>
+                        <tr><td>Current year</td><td>Pay at least 90% of 2026 tax</td><td>Requires a reliable full-year projection</td></tr>
+                        <tr><td>Prior year</td><td>Pay 100% of 2025 tax</td><td>2025 return must cover 12 months</td></tr>
+                        <tr><td>Higher income</td><td>Generally pay 110% of 2025 tax</td><td>Applies when 2025 AGI exceeded $150,000, or $75,000 if married filing separately</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Meeting a prior-year benchmark can still leave a balance due when 2026 income grows. Conversely, paying the projected final balance by year-end does not automatically eliminate a penalty if too little was paid by an earlier installment date. The penalty is evaluated by payment period.</p>
+
+            <h2>Simple Example: Planning the Remaining 2026 Payments</h2>
+            <p>Assume a taxpayer's simplified 2026 projection shows $24,000 of total federal tax, $8,000 of expected withholding, and $4,000 of estimated payments already made. The projected amount not covered is $12,000.</p>
+
+            <ul>
+                <li>Projected 2026 federal tax: $24,000</li>
+                <li>Less expected federal withholding: $8,000</li>
+                <li>Less 2026 estimated payments already made: $4,000</li>
+                <li>Remaining projected balance: $12,000</li>
+                <li>Simplified equal split over two remaining dates: $6,000 by September 15 and $6,000 by January 15</li>
+            </ul>
+
+            <p>This example is only cash-flow arithmetic. It does not prove that $6,000 per date satisfies Form 1040-ES or cures an earlier underpayment. The taxpayer must still compare the result with 2025 tax, payment timing, withholding, and any annualized-income calculation.</p>
+
+            <h2>Uneven Income May Require Unequal Payments</h2>
+            <p><strong>Direct answer:</strong> If income was not earned evenly during 2026, the annualized income installment method may reduce the required payment for one or more periods.</p>
+
+            <p>Publication 505 explains that the method estimates tax at the end of each period using income, deductions, and other items from the beginning of the year through that period. This can matter for seasonal businesses, a large late-year contract, or a capital gain that occurred after an earlier deadline.</p>
+
+            <p>The method is more work than dividing by four. The IRS says taxpayers who use it must file Form 2210 with Schedule AI with the 2026 return. Keep period-by-period books and evidence showing when the income was earned.</p>
+
+            <h2>Withholding Versus Separate Estimated Payments</h2>
+            <p>If you also receive wages, the IRS says you may be able to cover tax on other income by filing a new Form W-4 and asking your employer to withhold more. Pension and certain government-payment withholding elections may also be available. This can simplify cash management, but timing and payroll capacity matter, so review the change before assuming it covers prior installments.</p>
+
+            <h2>Common Estimated-Tax Mistakes</h2>
+            <ul>
+                <li><strong>Using gross business revenue:</strong> estimated income tax generally starts with profit after eligible expenses.</li>
+                <li><strong>Ignoring self-employment tax:</strong> income tax is only one part of many 1099 taxpayers' federal estimate.</li>
+                <li><strong>Dividing by four after two dates passed:</strong> a new equal split may not address earlier underpayment exposure.</li>
+                <li><strong>Forgetting prior-year tax:</strong> the 2025 return is central to one of the general safe-harbor comparisons.</li>
+                <li><strong>Skipping state estimates:</strong> this federal calculation does not cover state or local payment rules.</li>
+                <li><strong>Never updating the forecast:</strong> a new client, job change, asset sale, or business slowdown can change the remaining payments.</li>
+            </ul>
+
+            <p>If an earlier 2026 deadline was missed, use our separate <a href="/blog/missed-estimated-tax-payment-june-15-deadline">late estimated tax payment guide</a> for the immediate catch-up steps.</p>
+
+            <h2>September 15 Planning Checklist</h2>
+            <ul>
+                <li>Close and reconcile bookkeeping through July, then update August activity before paying.</li>
+                <li>Collect year-to-date wages, federal withholding, business profit, investment income, and major deductions.</li>
+                <li>Pull the total-tax and AGI figures from the filed 2025 federal return.</li>
+                <li>Recalculate the full-year 2026 projection instead of repeating the June payment.</li>
+                <li>Compare the projection with the applicable Form 1040-ES benchmark.</li>
+                <li>Schedule the federal payment for the correct tax year and payment type, and save confirmation.</li>
+                <li>Run a separate state estimated-tax review where required.</li>
+            </ul>
+
+            <h2>Frequently Asked Questions</h2>
+            <h3>When are 2026 quarterly estimated tax payments due?</h3>
+            <p>For calendar-year individuals, the dates are April 15, June 15, September 15, 2026, and January 15, 2027. Confirm exceptions and relief that apply to your facts.</p>
+
+            <h3>Who generally needs to make 2026 estimated tax payments?</h3>
+            <p>In most cases, individuals should review estimated payments when they expect to owe at least $1,000 after withholding and refundable credits and do not meet the general payment benchmarks.</p>
+
+            <h3>What is the estimated tax safe harbor for 2026?</h3>
+            <p>The general benchmarks are less than $1,000 owed after withholding and credits, 90% of current-year tax, or 100% of prior-year tax, subject to the higher-income 110% rule and other special rules.</p>
+
+            <h3>Are 2026 estimated tax payments always four equal amounts?</h3>
+            <p>No. Uneven income, a later start date, changed estimates, or special rules can produce a different required-payment pattern.</p>
+
+            <h3>Can I increase paycheck withholding instead of making estimated payments?</h3>
+            <p>Possibly. The IRS directs employees to consider a new Form W-4 when added wage withholding can cover tax on other income.</p>
+
+            <h3>Does the IntegraFin calculator determine my IRS safe harbor?</h3>
+            <p>No. It is a simplified planning estimate and does not replace the Form 1040-ES worksheet, Form 2210 analysis, or professional advice.</p>
+
+            <h2>Sources Reviewed</h2>
+            <ul class="source-list">
+                <li><a href="https://www.irs.gov/pub/irs-pdf/f1040es.pdf" target="_blank" rel="noopener noreferrer">IRS 2026 Form 1040-ES, Estimated Tax for Individuals</a></li>
+                <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes" target="_blank" rel="noopener noreferrer">IRS: Estimated taxes</a></li>
+                <li><a href="https://www.irs.gov/publications/p505" target="_blank" rel="noopener noreferrer">IRS Publication 505 (2026), Tax Withholding and Estimated Tax</a></li>
+                <li><a href="https://www.irs.gov/payments/underpayment-of-estimated-tax-by-individuals-penalty" target="_blank" rel="noopener noreferrer">IRS: Underpayment of estimated tax by individuals penalty</a></li>
+            </ul>
+
+            <div class="tax-note">
+                <p><strong>Educational note:</strong> This article provides general federal tax education, not legal or tax advice. The calculator does not prepare Form 1040-ES, determine every safe harbor, calculate Form 2210 penalties, or include state taxes. Confirm current IRS instructions and facts with a qualified tax professional before making a material payment decision.</p>
+            </div>
+        `,
+    },
+    {
         slug: "irs-trump-account-gift-tax-update",
         title: "IRS Eases Trump Account Gift Tax Rules",
         excerpt: "IRS guidance on Trump Account contributions may reduce gift-tax filing worries for families. See limits, Form 709 risk, and planning steps.",
