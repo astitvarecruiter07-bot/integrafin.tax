@@ -1134,7 +1134,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "contractor-bookkeeping-services": {
     slug: "contractor-bookkeeping-services",
     url: `${baseUrl}/contractor-bookkeeping-services`,
-    lastModified: "2026-07-31",
+    lastModified: "2026-08-11",
     metaTitle: "Contractor Bookkeeping Services in Texas | IntegraFin",
     metaDescription:
       "Contractor bookkeeping for Texas construction and trade businesses. Organize job-cost records, reconciliations, subcontractor payments, and tax-ready reports with IntegraFin.",
@@ -1270,6 +1270,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     ],
     helpfulLinks: [
       contactLink,
+      { href: "/bookkeeping-for-roofing-contractors-houston", label: "Houston Roofing Contractor Bookkeeping" },
       { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
       { href: "/texas/dallas-contractor-bookkeeping-services", label: "Dallas Contractor Bookkeeping" },
       { href: "/texas/fort-worth-catch-up-bookkeeping", label: "Fort Worth Catch-Up Bookkeeping" },

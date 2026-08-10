@@ -23,8 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     { path: '/industries', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/texas-tax-accounting-services', lastModified: '2026-06-22', priority: 0.8 },
-    { path: '/contractor-bookkeeping-services', lastModified: '2026-07-31', priority: 0.8 },
-    { path: '/bookkeeping-for-roofing-contractors-houston', lastModified: '2026-08-03', priority: 0.9 },
+    { path: '/bookkeeping-for-roofing-contractors-houston', lastModified: '2026-08-11', priority: 0.9 },
     { path: '/texas/katy-tax-accountant', lastModified: '2026-06-22', priority: 0.8 },
     { path: '/texas/houston-tax-accountant', lastModified: '2026-07-19', priority: 0.9 },
     ...houstonIrsServicePageList.map((page) => ({
@@ -75,7 +74,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/tax-calculator-guide', lastModified: '2026-06-16', priority: 0.7 },
     { path: '/privacy', lastModified: '2026-03-24', priority: 0.5 },
     { path: '/terms', lastModified: '2026-03-24', priority: 0.5 },
-    { path: '/site-map', lastModified: '2026-07-24', priority: 0.5 },
+    { path: '/site-map', lastModified: '2026-08-11', priority: 0.5 },
   ];
 
   const staticEntries = routes.map((route) => ({

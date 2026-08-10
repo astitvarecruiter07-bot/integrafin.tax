@@ -178,6 +178,30 @@ const schema = {
         acceptedAnswer: { "@type": "Answer", text: answer },
       })),
     },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonicalUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://integrafin.tax/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Contractor Bookkeeping Services",
+          item: "https://integrafin.tax/contractor-bookkeeping-services",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "Houston Roofing Contractor Bookkeeping",
+          item: canonicalUrl,
+        },
+      ],
+    },
   ],
 };
 
@@ -234,6 +258,23 @@ export default function RoofingBookkeepingLandingPage() {
         <div className="pointer-events-none absolute inset-0 opacity-50" aria-hidden="true" style={{ backgroundImage: "radial-gradient(circle at 15% 20%, rgba(0,181,194,.24), transparent 30%), radial-gradient(circle at 80% 0%, rgba(31,90,137,.22), transparent 30%)" }} />
         <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 sm:py-14 lg:grid-cols-[1.05fr_.95fr] lg:items-start lg:gap-12 lg:px-8 lg:py-20">
           <div className="text-white">
+            <nav aria-label="Breadcrumb" className="mb-5 text-sm font-semibold text-slate-300">
+              <ol className="flex flex-wrap items-center gap-2">
+                <li>
+                  <Link href="/" className="transition hover:text-white hover:underline">
+                    Home
+                  </Link>
+                </li>
+                <li aria-hidden="true" className="text-slate-500">/</li>
+                <li>
+                  <Link href="/contractor-bookkeeping-services" className="transition hover:text-white hover:underline">
+                    Contractor Bookkeeping
+                  </Link>
+                </li>
+                <li aria-hidden="true" className="text-slate-500">/</li>
+                <li aria-current="page" className="text-slate-100">Roofing Contractors</li>
+              </ol>
+            </nav>
             <div className="inline-flex items-center gap-2 rounded-full border border-[#31c4cd]/30 bg-[#00a9b7]/10 px-3 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-[#76e1e6]">
               <HardHat className="h-4 w-4" aria-hidden="true" /> Houston-area roofing businesses
             </div>
