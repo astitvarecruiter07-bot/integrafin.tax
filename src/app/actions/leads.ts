@@ -189,6 +189,9 @@ export async function submitLead(data: LeadInput) {
             leadId,
             service: validatedData.service,
             source: validatedData.source,
+            utmSource: validatedData.attribution?.utmSource,
+            utmMedium: validatedData.attribution?.utmMedium,
+            utmCampaign: validatedData.attribution?.utmCampaign,
             submittedAt,
           }),
           sendLeadConfirmation({

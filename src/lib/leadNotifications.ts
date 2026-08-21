@@ -4,6 +4,9 @@ type NewLeadNotification = {
   leadId: string;
   service: string;
   source: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
   submittedAt: Date;
 };
 
@@ -87,11 +90,17 @@ export async function sendNewLeadNotification(
   );
   const dashboardUrl = 'https://integrafin.tax/admin/leads';
   const subject = `New website lead: ${notification.service}`;
+  const attribution = [notification.utmSource, notification.utmMedium]
+    .filter(Boolean)
+    .join(' / ') || 'Direct / unavailable';
+  const campaign = notification.utmCampaign || 'None';
   const text = [
     'A new lead was saved to the IntegraFin lead dashboard.',
     '',
     `Service: ${notification.service}`,
     `Source: ${notification.source}`,
+    `Attribution: ${attribution}`,
+    `Campaign: ${campaign}`,
     `Submitted: ${formatBusinessTime(notification.submittedAt)}`,
     `Response due: ${formatBusinessTime(responseDueAt)}`,
     `Lead ID: ${notification.leadId}`,
@@ -106,6 +115,8 @@ export async function sendNewLeadNotification(
     <table style="border-collapse:collapse;margin:16px 0">
       <tr><th style="padding:6px 12px 6px 0;text-align:left">Service</th><td>${escapeHtml(notification.service)}</td></tr>
       <tr><th style="padding:6px 12px 6px 0;text-align:left">Source</th><td>${escapeHtml(notification.source)}</td></tr>
+      <tr><th style="padding:6px 12px 6px 0;text-align:left">Attribution</th><td>${escapeHtml(attribution)}</td></tr>
+      <tr><th style="padding:6px 12px 6px 0;text-align:left">Campaign</th><td>${escapeHtml(campaign)}</td></tr>
       <tr><th style="padding:6px 12px 6px 0;text-align:left">Submitted</th><td>${escapeHtml(formatBusinessTime(notification.submittedAt))}</td></tr>
       <tr><th style="padding:6px 12px 6px 0;text-align:left">Response due</th><td><strong>${escapeHtml(formatBusinessTime(responseDueAt))}</strong></td></tr>
       <tr><th style="padding:6px 12px 6px 0;text-align:left">Lead ID</th><td>${escapeHtml(notification.leadId)}</td></tr>

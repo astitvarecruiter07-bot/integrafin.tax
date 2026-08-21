@@ -33,6 +33,7 @@ function getTrackedClick(anchor: HTMLAnchorElement): AnalyticsEventName | undefi
 export default function AnalyticsTracker() {
   const pathname = usePathname();
   const previousPathname = useRef<string | null>(null);
+  const bookingCompleteTracked = useRef(false);
 
   useEffect(() => {
     if (previousPathname.current === null) {
@@ -104,6 +105,9 @@ export default function AnalyticsTracker() {
       if (event.origin !== "https://calendly.com") return;
       if (!event.data || typeof event.data !== "object") return;
       if ((event.data as { event?: string }).event !== "calendly.event_scheduled") return;
+      if (bookingCompleteTracked.current) return;
+
+      bookingCompleteTracked.current = true;
 
       trackEvent("booking_complete", {
         ...baseEventParameters(),
