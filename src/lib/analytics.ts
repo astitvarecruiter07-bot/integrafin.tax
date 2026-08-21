@@ -37,14 +37,15 @@ const safeParameterNames = new Set([
   "tax_year",
   "ai_source",
   "traffic_channel",
+  "debug_mode",
 ]);
 
 function isSafeAnalyticsValue(value: SafeEventParameter) {
   if (typeof value !== "string") return true;
   const normalized = value.trim();
   if (!normalized || normalized.length > 100) return false;
-  if (/[\s@]+[^\s@]+@[^\s@]+\.[^\s@]+/.test(normalized)) return false;
-  if (/^(?:\+?\d[\s().-]*){7,}\d$/.test(normalized)) return false;
+  if (/[^\s@]+@[^\s@]+\.[^\s@]+/.test(normalized)) return false;
+  if (/(?:\+?\d[\s().-]*){7,}\d/.test(normalized)) return false;
   if (/^(?:https?:\/\/|mailto:|tel:)/i.test(normalized)) return false;
   return true;
 }
@@ -116,10 +117,16 @@ export function baseEventParameters(attribution = getLeadAttribution()): Analyti
 }
 
 export function trackEvent(eventName: AnalyticsEventName, parameters: AnalyticsParameters = {}) {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  if (typeof window === "undefined") return;
+
+  const debugMode = new URLSearchParams(window.location.search).get("debug_mode");
+  const eventParameters: AnalyticsParameters = {
+    ...parameters,
+    ...(debugMode === "1" || debugMode === "true" ? { debug_mode: true } : {}),
+  };
 
   const safeParameters = Object.fromEntries(
-    Object.entries(parameters).filter(
+    Object.entries(eventParameters).filter(
       ([name, value]) =>
         safeParameterNames.has(name) &&
         value !== undefined &&
@@ -128,7 +135,14 @@ export function trackEvent(eventName: AnalyticsEventName, parameters: AnalyticsP
     ),
   );
 
-  window.gtag("event", eventName, safeParameters);
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, safeParameters);
+    return;
+  }
+
+  // Preserve early interactions until the async Google tag has initialized.
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(["event", eventName, safeParameters]);
 }
 
 export function useFormAnalytics(formSource: string) {

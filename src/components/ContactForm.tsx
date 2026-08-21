@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 import { submitLead } from '@/app/actions/leads';
 import { useRouter } from 'next/navigation';
@@ -18,6 +18,7 @@ const FORM_SOURCE = 'contact-page';
 export default function ContactForm({ initialService = '' }: { initialService?: LeadService | '' }) {
   const router = useRouter();
   const trackFormStart = useFormAnalytics(FORM_SOURCE);
+  const submittingRef = useRef(false);
   const [selectedService, setSelectedService] = useState<LeadService | ''>(initialService);
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -26,6 +27,9 @@ export default function ContactForm({ initialService = '' }: { initialService?: 
     : 'Request a Consultation';
 
   async function handleSubmit(formData: FormData) {
+    if (submittingRef.current) return;
+
+    submittingRef.current = true;
     setIsPending(true);
     setMessage(null);
 
@@ -35,12 +39,14 @@ export default function ContactForm({ initialService = '' }: { initialService?: 
 
     if (!service) {
       setMessage({ type: 'error', text: 'Please select a valid service.' });
+      submittingRef.current = false;
       setIsPending(false);
       return;
     }
 
     if (!email && !phone) {
       setMessage({ type: 'error', text: 'Please provide an email address or phone number.' });
+      submittingRef.current = false;
       setIsPending(false);
       return;
     }
@@ -74,6 +80,7 @@ export default function ContactForm({ initialService = '' }: { initialService?: 
     } catch {
       setMessage({ type: 'error', text: 'An unexpected error occurred. Please try again.' });
     } finally {
+      submittingRef.current = false;
       setIsPending(false);
     }
   }
