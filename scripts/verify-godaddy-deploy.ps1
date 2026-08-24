@@ -19,7 +19,6 @@ New-Item -ItemType Directory -Path $sourceRoot -Force | Out-Null
 $sourceFiles = @(
   "package.json",
   "package-lock.json",
-  "server.js",
   "next.config.ts",
   "postcss.config.mjs",
   "tsconfig.json",
