@@ -7,6 +7,19 @@ $ErrorActionPreference = "Stop"
 $workspacePath = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 $archivePath = [System.IO.Path]::GetFullPath($OutputArchive)
 
+function Stop-ProcessTree {
+  param([int]$RootProcessId)
+
+  $childProcessIds = Get-CimInstance Win32_Process -Filter "ParentProcessId = $RootProcessId" `
+    -ErrorAction SilentlyContinue | Select-Object -ExpandProperty ProcessId
+
+  foreach ($childProcessId in $childProcessIds) {
+    Stop-ProcessTree -RootProcessId $childProcessId
+  }
+
+  Stop-Process -Id $RootProcessId -Force -ErrorAction SilentlyContinue
+}
+
 if (Test-Path -LiteralPath $archivePath) {
   throw "Refusing to overwrite existing archive: $archivePath"
 }
@@ -43,6 +56,10 @@ $serverProcess = $null
 Push-Location $verifyRoot
 
 try {
+  if (Get-NetTCPConnection -State Listen -LocalPort 4187 -ErrorAction SilentlyContinue) {
+    throw "Verification port 4187 is already in use."
+  }
+
   & npm.cmd ci --omit=dev
   if ($LASTEXITCODE -ne 0) {
     throw "Production npm install failed with exit code $LASTEXITCODE"
@@ -59,7 +76,7 @@ try {
   $env:PORT = "4187"
   $serverProcess = Start-Process `
     -FilePath "npm.cmd" `
-    -ArgumentList "start" `
+    -ArgumentList @("run", "dev") `
     -WorkingDirectory $verifyRoot `
     -WindowStyle Hidden `
     -RedirectStandardOutput $serverOut `
@@ -67,7 +84,7 @@ try {
     -PassThru
 
   $ready = $false
-  for ($attempt = 0; $attempt -lt 30; $attempt++) {
+  for ($attempt = 0; $attempt -lt 120; $attempt++) {
     Start-Sleep -Seconds 1
 
     try {
@@ -122,8 +139,8 @@ try {
   Write-Output ("ARCHIVE_MB: {0}" -f [math]::Round($archiveInfo.Length / 1MB, 2))
   Write-Output ("STAGING_DIRECTORY: {0}" -f $stageRoot)
 } finally {
-  if ($null -ne $serverProcess -and -not $serverProcess.HasExited) {
-    Stop-Process -Id $serverProcess.Id -Force
+  if ($null -ne $serverProcess) {
+    Stop-ProcessTree -RootProcessId $serverProcess.Id
   }
 
   Pop-Location
