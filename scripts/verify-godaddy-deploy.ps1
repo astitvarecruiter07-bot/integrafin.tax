@@ -55,8 +55,8 @@ try {
   $env:NODE_ENV = "production"
   $env:PORT = "4187"
   $serverProcess = Start-Process `
-    -FilePath "node.exe" `
-    -ArgumentList "server.js" `
+    -FilePath "npm.cmd" `
+    -ArgumentList "start" `
     -WorkingDirectory $verifyRoot `
     -WindowStyle Hidden `
     -RedirectStandardOutput $serverOut `
