@@ -29,6 +29,10 @@ foreach ($sourceFile in $sourceFiles) {
   Copy-Item -LiteralPath (Join-Path $workspacePath $sourceFile) -Destination $sourceRoot
 }
 
+$sourceScripts = Join-Path $sourceRoot "scripts"
+New-Item -ItemType Directory -Path $sourceScripts -Force | Out-Null
+Copy-Item -LiteralPath (Join-Path $workspacePath "scripts\clean-next-build.mjs") -Destination $sourceScripts
+
 Copy-Item -LiteralPath (Join-Path $workspacePath "src") -Destination $sourceRoot -Recurse
 Copy-Item -LiteralPath (Join-Path $workspacePath "public") -Destination $sourceRoot -Recurse
 
