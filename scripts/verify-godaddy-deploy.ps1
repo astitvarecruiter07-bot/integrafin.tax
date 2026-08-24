@@ -45,6 +45,7 @@ foreach ($sourceFile in $sourceFiles) {
 $sourceScripts = Join-Path $sourceRoot "scripts"
 New-Item -ItemType Directory -Path $sourceScripts -Force | Out-Null
 Copy-Item -LiteralPath (Join-Path $workspacePath "scripts\clean-next-build.mjs") -Destination $sourceScripts
+Copy-Item -LiteralPath (Join-Path $workspacePath "scripts\godaddy-preview.mjs") -Destination $sourceScripts
 
 Copy-Item -LiteralPath (Join-Path $workspacePath "src") -Destination $sourceRoot -Recurse
 Copy-Item -LiteralPath (Join-Path $workspacePath "public") -Destination $sourceRoot -Recurse
@@ -72,7 +73,7 @@ try {
 
   $serverOut = Join-Path $stageRoot "server.out.log"
   $serverErr = Join-Path $stageRoot "server.err.log"
-  $env:NODE_ENV = "production"
+  $env:NODE_ENV = "preview"
   $env:PORT = "4187"
   $serverProcess = Start-Process `
     -FilePath "npm.cmd" `
