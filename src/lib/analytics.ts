@@ -18,7 +18,23 @@ export type AnalyticsEventName =
   | "booking_complete"
   | "calculator_complete"
   | "portal_click"
-  | "ai_referral_visit";
+  | "ai_referral_visit"
+  | "cleanup_calculator_view"
+  | "cleanup_calculator_start"
+  | "cleanup_calculator_step"
+  | "cleanup_calculator_complete"
+  | "cleanup_result_view"
+  | "cleanup_lead_form_start"
+  | "cleanup_lead_submit"
+  | "cleanup_consultation_click"
+  | "bookkeeping_cost_view"
+  | "bookkeeping_cost_start"
+  | "bookkeeping_cost_step"
+  | "bookkeeping_cost_result"
+  | "bookkeeping_cost_adjust"
+  | "bookkeeping_quote_form_start"
+  | "bookkeeping_quote_submit"
+  | "bookkeeping_quote_cta";
 
 type SafeEventParameter = string | number | boolean | undefined;
 type AnalyticsParameters = Record<string, SafeEventParameter>;
@@ -38,6 +54,18 @@ const safeParameterNames = new Set([
   "ai_source",
   "traffic_channel",
   "debug_mode",
+  "calculator_version",
+  "step_number",
+  "result_category",
+  "score_band",
+  "months_behind_band",
+  "software_category",
+  "deadline_urgency",
+  "estimate_mode",
+  "review_required",
+  "price_band",
+  "hours_band",
+  "pricing_config_version",
 ]);
 
 function isSafeAnalyticsValue(value: SafeEventParameter) {
@@ -72,6 +100,8 @@ export function getPageType(path = currentPath()) {
       "/self-employment-tax-calculator",
       "/1099-tax-calculator",
       "/capital-gains-tax-calculator",
+      "/bookkeeping-cleanup-calculator",
+      "/bookkeeping-cost-calculator",
     ].includes(path)
   ) {
     return "calculator";
