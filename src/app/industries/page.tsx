@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   description: pageDescription,
   alternates: { canonical: pageUrl },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: 'Industry Tax & Accounting Services | IntegraFin',
     url: pageUrl,
   },

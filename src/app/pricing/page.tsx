@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   alternates: { canonical: pageUrl },
   robots: { index: true, follow: true },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: "Tax & Accounting Pricing and Scope | IntegraFin",
     description:
       "Understand what affects an IntegraFin quote, what may be included, and which work normally requires a separate scope.",

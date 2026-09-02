@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   alternates: { canonical: pageUrl },
   robots: { index: true, follow: true },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: "Bookkeeping Services Katy TX | Small Business | IntegraFin",
     description:
       "Katy bookkeeping services for small businesses that need monthly support, cleanup, reconciliations, and tax-ready reports.",

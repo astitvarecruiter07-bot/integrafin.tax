@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   description: "IntegraFin service hub for business tax accounting, individual tax preparation, tax resolution, bookkeeping cleanup, payroll tax support, QuickBooks bookkeeping, and startup advisory.",
   alternates: { canonical: "https://integrafin.tax/services" },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: "Tax & Accounting Services in Katy, TX | IntegraFin",
     description: "Explore focused IntegraFin tax, bookkeeping, payroll, QuickBooks, tax resolution, and business formation service pages.",
     url: "https://integrafin.tax/services",

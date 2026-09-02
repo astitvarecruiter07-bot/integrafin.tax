@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   AlertCircle,
   BadgeDollarSign,
@@ -93,6 +94,30 @@ export type AdminLeadRecord = {
   confirmationEmailCheckedAt?: string;
   confirmationEmailSentAt?: string;
   attribution?: LeadAttributionRecord;
+  bookkeepingAssessment?: {
+    calculatorVersion: '1.0';
+    contactPreference?: 'email' | 'phone' | 'no_preference';
+    answers: {
+      software: string;
+      monthsBehind: string;
+      monthlyTransactions: string;
+      financialAccounts: string;
+      reconciliationStatus: string;
+      payrollStatus: string;
+      mixedPersonalExpenses: string;
+      complexities: string[];
+      deadlineWindow: string;
+      deadlineType?: string;
+    };
+    result: {
+      score: number;
+      category: string;
+      urgency: string;
+      issueKeys: string[];
+      checklistKeys: string[];
+      recommendedServiceKeys: string[];
+    };
+  };
   createdAt: string;
 };
 
@@ -176,6 +201,11 @@ const statusStyles: Record<LeadStatus | 'completed', string> = {
 
 function formatStatus(status: AdminLeadRecord['status']) {
   return status === 'completed' ? 'Completed (legacy)' : statusLabels[status] || status;
+}
+
+function formatAssessmentValue(value?: string) {
+  if (!value) return 'Not provided';
+  return value.replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 function formatCallOutcome(outcome?: CallOutcome) {
@@ -285,6 +315,7 @@ export default function LeadOperationsDashboard({
   initialMetrics: LeadMetrics;
   initialLoadError?: string;
 }) {
+  const router = useRouter();
   const [leads, setLeads] = useState(initialLeads);
   const [metrics, setMetrics] = useState(initialMetrics);
   const [selectedId, setSelectedId] = useState(initialLeads[0]?._id || '');
@@ -426,7 +457,7 @@ export default function LeadOperationsDashboard({
 
   function handleActionFailure(result: AdminActionFailure) {
     if (result.code === 'UNAUTHORIZED') {
-      window.location.assign('/admin/login?error=session&next=%2Fadmin%2Fleads');
+      router.push('/admin/login?error=session&next=%2Fadmin%2Fleads');
       return;
     }
 
@@ -808,6 +839,11 @@ export default function LeadOperationsDashboard({
                         <td className="max-w-[240px] px-5 py-5">
                           <div className="truncate text-sm font-semibold text-slate-700">{lead.service}</div>
                           <div className="mt-1 truncate text-xs text-slate-400">{lead.source}</div>
+                          {lead.bookkeepingAssessment && (
+                            <div className="mt-2 inline-flex rounded-full bg-sky-100 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[#0047AB]">
+                              {lead.bookkeepingAssessment.result.score}/100 · {formatAssessmentValue(lead.bookkeepingAssessment.result.category)} · {formatAssessmentValue(lead.bookkeepingAssessment.result.urgency)} urgency
+                            </div>
+                          )}
                         </td>
                         <td className="px-5 py-5">
                           <span className={`inline-flex rounded-full border px-2.5 py-1 text-[10px] font-black uppercase tracking-wide ${statusStyles[lead.status]}`}>
@@ -879,6 +915,41 @@ export default function LeadOperationsDashboard({
                 </div>
 
                 <div className="space-y-6 p-5">
+                  {selectedLead.bookkeepingAssessment && (
+                    <section className="rounded-xl border border-sky-200 bg-sky-50/60 p-4">
+                      <div className="flex flex-wrap items-end justify-between gap-3">
+                        <div>
+                          <h3 className="text-xs font-black uppercase tracking-widest text-[#0047AB]">Bookkeeping assessment</h3>
+                          <p className="mt-2 text-3xl font-black text-[#003580]">{selectedLead.bookkeepingAssessment.result.score}<span className="text-sm text-slate-500">/100</span></p>
+                        </div>
+                        <div className="text-right text-xs font-bold text-slate-600">
+                          <p>{formatAssessmentValue(selectedLead.bookkeepingAssessment.result.category)}</p>
+                          <p className="mt-1">{formatAssessmentValue(selectedLead.bookkeepingAssessment.result.urgency)} urgency</p>
+                        </div>
+                      </div>
+                      <dl className="mt-4 grid gap-x-4 gap-y-3 border-t border-sky-200 pt-4 text-xs sm:grid-cols-2">
+                        {[
+                          ['Software', selectedLead.bookkeepingAssessment.answers.software],
+                          ['Months behind', selectedLead.bookkeepingAssessment.answers.monthsBehind],
+                          ['Monthly volume', selectedLead.bookkeepingAssessment.answers.monthlyTransactions],
+                          ['Accounts', selectedLead.bookkeepingAssessment.answers.financialAccounts],
+                          ['Reconciliation', selectedLead.bookkeepingAssessment.answers.reconciliationStatus],
+                          ['Payroll', selectedLead.bookkeepingAssessment.answers.payrollStatus],
+                          ['Mixed activity', selectedLead.bookkeepingAssessment.answers.mixedPersonalExpenses],
+                          ['Deadline', selectedLead.bookkeepingAssessment.answers.deadlineWindow],
+                          ['Deadline type', selectedLead.bookkeepingAssessment.answers.deadlineType],
+                          ['Contact preference', selectedLead.bookkeepingAssessment.contactPreference],
+                        ].map(([label, value]) => (
+                          <div key={label}><dt className="font-black uppercase tracking-wide text-slate-400">{label}</dt><dd className="mt-1 font-semibold text-slate-700">{formatAssessmentValue(value)}</dd></div>
+                        ))}
+                      </dl>
+                      <div className="mt-4 border-t border-sky-200 pt-4 text-xs">
+                        <p className="font-black uppercase tracking-wide text-slate-400">Additional complexity</p>
+                        <p className="mt-1 font-semibold leading-5 text-slate-700">{selectedLead.bookkeepingAssessment.answers.complexities.map(formatAssessmentValue).join(', ')}</p>
+                        <p className="mt-3 text-slate-500">Scoring version {selectedLead.bookkeepingAssessment.calculatorVersion}</p>
+                      </div>
+                    </section>
+                  )}
                   <div>
                     <label htmlFor="lead-status" className="text-xs font-black uppercase tracking-widest text-slate-500">Pipeline status</label>
                     <select

@@ -71,6 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/self-employment-tax-calculator', lastModified: '2026-08-06', priority: 0.9 },
     { path: '/1099-tax-calculator', lastModified: '2026-08-06', priority: 0.9 },
     { path: '/capital-gains-tax-calculator', lastModified: '2026-08-06', priority: 0.9 },
+    { path: '/bookkeeping-cleanup-calculator', lastModified: '2026-09-02', priority: 0.9 },
     { path: '/tax-calculator-guide', lastModified: '2026-06-16', priority: 0.7 },
     { path: '/privacy', lastModified: '2026-03-24', priority: 0.5 },
     { path: '/terms', lastModified: '2026-03-24', priority: 0.5 },

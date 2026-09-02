@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "Received an IRS notice in Katy, TX? IntegraFin helps review IRS letters, organize tax records, plan response steps, and discuss payment options.",
   alternates: { canonical: pageUrl },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: "IRS Notice Help Katy TX | IntegraFin Tax & Accounting",
     description:
       "Nearby Katy IRS notice help for individuals, self-employed taxpayers, and small business owners who need clear next steps.",

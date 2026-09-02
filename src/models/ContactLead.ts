@@ -1,5 +1,18 @@
 import mongoose from 'mongoose';
 import { AI_REFERRAL_SOURCES, type AiReferralSource } from '@/lib/aiReferral';
+import {
+  complexityValues,
+  deadlineTypeValues,
+  deadlineWindowValues,
+  financialAccountValues,
+  mixedExpenseValues,
+  monthlyTransactionValues,
+  monthsBehindValues,
+  payrollValues,
+  reconciliationValues,
+  softwareValues,
+  type BookkeepingAssessmentRecord,
+} from '@/lib/bookkeeping-cleanup/types';
 
 export const LEAD_STATUSES = [
   'new',
@@ -66,6 +79,8 @@ export interface IContactLead extends mongoose.Document {
   revenue?: string;
   jurisdiction?: string;
   attribution?: ILeadAttribution;
+  submissionKey?: string;
+  bookkeepingAssessment?: BookkeepingAssessmentRecord;
   status: StoredLeadStatus;
   estimatedValue?: number;
   actualRevenue?: number;
@@ -138,6 +153,59 @@ const CallActivitySchema = new mongoose.Schema<ICallActivity>(
   { _id: false },
 );
 
+const BookkeepingAnswersSchema = new mongoose.Schema(
+  {
+    software: { type: String, enum: softwareValues, required: true },
+    monthsBehind: { type: String, enum: monthsBehindValues, required: true },
+    monthlyTransactions: { type: String, enum: monthlyTransactionValues, required: true },
+    financialAccounts: { type: String, enum: financialAccountValues, required: true },
+    reconciliationStatus: { type: String, enum: reconciliationValues, required: true },
+    payrollStatus: { type: String, enum: payrollValues, required: true },
+    mixedPersonalExpenses: { type: String, enum: mixedExpenseValues, required: true },
+    complexities: [{ type: String, enum: complexityValues, required: true }],
+    deadlineWindow: { type: String, enum: deadlineWindowValues, required: true },
+    deadlineType: { type: String, enum: deadlineTypeValues },
+  },
+  { _id: false },
+);
+
+const BookkeepingFactorSchema = new mongoose.Schema(
+  {
+    key: { type: String, required: true, maxlength: 100 },
+    points: { type: Number, required: true, min: 0, max: 30 },
+    explanationKey: { type: String, required: true, maxlength: 100 },
+  },
+  { _id: false },
+);
+
+const BookkeepingResultSchema = new mongoose.Schema(
+  {
+    calculatorVersion: { type: String, enum: ['1.0'], required: true },
+    rawScore: { type: Number, required: true, min: 0, max: 113 },
+    score: { type: Number, required: true, min: 0, max: 100 },
+    category: { type: String, enum: ['reasonably_current', 'light_catch_up', 'moderate_cleanup', 'complex_cleanup'], required: true },
+    urgency: { type: String, enum: ['normal', 'medium', 'high', 'critical'], required: true },
+    factors: { type: [BookkeepingFactorSchema], default: [] },
+    issueKeys: { type: [String], default: [] },
+    checklistKeys: { type: [String], default: [] },
+    recommendedServiceKeys: { type: [String], default: [] },
+  },
+  { _id: false },
+);
+
+const BookkeepingAssessmentSchema = new mongoose.Schema(
+  {
+    calculatorVersion: { type: String, enum: ['1.0'], required: true },
+    answers: { type: BookkeepingAnswersSchema, required: true },
+    result: { type: BookkeepingResultSchema, required: true },
+    contactPreference: { type: String, enum: ['email', 'phone', 'no_preference'] },
+    consentToContact: { type: Boolean, required: true, validate: (value: boolean) => value === true },
+    completedAt: { type: Date, required: true },
+    submittedAt: { type: Date, required: true },
+  },
+  { _id: false },
+);
+
 const ContactLeadSchema = new mongoose.Schema<IContactLead>(
   {
     name: {
@@ -189,6 +257,13 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     },
     attribution: {
       type: LeadAttributionSchema,
+    },
+    submissionKey: {
+      type: String,
+      maxlength: 100,
+    },
+    bookkeepingAssessment: {
+      type: BookkeepingAssessmentSchema,
     },
     status: {
       type: String,
@@ -307,6 +382,14 @@ ContactLeadSchema.index(
   { unique: true, sparse: true, name: 'unique_calendly_invitee_uri' },
 );
 ContactLeadSchema.index({ nextFollowUpAt: 1 }, { name: 'lead_next_follow_up' });
+ContactLeadSchema.index(
+  { source: 1, submissionKey: 1 },
+  {
+    unique: true,
+    partialFilterExpression: { submissionKey: { $type: 'string' } },
+    name: 'unique_lead_submission_key',
+  },
+);
 
 const existingModel = mongoose.models.ContactLead as mongoose.Model<IContactLead> | undefined;
 

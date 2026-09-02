@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   alternates: { canonical: pageUrl },
   robots: { index: true, follow: true },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: "2025 and 2026 Federal Tax Calculator Guide | IntegraFin",
     description:
       "A practical guide to federal tax calculator inputs, IRS tax brackets, standard deductions, self-employment tax, and capital gains estimates.",

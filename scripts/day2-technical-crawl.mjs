@@ -260,7 +260,11 @@ while (depthQueue.length > 0) {
 
 const siteMapRecord = pages.get("/site-map");
 const htmlSitemapPaths = new Set(siteMapRecord?.links || []);
-const intentionallyNonIndexableStatic = new Set(["/thank-you", "/roofing-bookkeeping-thank-you"]);
+const intentionallyNonIndexableStatic = new Set([
+  "/thank-you",
+  "/roofing-bookkeeping-thank-you",
+  "/bookkeeping-cost-calculator",
+]);
 const publicSourceStaticRoutes = sourceStaticRoutes.filter((route) => !intentionallyNonIndexableStatic.has(route));
 const indexableRecords = records.filter((record) => record.indexable);
 const brokenInternalLinks = [];

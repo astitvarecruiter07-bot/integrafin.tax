@@ -20,7 +20,8 @@ export const metadata: Metadata = {
     title: 'Tax & Accounting Workflow Examples | IntegraFin',
     description: pageDescription,
     alternates: { canonical: pageUrl },
-    openGraph: {
+  openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
         title: 'Tax & Accounting Workflow Examples | IntegraFin',
         url: pageUrl,
     },

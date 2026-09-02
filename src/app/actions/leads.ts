@@ -13,6 +13,9 @@ import { getLeadResponseSlaMinutes } from '@/lib/leadSla';
 import { FOLLOW_UP_ACTIVE_STATUSES } from '@/lib/leadFollowUp';
 import { LEAD_SERVICE_VALUES } from '@/lib/leadServices';
 import { AI_REFERRAL_SOURCES } from '@/lib/aiReferral';
+import { BookkeepingAssessmentAnswersSchema } from '@/lib/bookkeeping-cleanup/schema';
+import { calculateCleanupAssessment } from '@/lib/bookkeeping-cleanup/scoring';
+import { categoryContent, checklistContent, serviceContent, urgencyContent } from '@/lib/bookkeeping-cleanup/content';
 
 const ADMIN_UNAUTHORIZED_MESSAGE = 'Your admin session expired. Sign in again to continue.';
 
@@ -60,8 +63,35 @@ const NewsletterSchema = z.object({
   attribution: LeadSchema.shape.attribution,
 });
 
+const BookkeepingAssessmentLeadSchema = z.strictObject({
+  name: z.string().trim().min(2, 'Name is too short').max(100),
+  email: z.union([z.literal(''), z.string().trim().email('Enter a valid email address.').max(254)]).default(''),
+  phone: z.union([
+    z.literal(''),
+    z.string().trim().min(10, 'Phone number is too short').max(20).regex(/^[+\d][\d\s().-]+$/, 'Enter a valid phone number.'),
+  ]).default(''),
+  company: z.string().trim().max(100).optional(),
+  contactPreference: z.enum(['email', 'phone', 'no_preference']).optional(),
+  consentToContact: z.literal(true, 'Consent is required before we can save your request.'),
+  answers: BookkeepingAssessmentAnswersSchema,
+  website: z.literal('').optional(),
+  idempotencyKey: z.string().uuid(),
+  attribution: LeadSchema.shape.attribution,
+}).superRefine((lead, context) => {
+  if (!lead.email && !lead.phone) {
+    context.addIssue({ code: 'custom', path: ['email'], message: 'Please provide an email address or phone number.' });
+  }
+  if (lead.contactPreference === 'email' && !lead.email) {
+    context.addIssue({ code: 'custom', path: ['email'], message: 'Email is required when it is your preferred contact method.' });
+  }
+  if (lead.contactPreference === 'phone' && !lead.phone) {
+    context.addIssue({ code: 'custom', path: ['phone'], message: 'Phone is required when it is your preferred contact method.' });
+  }
+});
+
 export type LeadInput = z.infer<typeof LeadSchema>;
 export type NewsletterInput = z.infer<typeof NewsletterSchema>;
+export type BookkeepingAssessmentLeadInput = z.infer<typeof BookkeepingAssessmentLeadSchema>;
 
 const LEAD_LIMIT = 5;
 const LEAD_WINDOW_MS = 10 * 60 * 1000;
@@ -128,7 +158,7 @@ function sanitizeAttributionReferrer(value: string | undefined) {
 }
 
 function prepareAttribution(
-  attribution: LeadInput['attribution'] | NewsletterInput['attribution'],
+  attribution: LeadInput['attribution'] | NewsletterInput['attribution'] | BookkeepingAssessmentLeadInput['attribution'],
   submittedAt: Date,
 ) {
   return {
@@ -240,6 +270,127 @@ export async function submitLead(data: LeadInput) {
       success: false,
       message: 'Processing failed. Please try again or call us directly at (832) 647-1819.',
     };
+  }
+}
+
+export async function submitBookkeepingAssessmentLead(data: BookkeepingAssessmentLeadInput) {
+  try {
+    const rateLimitKey = await getLeadRateLimitKey();
+    const rateResult = checkRateLimit(`bookkeepingAssessment:${rateLimitKey}`, LEAD_LIMIT, LEAD_WINDOW_MS);
+    if (!rateResult.allowed) {
+      return { success: false as const, message: 'Too many requests. Please wait a few minutes or call (832) 647-1819.' };
+    }
+
+    const validatedData = BookkeepingAssessmentLeadSchema.parse(data);
+    const result = calculateCleanupAssessment(validatedData.answers);
+    const submittedAt = new Date();
+    await dbConnect();
+
+    const existingLead = await ContactLead.findOne({
+      source: 'bookkeeping-cleanup-calculator',
+      submissionKey: validatedData.idempotencyKey,
+    }).lean();
+    if (existingLead?.bookkeepingAssessment) {
+      return {
+        success: true as const,
+        message: 'Your cleanup action plan is ready.',
+        leadId: existingLead._id.toString(),
+        result: existingLead.bookkeepingAssessment.result,
+      };
+    }
+
+    const message = `Bookkeeping cleanup assessment: ${result.score}/100, ${result.category}, ${result.urgency} urgency.`;
+    const newLead = await ContactLead.create({
+      name: validatedData.name,
+      email: validatedData.email,
+      phone: validatedData.phone,
+      company: validatedData.company,
+      service: 'Bookkeeping Cleanup',
+      source: 'bookkeeping-cleanup-calculator',
+      message,
+      submissionKey: validatedData.idempotencyKey,
+      attribution: prepareAttribution(validatedData.attribution, submittedAt),
+      status: 'new',
+      createdAt: submittedAt,
+      bookkeepingAssessment: {
+        calculatorVersion: result.calculatorVersion,
+        answers: validatedData.answers,
+        result,
+        contactPreference: validatedData.contactPreference,
+        consentToContact: true,
+        completedAt: submittedAt,
+        submittedAt,
+      },
+    });
+
+    const leadId = newLead._id.toString();
+    after(async () => {
+      try {
+        const category = categoryContent[result.category];
+        const urgency = urgencyContent[result.urgency];
+        const [notificationResult, confirmationResult] = await Promise.all([
+          sendNewLeadNotification({
+            leadId,
+            service: 'Bookkeeping Cleanup',
+            source: 'bookkeeping-cleanup-calculator',
+            utmSource: validatedData.attribution?.utmSource,
+            utmMedium: validatedData.attribution?.utmMedium,
+            utmCampaign: validatedData.attribution?.utmCampaign,
+            submittedAt,
+            assessmentSummary: {
+              score: result.score,
+              category: category.label,
+              urgency: urgency.label,
+              software: validatedData.answers.software,
+              monthsBehind: validatedData.answers.monthsBehind,
+              monthlyTransactions: validatedData.answers.monthlyTransactions,
+              financialAccounts: validatedData.answers.financialAccounts,
+              reconciliationStatus: validatedData.answers.reconciliationStatus,
+              payrollStatus: validatedData.answers.payrollStatus,
+              complexities: validatedData.answers.complexities.join(', '),
+              deadlineWindow: validatedData.answers.deadlineWindow,
+              contactPreference: validatedData.contactPreference || 'no_preference',
+            },
+          }),
+          sendLeadConfirmation({
+            leadId,
+            name: validatedData.name,
+            email: validatedData.email,
+            service: 'Bookkeeping Cleanup',
+            submittedAt,
+            cleanupPlan: {
+              score: result.score,
+              category: category.label,
+              urgency: urgency.label,
+              checklist: result.checklistKeys.map((key) => checklistContent[key]),
+              services: result.recommendedServiceKeys.map((key) => serviceContent[key]),
+            },
+          }),
+        ]);
+        const notificationCheckedAt = new Date();
+        await ContactLead.findByIdAndUpdate(leadId, {
+          $set: {
+            notificationStatus: notificationResult.sent ? 'sent' : notificationResult.reason,
+            notificationCheckedAt,
+            ...(notificationResult.sent ? { notificationSentAt: notificationCheckedAt } : {}),
+            confirmationEmailStatus: confirmationResult.sent ? 'sent' : confirmationResult.reason,
+            confirmationEmailCheckedAt: notificationCheckedAt,
+            ...(confirmationResult.sent ? { confirmationEmailSentAt: notificationCheckedAt } : {}),
+          },
+        });
+      } catch (error) {
+        console.error('Could not record bookkeeping assessment email status.', { leadId, error: error instanceof Error ? error.name : 'UnknownError' });
+      }
+    });
+
+    return { success: true as const, message: 'Your cleanup action plan is ready.', leadId, result };
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      console.warn('Bookkeeping assessment validation failed.', { issueCount: error.issues.length });
+      return { success: false as const, message: error.issues[0]?.message || 'Please review your answers.' };
+    }
+    console.error('Bookkeeping assessment submission failed.', { error: error instanceof Error ? error.name : 'UnknownError' });
+    return { success: false as const, message: 'We could not save your plan. Please try again or call (832) 647-1819.' };
   }
 }
 

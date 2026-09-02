@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: url },
     robots: { index: true, follow: true },
     openGraph: {
+      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
       title: page.title,
       description: page.description,
       url,

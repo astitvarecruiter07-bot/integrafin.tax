@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: 'Terms & Conditions | IntegraFin Tax Expert Services',
   description: 'Read the Terms & Conditions for IntegraFin Tax Expert Services. Learn about our service terms, user responsibilities, and legal agreements.',
   alternates: { canonical: 'https://integrafin.tax/terms' },
+  openGraph: {
+    title: 'Terms & Conditions | IntegraFin Tax Expert Services',
+    description: 'Read the Terms & Conditions for IntegraFin Tax Expert Services. Learn about our service terms, user responsibilities, and legal agreements.',
+    url: 'https://integrafin.tax/terms',
+    images: ['/og-image.jpg'],
+  },
 };
 
 const sections = [

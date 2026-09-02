@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     "Need a tax accountant in Buffalo, NY? IntegraFin provides tax filing, bookkeeping, payroll support, and IRS issue guidance for Buffalo clients.",
   alternates: { canonical: "https://integrafin.tax/new-york/buffalo-tax-accountant" },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: "Buffalo Tax Accountant for Businesses | IntegraFin",
     description:
       "Bookkeeping, tax preparation, payroll support, and IRS response planning for Buffalo businesses and individuals.",

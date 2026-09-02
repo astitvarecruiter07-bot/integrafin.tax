@@ -90,6 +90,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                     <div className="max-w-xl mx-auto mb-10 sm:mb-16 relative">
                         <input
                             type="text"
+                            aria-label="Search tax and accounting articles"
                             placeholder="Search insights..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}

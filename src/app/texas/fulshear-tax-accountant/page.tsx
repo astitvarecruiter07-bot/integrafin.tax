@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: page.description,
   alternates: { canonical: url },
   robots: { index: true, follow: true },
-  openGraph: { title: page.title, description: page.description, url, type: "website", siteName: "IntegraFin" },
+  openGraph: { title: page.title, description: page.description, url, type: "website", siteName: "IntegraFin", images: ["/og-image.jpg"] },
 };
 
 export default function FulshearTaxAccountantPage() {

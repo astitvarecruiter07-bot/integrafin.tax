@@ -44,8 +44,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'IntegraFin Tax & Accounting | Katy Tax and Accounting Firm',
-    description: 'Katy-based tax preparation, bookkeeping, payroll records support, and IRS notice help from IntegraFin.',
     images: ['/og-image.jpg'],
   },
 };

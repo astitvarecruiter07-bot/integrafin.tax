@@ -3,6 +3,8 @@ import Link from "next/link";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
 import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
 import { houstonIrsServicePageList } from "@/data/houstonIrsServicePages";
+import { mockBlogPosts } from "@/data/blogData";
+import { getAllBlogPosts } from "@/app/actions/blog";
 
 export const metadata: Metadata = {
   title: "HTML Sitemap | IntegraFin",
@@ -10,9 +12,16 @@ export const metadata: Metadata = {
     "Browse all important IntegraFin pages including services, locations, blog posts, and legal pages.",
   alternates: { canonical: "https://integrafin.tax/site-map" },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: "HTML Sitemap | IntegraFin",
+    description: "Browse all important IntegraFin pages including services, locations, blog posts, and legal pages.",
+    url: "https://integrafin.tax/site-map",
+    images: ["/og-image.jpg"],
+  },
 };
 
-const sections = [
+function getSections(blogPosts: Array<{ slug: string; title: string }>) {
+  return [
   {
     title: "Core Pages",
     links: [
@@ -97,15 +106,11 @@ const sections = [
     ],
   },
   {
-    title: "Featured Blog Posts",
-    links: [
-      { href: "/blog/financial-planning-for-startups", label: "Financial Planning for Startups" },
-      { href: "/blog/tax-planning-strategies-2025", label: "Top Tax Planning Strategies for 2025" },
-      { href: "/blog/small-business-accounting-tips", label: "Essential Accounting Tips for Small Businesses" },
-      { href: "/blog/irs-compliance-guide", label: "Complete Guide to IRS Compliance" },
-      { href: "/blog/payroll-best-practices", label: "Payroll Best Practices" },
-      { href: "/blog/tax-resolution-options", label: "Tax Resolution Options" },
-    ],
+    title: "Blog Posts",
+    links: blogPosts.map((post) => ({
+      href: `/blog/${post.slug}`,
+      label: post.title,
+    })),
   },
   {
     title: "Policies",
@@ -114,9 +119,17 @@ const sections = [
       { href: "/terms", label: "Terms and Conditions" },
     ],
   },
-];
+  ];
+}
 
-export default function HtmlSitemapPage() {
+export default async function HtmlSitemapPage() {
+  const blogPosts: Array<{ slug: string; title: string }> = [...await getAllBlogPosts()];
+  for (const post of mockBlogPosts) {
+    if (!blogPosts.some((candidate) => candidate.slug === post.slug)) {
+      blogPosts.push(post);
+    }
+  }
+
   return (
     <main className="bg-slate-50 min-h-screen pt-28 pb-16">
       <section className="max-w-5xl mx-auto px-6">
@@ -128,7 +141,7 @@ export default function HtmlSitemapPage() {
         </p>
 
         <div className="space-y-6">
-          {sections.map((section) => (
+          {getSections(blogPosts).map((section) => (
             <article key={section.title} className="bg-white border border-slate-200 rounded-2xl p-6">
               <h2 className="text-xl font-bold text-[#003580] mb-4">{section.title}</h2>
               <ul className="grid sm:grid-cols-2 gap-3">

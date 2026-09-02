@@ -24,6 +24,7 @@ export const metadata: Metadata = {
   description: 'Learn where IntegraFin is based, the tax and accounting services offered, and the documented process used to scope client work.',
   alternates: { canonical: 'https://integrafin.tax/about' },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: 'About IntegraFin | Tax & Accounting Services in Katy, TX',
     url: 'https://integrafin.tax/about',
   },

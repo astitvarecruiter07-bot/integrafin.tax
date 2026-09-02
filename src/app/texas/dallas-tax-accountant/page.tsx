@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     "Need a tax accountant in Dallas, TX? IntegraFin supports bookkeeping, payroll tax workflows, tax preparation, and IRS issue resolution.",
   alternates: { canonical: "https://integrafin.tax/texas/dallas-tax-accountant" },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: "Dallas Tax Accountant for Business Tax Support | IntegraFin",
     description:
       "Tax filing, bookkeeping, payroll, and IRS support for Dallas small businesses and individuals.",

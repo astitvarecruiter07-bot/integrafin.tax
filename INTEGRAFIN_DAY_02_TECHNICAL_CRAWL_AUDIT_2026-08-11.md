@@ -3,7 +3,7 @@
 **Audit date:** August 11, 2026  
 **Target:** `https://integrafin.tax`  
 **Owner:** Prashant Chavan (Developer + SEO Owner)  
-**Status:** Done - exit gate passed; remediation implemented locally and awaiting deployment verification
+**Status:** Done - remediation deployed and production verified
 
 ## 1. Evidence files
 
@@ -12,6 +12,8 @@
 - `INTEGRAFIN_DAY_02_INTERNAL_LINK_CRAWL_2026-08-11.md` - internal-link graph and breadcrumb audit.
 - `INTEGRAFIN_DAY_02_LOCAL_FIX_CRAWL_2026-08-11.csv` and `.json` - post-fix local crawl evidence.
 - `INTEGRAFIN_DAY_02_LOCAL_FIX_INTERNAL_LINK_AUDIT_2026-08-11.md` - post-fix internal-link and breadcrumb evidence.
+- `INTEGRAFIN_DAY_02_POST_DEPLOY_CRAWL_2026-08-11.csv` and `.json` - production post-deployment crawl evidence.
+- `INTEGRAFIN_DAY_02_POST_DEPLOY_INTERNAL_LINK_AUDIT_2026-08-11.md` - production post-deployment link and breadcrumb evidence.
 - `scripts/day2-technical-crawl.mjs` - repeatable Day 2/Day 28 crawler.
 
 The audit used read-only production requests and a live Chrome verification. It did not submit forms, change production data, or request indexing.
@@ -59,7 +61,7 @@ The page behaved like a standalone campaign landing page while the XML sitemap a
 
 | Priority | Owner | Target date | Completion evidence |
 |---|---|---|---|
-| P1 | Prashant Chavan (Developer + SEO Owner) | 2026-08-12 | Implemented locally on 2026-08-11; local recrawl shows zero orphaned/zero-inbound URLs and zero breadcrumb gaps. Production deployment and recrawl remain. |
+| P1 | Prashant Chavan (Developer + SEO Owner) | Completed 2026-08-11 | Deployed in commit `f02ad8d`; production recrawl shows zero orphaned/zero-inbound URLs and zero breadcrumb gaps. |
 
 ## 4. Route and sitemap comparison
 
@@ -79,25 +81,27 @@ The isolated roofing page is the only comparison difference treated as a defect 
 | Severity | Count | Result |
 |---|---:|---|
 | P0 | 0 | No crawl/indexability emergency found |
-| P1 | 1 | Organic discovery and breadcrumb fix implemented locally; deployment verification pending |
-| P2 | 1 | Duplicate contractor-hub XML sitemap entry removed locally |
+| P1 | 1 | Organic discovery and breadcrumb fix deployed and production verified |
+| P2 | 1 | Duplicate contractor-hub XML sitemap entry removed and production verified |
 | Accepted/intentional differences | 7 blog HTML-sitemap omissions plus utility/legacy routes | Documented |
 
-**Day 2 exit gate:** Passed. No P0 defects were found, and the P1 remediation has been implemented locally with a production verification step assigned.
+**Day 2 exit gate:** Passed. No P0 defects were found, and the P1/P2 remediations are deployed and production verified.
 
-## 6. Remediation completed locally - August 11, 2026
+## 6. Remediation deployed and verified - August 11, 2026
 
 - Added one contextual link from `/contractor-bookkeeping-services` to the roofing page.
 - Added the roofing page to the HTML sitemap.
 - Added a visible breadcrumb trail and matching `BreadcrumbList` JSON-LD.
 - Updated the modified dates for the changed organic pages.
-- Removed the duplicate `/contractor-bookkeeping-services` XML sitemap declaration. Production currently exposes 81 entries but only 80 unique URLs; the local fixed sitemap exposes 80 entries and 80 unique URLs.
+- Removed the duplicate `/contractor-bookkeeping-services` XML sitemap declaration. Before deployment, production exposed 81 entries but only 80 unique URLs; after deployment it exposes 80 entries and 80 unique URLs.
 - Enhanced `scripts/day2-technical-crawl.mjs` to detect duplicate XML entries and to support production-domain sitemap/canonical URLs during localhost verification.
 - Passed targeted ESLint, TypeScript, and the Next.js production build.
 - Local post-fix crawl: 80 sitemap URLs, 80 indexable, zero duplicates, zero broken links, zero orphaned URLs, zero zero-inbound sitemap URLs, zero canonical conflicts, and zero sitemap/route defects.
 - Local internal-link audit: zero orphaned routes and zero missing `BreadcrumbList` markup.
 - Browser verification confirmed the breadcrumb is visible, exactly one `BreadcrumbList` is rendered, each discovery page has one link to the roofing page, and no console warning/error was recorded.
+- Deployment-trigger commit: `f02ad8d` (`Deploy Day 2 SEO crawl fixes`) pushed to `main`.
+- Production post-deployment crawl: 80 sitemap URLs, 80 indexable, zero duplicate XML entries, zero broken links, zero orphaned/zero-inbound URLs, zero redirect/canonical/title/H1/indexability defects, and zero breadcrumb gaps.
 
 ## 7. Next action
 
-Deploy the source changes, repeat the production crawl, and confirm the roofing URL is no longer orphaned and the XML sitemap contains 80 unique entries with no duplicate. Then proceed to Day 3: create the Google Search Console priority indexing queue and reconcile the 21 GSC non-indexed URLs against the crawl.
+Proceed to Day 3: create the Google Search Console priority indexing queue and reconcile the 21 GSC non-indexed URLs against the clean 80-URL production crawl.

@@ -8,6 +8,20 @@ type NewLeadNotification = {
   utmMedium?: string;
   utmCampaign?: string;
   submittedAt: Date;
+  assessmentSummary?: {
+    score: number;
+    category: string;
+    urgency: string;
+    software: string;
+    monthsBehind: string;
+    monthlyTransactions: string;
+    financialAccounts: string;
+    reconciliationStatus: string;
+    payrollStatus: string;
+    complexities: string;
+    deadlineWindow: string;
+    contactPreference: string;
+  };
 };
 
 type LeadConfirmation = {
@@ -16,6 +30,13 @@ type LeadConfirmation = {
   email: string;
   service: string;
   submittedAt: Date;
+  cleanupPlan?: {
+    score: number;
+    category: string;
+    urgency: string;
+    checklist: string[];
+    services: string[];
+  };
 };
 
 type NotificationResult =
@@ -94,6 +115,21 @@ export async function sendNewLeadNotification(
     .filter(Boolean)
     .join(' / ') || 'Direct / unavailable';
   const campaign = notification.utmCampaign || 'None';
+  const assessmentText = notification.assessmentSummary ? [
+    '',
+    'Bookkeeping assessment summary',
+    `Score/category: ${notification.assessmentSummary.score}/100 — ${notification.assessmentSummary.category}`,
+    `Urgency: ${notification.assessmentSummary.urgency}`,
+    `Software: ${notification.assessmentSummary.software}`,
+    `Months behind: ${notification.assessmentSummary.monthsBehind}`,
+    `Monthly transactions: ${notification.assessmentSummary.monthlyTransactions}`,
+    `Financial accounts: ${notification.assessmentSummary.financialAccounts}`,
+    `Reconciliation: ${notification.assessmentSummary.reconciliationStatus}`,
+    `Payroll: ${notification.assessmentSummary.payrollStatus}`,
+    `Complexities: ${notification.assessmentSummary.complexities}`,
+    `Deadline: ${notification.assessmentSummary.deadlineWindow}`,
+    `Contact preference: ${notification.assessmentSummary.contactPreference}`,
+  ] : [];
   const text = [
     'A new lead was saved to the IntegraFin lead dashboard.',
     '',
@@ -104,11 +140,27 @@ export async function sendNewLeadNotification(
     `Submitted: ${formatBusinessTime(notification.submittedAt)}`,
     `Response due: ${formatBusinessTime(responseDueAt)}`,
     `Lead ID: ${notification.leadId}`,
+    ...assessmentText,
     '',
     `Open the authenticated dashboard: ${dashboardUrl}`,
     '',
     'Contact details and the customer message are intentionally omitted from this email.',
   ].join('\n');
+  const assessmentHtml = notification.assessmentSummary ? `
+    <h2 style="font-size:16px;margin:24px 0 8px;color:#003580">Bookkeeping assessment</h2>
+    <table style="border-collapse:collapse;margin:8px 0">
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Score/category</th><td>${notification.assessmentSummary.score}/100 — ${escapeHtml(notification.assessmentSummary.category)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Urgency</th><td>${escapeHtml(notification.assessmentSummary.urgency)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Software</th><td>${escapeHtml(notification.assessmentSummary.software)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Months behind</th><td>${escapeHtml(notification.assessmentSummary.monthsBehind)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Monthly transactions</th><td>${escapeHtml(notification.assessmentSummary.monthlyTransactions)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Accounts</th><td>${escapeHtml(notification.assessmentSummary.financialAccounts)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Reconciliation</th><td>${escapeHtml(notification.assessmentSummary.reconciliationStatus)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Payroll</th><td>${escapeHtml(notification.assessmentSummary.payrollStatus)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Complexities</th><td>${escapeHtml(notification.assessmentSummary.complexities)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Deadline</th><td>${escapeHtml(notification.assessmentSummary.deadlineWindow)}</td></tr>
+      <tr><th style="padding:5px 12px 5px 0;text-align:left">Contact preference</th><td>${escapeHtml(notification.assessmentSummary.contactPreference)}</td></tr>
+    </table>` : '';
   const html = `
     <h1 style="font-size:20px;margin:0 0 16px;color:#003580">New website lead</h1>
     <p>A new lead was saved to the IntegraFin lead dashboard.</p>
@@ -121,6 +173,7 @@ export async function sendNewLeadNotification(
       <tr><th style="padding:6px 12px 6px 0;text-align:left">Response due</th><td><strong>${escapeHtml(formatBusinessTime(responseDueAt))}</strong></td></tr>
       <tr><th style="padding:6px 12px 6px 0;text-align:left">Lead ID</th><td>${escapeHtml(notification.leadId)}</td></tr>
     </table>
+    ${assessmentHtml}
     <p><a href="${dashboardUrl}" style="display:inline-block;border-radius:8px;background:#003580;color:#fff;padding:12px 18px;text-decoration:none;font-weight:700">Open lead dashboard</a></p>
     <p style="font-size:12px;color:#64748b">Contact details and the customer message are intentionally omitted from this email.</p>
   `.trim();
@@ -185,12 +238,27 @@ export async function sendLeadConfirmation(
   const phoneUrl = 'tel:+18326471819';
   const contactEmail = 'contact@integrafin.tax';
   const subject = 'We received your request | IntegraFin';
+  const planText = confirmation.cleanupPlan ? [
+    '',
+    `Your preliminary score: ${confirmation.cleanupPlan.score}/100`,
+    `Result: ${confirmation.cleanupPlan.category}`,
+    `Deadline urgency: ${confirmation.cleanupPlan.urgency}`,
+    '',
+    'Records to prepare:',
+    ...confirmation.cleanupPlan.checklist.map((item) => `- ${item}`),
+    '',
+    'Possible service route:',
+    ...confirmation.cleanupPlan.services.map((item) => `- ${item}`),
+    '',
+    'This assessment is not a quote, audit, tax opinion, legal opinion, or guarantee. Final scope, timing, and pricing require review of the accounting records.',
+  ] : [];
   const text = [
     `Hello ${confirmation.name},`,
     '',
     `We received your request for ${confirmation.service}.`,
     `Submitted: ${formatBusinessTime(confirmation.submittedAt)}`,
     `Reference ID: ${confirmation.leadId}`,
+    ...planText,
     '',
     'An IntegraFin team member will review your request and follow up using the contact information you provided.',
     '',
@@ -202,6 +270,16 @@ export async function sendLeadConfirmation(
     '',
     'IntegraFin Tax & Accounting',
   ].join('\n');
+  const planHtml = confirmation.cleanupPlan ? `
+    <div style="margin:20px 0;border-radius:10px;background:#f0f9ff;padding:18px">
+      <p style="margin:0;font-size:32px;font-weight:800;color:#003580">${confirmation.cleanupPlan.score}<span style="font-size:14px">/100</span></p>
+      <p style="margin:6px 0 0"><strong>${escapeHtml(confirmation.cleanupPlan.category)}</strong> · ${escapeHtml(confirmation.cleanupPlan.urgency)} urgency</p>
+    </div>
+    <h2 style="font-size:17px;color:#003580">Records to prepare</h2>
+    <ul>${confirmation.cleanupPlan.checklist.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+    <h2 style="font-size:17px;color:#003580">Possible service route</h2>
+    <ul>${confirmation.cleanupPlan.services.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+    <p style="font-size:12px;color:#64748b">This assessment is not a quote, audit, tax opinion, legal opinion, or guarantee. Final scope, timing, and pricing require review of the accounting records.</p>` : '';
   const html = `
     <div style="margin:0 auto;max-width:620px;font-family:Arial,sans-serif;color:#1e293b;line-height:1.6">
       <div style="border-radius:12px 12px 0 0;background:#003580;padding:24px;color:#fff">
@@ -215,6 +293,7 @@ export async function sendLeadConfirmation(
           <tr><th style="padding:5px 12px 5px 0;text-align:left">Submitted</th><td>${escapeHtml(formatBusinessTime(confirmation.submittedAt))}</td></tr>
           <tr><th style="padding:5px 12px 5px 0;text-align:left">Reference ID</th><td>${escapeHtml(confirmation.leadId)}</td></tr>
         </table>
+        ${planHtml}
         <p style="border-radius:8px;background:#f1f5f9;padding:14px;font-size:13px;color:#475569"><strong>Protect your information:</strong> Do not reply with Social Security numbers, tax documents, banking information, or account credentials. The team will provide secure document instructions when needed.</p>
         <p>
           <a href="${contactUrl}" style="display:inline-block;border-radius:8px;background:#0092df;color:#fff;padding:11px 16px;text-decoration:none;font-weight:700">Contact IntegraFin</a>

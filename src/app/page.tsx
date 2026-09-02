@@ -11,6 +11,7 @@ export const metadata = {
   description: 'IntegraFin is a Katy tax and accounting firm helping businesses and families with tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support.',
   alternates: { canonical: 'https://integrafin.tax/' },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
     description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support from IntegraFin.',
     url: 'https://integrafin.tax/',
@@ -18,6 +19,7 @@ export const metadata = {
     siteName: 'IntegraFin',
   },
   twitter: {
+    images: ["/og-image.jpg"],
     card: 'summary_large_image',
     title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
     description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support from IntegraFin.',

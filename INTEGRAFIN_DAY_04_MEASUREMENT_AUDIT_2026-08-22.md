@@ -9,7 +9,7 @@ Status: **In Progress — implementation and local QA pass; live trace exit gate
 
 The Day 4 measurement path is implemented and hardened, but it must not be marked done yet. The current CRM contains attributed leads and separately contains successfully notified leads, but no existing record proves that a UTM-attributed lead also produced a successful owner notification. No new lead was submitted during this audit.
 
-The remaining exit-gate test requires the updated code to be deployed and one approved, clearly labeled test lead to be submitted from a browser that allows Google Analytics requests. That lead must then be reconciled in GA4 DebugView, the database, the authenticated lead dashboard, and the recipient inbox.
+The updated code was deployed from commit `2896973` on 2026-08-22. Both connected Vercel projects reported successful deployments, and the production contact page serves the new `debug_mode` client bundle. The remaining exit-gate test requires one approved, clearly labeled test lead to be submitted and reconciled in GA4 DebugView, the database, the authenticated lead dashboard, and the recipient inbox.
 
 ## GA4 Read-Only Verification
 
@@ -18,6 +18,8 @@ The remaining exit-gate test requires the updated code to be deployed and one ap
 - GA4 DebugView reported **0 debug devices** and **0 debug events** at the time of review.
 - No GA4 settings were changed during this audit.
 - The test Chrome profile loaded `https://www.googletagmanager.com/gtag/js` successfully but did not emit an observable Google Analytics collection request after form focus. This browser session therefore cannot be accepted as DebugView evidence.
+- Production deployment commit: `2896973ab4b685ecbdb7dbc5894c23475fefe847`.
+- GitHub/Vercel checks: `Vercel — integrafin-tax` and `Vercel — integrafin_web` both succeeded.
 
 ## Read-Only CRM Aggregate
 
@@ -74,7 +76,7 @@ This establishes that the CRM, attribution fields, and notification status field
 
 ## Exit-Gate Test Still Required
 
-After deployment, use this controlled entry URL in a browser without analytics blocking:
+Use this controlled entry URL in a browser without analytics blocking:
 
 ```text
 https://integrafin.tax/contact?debug_mode=1&utm_source=codex-day4&utm_medium=qa&utm_campaign=analytics-verification

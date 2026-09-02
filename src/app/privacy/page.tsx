@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: 'Privacy Policy | IntegraFin Tax Expert Services',
   description: 'Read the Privacy Policy for IntegraFin Tax Expert Services. Learn how we collect, use, and protect your personal and financial information.',
   alternates: { canonical: 'https://integrafin.tax/privacy' },
+  openGraph: {
+    title: 'Privacy Policy | IntegraFin Tax Expert Services',
+    description: 'Read the Privacy Policy for IntegraFin Tax Expert Services. Learn how we collect, use, and protect your personal and financial information.',
+    url: 'https://integrafin.tax/privacy',
+    images: ['/og-image.jpg'],
+  },
 };
 
 const sections = [

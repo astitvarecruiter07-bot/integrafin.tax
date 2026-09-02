@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical },
   robots: { index: false, follow: true },
-  openGraph: { title, description, url: canonical, type: 'website' },
-  twitter: { card: 'summary_large_image', title, description },
+  openGraph: { title, description, url: canonical, type: 'website', images: ['/og-image.jpg'] },
+  twitter: { card: 'summary_large_image', title, description, images: ['/og-image.jpg'] },
 };
 
 const structuredData = {

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: pageData.metaDescription,
   alternates: { canonical: pageData.pageProps.pageUrl },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: pageData.metaTitle,
     description: pageData.openGraphDescription,
     url: pageData.pageProps.pageUrl,

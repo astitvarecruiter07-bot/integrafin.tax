@@ -20,6 +20,7 @@ const serviceLinks = [
     { href: "/individual-tax-preparation", label: "Individual Tax Preparation" },
     { href: "/tax-resolution", label: "Tax Resolution" },
     { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
+    { href: "/bookkeeping-cleanup-calculator", label: "Bookkeeping Cleanup Calculator" },
     { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
     { href: "/payroll-tax-support", label: "Payroll Tax Support" },
     { href: "/texas/katy-bookkeeping-services", label: "Katy Bookkeeping Services" },

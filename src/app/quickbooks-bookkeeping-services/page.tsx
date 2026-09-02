@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: data.url },
   robots: { index: true, follow: true },
   openGraph: {
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
     title: data.metaTitle,
     description: data.metaDescription,
     url: data.url,

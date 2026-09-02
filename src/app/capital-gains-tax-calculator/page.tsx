@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: config.description,
   alternates: { canonical: pageUrl },
   robots: { index: true, follow: true },
-  openGraph: { title: config.title, description: config.description, url: pageUrl, type: "website" },
+  openGraph: { title: config.title, description: config.description, url: pageUrl, type: "website", images: ["/og-image.jpg"] },
 };
 
 export default function CapitalGainsTaxCalculatorPage() {

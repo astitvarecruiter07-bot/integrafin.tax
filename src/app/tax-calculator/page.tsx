@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     alternates: { canonical: pageUrl },
     robots: { index: true, follow: true },
     openGraph: {
+        images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
         title: "2025 & 2026 Federal Tax Calculator | Refund Estimator",
         description:
             "Free federal tax estimator for income tax, refund or balance due, self-employment tax, capital gains, deductions, credits, and filing scenarios.",
