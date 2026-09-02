@@ -17,6 +17,7 @@ export type LeadAttribution = {
   gbraid?: string;
   wbraid?: string;
   msclkid?: string;
+  fbclid?: string;
   aiReferralSource?: AiReferralSource;
   firstTouchAt?: string;
 };
@@ -38,6 +39,7 @@ const campaignParameters = [
   ["gbraid", "gbraid"],
   ["wbraid", "wbraid"],
   ["msclkid", "msclkid"],
+  ["fbclid", "fbclid"],
 ] as const;
 
 let memoryAttribution: StoredAttribution | undefined;
@@ -89,6 +91,7 @@ function normalizeStoredAttribution(value: unknown): StoredAttribution | undefin
     gbraid: cleanString(candidate.gbraid, MAX_CAMPAIGN_VALUE_LENGTH),
     wbraid: cleanString(candidate.wbraid, MAX_CAMPAIGN_VALUE_LENGTH),
     msclkid: cleanString(candidate.msclkid, MAX_CAMPAIGN_VALUE_LENGTH),
+    fbclid: cleanString(candidate.fbclid, MAX_CAMPAIGN_VALUE_LENGTH),
     aiReferralSource: normalizeAiReferralSource(candidate.aiReferralSource),
     firstTouchAt: cleanTimestamp(candidate.firstTouchAt),
   };
@@ -139,6 +142,9 @@ export function captureLeadAttribution(): LeadAttribution {
       existing?.[fieldName] ||
       cleanString(searchParameters.get(queryName), MAX_CAMPAIGN_VALUE_LENGTH);
   }
+
+  if (next.fbclid && !next.utmSource) next.utmSource = "facebook";
+  if (next.fbclid && !next.utmMedium) next.utmMedium = "paid_social";
 
   next.aiReferralSource =
     existing?.aiReferralSource ||

@@ -56,6 +56,7 @@ export interface ILeadAttribution {
   gbraid?: string;
   wbraid?: string;
   msclkid?: string;
+  fbclid?: string;
   aiReferralSource?: AiReferralSource;
   firstTouchAt?: Date;
   submittedAt: Date;
@@ -124,6 +125,7 @@ const LeadAttributionSchema = new mongoose.Schema<ILeadAttribution>(
     gbraid: { type: String, maxlength: 200 },
     wbraid: { type: String, maxlength: 200 },
     msclkid: { type: String, maxlength: 200 },
+    fbclid: { type: String, maxlength: 200 },
     aiReferralSource: { type: String, enum: AI_REFERRAL_SOURCES },
     firstTouchAt: { type: Date },
     submittedAt: { type: Date, required: true },

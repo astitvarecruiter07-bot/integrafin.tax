@@ -50,6 +50,7 @@ type LeadAttributionRecord = {
   gbraid?: string;
   wbraid?: string;
   msclkid?: string;
+  fbclid?: string;
   aiReferralSource?: string;
 };
 
@@ -1179,7 +1180,7 @@ export default function LeadOperationsDashboard({
                         <DetailField label="AI referral source" value={formatAiSource(selectedLead.attribution.aiReferralSource)} />
                         <DetailField label="Campaign" value={selectedLead.attribution.utmCampaign || 'None'} />
                         <DetailField label="Source / medium" value={[selectedLead.attribution.utmSource, selectedLead.attribution.utmMedium].filter(Boolean).join(' / ') || 'None'} />
-                        <DetailField label="Ad click ID" value={(selectedLead.attribution.gclid || selectedLead.attribution.gbraid || selectedLead.attribution.wbraid || selectedLead.attribution.msclkid) ? 'Present' : 'None'} />
+                        <DetailField label="Ad click ID" value={(selectedLead.attribution.gclid || selectedLead.attribution.gbraid || selectedLead.attribution.wbraid || selectedLead.attribution.msclkid || selectedLead.attribution.fbclid) ? 'Present' : 'None'} />
                       </dl>
                     </details>
                   )}

@@ -1,511 +1,407 @@
+import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { Check, CheckCircle2, ChevronRight } from "lucide-react";
-import HomeCallbackForm from "@/components/HomeCallbackForm";
-import HeroCarousel from "@/components/HeroCarousel";
-import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
-import { homepageWebPageSchema } from "@/lib/seo/schema";
+import {
+  AlarmClock,
+  ArrowRight,
+  Building2,
+  CalendarDays,
+  Check,
+  CheckCircle2,
+  Clock3,
+  FileCheck2,
+  Phone,
+  ReceiptText,
+  RefreshCw,
+  ShieldCheck,
+} from "lucide-react";
+import FacebookLandingLeadForm from "@/components/FacebookLandingLeadForm";
+import FacebookLandingTracking from "@/components/FacebookLandingTracking";
+import TaxDeadlineCountdown from "@/components/TaxDeadlineCountdown";
 
-export const metadata = {
-  title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
-  description: 'IntegraFin is a Katy tax and accounting firm helping businesses and families with tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support.',
-  alternates: { canonical: 'https://integrafin.tax/' },
+export const metadata: Metadata = {
+  title: "$99/Month Bookkeeping & 2025 Catch-Up | IntegraFin",
+  description:
+    "Ask about IntegraFin's $99/month bookkeeping offer and 48-hour 2025 catch-up service before the September 15 tax deadline.",
+  alternates: { canonical: "https://integrafin.tax/" },
   openGraph: {
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
-    title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
-    description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support from IntegraFin.',
-    url: 'https://integrafin.tax/',
-    type: 'website',
-    siteName: 'IntegraFin',
+    title: "Bookkeeping for $99/Month | IntegraFin",
+    description:
+      "Catch up your 2025 books and get ready for the September 15 deadline. Check your eligibility today.",
+    url: "https://integrafin.tax/",
+    images: [
+      { url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" },
+    ],
   },
   twitter: {
+    card: "summary_large_image",
+    title: "Bookkeeping for $99/Month | IntegraFin",
+    description: "Catch up your 2025 books and check your eligibility for the IntegraFin offer.",
     images: ["/og-image.jpg"],
-    card: 'summary_large_image',
-    title: 'Katy Tax and Accounting Firm | IntegraFin Tax & Accounting',
-    description: 'Katy-based tax preparation, bookkeeping, payroll records, IRS notice help, and year-round support from IntegraFin.',
   },
 };
 
-const stateServiceHubs = [
+const offerItems = [
   {
-    href: "/texas-tax-accounting-services",
-    label: "Texas Services",
-    description: "Business tax, bookkeeping, payroll, and IRS support for Texas clients.",
+    icon: ReceiptText,
+    number: "01",
+    title: "Transactions organized",
+    text: "Business activity categorized and arranged so your records are easier to review.",
   },
   {
-    href: "/new-york-tax-accounting-services",
-    label: "New York Services",
-    description: "Tax planning and accounting support for New York businesses and individuals.",
+    icon: RefreshCw,
+    number: "02",
+    title: "Accounts reconciled",
+    text: "Available statements checked against the books to identify gaps and inconsistencies.",
   },
   {
-    href: "/pennsylvania-tax-accounting-services",
-    label: "Pennsylvania Services",
-    description: "End-to-end tax and accounting services for Pennsylvania clients.",
+    icon: FileCheck2,
+    number: "03",
+    title: "Tax-ready reports",
+    text: "Clean reports prepared for the next filing conversation with your tax professional.",
   },
-  ...highTaxStateServiceLinks.map((link) => ({
-    href: link.href,
-    label: link.label.replace(" Tax and Accounting Services", " Services"),
-    description: link.description,
-  })),
 ];
+
+const processSteps = [
+  {
+    step: "Step 1",
+    title: "Submit your details",
+    text: "Tell us how to reach you and whether you need 2025 catch-up, monthly bookkeeping, or both.",
+  },
+  {
+    step: "Step 2",
+    title: "We check the scope",
+    text: "The team reviews the volume, record condition, access, entity type, and relevant deadline.",
+  },
+  {
+    step: "Step 3",
+    title: "Confirm and get started",
+    text: "If the offer fits, you receive the service scope, required-record list, and written terms before work begins.",
+  },
+];
+
+const fitChecks = [
+  "Your 2025 books are incomplete or behind",
+  "You need records organized before filing",
+  "You want ongoing bookkeeping after cleanup",
+  "You can provide complete statements and account access",
+  "Your business is a partnership, S corporation, LLC, or owner-led company",
+  "You want a clear answer before the deadline gets closer",
+];
+
+const faqs = [
+  {
+    question: "Is the bookkeeping really $99 per month?",
+    answer:
+      "The advertised plan is $99 per month for qualifying businesses. Eligibility, transaction volume, account count, cleanup needs, and final scope are reviewed before you enroll.",
+  },
+  {
+    question: "What does the 48-hour catch-up promise cover?",
+    answer:
+      "The offer applies to qualifying 2025 catch-up projects after all requested records and account access are received and the written scope is accepted. Record volume and complexity can affect eligibility.",
+  },
+  {
+    question: "Does September 15 apply to every business?",
+    answer:
+      "No. September 15, 2026 is generally the extended filing deadline for calendar-year partnerships and S corporations that timely requested an extension. Your entity, tax year, extension status, and circumstances determine the actual deadline.",
+  },
+  {
+    question: "Does bookkeeping include filing my tax return?",
+    answer:
+      "Bookkeeping and tax-return filing are separate scopes unless your written engagement says otherwise. IntegraFin can review what tax preparation support you may need.",
+  },
+  {
+    question: "What information do I need to submit now?",
+    answer:
+      "Only your name, email, phone number, and the type of help you need. Do not submit tax IDs, bank credentials, tax returns, or other sensitive records through this form.",
+  },
+  {
+    question: "Will this guarantee that I avoid penalties?",
+    answer:
+      "No service can guarantee a particular IRS or state outcome. Timely action and accurate records may reduce filing risk, but penalties depend on filing history, payment status, entity type, eligibility, and applicable rules.",
+  },
+];
+
+function LeadAnchor({
+  className = "",
+  label = "Check my eligibility",
+}: {
+  className?: string;
+  label?: string;
+}) {
+  return (
+    <a href="#lead-form" data-analytics-label="facebook_offer_cta" className={className}>
+      {label}
+      <ArrowRight className="h-5 w-5" aria-hidden="true" />
+    </a>
+  );
+}
+
+function CtaBar({ label = "Check My Eligibility for the $99/Month Offer" }: { label?: string }) {
+  return (
+    <LeadAnchor
+      label={label}
+      className="mx-auto flex min-h-14 w-full max-w-5xl items-center justify-center gap-2 rounded-xl bg-[#ff3038] px-5 text-center text-sm font-black uppercase tracking-[0.02em] text-white shadow-[0_16px_34px_-18px_rgba(255,48,56,.75)] transition hover:-translate-y-0.5 hover:bg-[#e61f2a] sm:text-base"
+    />
+  );
+}
 
 export default function Home() {
   return (
-    <main className="bg-slate-50 selection:bg-[#0092df] selection:text-white relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageWebPageSchema) }}
-      />
-      {/* Navbar space is handled by layout.tsx */}
-      
-      {/* Hero Section */}
-      <HeroCarousel />
+    <main className="integrafin-landing min-h-screen overflow-hidden bg-white pb-20 text-[#080808] selection:bg-[#ff3038] selection:text-white lg:pb-0">
+      <FacebookLandingTracking />
 
-      {/* Core Services We Offer */}
-      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto -mt-16 z-30 relative">
-        <div className="text-center mb-16">
-           <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-2 block">Our Expertise</span>
-           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] tracking-tight">Katy Tax and Accounting Firm Services</h2>
-           <p className="text-slate-600 mt-4 max-w-3xl mx-auto text-base md:text-lg">
-             IntegraFin helps Katy and Fort Bend County clients with organized tax preparation, bookkeeping, business tax support, payroll records, and IRS notice response.
-           </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1 */}
-          <div className="group bg-white p-10 rounded-3xl shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-[#0092df]/10 border border-slate-100 hover:border-[#0092df]/20 transition-all duration-500 flex flex-col text-left hover:-translate-y-2 relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/5 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700"></div>
-             <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
-               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><path d="m3 12.5 3 3 6-6"/></svg>
-             </div>
-             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Small Business Tax and Accounting in Katy</h3>
-             <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
-               Keep business records, filings, and deadlines organized with nearby Katy tax and accounting support. We help business owners prepare for filing season, maintain clean books, and understand the next tax step.
-             </p>
-             <ul className="space-y-4 relative z-10">
-               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
-                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
-                 </div>
-                 <span>Business tax preparation and filing support</span>
-               </li>
-               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
-                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
-                 </div>
-                 <span>Monthly bookkeeping and account reconciliation</span>
-               </li>
-               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
-                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
-                 </div>
-                 <span>Year-round planning for Katy and Fort Bend businesses</span>
-               </li>
-             </ul>
+      <header className="relative z-40 border-b border-black/10 bg-white/95 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+          <a href="#top" aria-label="IntegraFin home" className="inline-flex items-center">
+            <Image src="/images/logo1.png" alt="IntegraFin" width={176} height={44} className="h-8 w-auto sm:h-10" priority />
+          </a>
+          <div className="hidden items-center gap-7 text-sm font-bold text-[#333] lg:flex">
+            <a href="#offer" className="transition hover:text-[#ff3038]">What is included</a>
+            <a href="#process" className="transition hover:text-[#ff3038]">How it works</a>
+            <a href="#faq" className="transition hover:text-[#ff3038]">FAQ</a>
           </div>
-          
-          {/* Card 2 */}
-          <div className="group bg-white p-10 rounded-3xl shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-[#0092df]/10 border border-slate-100 hover:border-[#0092df]/20 transition-all duration-500 flex flex-col text-left hover:-translate-y-2 relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/5 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700"></div>
-             <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
-               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/><path d="m15 14-3 3-3-3"/></svg>
-             </div>
-             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Individual Tax Preparation in Katy</h3>
-             <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
-               Get clear tax preparation help for individual returns, self-employed income, 1099 work, family filing questions, and document organization before deadlines.
-             </p>
-             <ul className="space-y-4 relative z-10">
-               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
-                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
-                 </div>
-                 <span>Online and local Katy-area filing support</span>
-               </li>
-               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
-                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
-                 </div>
-                 <span>Organized document requests and review process</span>
-               </li>
-               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
-                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
-                 </div>
-                 <span>Tax planning conversations before filing season</span>
-               </li>
-             </ul>
+          <LeadAnchor label="Check eligibility" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-black px-4 text-sm font-black text-white transition hover:bg-[#ff3038] sm:px-5" />
+        </div>
+      </header>
+
+      <section id="top" className="landing-grid relative border-b border-black/10 px-5 pb-16 pt-10 sm:px-8 sm:pb-20 sm:pt-14">
+        <div className="landing-spotlight absolute inset-0" aria-hidden="true" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="mx-auto text-center">
+            <TaxDeadlineCountdown />
+            <p className="inline-flex items-center gap-2 rounded-lg bg-black px-5 py-2.5 text-xs font-black uppercase tracking-[0.13em] text-white sm:text-sm">
+              <AlarmClock className="h-4 w-4 text-[#ff3038]" aria-hidden="true" />
+              Tax deadline specialist
+            </p>
+            <h1 className="mx-auto mt-7 max-w-5xl text-4xl font-black uppercase leading-[1.03] tracking-[-0.045em] text-black sm:text-5xl lg:text-[4.35rem]">
+              Bookkeeping for just
+              <span className="mt-3 block text-[1.45em] font-black leading-none tracking-[-0.065em] text-[#ff3038] sm:text-[1.55em]">
+                $99/mo
+              </span>
+            </h1>
+            <p className="mx-auto mt-5 max-w-3xl text-base font-semibold leading-7 text-[#454545] sm:text-lg">
+              Behind on your 2025 books? Get the records organized, understand your filing path, and act before the deadline gets closer.
+            </p>
           </div>
-          
-          {/* Card 3 */}
-          <div className="group bg-white p-10 rounded-3xl shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-[#0092df]/10 border border-slate-100 hover:border-[#0092df]/20 transition-all duration-500 flex flex-col text-left hover:-translate-y-2 relative overflow-hidden">
-             <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/5 rounded-bl-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700"></div>
-             <div className="w-20 h-20 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-colors duration-500 relative z-10">
-               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1Z"/><path d="m9 14 2 2 4-4"/></svg>
-             </div>
-             <h3 className="text-2xl font-black text-[#003580] mb-5 leading-snug">Bookkeeping and IRS Notice Help</h3>
-             <p className="text-slate-600 mb-8 text-sm leading-relaxed flex-grow">
-               Behind books, IRS letters, and unclear records can slow down filing. IntegraFin helps Katy clients organize the information needed for cleanup, notice response, and planning.
-             </p>
-             <ul className="space-y-4 relative z-10">
-               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
-                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
-                 </div>
-                 <span>Bookkeeping cleanup before tax preparation</span>
-               </li>
-               <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
-                 <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#0092df]/10 flex items-center justify-center mt-0.5">
-                   <Check className="w-3.5 h-3.5 text-[#0092df]" />
-                 </div>
-                 <span>IRS notice review and next-step planning</span>
-               </li>
-             </ul>
-          </div>
-        </div>
-      </section>
 
-      {/* About Us - Integrafin */}
-      <section className="py-24 px-6 lg:px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
-        <div className="md:w-1/2 relative">
-           <div className="absolute inset-0 bg-gradient-to-r from-[#0092df]/20 to-transparent rounded-[2rem] transform -rotate-3 scale-105 blur-sm -z-10 transition-transform duration-700 hover:rotate-0"></div>
-           <div className="relative h-[450px] w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
-             <Image
-               src="/A_professional,_wide-angle_202604082301.png"
-               alt="Illustrative tax and accounting workspace"
-               fill
-               sizes="(max-width: 768px) 100vw, 50vw"
-               quality={72}
-               className="object-cover transition-transform duration-700 hover:scale-105"
-             />
-           </div>
-        </div>
-        <div className="md:w-1/2 flex flex-col items-start text-left">
-           <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4">Discover Who We Are</span>
-           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">About Us - Integrafin</h2>
-           <div className="w-24 h-1.5 bg-gradient-to-r from-[#0092df] to-[#00C2CB] rounded-full mb-8"></div>
-           <p className="text-slate-600 mb-10 leading-loose text-base md:text-lg font-medium">
-             IntegraFin is based in Katy, Texas and provides tax preparation, bookkeeping, payroll-record support, and IRS notice help. Services are selected after an initial review of the records, deadlines, and requested scope.
-           </p>
-          <Link href="/about" className="bg-[#003580] hover:bg-[#002050] text-white px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 shadow-xl shadow-[#003580]/20 hover:-translate-y-1 group flex items-center gap-3">
-             Know More
-             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </section>
-
-      {/* Verifiable business details */}
-      <section className="py-24 px-6 lg:px-8 border-t border-slate-200/60 bg-white">
-         <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-               <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Verifiable Details</span>
-               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">What You Can Check Before You Engage</h2>
-               <p className="text-slate-600 max-w-4xl mx-auto leading-relaxed text-lg font-medium">
-                 Trust should come from facts you can inspect. These pages document where IntegraFin is based, how services are scoped, what the engagement process includes, and where outcomes depend on records, law, eligibility, or agency decisions.
-               </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-               {[
-                 {
-                   title: "Katy office and contact details",
-                   description: "The site publishes the Katy address, phone, email, and weekday hours used across its contact information and structured data.",
-                   href: "/contact",
-                   linkLabel: "View contact details",
-                 },
-                 {
-                   title: "Defined engagement stages",
-                   description: "The documented process covers initial review, written scope, record collection, reconciliation, preparation, review, and next steps.",
-                   href: "/texas/katy-tax-accountant",
-                   linkLabel: "Review the process",
-                 },
-                 {
-                   title: "Transparent service areas",
-                   description: "IntegraFin identifies Katy as its office and describes nearby cities as service areas instead of claiming additional locations.",
-                   href: "/texas-tax-accounting-services",
-                   linkLabel: "View Texas coverage",
-                 },
-                 {
-                   title: "No promised tax outcomes",
-                   description: "Service pages explain that refunds, savings, penalty relief, settlements, and other results depend on the facts and applicable rules.",
-                   href: "/services",
-                   linkLabel: "Review service scope",
-                 },
-               ].map((item) => (
-                 <article key={item.title} className="group flex h-full flex-col bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-[0_2px_10px_-3px_rgba(6,81,237,0.1)] hover:border-[#0092df]/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                   <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 group-hover:bg-[#0092df] transition-colors duration-300">
-                     <CheckCircle2 className="w-5 h-5 text-[#0092df] group-hover:text-white transition-colors duration-300" />
-                   </div>
-                   <h3 className="mt-5 text-lg font-black text-[#003580]">{item.title}</h3>
-                   <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{item.description}</p>
-                   <Link href={item.href} className="mt-5 text-sm font-bold text-[#006fae] hover:text-[#003580] hover:underline">
-                     {item.linkLabel}
-                   </Link>
-                 </article>
-               ))}
-            </div>
-         </div>
-      </section>
-
-      {/* Our Main Services */}
-      <section className="py-24 px-6 lg:px-8 bg-slate-50 border-t border-slate-200/60">
-        <div className="max-w-7xl mx-auto">
-           <div className="text-center mb-20 flex flex-col items-center">
-             <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4">What We Do Best</span>
-             <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#003580] mb-6 tracking-tight">Our Main Services</h2>
-             <div className="w-24 h-1.5 bg-[#0092df] rounded-full mb-6"></div>
-             <p className="text-slate-600 text-lg font-medium max-w-2xl">IntegraFin offers a full range of accounting and tax services designed to streamline your financial operations.</p>
-           </div>
-           
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  title: "Small Business Tax Accountant in Katy",
-                  desc: "Tax preparation and year-round accounting for Katy LLCs, S corporations, partnerships, sole proprietors, contractors, consultants, healthcare practices, retailers, and other owner-managed businesses.",
-                  href: "/business-tax-accounting",
-                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><path d="M14 2v6h6"/><rect x="8" y="10" width="8" height="8" rx="1"/></svg>
-                },
-                {
-                  title: "Individual Tax Preparation Katy TX",
-                  desc: "Local filing support based on income documents, filing history, Texas residency, other-state activity, eligibility, and applicable rules.",
-                  href: "/individual-tax-preparation",
-                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M12 11v8"/></svg>
-                },
-                {
-                  title: "Tax Resolution Services",
-                  desc: "Assistance with back taxes, IRS audits, penalty abatements, and tax negotiations to resolve outstanding tax issues.",
-                  href: "/tax-resolution",
-                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="m12 14 4-4"/><path d="M3.3 7H6h15l-1.5 13H4.5L3.3 7Z"/><path d="m16 10-4 4"/></svg>
-                },
-                {
-                  title: "Additional Services",
-                  desc: "Support for tax-identification applications, international reporting workflows, business-certification documents, extensions, and document organization.",
-                  href: "/services#additional",
-                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10.4 12.6a2 2 0 1 1 3 3L8 21l-4 1 1-4Z"/><path d="M4.5 8.5V4a2 2 0 0 1 2-2h9l5 5v13a2 2 0 0 1-2 2h-2"/></svg>
-                },
-                {
-                  title: "LLC Formation Tax Setup",
-                  desc: "Start a new LLC with EIN planning, tax classification review, bookkeeping setup, payroll-record readiness, and first-year compliance steps.",
-                  href: "/llc-formation-tax-setup",
-                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
-                },
-                {
-                  title: "Industries Served",
-                  desc: "We cater to various industries, including real estate, construction, manufacturing, healthcare, financial services, legal, retail, and technology, providing tailored tax and accounting solutions.",
-                  href: "/industries",
-                  icon: <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#003580] group-hover:text-[#0092df] transition-colors"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3v0a2 2 0 0 1 2 2v0c0 1.1.9 2 2 2v0a2 2 0 0 0 2-2v0c0-1.1.9-2 2-2h3.14"/><path d="M11 21.95V18a2 2 0 0 0-2-2v0a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>
-                }
-              ].map((srv, idx) => (
-                <div key={idx} className="group bg-white border border-slate-100 rounded-[2rem] p-8 text-center flex flex-col items-center hover:shadow-[0_20px_50px_-12px_rgba(0,146,223,0.15)] hover:border-[#0092df]/30 transition-all duration-500 hover:-translate-y-2">
-                   <div className="w-20 h-20 bg-slate-50 group-hover:bg-[#0092df]/10 rounded-full flex items-center justify-center mb-8 transition-colors duration-500 shadow-sm border border-slate-100 group-hover:border-[#0092df]/20">
-                     {srv.icon}
-                   </div>
-                   <h3 className="text-xl font-black text-[#003580] mb-5 tracking-tight">{srv.title}</h3>
-                   <p className="text-slate-600 text-sm mb-8 flex-grow leading-relaxed font-medium">{srv.desc}</p>
-                   <Link href={srv.href} className="mt-auto inline-flex items-center justify-center gap-2 text-[#0092df] py-3 px-6 rounded-xl font-bold text-sm bg-slate-50 hover:bg-[#0092df] hover:text-white transition-colors w-full">
-                     Explore {srv.title} <ChevronRight className="w-4 h-4" />
-                   </Link>
-                </div>
-              ))}
-           </div>
-
-            <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Link href="/bookkeeping-cleanup" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Bookkeeping Cleanup</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">Catch-up bookkeeping, reconciliations, missing records, and tax-ready financial reports.</p>
-              </Link>
-              <Link href="/quickbooks-bookkeeping-services" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">QuickBooks Bookkeeping</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">QuickBooks setup, cleanup, monthly reconciliation, and reporting support.</p>
-              </Link>
-              <Link href="/contractor-bookkeeping-services" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Contractor Bookkeeping</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">Job-cost records, subcontractor details, cleanup, and tax-ready reports for Texas contractors.</p>
-              </Link>
-              <Link href="/payroll-tax-support" className="group rounded-2xl border border-slate-200 bg-white p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-lg font-black text-[#003580] group-hover:text-[#0092df]">Payroll Tax Support</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">Employer payroll records, tax deposits, filings, notices, and year-end wage reporting.</p>
-              </Link>
-           </div>
-        </div>
-      </section>
-
-      {/* Katy and Fort Bend Local SEO Coverage */}
-      <section className="py-20 px-6 lg:px-8 bg-white border-t border-slate-200/60">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-            <div>
-              <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">Local Tax Support</span>
-              <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight mb-5">
-                Katy Tax and Accounting Firm Serving Fort Bend County
+          <div className="mx-auto mt-9 grid max-w-5xl overflow-hidden rounded-2xl border-2 border-black bg-white shadow-[12px_12px_0_#080808] lg:grid-cols-[.9fr_1.1fr]">
+            <div className="flex flex-col justify-center bg-black p-7 text-white sm:p-9 lg:p-10">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff5a60]">Urgent 2025 catch-up offer</p>
+              <h2 className="mt-4 text-3xl font-black uppercase leading-[1.08] tracking-[-0.035em] sm:text-4xl">
+                Catch up your entire 2025 in <span className="text-[#ff3038]">48 hours</span> or your money back.
               </h2>
-              <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
-                IntegraFin helps Katy-area business owners, self-employed professionals, families, and growing teams stay organized with tax preparation, bookkeeping services, payroll records support, and IRS notice help.
-              </p>
-              <p className="text-slate-600 leading-relaxed">
-                Our nearby service coverage includes Katy, Fulshear, Richmond, Rosenberg, Sugar Land, Cinco Ranch, Brookshire, and surrounding Fort Bend County communities.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Link href="/contact" className="bg-[#003580] hover:bg-[#002050] text-white px-7 py-3 rounded-xl font-bold transition-colors text-center">
-                  Schedule A Katy Tax Consultation
-                </Link>
-                <Link href="/texas/katy-bookkeeping-services" className="bg-secondary text-[#003580] px-7 py-3 rounded-xl font-bold transition-colors text-center">
-                  View Katy Bookkeeping Page
-                </Link>
-                <Link href="/texas/katy-tax-accountant" className="bg-slate-50 border border-slate-200 text-[#003580] px-7 py-3 rounded-xl font-bold transition-colors text-center hover:border-[#0092df]/40">
-                  View Katy Local Tax Page
-                </Link>
+              <div className="mt-7 rounded-xl bg-[#ff3038] p-5">
+                <p className="text-xs font-black uppercase tracking-[0.15em] text-white/80">File before</p>
+                <p className="mt-1 text-3xl font-black uppercase tracking-tight text-white">September 15, 2026</p>
+                <p className="mt-2 text-xs font-semibold leading-5 text-white/90">For qualifying calendar-year partnerships and S corporations with a valid extension.</p>
               </div>
+              <ul className="mt-7 space-y-3 text-sm font-bold text-[#e8e8e8]">
+                {["No payment required to check eligibility", "Written scope before work begins", "Secure document process after enrollment"].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#ff3038]" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="grid gap-4">
-              <Link href="/texas/katy-bookkeeping-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-xl font-black text-[#003580] mb-2">Katy Bookkeeping Services</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Monthly bookkeeping, cleanup, account reconciliation, payroll records, and tax-ready reports for local business owners.
-                </p>
-              </Link>
-              <Link href="/individual-tax-preparation" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-xl font-black text-[#003580] mb-2">Individual Tax Preparation</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Tax filing support for individuals, families, self-employed workers, 1099 income, and taxpayers who need clearer document organization.
-                </p>
-              </Link>
-              <Link href="/texas-tax-accounting-services" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-xl font-black text-[#003580] mb-2">Texas Tax and Accounting Hub</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Explore statewide tax, accounting, bookkeeping, payroll, and IRS support pages connected to the Katy and Fort Bend local service cluster.
-                </p>
-              </Link>
-              <Link href="/texas/irs-notice-help-katy-tx" className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-                <h3 className="text-xl font-black text-[#003580] mb-2">IRS Notice Help in Katy</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  Review IRS letters, organize tax records, and plan response or payment-option next steps with nearby Katy support.
-                </p>
-              </Link>
+            <div id="lead-form" className="bg-white p-6 sm:p-9 lg:p-10">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff3038]">Check offer eligibility</p>
+              <h2 className="mt-2 text-2xl font-black leading-tight text-black sm:text-3xl">Where should we contact you?</h2>
+              <p className="mb-5 mt-2 text-sm leading-6 text-[#5a5a5a]">Complete the short form. The IntegraFin team will review your needs and follow up with the next step.</p>
+              <FacebookLandingLeadForm idPrefix="facebook-hero-form" source="facebook-tax-deadline-ad-hero" compact />
             </div>
+          </div>
+
+          <p className="mx-auto mt-7 max-w-4xl text-center text-xs leading-5 text-[#646464]">
+            Offer eligibility depends on record completeness, transaction volume, account access, entity type, and confirmed scope. See important terms below.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-black px-5 py-14 text-white sm:px-8 sm:py-16">
+        <div className="mx-auto max-w-6xl text-center">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ff5a60]">Deadline alert</p>
+          <div className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-6">
+            <CalendarDays className="h-10 w-10 text-[#ff3038]" aria-hidden="true" />
+            <h2 className="text-3xl font-black uppercase tracking-[-0.035em] sm:text-5xl">September 15 is approaching.</h2>
+          </div>
+          <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-[#c9c9c9] sm:text-base">
+            For many calendar-year partnerships and S corporations that timely filed an extension, September 15, 2026 is the extended return deadline. Your filing facts determine which deadline applies.
+          </p>
+          <div className="mt-8"><CtaBar label="Get Help Before the Deadline" /></div>
+        </div>
+      </section>
+
+      <section id="offer" className="border-b border-black/10 bg-[#f6f6f6] px-5 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ff3038]">What the bookkeeping work prepares</p>
+            <h2 className="mt-3 text-3xl font-black uppercase leading-tight tracking-[-0.035em] text-black sm:text-4xl">From scattered records to a clearer 2025 picture.</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#5a5a5a] sm:text-base">Your confirmed scope depends on the condition and volume of your books. These are the core outcomes the review is designed to address.</p>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {offerItems.map(({ icon: Icon, number, title, text }) => (
+              <article key={number} className="relative overflow-hidden rounded-xl border-2 border-black bg-white p-6 shadow-[6px_6px_0_#080808]">
+                <span className="absolute right-4 top-4 rounded bg-[#ff3038] px-2 py-1 text-[10px] font-black text-white">{number}</span>
+                <Icon className="h-8 w-8 text-[#0088c9]" aria-hidden="true" />
+                <h3 className="mt-8 text-xl font-black uppercase text-black">{title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#555]">{text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-10"><CtaBar /></div>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto grid max-w-5xl overflow-hidden rounded-2xl border-2 border-black lg:grid-cols-[1.05fr_.95fr]">
+          <div className="relative min-h-[340px]">
+            <Image
+              src="/hero-accounting-workspace.jpg"
+              alt="Bookkeeping professionals organizing business records"
+              fill
+              sizes="(max-width: 1024px) 100vw, 52vw"
+              className="object-cover"
+              quality={82}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 rounded-lg bg-black/85 p-4 text-white backdrop-blur-sm">
+              <p className="text-sm font-black uppercase">Deadline-focused bookkeeping support</p>
+              <p className="mt-1 text-xs text-white/75">Records first. Filing conversation next.</p>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center bg-[#ff3038] p-7 text-white sm:p-10">
+            <Clock3 className="h-10 w-10" aria-hidden="true" />
+            <p className="mt-6 text-xs font-black uppercase tracking-[0.18em] text-white/75">48-hour catch-up promise</p>
+            <h2 className="mt-3 text-3xl font-black uppercase leading-tight tracking-[-0.035em] sm:text-4xl">Your complete records trigger the clock.</h2>
+            <p className="mt-5 text-sm font-semibold leading-7 text-white/90">The team first confirms that your project qualifies. The delivery window begins after the requested records, statements, access, and written scope are complete.</p>
+            <LeadAnchor label="Check if my books qualify" className="mt-7 inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-black px-6 text-sm font-black uppercase text-white transition hover:bg-white hover:text-black" />
           </div>
         </div>
       </section>
 
-      {/* State Service Hubs */}
-      <section className="py-20 px-6 lg:px-8 bg-white border-t border-slate-200/60">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">State Coverage</span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">Tax And Accounting Services By State</h2>
-            <p className="text-slate-600 mt-4 max-w-3xl mx-auto">
-              Explore dedicated pages for priority tax-service markets with high tax volume, business activity, and recurring compliance needs.
-            </p>
+      <section id="process" className="border-y border-black/10 bg-[#f6f6f6] px-5 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ff3038]">How it works</p>
+            <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.035em] text-black sm:text-4xl">Three steps from ad click to a clear answer.</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
-            {stateServiceHubs.map((hub) => (
-              <Link
-                key={hub.href}
-                href={hub.href}
-                className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-[#0092df]/40 hover:shadow-lg transition-all"
-              >
-                <h3 className="text-xl font-black text-[#003580] mb-2">{hub.label}</h3>
-                <p className="text-slate-600 text-sm">{hub.description}</p>
-              </Link>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {processSteps.map((item, index) => (
+              <article key={item.step} className={`${index === 1 ? "bg-black text-white" : "bg-white text-black"} rounded-xl border-2 border-black p-6`}>
+                <span className={`${index === 1 ? "bg-[#ff3038] text-white" : "bg-black text-white"} inline-flex rounded px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em]`}>{item.step}</span>
+                <h3 className="mt-7 text-xl font-black uppercase">{item.title}</h3>
+                <p className={`mt-3 text-sm leading-6 ${index === 1 ? "text-[#cfcfcf]" : "text-[#555]"}`}>{item.text}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-10"><CtaBar /></div>
+        </div>
+      </section>
+
+      <section className="bg-black px-5 py-16 text-white sm:px-8 sm:py-20">
+        <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+          <div>
+            <Building2 className="h-10 w-10 text-[#ff3038]" aria-hidden="true" />
+            <p className="mt-6 text-xs font-black uppercase tracking-[0.2em] text-[#ff5a60]">Is this for your business?</p>
+            <h2 className="mt-3 text-3xl font-black uppercase leading-tight tracking-[-0.035em] sm:text-4xl">The offer starts with a fit check.</h2>
+            <p className="mt-5 text-sm leading-7 text-[#bdbdbd]">The fastest path begins with complete information. Tell us what is behind and the team will confirm what can realistically be completed.</p>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {fitChecks.map((item) => (
+              <div key={item} className="flex min-h-24 items-center gap-4 rounded-xl border border-white/15 bg-white/[.06] p-5">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#ff3038] text-white"><Check className="h-4 w-4" aria-hidden="true" /></span>
+                <p className="text-sm font-bold leading-6 text-white">{item}</p>
+              </div>
             ))}
           </div>
         </div>
+        <div className="mx-auto mt-10 max-w-5xl"><CtaBar label="Find Out If My Business Qualifies" /></div>
       </section>
 
-      <section className="py-16 px-6 lg:px-8 bg-white border-t border-slate-200/60">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
-            <div>
-              <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">Free Planning Tools</span>
-              <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">2026 Federal Tax Calculators</h2>
-              <p className="text-slate-600 mt-4 max-w-3xl">
-                Estimate federal income tax, quarterly payments, self-employment tax, 1099 contractor tax, or capital gains using IRS- and SSA-sourced planning figures. Federal estimates only.
-              </p>
+      <section className="border-b border-black/10 bg-white px-5 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto grid max-w-5xl gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
+          <div className="rounded-2xl bg-[#eaf7fd] p-7 sm:p-9">
+            <div className="flex items-center gap-4">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0088c9] text-white"><ShieldCheck className="h-6 w-6" aria-hidden="true" /></span>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.15em] text-[#0077b0]">IntegraFin</p>
+                <p className="text-xl font-black text-black">Tax deadline support</p>
+              </div>
             </div>
-            <Link href="/tax-calculator" className="inline-flex items-center justify-center rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#0057b8] transition-colors">
-              Use Federal Tax Calculator
-            </Link>
+            <p className="mt-6 text-sm leading-7 text-[#4f4f4f]">IntegraFin helps owner-led businesses organize bookkeeping, prepare tax-ready records, and understand the next compliance step.</p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { href: "/quarterly-estimated-tax-calculator", title: "Quarterly Estimated Tax", description: "Plan remaining 2026 federal estimated payments after withholding and payments already made." },
-              { href: "/self-employment-tax-calculator", title: "Self-Employment Tax", description: "Estimate Schedule SE Social Security, Medicare, income tax, and the deductible portion." },
-              { href: "/1099-tax-calculator", title: "1099 & Freelancer Tax", description: "Start with gross contract income and expenses to estimate net profit and a tax reserve." },
-              { href: "/capital-gains-tax-calculator", title: "Capital Gains Tax", description: "Compare short- and long-term federal gain treatment using 2026 thresholds." },
-            ].map((calculator) => (
-              <Link key={calculator.href} href={calculator.href} className="rounded-2xl border border-slate-200 bg-slate-50 p-5 hover:border-[#0092df]/50 hover:shadow-lg transition-all">
-                <h3 className="text-lg font-black text-[#003580]">{calculator.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mt-2">{calculator.description}</p>
-                <span className="inline-flex mt-4 text-sm font-bold text-[#0057b8]">Open calculator →</span>
-              </Link>
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ff3038]">Why act now</p>
+            <h2 className="mt-3 text-3xl font-black uppercase leading-tight tracking-[-0.035em] text-black sm:text-4xl">You cannot file confidently from books you do not trust.</h2>
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
+              {["Clear communication", "Compliance-focused review", "Secure document process", "Practical next steps"].map((item) => (
+                <div key={item} className="flex items-center gap-3 border-l-4 border-[#ff3038] bg-[#f6f6f6] p-4 text-sm font-black text-black">{item}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="bg-[#f6f6f6] px-5 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ff3038]">Frequently asked questions</p>
+            <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.035em] text-black sm:text-4xl">Know the terms before you start.</h2>
+          </div>
+          <div className="mx-auto mt-10 max-w-5xl space-y-3">
+            {faqs.map((faq, index) => (
+              <details key={faq.question} className="group overflow-hidden rounded-lg border-2 border-black bg-white" open={index === 0}>
+                <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-5 px-5 py-4 text-sm font-black text-black marker:content-none group-open:bg-[#ff3038] group-open:text-white sm:text-base">
+                  {faq.question}
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-black text-base font-black text-white transition group-open:rotate-45 group-open:bg-white group-open:text-black">+</span>
+                </summary>
+                <p className="px-5 py-5 text-sm leading-7 text-[#555]">{faq.answer}</p>
+              </details>
             ))}
           </div>
+          <div className="mt-10"><CtaBar /></div>
         </div>
       </section>
 
-      <section className="py-16 px-6 lg:px-8 bg-slate-50 border-t border-slate-200/60">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-3 block">Tax Knowledge</span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">Popular Tax Guides</h2>
-            <p className="text-slate-600 mt-4 max-w-3xl mx-auto">
-              Start with these practical resources on IRS compliance, payroll, tax planning, and startup finance.
-            </p>
+      <section className="border-t border-black bg-white px-5 py-16 sm:px-8 sm:py-20">
+        <div className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[.78fr_1.22fr] lg:gap-14">
+          <div>
+            <p className="inline-flex rounded-lg bg-black px-3 py-1.5 text-xs font-black uppercase tracking-[0.15em] text-white">September 15 deadline</p>
+            <h2 className="mt-5 text-3xl font-black uppercase leading-tight tracking-[-0.035em] text-black sm:text-4xl">Do not wait to find out your books need more work.</h2>
+            <p className="mt-5 text-sm leading-7 text-[#555] sm:text-base">Submit your details now. No sensitive records and no payment are required to check whether the offer fits your business.</p>
+            <a href="tel:+18327741882" className="mt-6 inline-flex items-center gap-2 text-sm font-black text-black hover:text-[#ff3038]"><Phone className="h-4 w-4" aria-hidden="true" /> Prefer to call? (832) 774-1882</a>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-            <Link href="/blog/irs-compliance-guide" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-              <h3 className="text-lg font-black text-[#003580] mb-2">IRS Compliance Guide</h3>
-              <p className="text-slate-600 text-sm">How businesses can stay compliant and avoid filing penalties.</p>
-            </Link>
-            <Link href="/blog/payroll-best-practices" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-              <h3 className="text-lg font-black text-[#003580] mb-2">Payroll Best Practices</h3>
-              <p className="text-slate-600 text-sm">Key payroll workflows for tax accuracy and reporting discipline.</p>
-            </Link>
-            <Link href="/blog/tax-resolution-options" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-              <h3 className="text-lg font-black text-[#003580] mb-2">Tax Resolution Options</h3>
-              <p className="text-slate-600 text-sm">What to do when you owe back taxes or receive IRS notices.</p>
-            </Link>
-            <Link href="/blog/financial-planning-for-startups" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-              <h3 className="text-lg font-black text-[#003580] mb-2">Startup Financial Planning</h3>
-              <p className="text-slate-600 text-sm">Build a stronger financial foundation from day one.</p>
-            </Link>
-            <Link href="/tax-calculator-guide" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
-              <h3 className="text-lg font-black text-[#003580] mb-2">Federal Tax Calculator Guide</h3>
-              <p className="text-slate-600 text-sm">Understand the assumptions and tax inputs behind the 2025 and 2026 calculator.</p>
-            </Link>
+          <div className="rounded-2xl border-2 border-black bg-white p-6 shadow-[10px_10px_0_#ff3038] sm:p-8">
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff3038]">Check offer eligibility</p>
+            <h3 className="mb-5 mt-2 text-2xl font-black text-black">Tell us where to reach you.</h3>
+            <FacebookLandingLeadForm idPrefix="facebook-final-form" source="facebook-tax-deadline-ad-final" />
           </div>
         </div>
       </section>
 
-      {/* Request a Call Back */}
-      <section className="py-24 px-6 lg:px-8 bg-white relative">
-        <div className="absolute top-0 left-0 w-full h-[300px] bg-slate-50 border-b border-slate-200/50"></div>
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row shadow-2xl shadow-slate-300/60 rounded-[2rem] overflow-hidden bg-white relative z-10 border border-slate-100">
-           <div className="lg:w-1/2 p-10 md:p-14 lg:p-16 flex flex-col justify-center bg-white">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="w-8 h-1 bg-[#0092df] rounded-full inline-block"></span>
-                <span className="text-[#0092df] text-sm font-black uppercase tracking-[0.1em]">Get In Touch</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-black text-[#003580] mb-4 tracking-tight">Request a Consultation</h2>
-              <p className="text-slate-600 mb-10 leading-relaxed font-medium">Find an advisor. Our staff can help work out what is right for you.</p>
-              
-              <div className="bg-slate-50/50 p-6 rounded-2xl border border-slate-100">
-                 <HomeCallbackForm />
-              </div>
-           </div>
-           <div className="lg:w-1/2 relative min-h-[400px] lg:min-h-auto inset-y-0">
-              <div className="absolute inset-0 bg-[#003580]/10 z-10 mix-blend-overlay"></div>
-              <Image
-                src="/A_professional,_wide-angle_202604082301.png"
-                alt="Request Call Back"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                quality={68}
-                className="object-cover object-center"
-              />
-           </div>
+      <footer className="border-t border-white/10 bg-black px-5 py-10 text-white sm:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div>
+            <Image src="/images/logo1.png" alt="IntegraFin" width={150} height={38} className="h-8 w-auto brightness-0 invert" />
+            <p className="mt-4 max-w-md text-sm leading-6 text-[#aaa]">Tax, accounting, bookkeeping, and business advisory support for owner-led businesses.</p>
+          </div>
+          <div className="text-sm leading-7 text-[#aaa] md:text-right">
+            <a href="tel:+18327741882" className="block font-bold text-white hover:text-[#ff5a60]">+1 832-774-1882</a>
+            <a href="mailto:hello@integrafin.tax" className="block font-bold text-white hover:text-[#ff5a60]">hello@integrafin.tax</a>
+            <a href="https://www.integrafin.tax" className="block hover:text-white">www.integrafin.tax</a>
+          </div>
         </div>
-      </section>
+        <div className="mx-auto mt-8 max-w-6xl border-t border-white/15 pt-6 text-xs leading-5 text-[#8a8a8a]">
+          $99/month plan and 48-hour money-back offer are subject to eligibility, complete records, account access, confirmed scope, capacity, and written service terms. The 48-hour window begins only after all requested information is received. Bookkeeping completion does not guarantee return acceptance or penalty avoidance. Tax deadlines vary by entity, tax year, extension status, and applicable relief. Information is general and is not legal or tax advice.
+        </div>
+      </footer>
+
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-black bg-white p-3 shadow-[0_-12px_35px_-20px_rgba(0,0,0,.7)] lg:hidden">
+        <LeadAnchor label="Check my eligibility" className="flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#ff3038] px-4 text-center text-sm font-black uppercase text-white" />
+      </div>
     </main>
   );
 }

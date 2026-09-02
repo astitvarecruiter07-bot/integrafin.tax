@@ -91,6 +91,51 @@ body:has(.roofing-landing) #site-content {
   min-height: 100vh;
 }
 
+/* Focused B2B campaign pages use their own conversion-first header and footer. */
+body:has(.firm-outsourcing-landing) > header,
+body:has(.firm-outsourcing-landing) > footer {
+  display: none;
+}
+
+body:has(.firm-outsourcing-landing) #site-content {
+  min-height: 100vh;
+}
+
+/* Focused IntegraFin review landing page uses its own conversion-first chrome. */
+body:has(.integrafin-landing) > header,
+body:has(.integrafin-landing) > footer {
+  display: none;
+}
+
+body:has(.integrafin-landing) #site-content {
+  min-height: 100vh;
+}
+
+.integrafin-landing {
+  --landing-bg: #ffffff;
+  --landing-panel: #f6f6f6;
+  --landing-panel-strong: #080808;
+  --landing-text: #080808;
+  --landing-muted: #555555;
+  --landing-orange: #ff3038;
+  --landing-coral: #ff3038;
+  --landing-blue: #0088c9;
+}
+
+.landing-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.landing-spotlight {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(0, 136, 201, 0.1), transparent 32%),
+    radial-gradient(circle at 82% 62%, rgba(255, 48, 56, 0.08), transparent 28%);
+  pointer-events: none;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
