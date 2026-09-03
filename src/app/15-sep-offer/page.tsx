@@ -95,7 +95,7 @@ const faqs = [
       "The advertised plan is $99 per month for qualifying businesses. Eligibility, transaction volume, account count, cleanup needs, and final scope are reviewed before you enroll.",
   },
   {
-    question: "What does the 48-hour catch-up promise cover?",
+    question: "What does the 48-hour catch-up service cover?",
     answer:
       "The offer applies to qualifying 2025 catch-up projects after all requested records and account access are received and the written scope is accepted. Record volume and complexity can affect eligibility.",
   },
@@ -192,7 +192,7 @@ export default function Home() {
             <div className="flex flex-col justify-center bg-black p-7 text-white sm:p-9 lg:p-10">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff5a60]">Urgent 2025 catch-up offer</p>
               <h2 className="mt-4 text-3xl font-black uppercase leading-[1.08] tracking-[-0.035em] sm:text-4xl">
-                Catch up your entire 2025 in <span className="text-[#ff3038]">48 hours</span> or your money back.
+                Catch up your entire 2025 in <span className="text-[#ff3038]">48 hours</span> for qualifying projects.
               </h2>
               <div className="mt-7 rounded-xl bg-[#ff3038] p-5">
                 <p className="text-xs font-black uppercase tracking-[0.15em] text-white/80">File before</p>
@@ -310,7 +310,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col justify-center bg-[#ff3038] p-7 text-white sm:p-10">
             <Clock3 className="h-10 w-10" aria-hidden="true" />
-            <p className="mt-6 text-xs font-black uppercase tracking-[0.18em] text-white/75">48-hour catch-up promise</p>
+            <p className="mt-6 text-xs font-black uppercase tracking-[0.18em] text-white/75">48-hour catch-up service</p>
             <h2 className="mt-3 text-3xl font-black uppercase leading-tight tracking-[-0.035em] sm:text-4xl">Your complete records trigger the clock.</h2>
             <p className="mt-5 text-sm font-semibold leading-7 text-white/90">The team first confirms that your project qualifies. The delivery window begins after the requested records, statements, access, and written scope are complete.</p>
             <LeadAnchor label="Check if my books qualify" className="mt-7 inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-black px-6 text-sm font-black uppercase text-white transition hover:bg-white hover:text-black" />
@@ -430,8 +430,12 @@ export default function Home() {
             <a href="https://www.integrafin.tax" className="block hover:text-white">www.integrafin.tax</a>
           </div>
         </div>
-        <div className="mx-auto mt-8 max-w-6xl border-t border-white/15 pt-6 text-xs leading-5 text-[#8a8a8a]">
-          $99/month plan and 48-hour money-back offer are subject to eligibility, complete records, account access, confirmed scope, capacity, and written service terms. The 48-hour window begins only after all requested information is received. Bookkeeping completion does not guarantee return acceptance or penalty avoidance. Tax deadlines vary by entity, tax year, extension status, and applicable relief. Information is general and is not legal or tax advice.
+        <div className="mx-auto mt-8 max-w-6xl rounded-xl border border-[#ff3038]/60 bg-white/[.06] px-5 py-4 text-sm font-bold leading-6 text-white">
+          <strong className="text-[#ff5a60]">Starting price: $99/month for qualifying businesses.</strong>{" "}
+          Final pricing depends on transaction volume, account count, record condition, and required cleanup. Tax-return preparation is quoted separately.
+        </div>
+        <div className="mx-auto mt-5 max-w-6xl border-t border-white/15 pt-5 text-xs leading-5 text-[#8a8a8a]">
+          The 48-hour catch-up service is subject to eligibility, complete records, account access, confirmed scope, capacity, and written service terms. The 48-hour window begins only after all requested information is received. Bookkeeping completion does not guarantee return acceptance or penalty avoidance. Tax deadlines vary by entity, tax year, extension status, and applicable relief. Information is general and is not legal or tax advice.
         </div>
       </footer>
 
