@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ArrowRight, Check, CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
 import { submitLead } from "@/app/actions/leads";
 import { getLeadAttribution } from "@/lib/attribution";
 import { baseEventParameters, trackEvent, useFormAnalytics } from "@/lib/analytics";
@@ -37,8 +37,6 @@ export default function FacebookLandingLeadForm({
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [step, setStep] = useState<1 | 2>(1);
-  const [selectedService, setSelectedService] = useState<LeadService | "">("");
 
   async function handleSubmit(formData: FormData) {
     if (submittingRef.current) return;
@@ -113,49 +111,6 @@ export default function FacebookLandingLeadForm({
     );
   }
 
-  if (step === 1) {
-    return (
-      <div onFocusCapture={trackFormStart}>
-        <div className="mb-5 flex items-center justify-between gap-4">
-          <p className="text-xs font-black uppercase tracking-[0.16em] text-[#ff3038]">Step 1 of 2</p>
-          <p className="text-xs font-bold text-slate-500">About 60 seconds</p>
-        </div>
-        <div className="mb-6 grid grid-cols-2 gap-2" aria-hidden="true">
-          <span className="h-1.5 rounded-full bg-[#ff3038]" />
-          <span className="h-1.5 rounded-full bg-slate-200" />
-        </div>
-        <fieldset>
-          <legend className="text-lg font-black leading-snug text-slate-950">What would you like help with first?</legend>
-          <p className="mt-1.5 text-sm leading-6 text-slate-600">Choose one to continue. You can explain the details when we contact you.</p>
-          <div className="mt-5 grid gap-3">
-            {serviceOptions.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                onClick={() => {
-                  trackFormStart();
-                  setSelectedService(option.value);
-                  setStep(2);
-                }}
-                className="group flex min-h-14 w-full items-center justify-between gap-4 rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-left text-sm font-bold text-slate-900 transition hover:-translate-y-0.5 hover:border-[#ff3038] hover:bg-red-50 focus:outline-none focus:ring-4 focus:ring-[#ff3038]/20"
-              >
-                <span>{option.label}</span>
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition group-hover:bg-[#ff3038] group-hover:text-white">
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </span>
-              </button>
-            ))}
-          </div>
-        </fieldset>
-        <p className="mt-5 flex items-center justify-center gap-2 text-xs font-bold text-slate-500">
-          <LockKeyhole className="h-3.5 w-3.5" aria-hidden="true" /> No payment or financial documents required
-        </p>
-      </div>
-    );
-  }
-
-  const selectedServiceLabel = serviceOptions.find((option) => option.value === selectedService)?.label;
-
   return (
     <form id={idPrefix} action={handleSubmit} onFocusCapture={trackFormStart} className={compact ? "space-y-3.5" : "space-y-4"}>
       <div className="absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
@@ -169,21 +124,21 @@ export default function FacebookLandingLeadForm({
         </div>
       ) : null}
 
-      <div className="flex items-center justify-between gap-4">
-        <p className="text-xs font-black uppercase tracking-[0.16em] text-[#ff3038]">Step 2 of 2</p>
-        <button type="button" onClick={() => setStep(1)} className="inline-flex items-center gap-1 text-xs font-bold text-slate-600 underline underline-offset-2 hover:text-black">
-          <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" /> Change selection
-        </button>
-      </div>
-      <div className="grid grid-cols-2 gap-2" aria-hidden="true">
-        <span className="h-1.5 rounded-full bg-[#ff3038]" />
-        <span className="h-1.5 rounded-full bg-[#ff3038]" />
-      </div>
-      <input name="service" type="hidden" value={selectedService} />
-      <div className="flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-bold leading-5 text-emerald-900">
-        <Check className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-        {selectedServiceLabel}
-      </div>
+      <fieldset>
+        <legend className="text-sm font-black text-slate-900">What do you need help with?</legend>
+        <p className="mt-1 text-xs leading-5 text-slate-500">Select one option.</p>
+        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+          {serviceOptions.map((option) => (
+            <label key={option.value} className="relative cursor-pointer">
+              <input type="radio" name="service" value={option.value} required className="peer sr-only" />
+              <span className="flex min-h-12 items-center rounded-lg border-2 border-slate-200 bg-white px-3 py-2.5 text-xs font-bold leading-4 text-slate-800 transition hover:border-[#ff3038] hover:bg-red-50 peer-checked:border-[#ff3038] peer-checked:bg-[#fff0f1] peer-checked:text-black peer-focus-visible:ring-4 peer-focus-visible:ring-[#ff3038]/20">
+                <span className="mr-2 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 peer-checked:border-[#ff3038]" aria-hidden="true" />
+                {option.label}
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
       <div>
         <label htmlFor={`${idPrefix}-name`} className="text-sm font-bold text-slate-800">Full name</label>

@@ -210,7 +210,7 @@ export default function Home() {
             <div id="lead-form" className="bg-white p-6 sm:p-9 lg:p-10">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff3038]">Free bookkeeping review</p>
               <h2 className="mt-2 text-2xl font-black leading-tight text-black sm:text-3xl">See if the offer fits your business.</h2>
-              <p className="mb-5 mt-2 text-sm leading-6 text-[#5a5a5a]">Choose what you need first, then tell us where to send your next steps.</p>
+              <p className="mb-5 mt-2 text-sm leading-6 text-[#5a5a5a]">Select the help you need and add your contact details—all in one quick form.</p>
               <FacebookLandingLeadForm idPrefix="facebook-hero-form" source="facebook-tax-deadline-ad-hero" compact />
             </div>
           </div>
@@ -410,7 +410,7 @@ export default function Home() {
           </div>
           <div className="rounded-2xl border-2 border-black bg-white p-6 shadow-[10px_10px_0_#ff3038] sm:p-8">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff3038]">Free bookkeeping review</p>
-            <h3 className="mb-5 mt-2 text-2xl font-black text-black">Start with one quick question.</h3>
+            <h3 className="mb-5 mt-2 text-2xl font-black text-black">Complete one quick form.</h3>
             <FacebookLandingLeadForm idPrefix="facebook-final-form" source="facebook-tax-deadline-ad-final" />
           </div>
         </div>
