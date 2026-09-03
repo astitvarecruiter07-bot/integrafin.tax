@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
+import { ArrowRight, Check, CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
 import { submitLead } from "@/app/actions/leads";
 import { getLeadAttribution } from "@/lib/attribution";
 import { baseEventParameters, trackEvent, useFormAnalytics } from "@/lib/analytics";
@@ -37,6 +37,7 @@ export default function FacebookLandingLeadForm({
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [selectedService, setSelectedService] = useState<LeadService | "">("");
 
   async function handleSubmit(formData: FormData) {
     if (submittingRef.current) return;
@@ -126,17 +127,36 @@ export default function FacebookLandingLeadForm({
 
       <fieldset>
         <legend className="text-sm font-black text-slate-900">What do you need help with?</legend>
-        <p className="mt-1 text-xs leading-5 text-slate-500">Select one option.</p>
+        <p className="mt-1 text-xs leading-5 text-slate-500">Tap one option. A checkmark will confirm your selection.</p>
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
           {serviceOptions.map((option) => (
             <label key={option.value} className="relative cursor-pointer">
-              <input type="radio" name="service" value={option.value} required className="peer sr-only" />
-              <span className="flex min-h-12 items-center rounded-lg border-2 border-slate-200 bg-white px-3 py-2.5 text-xs font-bold leading-4 text-slate-800 transition hover:border-[#ff3038] hover:bg-red-50 peer-checked:border-[#ff3038] peer-checked:bg-[#fff0f1] peer-checked:text-black peer-focus-visible:ring-4 peer-focus-visible:ring-[#ff3038]/20">
-                <span className="mr-2 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 peer-checked:border-[#ff3038]" aria-hidden="true" />
+              <input
+                type="radio"
+                name="service"
+                value={option.value}
+                required
+                checked={selectedService === option.value}
+                onChange={() => setSelectedService(option.value)}
+                className="peer sr-only"
+              />
+              <span className="flex min-h-14 items-center rounded-xl border-2 border-slate-200 bg-white py-3 pl-12 pr-3 text-xs font-bold leading-4 text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-[#ff3038] hover:bg-red-50 peer-checked:border-[#ff3038] peer-checked:bg-[#fff0f1] peer-checked:text-black peer-checked:shadow-[0_0_0_3px_rgba(255,48,56,.12)] peer-focus-visible:ring-4 peer-focus-visible:ring-[#ff3038]/20">
                 {option.label}
+              </span>
+              <span className="pointer-events-none absolute left-3.5 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full border-2 border-slate-300 bg-white text-transparent transition peer-checked:border-[#ff3038] peer-checked:bg-[#ff3038] peer-checked:text-white" aria-hidden="true">
+                <Check className="h-4 w-4 stroke-[3]" />
               </span>
             </label>
           ))}
+        </div>
+        <div className="mt-3 min-h-6" aria-live="polite">
+          {selectedService ? (
+            <p className="flex items-center gap-2 text-xs font-black text-emerald-700">
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Selection saved in this form
+            </p>
+          ) : (
+            <p className="text-xs font-semibold text-slate-500">Please select one option to continue.</p>
+          )}
         </div>
       </fieldset>
 
@@ -156,8 +176,8 @@ export default function FacebookLandingLeadForm({
         </div>
       </div>
 
-      <button type="submit" disabled={isPending} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-lg bg-[#ffab19] px-5 text-base font-black text-[#07102c] shadow-lg shadow-[#ffab19]/20 transition hover:bg-[#ffc34f] focus:outline-none focus:ring-4 focus:ring-[#ffab19]/30 disabled:cursor-not-allowed disabled:opacity-70">
-        {isPending ? <><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Sending securely...</> : <>Get My Free Bookkeeping Review <ArrowRight className="h-4 w-4" aria-hidden="true" /></>}
+      <button type="submit" disabled={isPending || !selectedService} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-lg bg-[#ffab19] px-5 text-base font-black text-[#07102c] shadow-lg shadow-[#ffab19]/20 transition hover:bg-[#ffc34f] focus:outline-none focus:ring-4 focus:ring-[#ffab19]/30 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500 disabled:shadow-none">
+        {isPending ? <><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Sending securely...</> : selectedService ? <>Get My Free Bookkeeping Review <ArrowRight className="h-4 w-4" aria-hidden="true" /></> : <>Select an option to continue</>}
       </button>
 
       <p className="text-center text-xs font-bold text-slate-600">No payment required • Direct team follow-up • Written scope first</p>
