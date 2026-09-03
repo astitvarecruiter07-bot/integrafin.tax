@@ -10,7 +10,7 @@ export default function FacebookLandingTracking() {
     trackEvent("view_content", {
       ...baseEventParameters(attribution),
       service: "Bookkeeping Cleanup",
-      landing_page: "/",
+      landing_page: "/15-sep-offer",
       traffic_channel: attribution.fbclid ? "facebook_ads" : undefined,
     });
     window.fbq?.("track", "ViewContent", { content_name: "2025 Catch-Up Bookkeeping Offer" });
