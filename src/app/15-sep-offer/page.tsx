@@ -19,12 +19,12 @@ import FacebookLandingTracking from "@/components/FacebookLandingTracking";
 import TaxDeadlineCountdown from "@/components/TaxDeadlineCountdown";
 
 export const metadata: Metadata = {
-  title: "$99/Month Bookkeeping & 2025 Catch-Up | IntegraFin",
+  title: "Behind on Your 2025 Books? Get Help Before September 15 | IntegraFin",
   description:
     "Ask about IntegraFin's $99/month bookkeeping offer and 48-hour 2025 catch-up service before the September 15 tax deadline.",
   alternates: { canonical: "https://integrafin.tax/15-sep-offer" },
   openGraph: {
-    title: "Bookkeeping for $99/Month | IntegraFin",
+    title: "Behind on Your 2025 Books? Get Help Before September 15",
     description:
       "Catch up your 2025 books and get ready for the September 15 deadline. Check your eligibility today.",
     url: "https://integrafin.tax/15-sep-offer",
@@ -123,7 +123,7 @@ const faqs = [
 
 function LeadAnchor({
   className = "",
-  label = "Check my eligibility",
+  label = "Get My Free Bookkeeping Review",
 }: {
   className?: string;
   label?: string;
@@ -136,7 +136,7 @@ function LeadAnchor({
   );
 }
 
-function CtaBar({ label = "Check My Eligibility for the $99/Month Offer" }: { label?: string }) {
+function CtaBar({ label = "Get My Free Bookkeeping Review" }: { label?: string }) {
   return (
     <LeadAnchor
       label={label}
@@ -160,7 +160,7 @@ export default function Home() {
             <a href="#process" className="transition hover:text-[#ff3038]">How it works</a>
             <a href="#faq" className="transition hover:text-[#ff3038]">FAQ</a>
           </div>
-          <LeadAnchor label="Check eligibility" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-black px-4 text-sm font-black text-white transition hover:bg-[#ff3038] sm:px-5" />
+          <LeadAnchor label="Get my free review" className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-black px-4 text-sm font-black text-white transition hover:bg-[#ff3038] sm:px-5" />
         </div>
       </header>
 
@@ -174,14 +174,16 @@ export default function Home() {
               Tax deadline specialist
             </p>
             <h1 className="mx-auto mt-7 max-w-5xl text-4xl font-black uppercase leading-[1.03] tracking-[-0.045em] text-black sm:text-5xl lg:text-[4.35rem]">
-              Bookkeeping for just
-              <span className="mt-3 block text-[1.45em] font-black leading-none tracking-[-0.065em] text-[#ff3038] sm:text-[1.55em]">
-                $99/mo
-              </span>
+              Behind on your 2025 books?
+              <span className="mt-2 block text-[#ff3038]">Get caught up before September 15.</span>
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base font-semibold leading-7 text-[#454545] sm:text-lg">
-              Behind on your 2025 books? Get the records organized, understand your filing path, and act before the deadline gets closer.
+            <p className="mx-auto mt-6 max-w-3xl text-base font-semibold leading-7 text-[#454545] sm:text-lg">
+              Start with a free 60-second review. We will look at what is behind, confirm whether the offer fits, and explain the next step—before you send financial documents or pay anything.
             </p>
+            <div className="mx-auto mt-6 inline-flex flex-wrap items-baseline justify-center gap-x-3 rounded-2xl border-2 border-black bg-white px-6 py-4 shadow-[6px_6px_0_#ff3038]">
+              <span className="text-xs font-black uppercase tracking-[0.16em] text-[#555]">Ongoing bookkeeping from</span>
+              <span className="text-5xl font-black leading-none tracking-[-0.06em] text-black sm:text-6xl">$99/mo</span>
+            </div>
           </div>
 
           <div className="mx-auto mt-9 grid max-w-5xl overflow-hidden rounded-2xl border-2 border-black bg-white shadow-[12px_12px_0_#080808] lg:grid-cols-[.9fr_1.1fr]">
@@ -206,9 +208,9 @@ export default function Home() {
             </div>
 
             <div id="lead-form" className="bg-white p-6 sm:p-9 lg:p-10">
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff3038]">Check offer eligibility</p>
-              <h2 className="mt-2 text-2xl font-black leading-tight text-black sm:text-3xl">Where should we contact you?</h2>
-              <p className="mb-5 mt-2 text-sm leading-6 text-[#5a5a5a]">Complete the short form. The IntegraFin team will review your needs and follow up with the next step.</p>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff3038]">Free bookkeeping review</p>
+              <h2 className="mt-2 text-2xl font-black leading-tight text-black sm:text-3xl">See if the offer fits your business.</h2>
+              <p className="mb-5 mt-2 text-sm leading-6 text-[#5a5a5a]">Choose what you need first, then tell us where to send your next steps.</p>
               <FacebookLandingLeadForm idPrefix="facebook-hero-form" source="facebook-tax-deadline-ad-hero" compact />
             </div>
           </div>
@@ -216,6 +218,22 @@ export default function Home() {
           <p className="mx-auto mt-7 max-w-4xl text-center text-xs leading-5 text-[#646464]">
             Offer eligibility depends on record completeness, transaction volume, account access, entity type, and confirmed scope. See important terms below.
           </p>
+        </div>
+      </section>
+
+      <section className="border-b-2 border-black bg-white px-5 py-6 sm:px-8">
+        <div className="mx-auto grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            [ShieldCheck, "Secure process", "Sensitive records are not collected here"],
+            [CheckCircle2, "No payment today", "The initial review is free"],
+            [FileCheck2, "Written scope first", "Know the work before it begins"],
+            [Phone, "Direct team follow-up", "Speak with the IntegraFin team"],
+          ].map(([Icon, title, text]) => (
+            <div key={String(title)} className="flex items-start gap-3 rounded-xl bg-[#f6f6f6] p-4">
+              <Icon className="mt-0.5 h-5 w-5 shrink-0 text-[#ff3038]" aria-hidden="true" />
+              <div><p className="text-sm font-black text-black">{String(title)}</p><p className="mt-1 text-xs leading-5 text-[#666]">{String(text)}</p></div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -250,6 +268,22 @@ export default function Home() {
                 <p className="mt-3 text-sm leading-6 text-[#555]">{text}</p>
               </article>
             ))}
+          </div>
+          <div className="mx-auto mt-10 grid max-w-5xl overflow-hidden rounded-2xl border-2 border-black bg-white md:grid-cols-2">
+            <div className="p-6 sm:p-8">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#ff3038]">Starting $99/month plan</p>
+              <h3 className="mt-2 text-2xl font-black text-black">Designed for qualifying small businesses.</h3>
+              <ul className="mt-5 space-y-3 text-sm font-bold text-[#333]">
+                {["Monthly transaction categorization", "Account reconciliation", "Monthly bookkeeping reports"].map((item) => <li key={item} className="flex gap-3"><CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600" aria-hidden="true" />{item}</li>)}
+              </ul>
+            </div>
+            <div className="bg-black p-6 text-white sm:p-8">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-[#ff5a60]">May require a separate quote</p>
+              <h3 className="mt-2 text-2xl font-black">Know what is outside the starting plan.</h3>
+              <ul className="mt-5 space-y-3 text-sm font-bold text-[#ddd]">
+                {["Past-period cleanup or catch-up work", "Tax-return preparation and filing", "Higher volume, extra accounts, or complex records"].map((item) => <li key={item} className="flex gap-3"><span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#ff3038]" />{item}</li>)}
+              </ul>
+            </div>
           </div>
           <div className="mt-10"><CtaBar /></div>
         </div>
@@ -286,7 +320,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#ff3038]">How it works</p>
-            <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.035em] text-black sm:text-4xl">Three steps from ad click to a clear answer.</h2>
+            <h2 className="mt-3 text-3xl font-black uppercase tracking-[-0.035em] text-black sm:text-4xl">Three simple steps to a clear answer.</h2>
           </div>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {processSteps.map((item, index) => (
@@ -375,8 +409,8 @@ export default function Home() {
             <a href="tel:+18327741882" className="mt-6 inline-flex items-center gap-2 text-sm font-black text-black hover:text-[#ff3038]"><Phone className="h-4 w-4" aria-hidden="true" /> Prefer to call? (832) 774-1882</a>
           </div>
           <div className="rounded-2xl border-2 border-black bg-white p-6 shadow-[10px_10px_0_#ff3038] sm:p-8">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff3038]">Check offer eligibility</p>
-            <h3 className="mb-5 mt-2 text-2xl font-black text-black">Tell us where to reach you.</h3>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-[#ff3038]">Free bookkeeping review</p>
+            <h3 className="mb-5 mt-2 text-2xl font-black text-black">Start with one quick question.</h3>
             <FacebookLandingLeadForm idPrefix="facebook-final-form" source="facebook-tax-deadline-ad-final" />
           </div>
         </div>
@@ -400,7 +434,7 @@ export default function Home() {
       </footer>
 
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-black bg-white p-3 shadow-[0_-12px_35px_-20px_rgba(0,0,0,.7)] lg:hidden">
-        <LeadAnchor label="Check my eligibility" className="flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#ff3038] px-4 text-center text-sm font-black uppercase text-white" />
+        <LeadAnchor label="Get My Free Bookkeeping Review" className="flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#ff3038] px-4 text-center text-sm font-black uppercase text-white" />
       </div>
     </main>
   );
