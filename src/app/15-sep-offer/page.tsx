@@ -180,9 +180,11 @@ export default function Home() {
             <p className="mx-auto mt-6 max-w-3xl text-base font-semibold leading-7 text-[#454545] sm:text-lg">
               Start with a free 60-second review. We will look at what is behind, confirm whether the offer fits, and explain the next step—before you send financial documents or pay anything.
             </p>
-            <div className="mx-auto mt-6 inline-flex flex-wrap items-baseline justify-center gap-x-3 rounded-2xl border-2 border-black bg-white px-6 py-4 shadow-[6px_6px_0_#ff3038]">
-              <span className="text-xs font-black uppercase tracking-[0.16em] text-[#555]">Ongoing bookkeeping from</span>
-              <span className="text-5xl font-black leading-none tracking-[-0.06em] text-black sm:text-6xl">$99/mo</span>
+            <div className="mx-auto mt-7 inline-flex min-w-[min(100%,34rem)] flex-col items-center justify-center rounded-2xl border-2 border-black bg-black px-7 py-5 shadow-[9px_9px_0_#ff3038] sm:px-10 sm:py-6">
+              <span className="text-sm font-black uppercase tracking-[0.18em] text-white sm:text-base">Ongoing bookkeeping from</span>
+              <span className="mt-1 block text-6xl font-black leading-none tracking-[-0.07em] text-[#ff3038] drop-shadow-[0_2px_0_rgba(255,255,255,.18)] sm:text-8xl">
+                $99<span className="ml-1 text-[0.52em] tracking-[-0.04em] text-white">/mo</span>
+              </span>
             </div>
           </div>
 
