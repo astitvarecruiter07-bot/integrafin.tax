@@ -72,7 +72,7 @@ export default function Bookkeeping99Page() {
           </div>
 
           <div id="eligibility-form" className="rounded-2xl border-2 border-black bg-white p-6 shadow-[10px_10px_0_#080808] sm:p-8">
-            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#ff3038]">Free 60-second review</p>
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-[#ff3038]">Request a free review in about 60 seconds</p>
             <h2 className="mt-2 text-2xl font-black leading-tight sm:text-3xl">See if the $99 plan fits your business.</h2>
             <p className="mb-5 mt-2 text-sm leading-6 text-slate-600">Enter your contact details. Our team will review your needs and explain the next step.</p>
             <SimpleBookkeepingLeadForm />

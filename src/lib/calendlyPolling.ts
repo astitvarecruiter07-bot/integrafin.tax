@@ -141,6 +141,12 @@ function toPollingEvent(
   const startTime = parseDate(scheduledEvent.start_time);
   const eventName = cleanString(scheduledEvent.name, 200) || "Calendly consultation";
   const email = normalizeEmail(invitee.email);
+  const tracking = asRecord(invitee.tracking);
+  const trackingContent = cleanString(tracking?.utm_content, 100);
+  const bookingCorrelationId =
+    trackingContent && /^[a-f\d]{8}(?:-[a-f\d]{4}){3}-[a-f\d]{12}$/i.test(trackingContent)
+      ? trackingContent.toLowerCase()
+      : undefined;
 
   if (isActive && (!startTime || !email)) return undefined;
 
@@ -157,6 +163,7 @@ function toPollingEvent(
       name: cleanString(invitee.name, 200),
       email,
       phone: cleanString(invitee.text_reminder_number, 30),
+      bookingCorrelationId,
       rescheduled: invitee.rescheduled === true,
     },
     ...(isActive && startTime

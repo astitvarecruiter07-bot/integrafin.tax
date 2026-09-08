@@ -17,6 +17,13 @@ function escapeRegex(value: string) {
 async function findLeadForBooking(event: CalendlyWebhookEvent) {
   const linkedLead = await ContactLead.findOne({ calendlyInviteeUri: event.inviteeUri });
   if (linkedLead) return linkedLead;
+  if (event.bookingCorrelationId) {
+    const correlatedLead = await ContactLead.findOne({
+      bookingCorrelationId: event.bookingCorrelationId,
+      recordKind: { $ne: "subscriber" },
+    });
+    if (correlatedLead) return correlatedLead;
+  }
   if (!event.email) return null;
 
   const emailQuery = { $regex: `^${escapeRegex(event.email)}$`, $options: "i" };

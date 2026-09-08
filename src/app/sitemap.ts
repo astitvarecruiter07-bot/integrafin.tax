@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/services', lastModified: '2026-07-24', priority: 0.8 },
     { path: '/pricing', lastModified: '2026-07-24', priority: 0.8 },
     { path: '/llc-formation-tax-setup', lastModified: '2026-07-24', priority: 0.8 },
+    { path: '/outsourced-accounting-for-cpa-ea-firms', lastModified: '2026-09-02', priority: 0.9 },
     ...serviceLandingPageSlugs.map((slug) => ({
       path: `/${slug}`,
       lastModified: serviceLandingPages[slug].lastModified,

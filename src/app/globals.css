@@ -111,6 +111,29 @@ body:has(.integrafin-landing) #site-content {
   min-height: 100vh;
 }
 
+/* Paid bookkeeping-review pages use focused campaign chrome. */
+body:has(.cleanup-review-landing) > header,
+body:has(.cleanup-review-landing) > footer {
+  display: none;
+}
+
+body:has(.cleanup-review-landing) #site-content {
+  min-height: 100vh;
+}
+
+.cleanup-review-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+.cleanup-review-landing :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #ffffff !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px #087a55 !important;
+}
+
 .integrafin-landing {
   --landing-bg: #ffffff;
   --landing-panel: #f6f6f6;

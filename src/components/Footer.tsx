@@ -16,6 +16,7 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
+    { href: "/outsourced-accounting-for-cpa-ea-firms", label: "Outsourcing for CPA & EA Firms" },
     { href: "/business-tax-accounting", label: "Business Tax & Accounting" },
     { href: "/individual-tax-preparation", label: "Individual Tax Preparation" },
     { href: "/tax-resolution", label: "Tax Resolution" },

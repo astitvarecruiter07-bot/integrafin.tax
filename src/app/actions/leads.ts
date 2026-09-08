@@ -19,6 +19,24 @@ import { categoryContent, checklistContent, serviceContent, urgencyContent } fro
 
 const ADMIN_UNAUTHORIZED_MESSAGE = 'Your admin session expired. Sign in again to continue.';
 
+const LeadAttributionSchema = z.object({
+  firstLandingPage: z.string().max(500).startsWith('/').optional(),
+  currentSubmissionPage: z.string().max(500).startsWith('/').optional(),
+  referrer: z.string().max(500).optional(),
+  utmSource: z.string().max(200).optional(),
+  utmMedium: z.string().max(200).optional(),
+  utmCampaign: z.string().max(200).optional(),
+  utmContent: z.string().max(200).optional(),
+  utmTerm: z.string().max(200).optional(),
+  gclid: z.string().max(200).optional(),
+  gbraid: z.string().max(200).optional(),
+  wbraid: z.string().max(200).optional(),
+  msclkid: z.string().max(200).optional(),
+  fbclid: z.string().max(200).optional(),
+  aiReferralSource: z.enum(AI_REFERRAL_SOURCES).optional(),
+  firstTouchAt: z.string().datetime({ offset: true }).optional(),
+});
+
 const LeadSchema = z.object({
   name: z.string().trim().min(2, 'Name is too short').max(100),
   email: z.union([z.literal(''), z.string().trim().email('Invalid email address').max(254)]).default(''),
@@ -31,37 +49,47 @@ const LeadSchema = z.object({
   ]).default(''),
   company: z.string().trim().max(100).optional(),
   service: z.enum(LEAD_SERVICE_VALUES, 'Please select a valid service'),
+  serviceIntent: z.enum(['single_service', 'cleanup_and_monthly']).default('single_service'),
+  primaryService: z.enum(LEAD_SERVICE_VALUES).optional(),
+  secondaryService: z.enum(LEAD_SERVICE_VALUES).optional(),
   message: z.string().trim().max(2000).default(''),
   source: z.string().trim().min(1).max(100).default('contact-page'),
   revenue: z.string().trim().max(100).optional(),
   jurisdiction: z.string().trim().max(100).optional(),
   website: z.literal('').optional(),
-  attribution: z.object({
-    firstLandingPage: z.string().max(500).startsWith('/').optional(),
-    currentSubmissionPage: z.string().max(500).startsWith('/').optional(),
-    referrer: z.string().max(500).optional(),
-    utmSource: z.string().max(200).optional(),
-    utmMedium: z.string().max(200).optional(),
-    utmCampaign: z.string().max(200).optional(),
-    utmContent: z.string().max(200).optional(),
-    utmTerm: z.string().max(200).optional(),
-    gclid: z.string().max(200).optional(),
-    gbraid: z.string().max(200).optional(),
-    wbraid: z.string().max(200).optional(),
-    msclkid: z.string().max(200).optional(),
-    fbclid: z.string().max(200).optional(),
-    aiReferralSource: z.enum(AI_REFERRAL_SOURCES).optional(),
-    firstTouchAt: z.string().datetime({ offset: true }).optional(),
-  }).optional(),
-}).refine((lead) => Boolean(lead.email.trim() || lead.phone.trim()), {
-  message: 'Please provide an email address or phone number.',
-  path: ['email'],
+  idempotencyKey: z.string().uuid(),
+  attribution: LeadAttributionSchema.optional(),
+}).superRefine((lead, context) => {
+  if (!lead.email.trim() && !lead.phone.trim()) {
+    context.addIssue({
+      code: 'custom',
+      message: 'Please provide an email address or phone number.',
+      path: ['email'],
+    });
+  }
+
+  if (lead.serviceIntent === 'cleanup_and_monthly') {
+    if (lead.primaryService !== 'Bookkeeping Cleanup') {
+      context.addIssue({
+        code: 'custom',
+        message: 'Combined bookkeeping requests must retain cleanup as the primary service.',
+        path: ['primaryService'],
+      });
+    }
+    if (lead.secondaryService !== 'Small Business Bookkeeping') {
+      context.addIssue({
+        code: 'custom',
+        message: 'Combined bookkeeping requests must retain monthly bookkeeping as the secondary service.',
+        path: ['secondaryService'],
+      });
+    }
+  }
 });
 
 const NewsletterSchema = z.object({
   email: z.string().trim().email('Invalid email address').max(254),
   source: z.string().trim().min(1).max(100).default('newsletter'),
-  attribution: LeadSchema.shape.attribution,
+  attribution: LeadAttributionSchema.optional(),
 });
 
 const BookkeepingAssessmentLeadSchema = z.strictObject({
@@ -77,7 +105,7 @@ const BookkeepingAssessmentLeadSchema = z.strictObject({
   answers: BookkeepingAssessmentAnswersSchema,
   website: z.literal('').optional(),
   idempotencyKey: z.string().uuid(),
-  attribution: LeadSchema.shape.attribution,
+  attribution: LeadAttributionSchema.optional(),
 }).superRefine((lead, context) => {
   if (!lead.email && !lead.phone) {
     context.addIssue({ code: 'custom', path: ['email'], message: 'Please provide an email address or phone number.' });
@@ -90,7 +118,7 @@ const BookkeepingAssessmentLeadSchema = z.strictObject({
   }
 });
 
-export type LeadInput = z.infer<typeof LeadSchema>;
+export type LeadInput = z.input<typeof LeadSchema>;
 export type NewsletterInput = z.infer<typeof NewsletterSchema>;
 export type BookkeepingAssessmentLeadInput = z.infer<typeof BookkeepingAssessmentLeadSchema>;
 
@@ -140,6 +168,31 @@ const firstResponseStatuses = new Set<(typeof LEAD_STATUSES)[number]>([
   'client_won',
   'client_lost',
 ]);
+
+function salesLeadFilter() {
+  return {
+    recordKind: { $ne: 'subscriber' as const },
+    // Keep newsletter records created before recordKind was introduced out of the sales queue.
+    service: { $ne: 'Newsletter Signup' },
+  };
+}
+
+function isDuplicateKeyError(error: unknown) {
+  return Boolean(
+    error
+      && typeof error === 'object'
+      && 'code' in error
+      && (error as { code?: unknown }).code === 11000,
+  );
+}
+
+function acceptedLeadResponse(leadId: string) {
+  return {
+    success: true as const,
+    message: 'Thank you. Your request has been submitted for team follow-up.',
+    leadId,
+  };
+}
 
 function sanitizeAttributionPath(value: string | undefined) {
   if (!value) return undefined;
@@ -204,14 +257,35 @@ export async function submitLead(data: LeadInput) {
     const validatedData = LeadSchema.parse(data);
     
     await dbConnect();
-    
+
+    const existingLead = await ContactLead.findOne({
+      source: validatedData.source,
+      submissionKey: validatedData.idempotencyKey,
+    }).select('_id').lean();
+    if (existingLead) return acceptedLeadResponse(existingLead._id.toString());
+
     const submittedAt = new Date();
-    const newLead = await ContactLead.create({
-      ...validatedData,
-      attribution: prepareAttribution(validatedData.attribution, submittedAt),
-      status: 'new',
-      createdAt: submittedAt,
-    });
+    let newLead;
+    try {
+      newLead = await ContactLead.create({
+        ...validatedData,
+        recordKind: 'sales_inquiry',
+        primaryService: validatedData.primaryService || validatedData.service,
+        submissionKey: validatedData.idempotencyKey,
+        attribution: prepareAttribution(validatedData.attribution, submittedAt),
+        status: 'new',
+        createdAt: submittedAt,
+      });
+    } catch (error) {
+      if (isDuplicateKeyError(error)) {
+        const replayedLead = await ContactLead.findOne({
+          source: validatedData.source,
+          submissionKey: validatedData.idempotencyKey,
+        }).select('_id').lean();
+        if (replayedLead) return acceptedLeadResponse(replayedLead._id.toString());
+      }
+      throw error;
+    }
 
     const leadId = newLead._id.toString();
     after(async () => {
@@ -253,20 +327,18 @@ export async function submitLead(data: LeadInput) {
       }
     });
     
-    return {
-      success: true,
-      message: 'Thank you. Your request has been submitted for team follow-up.',
-      leadId,
-    };
+    return acceptedLeadResponse(leadId);
   } catch (error) {
-    console.error('Lead submission error:', error);
-    
     if (error instanceof z.ZodError) {
       return {
         success: false,
         message: error.issues[0].message,
       };
     }
+
+    console.error('Lead submission failed.', {
+      error: error instanceof Error ? error.name : 'UnknownError',
+    });
     
     return {
       success: false,
@@ -303,6 +375,7 @@ export async function submitBookkeepingAssessmentLead(data: BookkeepingAssessmen
 
     const message = `Bookkeeping cleanup assessment: ${result.score}/100, ${result.category}, ${result.urgency} urgency.`;
     const newLead = await ContactLead.create({
+      recordKind: 'sales_inquiry',
       name: validatedData.name,
       email: validatedData.email,
       phone: validatedData.phone,
@@ -415,6 +488,7 @@ export async function submitNewsletterSignup(data: NewsletterInput) {
 
     const submittedAt = new Date();
     await ContactLead.create({
+      recordKind: 'subscriber',
       name: emailPrefix,
       email: validatedData.email,
       phone: 'Not provided',
@@ -431,14 +505,16 @@ export async function submitNewsletterSignup(data: NewsletterInput) {
       message: 'You are subscribed. We will send useful tax updates, not noise.',
     };
   } catch (error) {
-    console.error('Newsletter signup error:', error);
-
     if (error instanceof z.ZodError) {
       return {
         success: false,
         message: error.issues[0].message,
       };
     }
+
+    console.error('Newsletter signup failed.', {
+      error: error instanceof Error ? error.name : 'UnknownError',
+    });
 
     return {
       success: false,
@@ -451,7 +527,7 @@ export async function getLeads() {
   try {
     await requireAdminAuth();
     await dbConnect();
-    const leads = await ContactLead.find({}).sort({ createdAt: -1 }).lean();
+    const leads = await ContactLead.find(salesLeadFilter()).sort({ createdAt: -1 }).lean();
     return { success: true as const, leads: serializeLead(leads) };
   } catch (error) {
     console.error('Error fetching leads:', error);
@@ -703,9 +779,11 @@ export async function getLeadMetrics() {
     const overdueBefore = new Date(Date.now() - getLeadResponseSlaMinutes() * 60_000);
     const [statusCounts, valueTotals, overdueNewCount, overdueFollowUpCount] = await Promise.all([
       ContactLead.aggregate<{ _id: string; count: number }>([
+        { $match: salesLeadFilter() },
         { $group: { _id: '$status', count: { $sum: 1 } } },
       ]),
       ContactLead.aggregate<{ _id: null; openPipelineValue: number; wonRevenue: number }>([
+        { $match: salesLeadFilter() },
         {
           $group: {
             _id: null,
@@ -732,11 +810,13 @@ export async function getLeadMetrics() {
         },
       ]),
       ContactLead.countDocuments({
+        ...salesLeadFilter(),
         status: 'new',
         firstResponseAt: null,
         createdAt: { $lt: overdueBefore },
       }),
       ContactLead.countDocuments({
+        ...salesLeadFilter(),
         status: { $in: FOLLOW_UP_ACTIVE_STATUSES },
         nextFollowUpAt: { $lt: new Date() },
       }),

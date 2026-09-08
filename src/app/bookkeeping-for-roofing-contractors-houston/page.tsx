@@ -431,20 +431,6 @@ export default function RoofingBookkeepingLandingPage() {
         </div>
       </section>
 
-      <section className="bg-[#f4f8fa] px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading eyebrow="Client feedback" title="What Business Owners Say" text="Verified feedback will appear here as it becomes available." />
-          <div className="grid gap-5 md:grid-cols-3">
-            {[1, 2, 3].map((item) => (
-              <article key={item} className="rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-center">
-                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-slate-100 text-slate-400"><BadgeCheck className="h-5 w-5" aria-hidden="true" /></div>
-                <p className="mt-5 text-sm font-bold leading-6 text-slate-500">Add a verified client testimonial here.</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="faq" className="scroll-mt-24 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div className="mx-auto max-w-4xl">
           <SectionHeading eyebrow="Frequently asked questions" title="Straight Answers Before You Request a Review" />

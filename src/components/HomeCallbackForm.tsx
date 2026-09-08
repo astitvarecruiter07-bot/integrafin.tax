@@ -19,6 +19,7 @@ export default function HomeCallbackForm() {
   const router = useRouter();
   const trackFormStart = useFormAnalytics(FORM_SOURCE);
   const submittingRef = useRef(false);
+  const submissionKeyRef = useRef<string | null>(null);
   const [selectedService, setSelectedService] = useState<LeadService | ''>('');
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -58,12 +59,14 @@ export default function HomeCallbackForm() {
       service,
       message: String(formData.get('message') || '').trim(),
       source: FORM_SOURCE,
+      idempotencyKey: submissionKeyRef.current ??= crypto.randomUUID(),
       attribution: getLeadAttribution(),
     };
 
     try {
       const result = await submitLead(data);
       if (result.success) {
+        submissionKeyRef.current = null;
         trackEvent('generate_lead', {
           ...baseEventParameters(data.attribution),
           service: data.service,

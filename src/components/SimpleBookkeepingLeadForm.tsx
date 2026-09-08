@@ -14,6 +14,7 @@ export default function SimpleBookkeepingLeadForm() {
   const router = useRouter();
   const trackFormStart = useFormAnalytics(source);
   const submittingRef = useRef(false);
+  const submissionKeyRef = useRef<string | null>(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -59,6 +60,7 @@ export default function SimpleBookkeepingLeadForm() {
       message: "Requested an eligibility review from the simple $99/month bookkeeping landing page.",
       source,
       website: "" as const,
+      idempotencyKey: submissionKeyRef.current ??= crypto.randomUUID(),
       attribution,
     };
 
@@ -69,6 +71,7 @@ export default function SimpleBookkeepingLeadForm() {
         return;
       }
 
+      submissionKeyRef.current = null;
       trackEvent("generate_lead", {
         ...baseEventParameters(attribution),
         service: data.service,

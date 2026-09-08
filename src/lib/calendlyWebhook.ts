@@ -17,6 +17,7 @@ export type CalendlyWebhookEvent = {
   name?: string;
   email?: string;
   phone?: string;
+  bookingCorrelationId?: string;
   rescheduled: boolean;
   inlineScheduledEvent?: CalendlyScheduledEvent;
 };
@@ -152,6 +153,12 @@ export function parseCalendlyWebhook(value: unknown): CalendlyWebhookEvent | und
   if (type === "invitee.created" && !email) return undefined;
 
   const inline = asRecord(payload.scheduled_event);
+  const tracking = asRecord(payload.tracking);
+  const trackingContent = cleanString(tracking?.utm_content, 100);
+  const bookingCorrelationId =
+    trackingContent && /^[a-f\d]{8}(?:-[a-f\d]{4}){3}-[a-f\d]{12}$/i.test(trackingContent)
+      ? trackingContent.toLowerCase()
+      : undefined;
   const inlineStartTime = parseDate(inline?.start_time);
   const inlineName = cleanString(inline?.name, MAX_NAME_LENGTH);
 
@@ -163,6 +170,7 @@ export function parseCalendlyWebhook(value: unknown): CalendlyWebhookEvent | und
     name: cleanString(payload.name, MAX_NAME_LENGTH),
     email,
     phone: cleanString(payload.text_reminder_number, MAX_PHONE_LENGTH),
+    bookingCorrelationId,
     rescheduled: payload.rescheduled === true,
     ...(inlineStartTime
       ? {

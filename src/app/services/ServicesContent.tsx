@@ -158,6 +158,11 @@ const tabHashById: Record<string, string> = {
 
 const focusedServiceLinks = [
   {
+    href: "/outsourced-accounting-for-cpa-ea-firms",
+    label: "Outsourced Accounting for CPA & EA Firms",
+    description: "Flexible bookkeeping, tax preparation, payroll, and compliance production support for accounting firms.",
+  },
+  {
     href: "/business-tax-accounting",
     label: "Business Tax & Accounting",
     description: "Tax preparation, accounting, records, payroll details, and advisory workflow for business owners.",

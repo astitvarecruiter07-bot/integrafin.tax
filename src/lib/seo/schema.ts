@@ -73,6 +73,7 @@ const localBusinessSchema = {
       ["Individual Tax Preparation Katy TX", "/individual-tax-preparation"],
       ["Tax Resolution Katy TX", "/tax-resolution"],
       ["Payroll Tax Support", "/payroll-tax-support"],
+      ["Outsourced Accounting for CPA and EA Firms", "/outsourced-accounting-for-cpa-ea-firms"],
       ["Bookkeeping Services Katy TX", "/texas/katy-bookkeeping-services"],
       ["QuickBooks Cleanup Katy TX", "/quickbooks-bookkeeping-services"],
       ["LLC Tax Setup Texas", "/llc-formation-tax-setup"],

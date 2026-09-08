@@ -13,12 +13,23 @@ import {
   type LeadService,
 } from '@/lib/leadServices';
 
-const FORM_SOURCE = 'contact-page';
+const DEFAULT_FORM_SOURCE = 'contact-page';
 
-export default function ContactForm({ initialService = '' }: { initialService?: LeadService | '' }) {
+export default function ContactForm({
+  initialService = '',
+  source = DEFAULT_FORM_SOURCE,
+  lockService = false,
+  expandDetails = false,
+}: {
+  initialService?: LeadService | '';
+  source?: string;
+  lockService?: boolean;
+  expandDetails?: boolean;
+}) {
   const router = useRouter();
-  const trackFormStart = useFormAnalytics(FORM_SOURCE);
+  const trackFormStart = useFormAnalytics(source);
   const submittingRef = useRef(false);
+  const submissionKeyRef = useRef<string | null>(null);
   const [selectedService, setSelectedService] = useState<LeadService | ''>(initialService);
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -58,17 +69,19 @@ export default function ContactForm({ initialService = '' }: { initialService?: 
       company: String(formData.get('company') || '').trim(),
       service,
       message: String(formData.get('message') || '').trim(),
-      source: FORM_SOURCE,
+      source,
+      idempotencyKey: submissionKeyRef.current ??= crypto.randomUUID(),
       attribution: getLeadAttribution(),
     };
 
     try {
       const result = await submitLead(data);
       if (result.success) {
+        submissionKeyRef.current = null;
         trackEvent('generate_lead', {
           ...baseEventParameters(data.attribution),
           service: data.service,
-          form_source: FORM_SOURCE,
+          form_source: source,
           cta_name: 'request_consultation',
         });
         setMessage({ type: 'success', text: result.message });
@@ -134,20 +147,32 @@ export default function ContactForm({ initialService = '' }: { initialService?: 
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="contact-service" className="text-sm font-bold text-primary-dark">Service needed</label>
-          <select
-            id="contact-service"
-            name="service"
-            required
-            value={selectedService}
-            onChange={(event) => setSelectedService(normalizeLeadService(event.target.value))}
-            className="w-full appearance-none rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-base text-slate-900 outline-none transition focus:border-brand-blue-bright focus:ring-4 focus:ring-highlight-light"
-          >
-            <option value="">Select a service...</option>
-            {LEAD_SERVICE_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>{option.label}</option>
-            ))}
-          </select>
+          {lockService && initialService ? (
+            <>
+              <p className="text-sm font-bold text-primary-dark">Service needed</p>
+              <input name="service" type="hidden" value={initialService} />
+              <div className="flex min-h-12 items-center rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm font-bold leading-6 text-primary-dark">
+                {initialService}
+              </div>
+            </>
+          ) : (
+            <>
+              <label htmlFor="contact-service" className="text-sm font-bold text-primary-dark">Service needed</label>
+              <select
+                id="contact-service"
+                name="service"
+                required
+                value={selectedService}
+                onChange={(event) => setSelectedService(normalizeLeadService(event.target.value))}
+                className="w-full appearance-none rounded-xl border border-slate-300 bg-white px-4 py-3.5 text-base text-slate-900 outline-none transition focus:border-brand-blue-bright focus:ring-4 focus:ring-highlight-light"
+              >
+                <option value="">Select a service...</option>
+                {LEAD_SERVICE_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </>
+          )}
         </div>
       </div>
 
@@ -185,7 +210,7 @@ export default function ContactForm({ initialService = '' }: { initialService?: 
         </p>
       </div>
 
-      <details className="rounded-xl border border-slate-200 bg-slate-50 p-4 open:bg-white">
+      <details open={expandDetails} className="rounded-xl border border-slate-200 bg-slate-50 p-4 open:bg-white">
         <summary className="cursor-pointer text-sm font-bold text-primary-dark marker:text-brand-blue">
           Add company or situation details (optional)
         </summary>

@@ -40,6 +40,7 @@ import {
   type BookkeepingCostInputs,
   type BookkeepingCostResult,
 } from '@/lib/bookkeeping-cost/types';
+import { getContactHref } from '@/lib/leadServices';
 
 const stepTitles = ['Business activity', 'Accounting complexity', 'Service scope', 'Catch-up details'];
 
@@ -215,7 +216,7 @@ function ResultSection({ result, onEdit, onRestart }: { result: BookkeepingCostR
           </div>
           <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-5 text-xs leading-5 text-slate-600">{pricingDisclaimer}</div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact?service=Bookkeeping%20Services" onClick={() => trackEvent('bookkeeping_quote_cta', { ...baseEventParameters(), calculator_version: result.calculatorVersion, result_category: result.recommendedTier, cta_name: 'request_reviewed_quote' })} className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#002050] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-200">Request a Reviewed Quote <ArrowRight className="h-4 w-4" /></Link>
+            <Link href={getContactHref('Small Business Bookkeeping')} onClick={() => trackEvent('bookkeeping_quote_cta', { ...baseEventParameters(), calculator_version: result.calculatorVersion, cta_name: 'request_reviewed_quote' })} className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#002050] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-200">Request a Reviewed Quote <ArrowRight className="h-4 w-4" /></Link>
             <button type="button" onClick={onEdit} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 px-5 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50"><ArrowLeft className="h-4 w-4" />Change inputs</button>
             <button type="button" onClick={onRestart} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-slate-600 hover:bg-slate-100"><RefreshCw className="h-4 w-4" />Reset</button>
           </div>
@@ -275,7 +276,7 @@ export default function BookkeepingCostCalculatorClient() {
       return;
     }
     setShowResult(true);
-    if (result) trackEvent('bookkeeping_cost_result', { calculator_version: result.calculatorVersion, result_category: result.recommendedTier, review_required: result.manualReviewReasons.length > 0, price_band: result.monthly ? result.monthly.center < 500 ? '300_499' : result.monthly.center < 750 ? '500_749' : result.monthly.center < 1_000 ? '750_999' : result.monthly.center < 1_500 ? '1000_1499' : result.monthly.center < 2_500 ? '1500_2499' : '2500_plus' : 'catch_up_only' });
+    if (result) trackEvent('bookkeeping_cost_result', { calculator_version: result.calculatorVersion });
   }
 
   function reset() {
@@ -291,7 +292,6 @@ export default function BookkeepingCostCalculatorClient() {
       trackEvent('bookkeeping_cost_adjust', {
         ...baseEventParameters(),
         calculator_version: result.calculatorVersion,
-        result_category: result.recommendedTier,
         estimate_mode: inputs.estimateMode,
       });
     }

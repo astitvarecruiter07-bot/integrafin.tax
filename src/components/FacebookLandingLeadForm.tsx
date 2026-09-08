@@ -7,13 +7,27 @@ import { ArrowRight, Check, CheckCircle2, Loader2, LockKeyhole } from "lucide-re
 import { submitLead } from "@/app/actions/leads";
 import { getLeadAttribution } from "@/lib/attribution";
 import { baseEventParameters, trackEvent, useFormAnalytics } from "@/lib/analytics";
-import { normalizeLeadService, type LeadService } from "@/lib/leadServices";
+import type { LeadService } from "@/lib/leadServices";
 
-const serviceOptions: Array<{ value: LeadService; label: string }> = [
-  { value: "Bookkeeping Cleanup", label: "Catch up my 2025 bookkeeping" },
-  { value: "Small Business Bookkeeping", label: "Start $99/month bookkeeping" },
-  { value: "Business Tax and Accounting", label: "Get ready for the September 15 deadline" },
-  { value: "Other Enquiry", label: "I need catch-up and monthly bookkeeping" },
+type CampaignServiceOption = {
+  value: string;
+  label: string;
+  service: LeadService;
+  serviceIntent: "single_service" | "cleanup_and_monthly";
+  secondaryService?: LeadService;
+};
+
+const serviceOptions: CampaignServiceOption[] = [
+  { value: "bookkeeping_cleanup", label: "Catch up my 2025 bookkeeping", service: "Bookkeeping Cleanup", serviceIntent: "single_service" },
+  { value: "monthly_bookkeeping", label: "Start $99/month bookkeeping", service: "Small Business Bookkeeping", serviceIntent: "single_service" },
+  { value: "business_tax", label: "Get ready for the September 15 deadline", service: "Business Tax and Accounting", serviceIntent: "single_service" },
+  {
+    value: "cleanup_and_monthly",
+    label: "I need catch-up and monthly bookkeeping",
+    service: "Bookkeeping Cleanup",
+    serviceIntent: "cleanup_and_monthly",
+    secondaryService: "Small Business Bookkeeping",
+  },
 ];
 
 declare global {
@@ -34,10 +48,11 @@ export default function FacebookLandingLeadForm({
   const router = useRouter();
   const trackFormStart = useFormAnalytics(source);
   const submittingRef = useRef(false);
+  const submissionKeyRef = useRef<string | null>(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [selectedService, setSelectedService] = useState<LeadService | "">("");
+  const [selectedOption, setSelectedOption] = useState("");
 
   async function handleSubmit(formData: FormData) {
     if (submittingRef.current) return;
@@ -50,9 +65,9 @@ export default function FacebookLandingLeadForm({
     const name = String(formData.get("name") || "").trim();
     const email = String(formData.get("email") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
-    const service = normalizeLeadService(formData.get("service"));
+    const selection = serviceOptions.find((option) => option.value === formData.get("service"));
 
-    if (!name || !email || !phone || !service) {
+    if (!name || !email || !phone || !selection) {
       setError("Please enter your name, email, phone number, and the help you need.");
       return;
     }
@@ -66,10 +81,14 @@ export default function FacebookLandingLeadForm({
       name,
       email,
       phone,
-      service,
-      message: `Facebook tax deadline campaign lead. Requested help with: ${service}.`,
+      service: selection.service,
+      serviceIntent: selection.serviceIntent,
+      primaryService: selection.service,
+      secondaryService: selection.secondaryService,
+      message: `Facebook tax deadline campaign lead. Requested help with: ${selection.label}.`,
       source,
       website: "" as const,
+      idempotencyKey: submissionKeyRef.current ??= crypto.randomUUID(),
       attribution,
     };
 
@@ -80,6 +99,7 @@ export default function FacebookLandingLeadForm({
         return;
       }
 
+      submissionKeyRef.current = null;
       trackEvent("generate_lead", {
         ...baseEventParameters(attribution),
         service: data.service,
@@ -136,8 +156,8 @@ export default function FacebookLandingLeadForm({
                 name="service"
                 value={option.value}
                 required
-                checked={selectedService === option.value}
-                onChange={() => setSelectedService(option.value)}
+                checked={selectedOption === option.value}
+                onChange={() => setSelectedOption(option.value)}
                 className="peer sr-only"
               />
               <span className="flex min-h-14 items-center rounded-xl border-2 border-slate-200 bg-white py-3 pl-12 pr-3 text-xs font-bold leading-4 text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-[#ff3038] hover:bg-red-50 peer-checked:border-[#ff3038] peer-checked:bg-[#fff0f1] peer-checked:text-black peer-checked:shadow-[0_0_0_3px_rgba(255,48,56,.12)] peer-focus-visible:ring-4 peer-focus-visible:ring-[#ff3038]/20">
@@ -150,7 +170,7 @@ export default function FacebookLandingLeadForm({
           ))}
         </div>
         <div className="mt-3 min-h-6" aria-live="polite">
-          {selectedService ? (
+          {selectedOption ? (
             <p className="flex items-center gap-2 text-xs font-black text-emerald-700">
               <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Selection saved in this form
             </p>
@@ -176,8 +196,8 @@ export default function FacebookLandingLeadForm({
         </div>
       </div>
 
-      <button type="submit" disabled={isPending || !selectedService} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-lg bg-[#ffab19] px-5 text-base font-black text-[#07102c] shadow-lg shadow-[#ffab19]/20 transition hover:bg-[#ffc34f] focus:outline-none focus:ring-4 focus:ring-[#ffab19]/30 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500 disabled:shadow-none">
-        {isPending ? <><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Sending securely...</> : selectedService ? <>Get My Free Bookkeeping Review <ArrowRight className="h-4 w-4" aria-hidden="true" /></> : <>Select an option to continue</>}
+      <button type="submit" disabled={isPending || !selectedOption} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-lg bg-[#ffab19] px-5 text-base font-black text-[#07102c] shadow-lg shadow-[#ffab19]/20 transition hover:bg-[#ffc34f] focus:outline-none focus:ring-4 focus:ring-[#ffab19]/30 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500 disabled:shadow-none">
+        {isPending ? <><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> Sending securely...</> : selectedOption ? <>Get My Free Bookkeeping Review <ArrowRight className="h-4 w-4" aria-hidden="true" /></> : <>Select an option to continue</>}
       </button>
 
       <p className="text-center text-xs font-bold text-slate-600">No payment required • Direct team follow-up • Written scope first</p>

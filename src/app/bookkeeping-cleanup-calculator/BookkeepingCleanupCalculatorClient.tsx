@@ -41,13 +41,6 @@ type DraftAnswers = Partial<Omit<BookkeepingAssessmentAnswers, 'complexities'>> 
 const SESSION_KEY = 'integrafin_bookkeeping_cleanup_v1';
 const inputClass = 'mt-2 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-[#0092df] focus:ring-4 focus:ring-sky-100';
 
-function scoreBand(score: number) {
-  if (score <= 24) return '0_24';
-  if (score <= 44) return '25_44';
-  if (score <= 69) return '45_69';
-  return '70_100';
-}
-
 function isAnswered(answers: DraftAnswers, step: number) {
   const question = questions[step];
   if (question.key === 'complexities') return Boolean(answers.complexities?.length);
@@ -156,10 +149,10 @@ export default function BookkeepingCleanupCalculatorClient() {
     setView('assessment');
   }
 
-  function trackLeadFormStart(category: BookkeepingAssessmentResult['category']) {
+  function trackLeadFormStart() {
     if (leadFormStartedRef.current) return;
     leadFormStartedRef.current = true;
-    trackEvent('cleanup_lead_form_start', { calculator_version: '1.0', result_category: category });
+    trackEvent('cleanup_lead_form_start', { calculator_version: '1.0' });
   }
 
   function chooseSingle(key: SingleAnswerKey, value: string) {
@@ -195,11 +188,10 @@ export default function BookkeepingCleanupCalculatorClient() {
       setError('One or more answers need attention. Please review the assessment.');
       return;
     }
-    const completedResult = calculateCleanupAssessment(parsed.data);
     setView('basic_result');
     sessionStorage.setItem(SESSION_KEY, JSON.stringify({ answers: parsed.data, step: 8 }));
     trackEvent('cleanup_calculator_complete', { calculator_version: '1.0' });
-    trackEvent('cleanup_result_view', { calculator_version: '1.0', result_category: completedResult.category, score_band: scoreBand(completedResult.score), deadline_urgency: completedResult.urgency });
+    trackEvent('cleanup_result_view', { calculator_version: '1.0' });
   }
 
   function restart() {
@@ -245,7 +237,7 @@ export default function BookkeepingCleanupCalculatorClient() {
     setSavedLeadId(response.leadId);
     setView('full_plan');
     sessionStorage.removeItem(SESSION_KEY);
-    trackEvent('cleanup_lead_submit', { calculator_version: '1.0', result_category: response.result.category, deadline_urgency: response.result.urgency });
+    trackEvent('cleanup_lead_submit', { calculator_version: '1.0' });
   }
 
   const question = questions[step];
@@ -316,13 +308,13 @@ export default function BookkeepingCleanupCalculatorClient() {
               </div>
             </div>
           ) : view === 'basic_result' && result ? (
-            <BasicResult result={result} onPlan={() => { setView('lead_form'); trackLeadFormStart(result.category); }} onRetake={() => { setStep(0); setView('assessment'); }} />
+            <BasicResult result={result} onPlan={() => { setView('lead_form'); trackLeadFormStart(); }} onRetake={() => { setStep(0); setView('assessment'); }} />
           ) : view === 'lead_form' && result ? (
             <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[.7fr_1.3fr]">
               <aside className="rounded-[24px] bg-white/10 p-6 text-white ring-1 ring-white/15 lg:sticky lg:top-28 lg:self-start">
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-sky-200">Your free result</p><p className="mt-4 text-5xl font-black">{result.score}<span className="text-lg text-sky-200">/100</span></p><h2 className="mt-3 text-xl font-black">{categoryContent[result.category].label}</h2><p className="mt-3 text-sm leading-6 text-sky-100">{urgencyContent[result.urgency].label} urgency · Your result stays visible even if the form cannot be submitted.</p>
               </aside>
-              <form onSubmit={handleLeadSubmit} className="rounded-[28px] bg-white p-6 shadow-2xl sm:p-9" onFocus={() => trackLeadFormStart(result.category)}>
+              <form onSubmit={handleLeadSubmit} className="rounded-[28px] bg-white p-6 shadow-2xl sm:p-9" onFocus={trackLeadFormStart}>
                 <h2 ref={headingRef} tabIndex={-1} className="text-3xl font-black tracking-[-0.03em] text-[#09233f] outline-none">Get your complete action plan</h2>
                 <p className="mt-3 text-sm leading-6 text-slate-600">We’ll save your assessment and show the personalized plan immediately. Email is optional when you provide a phone number.</p>
                 <div className="mt-7 grid gap-5 sm:grid-cols-2">
@@ -357,7 +349,7 @@ export default function BookkeepingCleanupCalculatorClient() {
                   <h3 className="mt-8 text-sm font-black uppercase tracking-wide text-[#0047AB]">Questions to prepare for a review</h3><ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700"><li>What is the last month you trust as fully reconciled?</li><li>Which deadline or report matters first?</li><li>Are all statements and system logins available to the authorized owner?</li></ul>
                 </div>
               </div>
-              <div className="border-t border-slate-200 bg-slate-50 p-6 sm:p-8"><p className="text-sm leading-6 text-slate-600">{requiredDisclaimer}</p><div className="mt-5 flex flex-col gap-3 sm:flex-row"><Link href="/contact" onClick={() => trackEvent('cleanup_consultation_click', { calculator_version: '1.0', result_category: finalResult.category, deadline_urgency: finalResult.urgency, cta_name: 'request_books_review' })} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#002050]">Request My Books Review <ArrowRight className="h-4 w-4" /></Link><a href="tel:+18326471819" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-[#003580]"><Phone className="h-4 w-4" />Call (832) 647-1819</a></div></div>
+              <div className="border-t border-slate-200 bg-slate-50 p-6 sm:p-8"><p className="text-sm leading-6 text-slate-600">{requiredDisclaimer}</p><div className="mt-5 flex flex-col gap-3 sm:flex-row"><Link href="/contact" onClick={() => trackEvent('cleanup_consultation_click', { calculator_version: '1.0', cta_name: 'request_books_review' })} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#002050]">Request My Books Review <ArrowRight className="h-4 w-4" /></Link><a href="tel:+18326471819" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-[#003580]"><Phone className="h-4 w-4" />Call (832) 647-1819</a></div></div>
             </section>
           ) : null}
         </div>

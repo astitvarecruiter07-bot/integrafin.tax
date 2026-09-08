@@ -13,6 +13,16 @@ import {
   softwareValues,
   type BookkeepingAssessmentRecord,
 } from '@/lib/bookkeeping-cleanup/types';
+import {
+  cleanupContactPreferenceValues,
+  cleanupMonthsBehindValues,
+  cleanupNeedValues,
+  cleanupSoftwareValues,
+  type CleanupContactPreference,
+  type CleanupMonthsBehind,
+  type CleanupPrimaryNeed,
+  type CleanupSoftware,
+} from '@/lib/bookkeepingCleanupReview';
 
 export const LEAD_STATUSES = [
   'new',
@@ -35,9 +45,21 @@ export const CALL_OUTCOMES = [
   'wrong_number',
 ] as const;
 
+export const LEAD_RECORD_KINDS = [
+  'sales_inquiry',
+  'subscriber',
+] as const;
+
+export const LEAD_SERVICE_INTENTS = [
+  'single_service',
+  'cleanup_and_monthly',
+] as const;
+
 export type LeadStatus = (typeof LEAD_STATUSES)[number];
 export type StoredLeadStatus = LeadStatus | 'completed';
 export type CallOutcome = (typeof CALL_OUTCOMES)[number];
+export type LeadRecordKind = (typeof LEAD_RECORD_KINDS)[number];
+export type LeadServiceIntent = (typeof LEAD_SERVICE_INTENTS)[number];
 export type LeadNotificationStatus = 'pending' | 'sent' | 'not_configured' | 'delivery_failed';
 export type LeadConfirmationStatus = LeadNotificationStatus | 'not_applicable';
 export type AppointmentStatus = 'scheduled' | 'canceled';
@@ -62,6 +84,46 @@ export interface ILeadAttribution {
   submittedAt: Date;
 }
 
+export interface IAttributionTouchSnapshot {
+  landingPage: string;
+  referrer?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmContent?: string;
+  utmTerm?: string;
+  gclid?: string;
+  gbraid?: string;
+  wbraid?: string;
+  msclkid?: string;
+  fbclid?: string;
+  capturedAt: Date;
+}
+
+export interface ICampaignAttributionSnapshots {
+  firstTouch: IAttributionTouchSnapshot;
+  lastNonDirectTouch?: IAttributionTouchSnapshot;
+  submissionTouch: IAttributionTouchSnapshot;
+}
+
+export interface IBookkeepingCleanupReviewRecord {
+  primaryNeed: CleanupPrimaryNeed;
+  monthsBehind: CleanupMonthsBehind;
+  accountingSoftware?: CleanupSoftware;
+  industry?: string;
+  targetDate?: Date;
+  contactPreference?: CleanupContactPreference;
+  context?: string;
+  consentToContact: true;
+  formId: string;
+  formVersion: string;
+  offerId: string;
+  pagePath: string;
+  consentVersion: string;
+  consentText: string;
+  submittedAt: Date;
+}
+
 export interface ICallActivity {
   outcome: CallOutcome;
   notes?: string;
@@ -70,18 +132,30 @@ export interface ICallActivity {
 }
 
 export interface IContactLead extends mongoose.Document {
+  recordKind: LeadRecordKind;
   name: string;
   email: string;
   phone: string;
   company?: string;
   service: string;
+  serviceIntent?: LeadServiceIntent;
+  primaryService?: string;
+  secondaryService?: string;
   message: string;
   source: string;
   revenue?: string;
   jurisdiction?: string;
   attribution?: ILeadAttribution;
+  attributionSnapshots?: ICampaignAttributionSnapshots;
   submissionKey?: string;
+  normalizedEmail?: string;
+  normalizedPhone?: string;
+  assignedOwner?: string;
+  bookingCorrelationId?: string;
+  leadEventId?: string;
+  duplicateSubmissionCount?: number;
   bookkeepingAssessment?: BookkeepingAssessmentRecord;
+  bookkeepingCleanupReview?: IBookkeepingCleanupReviewRecord;
   status: StoredLeadStatus;
   estimatedValue?: number;
   actualRevenue?: number;
@@ -129,6 +203,34 @@ const LeadAttributionSchema = new mongoose.Schema<ILeadAttribution>(
     aiReferralSource: { type: String, enum: AI_REFERRAL_SOURCES },
     firstTouchAt: { type: Date },
     submittedAt: { type: Date, required: true },
+  },
+  { _id: false },
+);
+
+const AttributionTouchSnapshotSchema = new mongoose.Schema<IAttributionTouchSnapshot>(
+  {
+    landingPage: { type: String, required: true, maxlength: 500 },
+    referrer: { type: String, maxlength: 500 },
+    utmSource: { type: String, maxlength: 200 },
+    utmMedium: { type: String, maxlength: 200 },
+    utmCampaign: { type: String, maxlength: 200 },
+    utmContent: { type: String, maxlength: 200 },
+    utmTerm: { type: String, maxlength: 200 },
+    gclid: { type: String, maxlength: 200 },
+    gbraid: { type: String, maxlength: 200 },
+    wbraid: { type: String, maxlength: 200 },
+    msclkid: { type: String, maxlength: 200 },
+    fbclid: { type: String, maxlength: 200 },
+    capturedAt: { type: Date, required: true },
+  },
+  { _id: false },
+);
+
+const CampaignAttributionSnapshotsSchema = new mongoose.Schema<ICampaignAttributionSnapshots>(
+  {
+    firstTouch: { type: AttributionTouchSnapshotSchema, required: true },
+    lastNonDirectTouch: { type: AttributionTouchSnapshotSchema },
+    submissionTouch: { type: AttributionTouchSnapshotSchema, required: true },
   },
   { _id: false },
 );
@@ -208,8 +310,39 @@ const BookkeepingAssessmentSchema = new mongoose.Schema(
   { _id: false },
 );
 
+const BookkeepingCleanupReviewSchema = new mongoose.Schema<IBookkeepingCleanupReviewRecord>(
+  {
+    primaryNeed: { type: String, enum: cleanupNeedValues, required: true },
+    monthsBehind: { type: String, enum: cleanupMonthsBehindValues, required: true },
+    accountingSoftware: { type: String, enum: cleanupSoftwareValues },
+    industry: { type: String, maxlength: 100 },
+    targetDate: { type: Date },
+    contactPreference: { type: String, enum: cleanupContactPreferenceValues },
+    context: { type: String, maxlength: 800 },
+    consentToContact: {
+      type: Boolean,
+      required: true,
+      validate: (value: boolean) => value === true,
+    },
+    formId: { type: String, required: true, maxlength: 100 },
+    formVersion: { type: String, required: true, maxlength: 40 },
+    offerId: { type: String, required: true, maxlength: 100 },
+    pagePath: { type: String, required: true, maxlength: 500 },
+    consentVersion: { type: String, required: true, maxlength: 100 },
+    consentText: { type: String, required: true, maxlength: 1000 },
+    submittedAt: { type: Date, required: true },
+  },
+  { _id: false },
+);
+
 const ContactLeadSchema = new mongoose.Schema<IContactLead>(
   {
+    recordKind: {
+      type: String,
+      enum: LEAD_RECORD_KINDS,
+      default: 'sales_inquiry',
+      required: true,
+    },
     name: {
       type: String,
       required: [true, 'Please provide a name.'],
@@ -238,6 +371,19 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
       required: [true, 'Please specify the service.'],
       maxlength: 200,
     },
+    serviceIntent: {
+      type: String,
+      enum: LEAD_SERVICE_INTENTS,
+      default: 'single_service',
+    },
+    primaryService: {
+      type: String,
+      maxlength: 200,
+    },
+    secondaryService: {
+      type: String,
+      maxlength: 200,
+    },
     message: {
       type: String,
       default: '',
@@ -260,12 +406,43 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     attribution: {
       type: LeadAttributionSchema,
     },
+    attributionSnapshots: {
+      type: CampaignAttributionSnapshotsSchema,
+    },
     submissionKey: {
       type: String,
       maxlength: 100,
     },
+    normalizedEmail: {
+      type: String,
+      maxlength: 254,
+    },
+    normalizedPhone: {
+      type: String,
+      maxlength: 30,
+    },
+    assignedOwner: {
+      type: String,
+      maxlength: 200,
+    },
+    bookingCorrelationId: {
+      type: String,
+      maxlength: 100,
+    },
+    leadEventId: {
+      type: String,
+      maxlength: 100,
+    },
+    duplicateSubmissionCount: {
+      type: Number,
+      min: 0,
+      default: 0,
+    },
     bookkeepingAssessment: {
       type: BookkeepingAssessmentSchema,
+    },
+    bookkeepingCleanupReview: {
+      type: BookkeepingCleanupReviewSchema,
     },
     status: {
       type: String,
@@ -384,6 +561,16 @@ ContactLeadSchema.index(
   { unique: true, sparse: true, name: 'unique_calendly_invitee_uri' },
 );
 ContactLeadSchema.index({ nextFollowUpAt: 1 }, { name: 'lead_next_follow_up' });
+ContactLeadSchema.index({ normalizedEmail: 1, status: 1 }, { name: 'lead_email_status' });
+ContactLeadSchema.index({ normalizedPhone: 1, status: 1 }, { name: 'lead_phone_status' });
+ContactLeadSchema.index(
+  { bookingCorrelationId: 1 },
+  { unique: true, sparse: true, name: 'unique_booking_correlation_id' },
+);
+ContactLeadSchema.index(
+  { leadEventId: 1 },
+  { unique: true, sparse: true, name: 'unique_lead_event_id' },
+);
 ContactLeadSchema.index(
   { source: 1, submissionKey: 1 },
   {

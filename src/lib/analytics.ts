@@ -56,15 +56,7 @@ const safeParameterNames = new Set([
   "debug_mode",
   "calculator_version",
   "step_number",
-  "result_category",
-  "score_band",
-  "months_behind_band",
-  "software_category",
-  "deadline_urgency",
   "estimate_mode",
-  "review_required",
-  "price_band",
-  "hours_band",
   "pricing_config_version",
 ]);
 
@@ -176,9 +168,12 @@ export function trackEvent(eventName: AnalyticsEventName, parameters: AnalyticsP
 }
 
 export function useFormAnalytics(formSource: string) {
+  const viewed = useRef(false);
   const started = useRef(false);
 
   useEffect(() => {
+    if (viewed.current) return;
+    viewed.current = true;
     trackEvent("form_view", {
       ...baseEventParameters(),
       form_source: formSource,

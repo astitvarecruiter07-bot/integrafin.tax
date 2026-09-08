@@ -79,6 +79,11 @@ export const serviceLandingPageSlugs: ServiceLandingPageSlug[] = [
 
 export const focusedServiceLinks = [
   {
+    href: "/outsourced-accounting-for-cpa-ea-firms",
+    label: "Outsourced Accounting for CPA & EA Firms",
+    description: "Behind-the-scenes bookkeeping, tax preparation, payroll, and compliance capacity for accounting firms.",
+  },
+  {
     href: "/business-tax-accounting",
     label: "Small Business Tax Accountant Katy",
     description: "Year-round tax, accounting, bookkeeping, and advisory support for small businesses.",

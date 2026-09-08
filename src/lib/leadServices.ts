@@ -8,6 +8,7 @@ export const LEAD_SERVICE_VALUES = [
   "IRS Notice and Tax Resolution",
   "Payroll Tax Support",
   "LLC Formation and Tax Setup",
+  "Outsourced Accounting for CPA and EA Firms",
   "Other Enquiry",
 ] as const;
 
@@ -40,6 +41,7 @@ export function getLeadCtaLabel(service: LeadService, fallback = "Request a Cons
     "Contractor Bookkeeping": "Request contractor bookkeeping support",
     "Payroll Tax Support": "Request payroll support",
     "Individual Tax Preparation": "Request tax preparation help",
+    "Outsourced Accounting for CPA and EA Firms": "Request my capacity assessment",
   };
 
   return labels[service] || fallback;

@@ -54,6 +54,7 @@ export default function RoofingLeadForm() {
   const router = useRouter();
   const trackFormStart = useFormAnalytics(FORM_SOURCE);
   const submittingRef = useRef(false);
+  const submissionKeyRef = useRef<string | null>(null);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState("");
   const [hiddenFields, setHiddenFields] = useState(() => campaignFields({}));
@@ -94,6 +95,7 @@ export default function RoofingLeadForm() {
       message: `Requested assistance: ${assistance}\nHow current are the books: ${booksStatus}`,
       source: FORM_SOURCE,
       website: "" as const,
+      idempotencyKey: submissionKeyRef.current ??= crypto.randomUUID(),
       attribution,
     };
 
@@ -104,6 +106,7 @@ export default function RoofingLeadForm() {
         return;
       }
 
+      submissionKeyRef.current = null;
       trackEvent("generate_lead", {
         ...baseEventParameters(attribution),
         service: data.service,

@@ -67,6 +67,7 @@ export type AdminLeadRecord = {
   email: string;
   phone: string;
   company?: string;
+  assignedOwner?: string;
   service: string;
   message: string;
   source: string;
@@ -118,6 +119,17 @@ export type AdminLeadRecord = {
       checklistKeys: string[];
       recommendedServiceKeys: string[];
     };
+  };
+  bookkeepingCleanupReview?: {
+    primaryNeed: string;
+    monthsBehind: string;
+    accountingSoftware?: string;
+    industry?: string;
+    targetDate?: string;
+    contactPreference?: string;
+    formId: string;
+    formVersion: string;
+    offerId: string;
   };
   createdAt: string;
 };
@@ -1124,6 +1136,8 @@ export default function LeadOperationsDashboard({
                   )}
 
                   <dl className="grid grid-cols-2 gap-4 rounded-xl bg-slate-50 p-4">
+                    <DetailField label="Business" value={selectedLead.company || 'Not provided'} />
+                    <DetailField label="Intake owner" value={selectedLead.assignedOwner || 'Not assigned'} />
                     <DetailField label="Email" value={selectedLead.email || 'Not provided'} />
                     <DetailField label="Phone" value={selectedLead.phone || 'Not provided'} />
                     <DetailField label="Service" value={selectedLead.service} />
