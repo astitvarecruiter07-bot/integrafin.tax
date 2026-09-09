@@ -56,6 +56,10 @@ const taxCalculator = {
 } as const;
 
 const explicitBlogIntentLinks: Record<string, BlogIntentLinks> = {
+  "september-15-2026-tax-deadline": {
+    primary: businessTaxAccounting,
+    supporting: [bookkeepingServices, individualTaxPreparation],
+  },
   "irs-trump-account-gift-tax-update": {
     primary: individualTaxPreparation,
     supporting: [taxCalculator, businessTaxAccounting],
@@ -169,9 +173,9 @@ export function getBlogIntentLinks(post: BlogLinkSource): BlogIntentLinks {
 
 export const serviceGuideLinks = {
   "business-tax-accounting": [
+    { href: "/blog/september-15-2026-tax-deadline", label: "September 15, 2026 Tax Deadline Guide" },
     { href: "/blog/reduce-self-employment-tax-business-owners", label: "Self-Employment Tax Guide for Business Owners" },
     { href: "/blog/how-to-calculate-2026-quarterly-estimated-tax-payments", label: "2026 Quarterly Estimated Tax Payment Guide" },
-    { href: "/blog/irs-compliance-guide", label: "Business IRS Filing and Record-Keeping Guide" },
   ],
   "individual-tax-preparation": [
     { href: "/blog/missed-estimated-tax-payment-june-15-deadline", label: "Missed Estimated Tax Payment Guide" },
@@ -184,9 +188,9 @@ export const serviceGuideLinks = {
     { href: "/blog/missed-estimated-tax-payment-june-15-deadline", label: "Missed Estimated Tax Payment Guide" },
   ],
   "bookkeeping-cleanup": [
+    { href: "/blog/september-15-2026-tax-deadline", label: "September 15, 2026 Business Filing Checklist" },
     { href: "/blog/small-business-accounting-tips", label: "Small-Business Accounting Tips" },
     { href: "/blog/financial-planning-for-startups", label: "Financial Planning for Startups" },
-    { href: "/blog/irs-compliance-guide", label: "Business Record-Keeping Guide" },
   ],
   "payroll-tax-support": [
     { href: "/blog/payroll-best-practices", label: "Payroll Best Practices for Business Owners" },

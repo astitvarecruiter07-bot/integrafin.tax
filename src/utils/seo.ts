@@ -17,6 +17,7 @@ export interface BlogPayload {
 const ALLOWED_TAGS = new Set([
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'b', 'i', 'strong', 'em', 'strike',
     'a', 'ul', 'ol', 'li', 'blockquote', 'img', 'figure', 'figcaption', 'span', 'div',
+    'table', 'thead', 'tbody', 'tfoot', 'tr', 'th', 'td', 'caption',
 ]);
 
 const ALLOWED_ATTRS = new Set(['href', 'title', 'src', 'alt', 'class']);

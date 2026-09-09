@@ -24,6 +24,244 @@ export interface BlogPost {
 
 export const mockBlogPosts: BlogPost[] = [
     {
+        slug: "september-15-2026-tax-deadline",
+        title: "September 15, 2026 IRS Tax Deadline: What Is Due?",
+        excerpt: "See who must file or pay by September 15, 2026, including extended partnerships, S corporations, LLCs, and quarterly estimated-tax payers.",
+        category: "Tax Deadlines",
+        date: "September 10, 2026",
+        updatedAt: "2026-09-10",
+        readTime: "12 min read",
+        featured: true,
+        image: "/hero-accounting-workspace.jpg",
+        imageAlt: "Business owner reviewing records for the September 15, 2026 IRS tax deadline",
+        author: {
+            name: "IntegraFin Tax & Accounting Team",
+        },
+        keywords: [
+            "September 15 2026 tax deadline",
+            "September 15 IRS deadline",
+            "S corporation tax deadline 2026",
+            "partnership tax deadline 2026",
+            "Form 1065 extension deadline",
+            "Form 1120-S extension deadline",
+            "September estimated tax payment",
+            "Q3 estimated taxes 2026",
+            "LLC tax deadline September 15",
+            "extended business tax return deadline",
+        ],
+        faq: [
+            {
+                question: "What tax returns are due September 15, 2026?",
+                answer: "September 15, 2026 is generally the extended federal filing deadline for 2025 calendar-year partnership returns on Form 1065 and S corporation returns on Form 1120-S when the entity obtained a timely, valid extension. Fiscal-year entities and taxpayers with special relief may have different dates.",
+            },
+            {
+                question: "Is September 15, 2026 a tax deadline for every LLC?",
+                answer: "No. LLC is a legal structure, not one federal tax classification. The September 15 extended return deadline generally applies to a calendar-year LLC taxed as a partnership or S corporation that timely extended its 2025 return. A single-member LLC reported on an owner's individual return generally follows the owner's Form 1040 deadline.",
+            },
+            {
+                question: "Who may need to make a September 15 estimated-tax payment?",
+                answer: "The September 15, 2026 payment commonly affects self-employed people, sole proprietors, partners, S corporation shareholders, landlords, investors, retirees, and others whose withholding and credits may not cover their federal tax. Individuals generally review estimated payments when they expect to owe at least $1,000 after withholding and refundable credits, subject to the complete Form 1040-ES rules.",
+            },
+            {
+                question: "Does Form 7004 extend the time to pay tax?",
+                answer: "No. The IRS states that Form 7004 extends the time to file an eligible business return but does not extend the time to pay tax due. Interest and possible penalties can apply to amounts not paid by the original due date.",
+            },
+            {
+                question: "What happens if a partnership or S corporation misses September 15?",
+                answer: "The IRS may assess late-filing penalties after the extended due date. For 2025 Forms 1065 and 1120-S required to be filed in 2026, the general base penalty is $255 for each month or part of a month, multiplied by the number of partners or shareholders, for up to 12 months. Additional tax, information-return, state, reasonable-cause, and special rules may apply.",
+            },
+            {
+                question: "Can IRS disaster relief change the September 15 deadline?",
+                answer: "Yes. Some taxpayers in IRS-designated disaster areas or otherwise eligible for special relief may receive a postponed filing or payment deadline. Eligibility, covered localities, affected acts, and replacement dates vary, so taxpayers should check the current IRS disaster-relief notices for their location and facts.",
+            },
+        ],
+        contentHtml: `
+            <div class="tax-answer-card">
+                <p><strong>Short answer:</strong> September 15, 2026 is an important federal tax date for two main groups. Calendar-year partnerships and S corporations that obtained valid extensions generally must file their 2025 returns by this date. September 15 is also the third 2026 estimated-tax payment date for many self-employed people, business owners, investors, and others with income not fully covered by withholding. The date does not apply to every taxpayer, so confirm your entity classification, extension status, tax year, state obligations, and any IRS relief.</p>
+            </div>
+
+            <p>September can create confusion because filing and payment obligations land on the same day but cover different tax years. An extended partnership or S corporation is finishing its <strong>2025 business return</strong>. A quarterly estimated-tax payer is making a payment toward <strong>2026 tax</strong>. Some business owners may have to do both.</p>
+
+            <p>This guide separates those obligations, explains who should act, and gives you a practical records checklist. It covers general federal rules for calendar-year taxpayers. Fiscal-year entities, state returns, foreign reporting, special entity taxes, and disaster relief can produce different results.</p>
+
+            <div class="tax-note">
+                <p><strong>Last reviewed:</strong> September 10, 2026. The standard federal deadline discussed below is Tuesday, September 15, 2026. Check current IRS guidance and disaster-relief notices before relying on a date.</p>
+            </div>
+
+            <h2>What Is Due on September 15, 2026?</h2>
+            <p><strong>Direct answer:</strong> The date includes extended 2025 information returns for many pass-through businesses and the third 2026 estimated-tax installment for calendar-year taxpayers who must pay during the year.</p>
+
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>September 15 obligation</th>
+                            <th>Who it generally affects</th>
+                            <th>Return or payment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Extended 2025 partnership return</td><td>Calendar-year partnerships and multi-member LLCs taxed as partnerships with a timely extension</td><td>Form 1065 and related partner information</td></tr>
+                        <tr><td>Extended 2025 S corporation return</td><td>Calendar-year S corporations and LLCs taxed as S corporations with a timely extension</td><td>Form 1120-S and related shareholder information</td></tr>
+                        <tr><td>Third 2026 individual estimated-tax installment</td><td>Individuals with tax not fully covered by withholding, subject to Form 1040-ES rules</td><td>2026 estimated-tax payment</td></tr>
+                        <tr><td>Third 2026 corporate estimated-tax installment</td><td>Certain calendar-year corporations that expect to owe tax</td><td>Corporate estimated-tax payment</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>The IRS 2026 Tax Calendar states that individual estimated payments generally fall on the 15th day of the fourth, sixth, and ninth months of the tax year and the first month after year-end. It also explains that Form 7004 generally provides a six-month filing extension for Forms 1065 and 1120-S. A filing extension must have been requested by the original return deadline; September 15 is not a second opportunity to request the ordinary automatic extension.</p>
+
+            <h2>Does the September 15 Deadline Apply to Your Business?</h2>
+            <p>Start with the federal tax classification, not only the name on the business registration. "LLC" does not tell the IRS which return the business files. A multi-member LLC may file as a partnership, an LLC may elect S corporation treatment, and a single-member LLC may be reported on its owner's return unless another election applies.</p>
+
+            <p>The extended business-return deadline generally deserves immediate attention when all of the following are true:</p>
+            <ul>
+                <li>The business uses a calendar tax year.</li>
+                <li>It files Form 1065 as a partnership or Form 1120-S as an S corporation.</li>
+                <li>A timely and valid extension was requested for its 2025 return.</li>
+                <li>The return has not yet been filed and accepted.</li>
+            </ul>
+
+            <p>September 15 is generally <strong>not</strong> the extended deadline for a sole proprietor's Schedule C filed with Form 1040, an extended individual Form 1040, or the typical calendar-year C corporation return. Those taxpayers often look to October 15 for an extended return, but their payment obligations may have begun earlier and their exact facts still need review.</p>
+
+            <h2>Extended Partnership Return: Form 1065</h2>
+            <p>A calendar-year partnership with a valid extension generally files its 2025 Form 1065 by September 15, 2026. The return reports the partnership's income, gains, losses, deductions, credits, and other items. Each partner receives a Schedule K-1, and some partnerships also have Schedule K-2 and K-3 reporting.</p>
+
+            <p>A partnership often does not pay federal income tax in the same way a C corporation does, but that does not make the filing optional. Partners need accurate information to complete their own returns, and special entity-level taxes, withholding, elections, or state payments may still apply.</p>
+
+            <h2>Extended S Corporation Return: Form 1120-S</h2>
+            <p>A calendar-year S corporation with a valid extension generally files its 2025 Form 1120-S by September 15, 2026. The return reports business activity and allocates tax items to shareholders through Schedule K-1. Records should support gross receipts, expenses, payroll, officer compensation, shareholder basis information, loans, distributions, assets, and other return items.</p>
+
+            <p>Do not assume that an S corporation can file late without consequence simply because most income passes through to shareholders. The IRS late-filing calculation can apply even when no federal income tax is due with the entity return.</p>
+
+            <h2>Business Return Checklist Before September 15</h2>
+            <p>Ask the tax preparer what is still missing rather than sending an unorganized document dump. A focused closeout usually begins with the following:</p>
+            <ul>
+                <li><strong>Extension confirmation:</strong> verify the correct entity, tax period, and extension request.</li>
+                <li><strong>Reconciled accounts:</strong> finish all 2025 bank, credit-card, loan, merchant, and payroll reconciliations.</li>
+                <li><strong>Financial statements:</strong> review the final profit-and-loss statement, balance sheet, and general ledger for unusual balances.</li>
+                <li><strong>Owner activity:</strong> identify contributions, draws, distributions, shareholder or partner loans, and personal expenses paid by the business.</li>
+                <li><strong>Payroll:</strong> reconcile wages, payroll taxes, officer compensation, Forms 941, and Forms W-2 to the books.</li>
+                <li><strong>Assets:</strong> list vehicles, equipment, software, property, and other significant purchases or disposals with dates and costs.</li>
+                <li><strong>Information reporting:</strong> confirm contractor payments, Forms 1099, ownership data, and information needed for Schedules K-1 and K-3.</li>
+                <li><strong>State filings:</strong> identify every state where the entity filed, operated, employed people, owned property, or may have created a filing obligation.</li>
+                <li><strong>Review and delivery:</strong> leave time for owner approval, e-signatures, e-file acceptance, and secure delivery of partner or shareholder schedules.</li>
+            </ul>
+
+            <div class="tax-cta-panel">
+                <h3>Are your 2025 books still incomplete?</h3>
+                <p>IntegraFin can review the condition of your records, identify missing bookkeeping inputs, and confirm whether a deadline-focused cleanup scope fits your business.</p>
+                <p><a href="/15-sep-offer">Request a free September 15 bookkeeping review</a>.</p>
+            </div>
+
+            <h2>Q3 Estimated Taxes Are Also Due September 15</h2>
+            <p>September 15, 2026 is the third standard estimated-tax payment date for calendar-year individuals. The payment commonly applies to income earned from June 1 through August 31, but the amount should come from the Form 1040-ES calculation rather than a percentage applied to one invoice or one month.</p>
+
+            <p>Estimated payments commonly affect sole proprietors, freelancers, independent contractors, partners, S corporation shareholders, landlords, investors with capital gains or investment income, retirees with insufficient withholding, and employees with profitable side businesses.</p>
+
+            <p>Under the general individual rule, both parts of the estimated-payment test are reviewed:</p>
+            <ol>
+                <li>You expect to owe at least $1,000 for 2026 after subtracting withholding and refundable credits.</li>
+                <li>Your expected withholding and refundable credits are less than the smaller of 90% of your 2026 tax or 100% of the tax shown on your 2025 return.</li>
+            </ol>
+
+            <p>The prior-year percentage generally becomes 110% for higher-income taxpayers, and special rules apply to farmers, fishermen, nonresident aliens, estates, trusts, fiscal-year taxpayers, and people whose income was uneven. Meeting a penalty safe-harbor benchmark does not necessarily mean the final 2026 tax balance will be fully paid.</p>
+
+            <p>For the full calculation, use our <a href="/blog/how-to-calculate-2026-quarterly-estimated-tax-payments">2026 quarterly estimated-tax guide</a>. You can also create a simplified first-pass projection with the <a href="/quarterly-estimated-tax-calculator">free quarterly estimated-tax calculator</a>, then compare it with Form 1040-ES, your filed 2025 return, current books, and professional advice.</p>
+
+            <h2>September 15 Estimated-Tax Checklist</h2>
+            <ul>
+                <li>Update bookkeeping through August 31 instead of repeating the June payment automatically.</li>
+                <li>Project full-year wages, business profit, investment income, rents, retirement income, deductions, and credits.</li>
+                <li>Confirm year-to-date federal withholding and every 2026 estimated payment already made.</li>
+                <li>Review the total-tax and adjusted-gross-income figures on the filed 2025 return.</li>
+                <li>Consider whether uneven income requires the annualized income installment method.</li>
+                <li>Calculate state estimated-tax obligations separately.</li>
+                <li>Choose the correct payment reason and tax year, then save the confirmation.</li>
+            </ul>
+
+            <h2>How to Make the Federal Estimated-Tax Payment</h2>
+            <p>Individuals can generally pay through an IRS Online Account, IRS Direct Pay, EFTPS, the IRS2Go app, an approved card processor, or by mailing the appropriate Form 1040-ES voucher. Electronic methods provide a confirmation that is easier to retain with the tax records. When scheduling a payment, verify the taxpayer identity, payment type, amount, bank account, settlement date, and 2026 tax year before submitting.</p>
+
+            <p>Businesses may use EFTPS or an eligible IRS business tax account for many federal payments. Processing cutoffs and enrollment requirements can matter, so do not wait until the final minutes to create an account or initiate a transaction.</p>
+
+            <h2>An Extension to File Is Not an Extension to Pay</h2>
+            <p>This distinction is one of the most important parts of the September deadline. The IRS instructions state that Form 7004 does not extend the time to pay tax. A valid extension can protect the filing period, but interest and possible late-payment penalties may accrue on tax that should have been paid by the original due date.</p>
+
+            <p>Pass-through entities can still have entity-level federal amounts from special taxes or withholding, and state rules may require entity, franchise, composite, or pass-through entity tax payments. Ask the preparer to distinguish among:</p>
+            <ul>
+                <li>2025 tax that was due with the original business-return deadline;</li>
+                <li>2025 tax, interest, or other amounts being paid with the extended return;</li>
+                <li>the owner's separate September 15 payment toward 2026 individual tax; and</li>
+                <li>federal versus state obligations.</li>
+            </ul>
+
+            <h2>What Happens If You Miss September 15?</h2>
+            <p>For 2025 Forms 1065 and 1120-S required to be filed in 2026, the IRS instructions list a general late-filing base penalty of <strong>$255 for each month or part of a month</strong>, multiplied by the number of partners or shareholders during the tax year, for up to 12 months. If entity-level tax is due, other penalties and interest may apply. Late, missing, or incorrect information schedules can create separate exposure.</p>
+
+            <p>Reasonable-cause relief may be available in some filing situations, but it is not automatic. Keep evidence of the extension, e-file attempts, records requests, disasters, serious disruptions, and other facts that may matter. Do not wait for an IRS notice before completing an accurate return.</p>
+
+            <p>If the estimated-tax payment is late or too small, the individual underpayment penalty is generally based on the underpaid amount, when it was due, and how long it remained unpaid. Paying later may reduce continuing exposure, but it does not automatically erase an earlier underpayment. If you already missed an installment, read our <a href="/blog/missed-estimated-tax-payment-june-15-deadline">late estimated-tax payment guide</a>.</p>
+
+            <h2>Can Disaster Relief Change the Deadline?</h2>
+            <p>Yes. The IRS may postpone specified filing and payment acts for eligible taxpayers in federally declared disaster areas. Relief is not identical across every notice: covered counties, beginning dates, replacement deadlines, returns, payments, and deposits can differ. The IRS may also assist a taxpayer outside a covered area when necessary records are located in the disaster area.</p>
+
+            <p>Check the <a href="https://www.irs.gov/newsroom/tax-relief-in-disaster-situations" target="_blank" rel="noopener noreferrer">IRS disaster-relief page</a> and the notice for the specific location. Keep proof supporting eligibility rather than assuming that a widely reported disaster automatically postpones every tax obligation.</p>
+
+            <h2>Your Practical September 15 Action Plan</h2>
+            <ol>
+                <li><strong>Identify the obligation.</strong> Determine whether you have an extended entity return, a 2026 estimated payment, or both.</li>
+                <li><strong>Confirm the extension.</strong> Locate the Form 7004 acceptance or ask the preparer to verify it.</li>
+                <li><strong>Close the records.</strong> Reconcile 2025 books for the return and update 2026 year-to-date results for estimated-tax planning.</li>
+                <li><strong>Separate tax years.</strong> Label 2025 return items and 2026 estimated payments clearly.</li>
+                <li><strong>Review state requirements.</strong> Federal filing does not satisfy every state return or payment obligation.</li>
+                <li><strong>Submit early enough to correct errors.</strong> Allow time for signatures, rejected e-files, banking issues, and missing schedules.</li>
+                <li><strong>Save proof.</strong> Retain filing acceptance, payment confirmation, final returns, and delivered K-1 or K-3 packages.</li>
+            </ol>
+
+            <div class="tax-cta-panel">
+                <h3>Need help getting deadline-ready?</h3>
+                <p>IntegraFin can review bookkeeping readiness, business-return support needs, and estimated-tax planning under a confirmed scope.</p>
+                <p><a href="/business-tax-accounting">Review business tax and accounting support</a> or <a href="/contact">schedule a consultation</a>.</p>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <h3>What tax returns are due September 15, 2026?</h3>
+            <p>The date is generally the extended federal filing deadline for 2025 calendar-year partnership returns on Form 1065 and S corporation returns on Form 1120-S when the entity obtained a timely, valid extension.</p>
+
+            <h3>Is September 15 a tax deadline for every LLC?</h3>
+            <p>No. An LLC's federal return depends on its tax classification. The extended deadline generally applies to a calendar-year LLC taxed as a partnership or S corporation with a timely extension, not automatically to every LLC.</p>
+
+            <h3>Are individual income-tax returns due September 15?</h3>
+            <p>Generally, no. September 15 is an estimated-payment date for many individuals. The ordinary extended 2025 Form 1040 filing deadline is generally October 15, 2026, subject to special rules and relief.</p>
+
+            <h3>Does Form 7004 extend the time to pay?</h3>
+            <p>No. It generally extends the time to file an eligible business return, not the time to pay tax due.</p>
+
+            <h3>What should I do if my books are not ready?</h3>
+            <p>Contact the preparer immediately, ask for a precise missing-items list, reconcile the highest-impact accounts, document unresolved items, and complete the most accurate return possible. Do not invent figures or let uncertainty become a reason to ignore the deadline.</p>
+
+            <h3>When is the next individual estimated-tax payment after September 15?</h3>
+            <p>For calendar-year individuals using the standard schedule, the fourth 2026 estimated-tax payment is due January 15, 2027. Exceptions may apply.</p>
+
+            <h2>Official Sources Reviewed</h2>
+            <ul class="source-list">
+                <li><a href="https://www.irs.gov/publications/p509" target="_blank" rel="noopener noreferrer">IRS Publication 509 (2026), Tax Calendars</a></li>
+                <li><a href="https://www.irs.gov/instructions/i1065" target="_blank" rel="noopener noreferrer">IRS Instructions for Form 1065 (2025)</a></li>
+                <li><a href="https://www.irs.gov/instructions/i1120s" target="_blank" rel="noopener noreferrer">IRS Instructions for Form 1120-S (2025)</a></li>
+                <li><a href="https://www.irs.gov/instructions/i7004" target="_blank" rel="noopener noreferrer">IRS Instructions for Form 7004</a></li>
+                <li><a href="https://www.irs.gov/pub/irs-pdf/f1040es.pdf" target="_blank" rel="noopener noreferrer">IRS Form 1040-ES, Estimated Tax for Individuals</a></li>
+                <li><a href="https://www.irs.gov/publications/p505" target="_blank" rel="noopener noreferrer">IRS Publication 505 (2026), Tax Withholding and Estimated Tax</a></li>
+                <li><a href="https://www.taxpayeradvocate.irs.gov/news/tax-tips/estimated-payments/2026/01/" target="_blank" rel="noopener noreferrer">Taxpayer Advocate Service: Making Estimated Payments</a></li>
+                <li><a href="https://www.irs.gov/newsroom/tax-relief-in-disaster-situations" target="_blank" rel="noopener noreferrer">IRS: Tax Relief in Disaster Situations</a></li>
+            </ul>
+
+            <div class="tax-note">
+                <p><strong>Educational note:</strong> This article provides general federal tax education and is not legal or tax advice. Filing dates, payment calculations, penalties, relief, and state obligations depend on the taxpayer's records and circumstances. Confirm current rules with the IRS and a qualified tax professional before filing or making a material payment decision. IntegraFin is not affiliated with or endorsed by the IRS.</p>
+            </div>
+        `,
+    },
+    {
         slug: "how-to-calculate-2026-quarterly-estimated-tax-payments",
         title: "How to Calculate 2026 Quarterly Estimated Tax Payments",
         excerpt: "Calculate 2026 quarterly estimated tax payments, review IRS due dates and safe-harbor rules, and plan what to pay by September 15.",
@@ -205,6 +443,7 @@ export const mockBlogPosts: BlogPost[] = [
             <p>If an earlier 2026 deadline was missed, use our separate <a href="/blog/missed-estimated-tax-payment-june-15-deadline">late estimated tax payment guide</a> for the immediate catch-up steps.</p>
 
             <h2>September 15 Planning Checklist</h2>
+            <p>Need the combined deadline view for extended partnership and S corporation returns too? Read the <a href="/blog/september-15-2026-tax-deadline">complete September 15, 2026 tax deadline guide</a>.</p>
             <ul>
                 <li>Close and reconcile bookkeeping through July, then update August activity before paying.</li>
                 <li>Collect year-to-date wages, federal withholding, business profit, investment income, and major deductions.</li>

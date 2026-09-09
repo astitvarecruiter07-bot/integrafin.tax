@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import {
   AlarmClock,
   ArrowRight,
@@ -248,6 +249,11 @@ export default function Home() {
           </div>
           <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-[#c9c9c9] sm:text-base">
             For many calendar-year partnerships and S corporations that timely filed an extension, September 15, 2026 is the extended return deadline. Your filing facts determine which deadline applies.
+          </p>
+          <p className="mx-auto mt-4 max-w-3xl text-sm font-bold text-white">
+            <Link href="/blog/september-15-2026-tax-deadline" className="underline decoration-[#ff3038] decoration-2 underline-offset-4 transition hover:text-[#ff5a60]">
+              Read the complete September 15 filing and estimated-tax guide
+            </Link>
           </p>
           <div className="mt-8"><CtaBar label="Get Help Before the Deadline" /></div>
         </div>
