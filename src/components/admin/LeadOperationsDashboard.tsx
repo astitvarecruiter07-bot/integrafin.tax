@@ -37,6 +37,7 @@ import type {
   LeadConfirmationStatus,
   LeadNotificationStatus,
   LeadStatus,
+  ZohoSyncStatus,
 } from '@/models/ContactLead';
 
 type LeadAttributionRecord = {
@@ -95,6 +96,9 @@ export type AdminLeadRecord = {
   confirmationEmailStatus?: LeadConfirmationStatus;
   confirmationEmailCheckedAt?: string;
   confirmationEmailSentAt?: string;
+  zohoSyncStatus?: ZohoSyncStatus;
+  zohoSyncCheckedAt?: string;
+  zohoRecordId?: string;
   attribution?: LeadAttributionRecord;
   bookkeepingAssessment?: {
     calculatorVersion: '1.0';
@@ -238,6 +242,17 @@ function formatNotificationStatus(status?: LeadNotificationStatus) {
 function formatConfirmationStatus(status?: LeadConfirmationStatus) {
   if (status === 'not_applicable') return 'Not applicable';
   return formatNotificationStatus(status);
+}
+
+function formatZohoSyncStatus(status?: ZohoSyncStatus) {
+  const labels: Record<ZohoSyncStatus, string> = {
+    pending: 'Pending',
+    synced: 'Synced',
+    duplicate: 'Already in CRM',
+    not_configured: 'Not configured',
+    failed: 'Failed',
+  };
+  return status ? labels[status] : 'Not applicable';
 }
 
 function formatAppointmentStatus(status?: AppointmentStatus) {
@@ -1146,6 +1161,13 @@ export default function LeadOperationsDashboard({
                     <DetailField label="Alert checked" value={formatDate(selectedLead.notificationCheckedAt, true)} />
                     <DetailField label="Customer email" value={formatConfirmationStatus(selectedLead.confirmationEmailStatus)} />
                     <DetailField label="Email checked" value={formatDate(selectedLead.confirmationEmailCheckedAt, true)} />
+                    {selectedLead.source === 'contact-page' && (
+                      <>
+                        <DetailField label="Zoho CRM" value={formatZohoSyncStatus(selectedLead.zohoSyncStatus)} />
+                        <DetailField label="CRM checked" value={formatDate(selectedLead.zohoSyncCheckedAt, true)} />
+                        <DetailField label="Zoho record ID" value={selectedLead.zohoRecordId || 'Not recorded'} />
+                      </>
+                    )}
                     <DetailField label="First response" value={formatDate(selectedLead.firstResponseAt, true)} />
                     <DetailField label="Last call" value={formatDate(selectedLead.lastCallAt, true)} />
                     <DetailField label="Last outcome" value={formatCallOutcome(selectedLead.lastCallOutcome)} />

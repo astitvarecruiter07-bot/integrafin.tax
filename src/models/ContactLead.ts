@@ -62,6 +62,7 @@ export type LeadRecordKind = (typeof LEAD_RECORD_KINDS)[number];
 export type LeadServiceIntent = (typeof LEAD_SERVICE_INTENTS)[number];
 export type LeadNotificationStatus = 'pending' | 'sent' | 'not_configured' | 'delivery_failed';
 export type LeadConfirmationStatus = LeadNotificationStatus | 'not_applicable';
+export type ZohoSyncStatus = 'pending' | 'synced' | 'duplicate' | 'not_configured' | 'failed';
 export type AppointmentStatus = 'scheduled' | 'canceled';
 export type AppointmentSource = 'calendly' | 'manual';
 
@@ -182,6 +183,9 @@ export interface IContactLead extends mongoose.Document {
   confirmationEmailStatus?: LeadConfirmationStatus;
   confirmationEmailCheckedAt?: Date;
   confirmationEmailSentAt?: Date;
+  zohoSyncStatus?: ZohoSyncStatus;
+  zohoSyncCheckedAt?: Date;
+  zohoRecordId?: string;
   createdAt: Date;
 }
 
@@ -544,6 +548,17 @@ const ContactLeadSchema = new mongoose.Schema<IContactLead>(
     },
     confirmationEmailSentAt: {
       type: Date,
+    },
+    zohoSyncStatus: {
+      type: String,
+      enum: ['pending', 'synced', 'duplicate', 'not_configured', 'failed'],
+    },
+    zohoSyncCheckedAt: {
+      type: Date,
+    },
+    zohoRecordId: {
+      type: String,
+      maxlength: 100,
     },
     createdAt: {
       type: Date,

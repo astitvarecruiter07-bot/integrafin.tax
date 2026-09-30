@@ -9,6 +9,7 @@ import { checkRateLimit } from '@/lib/rateLimit';
 import { revalidatePath } from 'next/cache';
 import { after } from 'next/server';
 import { sendLeadConfirmation, sendNewLeadNotification } from '@/lib/leadNotifications';
+import { syncWebsiteLeadToZoho } from '@/lib/zohoCrm';
 import { getLeadResponseSlaMinutes } from '@/lib/leadSla';
 import { FOLLOW_UP_ACTIVE_STATUSES } from '@/lib/leadFollowUp';
 import { LEAD_SERVICE_VALUES } from '@/lib/leadServices';
@@ -274,6 +275,7 @@ export async function submitLead(data: LeadInput) {
         submissionKey: validatedData.idempotencyKey,
         attribution: prepareAttribution(validatedData.attribution, submittedAt),
         status: 'new',
+        ...(validatedData.source === 'contact-page' ? { zohoSyncStatus: 'pending' } : {}),
         createdAt: submittedAt,
       });
     } catch (error) {
@@ -326,6 +328,37 @@ export async function submitLead(data: LeadInput) {
         });
       }
     });
+    if (validatedData.source === 'contact-page') {
+      after(async () => {
+        const result = await syncWebsiteLeadToZoho({
+          leadId,
+          name: validatedData.name,
+          email: validatedData.email,
+          phone: validatedData.phone,
+          company: validatedData.company,
+          service: validatedData.service,
+          message: validatedData.message,
+          source: validatedData.source,
+          utmSource: validatedData.attribution?.utmSource,
+          utmMedium: validatedData.attribution?.utmMedium,
+          utmCampaign: validatedData.attribution?.utmCampaign,
+        });
+        try {
+          await ContactLead.findByIdAndUpdate(leadId, {
+            $set: {
+              zohoSyncStatus: result.status,
+              zohoSyncCheckedAt: new Date(),
+              ...(result.status === 'synced' ? { zohoRecordId: result.recordId } : {}),
+            },
+          });
+        } catch (error) {
+          console.error('Could not record Zoho CRM sync status.', {
+            leadId,
+            error: error instanceof Error ? error.name : 'UnknownError',
+          });
+        }
+      });
+    }
     
     return acceptedLeadResponse(leadId);
   } catch (error) {
