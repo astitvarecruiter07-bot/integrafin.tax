@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import WorkflowPreview from "@/components/WorkflowPreview";
 import type { ComponentType } from "react";
 import {
   ArrowRight,
@@ -337,7 +338,7 @@ const faqSchema = {
 
 export default function PricingPage() {
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="saas-page min-h-screen bg-slate-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -370,6 +371,16 @@ export default function PricingPage() {
               Call (832) 647-1819
             </a>
           </div>
+          <WorkflowPreview
+            label="PRICING PROCESS"
+            title="What your written quote is based on"
+            items={[
+              "The service, entity, periods, and deadlines",
+              "Available records and open questions",
+              "Defined deliverables and separate work",
+            ]}
+            note="You review the scope and price before work begins."
+          />
         </div>
       </section>
 

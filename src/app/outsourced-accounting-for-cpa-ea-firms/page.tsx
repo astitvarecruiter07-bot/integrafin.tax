@@ -241,7 +241,7 @@ function PrimaryCta({ className = "" }: { className?: string }) {
   return (
     <a
       href="#capacity-assessment"
-      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-secondary px-7 py-4 text-base font-black text-primary-dark shadow-[0_14px_35px_rgba(0,194,203,0.25)] transition hover:-translate-y-0.5 hover:bg-cyan-300 focus:outline-none focus:ring-4 focus:ring-cyan-200/40 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-lg bg-[#2563eb] px-7 py-4 text-base font-black text-white shadow-[0_14px_35px_rgba(37,99,235,0.28)] transition hover:-translate-y-0.5 hover:bg-[#1d4ed8] focus:outline-none focus:ring-4 focus:ring-blue-300/40 ${className}`}
     >
       Request my capacity assessment
       <ArrowRight className="h-5 w-5" aria-hidden="true" />
@@ -260,7 +260,7 @@ export default function OutsourcedAccountingForFirmsPage() {
         />
       ))}
 
-      <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0e1726]/95 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
           <Link href="/" aria-label="IntegraFin home">
             <Image
@@ -269,19 +269,19 @@ export default function OutsourcedAccountingForFirmsPage() {
               width={150}
               height={40}
               priority
-              className="h-8 w-auto sm:h-9"
+              className="h-8 w-auto brightness-0 invert sm:h-9"
             />
           </Link>
           <div className="flex items-center gap-3">
             <a
               href="tel:+18326471819"
-              className="hidden items-center gap-2 text-sm font-black text-primary-dark hover:text-primary sm:inline-flex"
+              className="hidden items-center gap-2 text-sm font-black text-white hover:text-cyan-200 sm:inline-flex"
             >
               <Phone className="h-4 w-4" aria-hidden="true" /> (832) 647-1819
             </a>
             <a
               href="#capacity-assessment"
-              className="inline-flex items-center justify-center rounded-lg bg-primary-dark px-4 py-2.5 text-sm font-black text-white transition hover:bg-primary"
+              className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2.5 text-sm font-bold text-white transition hover:bg-blue-500"
             >
               Check firm fit
             </a>

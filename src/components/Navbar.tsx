@@ -1,164 +1,105 @@
 "use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
 
-const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/industries", label: "Industries" },
-    { href: "/services", label: "Services" },
-    { href: "/pricing", label: "Pricing" },
-    { href: "/tax-calculator", label: "Tax Calculator" },
-    { href: "/blog", label: "Blog" },
-    { href: "/case-study", label: "Case Study" },
-];
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import styles from "./Navbar.module.css";
+
+const menus = {
+  Services: [
+    { label: "Monthly bookkeeping", href: "/small-business-bookkeeping-services", description: "Keep your books current" },
+    { label: "Business tax", href: "/business-tax-accounting", description: "Prepare with organized records" },
+    { label: "Individual tax", href: "/individual-tax-preparation", description: "Personal filing support" },
+    { label: "Catch-up bookkeeping", href: "/bookkeeping-cleanup", description: "Get overdue books in order" },
+    { label: "QuickBooks services", href: "/quickbooks-bookkeeping-services", description: "Setup, cleanup & reporting" },
+    { label: "Payroll tax support", href: "/payroll-tax-support", description: "Records, filings & notices" },
+    { label: "IRS notice help", href: "/tax-resolution", description: "Understand your next steps" },
+    { label: "LLC tax setup", href: "/llc-formation-tax-setup", description: "Start with a sound foundation" },
+    { label: "CPA & EA outsourcing", href: "/outsourced-accounting-for-cpa-ea-firms", description: "Capacity for your firm" },
+  ],
+  Industries: [
+    { label: "Construction", href: "/contractor-bookkeeping-services", description: "Job costs & subcontractors" },
+    { label: "Real estate", href: "/industries", description: "Property financials" },
+    { label: "Healthcare", href: "/industries", description: "Practice accounting" },
+    { label: "Professional services", href: "/industries", description: "Project & cash visibility" },
+    { label: "Retail & eCommerce", href: "/industries", description: "Sales channels & inventory" },
+    { label: "Startups", href: "/industries", description: "A stronger financial base" },
+  ],
+  Resources: [
+    { label: "Tax calculators", href: "/tax-calculator", description: "Explore free planning tools" },
+    { label: "Bookkeeping cleanup calculator", href: "/bookkeeping-cleanup-calculator", description: "Assess your records" },
+    { label: "Tax guides & blog", href: "/blog", description: "Practical business guidance" },
+    { label: "Case studies", href: "/case-study", description: "Explore client stories" },
+  ],
+} as const;
+type MenuName = keyof typeof menus;
+const consultationHref = "/contact#contact-form";
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
+  const [openMenu, setOpenMenu] = useState<MenuName | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-        let animationFrameId: number | undefined;
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const content = document.getElementById("site-content");
+    const footer = document.querySelector<HTMLElement>("body > footer");
+    const previousOverflow = document.body.style.overflow;
+    const previousContentInert = content?.inert ?? false;
+    const previousFooterInert = footer?.inert ?? false;
+    document.body.style.overflow = "hidden";
+    if (content) content.inert = true;
+    if (footer) footer.inert = true;
+    const desktop = window.matchMedia("(min-width: 941px)");
+    const closeOnDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) setMobileOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      if (content) content.inert = previousContentInert;
+      if (footer) footer.inert = previousFooterInert;
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [mobileOpen]);
+  const close = () => { setMobileOpen(false); setOpenMenu(null); };
+  const dropdown = (name: MenuName) => <div className={styles.megaMenu} id={`menu-${name.toLowerCase()}`}><div className={styles.megaIntro}><span>EXPLORE {name.toUpperCase()}</span><strong>{name === "Services" ? "The right support, at the right time." : name === "Industries" ? "Built around your business." : "Helpful answers, on your terms."}</strong><Link href={name === "Services" ? "/services" : name === "Industries" ? "/industries" : "/blog"} onClick={close}>View all {name.toLowerCase()} <ArrowUpRight size={16} /></Link></div><div className={styles.megaLinks}>{menus[name].map(item => <Link href={item.href} key={item.label} onClick={close}><span>{item.label}</span><small>{item.description}</small></Link>)}</div></div>;
 
-        const updateScrolledState = () => {
-            animationFrameId = undefined;
-            const nextScrolled = window.scrollY > 20;
-            setScrolled((currentScrolled) =>
-                currentScrolled === nextScrolled ? currentScrolled : nextScrolled
-            );
-        };
-
-        const handleScroll = () => {
-            if (animationFrameId !== undefined) return;
-            animationFrameId = window.requestAnimationFrame(updateScrolledState);
-        };
-
-        updateScrolledState();
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-            if (animationFrameId !== undefined) {
-                window.cancelAnimationFrame(animationFrameId);
-            }
-        };
-    }, []);
-
-    // Lock body scroll when mobile menu is open
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-        return () => { document.body.style.overflow = ''; };
-    }, [isOpen]);
-
-    return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "py-0.5" : "py-1"
-                }`}
-        >
-            <nav
-                className={`max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between transition-all duration-300 rounded-full border border-slate-200/50 shadow-lg ${scrolled
-                    ? "bg-white/95 backdrop-blur-md py-1 sm:py-1.5"
-                    : "bg-white py-1.5 sm:py-2 mt-2"
-                    }`}
-            >
-                {/* Logo */}
-                <Link href="/" className="flex-shrink-0 relative z-10">
-                    <Image
-                        src="/images/logo1.png"
-                        alt="IntegraFin Tax Expert Katy TX - Tax and Accounting Services"
-                        width={120}
-                        height={32}
-                        className={`h-6 sm:h-8 w-auto max-w-[120px] sm:max-w-[160px] transition-all duration-300`}
-                        priority
-                    />
-                </Link>
-
-                {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className={`text-sm font-semibold transition-colors duration-200 ${pathname === link.href
-                                ? "text-[#003580]"
-                                : !scrolled
-                                    ? "text-slate-600 hover:text-[#003580]"
-                                    : "text-slate-700 hover:text-primary"
-                                }`}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                </div>
-
-                {/* CTA Button */}
-                <Link
-                    href="/contact"
-                    className={`hidden lg:inline-flex items-center px-5 py-1.5 text-sm font-semibold rounded-full transition-colors duration-200 ${!scrolled
-                        ? "bg-[#003580] text-white hover:bg-[#002050]"
-                        : "bg-primary-dark text-white hover:bg-primary"
-                        }`}
-                >
-                    Contact Us
-                </Link>
-
-                {/* Mobile Toggle */}
-                <button
-                    onClick={() => setIsOpen(!isOpen)} 
-                    className={`lg:hidden relative z-10 p-2 ${!scrolled ? 'text-slate-800' : 'text-slate-800'}`}
-                    aria-label="Toggle navigation menu"
-                    aria-expanded={isOpen}
-                    aria-controls="mobile-navigation-menu"
-                >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        {isOpen ? (
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        ) : (
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                        )}
-                    </svg>
-                </button>
-            </nav>
-
-            {/* Mobile Menu */}
-            {isOpen && (
-                <>
-                    <div
-                        className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
-                        onClick={() => setIsOpen(false)}
-                    />
-                    <div id="mobile-navigation-menu" className="lg:hidden mt-2 mx-4 sm:mx-6 bg-white rounded-2xl shadow-xl p-5 sm:p-6 animate-fade-in relative z-50">
-                        <div className="flex flex-col gap-2">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.href}
-                                    href={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className={`text-[15px] font-medium py-2.5 px-4 rounded-xl transition-colors ${pathname === link.href
-                                        ? "bg-accent-light text-primary"
-                                        : "text-foreground/80 hover:bg-accent-light"
-                                        }`}
-                                >
-                                    {link.label}
-                                </Link>
-                            ))}
-                            <Link
-                                href="/contact"
-                                onClick={() => setIsOpen(false)}
-                                className="text-center py-3 mt-2 bg-accent-dark text-white font-semibold rounded-full hover:bg-primary transition-colors"
-                            >
-                                Contact Us
-                            </Link>
-                        </div>
-                    </div>
-                </>
-            )}
-        </header>
-    );
+  return <header ref={headerRef} className={`${styles.header} ${scrolled ? styles.scrolled : ""}`} onKeyDown={event => {
+    if (event.key === "Escape") {
+      close();
+      if (mobileOpen) headerRef.current?.querySelector<HTMLButtonElement>('[aria-controls="mobile-navigation"]')?.focus();
+    }
+    if (mobileOpen && event.key === "Tab") {
+      const focusable = Array.from(headerRef.current?.querySelectorAll<HTMLElement>("a[href],button,summary") ?? []).filter(element => element.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    }
+  }}>
+    <nav className={styles.nav} aria-label="Main navigation">
+      <Link href="/" className={styles.logo} aria-label="IntegraFin home" onClick={close}><Image src="/images/logo1.png" alt="IntegraFin Tax & Accounting" width={158} height={35} priority /></Link>
+      <div className={styles.desktopLinks}>
+        {(Object.keys(menus) as MenuName[]).slice(0,2).map(name => <div className={styles.menuWrap} key={name}><button type="button" className={`${styles.navButton} ${openMenu === name ? styles.active : ""}`} aria-expanded={openMenu === name} aria-controls={`menu-${name.toLowerCase()}`} onClick={() => setOpenMenu(openMenu === name ? null : name)}>{name} <ChevronDown size={15} /></button>{openMenu === name && dropdown(name)}</div>)}
+        <Link href="/industries" onClick={close}>Who We Help</Link>
+        <div className={styles.menuWrap}><button type="button" className={`${styles.navButton} ${openMenu === "Resources" ? styles.active : ""}`} aria-expanded={openMenu === "Resources"} aria-controls="menu-resources" onClick={() => setOpenMenu(openMenu === "Resources" ? null : "Resources")}>Resources <ChevronDown size={15} /></button>{openMenu === "Resources" && dropdown("Resources")}</div>
+        <Link href="/pricing" onClick={close}>Pricing</Link>
+        <Link href="/about" onClick={close}>About</Link>
+      </div>
+      <div className={styles.navEnd}><Link href={consultationHref} className={styles.navCta}>Request a Consultation <ArrowUpRight size={16} /></Link><button type="button" className={styles.mobileToggle} aria-label={mobileOpen ? "Close navigation" : "Open navigation"} aria-controls="mobile-navigation" aria-expanded={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)}>{mobileOpen ? <X size={24} /> : <Menu size={24} />}</button></div>
+    </nav>
+    {openMenu && <button type="button" className={styles.menuBackdrop} aria-label="Close menu" onClick={() => setOpenMenu(null)} />}
+    {mobileOpen && <div className={styles.mobilePanel} id="mobile-navigation">
+      <div className={styles.mobileScroll}><Link href="/" onClick={close}>Home</Link>{(Object.keys(menus) as MenuName[]).map(name => <details key={name}><summary>{name}<ChevronDown size={18} /></summary><div>{menus[name].map(item => <Link href={item.href} onClick={close} key={item.label}>{item.label}</Link>)}</div></details>)}<Link href="/pricing" onClick={close}>Pricing</Link><Link href="/about" onClick={close}>About</Link><Link href="/contact" onClick={close}>Contact</Link><Link href={consultationHref} className={styles.mobileCta} onClick={close}>Request a Consultation <ArrowUpRight size={18} /></Link></div>
+    </div>}
+  </header>;
 }

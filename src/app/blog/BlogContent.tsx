@@ -11,17 +11,6 @@ interface BlogContentProps {
     initialPosts: BlogSeoPost[];
 }
 
-const categories = [
-    "All",
-    "Tax News",
-    "Tax Planning",
-    "Accounting",
-    "Compliance",
-    "Tax Resolution",
-    "Payroll",
-    "Business Advisory",
-];
-
 const resourceLinks = [
     { href: "/services", label: "Tax and Accounting Services" },
     { href: "/texas-tax-accounting-services", label: "Texas Tax Services" },
@@ -38,6 +27,10 @@ const resourceLinks = [
 export default function BlogContent({ initialPosts }: BlogContentProps) {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("All");
+    const categories = useMemo(() => [
+        "All",
+        ...Array.from(new Set(initialPosts.map((post) => post.category).filter((category): category is string => Boolean(category)))).sort(),
+    ], [initialPosts]);
 
     const filteredPosts = useMemo(() => {
         return initialPosts.filter(post => {
@@ -58,10 +51,10 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
     }, [filteredPosts, featuredPost]);
 
     return (
-        <main className="bg-slate-50 font-sans text-slate-800">
+        <main className="saas-page bg-slate-50 font-sans text-slate-800">
 
             {/* SECTION 1: BLOG HERO BANNER */}
-            <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-[#003580] overflow-hidden">
+            <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-primary-dark overflow-hidden">
                 <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0092df 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }}></div>
                 <div className="absolute top-0 right-0 w-96 h-96 bg-[#0092df]/10 blur-[120px] rounded-full pointer-events-none"></div>
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
@@ -96,13 +89,14 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full bg-white/10 border-2 border-[#0092df]/40 rounded-full py-4 px-8 text-white focus:ring-2 focus:ring-[#0092df] focus:border-[#0092df] transition-all placeholder:text-white/50"
                         />
-                        <button type="button" aria-label="Search insights" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#0092df] hover:scale-110 transition-transform">
+                        <span aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#0092df] pointer-events-none">
                             <Search className="w-6 h-6" />
-                        </button>
+                        </span>
                     </div>
                     <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
                         {categories.map((cat) => (
                             <button
+                                type="button"
                                 key={cat}
                                 onClick={() => setSelectedCategory(cat)}
                                 className={`px-4 sm:px-6 py-2 rounded-full border text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] transition-all ${selectedCategory === cat
@@ -114,10 +108,17 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                             </button>
                         ))}
                     </div>
+                    {filteredPosts.length === 0 && (
+                        <div role="status" className="mx-auto mt-8 max-w-xl rounded-2xl border border-white/20 bg-white/10 p-6 text-center text-white">
+                            <p className="font-semibold">No articles match those filters.</p>
+                            <button type="button" onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }} className="mt-3 text-sm font-bold text-sky-200 underline underline-offset-4">Clear search and category</button>
+                        </div>
+                    )}
                 </div>
             </section>
 
             {/* SECTION 2: FEATURED POST */}
+            <div id="blog-results" className="scroll-mt-24" />
             {featuredPost && (
                 <section className="bg-white py-12 sm:py-20 border-b border-slate-100">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -141,24 +142,24 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                 <span className="inline-block px-3 py-1 bg-[#0092df]/10 text-[#0092df] rounded font-black text-[10px] uppercase tracking-widest mb-6 border border-[#0092df]/20">
                                     Featured Insight
                                 </span>
-                                <h2 className="text-2xl sm:text-4xl font-black text-[#003580] mb-4 sm:mb-6 leading-tight tracking-tight">
+                                <h2 className="text-2xl sm:text-4xl font-black text-primary-dark mb-4 sm:mb-6 leading-tight tracking-tight">
                                     {featuredPost.title}
                                 </h2>
                                 <p className="text-slate-600 text-sm sm:text-lg mb-6 sm:mb-8 leading-relaxed font-medium">
                                     {featuredPost.excerpt}
                                 </p>
                                 <div className="flex items-center gap-4 mb-8">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#0092df]/30 bg-[#003580]/10 text-sm font-black text-[#003580]" aria-hidden="true">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#0092df]/30 bg-primary-dark/10 text-sm font-black text-primary-dark" aria-hidden="true">
                                         IF
                                     </div>
                                     <div>
-                                        <p className="text-[#003580] font-black text-sm">IntegraFin Tax Team</p>
+                                        <p className="text-primary-dark font-black text-sm">IntegraFin Tax Team</p>
                                         <p className="text-slate-400 text-xs uppercase tracking-wider">Tax & Accounting Team</p>
                                     </div>
                                 </div>
                                 <Link
                                     href={`/blog/${featuredPost.slug}`}
-                                    className="inline-flex items-center gap-2 bg-[#003580] hover:bg-[#002050] text-white px-8 py-3.5 rounded-xl font-black tracking-widest uppercase text-xs transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5"
+                                    className="inline-flex items-center gap-2 bg-primary-dark hover:bg-[#002050] text-white px-8 py-3.5 rounded-xl font-black tracking-widest uppercase text-xs transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5"
                                 >
                                     Read Full Guide
                                     <ArrowRight className="w-4 h-4" />
@@ -174,7 +175,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="text-center mb-12">
                         <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-2 block">Latest Articles</span>
-                        <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">Browse All Insights</h2>
+                        <h2 className="text-3xl md:text-4xl font-black text-primary-dark tracking-tight">Browse All Insights</h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                         {gridPosts.map((post) => (
@@ -202,7 +203,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                         <span>{post.category || "Tax Insight"}</span>
                                         <span>{post.date || "Updated"}</span>
                                     </div>
-                                    <h3 className="text-xl font-black text-[#003580] mb-4 hover:text-[#0092df] transition-colors leading-snug tracking-tight">
+                                    <h3 className="text-xl font-black text-primary-dark mb-4 hover:text-[#0092df] transition-colors leading-snug tracking-tight">
                                         {post.title}
                                     </h3>
                                     <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow font-medium">
@@ -212,7 +213,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                         <span className="text-slate-400 text-xs font-medium">{post.readTime || "5 min read"}</span>
                                         <Link
                                             href={`/blog/${post.slug}`}
-                                            className="text-[#0092df] font-black text-xs uppercase tracking-widest hover:text-[#003580] transition-colors inline-flex items-center gap-1"
+                                            className="text-[#0092df] font-black text-xs uppercase tracking-widest hover:text-primary-dark transition-colors inline-flex items-center gap-1"
                                         >
                                             Read: {post.title}
                                             <ArrowRight className="w-3 h-3" />
@@ -224,7 +225,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
                         {/* Newsletter Card In Grid */}
                         {gridPosts.length > 0 && (
-                            <div className="bg-[#003580] rounded-3xl p-6 sm:p-10 flex flex-col justify-center items-center text-center relative overflow-hidden group">
+                            <div className="bg-primary-dark rounded-3xl p-6 sm:p-10 flex flex-col justify-center items-center text-center relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/20 -translate-y-1/2 translate-x-1/2 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                                 <Mail className="w-12 h-12 text-[#0092df] mb-6 relative z-10" />
                                 <h3 className="text-3xl font-black text-white mb-4 tracking-tight relative z-10">Want More Insights?</h3>
@@ -243,7 +244,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#0092df]/5 blur-[150px] rounded-full pointer-events-none"></div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
                     <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Stay Updated</span>
-                    <h2 className="text-3xl sm:text-5xl font-black text-[#003580] mb-4 sm:mb-6 tracking-tight">Never Miss a Tax Update</h2>
+                    <h2 className="text-3xl sm:text-5xl font-black text-primary-dark mb-4 sm:mb-6 tracking-tight">Never Miss a Tax Update</h2>
                     <p className="text-slate-600 text-sm sm:text-lg mb-8 sm:mb-12 max-w-xl mx-auto font-medium leading-relaxed">Get useful tax reminders, compliance tips, and planning ideas delivered directly to your inbox.</p>
                     <div className="max-w-2xl mx-auto">
                         <NewsletterSignup
@@ -264,20 +265,24 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                         {/* Main Topics Area */}
                         <div className="lg:w-2/3">
                             <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-2 block">Browse Topics</span>
-                            <h3 className="text-3xl font-black text-[#003580] tracking-tight mb-12 pb-4 border-b border-slate-200">Knowledge Categories</h3>
+                            <h3 className="text-3xl font-black text-primary-dark tracking-tight mb-12 pb-4 border-b border-slate-200">Knowledge Categories</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {categories.filter(c => c !== "All").map((cat) => (
-                                    <div
+                                    <button
+                                        type="button"
                                         key={cat}
-                                        className="group p-8 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-lg hover:shadow-[#0092df]/10 hover:border-[#0092df]/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                                        onClick={() => setSelectedCategory(cat)}
+                                        className="group w-full p-8 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-lg hover:shadow-[#0092df]/10 hover:border-[#0092df]/20 hover:-translate-y-1 transition-all duration-300 text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0092df]/30"
+                                        onClick={() => {
+                                            setSelectedCategory(cat);
+                                            requestAnimationFrame(() => document.getElementById("blog-results")?.scrollIntoView({ behavior: "smooth" }));
+                                        }}
                                     >
-                                        <div className="w-10 h-10 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
+                                        <span className="w-10 h-10 bg-[#0092df]/10 group-hover:bg-[#0092df] rounded-xl flex items-center justify-center mb-4 transition-colors duration-300">
                                             <ArrowRight className="w-5 h-5 text-[#0092df] group-hover:text-white transition-colors duration-300" />
-                                        </div>
-                                        <h4 className="text-xl font-black text-[#003580] mb-2 tracking-tight">{cat}</h4>
-                                        <p className="text-slate-600 text-sm font-medium leading-relaxed">Expert insights and updates related to {cat.toLowerCase()}.</p>
-                                    </div>
+                                        </span>
+                                        <span className="block text-xl font-black text-primary-dark mb-2 tracking-tight">{cat}</span>
+                                        <span className="block text-slate-600 text-sm font-medium leading-relaxed">Insights and updates related to {cat.toLowerCase()}.</span>
+                                    </button>
                                 ))}
                             </div>
                         </div>
@@ -285,7 +290,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                         {/* Sidebar */}
                         <aside className="lg:w-1/3 space-y-8">
                             {/* CTA Card 1 */}
-                            <div className="bg-[#003580] p-6 sm:p-10 rounded-3xl relative overflow-hidden group shadow-xl shadow-[#003580]/20">
+                            <div className="bg-primary-dark p-6 sm:p-10 rounded-3xl relative overflow-hidden group shadow-xl shadow-[#003580]/20">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-[#0092df]/20 -translate-y-1/2 translate-x-1/2 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
                                 <h4 className="text-white font-black text-2xl mb-4 tracking-tight relative z-10">Need Tax Help?</h4>
                                 <p className="text-slate-300 text-sm mb-8 leading-relaxed font-medium relative z-10">Schedule a consultation with our tax and accounting team.</p>
@@ -296,9 +301,9 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
                             {/* CTA Card 2 */}
                             <div className="bg-white p-6 sm:p-10 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-[#0092df]/10 hover:border-[#0092df]/20 transition-all duration-300">
-                                <h4 className="text-[#003580] font-black text-2xl mb-4 tracking-tight">Tax Estimator</h4>
+                                <h4 className="text-primary-dark font-black text-2xl mb-4 tracking-tight">Tax Estimator</h4>
                                 <p className="text-slate-600 text-sm mb-8 leading-relaxed font-medium">Use the tax estimator to get a quick planning number before speaking with our team.</p>
-                                <Link href="/tax-calculator" className="w-full py-3.5 bg-[#003580] hover:bg-[#002050] text-white text-[10px] font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5">
+                                <Link href="/tax-calculator" className="w-full py-3.5 bg-primary-dark hover:bg-[#002050] text-white text-[10px] font-black uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5">
                                     <Calculator className="w-4 h-4" />
                                     Open Estimator
                                 </Link>
@@ -306,7 +311,7 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
 
                             {/* Quick Links */}
                             <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-lg shadow-slate-200/50">
-                                <h4 className="text-[#003580] font-black text-xs uppercase tracking-[0.3em] mb-6 pb-4 border-b border-slate-100">Resource Library</h4>
+                                <h4 className="text-primary-dark font-black text-xs uppercase tracking-[0.3em] mb-6 pb-4 border-b border-slate-100">Resource Library</h4>
                                 <ul className="space-y-4">
                                     {resourceLinks.map((link) => (
                                         <li key={link.href}>

@@ -8,6 +8,7 @@ import { submitLead } from "@/app/actions/leads";
 import { getLeadAttribution } from "@/lib/attribution";
 import { baseEventParameters, trackEvent, useFormAnalytics } from "@/lib/analytics";
 import type { LeadService } from "@/lib/leadServices";
+import { siteConfig } from "@/lib/siteConfig";
 
 type CampaignServiceOption = {
   value: string;
@@ -110,7 +111,7 @@ export default function FacebookLandingLeadForm({
       setSubmitted(true);
       router.push("/thank-you");
     } catch {
-      setError("We could not submit your request. Please try again or call (832) 774-1882.");
+      setError(`We could not submit your request. Please try again or call ${siteConfig.contact.phoneDisplay}.`);
     } finally {
       submittingRef.current = false;
       setIsPending(false);

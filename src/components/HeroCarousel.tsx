@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { CalendarDays, CheckCircle2, Phone } from "lucide-react";
 
-const bookingUrl =
-  process.env.NEXT_PUBLIC_BOOKING_URL || "https://calendly.com/integrafintax/30min";
+const consultationHref = "/contact#contact-form";
 
 const serviceHighlights = [
   "Tax preparation",
@@ -56,14 +55,12 @@ export default function HeroCarousel() {
 
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4 lg:justify-start">
             <a
-              href={bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={consultationHref}
               data-analytics-label="homepage_hero_book_30_min"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0092df] px-8 py-4 text-base font-bold text-white shadow-xl shadow-[#0092df]/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#007bbf] hover:shadow-2xl hover:shadow-[#0092df]/35 sm:text-lg"
             >
               <CalendarDays className="h-5 w-5" aria-hidden="true" />
-              Book a 30-Minute Consultation
+              Request a Consultation
             </a>
             <a
               href="tel:+18326471819"

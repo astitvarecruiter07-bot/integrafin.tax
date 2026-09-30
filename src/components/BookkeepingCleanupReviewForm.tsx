@@ -22,7 +22,7 @@ import {
 import { baseEventParameters, trackEvent, useFormAnalytics } from "@/lib/analytics";
 
 const fieldClass =
-  "mt-1.5 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-3 text-base text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-[#087a55] focus:ring-4 focus:ring-emerald-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#087a55]";
+  "mt-1.5 min-h-12 w-full rounded-xl border border-slate-300 bg-white px-3.5 py-3 text-base text-slate-950 outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-[#2563eb] focus:ring-4 focus:ring-blue-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]";
 
 export default function BookkeepingCleanupReviewForm() {
   const router = useRouter();
@@ -114,10 +114,10 @@ export default function BookkeepingCleanupReviewForm() {
   if (submitted) {
     return (
       <div className="flex min-h-[32rem] flex-col items-center justify-center px-4 text-center" aria-live="polite">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100 text-blue-700">
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
-        <h2 className="mt-5 text-2xl font-black tracking-tight text-[#0b213b]">Request received</h2>
+        <h2 className="mt-5 text-2xl font-black tracking-tight text-[#0e1726]">Request received</h2>
         <p className="mt-2 max-w-sm text-sm leading-6 text-slate-600">
           Opening your private confirmation page now.
         </p>
@@ -147,7 +147,7 @@ export default function BookkeepingCleanupReviewForm() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="cleanup-review-name" className="text-sm font-bold text-[#142b45]">
+          <label htmlFor="cleanup-review-name" className="text-sm font-bold text-[#1b2a4a]">
             Full name
           </label>
           <input
@@ -163,7 +163,7 @@ export default function BookkeepingCleanupReviewForm() {
           />
         </div>
         <div>
-          <label htmlFor="cleanup-review-business" className="text-sm font-bold text-[#142b45]">
+          <label htmlFor="cleanup-review-business" className="text-sm font-bold text-[#1b2a4a]">
             Business name
           </label>
           <input
@@ -183,7 +183,7 @@ export default function BookkeepingCleanupReviewForm() {
       <div>
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label htmlFor="cleanup-review-email" className="text-sm font-bold text-[#142b45]">
+            <label htmlFor="cleanup-review-email" className="text-sm font-bold text-[#1b2a4a]">
               Email
             </label>
             <input
@@ -199,7 +199,7 @@ export default function BookkeepingCleanupReviewForm() {
             />
           </div>
           <div>
-            <label htmlFor="cleanup-review-phone" className="text-sm font-bold text-[#142b45]">
+            <label htmlFor="cleanup-review-phone" className="text-sm font-bold text-[#1b2a4a]">
               Phone
             </label>
             <input
@@ -223,7 +223,7 @@ export default function BookkeepingCleanupReviewForm() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="cleanup-review-need" className="text-sm font-bold text-[#142b45]">
+          <label htmlFor="cleanup-review-need" className="text-sm font-bold text-[#1b2a4a]">
             Primary need
           </label>
           <select id="cleanup-review-need" name="primaryNeed" required defaultValue="" className={fieldClass}>
@@ -234,7 +234,7 @@ export default function BookkeepingCleanupReviewForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="cleanup-review-months" className="text-sm font-bold text-[#142b45]">
+          <label htmlFor="cleanup-review-months" className="text-sm font-bold text-[#1b2a4a]">
             How far behind?
           </label>
           <select id="cleanup-review-months" name="monthsBehind" required defaultValue="" className={fieldClass}>
@@ -247,14 +247,14 @@ export default function BookkeepingCleanupReviewForm() {
       </div>
 
       <details className="group rounded-xl border border-slate-200 bg-slate-50 open:bg-white">
-        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-bold text-[#142b45] marker:hidden">
+        <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm font-bold text-[#1b2a4a] marker:hidden">
           Add helpful details <span className="font-medium text-slate-500">(optional)</span>
-          <ChevronDown className="h-4 w-4 shrink-0 text-[#087a55] transition group-open:rotate-180" aria-hidden="true" />
+          <ChevronDown className="h-4 w-4 shrink-0 text-[#2563eb] transition group-open:rotate-180" aria-hidden="true" />
         </summary>
         <div className="space-y-4 border-t border-slate-200 p-4">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label htmlFor="cleanup-review-software" className="text-sm font-bold text-[#142b45]">
+              <label htmlFor="cleanup-review-software" className="text-sm font-bold text-[#1b2a4a]">
                 Accounting software
               </label>
               <select id="cleanup-review-software" name="accountingSoftware" defaultValue="" className={fieldClass}>
@@ -265,7 +265,7 @@ export default function BookkeepingCleanupReviewForm() {
               </select>
             </div>
             <div>
-              <label htmlFor="cleanup-review-industry" className="text-sm font-bold text-[#142b45]">
+              <label htmlFor="cleanup-review-industry" className="text-sm font-bold text-[#1b2a4a]">
                 Business type or industry
               </label>
               <input id="cleanup-review-industry" name="industry" type="text" maxLength={100} autoComplete="organization-title" className={fieldClass} placeholder="e.g., contractor, retail" />
@@ -273,13 +273,13 @@ export default function BookkeepingCleanupReviewForm() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label htmlFor="cleanup-review-date" className="text-sm font-bold text-[#142b45]">
+              <label htmlFor="cleanup-review-date" className="text-sm font-bold text-[#1b2a4a]">
                 Important target date
               </label>
               <input id="cleanup-review-date" name="targetDate" type="date" className={fieldClass} />
             </div>
             <div>
-              <label htmlFor="cleanup-review-preference" className="text-sm font-bold text-[#142b45]">
+              <label htmlFor="cleanup-review-preference" className="text-sm font-bold text-[#1b2a4a]">
                 Preferred contact
               </label>
               <select id="cleanup-review-preference" name="contactPreference" defaultValue="" className={fieldClass}>
@@ -291,7 +291,7 @@ export default function BookkeepingCleanupReviewForm() {
             </div>
           </div>
           <div>
-            <label htmlFor="cleanup-review-context" className="text-sm font-bold text-[#142b45]">
+            <label htmlFor="cleanup-review-context" className="text-sm font-bold text-[#1b2a4a]">
               Brief, non-sensitive context
             </label>
             <textarea
@@ -312,7 +312,7 @@ export default function BookkeepingCleanupReviewForm() {
           value="yes"
           type="checkbox"
           required
-          className="mt-1 h-4 w-4 shrink-0 accent-[#087a55] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#087a55]"
+          className="mt-1 h-4 w-4 shrink-0 accent-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
         />
         <span>
           {CLEANUP_REVIEW_FORM.consentText} See our{" "}
@@ -334,7 +334,7 @@ export default function BookkeepingCleanupReviewForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#087a55] px-5 py-3.5 text-base font-black text-white shadow-lg shadow-emerald-900/15 transition hover:-translate-y-0.5 hover:bg-[#056344] focus:outline-none focus:ring-4 focus:ring-emerald-200 disabled:cursor-not-allowed disabled:opacity-65"
+        className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#2563eb] px-5 py-3.5 text-base font-black text-white shadow-lg shadow-blue-900/15 transition hover:-translate-y-0.5 hover:bg-[#1d4ed8] focus:outline-none focus:ring-4 focus:ring-blue-200 disabled:cursor-not-allowed disabled:opacity-65"
       >
         {isPending ? (
           <><Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" /> Saving your request…</>

@@ -131,9 +131,9 @@ export default async function HtmlSitemapPage() {
   }
 
   return (
-    <main className="bg-slate-50 min-h-screen pt-28 pb-16">
+    <main className="saas-page bg-slate-50 min-h-screen pt-28 pb-16">
       <section className="max-w-5xl mx-auto px-6">
-        <h1 className="text-3xl sm:text-4xl font-black text-[#003580] tracking-tight mb-4">
+        <h1 className="text-3xl sm:text-4xl font-black text-primary-dark tracking-tight mb-4">
           HTML Sitemap
         </h1>
         <p className="text-slate-600 mb-8">
@@ -143,13 +143,13 @@ export default async function HtmlSitemapPage() {
         <div className="space-y-6">
           {getSections(blogPosts).map((section) => (
             <article key={section.title} className="bg-white border border-slate-200 rounded-2xl p-6">
-              <h2 className="text-xl font-bold text-[#003580] mb-4">{section.title}</h2>
+              <h2 className="text-xl font-bold text-primary-dark mb-4">{section.title}</h2>
               <ul className="grid sm:grid-cols-2 gap-3">
                 {section.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-[#0057b8] hover:text-[#003580] hover:underline font-medium"
+                      className="text-[#0057b8] hover:text-primary-dark hover:underline font-medium"
                     >
                       {link.label}
                     </Link>

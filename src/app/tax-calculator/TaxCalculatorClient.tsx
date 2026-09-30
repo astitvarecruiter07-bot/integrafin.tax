@@ -447,7 +447,7 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
                         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
                             IRS data tables
                         </p>
-                        <h2 className="text-3xl sm:text-4xl font-black text-[#003580] tracking-normal">
+                        <h2 className="text-3xl sm:text-4xl font-black text-primary-dark tracking-normal">
                             2025 vs 2026 federal tax calculator data
                         </h2>
                         <p className="text-slate-600 leading-relaxed mt-4 max-w-3xl">
@@ -459,7 +459,7 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
                         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
                             Last reviewed
                         </p>
-                        <p className="text-[#003580] font-bold mt-1">June 16, 2026</p>
+                        <p className="text-primary-dark font-bold mt-1">June 16, 2026</p>
                         <p className="text-sm text-slate-600 mt-2">
                             Content owner: IntegraFin Tax &amp; Accounting
                         </p>
@@ -471,7 +471,7 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
 
                 <div className="overflow-x-auto border border-slate-200 rounded-xl">
                     <table className="w-full text-left text-sm">
-                        <thead className="bg-slate-100 text-[#003580]">
+                        <thead className="bg-slate-100 text-primary-dark">
                             <tr>
                                 <th className="p-4 font-black">Filing status</th>
                                 <th className="p-4 font-black">2025 standard deduction</th>
@@ -495,27 +495,27 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
                         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
                             Social Security wage base
                         </p>
-                        <p className="text-2xl font-black text-[#003580] mt-2">{fmt(taxData.ssWageBase)}</p>
+                        <p className="text-2xl font-black text-primary-dark mt-2">{fmt(taxData.ssWageBase)}</p>
                         <p className="text-sm text-slate-600 mt-2">Used in the {taxYear} self-employment tax estimate.</p>
                     </article>
                     <article className="bg-slate-50 border border-slate-200 rounded-xl p-5">
                         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
                             Child Tax Credit
                         </p>
-                        <p className="text-2xl font-black text-[#003580] mt-2">{fmt(taxData.childTaxCredit)}</p>
+                        <p className="text-2xl font-black text-primary-dark mt-2">{fmt(taxData.childTaxCredit)}</p>
                         <p className="text-sm text-slate-600 mt-2">Estimated per qualifying child before phaseout and eligibility limits.</p>
                     </article>
                     <article className="bg-slate-50 border border-slate-200 rounded-xl p-5">
                         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
                             Calculator scope
                         </p>
-                        <p className="text-2xl font-black text-[#003580] mt-2">Federal only</p>
+                        <p className="text-2xl font-black text-primary-dark mt-2">Federal only</p>
                         <p className="text-sm text-slate-600 mt-2">State, local, AMT, NIIT, and many phaseouts are excluded.</p>
                     </article>
                 </div>
 
                 <div>
-                    <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                    <h2 className="text-3xl font-black text-primary-dark tracking-normal">
                         {taxYear} federal income tax brackets used
                     </h2>
                     <p className="text-slate-600 leading-relaxed mt-3 max-w-3xl">
@@ -524,7 +524,7 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
                     <div className="grid gap-5 lg:grid-cols-2 mt-8">
                         {FILING_STATUSES.map((status) => (
                             <article key={status.value} className="border border-slate-200 rounded-xl overflow-hidden">
-                                <h3 className="bg-[#003580] text-white px-4 py-3 font-bold">{status.label}</h3>
+                                <h3 className="bg-primary-dark text-white px-4 py-3 font-bold">{status.label}</h3>
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-left text-sm">
                                         <thead className="bg-slate-100 text-slate-700">
@@ -536,7 +536,7 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
                                         <tbody>
                                             {taxData.brackets[status.value].map((bracket) => (
                                                 <tr key={`${status.value}-${bracket.rate}-${bracket.min}`} className="border-t border-slate-200">
-                                                    <td className="p-3 font-semibold text-[#003580]">{formatPercent(bracket.rate)}</td>
+                                                    <td className="p-3 font-semibold text-primary-dark">{formatPercent(bracket.rate)}</td>
                                                     <td className="p-3 text-slate-700">{formatTaxableRange(bracket.min, bracket.max)}</td>
                                                 </tr>
                                             ))}
@@ -549,7 +549,7 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
                 </div>
 
                 <div>
-                    <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                    <h2 className="text-3xl font-black text-primary-dark tracking-normal">
                         {taxYear} long-term capital gains thresholds
                     </h2>
                     <p className="text-slate-600 leading-relaxed mt-3 max-w-3xl">
@@ -557,7 +557,7 @@ function DataTablesSection({ taxYear }: { taxYear: TaxYear }) {
                     </p>
                     <div className="overflow-x-auto border border-slate-200 rounded-xl mt-8">
                         <table className="w-full text-left text-sm">
-                            <thead className="bg-slate-100 text-[#003580]">
+                            <thead className="bg-slate-100 text-primary-dark">
                                 <tr>
                                     <th className="p-4 font-black">Filing status</th>
                                     <th className="p-4 font-black">0% threshold</th>
@@ -594,7 +594,7 @@ function LimitationsSection() {
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
                         Calculator limitations
                     </p>
-                    <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                    <h2 className="text-3xl font-black text-primary-dark tracking-normal">
                         What this federal estimate does not cover
                     </h2>
                     <p className="text-slate-600 text-sm leading-relaxed mt-4">
@@ -623,13 +623,13 @@ function CalculatorFaqSection({
     return (
         <section className="py-16 bg-white border-b border-gray-100">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
-                <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                <h2 className="text-3xl font-black text-primary-dark tracking-normal">
                     {title}
                 </h2>
                 <div className="space-y-4 mt-8">
                     {faqs.map((faq) => (
                         <article key={faq.question} className="border border-slate-200 rounded-xl p-5">
-                            <h3 className="text-lg font-bold text-[#003580]">{faq.question}</h3>
+                            <h3 className="text-lg font-bold text-primary-dark">{faq.question}</h3>
                             <p className="text-slate-600 text-sm leading-relaxed mt-2">{faq.answer}</p>
                         </article>
                     ))}
@@ -656,30 +656,30 @@ function FocusedCalculatorContent({ variant }: { variant: TaxCalculatorVariant }
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
                         {config.contentEyebrow}
                     </p>
-                    <h2 className="text-3xl sm:text-4xl font-black text-[#003580] max-w-4xl">
+                    <h2 className="text-3xl sm:text-4xl font-black text-primary-dark max-w-4xl">
                         {config.contentHeading}
                     </h2>
                     <p className="text-slate-600 leading-relaxed mt-4 max-w-4xl">{config.contentIntro}</p>
                     <div className="grid gap-4 md:grid-cols-3 mt-10">
                         {config.explanationPoints.map((point) => (
                             <article key={point.title} className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                                <h3 className="font-black text-[#003580]">{point.title}</h3>
+                                <h3 className="font-black text-primary-dark">{point.title}</h3>
                                 <p className="text-sm text-slate-600 leading-relaxed mt-2">{point.description}</p>
                             </article>
                         ))}
                     </div>
                     <article className="mt-8 rounded-2xl border border-[#00C2CB]/30 bg-[#00C2CB]/5 p-6">
-                        <h3 className="text-xl font-black text-[#003580]">{config.exampleTitle}</h3>
+                        <h3 className="text-xl font-black text-primary-dark">{config.exampleTitle}</h3>
                         <p className="text-sm text-slate-700 leading-relaxed mt-3">{config.exampleBody}</p>
                     </article>
                 </div>
             </section>
             <section className="py-14 bg-slate-50 border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
-                    <h2 className="text-3xl font-black text-[#003580]">Related federal tax calculators</h2>
+                    <h2 className="text-3xl font-black text-primary-dark">Related federal tax calculators</h2>
                     <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mt-7">
                         {relatedCalculators.map((link) => (
-                            <Link key={link.href} href={link.href} className="rounded-xl border border-slate-200 bg-white p-4 text-sm font-semibold text-[#0057b8] hover:border-[#00C2CB] hover:text-[#003580]">
+                            <Link key={link.href} href={link.href} className="rounded-xl border border-slate-200 bg-white p-4 text-sm font-semibold text-[#0057b8] hover:border-[#00C2CB] hover:text-primary-dark">
                                 {link.label}
                             </Link>
                         ))}
@@ -698,7 +698,7 @@ function RelatedResourcesSection() {
                     <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
                         Related resources
                     </p>
-                    <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                    <h2 className="text-3xl font-black text-primary-dark tracking-normal">
                         More help after the tax estimate
                     </h2>
                     <p className="text-slate-600 text-sm leading-relaxed mt-4">
@@ -710,7 +710,7 @@ function RelatedResourcesSection() {
                         <Link
                             key={resource.href}
                             href={resource.href}
-                            className="bg-white border border-slate-200 rounded-xl p-4 text-sm font-semibold text-[#0057b8] hover:text-[#003580] hover:border-[#00C2CB] transition-colors"
+                            className="bg-white border border-slate-200 rounded-xl p-4 text-sm font-semibold text-[#0057b8] hover:text-primary-dark hover:border-[#00C2CB] transition-colors"
                         >
                             {resource.label}
                         </Link>
@@ -1125,7 +1125,7 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
                                 suppressHydrationWarning
                                 onClick={calculate}
                                 disabled={!income}
-                                className="w-full bg-[#00C2CB] text-[#0047AB] font-black py-5 rounded-full shadow-xl shadow-[#00C2CB]/20 uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-95 cursor-pointer disabled:opacity-50"
+                                className="w-full rounded-lg bg-primary py-5 font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-blue-500 active:scale-[0.99] cursor-pointer disabled:opacity-50"
                             >
                                 Calculate My Estimate
                             </button>
@@ -1148,7 +1148,7 @@ function FederalIncomeTab({ taxYear }: { taxYear: TaxYear }) {
                             </p>
                         </div>
                     ) : (
-                        <div className="bg-[#003580] p-1 rounded-2xl overflow-hidden shadow-2xl">
+                        <div className="bg-primary-dark p-1 rounded-2xl overflow-hidden shadow-2xl">
                             <div className="bg-[#0047AB] p-8 space-y-8">
                                 <div>
                                     <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#00C2CB]">
@@ -1848,9 +1848,9 @@ export default function TaxCalculatorClient({
     }, [landingConfig.analyticsName, landingConfig.h1]);
 
     return (
-        <main>
+        <main className="saas-page">
             {/* Hero Header */}
-            <section className={`relative overflow-hidden ${variant === "hub" ? "pt-32 pb-20 md:pt-40 md:pb-28" : "pt-28 pb-10 md:pt-32 md:pb-12"}`} style={{ background: "linear-gradient(to bottom, #0047AB, #002D6E)" }}>
+            <section className={`relative overflow-hidden ${variant === "hub" ? "pt-32 pb-20 md:pt-40 md:pb-28" : "pt-28 pb-10 md:pt-32 md:pb-12"}`} style={{ background: "radial-gradient(ellipse 50% 40% at 50% 8%, rgba(37,99,235,.2), transparent), linear-gradient(150deg, #0e1726, #111c33 65%, #1b2a4a)" }}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
                     <div className="max-w-3xl">
                         <Link
@@ -1894,13 +1894,13 @@ export default function TaxCalculatorClient({
                         <div className="mt-8 flex flex-wrap gap-3">
                             <a
                                 href="#tax-estimator"
-                                className="inline-flex items-center justify-center rounded-xl bg-[#00C2CB] px-5 py-3 text-sm font-black uppercase tracking-wider text-[#003580] hover:bg-white transition-colors"
+                                className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-500"
                             >
                                 Start estimate
                             </a>
                             <Link
                                 href="/tax-calculator-guide"
-                                className="inline-flex items-center justify-center rounded-xl border border-white/25 px-5 py-3 text-sm font-black uppercase tracking-wider text-white hover:border-[#00C2CB] hover:text-[#00C2CB] transition-colors"
+                                className="inline-flex items-center justify-center rounded-lg border border-white/25 px-5 py-3 text-sm font-bold text-white transition-colors hover:border-white hover:bg-white/10"
                             >
                                 Read calculator guide
                             </Link>
@@ -1920,7 +1920,7 @@ export default function TaxCalculatorClient({
                                 key={tab.key}
                                 onClick={() => setActiveTab(tab.key)}
                                 className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 cursor-pointer ${activeTab === tab.key
-                                    ? "bg-[#0047AB] text-white shadow-md shadow-[#0047AB]/20"
+                                    ? "bg-primary text-white shadow-md shadow-primary/20"
                                     : "text-gray-500 hover:bg-gray-50 hover:text-[#0047AB]"
                                     }`}
                                 id={`tab-${tab.key}`}
@@ -1994,7 +1994,7 @@ export default function TaxCalculatorClient({
                         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#00C2CB] mb-3">
                             IRS-source-backed estimate
                         </p>
-                        <h2 className="text-3xl font-black text-[#003580] tracking-normal">
+                        <h2 className="text-3xl font-black text-primary-dark tracking-normal">
                             Tax data used by this calculator
                         </h2>
                         <p className="text-sm text-slate-600 leading-relaxed mt-4">
@@ -2013,7 +2013,7 @@ export default function TaxCalculatorClient({
                                 href={source.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="bg-white border border-slate-200 rounded-xl p-4 text-sm font-semibold text-[#0057b8] hover:text-[#003580] hover:border-[#00C2CB] transition-colors"
+                                className="bg-white border border-slate-200 rounded-xl p-4 text-sm font-semibold text-[#0057b8] hover:text-primary-dark hover:border-[#00C2CB] transition-colors"
                             >
                                 {source.label}
                             </a>
@@ -2088,11 +2088,11 @@ export default function TaxCalculatorClient({
 
                     <div className="relative z-10 md:col-span-5 w-full bg-white p-8 rounded-2xl shadow-2xl">
                         <div className="space-y-5">
-                            <h3 className="text-2xl font-black text-[#003580] tracking-normal">Ready for a reviewed estimate?</h3>
+                            <h3 className="text-2xl font-black text-primary-dark tracking-normal">Ready for a reviewed estimate?</h3>
                             <p className="text-sm text-gray-600 leading-relaxed">
                                 Send your details through the contact form for team follow-up and next-step information.
                             </p>
-                            <Link href="/contact" className="w-full inline-flex justify-center bg-[#0047AB] text-white font-black py-4 rounded-xl shadow-lg shadow-[#0047AB]/20 uppercase tracking-[0.2em] transition-all hover:bg-[#003580]">
+                            <Link href="/contact" className="w-full inline-flex justify-center bg-[#0047AB] text-white font-black py-4 rounded-xl shadow-lg shadow-[#0047AB]/20 uppercase tracking-[0.2em] transition-all hover:bg-primary-dark">
                                 Book a tax review
                             </Link>
                         </div>

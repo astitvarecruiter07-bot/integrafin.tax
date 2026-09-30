@@ -1,3 +1,5 @@
+import { siteConfig } from "../siteConfig";
+
 export const SITE_URL = "https://integrafin.tax";
 
 export const SCHEMA_IDS = {
@@ -15,42 +17,44 @@ export const websiteRef = { "@id": SCHEMA_IDS.website } as const;
 const organizationSchema = {
   "@type": "Organization",
   "@id": SCHEMA_IDS.organization,
-  name: "IntegraFin Tax & Accounting",
+  name: siteConfig.businessName,
   alternateName: "IntegraFin",
-  legalName: "IntegraFin LLC",
+  legalName: siteConfig.legalName,
   url: `${SITE_URL}/`,
   logo: {
     "@type": "ImageObject",
     "@id": SCHEMA_IDS.logo,
     url: `${SITE_URL}/logo.svg`,
     contentUrl: `${SITE_URL}/logo.svg`,
-    caption: "IntegraFin Tax & Accounting",
+    caption: siteConfig.businessName,
   },
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+1-832-647-1819",
+    telephone: siteConfig.contact.phoneE164,
     contactType: "customer service",
     areaServed: "US",
     availableLanguage: "English",
   },
-  sameAs: ["https://www.linkedin.com/company/integrafin/"],
+  ...(siteConfig.verifiedSocialProfiles.length > 0
+    ? { sameAs: siteConfig.verifiedSocialProfiles }
+    : {}),
 };
 
 const localBusinessSchema = {
   "@type": ["AccountingService", "LocalBusiness"],
   "@id": SCHEMA_IDS.localBusiness,
-  name: "IntegraFin Tax & Accounting",
-  legalName: "IntegraFin LLC",
+  name: siteConfig.businessName,
+  legalName: siteConfig.legalName,
   url: `${SITE_URL}/`,
-  telephone: "+1-832-647-1819",
-  email: "contact@integrafin.tax",
+  telephone: siteConfig.contact.phoneE164,
+  email: siteConfig.contact.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "2039 N Mason Rd, Suite 604",
-    addressLocality: "Katy",
-    addressRegion: "TX",
-    postalCode: "77449",
-    addressCountry: "US",
+    streetAddress: siteConfig.office.street,
+    addressLocality: siteConfig.office.city,
+    addressRegion: siteConfig.office.region,
+    postalCode: siteConfig.office.postalCode,
+    addressCountry: siteConfig.office.country,
   },
   geo: {
     "@type": "GeoCoordinates",
@@ -60,9 +64,9 @@ const localBusinessSchema = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
+      dayOfWeek: siteConfig.office.days,
+      opens: siteConfig.office.opens,
+      closes: siteConfig.office.closes,
     },
   ],
   hasOfferCatalog: {
@@ -98,14 +102,16 @@ const localBusinessSchema = {
     { "@type": "Country", name: "United States" },
   ],
   parentOrganization: organizationRef,
-  sameAs: ["https://www.linkedin.com/company/integrafin/"],
+  ...(siteConfig.verifiedSocialProfiles.length > 0
+    ? { sameAs: siteConfig.verifiedSocialProfiles }
+    : {}),
 };
 
 const websiteSchema = {
   "@type": "WebSite",
   "@id": SCHEMA_IDS.website,
   url: `${SITE_URL}/`,
-  name: "IntegraFin Tax & Accounting",
+  name: siteConfig.businessName,
   alternateName: "IntegraFin",
   publisher: organizationRef,
   inLanguage: "en-US",

@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
   compress: true,
   async redirects() {
     return [
+      // The September 15, 2026 campaign has ended. Send visitors to the evergreen cleanup service.
+      {
+        source: '/15-sep-offer',
+        destination: '/bookkeeping-cleanup',
+        permanent: true,
+      },
       // Force a single canonical host for SEO consistency.
       {
         source: '/:path*',

@@ -75,10 +75,10 @@ export default function CaseStudyClient() {
     : caseStudies.filter(study => study.category === selectedCategory);
 
   return (
-    <main className="bg-slate-50 font-sans text-slate-800">
+    <main className="saas-page bg-slate-50 font-sans text-slate-800">
 
       {/* SECTION 1: HERO BANNER */}
-      <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-[#003580] overflow-hidden">
+      <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-primary-dark overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0092df 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }}></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#0092df]/10 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
@@ -155,29 +155,29 @@ export default function CaseStudyClient() {
               <span className="inline-block px-3 py-1 bg-[#0092df]/10 text-[#0092df] rounded font-black text-[10px] uppercase tracking-widest mb-6 border border-[#0092df]/20">
                 Featured Workflow
               </span>
-              <h2 className="text-2xl sm:text-4xl font-black text-[#003580] mb-4 sm:mb-6 leading-tight tracking-tight">
+              <h2 className="text-2xl sm:text-4xl font-black text-primary-dark mb-4 sm:mb-6 leading-tight tracking-tight">
                 Manufacturing Bookkeeping and Tax Workflow Example
               </h2>
 
               {/* Scope checkpoints */}
               <div className="grid grid-cols-3 gap-4 sm:gap-8 mb-8 sm:mb-10 py-6 border-y border-slate-100">
                 <div className="space-y-1">
-                  <span className="block text-xl font-black text-[#003580] tracking-tight">Records</span>
+                  <span className="block text-xl font-black text-primary-dark tracking-tight">Records</span>
                   <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest">Books, Payroll, Assets</span>
                 </div>
                 <div className="space-y-1">
-                  <span className="block text-xl font-black text-[#003580] tracking-tight">Scope</span>
+                  <span className="block text-xl font-black text-primary-dark tracking-tight">Scope</span>
                   <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest">Written Steps</span>
                 </div>
                 <div className="space-y-1">
-                  <span className="block text-xl font-black text-[#003580] tracking-tight">Outcomes</span>
+                  <span className="block text-xl font-black text-primary-dark tracking-tight">Outcomes</span>
                   <span className="block text-[10px] text-slate-500 font-bold uppercase tracking-widest">Fact-Dependent</span>
                 </div>
               </div>
 
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-[#003580] hover:bg-[#002050] text-white px-8 py-3.5 rounded-xl font-black tracking-widest uppercase text-xs transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-primary-dark hover:bg-[#002050] text-white px-8 py-3.5 rounded-xl font-black tracking-widest uppercase text-xs transition-all duration-300 shadow-lg shadow-[#003580]/20 hover:-translate-y-0.5"
               >
                 Discuss This Workflow
                 <ArrowRight className="w-4 h-4" />
@@ -192,7 +192,7 @@ export default function CaseStudyClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-2 block">Scope Examples</span>
-            <h2 className="text-3xl md:text-4xl font-black text-[#003580] tracking-tight">Illustrative Engagement Scenarios</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-primary-dark tracking-tight">Illustrative Engagement Scenarios</h2>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -207,7 +207,7 @@ export default function CaseStudyClient() {
                     {study.category}
                   </span>
                 </div>
-                <h3 className="text-xl font-black text-[#003580] mb-4 hover:text-[#0092df] transition-colors leading-snug tracking-tight flex-grow">
+                <h3 className="text-xl font-black text-primary-dark mb-4 hover:text-[#0092df] transition-colors leading-snug tracking-tight flex-grow">
                   {study.title}
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
@@ -216,7 +216,7 @@ export default function CaseStudyClient() {
                 <div className="pt-6 border-t border-slate-100 mt-auto">
                   <Link
                     href="/contact"
-                    className="text-[#0092df] font-black text-xs uppercase tracking-widest hover:text-[#003580] transition-colors inline-flex items-center gap-1"
+                    className="text-[#0092df] font-black text-xs uppercase tracking-widest hover:text-primary-dark transition-colors inline-flex items-center gap-1"
                   >
                     Discuss Scenario
                     <ArrowRight className="w-3 h-3" />
@@ -226,7 +226,7 @@ export default function CaseStudyClient() {
             ))}
 
             {/* Placeholder CTA Card */}
-            <div className="bg-[#003580] rounded-3xl p-6 sm:p-10 flex flex-col justify-center items-center text-center relative overflow-hidden group">
+            <div className="bg-primary-dark rounded-3xl p-6 sm:p-10 flex flex-col justify-center items-center text-center relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#0092df]/20 -translate-y-1/2 translate-x-1/2 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
               <Briefcase className="w-12 h-12 text-[#0092df] mb-6 relative z-10" />
               <h3 className="text-2xl font-black text-white mb-4 tracking-tight relative z-10">Your Situation</h3>
@@ -250,7 +250,7 @@ export default function CaseStudyClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-16">
             <span className="text-[#0092df] text-xs font-black uppercase tracking-[0.2em] mb-4 block">Scope Checklist</span>
-            <h2 className="text-3xl sm:text-5xl font-black text-[#003580] mb-4 sm:mb-6 tracking-tight">What Every Engagement Should Clarify</h2>
+            <h2 className="text-3xl sm:text-5xl font-black text-primary-dark mb-4 sm:mb-6 tracking-tight">What Every Engagement Should Clarify</h2>
             <p className="text-slate-600 text-sm sm:text-lg mb-4 max-w-xl mx-auto font-medium leading-relaxed">
               The examples above do not claim client results. A real engagement should identify the work, records, responsibilities, limitations, deadlines, and fact-dependent outcomes.
             </p>
@@ -266,7 +266,7 @@ export default function CaseStudyClient() {
                 <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0 group-hover:bg-[#0092df] transition-colors duration-300">
                   <CheckCircle2 className="w-5 h-5 text-[#0092df] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <span className="text-sm font-bold text-[#003580]">{item}</span>
+                <span className="text-sm font-bold text-primary-dark">{item}</span>
               </div>
             ))}
           </div>
@@ -274,7 +274,7 @@ export default function CaseStudyClient() {
       </section>
 
       {/* SECTION 5: CTA BANNER */}
-      <section className="py-16 sm:py-24 bg-[#003580] relative overflow-hidden">
+      <section className="py-16 sm:py-24 bg-primary-dark relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0092df 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }}></div>
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#0092df]/10 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">

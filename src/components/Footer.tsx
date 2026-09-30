@@ -1,184 +1,64 @@
-import Link from "next/link";
 import Image from "next/image";
-import DeferredNewsletterSignup from "@/components/DeferredNewsletterSignup";
+import Link from "next/link";
+import { ArrowUpRight, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import { highTaxStateServiceLinks } from "@/data/highTaxStateServicePages";
+import { siteConfig } from "@/lib/siteConfig";
+import styles from "./Footer.module.css";
 
-const quickLinks = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
-    { href: "/services", label: "Services" },
-    { href: "/pricing", label: "Pricing & Scope" },
-    { href: "/blog", label: "Blog" },
-    { href: "/tax-calculator", label: "Tax Calculator" },
-    { href: "/case-study", label: "Case Study" },
-    { href: "/contact", label: "Contact" },
-    { href: "/site-map", label: "HTML Sitemap" },
+const groups = [
+  { title: "Services", links: [
+    { label: "Bookkeeping", href: "/small-business-bookkeeping-services" },
+    { label: "Business tax", href: "/business-tax-accounting" },
+    { label: "Individual tax", href: "/individual-tax-preparation" },
+    { label: "Catch-up bookkeeping", href: "/bookkeeping-cleanup" },
+    { label: "IRS notice support", href: "/tax-resolution" },
+    { label: "CPA & EA outsourcing", href: "/outsourced-accounting-for-cpa-ea-firms" },
+    { label: "All services", href: "/services" },
+  ] },
+  { title: "Explore", links: [
+    { label: "Industries", href: "/industries" },
+    { label: "Pricing & scope", href: "/pricing" },
+    { label: "Case studies", href: "/case-study" },
+    { label: "About IntegraFin", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ] },
+  { title: "Resources", links: [
+    { label: "Tax calculators", href: "/tax-calculator" },
+    { label: "Cleanup calculator", href: "/bookkeeping-cleanup-calculator" },
+    { label: "Tax guides & blog", href: "/blog" },
+    { label: "Texas services", href: "/texas-tax-accounting-services" },
+    { label: "Locations & sitemap", href: "/site-map" },
+  ] },
 ];
-
-const serviceLinks = [
-    { href: "/outsourced-accounting-for-cpa-ea-firms", label: "Outsourcing for CPA & EA Firms" },
-    { href: "/business-tax-accounting", label: "Business Tax & Accounting" },
-    { href: "/individual-tax-preparation", label: "Individual Tax Preparation" },
-    { href: "/tax-resolution", label: "Tax Resolution" },
-    { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
-    { href: "/bookkeeping-cleanup-calculator", label: "Bookkeeping Cleanup Calculator" },
-    { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Bookkeeping Services" },
-    { href: "/payroll-tax-support", label: "Payroll Tax Support" },
-    { href: "/texas/katy-bookkeeping-services", label: "Katy Bookkeeping Services" },
-    { href: "/tax-calculator", label: "2026 Federal Tax Calculator" },
-    { href: "/texas/irs-notice-help-katy-tx", label: "IRS Notice Help Katy TX" },
-    { href: "/services#additional", label: "Additional Services" },
-    { href: "/llc-formation-tax-setup", label: "LLC Formation Tax Setup" },
-    { href: "/industries", label: "Industries Served" },
-    { href: "/texas-tax-accounting-services", label: "Texas Services" },
-    { href: "/texas/houston-tax-accountant", label: "Houston Tax & Accounting" },
-    { href: "/new-york-tax-accounting-services", label: "New York Services" },
-    { href: "/pennsylvania-tax-accounting-services", label: "Pennsylvania Services" },
-    ...highTaxStateServiceLinks.map((link) => ({
-        href: link.href,
-        label: link.label.replace(" Tax and Accounting Services", " Services"),
-    })),
+const socials = [
+  { label: "Instagram", href: "https://www.instagram.com/integrafinllc/", icon: Instagram },
+  { label: "Facebook", href: "https://www.facebook.com/integrafintax/", icon: Facebook },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/integrafin/", icon: Linkedin },
+  { label: "YouTube", href: "https://www.youtube.com/@IntegraFinTax", icon: Youtube },
 ];
-
-const socialLinks = [
-    { href: "https://www.instagram.com/integrafinllc/", icon: "instagram", label: "Instagram" },
-    { href: "https://www.facebook.com/integrafintax/", icon: "facebook", label: "Facebook" },
-    { href: "https://www.linkedin.com/company/integrafin/", icon: "linkedin", label: "LinkedIn" },
-    { href: "https://www.youtube.com/@IntegraFinTax", icon: "youtube", label: "YouTube" },
+const extraLocations = [
+  { label: "Katy bookkeeping", href: "/texas/katy-bookkeeping-services" },
+  { label: "Katy tax accountant", href: "/texas/katy-tax-accountant" },
+  { label: "Houston tax accountant", href: "/texas/houston-tax-accountant" },
+  { label: "New York", href: "/new-york-tax-accounting-services" },
+  { label: "Pennsylvania", href: "/pennsylvania-tax-accounting-services" },
+  ...highTaxStateServiceLinks.map(link => ({ label: link.label.replace(" Tax and Accounting Services", ""), href: link.href })),
 ];
-
-function SocialIcon({ icon }: { icon: string }) {
-    const icons: Record<string, React.ReactNode> = {
-        facebook: (
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
-        ),
-        instagram: (
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
-        ),
-        linkedin: (
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-        ),
-        youtube: (
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
-        ),
-        x: (
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-        ),
-    };
-    return icons[icon] || null;
-}
 
 export default function Footer() {
-    return (
-        <footer className="bg-[#1B2A4A] text-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
-                    {/* Brand Column */}
-                    <div>
-                        <Link href="/" className="inline-block mb-4">
-                            <Image
-                                src="/images/logo1.png"
-                                alt="IntegraFin Tax Expert Katy TX - Tax and Accounting Services"
-                                width={150}
-                                height={38}
-                                className="h-9 w-auto brightness-0 invert"
-                            />
-                        </Link>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                            IntegraFin provides tax, accounting, bookkeeping, and business support
-                            through an organized team focused on accurate records, clear communication,
-                            and documented service workflows.
-                        </p>
-                        <div className="flex items-center gap-3">
-                            {socialLinks.map((social) => (
-                                <a
-                                    key={social.icon}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={social.label}
-                                    className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors duration-200"
-                                >
-                                    <SocialIcon icon={social.icon} />
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Quick Links */}
-                    <div>
-                        <h3 className="text-lg font-bold mb-5">Quick Links</h3>
-                        <ul className="space-y-3">
-                            {quickLinks.map((link) => (
-                                <li key={link.href}>
-                                    <Link
-                                        href={link.href}
-                                        className="text-gray-400 text-sm hover:text-white transition-colors duration-200"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Services */}
-                    <div>
-                        <h3 className="text-lg font-bold mb-5">Services</h3>
-                        <ul className="space-y-3">
-                            {serviceLinks.map((link) => (
-                                <li key={link.href}>
-                                    <Link
-                                        href={link.href}
-                                        className="text-gray-400 text-sm hover:text-white transition-colors duration-200"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Contact & Newsletter */}
-                    <div>
-                        <h3 className="text-lg font-bold mb-5">Join Us Now!</h3>
-                        <p className="text-gray-400 text-sm mb-4">
-                            Subscribe to our newsletter for tax tips and financial insights.
-                        </p>
-                        <div className="mb-6">
-                            <DeferredNewsletterSignup source="footer-newsletter" />
-                        </div>
-                        <div className="space-y-3 text-sm text-gray-400">
-                            <p className="text-white font-semibold flex flex-col gap-1">
-                                <span>IntegraFin Tax & Accounting</span>
-                                <span className="font-normal">2039 N Mason Rd, Suite 604</span>
-                                <span className="font-normal">Katy, TX 77449</span>
-                            </p>
-                            <p>Phone: <a href="tel:+18326471819" className="hover:text-white transition-colors">(832) 647-1819</a></p>
-                            <p>Email: <a href="mailto:contact@integrafin.tax" className="hover:text-white transition-colors">contact@integrafin.tax</a></p>
-                            <p>Hours: Mon-Fri, 9AM-6PM</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Copyright Bar */}
-            <div className="border-t border-white/10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <p className="text-gray-500 text-sm">
-                        Copyright {new Date().getFullYear()} IntegraFin. All rights reserved.
-                    </p>
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-
-                        <Link href="/privacy" className="hover:text-white transition-colors">
-                            Privacy Policy
-                        </Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">
-                            Terms & Conditions
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    );
+  return <footer className={styles.footer}>
+    <div className={styles.container}>
+      <div className={styles.top}>
+        <div className={styles.brand}>
+          <Link href="/" aria-label="IntegraFin home"><Image src="/images/logo1.png" alt="IntegraFin Tax & Accounting" width={175} height={39} /></Link>
+          <p>Modern tax, accounting, and bookkeeping support for growing businesses and individuals.</p>
+          <div className={styles.socials}>{socials.map(({label,href,icon:Icon}) => <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} key={label}><Icon size={18} /></a>)}</div>
+        </div>
+        {groups.map(group => <div className={styles.group} key={group.title}><h3>{group.title}</h3>{group.links.map(link => <Link href={link.href} key={link.href}>{link.label}</Link>)}</div>)}
+        <div className={styles.contact}><h3>Get in touch</h3><span>{siteConfig.office.street}<br />{siteConfig.office.cityStatePostal}</span><a href={siteConfig.contact.phoneHref}>{siteConfig.contact.phoneDisplay}</a><a href={siteConfig.contact.emailHref}>{siteConfig.contact.email}</a><span>{siteConfig.office.hoursShort}</span><Link href="/contact">Contact our team <ArrowUpRight size={16} /></Link></div>
+      </div>
+      <details className={styles.locations}><summary>More service locations</summary><div>{extraLocations.map(link => <Link href={link.href} key={link.href}>{link.label}</Link>)}</div></details>
+      <div className={styles.bottom}><span>© {new Date().getFullYear()} IntegraFin Tax & Accounting. All rights reserved.</span><div><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/site-map">Sitemap</Link></div></div>
+    </div>
+  </footer>;
 }

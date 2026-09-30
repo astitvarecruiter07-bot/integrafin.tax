@@ -236,7 +236,7 @@ export default function RoofingBookkeepingLandingPage() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href="#roofing-review-form" data-analytics-label="campaign_header_review" className="hidden rounded-lg bg-[#00b5c2] px-4 py-2.5 text-sm font-black text-[#061d35] transition hover:bg-[#48d0d7] sm:inline-flex">
+            <a href="#roofing-review-form" data-analytics-label="campaign_header_review" className="hidden rounded-lg bg-[#2563eb] px-4 py-2.5 text-sm font-bold text-white transition hover:bg-[#1d4ed8] sm:inline-flex">
               Request a Free Review
             </a>
             <details className="group relative lg:hidden">
@@ -247,7 +247,7 @@ export default function RoofingBookkeepingLandingPage() {
                 <a href="#services" className="block rounded-xl px-4 py-3 text-sm font-bold text-[#09233f] hover:bg-slate-100">Services</a>
                 <a href="#how-it-works" className="block rounded-xl px-4 py-3 text-sm font-bold text-[#09233f] hover:bg-slate-100">How It Works</a>
                 <a href="#faq" className="block rounded-xl px-4 py-3 text-sm font-bold text-[#09233f] hover:bg-slate-100">Frequently Asked Questions</a>
-                <a href="#roofing-review-form" className="mt-2 block rounded-xl bg-[#00a9b7] px-4 py-3 text-center text-sm font-black text-[#061d35]">Request a Free Review</a>
+                <a href="#roofing-review-form" className="mt-2 block rounded-lg bg-[#2563eb] px-4 py-3 text-center text-sm font-bold text-white">Request a Free Review</a>
               </nav>
             </details>
           </div>
@@ -295,7 +295,7 @@ export default function RoofingBookkeepingLandingPage() {
             </ul>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href="#roofing-review-form" data-analytics-label="campaign_hero_review" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#00b5c2] px-5 py-3.5 text-center font-black text-[#061d35] shadow-lg shadow-black/20 transition hover:bg-[#48d0d7]">
+              <a href="#roofing-review-form" data-analytics-label="campaign_hero_review" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#2563eb] px-5 py-3.5 text-center font-bold text-white shadow-lg shadow-black/20 transition hover:bg-[#1d4ed8]">
                 Request My Free Bookkeeping Review <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               <a href="tel:+18326471819" data-analytics-label="campaign_hero_phone" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/5 px-5 py-3.5 font-black text-white transition hover:bg-white/10">
@@ -455,7 +455,7 @@ export default function RoofingBookkeepingLandingPage() {
           <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
             Request a free 15-minute review and learn what your roofing company needs to maintain cleaner, tax-ready financial records.
           </p>
-          <a href="#roofing-review-form" data-analytics-label="campaign_final_review" className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#00b5c2] px-6 py-3.5 font-black text-[#061d35] transition hover:bg-[#48d0d7]">
+          <a href="#roofing-review-form" data-analytics-label="campaign_final_review" className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#2563eb] px-6 py-3.5 font-bold text-white transition hover:bg-[#1d4ed8]">
             Request My Free Bookkeeping Review <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </a>
           <p className="mt-4 text-sm text-slate-400">No obligation. An IntegraFin team member will contact you to discuss your needs.</p>
@@ -485,7 +485,7 @@ export default function RoofingBookkeepingLandingPage() {
       </footer>
 
       <div className="fixed inset-x-3 bottom-3 z-40 sm:hidden">
-        <a href="#roofing-review-form" data-analytics-label="campaign_mobile_sticky_review" className="flex min-h-14 items-center justify-center gap-2 rounded-xl bg-[#00b5c2] px-4 py-3 text-sm font-black text-[#061d35] shadow-2xl shadow-black/30">
+        <a href="#roofing-review-form" data-analytics-label="campaign_mobile_sticky_review" className="flex min-h-14 items-center justify-center gap-2 rounded-lg bg-[#2563eb] px-4 py-3 text-sm font-bold text-white shadow-2xl shadow-black/30">
           Request My Free Review <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
       </div>

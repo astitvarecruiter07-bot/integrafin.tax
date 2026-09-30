@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Scale, FileText, ShieldAlert, BadgeCheck, Gavel, Globe, RefreshCw, ArrowRight } from "lucide-react";
+import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | IntegraFin Tax Expert Services',
@@ -21,7 +22,7 @@ const sections = [
     content: (
       <p className="leading-relaxed">
         By accessing and using the website{" "}
-        <Link href="/" className="text-[#0092df] hover:text-[#003580] hover:underline transition-colors font-semibold">integrafin.tax</Link>
+        <Link href="/" className="text-[#0092df] hover:text-primary-dark hover:underline transition-colors font-semibold">integrafin.tax</Link>
         {" "}(the &ldquo;Site&rdquo;) and any services provided by IntegraFin (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;), you agree to be bound by these Terms and Conditions (&ldquo;Terms&rdquo;). If you do not agree to all of these Terms, you are prohibited from using the Site and our services.
       </p>
     ),
@@ -99,12 +100,12 @@ const sections = [
     content: (
       <>
         <p className="leading-relaxed">If you have any questions about these Terms, please contact us at:</p>
-        <div className="mt-4 bg-[#003580]/5 p-6 rounded-xl border border-[#003580]/10 space-y-1.5 text-sm">
-          <p className="font-black text-[#003580] text-base">IntegraFin Tax &amp; Accounting</p>
-          <p className="text-slate-600">2039 N Mason Rd, Suite 604</p>
-          <p className="text-slate-600">Katy, TX 77449</p>
-          <p className="text-slate-600">Email: <a href="mailto:contact@integrafin.tax" className="text-[#0092df] hover:text-[#003580] hover:underline transition-colors font-semibold">contact@integrafin.tax</a></p>
-          <p className="text-slate-600">Phone: <a href="tel:+18326471819" className="text-[#0092df] hover:text-[#003580] hover:underline transition-colors font-semibold">(832) 647-1819</a></p>
+        <div className="mt-4 bg-primary-dark/5 p-6 rounded-xl border border-[#003580]/10 space-y-1.5 text-sm">
+          <p className="font-black text-primary-dark text-base">IntegraFin Tax &amp; Accounting</p>
+          <p className="text-slate-600">{siteConfig.office.street}</p>
+          <p className="text-slate-600">{siteConfig.office.cityStatePostal}</p>
+          <p className="text-slate-600">Email: <a href={siteConfig.contact.emailHref} className="text-[#0092df] hover:text-primary-dark hover:underline transition-colors font-semibold">{siteConfig.contact.email}</a></p>
+          <p className="text-slate-600">Phone: <a href={siteConfig.contact.phoneHref} className="text-[#0092df] hover:text-primary-dark hover:underline transition-colors font-semibold">{siteConfig.contact.phoneDisplay}</a></p>
         </div>
       </>
     ),
@@ -115,9 +116,9 @@ export default function TermsPage() {
   const lastUpdated = "March 24, 2026";
 
   return (
-    <main className="bg-slate-50 text-left">
+    <main className="saas-page bg-slate-50 text-left">
       {/* ========== HERO SECTION ========== */}
-      <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-[#003580] overflow-hidden">
+      <section className="relative pt-28 sm:pt-40 pb-16 sm:pb-24 bg-primary-dark overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0092df 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }} />
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#0092df]/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00C2CB]/10 blur-[80px] rounded-full pointer-events-none" />
@@ -143,7 +144,7 @@ export default function TermsPage() {
               <a
                 key={i}
                 href={`#section-${i}`}
-                className="px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold hover:bg-[#003580] hover:text-white hover:border-[#003580] transition-all duration-200"
+                className="px-4 py-2 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold hover:bg-primary-dark hover:text-white hover:border-[#003580] transition-all duration-200"
               >
                 {s.title}
               </a>
@@ -165,10 +166,10 @@ export default function TermsPage() {
               >
                 {/* Section Header */}
                 <div className="flex items-center gap-4 px-6 sm:px-8 py-5 border-b border-slate-50 bg-slate-50/50">
-                  <div className="w-10 h-10 rounded-xl bg-[#003580]/5 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-primary-dark/5 flex items-center justify-center flex-shrink-0">
                     <Icon className="w-5 h-5 text-[#0092df]" />
                   </div>
-                  <h2 className="text-lg sm:text-xl font-black text-[#003580] tracking-tight">{section.title}</h2>
+                  <h2 className="text-lg sm:text-xl font-black text-primary-dark tracking-tight">{section.title}</h2>
                 </div>
                 {/* Section Body */}
                 <div className="px-6 sm:px-8 py-6 text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -181,7 +182,7 @@ export default function TermsPage() {
       </section>
 
       {/* ========== CTA BANNER ========== */}
-      <section className="py-12 sm:py-20 bg-[#003580] relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-primary-dark relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#0092df 0.5px, transparent 0.5px)', backgroundSize: '30px 30px' }} />
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#0092df]/10 blur-[120px] rounded-full pointer-events-none" />
         <div className="max-w-4xl mx-auto px-6 sm:px-8 relative z-10 text-center">
@@ -193,7 +194,7 @@ export default function TermsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#00C2CB] hover:bg-[#00cedb] text-[#003580] px-8 py-4 rounded-xl font-black tracking-widest uppercase text-xs transition-all duration-300 shadow-lg hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 bg-[#00C2CB] hover:bg-[#00cedb] text-primary-dark px-8 py-4 rounded-xl font-black tracking-widest uppercase text-xs transition-all duration-300 shadow-lg hover:-translate-y-0.5"
             >
               Contact Us <ArrowRight className="w-4 h-4" />
             </Link>

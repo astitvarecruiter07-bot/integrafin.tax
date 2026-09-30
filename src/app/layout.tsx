@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -16,11 +16,6 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://integrafin.tax'),
@@ -108,7 +103,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(rootSchemaGraph) }}
         />
       </head>
-      <body suppressHydrationWarning className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+      <body suppressHydrationWarning className={`${inter.variable} font-sans antialiased`}>
         {metaPixelId && (
           <noscript
             dangerouslySetInnerHTML={{

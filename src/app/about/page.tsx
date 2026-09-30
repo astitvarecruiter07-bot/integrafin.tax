@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { Target, CheckCircle2, Landmark, MapPin, FileText, ClipboardCheck, Map } from "lucide-react";
+import { CheckCircle2, Landmark, MapPin, FileText, ClipboardCheck, Map } from "lucide-react";
+import WorkflowPreview from "@/components/WorkflowPreview";
 import { buildBreadcrumbSchema, buildWebPageSchema } from "@/lib/seo/schema";
+import { siteConfig } from "@/lib/siteConfig";
 
 const pageUrl = "https://integrafin.tax/about";
 
@@ -32,41 +33,36 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
     return (
-        <main className="pt-20">
+        <main className="saas-page pt-20">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             {/* Hero Section */}
-            <section className="relative min-h-[400px] sm:min-h-[600px] flex items-center overflow-hidden bg-primary-dark">
-                <div className="absolute inset-0 opacity-20">
-                    <Image 
-                        className="w-full h-full object-cover" 
-                        alt="Illustrative office workspace"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoC7k9XbO4pUeh2HOHpbt_KzIV4fThZP-T3G-6CUG5AXIImdgUQtavhElM3BZo1MtaO2mMCf3CYiypVlf4q28brw1RqGnLItvluLyJq8VzgckbfOaEJnTqsPA1Wu2txE-HrdxnOKfUKqwYFUjcCPj04Msd5cfy5zmE9OQVZ3YoolgPWpXc6MwX7GdMzshtZErAt6w5d3_N29bcBwfeAhjTy2XONvvBzMc7TZZqOaT1ZE5SVNKQfOj_P0sAC0CVxAlML_4aNoXVGx8"
-                        fill
-                        priority
-                    />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-dark via-primary-dark/80 to-transparent"></div>
-                <div className="relative max-w-7xl mx-auto px-5 sm:px-8 w-full py-12 sm:py-0">
-                    <div className="max-w-3xl space-y-8">
-                        <span className="inline-block bg-secondary/20 text-[#97f0ff] border border-secondary/30 px-4 py-1 text-[10px] font-black tracking-[0.3em] uppercase rounded-full">
-                            Katy Tax &amp; Accounting Services
+            <section className="relative overflow-hidden bg-primary-dark py-14 sm:py-20">
+                <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8">
+                    <div className="mx-auto max-w-3xl text-center">
+                        <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-bold tracking-[0.14em] text-cyan-200">
+                            KATY TAX &amp; ACCOUNTING SERVICES
                         </span>
-                        <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] transition-all">
-                            About Our Company
+                        <h1 className="mx-auto mt-6 text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl">
+                            A clearer way to handle books and taxes.
                         </h1>
-                        <p className="text-[#d7e3fc] text-base sm:text-lg md:text-xl font-light leading-relaxed">
+                        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#d7e3fc] sm:text-lg">
                             IntegraFin provides tax preparation, bookkeeping, payroll-record support, and IRS notice help from its Katy, Texas office.
                         </p>
-                        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4">
-                            <Link href="/contact" className="bg-secondary text-[#003580] px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm shadow-xl shadow-secondary/20 hover:scale-105 transition-transform text-center">
-                                Contact Us
-                            </Link>
-                            <Link href="/services" className="border border-white/30 text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm hover:bg-white/5 transition-colors text-center">
-                                View Services
-                            </Link>
+                        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                            <Link href="/contact" className="rounded-lg bg-secondary px-7 py-3 font-bold text-white">Talk with our team</Link>
+                            <Link href="/services" className="rounded-lg border border-white/30 bg-white/10 px-7 py-3 font-bold text-white">Explore services</Link>
                         </div>
                     </div>
+                    <WorkflowPreview
+                        label="THE INTEGRAFIN APPROACH"
+                        title="Work begins with the facts and a clear scope"
+                        items={[
+                            "Review records, deadlines, and the immediate issue",
+                            "Agree on the work, responsibilities, and next steps",
+                            "Prepare, reconcile, or respond within the written scope",
+                        ]}
+                    />
                 </div>
             </section>
 
@@ -85,18 +81,21 @@ export default function AboutPage() {
                                 </p>
                             </div>
                         </div>
-                        <div className="lg:col-span-5 relative">
-                            <div className="aspect-square bg-primary-dark rounded-2xl overflow-hidden shadow-2xl">
-                                <Image 
-                                    className="w-full h-full object-cover grayscale contrast-125 opacity-80" 
-                                    alt="Illustrative document-review workspace"
-                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4b17aucdOQWxdndSvAuG_JkO9Y7zBXxfiGg6ia2f5gqTWOWlJG4fp6DRuCOjbt0VnSPWS9Q7OnjMGsVmonVtFMKYd6Xu74bPmc4Zr769i9AEyg9kKdUjS_GIszZEvfTIy4trJV6F3cNI_JIhibYRalswoQXWj6pqpXxCdN94VGFtlT0kqgMUyw9Gb9Yc42pS02iM2CmMg3o1UW9zhV21eVENCWwWqXCNhfAvt-wDt3oFKEYLBF-XtoFF5IUf-TsNJae63zhU0p5g"
-                                    width={600}
-                                    height={600}
-                                />
-                            </div>
-                            <div className="absolute -bottom-6 -left-6 bg-secondary p-4 sm:p-8 rounded-xl shadow-2xl hidden sm:block">
-                                <Target className="text-white w-10 h-10" />
+                        <div className="lg:col-span-5">
+                            <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_2px_8px_rgba(27,42,74,0.06)]">
+                                <div className="flex items-center gap-3 border-b border-slate-200 bg-[#f7f9fc] p-5">
+                                    <span className="grid h-9 w-9 place-items-center rounded-lg bg-[#1b2a4a] text-white"><ClipboardCheck className="h-5 w-5" /></span>
+                                    <div><span className="block text-[10px] font-bold tracking-[0.13em] text-primary">WORKFLOW OVERVIEW</span><strong className="text-sm text-primary-dark">What happens after you reach out</strong></div>
+                                </div>
+                                <ol className="space-y-3 p-5">
+                                    {["Tell us the service and deadline", "Review the relevant records", "Agree on scope and next steps"].map((step, index) => (
+                                        <li key={step} className="flex items-center gap-3 rounded-lg border border-slate-200 bg-[#f7f9fc] p-4 text-sm font-semibold text-slate-700">
+                                            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-xs font-bold text-primary">{index + 1}</span>
+                                            {step}
+                                            <CheckCircle2 className="ml-auto h-4 w-4 shrink-0 text-emerald-600" />
+                                        </li>
+                                    ))}
+                                </ol>
                             </div>
                         </div>
                     </div>
@@ -116,7 +115,7 @@ export default function AboutPage() {
                             </p>
                         </div>
                         {/* Approach */}
-                        <div className="group relative bg-[#003580] p-6 sm:p-12 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                        <div className="group relative bg-primary-dark p-6 sm:p-12 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
                             <div className="absolute top-0 right-0 w-32 h-32 bg-[#00C2CB]/10 rounded-full -mr-16 -mt-16 transition-all group-hover:scale-150"></div>
                             <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-4 sm:mb-6 tracking-tighter">Our Approach</h3>
                             <p className="text-[#d7e3fc] text-lg font-light leading-relaxed">
@@ -131,12 +130,12 @@ export default function AboutPage() {
             <section className="py-12 sm:py-24 bg-white">
                 <div className="max-w-7xl mx-auto px-5 sm:px-8">
                     <div className="text-center mb-16 space-y-4">
-                        <h2 className="text-2xl sm:text-4xl font-extrabold text-[#003580] tracking-tighter">What You Can Verify</h2>
+                        <h2 className="text-2xl sm:text-4xl font-extrabold text-primary-dark tracking-tighter">What You Can Verify</h2>
                         <p className="mx-auto max-w-3xl text-[#45474c] leading-relaxed">These details are published on the website so prospective clients can review the location, scope, process, and limitations before engaging IntegraFin.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {[
-                            { title: "Published Katy Office", desc: "2039 N Mason Rd, Suite 604, Katy, TX 77449, with weekday hours and direct contact details published on the Contact page.", icon: MapPin },
+                            { title: "Published Katy Office", desc: `${siteConfig.office.fullAddress}, with weekday hours and direct contact details published on the Contact page.`, icon: MapPin },
                             { title: "Written Service Scope", desc: "The requested work, records needed, client responsibilities, and known limitations are defined before broader work begins.", icon: FileText },
                             { title: "Record-First Review", desc: "Returns, statements, payroll reports, entity documents, and notices are reviewed before fact-dependent conclusions are presented.", icon: ClipboardCheck },
                             { title: "Transparent Service Areas", desc: "Katy is identified as the office; nearby Texas cities are described as service areas rather than additional office locations.", icon: Map },
@@ -145,7 +144,7 @@ export default function AboutPage() {
                         ].map((item, index) => (
                             <div key={index} className="p-8 border border-gray-100 rounded-xl hover:shadow-xl transition-shadow duration-300">
                                 <item.icon className="text-[#0092df] mb-6 w-8 h-8" />
-                                <h4 className="text-xl font-bold text-[#003580] mb-3">{item.title}</h4>
+                                <h4 className="text-xl font-bold text-primary-dark mb-3">{item.title}</h4>
                                 <p className="text-[#45474c] font-light leading-relaxed">{item.desc}</p>
                             </div>
                         ))}
@@ -154,12 +153,12 @@ export default function AboutPage() {
             </section>
 
             {/* Final CTA */}
-            <section className="py-12 sm:py-24 bg-[#003580] text-center">
+            <section className="py-12 sm:py-24 bg-primary-dark text-center">
                 <div className="max-w-4xl mx-auto px-5 sm:px-8 space-y-6 sm:space-y-10">
                     <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tighter">Ready to Organize the Next Step?</h2>
                     <p className="text-base sm:text-xl text-[#d7e3fc] font-light max-w-2xl mx-auto">Describe the filing, bookkeeping, payroll-record, or IRS notice issue and the team will identify the initial records and appropriate service scope.</p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-12 py-5 rounded font-black tracking-widest uppercase shadow-xl hover:scale-105 transition-all">
+                        <Link href="/contact" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#2563eb] px-8 py-3 font-bold text-white transition-colors hover:bg-[#1d4ed8]">
                             Book a Consultation
                         </Link>
                     </div>

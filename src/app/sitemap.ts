@@ -4,6 +4,7 @@ import { serviceLandingPageSlugs, serviceLandingPages } from '@/data/serviceLand
 import { highTaxStateServicePageList } from '@/data/highTaxStateServicePages';
 import { houstonIrsServicePageList } from '@/data/houstonIrsServicePages';
 import { getAllBlogPosts as getDbBlogPosts } from '@/app/actions/blog';
+import type { BlogSeoPost } from '@/lib/seo/blog';
 
 export const revalidate = 86400;
 
@@ -11,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://integrafin.tax';
 
   const routes = [
-    { path: '', lastModified: '2026-06-15', priority: 1.0 },
+    { path: '', lastModified: '2026-09-30', priority: 1.0 },
     { path: '/about', lastModified: '2026-06-05', priority: 0.8 },
     { path: '/services', lastModified: '2026-07-24', priority: 0.8 },
     { path: '/pricing', lastModified: '2026-07-24', priority: 0.8 },
@@ -86,24 +87,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route.priority,
   }));
 
-  const blogPosts = [...mockBlogPosts];
-
   const dbPosts = await getDbBlogPosts();
-  dbPosts.forEach((dbPost) => {
-    if (!blogPosts.find((p) => p.slug === dbPost.slug)) {
-      blogPosts.push(dbPost);
+  // Article pages prefer database content when a slug exists in both sources.
+  // Keep the sitemap's publication signals aligned with the page visitors see.
+  const blogPosts: BlogSeoPost[] = [...dbPosts];
+  mockBlogPosts.forEach((mockPost) => {
+    if (!blogPosts.some((post) => post.slug === mockPost.slug)) {
+      blogPosts.push(mockPost);
     }
   });
 
   const blogEntries = blogPosts.map((post) => {
-    const updatedAt =
-      'updatedAt' in post && typeof post.updatedAt === 'string'
-        ? post.updatedAt
-        : undefined;
+    const lastModified = post.updatedAt || post.date || post.createdAt;
+    const parsedLastModified = lastModified ? new Date(lastModified) : undefined;
 
     return {
       url: `${baseUrl}/blog/${post.slug}`,
-      lastModified: updatedAt ? new Date(updatedAt) : new Date(post.date || Date.now()),
+      ...(parsedLastModified && !Number.isNaN(parsedLastModified.getTime())
+        ? { lastModified: parsedLastModified }
+        : {}),
       changeFrequency: 'weekly' as const,
       priority: 0.6,
     };

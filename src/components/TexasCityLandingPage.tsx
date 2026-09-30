@@ -1,4 +1,5 @@
 import Link from "next/link";
+import WorkflowPreview from "@/components/WorkflowPreview";
 import type { TexasCityLandingData } from "@/data/texasCityLandingData";
 import { texasCityPages } from "@/data/texasCityLandingData";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
@@ -10,8 +11,7 @@ import {
   buildWebPageSchema,
   localBusinessRef,
 } from "@/lib/seo/schema";
-
-const officeAddress = "2039 N Mason Rd, Suite 604, Katy, TX 77449";
+import { siteConfig } from "@/lib/siteConfig";
 
 export default function TexasCityLandingPage({ page }: { page: TexasCityLandingData }) {
   const pageUrl = `https://integrafin.tax/texas/${page.slug}`;
@@ -53,7 +53,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
   });
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="saas-page min-h-screen bg-slate-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -67,27 +67,32 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
           <h1 className="text-3xl font-black tracking-tight text-white md:text-5xl">
             {page.primaryService} in {page.city}, TX
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl rounded-xl border border-white/15 bg-white/10 p-5 text-left text-base leading-relaxed text-white md:text-lg">
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-[#d7e3fc] md:text-lg">
+            {page.hero}
+          </p>
+          <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link href="/contact" className="rounded-xl bg-secondary px-7 py-3 font-bold text-primary-dark">
+              Schedule a consultation
+            </Link>
+            <a href="#services" className="rounded-xl border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
+              Explore {page.city} Services
+            </a>
+            <a href={siteConfig.contact.phoneHref} className="rounded-xl border border-white/25 px-7 py-3 font-bold text-white hover:bg-white/10">
+              Call {siteConfig.contact.phoneDisplay}
+            </a>
+          </div>
+          <WorkflowPreview
+            label={`${page.city.toUpperCase()} SERVICE OVERVIEW`}
+            title="Choose the support that fits your situation"
+            items={focusedServiceLinks.slice(0, 3).map((service) => service.label)}
+          />
+          <p className="mx-auto mt-7 max-w-3xl rounded-xl border border-white/15 bg-white/10 p-5 text-left text-sm leading-relaxed text-white md:text-base">
             <span className="font-black text-secondary">Short answer:</span>{" "}
             IntegraFin provides {page.primaryService.toLowerCase()} support for {page.city}-area
             businesses, self-employed professionals, and individuals. Work begins with the relevant
             records, filing history, deadlines, and requested outcome, then moves into a written scope
             for preparation, bookkeeping, payroll-record, planning, or IRS notice assistance.
           </p>
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-[#d7e3fc] md:text-lg">
-            {page.hero}
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href="#services" className="rounded-xl bg-secondary px-7 py-3 font-bold text-primary-dark">
-              Explore {page.city} Services
-            </a>
-            <Link href="/contact" className="rounded-xl border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
-              Schedule a Consultation
-            </Link>
-            <a href="tel:+18326471819" className="rounded-xl border border-white/25 px-7 py-3 font-bold text-white hover:bg-white/10">
-              Call (832) 647-1819
-            </a>
-          </div>
         </div>
       </section>
 
@@ -371,11 +376,11 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
             <p className="leading-relaxed text-[#d7e3fc]">{page.serviceAreaNote}</p>
             <address className="mt-5 not-italic leading-relaxed">
               <strong>IntegraFin Tax &amp; Accounting</strong><br />
-              {officeAddress}<br />
-              <a className="text-secondary hover:underline" href="tel:+18326471819">(832) 647-1819</a><br />
-              <a className="text-secondary hover:underline" href="mailto:contact@integrafin.tax">contact@integrafin.tax</a>
+              {siteConfig.office.fullAddress}<br />
+              <a className="text-secondary hover:underline" href={siteConfig.contact.phoneHref}>{siteConfig.contact.phoneDisplay}</a><br />
+              <a className="text-secondary hover:underline" href={siteConfig.contact.emailHref}>{siteConfig.contact.email}</a>
             </address>
-            <a href="https://www.google.com/maps/search/?api=1&query=2039+N+Mason+Rd+Suite+604+Katy+TX+77449" target="_blank" rel="noopener noreferrer" className="mt-5 inline-block rounded-xl bg-white px-5 py-3 font-bold text-primary-dark">
+            <a href={siteConfig.office.directionsUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-block rounded-xl bg-white px-5 py-3 font-bold text-primary-dark">
               Get Directions to the Katy Office
             </a>
           </article>

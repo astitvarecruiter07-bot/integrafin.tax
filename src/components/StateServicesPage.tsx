@@ -1,4 +1,5 @@
 import Link from "next/link";
+import WorkflowPreview from "@/components/WorkflowPreview";
 import { focusedServiceLinks } from "@/data/serviceLandingPages";
 import {
   buildBreadcrumbSchema,
@@ -96,7 +97,7 @@ export default function StateServicesPage({
   });
 
   return (
-    <main className="bg-slate-50 min-h-screen">
+    <main className="saas-page bg-slate-50 min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
@@ -127,12 +128,17 @@ export default function StateServicesPage({
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/contact" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
-              Book A Consultation
+              Book a consultation
             </Link>
             <Link href="/services" className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
-              View All Services
+              View all services
             </Link>
           </div>
+          <WorkflowPreview
+            label={`${stateName.toUpperCase()} SERVICE OVERVIEW`}
+            title="How we organize your tax and accounting work"
+            items={serviceFocus}
+          />
         </div>
       </section>
 

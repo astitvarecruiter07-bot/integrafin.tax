@@ -3,29 +3,29 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #2D3748;
+  --foreground: #191c1e;
   /* Primary brand blue - used for hero backgrounds, CTAs */
-  --primary: #0067b3;
-  --primary-dark: #003580;
+  --primary: #2563eb;
+  --primary-dark: #0e1726;
   /* Bright accent blue for highlights, badges, hover states */
-  --brand-blue: #0067b3;
-  --brand-blue-bright: #0092df;
-  --brand-blue-dark: #002050;
+  --brand-blue: #2563eb;
+  --brand-blue-bright: #3b82f6;
+  --brand-blue-dark: #0e1726;
   /* Teal accent */
   --accent: #00C2CB;
   --accent-light: rgba(0, 194, 203, 0.1);
   --accent-dark: #0047AB;
   /* Neutral tones */
-  --lavender: #F5F7FA;
+  --lavender: #F0F3F7;
   --text-secondary: #6B7280;
-  --section-bg: #F5F7FA;
+  --section-bg: #F0F3F7;
   /* New utility tokens for consistency */
-  --hero-bg: #003580;
-  --hero-bg-overlay: rgba(0, 53, 128, 0.9);
-  --card-navy: #003580;
-  --highlight: #0092df;
+  --hero-bg: #0e1726;
+  --hero-bg-overlay: rgba(14, 23, 38, 0.9);
+  --card-navy: #0e1726;
+  --highlight: #2563eb;
   --highlight-light: rgba(0, 146, 223, 0.1);
-  --cta-bg: #003580;
+  --cta-bg: #2563eb;
   --text-muted: #D7E3FC;
 }
 
@@ -131,18 +131,18 @@ body:has(.cleanup-review-landing) #site-content {
 .cleanup-review-landing :is(a, button, input, select, textarea, summary):focus-visible {
   outline: 3px solid #ffffff !important;
   outline-offset: 2px;
-  box-shadow: 0 0 0 6px #087a55 !important;
+  box-shadow: 0 0 0 6px #2563eb !important;
 }
 
 .integrafin-landing {
   --landing-bg: #ffffff;
-  --landing-panel: #f6f6f6;
-  --landing-panel-strong: #080808;
-  --landing-text: #080808;
+  --landing-panel: #f0f3f7;
+  --landing-panel-strong: #0e1726;
+  --landing-text: #0e1726;
   --landing-muted: #555555;
-  --landing-orange: #ff3038;
-  --landing-coral: #ff3038;
-  --landing-blue: #0088c9;
+  --landing-orange: #2563eb;
+  --landing-coral: #2563eb;
+  --landing-blue: #2563eb;
 }
 
 .landing-grid {
@@ -154,8 +154,8 @@ body:has(.cleanup-review-landing) #site-content {
 
 .landing-spotlight {
   background:
-    radial-gradient(circle at 20% 15%, rgba(0, 136, 201, 0.1), transparent 32%),
-    radial-gradient(circle at 82% 62%, rgba(255, 48, 56, 0.08), transparent 28%);
+    radial-gradient(circle at 20% 15%, rgba(37, 99, 235, 0.18), transparent 34%),
+    radial-gradient(circle at 82% 62%, rgba(0, 194, 203, 0.1), transparent 30%);
   pointer-events: none;
 }
 
@@ -676,4 +676,131 @@ img, svg, video, canvas, iframe {
 h1, h2, h3, h4, h5, h6, p, span, a {
   overflow-wrap: break-word;
   word-wrap: break-word;
+}
+
+/* Shared public-site layer. Campaign funnels and admin tools keep their own chrome. */
+.integrafin-landing :is(h1, h2, h3) {
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  text-transform: none;
+  text-wrap: balance;
+}
+
+.integrafin-landing .bg-black {
+  background-color: #0e1726;
+}
+
+.integrafin-landing :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #00c2cb;
+  outline-offset: 3px;
+}
+
+.saas-page {
+  color: #191c1e;
+  font-family: var(--font-inter), Arial, sans-serif;
+}
+
+.saas-page.bg-slate-50 {
+  background-color: #f0f3f7;
+}
+
+.saas-page :is(h2, h3).text-primary {
+  color: #191c1e;
+}
+
+.saas-page article[class~="bg-white"]:not(.shadow-2xl) {
+  border-color: #dce5ef;
+  box-shadow: 0 2px 8px rgba(27, 42, 74, 0.06);
+}
+
+.saas-page article[class~="bg-slate-50"] {
+  background-color: #f7f9fc;
+  border-color: #dce5ef;
+}
+
+.saas-page article[class~="bg-emerald-50"] {
+  background-color: #f7fbf9;
+}
+
+.saas-page article[class~="bg-amber-50"] {
+  background-color: #fffbf4;
+}
+
+.saas-page h1,
+.saas-page h2,
+.saas-page h3 {
+  font-family: var(--font-inter), Arial, sans-serif;
+  letter-spacing: -0.032em;
+  text-wrap: balance;
+}
+
+.saas-page h1 {
+  font-size: clamp(2.15rem, 4.8vw, 3.85rem);
+  font-weight: 700;
+  line-height: 1.09;
+}
+
+.saas-page h2 {
+  font-weight: 700;
+  line-height: 1.18;
+}
+
+.saas-page h3 {
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.saas-page .font-black {
+  font-weight: 700;
+}
+
+.saas-page :is(section, header).bg-primary-dark {
+  background: radial-gradient(ellipse 50% 40% at 50% 8%, rgba(37, 99, 235, 0.2), transparent),
+    linear-gradient(150deg, #0e1726 5%, #111c33 65%, #1b2a4a);
+}
+
+.saas-page :is(a, button).bg-secondary {
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color .2s, transform .2s;
+}
+
+.saas-page :is(a, button).bg-secondary:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.saas-page :is(div, article, section, aside)[class*="rounded-3xl"] {
+  border-radius: 12px;
+}
+
+.saas-page :is(div, article, section, aside)[class*="rounded-2xl"] {
+  border-radius: 10px;
+}
+
+.saas-page :is(input, select, textarea) {
+  border-radius: 7px;
+  font-family: var(--font-inter), Arial, sans-serif;
+}
+
+.saas-page :is(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid #00c2cb;
+  outline-offset: 3px;
+}
+
+.saas-page section[id] {
+  scroll-margin-top: 94px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saas-page :is(a, button) {
+    transition: none;
+  }
+  .saas-page :is(a, button):hover {
+    transform: none;
+  }
 }

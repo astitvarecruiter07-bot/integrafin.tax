@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { ComponentType } from "react";
 import {
@@ -27,6 +26,7 @@ import {
   buildWebPageSchema,
   localBusinessRef,
 } from "@/lib/seo/schema";
+import { siteConfig } from "@/lib/siteConfig";
 
 const areaServed = [
   { "@type": "Country", name: "United States" },
@@ -105,7 +105,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
   );
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="saas-page min-h-screen bg-slate-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -121,26 +121,14 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
             <h1 className="max-w-4xl text-3xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
               {data.heroTitle}
             </h1>
-            <p className="mt-6 max-w-3xl rounded-lg border border-white/15 bg-white/10 p-5 text-base leading-relaxed text-white sm:text-lg">
-              <span className="font-black text-secondary">Short answer:</span>{" "}
-              {data.quickAnswer}
-            </p>
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-[#d7e3fc] sm:text-lg">
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-[#d7e3fc] sm:text-lg">
               {data.heroDescription}
             </p>
-            <ul className="mt-6 grid gap-3 text-sm font-semibold text-white sm:grid-cols-3">
-              {data.heroBullets.map((bullet) => (
-                <li key={bullet} className="flex gap-2 rounded-lg border border-white/10 bg-white/10 p-3">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link href={contactHref} className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-7 py-3 font-bold text-primary-dark">
                 {primaryCta} <ArrowRight className="h-4 w-4" />
               </Link>
-              <a href="tel:+18326471819" className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
+              <a href={siteConfig.contact.phoneHref} className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
                 <Phone className="h-4 w-4" />
                 {data.secondaryCta}
               </a>
@@ -148,18 +136,43 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
                 {data.hubLabel}
               </Link>
             </div>
+            <p className="mt-7 max-w-3xl rounded-lg border border-white/15 bg-white/10 p-5 text-sm leading-relaxed text-white sm:text-base">
+              <span className="font-black text-secondary">Short answer:</span>{" "}
+              {data.quickAnswer}
+            </p>
+            <ul className="mt-5 grid gap-3 text-sm font-semibold text-white sm:grid-cols-3">
+              {data.heroBullets.map((bullet) => (
+                <li key={bullet} className="flex gap-2 rounded-lg border border-white/10 bg-white/10 p-3">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="overflow-hidden rounded-lg border border-white/15 bg-white/10 shadow-2xl">
-            <Image
-              src="/hero-professional.png"
-              alt="IntegraFin tax and accounting consultation"
-              width={640}
-              height={640}
-              priority
-              className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[520px]"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-            />
+          <div className="rounded-xl border border-white/20 bg-white p-5 text-primary-dark shadow-2xl sm:p-7">
+            <div className="flex items-center justify-between gap-4 border-b border-slate-200 pb-5">
+              <div className="flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#1b2a4a] text-white"><Icon className="h-5 w-5" /></span>
+                <div>
+                  <span className="block text-[10px] font-bold tracking-[0.12em] text-primary">SERVICE OVERVIEW</span>
+                  <strong className="text-sm sm:text-base">A clear path from records to next steps</strong>
+                </div>
+              </div>
+              <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600" />
+            </div>
+            <div className="grid gap-3 py-5">
+              {data.highlights.slice(0, 3).map((item, index) => (
+                <div key={item.title} className="flex gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-xs font-bold text-primary">{index + 1}</span>
+                  <div><strong className="block text-sm">{item.title}</strong><p className="mt-1 text-xs leading-relaxed text-slate-600">{item.description}</p></div>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-between gap-3 rounded-lg bg-blue-50 px-4 py-3 text-xs font-semibold text-slate-700">
+              <span>Scope and pricing follow an initial review.</span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-primary" />
+            </div>
           </div>
         </div>
       </section>
@@ -267,11 +280,11 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
               <div className="mt-6 grid gap-3 text-sm sm:grid-cols-3 lg:grid-cols-1">
                 <div className="rounded-lg bg-white/10 p-4">
                   <p className="font-bold text-secondary">Office</p>
-                  <p className="mt-1">2039 N Mason Rd, Suite 604, Katy, TX 77449</p>
+                  <p className="mt-1">{siteConfig.office.fullAddress}</p>
                 </div>
                 <div className="rounded-lg bg-white/10 p-4">
                   <p className="font-bold text-secondary">Phone</p>
-                  <a href="tel:+18326471819" className="mt-1 inline-block hover:text-secondary">(832) 647-1819</a>
+                  <a href={siteConfig.contact.phoneHref} className="mt-1 inline-block hover:text-secondary">{siteConfig.contact.phoneDisplay}</a>
                 </div>
                 <div className="rounded-lg bg-white/10 p-4">
                   <p className="font-bold text-secondary">Service Area</p>

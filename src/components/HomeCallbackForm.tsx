@@ -120,6 +120,8 @@ export default function HomeCallbackForm() {
         </div>
       )}
 
+      <div>
+      <label htmlFor="callback-name" className="mb-2 block text-sm font-medium">Full name</label>
       <input
         id="callback-name"
         name="name"
@@ -132,7 +134,10 @@ export default function HomeCallbackForm() {
         placeholder="Full Name"
         type="text"
       />
+      </div>
 
+      <div>
+      <label htmlFor="callback-service" className="mb-2 block text-sm font-medium">Service needed</label>
       <select
         id="callback-service"
         name="service"
@@ -147,9 +152,12 @@ export default function HomeCallbackForm() {
           <option key={option.value} value={option.value}>{option.label}</option>
         ))}
       </select>
+      </div>
 
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+          <label htmlFor="callback-email" className="mb-2 block text-sm font-medium">Email</label>
           <input
             id="callback-email"
             name="email"
@@ -160,6 +168,9 @@ export default function HomeCallbackForm() {
             placeholder="Email"
             type="email"
           />
+          </div>
+          <div>
+          <label htmlFor="callback-phone" className="mb-2 block text-sm font-medium">Phone</label>
           <input
             id="callback-phone"
             name="phone"
@@ -172,6 +183,7 @@ export default function HomeCallbackForm() {
             placeholder="Phone"
             type="tel"
           />
+          </div>
         </div>
         <p id="callback-method-help" className="mt-2 text-xs text-slate-500">
           Provide at least one way to reach you: email or phone.
@@ -194,6 +206,7 @@ export default function HomeCallbackForm() {
       </details>
 
       <button
+        type="submit"
         disabled={isPending}
         className="w-full bg-[#00C2CB] text-[#003580] py-5 px-5 rounded-lg font-black uppercase tracking-[0.14em] shadow-lg shadow-[#00C2CB]/20 hover:bg-[#33ced5] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
       >

@@ -160,7 +160,7 @@ const webPageSchema = buildWebPageSchema({
 
 export default function TaxCalculatorGuidePage() {
   return (
-    <main className="bg-slate-50 min-h-screen">
+    <main className="saas-page bg-slate-50 min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(guideSchema) }}
@@ -172,7 +172,7 @@ export default function TaxCalculatorGuidePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
 
-      <section className="bg-[#003580] pt-32 pb-16 text-white">
+      <section className="bg-primary-dark pt-32 pb-16 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <Link href="/tax-calculator" className="text-sm text-white/70 hover:text-[#00C2CB]">
             Back to tax calculator
@@ -192,7 +192,7 @@ export default function TaxCalculatorGuidePage() {
             <div className="flex flex-wrap gap-3 mt-8">
               <Link
                 href="/tax-calculator"
-                className="inline-flex items-center justify-center rounded-xl bg-[#00C2CB] px-5 py-3 text-sm font-black uppercase tracking-wider text-[#003580] hover:bg-white transition-colors"
+                className="inline-flex items-center justify-center rounded-xl bg-[#00C2CB] px-5 py-3 text-sm font-black uppercase tracking-wider text-primary-dark hover:bg-white transition-colors"
               >
                 Open calculator
               </Link>
@@ -211,15 +211,15 @@ export default function TaxCalculatorGuidePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-4 md:grid-cols-3">
           <div>
             <p className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">Last reviewed</p>
-            <p className="text-[#003580] font-bold mt-1">June 16, 2026</p>
+            <p className="text-primary-dark font-bold mt-1">June 16, 2026</p>
           </div>
           <div>
             <p className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">Calculator scope</p>
-            <p className="text-[#003580] font-bold mt-1">Federal estimate only</p>
+            <p className="text-primary-dark font-bold mt-1">Federal estimate only</p>
           </div>
           <div>
             <p className="text-[10px] uppercase tracking-[0.2em] font-black text-slate-400">Primary use</p>
-            <p className="text-[#003580] font-bold mt-1">Planning, withholding, and quarterly estimates</p>
+            <p className="text-primary-dark font-bold mt-1">Planning, withholding, and quarterly estimates</p>
           </div>
         </div>
       </section>
@@ -227,7 +227,7 @@ export default function TaxCalculatorGuidePage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <h2 className="text-3xl font-black text-[#003580] tracking-tight">
+            <h2 className="text-3xl font-black text-primary-dark tracking-tight">
               What the calculator estimates
             </h2>
             <p className="text-slate-600 leading-relaxed mt-4">
@@ -262,7 +262,7 @@ export default function TaxCalculatorGuidePage() {
       <section className="py-16 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="max-w-3xl">
-            <h2 className="text-3xl font-black text-[#003580] tracking-tight">
+            <h2 className="text-3xl font-black text-primary-dark tracking-tight">
               2025 and 2026 standard deduction quick table
             </h2>
             <p className="text-slate-600 mt-4">
@@ -271,7 +271,7 @@ export default function TaxCalculatorGuidePage() {
           </div>
           <div className="overflow-x-auto mt-8 border border-slate-200 rounded-2xl">
             <table className="w-full text-left text-sm">
-              <thead className="bg-slate-100 text-[#003580]">
+              <thead className="bg-slate-100 text-primary-dark">
                 <tr>
                   <th className="p-4 font-black">Filing status</th>
                   <th className="p-4 font-black">2025</th>
@@ -294,13 +294,13 @@ export default function TaxCalculatorGuidePage() {
 
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-black text-[#003580] tracking-tight">
+          <h2 className="text-3xl font-black text-primary-dark tracking-tight">
             Who should use this tax estimator?
           </h2>
           <div className="grid gap-5 md:grid-cols-2 mt-8">
             {useCases.map((item) => (
               <article key={item.title} className="bg-white border border-slate-200 rounded-2xl p-6">
-                <h3 className="text-xl font-bold text-[#003580]">{item.title}</h3>
+                <h3 className="text-xl font-bold text-primary-dark">{item.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed mt-3">{item.text}</p>
               </article>
             ))}
@@ -311,7 +311,7 @@ export default function TaxCalculatorGuidePage() {
       <section className="py-16 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 className="text-3xl font-black text-[#003580] tracking-tight">
+            <h2 className="text-3xl font-black text-primary-dark tracking-tight">
               IRS and SSA sources used
             </h2>
             <p className="text-slate-600 leading-relaxed mt-4">
@@ -327,7 +327,7 @@ export default function TaxCalculatorGuidePage() {
                 href={source.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm font-semibold text-[#0057b8] hover:text-[#003580] hover:border-[#00C2CB] transition-colors"
+                className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm font-semibold text-[#0057b8] hover:text-primary-dark hover:border-[#00C2CB] transition-colors"
               >
                 {source.label}
               </a>
@@ -338,13 +338,13 @@ export default function TaxCalculatorGuidePage() {
 
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-black text-[#003580] tracking-tight">
+          <h2 className="text-3xl font-black text-primary-dark tracking-tight">
             Frequently asked questions
           </h2>
           <div className="space-y-4 mt-8">
             {faqs.map((faq) => (
               <article key={faq.question} className="bg-white border border-slate-200 rounded-2xl p-6">
-                <h3 className="text-lg font-bold text-[#003580]">{faq.question}</h3>
+                <h3 className="text-lg font-bold text-primary-dark">{faq.question}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed mt-3">{faq.answer}</p>
               </article>
             ))}
@@ -354,7 +354,7 @@ export default function TaxCalculatorGuidePage() {
 
       <section className="pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-black text-[#003580]">Choose a focused tax calculator</h2>
+          <h2 className="text-3xl font-black text-primary-dark">Choose a focused tax calculator</h2>
           <p className="text-slate-600 mt-3 max-w-3xl">
             Start with the calculator that matches the income or payment question you are planning for.
             For the IRS payment test, safe-harbor benchmarks, and 2026 deadlines, read our{" "}
@@ -373,7 +373,7 @@ export default function TaxCalculatorGuidePage() {
 
       <section className="pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="bg-[#003580] text-white rounded-2xl p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          <div className="bg-primary-dark text-white rounded-2xl p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
             <div>
               <h2 className="text-3xl font-black tracking-tight">Ready to run the numbers?</h2>
               <p className="text-white/75 mt-3 max-w-2xl">
@@ -383,7 +383,7 @@ export default function TaxCalculatorGuidePage() {
             </div>
             <Link
               href="/tax-calculator"
-              className="inline-flex items-center justify-center rounded-xl bg-[#00C2CB] px-5 py-3 text-sm font-black uppercase tracking-wider text-[#003580] hover:bg-white transition-colors"
+              className="inline-flex items-center justify-center rounded-xl bg-[#00C2CB] px-5 py-3 text-sm font-black uppercase tracking-wider text-primary-dark hover:bg-white transition-colors"
             >
               Use tax calculator
             </Link>

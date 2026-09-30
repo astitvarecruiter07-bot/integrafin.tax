@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import WorkflowPreview from "@/components/WorkflowPreview";
 import { 
   Building2, Hammer, Factory, Truck, Utensils, Heart, Landmark, 
   Stethoscope, HeartPulse, Scale, Briefcase, Laptop, Users, ShoppingCart, 
@@ -113,38 +113,37 @@ const industries = [
 
 export default function IndustriesPage() {
   return (
-    <main className="pt-20 bg-slate-50 selection:bg-[#0092df] selection:text-white">
+    <main className="saas-page pt-20 bg-slate-50 selection:bg-[#0092df] selection:text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
       {/* Hero Section */}
-      <section className="relative min-h-[400px] flex items-center overflow-hidden bg-[#003580]">
-        <div className="absolute inset-0 opacity-30">
-          <Image 
-            className="w-full h-full object-cover" 
-            alt="financial cityscape background" 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80" 
-            fill
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#003580] via-[#003580]/90 to-transparent"></div>
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 w-full py-20">
-          <div className="max-w-3xl space-y-8 animate-fade-in-up">
-            <span className="inline-block bg-[#00C2CB]/20 text-[#00C2CB] border border-[#00C2CB]/30 px-4 py-1 text-[10px] font-black tracking-[0.3em] uppercase rounded-full">
-              Industry Specific Solutions
+      <section className="relative overflow-hidden bg-primary-dark py-14 sm:py-20">
+        <div className="relative mx-auto w-full max-w-7xl px-6 sm:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-bold tracking-[0.14em] text-cyan-200">
+              INDUSTRY-SPECIFIC ACCOUNTING
             </span>
-            <h1 className="text-white text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[0.9]">
-              Industries <br className="hidden sm:block" /> We Serve
+            <h1 className="mx-auto mt-6 text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl">
+              Accounting shaped around the way your business works.
             </h1>
-            <p className="text-[#D7E3FC] text-lg sm:text-xl font-medium leading-relaxed max-w-2xl">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#d7e3fc] sm:text-lg">
               Tax, bookkeeping, payroll-record, and accounting workflows organized around the records and filing needs of different business sectors.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-8 py-4 rounded-xl font-bold tracking-widest uppercase text-sm shadow-xl shadow-[#00C2CB]/20 hover:scale-105 transition-all text-center">
-                Contact Our Experts
+            <div className="mt-8 flex justify-center">
+              <Link href="/contact" className="inline-flex items-center justify-center rounded-lg bg-secondary px-7 py-3 font-bold text-white">
+                Talk about your business
               </Link>
             </div>
           </div>
+          <WorkflowPreview
+            label="INDUSTRY SERVICE OVERVIEW"
+            title="A process adapted to your records"
+            items={[
+              "Identify the records specific to your business",
+              "Define bookkeeping, reporting, and filing needs",
+              "Agree on the service scope and next steps",
+            ]}
+          />
         </div>
       </section>
 
@@ -157,7 +156,7 @@ export default function IndustriesPage() {
                 <span className="w-12 h-1.5 bg-[#0092df] rounded-full"></span>
                 <span className="text-[#0092df] text-sm font-black uppercase tracking-widest">Service Contexts Across Sectors</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#003580] tracking-tight">Industry Context Shapes the Records We Review</h2>
+              <h2 className="text-3xl sm:text-4xl font-black text-primary-dark tracking-tight">Industry Context Shapes the Records We Review</h2>
               <div className="space-y-6 text-lg text-slate-600 font-medium leading-relaxed">
                 <p>
                   Different businesses produce different records. A construction company may need job-cost and contractor detail, while a retailer may need inventory, sales-tax, and payment-processor reconciliation. The engagement begins by identifying the entity, filing history, accounting system, and records involved.
@@ -167,20 +166,22 @@ export default function IndustriesPage() {
                 </p>
               </div>
             </div>
-            <div className="relative animate-slide-in-right">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl relative">
-                <Image 
-                  className="w-full h-full object-cover grayscale brightness-110" 
-                  alt="Modern business office highlighting professionalism" 
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80"
-                  width={800}
-                  height={600}
-                />
-                <div className="absolute inset-0 bg-[#003580]/10 mix-blend-multiply"></div>
+            <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-[0_2px_8px_rgba(27,42,74,0.06)]">
+              <div className="border-b border-slate-200 bg-[#f7f9fc] px-6 py-5">
+                <span className="block text-[10px] font-bold tracking-[0.13em] text-primary">RECORDS IN CONTEXT</span>
+                <strong className="mt-1 block text-base text-primary-dark">Different work calls for different detail</strong>
               </div>
-              <div className="absolute -bottom-8 -left-8 bg-[#00C2CB] p-8 rounded-2xl shadow-2xl hidden sm:block">
-                <div className="text-white font-black text-4xl mb-1">15+</div>
-                <div className="text-white/80 font-bold text-xs uppercase tracking-widest leading-none">Specialized Sectors</div>
+              <div className="space-y-3 p-5">
+                {[
+                  ["Construction", "Job costs, contractor payments, and payroll records"],
+                  ["Retail", "Inventory, sales tax, and payment-processor activity"],
+                  ["Healthcare", "Practice revenue, payroll, and owner activity"],
+                ].map(([sector, records], index) => (
+                  <div key={sector} className="flex gap-3 rounded-lg border border-slate-200 bg-[#f7f9fc] p-4">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-xs font-bold text-primary">{index + 1}</span>
+                    <div><strong className="block text-sm text-primary-dark">{sector}</strong><p className="mt-1 text-xs leading-relaxed text-slate-600">{records}</p></div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -191,7 +192,7 @@ export default function IndustriesPage() {
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <div className="text-center mb-20 space-y-4">
-            <h2 className="text-3xl sm:text-5xl font-black text-[#003580] tracking-tight">Business Sectors We Support</h2>
+            <h2 className="text-3xl sm:text-5xl font-black text-primary-dark tracking-tight">Business Sectors We Support</h2>
             <p className="text-slate-500 font-medium max-w-2xl mx-auto text-lg">Examples of bookkeeping, payroll-record, tax-preparation, and planning contexts that may be included in an engagement.</p>
           </div>
           
@@ -199,17 +200,17 @@ export default function IndustriesPage() {
             {industries.map((industry, index) => (
               <div 
                 key={index} 
-                className="group bg-white p-10 rounded-3xl border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-[#0092df]/10 transition-all duration-500 hover:-translate-y-2 flex flex-col items-start text-left"
+                className="group flex flex-col items-start rounded-xl border border-slate-200 bg-white p-6 text-left shadow-sm transition-all hover:-translate-y-1 hover:border-blue-300 hover:shadow-md"
               >
-                <div className="w-16 h-16 bg-[#0092df]/5 group-hover:bg-[#0092df] rounded-2xl flex items-center justify-center mb-8 text-[#0092df] group-hover:text-white transition-all duration-500">
-                  <industry.icon className="w-8 h-8" />
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                  <industry.icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-black text-[#003580] mb-5 tracking-tight group-hover:text-[#0092df] transition-colors">{industry.title}</h3>
+                <h3 className="mb-3 text-lg font-bold text-primary-dark transition-colors group-hover:text-primary">{industry.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed font-medium mb-6">
                   {industry.description}
                 </p>
-                <Link href="/contact" className="mt-auto inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-[#0092df] hover:gap-3 transition-all">
-                  Get Started <ChevronRight className="w-4 h-4" />
+                <Link href="/contact" className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-primary transition-all hover:gap-3">
+                  Discuss this sector <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>
             ))}
@@ -218,15 +219,15 @@ export default function IndustriesPage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-[#003580] overflow-hidden relative">
+      <section className="py-24 bg-primary-dark overflow-hidden relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#00C2CB]/5 skew-x-12 transform translate-x-1/2"></div>
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center relative z-10 space-y-10">
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">Ready to Let Us Handle Your Finances?</h2>
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">Get support for the records behind your business.</h2>
           <p className="text-xl text-[#D7E3FC] font-medium max-w-2xl mx-auto">
-            Get in touch today to discover how we can benefit your individual or business tax situation.
+            Tell us about your industry, records, deadlines, and the work you need. We will explain the next step and what should be scoped separately.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Link href="/contact" className="bg-[#00C2CB] text-[#003580] px-12 py-5 rounded-xl font-black tracking-widest uppercase text-sm shadow-xl hover:scale-105 transition-all">
+            <Link href="/contact" className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#2563eb] px-8 py-3 font-bold text-white transition-colors hover:bg-[#1d4ed8]">
               Book a Consultation
             </Link>
           </div>

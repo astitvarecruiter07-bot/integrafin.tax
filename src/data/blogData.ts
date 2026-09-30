@@ -92,7 +92,7 @@ export const mockBlogPosts: BlogPost[] = [
         excerpt: "See who must file or pay by September 15, 2026, including extended partnerships, S corporations, LLCs, and quarterly estimated-tax payers.",
         category: "Tax Deadlines",
         date: "September 10, 2026",
-        updatedAt: "2026-09-10",
+        updatedAt: "2026-09-30",
         readTime: "12 min read",
         featured: false,
         image: "/hero-accounting-workspace.jpg",
@@ -139,6 +139,9 @@ export const mockBlogPosts: BlogPost[] = [
             },
         ],
         contentHtml: `
+            <div class="tax-note">
+                <p><strong>Current status (September 30, 2026):</strong> The standard September 15, 2026 deadline has passed. This guide explains what was due. If you have not filed or paid, confirm any relief that applies to you and address the outstanding return or payment promptly. For help organizing records, see our <a href="/bookkeeping-cleanup">bookkeeping cleanup service</a>.</p>
+            </div>
             <div class="tax-answer-card">
                 <p><strong>Short answer:</strong> September 15, 2026 is an important federal tax date for two main groups. Calendar-year partnerships and S corporations that obtained valid extensions generally must file their 2025 returns by this date. September 15 is also the third 2026 estimated-tax payment date for many self-employed people, business owners, investors, and others with income not fully covered by withholding. The date does not apply to every taxpayer, so confirm your entity classification, extension status, tax year, state obligations, and any IRS relief.</p>
             </div>
@@ -148,7 +151,7 @@ export const mockBlogPosts: BlogPost[] = [
             <p>This guide separates those obligations, explains who should act, and gives you a practical records checklist. It covers general federal rules for calendar-year taxpayers. Fiscal-year entities, state returns, foreign reporting, special entity taxes, and disaster relief can produce different results.</p>
 
             <div class="tax-note">
-                <p><strong>Last reviewed:</strong> September 10, 2026. The standard federal deadline discussed below is Tuesday, September 15, 2026. Check current IRS guidance and disaster-relief notices before relying on a date.</p>
+                <p><strong>Last reviewed:</strong> September 30, 2026. The standard federal deadline discussed below was Tuesday, September 15, 2026. Check current IRS guidance and disaster-relief notices before relying on a date.</p>
             </div>
 
             <h2>What Is Due on September 15, 2026?</h2>
@@ -214,7 +217,7 @@ export const mockBlogPosts: BlogPost[] = [
             <div class="tax-cta-panel">
                 <h3>Are your 2025 books still incomplete?</h3>
                 <p>IntegraFin can review the condition of your records, identify missing bookkeeping inputs, and confirm whether a deadline-focused cleanup scope fits your business.</p>
-                <p><a href="/15-sep-offer">Request a free September 15 bookkeeping review</a>.</p>
+                <p><a href="/bookkeeping-cleanup">Explore bookkeeping cleanup support</a>.</p>
             </div>
 
             <h2>Q3 Estimated Taxes Are Also Due September 15</h2>
@@ -327,10 +330,10 @@ export const mockBlogPosts: BlogPost[] = [
     {
         slug: "how-to-calculate-2026-quarterly-estimated-tax-payments",
         title: "How to Calculate 2026 Quarterly Estimated Tax Payments",
-        excerpt: "Calculate 2026 quarterly estimated tax payments, review IRS due dates and safe-harbor rules, and plan what to pay by September 15.",
+        excerpt: "Calculate 2026 quarterly estimated tax payments, review IRS due dates and safe-harbor rules, and plan remaining payments.",
         category: "Tax Planning",
         date: "August 7, 2026",
-        updatedAt: "2026-08-07",
+        updatedAt: "2026-09-30",
         readTime: "11 min read",
         featured: true,
         image: "https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&q=80&w=1200",
@@ -377,6 +380,9 @@ export const mockBlogPosts: BlogPost[] = [
             },
         ],
         contentHtml: `
+            <div class="tax-note">
+                <p><strong>Current status (September 30, 2026):</strong> The standard September 15 installment date has passed. For calendar-year individuals, the next standard 2026 estimated-tax installment is January 15, 2027. Review any missed earlier payment and current IRS relief before deciding what to pay.</p>
+            </div>
             <div class="tax-answer-card">
                 <p><strong>Short answer:</strong> Estimate your full-year 2026 federal tax, subtract expected withholding and refundable credits, review the Form 1040-ES payment test, and divide the amount you plan to pay across the remaining deadlines. For a fast first pass, use the <a href="/quarterly-estimated-tax-calculator">2026 quarterly estimated tax calculator</a>, then compare the result with your 2025 return and the official 2026 Form 1040-ES worksheet.</p>
             </div>
@@ -386,7 +392,7 @@ export const mockBlogPosts: BlogPost[] = [
             <p>This guide explains the 2026 calculation in plain language, including the IRS payment test, safe-harbor benchmarks, due dates, uneven-income rules, and a practical example. It focuses on federal individual estimated tax; state rules require a separate calculation.</p>
 
             <div class="tax-note">
-                <p><strong>Last reviewed:</strong> August 7, 2026. The IRS last updated its estimated-tax overview on June 28, 2026, and the 2026 Form 1040-ES is dated February 12, 2026. Check IRS disaster relief and later guidance before relying on a deadline.</p>
+                <p><strong>Last reviewed:</strong> September 30, 2026. Check the current Form 1040-ES instructions, IRS disaster relief, and later guidance before relying on a deadline.</p>
             </div>
 
             <h2>2026 Estimated Tax Due Dates</h2>
@@ -398,14 +404,14 @@ export const mockBlogPosts: BlogPost[] = [
                         <tr>
                             <th>Payment</th>
                             <th>2026 Form 1040-ES due date</th>
-                            <th>Planning status on August 7</th>
+                            <th>Standard status on September 30</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr><td>First</td><td>April 15, 2026</td><td>Passed</td></tr>
                         <tr><td>Second</td><td>June 15, 2026</td><td>Passed</td></tr>
-                        <tr><td>Third</td><td><strong>September 15, 2026</strong></td><td>Next standard deadline</td></tr>
-                        <tr><td>Fourth</td><td>January 15, 2027</td><td>Final standard installment</td></tr>
+                        <tr><td>Third</td><td><strong>September 15, 2026</strong></td><td>Passed</td></tr>
+                        <tr><td>Fourth</td><td>January 15, 2027</td><td>Next standard installment</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -470,7 +476,7 @@ export const mockBlogPosts: BlogPost[] = [
 
             <p>Meeting a prior-year benchmark can still leave a balance due when 2026 income grows. Conversely, paying the projected final balance by year-end does not automatically eliminate a penalty if too little was paid by an earlier installment date. The penalty is evaluated by payment period.</p>
 
-            <h2>Simple Example: Planning the Remaining 2026 Payments</h2>
+            <h2>Simple Example: Planning Payments in August 2026</h2>
             <p>Assume a taxpayer's simplified 2026 projection shows $24,000 of total federal tax, $8,000 of expected withholding, and $4,000 of estimated payments already made. The projected amount not covered is $12,000.</p>
 
             <ul>
@@ -478,7 +484,7 @@ export const mockBlogPosts: BlogPost[] = [
                 <li>Less expected federal withholding: $8,000</li>
                 <li>Less 2026 estimated payments already made: $4,000</li>
                 <li>Remaining projected balance: $12,000</li>
-                <li>Simplified equal split over two remaining dates: $6,000 by September 15 and $6,000 by January 15</li>
+                <li>At the time of this example, a simplified equal split over two remaining dates was $6,000 by September 15 and $6,000 by January 15</li>
             </ul>
 
             <p>This example is only cash-flow arithmetic. It does not prove that $6,000 per date satisfies Form 1040-ES or cures an earlier underpayment. The taxpayer must still compare the result with 2025 tax, payment timing, withholding, and any annualized-income calculation.</p>
@@ -505,10 +511,10 @@ export const mockBlogPosts: BlogPost[] = [
 
             <p>If an earlier 2026 deadline was missed, use our separate <a href="/blog/missed-estimated-tax-payment-june-15-deadline">late estimated tax payment guide</a> for the immediate catch-up steps.</p>
 
-            <h2>September 15 Planning Checklist</h2>
+            <h2>Review Your Remaining 2026 Estimated-Tax Plan</h2>
             <p>Need the combined deadline view for extended partnership and S corporation returns too? Read the <a href="/blog/september-15-2026-tax-deadline">complete September 15, 2026 tax deadline guide</a>.</p>
             <ul>
-                <li>Close and reconcile bookkeeping through July, then update August activity before paying.</li>
+                <li>Reconcile bookkeeping through the most recent available month before updating your estimate.</li>
                 <li>Collect year-to-date wages, federal withholding, business profit, investment income, and major deductions.</li>
                 <li>Pull the total-tax and AGI figures from the filed 2025 federal return.</li>
                 <li>Recalculate the full-year 2026 projection instead of repeating the June payment.</li>
@@ -1148,10 +1154,10 @@ export const mockBlogPosts: BlogPost[] = [
     {
         slug: "missed-estimated-tax-payment-june-15-deadline",
         title: "Missed Estimated Tax Payment? June 15 Fix Guide",
-        excerpt: "Missed the June 15 tax deadline? Learn what a late estimated tax payment may cost, how to pay now, when Form 2210 may help, and how to plan for September 15.",
+        excerpt: "Missed the June 15 estimated tax deadline? Learn how to make a late payment, review possible penalties, and plan the remaining 2026 installment.",
         category: "Tax Planning",
         date: "June 18, 2026",
-        updatedAt: "2026-06-18",
+        updatedAt: "2026-09-30",
         readTime: "10 min read",
         featured: true,
         image: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&q=80&w=1200",
@@ -1171,7 +1177,7 @@ export const mockBlogPosts: BlogPost[] = [
         faq: [
             {
                 question: "What should I do if I missed the June 15 estimated tax deadline?",
-                answer: "If the June 15 estimated tax payment applied to you, the practical first step is to make the payment as soon as you can, save the confirmation, and then refigure the remaining 2026 estimated tax payments so September 15 and January 15 are not missed too.",
+                answer: "If the June 15 estimated tax payment applied to you, pay what you can as soon as possible, save the confirmation, and refigure the remaining 2026 estimated tax. The standard September 15 installment has also passed; the next standard date for calendar-year individuals is January 15, 2027.",
             },
             {
                 question: "Will the IRS charge a penalty for a missed estimated tax payment?",
@@ -1191,12 +1197,15 @@ export const mockBlogPosts: BlogPost[] = [
             },
             {
                 question: "When is the next 2026 quarterly estimated tax payment due?",
-                answer: "For calendar-year individual taxpayers, IRS Form 1040-ES lists the third 2026 estimated tax payment due date as September 15, 2026, followed by January 15, 2027 for the fourth payment.",
+                answer: "For calendar-year individual taxpayers, IRS Form 1040-ES lists January 15, 2027 as the fourth standard payment date for 2026 tax. The third date, September 15, 2026, has passed. Special relief and exceptions may apply.",
             },
         ],
         contentHtml: `
+            <div class="tax-note">
+                <p><strong>Current status (September 30, 2026):</strong> Both the June 15 and September 15 standard 2026 installment dates have passed. This article's June examples describe the situation at publication. If you missed a required payment, review what is outstanding now; the next standard installment for calendar-year individuals is January 15, 2027.</p>
+            </div>
             <div class="tax-answer-card">
-                <p><strong>Short answer:</strong> If you missed the June 15 tax deadline for your 2026 estimated tax payment, do not wait for an IRS notice. Pay what you can now, save the confirmation, update your 2026 estimate, and set up the September 15, 2026 payment before the next quarter sneaks up on you.</p>
+                <p><strong>Short answer:</strong> If you missed a required 2026 estimated tax installment, do not wait for an IRS notice. Pay what you can now, save the confirmation, update your full-year estimate, and review the remaining January 15, 2027 standard payment date.</p>
             </div>
 
             <p>A missed estimated tax payment feels worse than it usually is because the IRS does not send a neat calendar invite. Freelancers, solopreneurs, gig workers, consultants, landlords, creators, and small business owners often discover the June 15 deadline only after it has already passed.</p>
@@ -1206,7 +1215,7 @@ export const mockBlogPosts: BlogPost[] = [
             <h2>Key Takeaways</h2>
             <ul>
                 <li>The second 2026 estimated tax payment was due June 15, 2026 for calendar-year individual taxpayers.</li>
-                <li>The next 2026 estimated tax deadline is September 15, 2026, not September 16.</li>
+                <li>The September 15, 2026 standard estimated tax date has passed; the next standard date is January 15, 2027.</li>
                 <li>A late estimated payment may trigger an underpayment penalty even if you later receive a refund.</li>
                 <li>Paying quickly can reduce the time the underpayment remains open.</li>
                 <li>Form 2210 can help calculate a penalty, annualize uneven income, or request a limited waiver, but it is not a broad automatic penalty abatement form.</li>
@@ -1288,7 +1297,7 @@ export const mockBlogPosts: BlogPost[] = [
                 <li><strong>Hour 2:</strong> Estimate the missed June 15 amount and pay as much as you can reasonably pay now.</li>
                 <li><strong>Same day:</strong> Save the IRS confirmation number, payment date, payment type, tax year, and bank or card proof.</li>
                 <li><strong>Within 24 hours:</strong> Update your bookkeeping so the payment is not missed later at filing time.</li>
-                <li><strong>Within 48 hours:</strong> Recalculate September 15 and January 15 instead of simply doubling the next payment blindly.</li>
+                <li><strong>Within 48 hours:</strong> Recalculate any missed installment and the January 15 payment instead of simply doubling the next payment blindly.</li>
             </ul>
 
             <p>If you cannot pay the full amount today, paying part of it can still help reduce the unpaid amount. If you later receive an IRS notice, respond by the notice deadline and keep your payment records together.</p>
@@ -1356,14 +1365,14 @@ export const mockBlogPosts: BlogPost[] = [
             <p>For broader support, review our <a href="/services">tax and accounting services</a>, <a href="/texas-tax-accounting-services">Texas tax services</a>, <a href="/new-york-tax-accounting-services">New York tax services</a>, and <a href="/pennsylvania-tax-accounting-services">Pennsylvania tax services</a>.</p>
 
             <div class="tax-cta-panel">
-                <h3>Need help catching up before September 15?</h3>
+                <h3>Need help catching up on estimated tax?</h3>
                 <p>We can help you estimate the missed payment, review penalty exposure, update your books, and set up quarterly tax payments for the rest of 2026.</p>
                 <p><a href="/contact">Book a consultation with IntegraFin</a>.</p>
             </div>
 
             <h2>Frequently Asked Questions</h2>
             <h3>What should I do if I missed the June 15 estimated tax deadline?</h3>
-            <p>If the June 15 estimated tax payment applied to you, the practical first step is to make the payment as soon as you can, save the confirmation, and then refigure the remaining 2026 estimated tax payments so September 15 and January 15 are not missed too.</p>
+            <p>If the June 15 estimated tax payment applied to you, pay what you can as soon as possible, save the confirmation, and refigure the remaining 2026 estimated tax. The standard September 15 installment has also passed; the next standard date for calendar-year individuals is January 15, 2027.</p>
 
             <h3>Will the IRS charge a penalty for a missed estimated tax payment?</h3>
             <p>The IRS may charge an underpayment of estimated tax penalty if you did not pay enough by the required payment date. The penalty depends on the underpaid amount, how long it was underpaid, and IRS underpayment interest rates.</p>
@@ -1378,7 +1387,7 @@ export const mockBlogPosts: BlogPost[] = [
             <p>Do not treat a late amended 2025 return as an automatic fix for a missed 2026 installment. For most taxpayers, the immediate move is to refigure the 2026 estimate and future payments; amend 2025 only if that filed return was actually wrong.</p>
 
             <h3>When is the next 2026 quarterly estimated tax payment due?</h3>
-            <p>For calendar-year individual taxpayers, IRS Form 1040-ES lists the third 2026 estimated tax payment due date as September 15, 2026, followed by January 15, 2027 for the fourth payment.</p>
+            <p>For calendar-year individual taxpayers, IRS Form 1040-ES lists January 15, 2027 as the fourth standard payment date for 2026 tax. The third date, September 15, 2026, has passed. Special relief and exceptions may apply.</p>
 
             <h2>Sources Reviewed</h2>
             <ul class="source-list">
@@ -1390,7 +1399,7 @@ export const mockBlogPosts: BlogPost[] = [
                 <li><a href="https://www.irs.gov/payments/pay-as-you-go-so-you-wont-owe-a-guide-to-withholding-estimated-taxes-and-ways-to-avoid-the-estimated-tax-penalty" target="_blank" rel="noopener noreferrer">IRS: Pay as you go, so you will not owe</a></li>
             </ul>
 
-            <p><strong>Last reviewed:</strong> June 18, 2026.</p>
+            <p><strong>Last reviewed:</strong> September 30, 2026.</p>
             <p><strong>Educational note:</strong> This article is for general education and should not be treated as legal or tax advice. Estimated tax requirements, penalties, payment options, and state rules depend on your income, withholding, filing history, entity type, state, and current IRS guidance.</p>
         `,
     },

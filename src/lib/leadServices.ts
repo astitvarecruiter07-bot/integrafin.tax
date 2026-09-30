@@ -34,8 +34,8 @@ export function getLeadCtaLabel(service: LeadService, fallback = "Request a Cons
   const labels: Partial<Record<LeadService, string>> = {
     "IRS Notice and Tax Resolution": "Request an IRS notice review",
     "Bookkeeping Cleanup": "Request a cleanup assessment",
-    "Business Tax and Accounting": "Book a small-business tax consultation",
-    "LLC Formation and Tax Setup": "Book an entity tax-setup call",
+    "Business Tax and Accounting": "Request a small-business tax consultation",
+    "LLC Formation and Tax Setup": "Request an entity tax-setup call",
     "QuickBooks Bookkeeping": "Request QuickBooks support",
     "Small Business Bookkeeping": "Request small-business bookkeeping",
     "Contractor Bookkeeping": "Request contractor bookkeeping support",

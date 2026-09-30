@@ -7,6 +7,7 @@ import { ArrowRight, CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
 import { submitLead } from "@/app/actions/leads";
 import { captureLeadAttribution, getLeadAttribution } from "@/lib/attribution";
 import { baseEventParameters, trackEvent, useFormAnalytics } from "@/lib/analytics";
+import { siteConfig } from "@/lib/siteConfig";
 
 const source = "facebook-bookkeeping-99-simple";
 
@@ -82,7 +83,7 @@ export default function SimpleBookkeepingLeadForm() {
       setSubmitted(true);
       router.push("/thank-you");
     } catch {
-      setError("We could not submit your request. Please try again or call (832) 774-1882.");
+      setError(`We could not submit your request. Please try again or call ${siteConfig.contact.phoneDisplay}.`);
     } finally {
       submittingRef.current = false;
       setIsPending(false);
@@ -90,7 +91,7 @@ export default function SimpleBookkeepingLeadForm() {
   }
 
   const fieldClass =
-    "mt-1.5 min-h-12 w-full rounded-xl border-2 border-slate-200 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#ff3038] focus:ring-4 focus:ring-[#ff3038]/10";
+    "mt-1.5 min-h-12 w-full rounded-xl border-2 border-slate-200 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2563eb] focus:ring-4 focus:ring-[#2563eb]/10";
 
   if (submitted) {
     return (
@@ -132,7 +133,7 @@ export default function SimpleBookkeepingLeadForm() {
         <input id="simple-bookkeeping-phone" name="phone" type="tel" required minLength={10} maxLength={20} autoComplete="tel" inputMode="tel" className={fieldClass} placeholder="(832) 555-0123" />
       </div>
 
-      <button type="submit" disabled={isPending} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#ff3038] px-5 text-base font-black text-white shadow-[0_12px_25px_-12px_rgba(255,48,56,.8)] transition hover:-translate-y-0.5 hover:bg-[#df1d27] focus:outline-none focus:ring-4 focus:ring-[#ff3038]/25 disabled:cursor-not-allowed disabled:opacity-60">
+      <button type="submit" disabled={isPending} className="flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-[#2563eb] px-5 text-base font-black text-white shadow-[0_12px_25px_-12px_rgba(37,99,235,.7)] transition hover:-translate-y-0.5 hover:bg-[#1d4ed8] focus:outline-none focus:ring-4 focus:ring-[#2563eb]/25 disabled:cursor-not-allowed disabled:opacity-60">
         {isPending ? <><Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" /> Sending...</> : <>Check My Eligibility <ArrowRight className="h-5 w-5" aria-hidden="true" /></>}
       </button>
 

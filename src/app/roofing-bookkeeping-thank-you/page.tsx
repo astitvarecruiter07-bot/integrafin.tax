@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RoofingBookkeepingThankYouPage() {
   return (
-    <main className="roofing-landing flex min-h-screen flex-col bg-[#f1f7f8]">
+    <main className="roofing-landing flex min-h-screen flex-col bg-[#f0f3f7]">
       <header className="bg-[#071c32] px-4 py-5 sm:px-6">
         <div className="mx-auto flex max-w-5xl items-center justify-between">
           <Link href="/" aria-label="IntegraFin home">
@@ -29,7 +29,7 @@ export default function RoofingBookkeepingThankYouPage() {
 
       <section className="flex flex-1 items-center px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto w-full max-w-3xl overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-300/40">
-          <div className="h-2 bg-[#00a9b7]" />
+          <div className="h-2 bg-[#2563eb]" />
           <div className="p-7 text-center sm:p-12">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#dff7f8]">
               <CheckCircle2 className="h-9 w-9 text-[#007e88]" aria-hidden="true" />
@@ -58,7 +58,7 @@ export default function RoofingBookkeepingThankYouPage() {
               </ol>
             </div>
 
-            <Link href="/" className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#09233f] px-6 py-3.5 font-black text-white transition hover:bg-[#123b60]">
+            <Link href="/" className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#2563eb] px-6 py-3.5 font-black text-white transition hover:bg-[#1d4ed8]">
               <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Return to IntegraFin
             </Link>
           </div>

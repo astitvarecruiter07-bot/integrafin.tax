@@ -15,11 +15,12 @@ import { buildBreadcrumbSchema, buildFaqSchema, buildWebPageSchema } from "@/lib
 import ContactForm from "@/components/ContactForm";
 import OfficeMapEmbed from "@/components/OfficeMapEmbed";
 import { getLeadCtaLabel, normalizeLeadService } from "@/lib/leadServices";
+import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "Contact IntegraFin | Katy Tax & Accounting",
   description:
-    "Contact IntegraFin in Katy, TX for tax preparation, bookkeeping, payroll support, LLC tax setup, or IRS notice help. Call (832) 647-1819 or request a consultation.",
+    `Contact IntegraFin in Katy, TX for tax preparation, bookkeeping, payroll support, LLC tax setup, or IRS notice help. Call ${siteConfig.contact.phoneDisplay} or request a consultation.`,
   alternates: { canonical: "https://integrafin.tax/contact" },
   openGraph: {
     title: "Contact IntegraFin | Katy Tax & Accounting",
@@ -93,7 +94,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
     : "Tell us what you need";
 
   return (
-    <main className="bg-slate-50 font-sans text-slate-800">
+    <main className="saas-page bg-slate-50 font-sans text-slate-800">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactFaqSchema) }} />
@@ -138,12 +139,12 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
               <a
-                href="tel:+18326471819"
+                href={siteConfig.contact.phoneHref}
                 data-analytics-label="contact_hero_phone_call"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 text-base font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
-                Call (832) 647-1819
+                Call {siteConfig.contact.phoneDisplay}
               </a>
             </div>
 
@@ -183,22 +184,22 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               <h2 className="text-2xl font-black tracking-tight">Contact IntegraFin directly</h2>
               <p className="mt-2 text-sm leading-6 text-blue-100">Use the option that is easiest for you during business hours.</p>
               <div className="mt-7 space-y-3">
-                <a href="tel:+18326471819" data-analytics-label="contact_sidebar_phone_call" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
+                <a href={siteConfig.contact.phoneHref} data-analytics-label="contact_sidebar_phone_call" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary-dark"><Phone className="h-5 w-5" /></span>
-                  <span><span className="block text-sm text-blue-100">Call</span><span className="font-bold">(832) 647-1819</span></span>
+                  <span><span className="block text-sm text-blue-100">Call</span><span className="font-bold">{siteConfig.contact.phoneDisplay}</span></span>
                 </a>
-                <a href="mailto:contact@integrafin.tax" data-analytics-label="contact_sidebar_email" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
+                <a href={siteConfig.contact.emailHref} data-analytics-label="contact_sidebar_email" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary-dark"><Mail className="h-5 w-5" /></span>
-                  <span className="min-w-0"><span className="block text-sm text-blue-100">Email</span><span className="break-all font-bold">contact@integrafin.tax</span></span>
+                  <span className="min-w-0"><span className="block text-sm text-blue-100">Email</span><span className="break-all font-bold">{siteConfig.contact.email}</span></span>
                 </a>
-                <a href="https://wa.me/18326471819" data-analytics-label="contact_sidebar_whatsapp" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
+                <a href={siteConfig.contact.whatsappHref} data-analytics-label="contact_sidebar_whatsapp" className="flex items-center gap-4 rounded-xl bg-white/10 p-4 transition-colors hover:bg-white/15">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-secondary text-primary-dark"><MessageSquare className="h-5 w-5" /></span>
                   <span><span className="block text-sm text-blue-100">WhatsApp</span><span className="font-bold">Message IntegraFin</span></span>
                 </a>
               </div>
               <div className="mt-6 flex items-start gap-3 border-t border-white/15 pt-5 text-sm text-blue-100">
                 <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
-                <p>Monday–Friday, 9:00 AM–6:00 PM Central</p>
+                <p>{siteConfig.office.hours}</p>
               </div>
             </section>
 
@@ -208,12 +209,12 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 <div>
                   <h2 className="text-xl font-black text-primary-dark">Katy office</h2>
                   <address className="mt-2 not-italic text-sm leading-6 text-slate-600">
-                    IntegraFin LLC<br />
-                    2039 N Mason Rd, Suite 604<br />
-                    Katy, TX 77449
+                    {siteConfig.legalName}<br />
+                    {siteConfig.office.street}<br />
+                    {siteConfig.office.cityStatePostal}
                   </address>
                   <a
-                    href="https://www.google.com/maps/search/?api=1&query=2039+N+Mason+Rd+Suite+604+Katy+TX+77449"
+                    href={siteConfig.office.directionsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-4 inline-flex font-bold text-primary hover:text-primary-dark hover:underline"
@@ -222,10 +223,6 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   </a>
                 </div>
               </div>
-              <details className="mt-6 border-t border-slate-200 pt-5 text-sm text-slate-600">
-                <summary className="cursor-pointer font-bold text-primary-dark">India operations contact</summary>
-                <p className="mt-3 leading-6">Nagpur, Maharashtra 440008 · <a href="tel:+918855075450" className="font-semibold text-primary hover:underline">+91 88550 75450</a></p>
-              </details>
             </section>
 
             <section className="rounded-3xl border border-amber-200 bg-amber-50 p-7 sm:p-8">

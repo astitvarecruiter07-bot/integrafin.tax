@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import WorkflowPreview from "@/components/WorkflowPreview";
+import { siteConfig } from "@/lib/siteConfig";
 import {
   Building2, User, Scale, PlusCircle, Rocket,
   ArrowRight, CheckCircle2, ChevronDown, ChevronUp
@@ -259,19 +261,33 @@ export default function ServicesContent() {
   // }, []);
 
   return (
-    <main className="bg-slate-50 min-h-screen text-left">
+    <main className="saas-page bg-slate-50 min-h-screen text-left">
       {/* ========== HERO SECTION ========== */}
       <section className="bg-primary-dark pt-28 sm:pt-32 pb-12 sm:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         </div>
         <div className="max-w-7xl mx-auto px-6 relative z-10 text-center">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4 sm:mb-6">
-            Comprehensive <span className="text-secondary">Tax Expert</span> Services
+          <span className="mb-5 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[11px] font-bold tracking-[0.14em] text-cyan-200">TAX · BOOKKEEPING · ACCOUNTING</span>
+          <h1 className="mx-auto mb-4 max-w-4xl text-3xl font-black tracking-tight text-white sm:mb-6 sm:text-5xl lg:text-6xl">
+            The right financial support for every stage of your business.
           </h1>
-          <p className="text-sm sm:text-lg md:text-xl text-[#d7e3fc] max-w-2xl mx-auto leading-relaxed">
-            From individual tax filing to full business accounting—our integrated solutions are built specifically for your modern financial life.
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#d7e3fc] sm:text-lg">
+            Explore bookkeeping, tax preparation, payroll records, and IRS notice support. Start with the service closest to your situation.
           </p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link href="/contact" className="inline-flex items-center justify-center gap-2 rounded-lg bg-secondary px-6 py-3 font-bold text-white">Request a consultation <ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/pricing" className="inline-flex items-center justify-center rounded-lg border border-white/30 bg-white/10 px-6 py-3 font-bold text-white">How pricing works</Link>
+          </div>
+          <WorkflowPreview
+            label="SERVICE OVERVIEW"
+            title="Start with the work closest to your needs"
+            items={[
+              "Monthly books and financial reports",
+              "Tax preparation and filing support",
+              "Payroll records and IRS notice review",
+            ]}
+          />
         </div>
       </section>
 
@@ -426,8 +442,8 @@ export default function ServicesContent() {
 
             <div className="mt-10 sm:mt-14 pt-8 border-t border-white/10 relative z-10">
               <p className="text-xs sm:text-sm text-[#d7e3fc] mb-3 font-bold uppercase tracking-widest">Need Immediate Help?</p>
-              <a href="tel:+18326471819" className="text-white text-xl sm:text-2xl md:text-3xl font-black hover:text-secondary transition-colors flex items-center gap-2">
-                +1-832-647-1819
+              <a href={siteConfig.contact.phoneHref} className="text-white text-xl sm:text-2xl md:text-3xl font-black hover:text-secondary transition-colors flex items-center gap-2">
+                {siteConfig.contact.phoneInternationalDisplay}
               </a>
             </div>
           </div>

@@ -1,0 +1,16 @@
+.stage{position:relative;width:min(100% - 56px,910px);margin:44px auto 0;color:#191c1e;text-align:left}
+.panel{overflow:hidden;border:1px solid #e1e8f0;border-radius:10px;background:#fff;box-shadow:0 24px 64px #020c2070}
+.header{display:flex;align-items:center;gap:11px;padding:17px 21px;border-bottom:1px solid #e6edf5;background:#f7f9fc}
+.icon{display:grid;flex:none;place-items:center;width:36px;height:36px;border-radius:7px;background:#1b2a4a;color:#fff}
+.label{display:block;color:#2665c3;font-size:9px;font-weight:700;letter-spacing:.13em}
+.title{display:block;margin-top:3px;color:#191c1e;font-size:14px;line-height:1.35}
+.headerCheck{margin-left:auto;flex:none;color:#15966b}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:19px 21px}
+.item{display:flex;align-items:flex-start;gap:10px;min-height:92px;padding:15px;border:1px solid #e2e8f0;border-radius:7px;background:#fff;color:#354254;font-size:12px;font-weight:600;line-height:1.48;box-shadow:0 2px 6px #0415340a}
+.number{display:grid;flex:none;place-items:center;width:25px;height:25px;border-radius:50%;background:#eaf1ff;color:#2563eb;font-size:10px;font-weight:700}
+.footer{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:0 21px 19px;padding:10px 13px;border-radius:6px;background:#eef4ff;color:#50637b;font-size:11px;font-weight:600}
+.footer svg{flex:none;color:#2563eb}
+.floating{position:absolute;bottom:-23px;left:-27px;display:flex;align-items:center;gap:9px;padding:11px 14px;border:1px solid #425678;border-radius:8px;background:#1b2a4a;box-shadow:0 14px 28px #020c203b;color:#fff}
+.floatingMark{display:grid;place-items:center;width:26px;height:26px;border-radius:5px;background:#2563eb;font-size:14px;font-weight:700}
+.floating small,.floating strong{display:block}.floating small{color:#78cce2;font-size:9px;font-weight:700;letter-spacing:.12em}.floating strong{margin-top:2px;font-size:11px;font-weight:600}
+@media(max-width:700px){.stage{width:100%;margin-top:33px}.grid{grid-template-columns:1fr;gap:8px;padding:13px}.item{min-height:0;padding:11px;font-size:12px}.header{padding:13px}.footer{margin:0 13px 13px}.floating{display:none}}

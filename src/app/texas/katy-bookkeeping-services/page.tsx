@@ -269,7 +269,7 @@ const webPageSchema = buildWebPageSchema({
 
 export default function KatyBookkeepingServicesPage() {
   return (
-    <main className="bg-slate-50 min-h-screen">
+    <main className="saas-page bg-slate-50 min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}

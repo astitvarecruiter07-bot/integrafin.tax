@@ -141,8 +141,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <article className="bg-slate-50">
-        <section className="relative overflow-hidden bg-[#003580] pt-28 pb-12 sm:pt-36 sm:pb-16">
+      <article className="saas-page bg-slate-50">
+        <section className="relative overflow-hidden bg-primary-dark pt-28 pb-12 sm:pt-36 sm:pb-16">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(#0092df 0.5px, transparent 0.5px)", backgroundSize: "30px 30px" }} />
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
             <div className="mb-8 flex flex-wrap items-center gap-2 text-sm text-slate-300">
@@ -220,7 +220,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
             <aside className="space-y-5 lg:sticky lg:top-28">
               <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h2 className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-[#003580]">Article Details</h2>
+                <h2 className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-primary-dark">Article Details</h2>
                 <dl className="space-y-4 text-sm">
                   <div>
                     <dt className="font-bold text-slate-900">Reviewed by</dt>
@@ -239,7 +239,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </dl>
               </div>
 
-              <div className="rounded-2xl bg-[#003580] p-6 text-white shadow-xl shadow-[#003580]/20">
+              <div className="rounded-2xl bg-primary-dark p-6 text-white shadow-xl shadow-[#003580]/20">
                 <h2 className="mb-3 text-xl font-black tracking-tight">Need a tax structure review?</h2>
                 <p className="mb-5 text-sm font-medium leading-relaxed text-slate-200">
                   IntegraFin can review entity structure, bookkeeping readiness, payroll setup, and IRS compliance risk.

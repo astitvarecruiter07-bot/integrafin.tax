@@ -1,4 +1,5 @@
 import Link from "next/link";
+import WorkflowPreview from "@/components/WorkflowPreview";
 import type { HoustonIrsServicePageData } from "@/data/houstonIrsServicePages";
 import {
   buildBreadcrumbSchema,
@@ -6,9 +7,9 @@ import {
   buildWebPageSchema,
   localBusinessRef,
 } from "@/lib/seo/schema";
+import { siteConfig } from "@/lib/siteConfig";
 
 const siteUrl = "https://integrafin.tax";
-const officeAddress = "2039 N Mason Rd, Suite 604, Katy, TX 77449";
 
 export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServicePageData }) {
   const pageUrl = `${siteUrl}${data.path}`;
@@ -50,7 +51,7 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
   });
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <main className="saas-page min-h-screen bg-slate-50">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -72,16 +73,22 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
               Request IRS Help
             </Link>
             <a
-              href="tel:+18326471819"
+              href={siteConfig.contact.phoneHref}
               data-analytics-label={`${data.slug}-hero-phone`}
               className="rounded-xl border border-white/25 bg-white/10 px-7 py-3 font-bold text-white"
             >
-              Call (832) 647-1819
+              Call {siteConfig.contact.phoneDisplay}
             </a>
             <Link href="/texas/houston-tax-accountant" className="rounded-xl border border-white/25 px-7 py-3 font-bold text-white">
               Houston Services Hub
             </Link>
           </div>
+          <WorkflowPreview
+            label="HOUSTON IRS SUPPORT"
+            title="A clear path through the first review"
+            items={data.firstSteps.map((step) => step.title)}
+            note="Response options depend on the notice, records, deadlines, and authorization."
+          />
         </div>
       </section>
 
@@ -135,9 +142,9 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
             <address className="mt-6 not-italic leading-relaxed">
               <strong>IntegraFin Tax &amp; Accounting</strong>
               <br />
-              {officeAddress}
+              {siteConfig.office.fullAddress}
               <br />
-              <a href="tel:+18326471819" className="text-secondary hover:underline">(832) 647-1819</a>
+              <a href={siteConfig.contact.phoneHref} className="text-secondary hover:underline">{siteConfig.contact.phoneDisplay}</a>
             </address>
           </aside>
         </div>
@@ -249,11 +256,11 @@ export default function HoustonIrsServicePage({ data }: { data: HoustonIrsServic
                 Request a Consultation
               </Link>
               <a
-                href="tel:+18326471819"
+                href={siteConfig.contact.phoneHref}
                 data-analytics-label={`${data.slug}-bottom-phone`}
                 className="rounded-xl border border-slate-300 bg-white px-7 py-3 font-bold text-primary"
               >
-                Call (832) 647-1819
+                Call {siteConfig.contact.phoneDisplay}
               </a>
             </div>
           </div>

@@ -4,13 +4,40 @@ export const siteConfig = {
   websiteUrl: "https://integrafin.tax",
   contact: {
     phoneDisplay: "(832) 647-1819",
+    phoneInternationalDisplay: "+1-832-647-1819",
+    phoneE164: "+1-832-647-1819",
     phoneHref: "tel:+18326471819",
     email: "contact@integrafin.tax",
+    emailHref: "mailto:contact@integrafin.tax",
+    whatsappHref: "https://wa.me/18326471819",
   },
   office: {
     street: "2039 N Mason Rd, Suite 604",
+    city: "Katy",
+    region: "TX",
+    postalCode: "77449",
+    country: "US",
     cityStatePostal: "Katy, TX 77449",
+    fullAddress: "2039 N Mason Rd, Suite 604, Katy, TX 77449",
     hours: "Monday–Friday, 9:00 AM–6:00 PM Central",
+    hoursShort: "Mon–Fri, 9 AM–6 PM Central",
+    opens: "09:00",
+    closes: "18:00",
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    directionsUrl:
+      "https://www.google.com/maps/search/?api=1&query=2039+N+Mason+Rd+Suite+604+Katy+TX+77449",
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=2039+N+Mason+Rd+Suite+604+Katy+TX+77449&output=embed",
   },
+  serviceAreas: [
+    "Katy",
+    "Houston",
+    "Sugar Land",
+    "Cypress",
+    "Richmond",
+    "Fort Bend County",
+    "Texas",
+    "United States",
+  ],
+  verifiedSocialProfiles: [],
 } as const;
-

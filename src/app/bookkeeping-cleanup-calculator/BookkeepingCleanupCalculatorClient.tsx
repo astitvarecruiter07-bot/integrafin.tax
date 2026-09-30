@@ -55,7 +55,7 @@ function BasicResult({ result, onPlan, onRetake }: { result: BookkeepingAssessme
   return (
     <section aria-labelledby="result-title" className="mx-auto max-w-5xl overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,35,70,0.12)]">
       <div className="grid lg:grid-cols-[280px_1fr]">
-        <div className="flex flex-col items-center justify-center bg-[#003580] px-6 py-10 text-center text-white sm:px-10">
+        <div className="flex flex-col items-center justify-center bg-primary-dark px-6 py-10 text-center text-white sm:px-10">
           <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-200">Preliminary complexity score</p>
           <div className="mt-5 grid h-40 w-40 place-items-center rounded-full border-[12px] border-white/15 bg-white/10 shadow-inner">
             <div><span className="text-6xl font-black leading-none">{result.score}</span><span className="block text-sm font-bold text-sky-200">out of 100</span></div>
@@ -88,7 +88,7 @@ function BasicResult({ result, onPlan, onRetake }: { result: BookkeepingAssessme
 
           <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-4 text-xs leading-5 text-amber-950">{requiredDisclaimer}</div>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <button type="button" onClick={onPlan} className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#003580] px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-950/15 transition hover:bg-[#002050] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300">Get My Complete Cleanup Action Plan <ArrowRight className="h-4 w-4" /></button>
+            <button type="button" onClick={onPlan} className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-primary-dark px-5 py-3 text-sm font-black text-white shadow-lg shadow-blue-950/15 transition hover:bg-[#002050] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300">Get My Complete Cleanup Action Plan <ArrowRight className="h-4 w-4" /></button>
             <button type="button" onClick={onRetake} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 px-5 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-200"><RefreshCw className="h-4 w-4" />Change answers</button>
           </div>
         </div>
@@ -244,7 +244,7 @@ export default function BookkeepingCleanupCalculatorClient() {
   const finalResult = authoritativeResult || result;
 
   return (
-    <main className="bg-[#f7f9fc] pt-24 text-slate-900">
+    <main className="saas-page bg-[#f7f9fc] pt-24 text-slate-900">
       <div aria-live="polite" className="sr-only">{view === 'basic_result' && result ? `Your preliminary score is ${result.score} out of 100. ${categoryContent[result.category].label}.` : ''}</div>
 
       <section className="relative overflow-hidden border-b border-slate-200 bg-[linear-gradient(145deg,#002050_0%,#003580_58%,#0067b3_100%)] px-4 py-10 sm:px-6 sm:py-16">
@@ -257,7 +257,7 @@ export default function BookkeepingCleanupCalculatorClient() {
                 <h1 className="mt-6 max-w-3xl text-4xl font-black leading-[1.06] tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl">How Much Work Will It Take to Fix Your Books?</h1>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-sky-100">Get a preliminary complexity score, see how urgent your deadline is, and learn what to prepare for a professional bookkeeping review.</p>
                 <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <button type="button" onClick={startAssessment} className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 text-base font-black text-[#003580] shadow-xl shadow-blue-950/25 transition hover:-translate-y-0.5 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300">Check My Books <ArrowRight className="h-5 w-5" /></button>
+                  <button type="button" onClick={startAssessment} className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 text-base font-black text-primary-dark shadow-xl shadow-blue-950/25 transition hover:-translate-y-0.5 hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-300">Check My Books <ArrowRight className="h-5 w-5" /></button>
                   <span className="flex items-center gap-2 text-sm font-semibold text-sky-100"><Clock3 className="h-4 w-4" />About 60–90 seconds</span>
                 </div>
               </div>
@@ -285,7 +285,7 @@ export default function BookkeepingCleanupCalculatorClient() {
                   <div className="mt-7 grid gap-3 sm:grid-cols-2">
                     {question.options.map((option) => {
                       const checked = question.key === 'complexities' ? answers.complexities?.includes(option.value as never) : answers[question.key] === option.value;
-                      return <label key={option.value} className={`relative flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3.5 text-sm font-bold transition focus-within:ring-4 focus-within:ring-sky-100 ${checked ? 'border-[#0092df] bg-sky-50 text-[#003580]' : 'border-slate-200 bg-white text-slate-700 hover:border-sky-300 hover:bg-slate-50'}`}>
+                      return <label key={option.value} className={`relative flex min-h-14 cursor-pointer items-center gap-3 rounded-xl border-2 px-4 py-3.5 text-sm font-bold transition focus-within:ring-4 focus-within:ring-sky-100 ${checked ? 'border-[#0092df] bg-sky-50 text-primary-dark' : 'border-slate-200 bg-white text-slate-700 hover:border-sky-300 hover:bg-slate-50'}`}>
                         <input className="sr-only" type={question.multiple ? 'checkbox' : 'radio'} name={question.key} value={option.value} checked={Boolean(checked)} onChange={() => question.key === 'complexities' ? toggleComplexity(option.value as BookkeepingAssessmentAnswers['complexities'][number]) : chooseSingle(question.key, option.value)} />
                         <span className={`grid h-6 w-6 shrink-0 place-items-center border-2 ${question.multiple ? 'rounded-md' : 'rounded-full'} ${checked ? 'border-[#0092df] bg-[#0092df] text-white' : 'border-slate-300 bg-white'}`}>{checked && <Check className="h-4 w-4" strokeWidth={3} />}</span>{option.label}
                       </label>;
@@ -303,7 +303,7 @@ export default function BookkeepingCleanupCalculatorClient() {
                 {error && <p role="alert" className="mt-5 flex items-center gap-2 rounded-lg bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700"><TriangleAlert className="h-4 w-4" />{error}</p>}
                 <div className="mt-8 flex items-center justify-between gap-3 border-t border-slate-200 pt-6">
                   <button type="button" onClick={() => step > 0 ? setStep((current) => current - 1) : setView('landing')} className="inline-flex min-h-12 items-center gap-2 rounded-xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-100"><ArrowLeft className="h-4 w-4" />Back</button>
-                  <button type="button" onClick={continueAssessment} className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#002050] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-200">{step === 8 ? 'See My Result' : 'Continue'} <ArrowRight className="h-4 w-4" /></button>
+                  <button type="button" onClick={continueAssessment} className="inline-flex min-h-12 items-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-black text-white hover:bg-[#002050] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-sky-200">{step === 8 ? 'See My Result' : 'Continue'} <ArrowRight className="h-4 w-4" /></button>
                 </div>
               </div>
             </div>
@@ -330,7 +330,7 @@ export default function BookkeepingCleanupCalculatorClient() {
                 <p className="mt-4 text-xs leading-5 text-slate-500">{requiredDisclaimer}</p>
                 {formError && <p role="alert" className="mt-5 rounded-lg bg-rose-50 px-4 py-3 text-sm font-bold text-rose-700">{formError}</p>}
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row-reverse sm:justify-between">
-                  <button disabled={submitting} type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#002050] disabled:cursor-wait disabled:opacity-60">{submitting ? 'Saving your plan…' : 'Show My Complete Action Plan'} {!submitting && <ArrowRight className="h-4 w-4" />}</button>
+                  <button disabled={submitting} type="submit" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-black text-white hover:bg-[#002050] disabled:cursor-wait disabled:opacity-60">{submitting ? 'Saving your plan…' : 'Show My Complete Action Plan'} {!submitting && <ArrowRight className="h-4 w-4" />}</button>
                   <button type="button" onClick={() => setView('basic_result')} className="min-h-12 rounded-xl px-4 py-3 text-sm font-bold text-slate-600 hover:bg-slate-100">Back to result</button>
                 </div>
               </form>
@@ -340,7 +340,7 @@ export default function BookkeepingCleanupCalculatorClient() {
               <div className="bg-emerald-600 p-6 text-white sm:p-8"><div className="flex items-start gap-4"><CheckCircle2 className="h-8 w-8 shrink-0" /><div><p className="text-xs font-black uppercase tracking-[0.16em] text-emerald-100">Request saved</p><h2 ref={headingRef} tabIndex={-1} className="mt-2 text-3xl font-black outline-none">Your cleanup action plan is ready</h2><p className="mt-2 text-sm text-emerald-50">Reference {savedLeadId}. Final scope, timing, and pricing still require a records review.</p></div></div></div>
               <div className="grid gap-8 p-6 sm:p-9 lg:grid-cols-2">
                 <div>
-                  <p className="text-sm font-black uppercase tracking-wide text-[#0047AB]">Your result</p><div className="mt-3 flex items-end gap-3"><span className="text-5xl font-black text-[#003580]">{finalResult.score}</span><span className="pb-1 text-sm font-bold text-slate-500">out of 100 · {urgencyContent[finalResult.urgency].label} urgency</span></div><h3 className="mt-4 text-2xl font-black text-[#09233f]">{categoryContent[finalResult.category].label}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{categoryContent[finalResult.category].explanation}</p>
+                  <p className="text-sm font-black uppercase tracking-wide text-[#0047AB]">Your result</p><div className="mt-3 flex items-end gap-3"><span className="text-5xl font-black text-primary-dark">{finalResult.score}</span><span className="pb-1 text-sm font-bold text-slate-500">out of 100 · {urgencyContent[finalResult.urgency].label} urgency</span></div><h3 className="mt-4 text-2xl font-black text-[#09233f]">{categoryContent[finalResult.category].label}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{categoryContent[finalResult.category].explanation}</p>
                   <h3 className="mt-8 flex items-center gap-2 text-sm font-black uppercase tracking-wide text-[#0047AB]"><BookOpenCheck className="h-4 w-4" />Recommended order of operations</h3><ol className="mt-4 space-y-3">{categoryContent[finalResult.category].nextSteps.map((item, index) => <li key={item} className="flex gap-3 text-sm leading-6 text-slate-700"><span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-sky-100 text-xs font-black text-[#0047AB]">{index + 1}</span>{item}</li>)}</ol>
                 </div>
                 <div>
@@ -349,7 +349,7 @@ export default function BookkeepingCleanupCalculatorClient() {
                   <h3 className="mt-8 text-sm font-black uppercase tracking-wide text-[#0047AB]">Questions to prepare for a review</h3><ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700"><li>What is the last month you trust as fully reconciled?</li><li>Which deadline or report matters first?</li><li>Are all statements and system logins available to the authorized owner?</li></ul>
                 </div>
               </div>
-              <div className="border-t border-slate-200 bg-slate-50 p-6 sm:p-8"><p className="text-sm leading-6 text-slate-600">{requiredDisclaimer}</p><div className="mt-5 flex flex-col gap-3 sm:flex-row"><Link href="/contact" onClick={() => trackEvent('cleanup_consultation_click', { calculator_version: '1.0', cta_name: 'request_books_review' })} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#003580] px-6 py-3 text-sm font-black text-white hover:bg-[#002050]">Request My Books Review <ArrowRight className="h-4 w-4" /></Link><a href="tel:+18326471819" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-[#003580]"><Phone className="h-4 w-4" />Call (832) 647-1819</a></div></div>
+              <div className="border-t border-slate-200 bg-slate-50 p-6 sm:p-8"><p className="text-sm leading-6 text-slate-600">{requiredDisclaimer}</p><div className="mt-5 flex flex-col gap-3 sm:flex-row"><Link href="/contact" onClick={() => trackEvent('cleanup_consultation_click', { calculator_version: '1.0', cta_name: 'request_books_review' })} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-black text-white hover:bg-[#002050]">Request My Books Review <ArrowRight className="h-4 w-4" /></Link><a href="tel:+18326471819" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-primary-dark"><Phone className="h-4 w-4" />Call (832) 647-1819</a></div></div>
             </section>
           ) : null}
         </div>
