@@ -24,6 +24,69 @@ export interface BlogPost {
 
 export const mockBlogPosts: BlogPost[] = [
     {
+        slug: "katy-small-business-monthly-bookkeeping-checklist",
+        title: "Monthly Bookkeeping Checklist for Katy Small Businesses",
+        excerpt: "A practical month-end routine for Katy business owners: collect records, reconcile accounts, resolve open items, and review reports before the next tax conversation.",
+        category: "Accounting",
+        date: "September 30, 2026",
+        updatedAt: "2026-09-30",
+        readTime: "6 min read",
+        featured: true,
+        image: "/hero-accounting-workspace.jpg",
+        imageAlt: "Accounting records and a calculator on a business workspace",
+        author: { name: "IntegraFin Tax & Accounting Team" },
+        keywords: [
+            "Katy small business bookkeeping checklist",
+            "monthly bookkeeping Katy TX",
+            "Fort Bend business records",
+            "month-end bookkeeping checklist",
+        ],
+        faq: [
+            {
+                question: "What should a Katy business owner review each month?",
+                answer: "Collect bank, card, sales, payroll, loan, and payment-processor records that apply to the business; compare them with the books; resolve or document missing items; and review the resulting reports. The exact process depends on the business and its records.",
+            },
+            {
+                question: "What if my bookkeeping is already several months behind?",
+                answer: "Start by listing the periods and accounts that need work, locating statements and available source documents, and identifying the last month you trust. Historical cleanup should be scoped separately from ongoing monthly bookkeeping.",
+            },
+            {
+                question: "Does a bank statement replace receipts and invoices?",
+                answer: "No. A bank or card statement can show that money moved, but supporting documents may be needed to explain the transaction and support entries in the books and tax return. The IRS describes invoices, receipts, sales records, and other documents as part of business recordkeeping.",
+            },
+        ],
+        contentHtml: `
+            <div class="tax-answer-card">
+                <p><strong>Short answer:</strong> A useful monthly bookkeeping routine for a Katy small business starts with gathering source documents, matching bank and card activity to the books, reviewing sales and payroll records, and listing transactions that still need an answer. Finish by reviewing the profit and loss report and balance sheet. The right records depend on your business; do not guess when documentation is missing.</p>
+            </div>
+
+            <p>This checklist is for owners in Katy and nearby Fort Bend communities who want more reliable books before tax preparation, a lender request, or a management decision. It is a practical routine, not a claim that every business needs the same software or chart of accounts. The <a href="https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping">IRS recordkeeping overview</a> explains why records matter and notes that the system should clearly show income and expenses.</p>
+
+            <h2>1. Collect the month's records</h2>
+            <p>Gather statements for business bank and credit-card accounts, sales or invoice reports, payment-processor deposits, bills, receipts, payroll summaries, and loan activity that apply. A Katy contractor may also need job invoices, subcontractor bills, and equipment records. A retailer may need point-of-sale and inventory reports. The IRS says the business affects the records it needs and lists invoices, receipts, deposit slips, and other supporting documents as common examples in its <a href="https://www.irs.gov/businesses/small-businesses-self-employed/what-kind-of-records-should-i-keep">business records guide</a>.</p>
+
+            <h2>2. Compare accounts with the books</h2>
+            <p>Compare each bank and card statement with the accounting file. Look for missing transactions, duplicate imports, transfers counted twice, and older items that have not cleared. Payment processors may deposit a net amount after fees or refunds, so the deposit alone may not explain gross sales. Write down differences that need source documents or an owner's explanation before closing the month.</p>
+
+            <h2>3. Check how activity was recorded</h2>
+            <p>Review uncategorized transactions, owner transfers, loan payments, payroll entries, and purchases of equipment or other assets. Keep supporting documents with enough detail to understand the transaction. A bookkeeper can organize questions and records, but tax treatment and entity-specific decisions may need a separate review.</p>
+
+            <h2>4. Review the reports and open questions</h2>
+            <p>After reconciliations, compare the profit and loss report with what happened in the business that month. Review the balance sheet for old balances, unusual negative amounts, and accounts that no longer make sense. Keep a short open-items list showing the transaction, the missing information, who will answer it, and the date needed. This prevents an unexplained balance from silently rolling into another month.</p>
+
+            <h2>5. Decide whether you need monthly support or cleanup</h2>
+            <p>If the prior month is reliable and the current records are available, a recurring close may fit. If several months are missing or accounts have not been reconciled, start by scoping a cleanup. IntegraFin's <a href="/texas/katy-bookkeeping-services">Katy bookkeeping services page</a> explains recurring work, cleanup, records needed, and the factors that affect scope. The <a href="/bookkeeping-cleanup-calculator">bookkeeping cleanup calculator</a> can help organize an initial estimate; a written quote follows a review of the actual file and records.</p>
+
+            <h2>What should you send first?</h2>
+            <p>For an initial conversation, identify your business type, accounting software, number of accounts, the last month you trust, and the most urgent deadline. Do not send bank credentials, Social Security numbers, tax returns, or sensitive documents through the public contact form. IntegraFin can explain the appropriate records process after the initial request.</p>
+
+            <p><a href="/contact?service=Small%20Business%20Bookkeeping#contact-form">Request monthly bookkeeping support</a> or <a href="/contact?service=Bookkeeping%20Cleanup#contact-form">ask about a cleanup assessment</a>. IntegraFin's Katy office also serves nearby Fort Bend clients through local and remote appointments when the requested work fits the available scope.</p>
+
+            <h2>Sources and review</h2>
+            <p>Reviewed September 30, 2026 by the IntegraFin Tax &amp; Accounting team. Recordkeeping principles: <a href="https://www.irs.gov/businesses/small-businesses-self-employed/recordkeeping">IRS Recordkeeping</a> and <a href="https://www.irs.gov/businesses/small-businesses-self-employed/what-kind-of-records-should-i-keep">IRS What Kind of Records Should I Keep?</a>.</p>
+        `,
+    },
+    {
         slug: "september-15-2026-tax-deadline",
         title: "September 15, 2026 IRS Tax Deadline: What Is Due?",
         excerpt: "See who must file or pay by September 15, 2026, including extended partnerships, S corporations, LLCs, and quarterly estimated-tax payers.",
@@ -31,7 +94,7 @@ export const mockBlogPosts: BlogPost[] = [
         date: "September 10, 2026",
         updatedAt: "2026-09-10",
         readTime: "12 min read",
-        featured: true,
+        featured: false,
         image: "/hero-accounting-workspace.jpg",
         imageAlt: "Business owner reviewing records for the September 15, 2026 IRS tax deadline",
         author: {

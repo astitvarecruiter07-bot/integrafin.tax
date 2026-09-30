@@ -452,7 +452,11 @@ export default function Home() {
               Start with these practical resources on IRS compliance, payroll, tax planning, and startup finance.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <Link href="/blog/katy-small-business-monthly-bookkeeping-checklist" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
+              <h3 className="text-lg font-black text-[#003580] mb-2">Katy Monthly Bookkeeping Checklist</h3>
+              <p className="text-slate-600 text-sm">A month-end routine for local owners who want cleaner records and clearer reports.</p>
+            </Link>
             <Link href="/blog/irs-compliance-guide" className="bg-white border border-slate-200 rounded-2xl p-5 hover:border-[#0092df]/40 hover:shadow-lg transition-all">
               <h3 className="text-lg font-black text-[#003580] mb-2">IRS Compliance Guide</h3>
               <p className="text-slate-600 text-sm">How businesses can stay compliant and avoid filing penalties.</p>

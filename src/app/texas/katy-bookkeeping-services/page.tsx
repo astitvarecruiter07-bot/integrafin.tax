@@ -7,6 +7,7 @@ import {
   localBusinessRef,
 } from "@/lib/seo/schema";
 import { serviceGuideLinks } from "@/data/internalLinking";
+import { getContactHref } from "@/lib/leadServices";
 
 const pageUrl = "https://integrafin.tax/texas/katy-bookkeeping-services";
 const serviceId = `${pageUrl}#service`;
@@ -140,7 +141,7 @@ const bookkeepingScope = {
 
 const reviewDetails = {
   reviewer: "IntegraFin Tax & Accounting team",
-  date: "June 16, 2026",
+  date: "September 30, 2026",
 };
 
 const localSignals = [
@@ -307,14 +308,14 @@ export default function KatyBookkeepingServicesPage() {
             bookkeeping support.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact?service=Bookkeeping%20Cleanup#contact-form" className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
-              Request a cleanup assessment
+            <Link href={getContactHref("Small Business Bookkeeping")} className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
+              Request monthly bookkeeping support
             </Link>
             <a href="tel:+18326471819" className="bg-white/10 text-white border border-white/20 px-7 py-3 rounded-xl font-bold">
               Call (832) 647-1819
             </a>
-            <Link href="/services#business" className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
-              View Business Services
+            <Link href={getContactHref("Bookkeeping Cleanup")} className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
+              Ask about cleanup
             </Link>
           </div>
         </div>
@@ -565,6 +566,9 @@ export default function KatyBookkeepingServicesPage() {
             <Link href="/quickbooks-bookkeeping-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               QuickBooks Cleanup Katy TX
             </Link>
+            <Link href="/blog/katy-small-business-monthly-bookkeeping-checklist" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Monthly Bookkeeping Checklist for Katy Businesses
+            </Link>
             {serviceGuideLinks["katy-bookkeeping-services"].map((guide) => (
               <Link key={guide.href} href={guide.href} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
                 {guide.label}
@@ -573,8 +577,8 @@ export default function KatyBookkeepingServicesPage() {
             <Link href="/tax-calculator" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               1099 and Federal Tax Calculator
             </Link>
-            <Link href="/contact?service=Bookkeeping%20Cleanup#contact-form" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Book A Bookkeeping Consultation
+            <Link href={getContactHref("Small Business Bookkeeping")} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Request Monthly Bookkeeping Support
             </Link>
           </div>
         </article>
@@ -594,8 +598,8 @@ export default function KatyBookkeepingServicesPage() {
             ))}
           </div>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Link href="/contact?service=Bookkeeping%20Cleanup#contact-form" className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
-              Book Bookkeeping Consultation
+            <Link href={getContactHref("Small Business Bookkeeping")} className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
+              Request monthly bookkeeping support
             </Link>
             <a href="tel:+18326471819" className="inline-block bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold text-center">
               Call (832) 647-1819

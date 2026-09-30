@@ -148,14 +148,8 @@ export default function BlogContent({ initialPosts }: BlogContentProps) {
                                     {featuredPost.excerpt}
                                 </p>
                                 <div className="flex items-center gap-4 mb-8">
-                                    <div className="w-12 h-12 rounded-full bg-[#003580]/10 border border-[#0092df]/30 overflow-hidden relative">
-                                        <Image
-                                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb2fbflM3WQEL4GC36HymGmmpKnz0eLSSuOhfZT7BJukCRfj2HGwjZ2B2ETouhXdCFmEZ98XG--me0LLqyFdI5OWs-aHcpj-Zbda3K23VA6C_Ghp64dchUJNgidKs9NaUBKPMTFd9g94YMc5fsvXprfRLxC7z09tTaViju_7TIDftv8VdWBq18qs-r0yW8UpUm55bwQkkDtMqYaElSZ8x0zBQL8lH8XYRBAqtlmYzR7EzO48ty_PZSRNx82Mhi3ZznMulprgIQLC4"
-                                            alt="IntegraFin tax and accounting team"
-                                            fill
-                                            sizes="48px"
-                                            className="object-cover"
-                                        />
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#0092df]/30 bg-[#003580]/10 text-sm font-black text-[#003580]" aria-hidden="true">
+                                        IF
                                     </div>
                                     <div>
                                         <p className="text-[#003580] font-black text-sm">IntegraFin Tax Team</p>
