@@ -52,3 +52,5 @@ scratch/
 *.html
 .local-server.pid
 .local-server.port
+.env*
+!.env.example
