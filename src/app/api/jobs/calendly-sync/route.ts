@@ -1,7 +1,8 @@
 import { revalidatePath } from "next/cache";
-import { NextRequest, NextResponse } from "next/server";
+import { after, NextRequest, NextResponse } from "next/server";
 import { runCalendlyPollingSync } from "@/lib/calendlyPolling";
 import { verifySharedSecret } from "@/lib/calendlyWebhook";
+import { syncStoredLeadToZoho } from "@/lib/zohoLeadSync";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -31,7 +32,15 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const summary = await runCalendlyPollingSync(apiToken);
+    const createdLeadIds: string[] = [];
+    const summary = await runCalendlyPollingSync(apiToken, new Date(), (leadId) => {
+      createdLeadIds.push(leadId);
+    });
+    if (createdLeadIds.length > 0) {
+      after(async () => {
+        await Promise.all(createdLeadIds.map(syncStoredLeadToZoho));
+      });
+    }
     revalidatePath("/admin/leads");
     console.info("Calendly polling sync completed.", summary);
     return NextResponse.json({ synced: true, summary });

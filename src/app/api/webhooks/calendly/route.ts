@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { after, NextRequest, NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import {
   fetchCalendlyScheduledEvent,
@@ -6,6 +6,7 @@ import {
   verifyCalendlyWebhookSignature,
 } from "@/lib/calendlyWebhook";
 import { syncCalendlyLead } from "@/lib/calendlyLeadSync";
+import { syncStoredLeadToZoho } from "@/lib/zohoLeadSync";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -84,6 +85,10 @@ export async function POST(request: NextRequest) {
     }
 
     const result = await syncCalendlyLead(event, scheduledEvent);
+    if (result.outcome === "created" && result.leadId) {
+      const leadId = result.leadId;
+      after(() => syncStoredLeadToZoho(leadId));
+    }
     revalidatePath("/admin/leads");
 
     console.info("Calendly webhook processed.", {

@@ -191,6 +191,7 @@ function incrementOutcome(
 export async function runCalendlyPollingSync(
   apiToken: string,
   referenceTime = new Date(),
+  onLeadCreated?: (leadId: string) => void,
 ): Promise<CalendlyPollingSummary> {
   const userBody = asRecord(
     await fetchCalendlyJson(`${CALENDLY_API_ORIGIN}/users/me`, apiToken),
@@ -274,6 +275,9 @@ export async function runCalendlyPollingSync(
       pollingEvent.scheduledEvent,
     );
     incrementOutcome(summary, result.outcome);
+    if (result.outcome === "created" && result.leadId) {
+      onLeadCreated?.(result.leadId);
+    }
   }
 
   return summary;

@@ -125,6 +125,7 @@ export async function syncCalendlyLead(
       statusUpdatedAt: event.occurredAt,
       notificationStatus: "not_configured",
       confirmationEmailStatus: "not_applicable",
+      zohoSyncStatus: "pending",
       createdAt: event.occurredAt,
     });
 

@@ -16,6 +16,7 @@ import {
 import type { AttributionSnapshots } from "@/lib/attribution";
 import { sendLeadConfirmation, sendNewLeadNotification } from "@/lib/leadNotifications";
 import { getLeadResponseSlaMinutes } from "@/lib/leadSla";
+import { syncStoredLeadToZoho } from "@/lib/zohoLeadSync";
 import dbConnect from "@/lib/mongodb";
 import { checkRateLimit } from "@/lib/rateLimit";
 import ContactLead from "@/models/ContactLead";
@@ -354,6 +355,7 @@ export async function submitBookkeepingCleanupReview(data: CleanupReviewSubmissi
           submittedAt,
         },
         status: "new",
+        zohoSyncStatus: "pending",
         statusUpdatedAt: submittedAt,
         createdAt: submittedAt,
       });
@@ -375,6 +377,7 @@ export async function submitBookkeepingCleanupReview(data: CleanupReviewSubmissi
     }
 
     const leadId = newLead._id.toString();
+    after(() => syncStoredLeadToZoho(leadId));
     after(async () => {
       try {
         const [notificationResult, confirmationResult] = await Promise.all([
