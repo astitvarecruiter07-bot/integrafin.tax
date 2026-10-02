@@ -237,7 +237,15 @@ export default function BookkeepingCleanupCalculatorClient() {
     setSavedLeadId(response.leadId);
     setView('full_plan');
     sessionStorage.removeItem(SESSION_KEY);
-    trackEvent('cleanup_lead_submit', { calculator_version: '1.0' });
+    if (response.created) {
+      trackEvent('cleanup_lead_submit', { calculator_version: '1.0' });
+      trackEvent('generate_lead', {
+        ...baseEventParameters(),
+        service: 'Bookkeeping Cleanup',
+        form_source: 'bookkeeping-cleanup-calculator',
+        calculator_version: '1.0',
+      });
+    }
   }
 
   const question = questions[step];

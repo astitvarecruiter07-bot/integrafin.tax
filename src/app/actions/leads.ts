@@ -370,6 +370,7 @@ export async function submitBookkeepingAssessmentLead(data: BookkeepingAssessmen
     if (existingLead?.bookkeepingAssessment) {
       return {
         success: true as const,
+        created: false as const,
         message: 'Your cleanup action plan is ready.',
         leadId: existingLead._id.toString(),
         result: existingLead.bookkeepingAssessment.result,
@@ -463,7 +464,7 @@ export async function submitBookkeepingAssessmentLead(data: BookkeepingAssessmen
       }
     });
 
-    return { success: true as const, message: 'Your cleanup action plan is ready.', leadId, result };
+    return { success: true as const, created: true as const, message: 'Your cleanup action plan is ready.', leadId, result };
   } catch (error) {
     if (error instanceof z.ZodError) {
       console.warn('Bookkeeping assessment validation failed.', { issueCount: error.issues.length });
