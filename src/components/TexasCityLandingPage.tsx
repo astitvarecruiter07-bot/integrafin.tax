@@ -12,10 +12,21 @@ import {
   localBusinessRef,
 } from "@/lib/seo/schema";
 import { siteConfig } from "@/lib/siteConfig";
+import { getContactHref } from "@/lib/leadServices";
 
 export default function TexasCityLandingPage({ page }: { page: TexasCityLandingData }) {
   const pageUrl = `https://integrafin.tax/texas/${page.slug}`;
   const serviceId = `${pageUrl}#service`;
+  const isHoustonCleanup = page.slug === "houston-bookkeeping-cleanup";
+  const contactHref = isHoustonCleanup ? getContactHref("Bookkeeping Cleanup") : "/contact";
+  const primaryCta = isHoustonCleanup ? "Request a cleanup review" : "Request a Consultation";
+  const guides = isHoustonCleanup
+    ? [
+        { href: "/bookkeeping-cleanup-calculator", label: "Free Cleanup Assessment and Preparation List" },
+        { href: "/blog/katy-small-business-monthly-bookkeeping-checklist", label: "Monthly Bookkeeping Checklist" },
+        { href: "/pricing", label: "Bookkeeping Pricing and Scope" },
+      ]
+    : serviceGuideLinks["texas-city-tax-accountant"];
   const relatedPages = texasCityPages
     .filter(({ slug, city }) => slug !== page.slug && page.nearby.includes(city))
     .slice(0, 6);
@@ -25,7 +36,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
     "@type": "Service",
     "@id": serviceId,
     name: `${page.primaryService} in ${page.city}, TX`,
-    serviceType: "Tax and accounting services",
+    serviceType: isHoustonCleanup ? "Historical bookkeeping cleanup and account reconciliation" : "Tax and accounting services",
     description: page.hero,
     url: pageUrl,
     provider: localBusinessRef,
@@ -65,38 +76,40 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
             Serving {page.city} and {page.county}
           </p>
           <h1 className="text-3xl font-black tracking-tight text-white md:text-5xl">
-            {page.primaryService} in {page.city}, TX
+            {isHoustonCleanup ? "Catch-Up and Cleanup Bookkeeping for Houston Businesses" : `${page.primaryService} in ${page.city}, TX`}
           </h1>
           <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-[#d7e3fc] md:text-lg">
             {page.hero}
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/contact" className="rounded-xl bg-secondary px-7 py-3 font-bold text-primary-dark">
-              Schedule a consultation
+            <Link href={contactHref} className="rounded-xl bg-secondary px-7 py-3 font-bold text-primary-dark">
+              {isHoustonCleanup ? primaryCta : "Schedule a consultation"}
             </Link>
-            <a href="#services" className="rounded-xl border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
-              Explore {page.city} Services
-            </a>
+            {!isHoustonCleanup && (
+              <a href="#services" className="rounded-xl border border-white/25 bg-white/10 px-7 py-3 font-bold text-white">
+                Explore {page.city} Services
+              </a>
+            )}
             <a href={siteConfig.contact.phoneHref} className="rounded-xl border border-white/25 px-7 py-3 font-bold text-white hover:bg-white/10">
               Call {siteConfig.contact.phoneDisplay}
             </a>
           </div>
           <WorkflowPreview
             label={`${page.city.toUpperCase()} SERVICE OVERVIEW`}
-            title="Choose the support that fits your situation"
-            items={focusedServiceLinks.slice(0, 3).map((service) => service.label)}
+            title={isHoustonCleanup ? "From overdue records to a documented handoff" : "Choose the support that fits your situation"}
+            items={isHoustonCleanup ? ["Review periods and statements", "Reconcile the agreed accounts", "Prepare reports and open questions"] : focusedServiceLinks.slice(0, 3).map((service) => service.label)}
           />
           <p className="mx-auto mt-7 max-w-3xl rounded-xl border border-white/15 bg-white/10 p-5 text-left text-sm leading-relaxed text-white md:text-base">
-            <span className="font-black text-secondary">Short answer:</span>{" "}
-            IntegraFin provides {page.primaryService.toLowerCase()} support for {page.city}-area
+            <span className="font-black text-secondary">{page.engagement ? "Your cleanup handoff:" : "Short answer:"}</span>{" "}
+            {page.engagement ? page.engagement.deliverables : <>IntegraFin provides {page.primaryService.toLowerCase()} support for {page.city}-area
             businesses, self-employed professionals, and individuals. Work begins with the relevant
             records, filing history, deadlines, and requested outcome, then moves into a written scope
-            for preparation, bookkeeping, payroll-record, planning, or IRS notice assistance.
+            for preparation, bookkeeping, payroll-record, planning, or IRS notice assistance.</>}
           </p>
         </div>
       </section>
 
-      <section id="services" className="scroll-mt-24 border-b border-slate-200 bg-white">
+      {!isHoustonCleanup && <section id="services" className="scroll-mt-24 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
           <div className="max-w-3xl">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-primary">Choose the support you need</p>
@@ -151,18 +164,18 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
             </div>
           )}
         </div>
-      </section>
-
+      </section>}
       <section id="local-support" className="scroll-mt-24 mx-auto max-w-6xl px-6 py-12 sm:py-16">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="mb-5 text-2xl font-black text-primary sm:text-3xl">
-            Local Tax and Accounting Support in {page.city}
+            {isHoustonCleanup ? "When do Houston businesses need bookkeeping cleanup?" : `Local Tax and Accounting Support in ${page.city}`}
           </h2>
           <div className="space-y-5 text-slate-700 leading-relaxed">
             {page.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
           <p className="mt-6 text-sm font-semibold text-slate-500">
-            City content last reviewed: {page.lastReviewed ?? "June 22, 2026"} · AEO template updated: July 29, 2026
+            {isHoustonCleanup ? "Page updated:" : "City content last reviewed:"} {page.lastReviewed ?? "June 22, 2026"}
+            {!isHoustonCleanup && " · AEO template updated: July 29, 2026"}
           </p>
         </article>
       </section>
@@ -172,17 +185,17 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
           <article className="rounded-2xl border border-emerald-200 bg-emerald-50 p-7">
             <h2 className="text-2xl font-black text-primary">What may be included</h2>
             <ul className="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
-              <li>• Initial review of relevant returns, books, payroll reports, notices, records, and deadlines</li>
+              {page.engagement ? page.engagement.included.map((item) => <li key={item}>• {item}</li>) : <><li>• Initial review of relevant returns, books, payroll reports, notices, records, and deadlines</li>
               <li>• A written scope for the selected tax, bookkeeping, accounting, payroll-record, or notice workflow</li>
-              <li>• Document requests, preparation steps, client review, and next-step notes for the agreed deliverables</li>
+              <li>• Document requests, preparation steps, client review, and next-step notes for the agreed deliverables</li></>}
             </ul>
           </article>
           <article className="rounded-2xl border border-amber-200 bg-amber-50 p-7">
             <h2 className="text-2xl font-black text-primary">What requires a separate scope</h2>
             <ul className="mt-5 space-y-3 text-sm leading-relaxed text-slate-700">
-              <li>• Bookkeeping cleanup, amended returns, payroll corrections, notice work, and representation not listed in the engagement</li>
+              {page.engagement ? page.engagement.separate.map((item) => <li key={item}>• {item}</li>) : <><li>• Bookkeeping cleanup, amended returns, payroll corrections, notice work, and representation not listed in the engagement</li>
               <li>• Legal advice, legal entity documents, audits, reviews, attestations, valuations, or assurance services</li>
-              <li>• Work for additional entities, owners, states, periods, or agencies discovered after intake</li>
+              <li>• Work for additional entities, owners, states, periods, or agencies discovered after intake</li></>}
             </ul>
           </article>
         </div>
@@ -191,17 +204,17 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
       <section id="timing-pricing-limitations" className="scroll-mt-24 mx-auto max-w-6xl px-6 pb-10">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="text-2xl font-black text-primary sm:text-3xl">
-            Timing, pricing factors, and important limitations
+            {isHoustonCleanup ? "What affects cleanup cost and completion time?" : "Timing, pricing factors, and important limitations"}
           </h2>
           <div className="mt-7 grid gap-5 lg:grid-cols-3">
             {[
               [
                 "Important timing",
-                "Start before the applicable filing, payment, notice, payroll, or document deadline. Extensions, payments, returns, and agency responses may have different due dates.",
+                page.engagement?.timing ?? "Start before the applicable filing, payment, notice, payroll, or document deadline. Extensions, payments, returns, and agency responses may have different due dates.",
               ],
               [
                 "Pricing factors",
-                "Fees depend on the entities, periods, states, transaction volume, record condition, forms, notices, cleanup needs, deadlines, and deliverables included in writing.",
+                page.engagement?.pricing ?? "Fees depend on the entities, periods, states, transaction volume, record condition, forms, notices, cleanup needs, deadlines, and deliverables included in writing.",
               ],
               [
                 "What IntegraFin cannot promise",
@@ -420,7 +433,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
             Use these practical guides alongside the dedicated service pages above to prepare for a local consultation.
           </p>
           <div className="mt-6 grid gap-3 md:grid-cols-3">
-            {serviceGuideLinks["texas-city-tax-accountant"].map((guide) => (
+            {guides.map((guide) => (
               <Link key={guide.href} href={guide.href} className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-4 font-bold text-primary hover:border-secondary hover:bg-white">
                 {guide.label}
               </Link>
@@ -445,12 +458,15 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
           <div className="mt-9 rounded-2xl bg-slate-50 p-6 text-center">
             <h2 className="text-2xl font-black text-primary-dark">Schedule a Consultation in {page.city}</h2>
             <p className="mx-auto mt-3 max-w-3xl text-slate-700">
-              Tell us whether you need tax preparation, bookkeeping, business accounting or notice help. We will identify
-              the records and next step before asking you to commit to a broader scope.
+              {isHoustonCleanup
+                ? "Tell us how many months are behind, which accounting system you use, and your deadline. We will identify the records needed to scope the cleanup. The free assessment can help you prepare; it is not a quote."
+                : "Tell us whether you need tax preparation, bookkeeping, business accounting or notice help. We will identify the records and next step before asking you to commit to a broader scope."}
             </p>
             <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/contact" className="rounded-xl bg-primary px-7 py-3 font-bold text-white">Request a Consultation</Link>
-              <Link href="/services" className="rounded-xl border border-slate-300 bg-white px-7 py-3 font-bold text-primary">Review All Services</Link>
+              <Link href={contactHref} className="rounded-xl bg-primary px-7 py-3 font-bold text-white">{primaryCta}</Link>
+              {isHoustonCleanup
+                ? <a href={siteConfig.contact.phoneHref} className="rounded-xl border border-slate-300 bg-white px-7 py-3 font-bold text-primary">Call {siteConfig.contact.phoneDisplay}</a>
+                : <Link href="/services" className="rounded-xl border border-slate-300 bg-white px-7 py-3 font-bold text-primary">Review All Services</Link>}
             </div>
           </div>
         </article>

@@ -19,6 +19,13 @@ export type TexasCityLandingData = {
   title: string;
   description: string;
   hero: string;
+  engagement?: {
+    included: string[];
+    separate: string[];
+    pricing: string;
+    timing: string;
+    deliverables: string;
+  };
   intro: string[];
   localExpertise: string[];
   industries: string[];
@@ -1359,7 +1366,22 @@ export const texasCityPages: TexasCityLandingData[] = [
     description:
       "Houston bookkeeping cleanup for behind or unreliable books. Get reconciliations, transaction review, balance-sheet cleanup, and tax-ready record support.",
     hero:
-      "Bookkeeping cleanup for Houston businesses that need behind accounts reconciled, unsupported balances investigated, open questions documented, and records organized for tax or ongoing monthly work.",
+      "IntegraFin helps Houston small businesses catch up overdue books, reconcile accounts, and investigate unclear balances. We serve you remotely from our Katy office and agree on the periods, records, and reports before work begins. Request a cleanup review to discuss what is behind, what documents you have, and when you need the work.",
+    engagement: {
+      included: [
+        "Review of the agreed historical periods, accounting file, statements, and missing records",
+        "Catch-up transactions, account reconciliations, and supported corrections within the written scope",
+        "Agreed profit and loss and balance sheet reports, reconciliation records, and an unresolved-item list",
+      ],
+      separate: [
+        "Tax returns, payroll filings, notice response, software migration, or recurring monthly bookkeeping unless included in writing",
+        "Additional entities, accounts, or periods outside the agreed cleanup project",
+        "Audits, assurance, legal advice, or reconstruction where supporting records are unavailable",
+      ],
+      pricing: "Cleanup fees depend on months behind, transaction volume, account count, and the condition of your reconciliations and opening balances. Payroll, loans, inventory, and multiple payment processors can add work. We review these details before confirming a quote and distinguish one-time cleanup from recurring monthly fees.",
+      timing: "Tell us your deadline and the last fully reconciled month. We confirm a realistic sequence after reviewing the file and available statements. Missing records and unanswered questions can change timing; tax preparation is a separate service unless agreed together.",
+      deliverables: "Your handoff identifies the periods and accounts addressed, agreed financial reports, and any unresolved items needing your input. For example, a bank deposit without supporting sales records stays on the questions list until it can be explained. We can then discuss an ongoing monthly process.",
+    },
     intro: [
       "Bookkeeping can fall behind after rapid growth, a staff or provider change, software migration, new payment channels, mixed owner transactions or months without completed reconciliations. The accounting file may contain data, but that does not mean the bank, card, loan, payroll, merchant and balance-sheet accounts agree with the source records.",
       "IntegraFin provides bookkeeping cleanup to Houston businesses remotely from our Katy office. We do not claim a Houston cleanup office or a second Houston location. The first review identifies the entity, periods, accounts, transaction volume, filing deadline, available statements and known problems before the project scope and sequence are confirmed.",
@@ -1409,7 +1431,7 @@ export const texasCityPages: TexasCityLandingData[] = [
       },
     ],
     scenarios: [
-      "A Houston company has a full year of downloaded bank-feed activity but no completed reconciliations and unreliable opening balances.",
+      "Illustrative example: a Houston contractor is six months behind with a bank account, a business card, and subcontractor payments. The proposed cleanup starts with statements and opening balances, then reconciles each agreed month and records missing receipts or owner questions. The handoff includes agreed reports and unresolved items; neither a completion date nor a tax outcome is assumed before review.",
       "A restaurant or retailer's processor deposits, refunds, fees and sales-tax records do not match the revenue recorded in the books.",
       "A contractor has mixed owner, vehicle, material, payroll and subcontractor activity that must be reviewed before business-tax preparation.",
       "A business changes bookkeepers or accounting platforms and needs historical balances and prior-period activity assessed before monthly work resumes.",
@@ -1455,8 +1477,13 @@ export const texasCityPages: TexasCityLandingData[] = [
     ],
     serviceAreaNote:
       "IntegraFin serves Houston bookkeeping-cleanup clients remotely from its Katy office. We do not list or represent a separate Houston office. In-person meetings can be scheduled at 2039 N Mason Rd, Suite 604, Katy, TX 77449 by appointment.",
-    lastReviewed: "August 1, 2026",
+    lastReviewed: "October 2, 2026",
     faq: [
+      {
+        question: "How much does bookkeeping cleanup in Houston cost?",
+        answer:
+          "The quote depends on months behind, transaction volume, account count, payroll and payment systems, and record condition. We review your file and documents before confirming fees. The free cleanup assessment gives a preliminary complexity score and preparation list, not a price quote. Ongoing bookkeeping and tax preparation are separate unless included in writing.",
+      },
       {
         question: "What is included in bookkeeping cleanup for a Houston business?",
         answer:

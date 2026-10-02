@@ -198,7 +198,7 @@ export const serviceAeoDetails: Record<ServiceLandingPageSlug, ServiceAeoDetails
     included: [
       "QuickBooks chart, feed, rules, opening-balance, user, transaction, and report review",
       "Agreed setup, cleanup, categorization, reconciliation, and open-item documentation",
-      "Monthly reports and tax-preparation handoff based on the maintained file",
+      "Agreed profit and loss, balance sheet, and reconciliation reports, with unresolved items documented for your review",
     ],
     notIncluded: [
       "Independent audit, review, attestation, fraud examination, or assurance over the file",
@@ -220,7 +220,7 @@ export const serviceAeoDetails: Record<ServiceLandingPageSlug, ServiceAeoDetails
       "Results depend on source documents, owner responses, file access, and the agreed cleanup or monthly scope.",
     ],
     published: "June 30, 2026",
-    lastReviewed: "July 29, 2026",
+    lastReviewed: "October 2, 2026",
   },
   "contractor-bookkeeping-services": {
     whoThisAppliesTo:

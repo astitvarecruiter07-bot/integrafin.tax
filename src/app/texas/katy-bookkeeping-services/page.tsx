@@ -11,16 +11,17 @@ import { getContactHref } from "@/lib/leadServices";
 
 const pageUrl = "https://integrafin.tax/texas/katy-bookkeeping-services";
 const serviceId = `${pageUrl}#service`;
+const contactHref = getContactHref("Small Business Bookkeeping");
 
 export const metadata: Metadata = {
-  title: "Bookkeeping Services Katy TX | Small Business | IntegraFin",
+  title: "Bookkeeping Services in Katy, TX | IntegraFin",
   description:
     "Need bookkeeping services in Katy, TX? IntegraFin helps with monthly bookkeeping, cleanup, reconciliations, and tax-ready reports. Book a consultation.",
   alternates: { canonical: pageUrl },
   robots: { index: true, follow: true },
   openGraph: {
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "IntegraFin Tax & Accounting" }],
-    title: "Bookkeeping Services Katy TX | Small Business | IntegraFin",
+    title: "Bookkeeping Services in Katy, TX | IntegraFin",
     description:
       "Katy bookkeeping services for small businesses that need monthly support, cleanup, reconciliations, and tax-ready reports.",
     url: pageUrl,
@@ -63,9 +64,9 @@ const cleanupSteps = [
 
 const commonScenarios = [
   {
-    title: "Books are behind before tax filing",
+    title: "A service business needs a reliable monthly close",
     description:
-      "A Katy business owner has bank statements, receipts, and sales deposits, but the accounting file is not reconciled and the tax return cannot move forward confidently.",
+      "Illustrative example: a Katy service business collects payments through its bank and a card processor. We compare deposits with gross sales and fees, reconcile the agreed accounts, and prepare a profit and loss report, balance sheet, and list of open questions. Missing receipts remain on that list until the owner supplies support.",
   },
   {
     title: "Owner draws and personal expenses are mixed",
@@ -97,7 +98,7 @@ const whyChoose = [
   "Katy-based tax and accounting support with one workflow for books, filing records, payroll details, and IRS notice preparation",
   "Plain-English cleanup priorities so you know what is missing, what can be fixed, and what should be handled before tax season",
   "Monthly bookkeeping rhythm that supports better decisions instead of once-a-year record scrambling",
-  "Local Fort Bend County service coverage without claiming fake offices in nearby cities",
+  "Katy office appointments and remote bookkeeping support across Fort Bend County",
   "Direct connection between bookkeeping, tax preparation, tax planning, and business advisory conversations",
 ];
 
@@ -114,9 +115,9 @@ const recordsChecklist = [
 
 const bookkeepingScope = {
   included: [
-    "Agreed monthly transaction review, account reconciliation, and financial-report preparation",
+    "Reconciliation of the bank, credit-card, and other accounts included in your monthly scope",
     "Missing-record and open-question lists for the owner before the monthly close",
-    "Bookkeeping reports organized for tax preparation, planning, lending, or notice review",
+    "An agreed monthly report package, such as a profit and loss report, balance sheet, and notes on unresolved items",
   ],
   separate: [
     "Historical cleanup, QuickBooks repair, tax returns, payroll filings, or IRS notice response unless included in writing",
@@ -141,7 +142,7 @@ const bookkeepingScope = {
 
 const reviewDetails = {
   reviewer: "IntegraFin Tax & Accounting team",
-  date: "September 30, 2026",
+  date: "October 2, 2026",
 };
 
 const localSignals = [
@@ -187,6 +188,11 @@ const irsResources = [
 ];
 
 const faqItems = [
+  {
+    question: "How much does monthly bookkeeping in Katy cost?",
+    answer:
+      "Your quote depends on transaction volume, the accounts and entities involved, payroll or payment systems, and the condition of your records. Historical cleanup is scoped separately from ongoing monthly work. Tell us which accounts you use and when they were last reconciled so we can define the work before confirming a fee.",
+  },
   {
     question: "Do you provide monthly bookkeeping services in Katy, TX?",
     answer:
@@ -261,7 +267,7 @@ const breadcrumbSchema = buildBreadcrumbSchema(pageUrl, [
 
 const webPageSchema = buildWebPageSchema({
   url: pageUrl,
-  name: "Bookkeeping Services Katy TX | Small Business | IntegraFin",
+  name: "Bookkeeping Services in Katy, TX | IntegraFin",
   description:
     "Need bookkeeping services in Katy, TX? IntegraFin helps with monthly bookkeeping, cleanup, reconciliations, and tax-ready reports.",
   mainEntityId: serviceId,
@@ -293,30 +299,25 @@ export default function KatyBookkeepingServicesPage() {
             Katy Small Business Bookkeeping
           </p>
           <h1 className="text-3xl md:text-5xl font-black text-white tracking-tight">
-            Bookkeeping Services in Katy, TX
+            Bookkeeping Services for Katy Small Businesses
           </h1>
           <p className="text-white mt-6 max-w-3xl mx-auto rounded-xl border border-white/15 bg-white/10 p-5 text-left text-base md:text-lg leading-relaxed">
-            <span className="font-black text-secondary">Short answer:</span>{" "}
-            Bookkeeping services in Katy, TX should make business records easier to trust.
-            IntegraFin organizes income and expenses, reconciles accounts, prepares useful reports,
-            identifies missing records, and keeps books ready for tax preparation, planning, lending
-            questions, and IRS notice review.
+            IntegraFin provides monthly bookkeeping for small businesses in Katy and Fort Bend County.
+            We reconcile the agreed accounts, organize income and expenses, and prepare financial
+            reports with a list of missing records or open questions. Tell us about your accounts
+            and current books to request a consultation and a written scope.
           </p>
           <p className="text-[#d7e3fc] mt-5 max-w-3xl mx-auto text-base md:text-lg">
-            IntegraFin helps Katy and Fort Bend County businesses clean up old books, reconcile
-            accounts, organize records, and keep reports tax-ready through practical monthly
-            bookkeeping support.
+            Local appointments at our Katy office and remote support are available.
+            If your books are behind, we can discuss a separate cleanup project before monthly work begins.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href={getContactHref("Small Business Bookkeeping")} className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
-              Request monthly bookkeeping support
+            <Link href={contactHref} className="bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold">
+              Request monthly bookkeeping
             </Link>
             <a href="tel:+18326471819" className="bg-white/10 text-white border border-white/20 px-7 py-3 rounded-xl font-bold">
               Call (832) 647-1819
             </a>
-            <Link href={getContactHref("Bookkeeping Cleanup")} className="bg-white text-primary-dark px-7 py-3 rounded-xl font-bold">
-              Ask about cleanup
-            </Link>
           </div>
         </div>
       </section>
@@ -352,8 +353,14 @@ export default function KatyBookkeepingServicesPage() {
       <section className="max-w-6xl mx-auto px-6 pb-10">
         <article className="rounded-2xl border border-slate-100 bg-white p-7 shadow-sm sm:p-10">
           <h2 className="text-2xl font-black text-primary sm:text-3xl">
-            Timing, pricing factors, and limitations
+            What affects bookkeeping cost and timing?
           </h2>
+          <p className="mt-4 leading-relaxed text-slate-700">
+            We confirm the fee after reviewing your accounts, transaction volume, and reporting needs.
+            A current file with a few accounts needs a different scope from one with overdue
+            reconciliations, payroll, and several payment systems. Historical cleanup and ongoing
+            monthly work are identified separately in your proposal.
+          </p>
           <div className="mt-7 grid gap-5 lg:grid-cols-3">
             {[
               ["Important timing", bookkeepingScope.timing],
@@ -369,9 +376,7 @@ export default function KatyBookkeepingServicesPage() {
             ))}
           </div>
           <p className="mt-6 text-sm leading-relaxed text-slate-600">
-            Content owner: {reviewDetails.reviewer}. Last substantive review: {reviewDetails.date}.
-            A named professional reviewer will be published only after identity, role, and
-            qualifications are verified.
+            Content owner: {reviewDetails.reviewer}. Page updated: {reviewDetails.date}.
           </p>
         </article>
       </section>
@@ -429,8 +434,8 @@ export default function KatyBookkeepingServicesPage() {
             Common Katy Bookkeeping Scenarios
           </h2>
           <p className="text-slate-700 mb-5 leading-relaxed">
-            These are the situations where a focused bookkeeping cleanup or monthly bookkeeping
-            rhythm can make the next tax conversation much clearer.
+            These illustrative situations explain how the work may be scoped. They are not client
+            testimonials or promises of a particular result.
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {commonScenarios.map((scenario) => (
@@ -566,9 +571,6 @@ export default function KatyBookkeepingServicesPage() {
             <Link href="/quickbooks-bookkeeping-services" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               QuickBooks Cleanup Katy TX
             </Link>
-            <Link href="/blog/katy-small-business-monthly-bookkeeping-checklist" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Monthly Bookkeeping Checklist for Katy Businesses
-            </Link>
             {serviceGuideLinks["katy-bookkeeping-services"].map((guide) => (
               <Link key={guide.href} href={guide.href} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
                 {guide.label}
@@ -577,8 +579,14 @@ export default function KatyBookkeepingServicesPage() {
             <Link href="/tax-calculator" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               1099 and Federal Tax Calculator
             </Link>
-            <Link href={getContactHref("Small Business Bookkeeping")} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Request Monthly Bookkeeping Support
+            <Link href="/bookkeeping-cleanup-calculator" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Free Cleanup Assessment and Preparation List
+            </Link>
+            <Link href="/blog/katy-small-business-monthly-bookkeeping-checklist" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Monthly Bookkeeping Checklist for Katy Businesses
+            </Link>
+            <Link href={contactHref} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
+              Request Monthly Bookkeeping
             </Link>
           </div>
         </article>
@@ -598,8 +606,8 @@ export default function KatyBookkeepingServicesPage() {
             ))}
           </div>
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <Link href={getContactHref("Small Business Bookkeeping")} className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
-              Request monthly bookkeeping support
+            <Link href={contactHref} className="inline-block bg-primary text-white px-7 py-3 rounded-xl font-bold text-center">
+              Request monthly bookkeeping
             </Link>
             <a href="tel:+18326471819" className="inline-block bg-secondary text-primary-dark px-7 py-3 rounded-xl font-bold text-center">
               Call (832) 647-1819

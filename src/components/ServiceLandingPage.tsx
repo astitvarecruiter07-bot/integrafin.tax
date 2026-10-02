@@ -132,12 +132,14 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
                 <Phone className="h-4 w-4" />
                 {data.secondaryCta}
               </a>
-              <Link href={data.hubHref} className="inline-flex items-center justify-center rounded-lg bg-white px-7 py-3 font-bold text-primary-dark">
-                {data.hubLabel}
-              </Link>
+              {data.slug !== "quickbooks-bookkeeping-services" && (
+                <Link href={data.hubHref} className="inline-flex items-center justify-center rounded-lg bg-white px-7 py-3 font-bold text-primary-dark">
+                  {data.hubLabel}
+                </Link>
+              )}
             </div>
             <p className="mt-7 max-w-3xl rounded-lg border border-white/15 bg-white/10 p-5 text-sm leading-relaxed text-white sm:text-base">
-              <span className="font-black text-secondary">Short answer:</span>{" "}
+              <span className="font-black text-secondary">{data.slug === "quickbooks-bookkeeping-services" ? "Your deliverables:" : "Short answer:"}</span>{" "}
               {data.quickAnswer}
             </p>
             <ul className="mt-5 grid gap-3 text-sm font-semibold text-white sm:grid-cols-3">
@@ -183,7 +185,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
             <h2 className="text-2xl font-black text-primary sm:text-3xl">Who this applies to</h2>
             <p className="mt-4 leading-relaxed text-slate-700">{aeo.whoThisAppliesTo}</p>
             <p className="mt-5 text-sm font-semibold text-slate-500">
-              Published: {aeo.published} · Last substantive review: {aeo.lastReviewed}
+              Published: {aeo.published} · {data.slug === "quickbooks-bookkeeping-services" ? "Page updated" : "Last substantive review"}: {aeo.lastReviewed}
             </p>
           </article>
           <div className="grid gap-4 sm:grid-cols-3">
@@ -217,6 +219,7 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
       <section id="common-situations" className="scroll-mt-24 mx-auto grid max-w-7xl gap-8 px-6 py-12 sm:py-16 lg:grid-cols-2">
         <div>
           <h2 className="text-2xl font-black text-primary sm:text-3xl">{data.situationsTitle}</h2>
+          {data.situationsIntro && <p className="mt-3 leading-relaxed text-slate-700">{data.situationsIntro}</p>}
           <div className="mt-6 grid gap-4">
             {data.situations.map((situation) => (
               <article key={situation.title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
@@ -336,8 +339,10 @@ export default function ServiceLandingPage({ data }: { data: ServiceLandingPageD
         <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-5 text-sm leading-relaxed text-slate-600">
           <p>
             <span className="font-black text-primary-dark">Content owner:</span>{" "}
-            IntegraFin Tax &amp; Accounting. A named professional reviewer will be added only
-            after the reviewer&apos;s identity, role, and publishable qualifications are verified.
+            IntegraFin Tax &amp; Accounting.
+            {data.slug !== "quickbooks-bookkeeping-services" && (
+              <> A named professional reviewer will be added only after the reviewer&apos;s identity, role, and publishable qualifications are verified.</>
+            )}
           </p>
         </div>
       </section>

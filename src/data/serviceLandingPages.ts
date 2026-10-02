@@ -48,6 +48,7 @@ export type ServiceLandingPageData = {
   processDescription: string;
   processSteps: TextBlock[];
   situationsTitle: string;
+  situationsIntro?: string;
   situations: TextBlock[];
   checklistTitle: string;
   checklistIntro: string;
@@ -971,8 +972,8 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
   "quickbooks-bookkeeping-services": {
     slug: "quickbooks-bookkeeping-services",
     url: `${baseUrl}/quickbooks-bookkeeping-services`,
-    lastModified: "2026-07-29",
-    metaTitle: "QuickBooks Cleanup Katy TX | Bookkeeping | IntegraFin",
+    lastModified: "2026-10-02",
+    metaTitle: "QuickBooks Cleanup & Bookkeeping Katy | IntegraFin",
     metaDescription:
       "QuickBooks cleanup in Katy, TX for setup errors, duplicates, unreconciled accounts, bank feeds, monthly books, and tax-ready reporting. Talk to IntegraFin.",
     name: "QuickBooks Cleanup and Bookkeeping in Katy, TX",
@@ -982,7 +983,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     eyebrow: "QuickBooks Cleanup Katy TX",
     heroTitle: "QuickBooks cleanup and bookkeeping for Katy businesses",
     heroDescription:
-      "IntegraFin helps business owners set up, clean up, reconcile, and maintain QuickBooks files so reports are easier to review before tax season.",
+      "IntegraFin helps Katy business owners resolve duplicate transactions, unreconciled accounts, and unclear balances in QuickBooks. We review the file against your statements, agree on the periods and accounts to address, and prepare reports with open questions documented. Request QuickBooks support to discuss your file, deadline, and the records available for review.",
     heroBullets: [
       "QuickBooks setup, cleanup, and monthly bookkeeping",
       "Bank, card, payroll, loan, and merchant reconciliation",
@@ -992,9 +993,9 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     secondaryCta: "Call (832) 647-1819",
     hubHref: "/services#business",
     hubLabel: "View Business Services Hub",
-    quickAnswerTitle: "Quick Answer: QuickBooks Bookkeeping",
+    quickAnswerTitle: "What will you receive after QuickBooks cleanup?",
     quickAnswer:
-      "QuickBooks bookkeeping works best when the chart of accounts, bank feeds, rules, reconciliations, payroll records, owner activity, and reports are reviewed regularly. IntegraFin helps make the file useful for tax preparation, planning, and management decisions.",
+      "Your written scope identifies the accounts and periods to reconcile, corrections to investigate, and reports to prepare. The handoff can include a profit and loss report, balance sheet, reconciliation reports, and a list of unresolved items. Historical cleanup, ongoing monthly bookkeeping, and tax preparation are priced and agreed separately unless combined in your engagement.",
     highlights: [
       {
         title: "QuickBooks setup",
@@ -1038,6 +1039,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
       },
     ],
     situationsTitle: "Common QuickBooks Situations",
+    situationsIntro: "These illustrative examples describe possible work, not client testimonials or promised results. Your file and source records determine the scope.",
     situations: [
       {
         title: "New QuickBooks setup",
@@ -1047,7 +1049,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
       {
         title: "Bank feeds created a mess",
         description:
-          "Rules, duplicates, transfers, and uncategorized activity made the file harder to trust.",
+          "Illustrative example: a Katy contractor imports bank activity after manually recording deposits. We compare the deposits with invoices and statements, investigate duplicates, and reconcile the agreed period. The handoff identifies supported corrections and any receipts or owner explanations still needed; downloaded transactions alone do not prove the books are complete.",
       },
       {
         title: "Reports do not match statements",
@@ -1106,6 +1108,8 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     ],
     helpfulLinks: [
       contactLink,
+      { href: "/bookkeeping-cleanup-calculator", label: "Free Cleanup Assessment and Preparation List" },
+      { href: "/blog/katy-small-business-monthly-bookkeeping-checklist", label: "Monthly Bookkeeping Checklist for Katy Businesses" },
       { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
       { href: "/business-tax-accounting", label: "Business Tax & Accounting" },
@@ -1113,6 +1117,11 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
       { href: "/llc-formation-tax-setup", label: "LLC Formation Tax Setup" },
     ],
     faqs: [
+      {
+        question: "What affects the cost of QuickBooks cleanup in Katy?",
+        answer:
+          "The quote depends on months behind, transaction volume, account count, the QuickBooks product, connected systems, and the condition of reconciliations and opening balances. Missing records, payroll, inventory, migrations, and tax work can require additional scope. We review these factors before confirming fees; the free cleanup assessment is not a price quote.",
+      },
       {
         question: "Can you clean up a QuickBooks file before tax filing?",
         answer:
