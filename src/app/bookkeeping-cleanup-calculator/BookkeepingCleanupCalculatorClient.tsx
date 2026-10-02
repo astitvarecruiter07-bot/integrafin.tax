@@ -358,7 +358,11 @@ export default function BookkeepingCleanupCalculatorClient() {
                   <h3 className="mt-8 text-sm font-black uppercase tracking-wide text-[#0047AB]">Questions to prepare for a review</h3><ul className="mt-3 space-y-2 text-sm leading-6 text-slate-700"><li>What is the last month you trust as fully reconciled?</li><li>Which deadline or report matters first?</li><li>Are all statements and system logins available to the authorized owner?</li></ul>
                 </div>
               </div>
-              <div className="border-t border-slate-200 bg-slate-50 p-6 sm:p-8"><p className="text-sm leading-6 text-slate-600">{requiredDisclaimer}</p><div className="mt-5 flex flex-col gap-3 sm:flex-row"><Link href="/contact" onClick={() => trackEvent('cleanup_consultation_click', { calculator_version: '1.0', cta_name: 'request_books_review' })} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-black text-white hover:bg-[#002050]">Request My Books Review <ArrowRight className="h-4 w-4" /></Link><a href="tel:+18326471819" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-primary-dark"><Phone className="h-4 w-4" />Call (832) 647-1819</a></div></div>
+              <div className="border-t border-slate-200 bg-slate-50 p-6 sm:p-8">
+                <p className="text-sm leading-6 text-slate-600">{requiredDisclaimer}</p>
+                <p className="mt-5 text-sm leading-6 text-slate-700">Your request is already in our team&apos;s queue. You do not need to submit another form. If your deadline is urgent, call us and quote the reference above.</p>
+                <a href="tel:+18326471819" onClick={() => trackEvent('cleanup_consultation_click', { calculator_version: '1.0', cta_name: 'call_about_saved_plan' })} className="mt-5 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-primary-dark px-6 py-3 text-sm font-black text-white hover:bg-[#002050]"><Phone className="h-4 w-4" />Call (832) 647-1819</a>
+              </div>
             </section>
           ) : null}
         </div>
