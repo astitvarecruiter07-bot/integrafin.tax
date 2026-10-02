@@ -172,6 +172,7 @@ const statusOptions: Array<{ value: LeadStatus; label: string }> = [
   { value: 'client_lost', label: 'Client lost' },
   { value: 'spam', label: 'Spam' },
   { value: 'duplicate', label: 'Duplicate' },
+  { value: 'test', label: 'Test' },
 ];
 
 const callOutcomeOptions: Array<{ value: CallOutcome; label: string }> = [
@@ -213,6 +214,7 @@ const statusStyles: Record<LeadStatus | 'completed', string> = {
   client_lost: 'border-rose-200 bg-rose-50 text-rose-700',
   spam: 'border-slate-200 bg-slate-100 text-slate-600',
   duplicate: 'border-slate-200 bg-slate-100 text-slate-600',
+  test: 'border-slate-200 bg-slate-100 text-slate-600',
   completed: 'border-emerald-200 bg-emerald-50 text-emerald-700',
 };
 
@@ -695,7 +697,7 @@ export default function LeadOperationsDashboard({
   }
 
   const summaryCards = [
-    { label: 'Total leads', value: metrics.total, detail: `${metrics.newCount} new`, icon: Users },
+    { label: 'Business leads', value: metrics.total, detail: `${metrics.newCount} new`, icon: Users },
     { label: 'Qualified', value: metrics.qualifiedCount, detail: `${metrics.appointmentCount} appointments`, icon: UserCheck },
     { label: 'Won clients', value: metrics.clientWonCount, detail: formatMoney(metrics.wonRevenue), icon: CheckCircle2 },
     { label: 'Open pipeline', value: formatMoney(metrics.estimatedValue), detail: 'Estimated value', icon: BadgeDollarSign },

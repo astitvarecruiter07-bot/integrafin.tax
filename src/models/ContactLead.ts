@@ -36,6 +36,7 @@ export const LEAD_STATUSES = [
   'client_lost',
   'spam',
   'duplicate',
+  'test',
 ] as const;
 
 export const CALL_OUTCOMES = [

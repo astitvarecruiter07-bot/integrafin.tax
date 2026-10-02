@@ -178,6 +178,10 @@ function salesLeadFilter() {
   };
 }
 
+function businessLeadFilter() {
+  return { ...salesLeadFilter(), status: { $ne: 'test' as const } };
+}
+
 function isDuplicateKeyError(error: unknown) {
   return Boolean(
     error
@@ -788,11 +792,11 @@ export async function getLeadMetrics() {
     const overdueBefore = new Date(Date.now() - getLeadResponseSlaMinutes() * 60_000);
     const [statusCounts, valueTotals, overdueNewCount, overdueFollowUpCount] = await Promise.all([
       ContactLead.aggregate<{ _id: string; count: number }>([
-        { $match: salesLeadFilter() },
+        { $match: businessLeadFilter() },
         { $group: { _id: '$status', count: { $sum: 1 } } },
       ]),
       ContactLead.aggregate<{ _id: null; openPipelineValue: number; wonRevenue: number }>([
-        { $match: salesLeadFilter() },
+        { $match: businessLeadFilter() },
         {
           $group: {
             _id: null,
