@@ -26,6 +26,8 @@ import {
 import { serializeJsonLd } from "@/lib/seo/jsonLd";
 import { sanitizeHtml } from "@/utils/seo";
 import { getBlogIntentLinks } from "@/data/internalLinking";
+import PrintChecklistButton from "@/components/PrintChecklistButton";
+import checklistStyles from "./checklist.module.css";
 
 function formatDisplayDate(value: string) {
   return new Intl.DateTimeFormat("en-US", {
@@ -97,6 +99,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const isChecklist = slug === "katy-small-business-monthly-bookkeeping-checklist";
   const post = (await getDbBlogPostBySlug(slug)) || getMockBlogPostBySlug(slug);
 
   if (!post) {
@@ -141,11 +144,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <article className="saas-page bg-slate-50">
+      <article className={`saas-page bg-slate-50 ${isChecklist ? checklistStyles.article : ""}`}>
         <section className="relative overflow-hidden bg-primary-dark pt-28 pb-12 sm:pt-36 sm:pb-16">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(#0092df 0.5px, transparent 0.5px)", backgroundSize: "30px 30px" }} />
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="mb-8 flex flex-wrap items-center gap-2 text-sm text-slate-300">
+            <div className="print-hide mb-8 flex flex-wrap items-center gap-2 text-sm text-slate-300">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
               <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
@@ -175,11 +178,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="mt-7 flex flex-wrap gap-3 text-sm text-slate-300">
                   <span>By {authorName}</span>
                   <span>&bull;</span>
-                  <span>Last reviewed: {displayModifiedDate}</span>
+                  <span>{isChecklist ? "Last updated" : "Last reviewed"}: {displayModifiedDate}</span>
                 </div>
               </div>
 
-              <div className="relative min-h-[240px] overflow-hidden rounded-2xl border border-white/10 bg-white/10 shadow-2xl shadow-slate-950/20 sm:min-h-[340px]">
+              <div className="print-hide relative min-h-[240px] overflow-hidden rounded-2xl border border-white/10 bg-white/10 shadow-2xl shadow-slate-950/20 sm:min-h-[340px]">
                 {post.image ? (
                   <Image
                     src={post.image}
@@ -202,6 +205,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <section className="py-10 sm:py-16">
           <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12 lg:items-start">
             <div className="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-10">
+              {isChecklist && (
+                <div className="print-hide mb-7 flex flex-wrap items-center gap-3 border-b border-slate-200 pb-6">
+                  <PrintChecklistButton />
+                  <p className="text-sm text-slate-600">Free to use. No registration required.</p>
+                </div>
+              )}
               <div className="prose prose-lg max-w-none">
                 {safeContentHtml ? (
                   <div
@@ -223,11 +232,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <h2 className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-primary-dark">Article Details</h2>
                 <dl className="space-y-4 text-sm">
                   <div>
-                    <dt className="font-bold text-slate-900">Reviewed by</dt>
+                    <dt className="font-bold text-slate-900">{isChecklist ? "Prepared by" : "Reviewed by"}</dt>
                     <dd className="mt-1 text-slate-600">{authorName}</dd>
                   </div>
                   <div>
-                    <dt className="font-bold text-slate-900">Last reviewed</dt>
+                    <dt className="font-bold text-slate-900">{isChecklist ? "Last updated" : "Last reviewed"}</dt>
                     <dd className="mt-1 text-slate-600">{displayModifiedDate}</dd>
                   </div>
                   {wordCount && (
@@ -240,12 +249,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
 
               <div className="rounded-2xl bg-primary-dark p-6 text-white shadow-xl shadow-[#003580]/20">
-                <h2 className="mb-3 text-xl font-black tracking-tight">Need a tax structure review?</h2>
+                <h2 className="mb-3 text-xl font-black tracking-tight">{isChecklist ? "How much cleanup do your books need?" : "Need a tax structure review?"}</h2>
                 <p className="mb-5 text-sm font-medium leading-relaxed text-slate-200">
-                  IntegraFin can review entity structure, bookkeeping readiness, payroll setup, and IRS compliance risk.
+                  {isChecklist ? "Use the free assessment to review complexity, urgency, and preparation priorities. It is not a price quote." : "IntegraFin can review entity structure, bookkeeping readiness, payroll setup, and IRS compliance risk."}
                 </p>
-                <Link href="/contact" className="inline-flex w-full items-center justify-center rounded-xl bg-[#0092df] px-5 py-3 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-[#007bc0]">
-                  Schedule Consultation
+                <Link href={isChecklist ? "/bookkeeping-cleanup-calculator" : "/contact"} className="inline-flex w-full items-center justify-center rounded-xl bg-[#0092df] px-5 py-3 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-[#007bc0]">
+                  {isChecklist ? "Open Free Assessment" : "Schedule Consultation"}
                 </Link>
               </div>
 
@@ -253,7 +262,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-[#0092df]">Primary next step</p>
                 <h2 className="mb-3 text-xl font-bold text-foreground">{intentLinks.primary.label}</h2>
                 <p className="mb-5 text-sm leading-relaxed text-text-secondary">
-                  Move from this general guide into the service page that owns the related search intent.
+                  {isChecklist ? "Review the cleanup process and the records needed before agreeing on a scope." : "Move from this general guide into the service page that owns the related search intent."}
                 </p>
                 <div className="grid gap-3">
                   {relatedResourceLinks.map((link) => (
@@ -282,9 +291,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-7">
-                <h2 className="text-xl font-bold text-foreground mb-3">Reviewed for General Guidance</h2>
+                <h2 className="text-xl font-bold text-foreground mb-3">{isChecklist ? "Prepared for General Guidance" : "Reviewed for General Guidance"}</h2>
                 <p className="text-text-secondary">
-                  This article is prepared by the IntegraFin Tax & Accounting Team for general education. Tax rules can change and the right answer depends on your records, entity type, state, and filing history.
+                  {isChecklist ? "This records preparation checklist is published by IntegraFin Tax & Accounting for general education. The appropriate cleanup scope and accounting treatment depend on your records and business facts." : "This article is prepared by the IntegraFin Tax & Accounting Team for general education. Tax rules can change and the right answer depends on your records, entity type, state, and filing history."}
                 </p>
               </div>
               <div className="rounded-2xl bg-accent-light p-5 text-center sm:p-7">

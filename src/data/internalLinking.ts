@@ -56,6 +56,14 @@ const taxCalculator = {
 } as const;
 
 const explicitBlogIntentLinks: Record<string, BlogIntentLinks> = {
+  "katy-small-business-monthly-bookkeeping-checklist": {
+    primary: { href: "/texas/houston-bookkeeping-cleanup", label: "Bookkeeping Cleanup for Houston Businesses" },
+    supporting: [
+      { href: "/bookkeeping-cleanup-calculator", label: "Free Cleanup Assessment" },
+      bookkeepingServices,
+      { href: "/quickbooks-bookkeeping-services", label: "QuickBooks Cleanup and Bookkeeping" },
+    ],
+  },
   "september-15-2026-tax-deadline": {
     primary: businessTaxAccounting,
     supporting: [bookkeepingServices, individualTaxPreparation],

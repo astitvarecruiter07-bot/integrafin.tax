@@ -23,7 +23,7 @@ export default function TexasCityLandingPage({ page }: { page: TexasCityLandingD
   const guides = isHoustonCleanup
     ? [
         { href: "/bookkeeping-cleanup-calculator", label: "Free Cleanup Assessment and Preparation List" },
-        { href: "/blog/katy-small-business-monthly-bookkeeping-checklist", label: "Monthly Bookkeeping Checklist" },
+        { href: "/blog/katy-small-business-monthly-bookkeeping-checklist", label: "Printable Bookkeeping Cleanup Checklist" },
         { href: "/pricing", label: "Bookkeeping Pricing and Scope" },
       ]
     : serviceGuideLinks["texas-city-tax-accountant"];

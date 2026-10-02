@@ -1109,7 +1109,7 @@ export const serviceLandingPages: Record<ServiceLandingPageSlug, ServiceLandingP
     helpfulLinks: [
       contactLink,
       { href: "/bookkeeping-cleanup-calculator", label: "Free Cleanup Assessment and Preparation List" },
-      { href: "/blog/katy-small-business-monthly-bookkeeping-checklist", label: "Monthly Bookkeeping Checklist for Katy Businesses" },
+      { href: "/blog/katy-small-business-monthly-bookkeeping-checklist", label: "Printable Cleanup and Monthly Bookkeeping Checklist" },
       { href: "/small-business-bookkeeping-services", label: "Small Business Bookkeeping Services" },
       { href: "/bookkeeping-cleanup", label: "Bookkeeping Cleanup" },
       { href: "/business-tax-accounting", label: "Business Tax & Accounting" },

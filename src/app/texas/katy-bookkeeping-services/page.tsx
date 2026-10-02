@@ -583,7 +583,7 @@ export default function KatyBookkeepingServicesPage() {
               Free Cleanup Assessment and Preparation List
             </Link>
             <Link href="/blog/katy-small-business-monthly-bookkeeping-checklist" className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
-              Monthly Bookkeeping Checklist for Katy Businesses
+              Printable Cleanup and Monthly Bookkeeping Checklist
             </Link>
             <Link href={contactHref} className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-primary hover:border-secondary">
               Request Monthly Bookkeeping
