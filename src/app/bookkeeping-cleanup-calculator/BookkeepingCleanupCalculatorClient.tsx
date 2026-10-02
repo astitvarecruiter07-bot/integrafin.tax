@@ -76,6 +76,7 @@ function BasicResult({ result, onPlan, onRetake }: { result: BookkeepingAssessme
               <h3 className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-[#0047AB]"><Gauge className="h-4 w-4" />Top contributing factors</h3>
               <ul className="mt-3 space-y-3">
                 {result.factors.map((factor) => <li key={factor.key} className="flex gap-3 text-sm leading-6 text-slate-700"><span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#00a8c2]" />{factorExplanations[factor.explanationKey]}</li>)}
+                {result.factors.length === 0 && <li className="text-sm leading-6 text-slate-700">Your answers did not identify a major cleanup driver. Confirm the records in a professional review before relying on this result.</li>}
               </ul>
             </div>
             <div>
